@@ -1,0 +1,55 @@
+/** Dependencies */
+import { useMemo, useCallback } from 'react';
+import {
+  {{camelCase componentName}},
+  {{pascalCase componentName}}Slots,
+  {{pascalCase componentName}}VariantProps,
+  SlotsToClasses,
+  mapPropsVariants,
+  objectToDeps,
+  PropGetter
+} from '@gp/theme';
+
+/** Define default props */
+interface Props {
+  /**
+   * Classname or List of classes to change the classNames of the element
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <{{pascalCase componentName}} classNames={ {
+   *   base:"base-classes"
+   * }} />
+   * ```
+   */
+  classNames?: SlotsToClasses<{{pascalCase componentName}}Slots>;
+}
+
+/** Create the props for the component */
+export type Use{{pascalCase componentName}}Props = Props & {{pascalCase componentName}}VariantProps;
+
+/**
+ * Custom hook for the component
+ * @param props The props of the component
+ * @returns Custom hook designed for the component
+ */
+export const use{{pascalCase componentName}} = (props: Use{{pascalCase componentName}}Props) => {
+  const [omittedProps, variantProps] = mapPropsVariants(props, {{camelCase componentName}}.variantKeys);
+
+  /** Split the props and set defaults */
+  const { classNames } = omittedProps;
+
+  /** Get the memo for the slots */
+  const slots = useMemo(() => {{camelCase componentName}}(variantProps), [objectToDeps(variantProps)]);
+
+  /** Prepare callbacks function for each slots */
+  const getBaseProps = useCallback<PropGetter>(() => {
+    return { className: slots.base({ class: classNames?.base }) };
+  }, [slots, classNames?.base]);
+
+  /** Return the hook informations */
+  return {
+    getBaseProps
+  };
+};

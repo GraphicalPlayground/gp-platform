@@ -1,0 +1,86 @@
+{
+  "name": "gp-platform",
+  "version": "1.0.0-alpha",
+  "description": "The cloud-native learning platform powering Graphical Playground. Hosts interactive courses, executes graphics code on remote GPUs, and delivers real-time visual feedback through a web-based environment.",
+  "keywords": [
+    "learning platform",
+    "cloud-native",
+    "interactive courses",
+    "remote GPU execution",
+    "real-time visual feedback",
+    "web-based environment"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Mallory SCOTTON",
+    "email": "mscotton.pro@gmail.com",
+    "url": "htttps://github.com/mallory-scotton"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraphicalPlayground/gp-platform"
+  },
+  "private": true,
+  "scripts": {
+    "create": "plop",
+    "create:pck": "plop package",
+    "create:cmp": "plop component",
+    "test": "turbo test",
+    "dev": "turbo dev",
+    "dev:story": "pnpm -F @gp/storybook dev",
+    "dev:frontend": "pnpm -F @gp/frontend dev",
+    "dev:backend": "pnpm -F @gp/backend dev",
+    "dev:cdn": "pnpm -F @gp/cdn dev",
+    "start:backend": "pnpm -F @gp/backend start",
+    "start:backend:fast": "pnpm -F @gp/backend start:fast",
+    "start:frontend": "pnpm -F @gp/frontend start",
+    "start:cdn": "pnpm -F @gp/cdn start",
+    "build:backend": "pnpm -F @gp/backend build",
+    "build:cdn": "pnpm -F @gp/cdn build",
+    "build:frontend": "pnpm -F @gp/frontend build",
+    "dev:all": "concurrently \"pnpm:start:backend\" \"pnpm:start:cdn\" \"pnpm:dev:frontend\"",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "prepare": "husky"
+  },
+  "packageManager": "pnpm@10.22.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sequelize/sqlite3",
+      "sqlite3",
+      "esbuild",
+      "unrs-resolver"
+    ],
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ],
+    "overrides": {
+      "react": "19.1.0",
+      "react-dom": "19.1.0",
+      "@types/react": "~19.1.10",
+      "@types/react-dom": "~19.1.7"
+    }
+  },
+  "devDependencies": {
+    "@storybook/react": "^9.1.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.2.1",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.0.0",
+    "husky": "^9.1.7",
+    "jest": "^30.0.5",
+    "plop": "^4.0.1",
+    "prettier": "^3.6.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.4.1",
+    "tsup": "^8.5.0",
+    "turbo": "^2.5.5",
+    "typescript": "^5.9.2"
+  }
+}

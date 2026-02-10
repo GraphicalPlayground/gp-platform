@@ -1,0 +1,58 @@
+{
+  "name": "@gp/{{packageName}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "keywords": [
+    "{{packageName}}"
+  ],
+  "author": {
+    "name": "Mallory SCOTTON",
+    "email": "mscotton.pro@gmail.com",
+    "url": "https://github.com/mallory-scotton"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/GraphicalPlayground/gp-platform",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraphicalPlayground/gp-platform",
+    "directory": "packages/{{outDir}}/{{packageName}}"
+  },
+  "bugs": {
+    "url": "https://github.com/GraphicalPlayground/gp-platform/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "dev:run": "tsup src --watch --onSuccess \"node dist/index.js\"",
+    "start": "pnpm build && node dist/index.js",
+    "start:fast": "pnpm build:fast && node dist/index.js",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "ES2020",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}

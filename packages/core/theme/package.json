@@ -1,0 +1,76 @@
+{
+  "name": "@gp/theme",
+  "version": "1.0.0",
+  "description": "Main tailwindcss theme for Graphical Playground",
+  "keywords": [
+    "theme"
+  ],
+  "author": {
+    "name": "Mallory SCOTTON",
+    "email": "mscotton.pro@gmail.com",
+    "url": "https://github.com/mallory-scotton"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/GraphicalPlayground/gp-platform",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraphicalPlayground/gp-platform",
+    "directory": "packages/core/theme"
+  },
+  "bugs": {
+    "url": "https://github.com/GraphicalPlayground/gp-platform/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "dev:run": "tsup src --watch --onSuccess \"node dist/index.js\"",
+    "start": "pnpm build && node dist/index.js",
+    "start:fast": "pnpm build:fast && node dist/index.js",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "ES2020",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "dependencies": {
+    "color": "^5.0.0",
+    "tailwind-merge": "3.3.1",
+    "tailwind-variants": "2.0.1"
+  },
+  "peerDependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/color": "^4.2.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "color2k": "^2.0.3",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tailwindcss": "4.1.11"
+  }
+}

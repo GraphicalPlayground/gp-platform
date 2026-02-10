@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+dist/
+build/
+out/
+logs/
+docs/
+.turbo/
+
+# Miscs
+pnpm-lock.yaml

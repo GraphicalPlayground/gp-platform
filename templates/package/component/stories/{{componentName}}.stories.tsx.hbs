@@ -1,0 +1,29 @@
+/** Dependencies */
+import { Meta } from '@storybook/react';
+import { {{camelCase componentName}} } from '@gp/theme';
+
+/** Import the component */
+import { {{pascalCase componentName}}, {{pascalCase componentName}}Props } from '../src';
+
+/**
+ * {{description}}
+ */
+export default {
+  title: 'Components/{{pascalCase componentName}}',
+  component: {{pascalCase componentName}}
+} as Meta<typeof {{pascalCase componentName}}>;
+
+/** Define the default props */
+const defaultProps = {
+  ...{{camelCase componentName}}.defaultVariants
+};
+
+/** Define the main template */
+const Template = (args: {{pascalCase componentName}}Props) => <{{pascalCase componentName}} {...args} />;
+
+export const Default = {
+  render: Template,
+  args: {
+    ...defaultProps
+  }
+};

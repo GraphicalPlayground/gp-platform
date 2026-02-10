@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - packages/*
+  - packages/core/*
+  - packages/utils/*
+  - packages/components/*

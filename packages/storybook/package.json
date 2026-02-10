@@ -1,0 +1,80 @@
+{
+  "name": "@gp/storybook",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "storybook"
+  ],
+  "type": "module",
+  "author": {
+    "name": "Mallory SCOTTON",
+    "email": "mscotton.pro@gmail.com",
+    "url": "https://github.com/mallory-scotton"
+  },
+  "homepage": "https://github.com/GraphicalPlayground/gp-platform",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "sideEffects": true,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraphicalPlayground/gp-platform",
+    "directory": "packages/storybook"
+  },
+  "bugs": {
+    "url": "https://github.com/GraphicalPlayground/gp-platform/issues"
+  },
+  "scripts": {
+    "dev": "pnpm storybook dev -p 6006",
+    "build": "pnpm storybook build",
+    "start": "pnpm dlx http-server storybook-static"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "ES2020",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "dependencies": {
+    "@gp/theme": "workspace:*",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.5.0",
+    "@storybook/addon-docs": "^8.5.0",
+    "@storybook/addon-essentials": "^8.5.0",
+    "@storybook/addon-links": "^8.5.0",
+    "@storybook/cli": "^8.5.0",
+    "@storybook/manager-api": "^8.5.0",
+    "@storybook/preview-api": "^8.5.0",
+    "@storybook/react": "^8.5.0",
+    "@storybook/react-vite": "^8.5.0",
+    "@storybook/theming": "^8.5.0",
+    "@tailwindcss/postcss": "^4.1.12",
+    "@tailwindcss/vite": "4.1.11",
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.21",
+    "remark-gfm": "^4.0.0",
+    "storybook": "^8.5.0",
+    "storybook-dark-mode": "^4.0.2",
+    "tailwindcss": "4.1.12",
+    "vite": "^5.4.11"
+  }
+}

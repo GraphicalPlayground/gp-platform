@@ -1,0 +1,83 @@
+{
+  "name": "@gp/{{componentName}}",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "keywords": [
+    "{{componentName}}"
+  ],
+  "author": {
+    "name": "Mallory SCOTTON",
+    "email": "mscotton.pro@gmail.com",
+    "url": "https://github.com/mallory-scotton"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/GraphicalPlayground/gp-platform",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./native": {
+      "types": "./dist/index.native.d.ts",
+      "import": "./dist/index.native.mjs",
+      "require": "./dist/index.native.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GraphicalPlayground/gp-platform",
+    "directory": "packages/{{outDir}}/{{componentName}}"
+  },
+  "bugs": {
+    "url": "https://github.com/GraphicalPlayground/gp-platform/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast --watch",
+    "dev:run": "tsup src --watch --onSuccess \"node dist/index.js\"",
+    "start": "pnpm build && node dist/index.js",
+    "start:fast": "pnpm build:fast && node dist/index.js",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "test": "jest"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "ES2020",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "dependencies": {
+    "@gp/theme": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-native": "0.81.5"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.9",
+    "@types/react-dom": "^19.1.7",
+    "@types/react-native": "^0.73.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

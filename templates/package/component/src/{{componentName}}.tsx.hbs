@@ -1,0 +1,25 @@
+/** Dependencies */
+import React from 'react';
+import { use{{pascalCase componentName}}, Use{{pascalCase componentName}}Props } from './use-{{componentName}}';
+
+/** Alias an interface for the component props */
+export interface {{pascalCase componentName}}Props extends Use{{pascalCase componentName}}Props {}
+
+/** Export the component */
+const {{pascalCase componentName}}: React.FC<{{pascalCase componentName}}Props> = (props: {{pascalCase componentName}}Props) => {
+  /** Use the component hook */
+  const { getBaseProps } = use{{pascalCase componentName}}({ ...props });
+
+  /** Return the component */
+  return (
+    <div {...getBaseProps()}>
+      gp.{{pascalCase componentName}}
+    </div>
+  );
+};
+
+/** Set the display name of the component */
+{{pascalCase componentName}}.displayName = 'gp.{{pascalCase componentName}}';
+
+/** Export the component as default */
+export default {{pascalCase componentName}};
