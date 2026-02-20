@@ -2,7 +2,7 @@
   "version": 2,
   "framework": null,
   "buildCommand": "cd ../.. && turbo run build --filter=@gp/api",
-  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "installCommand": "cd ../.. && pnpm install",
   "builds": [
     {
       "src": "src/index.ts",
