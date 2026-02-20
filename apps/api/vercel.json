@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "framework": null,
+  "buildCommand": "cd ../.. && turbo run build --filter=@gp/api",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
   "builds": [
     {
       "src": "src/index.ts",
@@ -8,7 +11,7 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "src/index.ts"
     }
   ]
