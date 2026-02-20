@@ -1,8 +1,8 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "cd ../.. && turbo run build --filter=@gp/api",
-  "installCommand": "npm install -g pnpm@10.22.0 && cd ../.. && pnpm install",
+  "buildCommand": "turbo run build --filter=@gp/api",
+  "installCommand": "npm install -g pnpm@10.22.0 && pnpm install",
   "builds": [
     {
       "src": "src/index.ts",
