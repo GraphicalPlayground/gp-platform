@@ -1,18 +1,40 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "VERCEL_ENV",
+    "STORYBOOK_READY_ONLY",
+    "LOOPS_API_ENDPOINT",
+    "LOOPS_API_KEY",
+    "FEATUREBASE_API_ENDPOINT",
+    "FEATUREBASE_API_KEY"
+  ],
   "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "lib/**", ".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", ".source/**", "dist/**", "storybook-static/**"]
     },
-    "dev": {
-      "cache": false
+    "start": {
+      "dependsOn": ["^build"],
+      "outputs": []
     },
-    "typecheck": {},
-    "lint": {},
+    "lint": {
+      "outputs": []
+    },
+    "format": {
+      "dependsOn": [],
+      "outputs": []
+    },
     "test": {
-      "dependsOn": ["^build"]
+      "dependsOn": [],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": [],
+      "outputs": []
     }
-  },
-  "globalDependencies": ["tsconfig.json"]
+  }
 }

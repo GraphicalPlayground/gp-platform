@@ -1,0 +1,107 @@
+/* Base styles */
+.chip {
+  @apply inline-flex shrink-0 items-center gap-0.5 rounded-2xl px-2 py-0.5 text-xs leading-5 font-medium;
+
+  /* Default tokens */
+  --chip-bg: var(--color-default);
+  --chip-fg: currentColor;
+
+  background-color: var(--chip-bg);
+  color: var(--chip-fg);
+}
+
+.chip__label {
+  @apply px-0.5;
+}
+
+/* Color variants - set foreground color */
+.chip--accent {
+  --chip-fg: var(--color-accent);
+}
+
+.chip--danger {
+  --chip-fg: var(--color-danger);
+}
+
+.chip--default {
+  --chip-fg: var(--color-default-foreground);
+}
+
+.chip--success {
+  --chip-fg: var(--color-success);
+}
+
+.chip--warning {
+  --chip-fg: var(--color-warning);
+}
+
+/* Variant styles */
+.chip--primary {
+}
+
+.chip--secondary {
+  /* No additional styles for secondary variant */
+}
+
+.chip--tertiary {
+  --chip-bg: transparent;
+}
+
+/* Size variants */
+.chip--sm {
+  @apply px-1 py-0 text-xs;
+}
+
+.chip--md {
+  @apply text-xs;
+}
+
+.chip--lg {
+  @apply px-3 py-1 text-sm font-medium;
+}
+
+/* ====================== */
+/* = Compound variants = */
+/* ====================== */
+
+/* Primary variants - solid backgrounds */
+.chip--primary.chip--accent {
+  --chip-bg: var(--color-accent);
+  --chip-fg: var(--color-accent-foreground);
+}
+
+.chip--primary.chip--success {
+  --chip-bg: var(--color-success);
+  --chip-fg: var(--color-success-foreground);
+}
+
+.chip--primary.chip--warning {
+  --chip-bg: var(--color-warning);
+  --chip-fg: var(--color-warning-foreground);
+}
+
+.chip--primary.chip--danger {
+  --chip-bg: var(--color-danger);
+  --chip-fg: var(--color-danger-foreground);
+}
+
+/* Soft variants - muted backgrounds */
+.chip--accent.chip--soft {
+  --chip-bg: var(--color-accent-soft);
+  --chip-fg: var(--color-accent-soft-foreground);
+}
+
+.chip--success.chip--soft {
+  --chip-bg: var(--color-success-soft);
+  --chip-fg: var(--color-success-soft-foreground);
+}
+
+.chip--warning.chip--soft {
+  --chip-bg: var(--color-warning-soft);
+  --chip-fg: var(--color-warning-soft-foreground);
+}
+
+.chip--danger.chip--soft {
+  --chip-bg: var(--color-danger-soft);
+  --chip-fg: var(--color-danger-soft-foreground);
+}

@@ -1,51 +1,58 @@
-/** Dependencies */
-import React from 'react';
-import { themes } from '@storybook/theming';
 import type { Preview } from '@storybook/react';
-import './style.css';
 
-const commonTheme = {
-  brandTitle: 'Graphical Playground',
-  brandUrl: 'https://github.com/GraphicalPlayground/gp-platform',
-  brandTarget: '_self'
-};
+import { withInternationalization } from './addons/i18n/decorator';
+import { i18nGlobalType } from './addons/i18n/preview';
+import { withReactScan } from './addons/react-scan/decorator';
+import { reactScanGlobalType } from './addons/react-scan/preview';
+import { withReduceMotion } from './addons/reduce-motion/decorator';
+import { reduceMotionGlobalType } from './addons/reduce-motion/preview';
+import { withReactStrictMode } from './addons/strict-mode/decorator';
+import { strictModeGlobalType } from './addons/strict-mode/preview';
+import { withTheme } from './addons/theme/decorator';
+import { themeGlobalType } from './addons/theme/preview';
+import { DocsContainer } from './components/docs-container';
+
+import './globals.css';
 
 const parameters: Preview['parameters'] = {
-  options: {
-    storySort: {
-      method: 'alphabetical',
-      order: ['Foundations', 'Components']
-    }
-  },
+  layout: 'fullscreen',
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/
     }
   },
-  darkMode: {
-    current: 'dark',
-    stylePreview: true,
-    darkClass: 'dark',
-    lightClass: 'light',
-    classTarget: 'html',
-    dark: {
-      ...themes.dark,
-      ...commonTheme,
-      appBorderRadius: 14,
-      brandImage: '/dark-logo.svg'
-    },
-    light: {
-      ...themes.light,
-      ...commonTheme,
-      appBorderRadius: 14,
-      brandImage: '/light-logo.svg'
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['Welcome', 'Color System', 'Components Demo', 'Colors Demo']
     }
+  },
+  docs: {
+    container: DocsContainer
   }
 };
 
+const decorators: Preview['decorators'] = [
+  withReactStrictMode,
+  withTheme,
+  withInternationalization,
+  withReduceMotion,
+  withReactScan
+];
+
+const globalTypes = {
+  ...i18nGlobalType,
+  ...themeGlobalType,
+  ...reduceMotionGlobalType,
+  ...strictModeGlobalType,
+  ...reactScanGlobalType
+};
+
 const preview: Preview = {
+  decorators,
   parameters,
+  globalTypes,
   tags: ['autodocs']
 };
 

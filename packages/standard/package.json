@@ -1,0 +1,9 @@
+{
+  "name": "@gp/standard",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Standardized code style & lint rules for GP-Platform.",
+  "publishConfig": {
+    "access": "public"
+  }
+}

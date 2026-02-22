@@ -1,0 +1,129 @@
+'use client';
+
+import type { TooltipVariants } from '@gp/styles';
+import type { ComponentPropsWithRef } from 'react';
+
+import { tooltipVariants } from '@gp/styles';
+import React, { createContext, useContext } from 'react';
+import {
+  Focusable as FocusablePrimitive,
+  OverlayArrow,
+  Tooltip as TooltipPrimitive,
+  TooltipTrigger as TooltipTriggerPrimitive
+} from 'react-aria-components';
+
+import { composeSlotClassName, composeTwRenderProps } from '../../utils/compose';
+
+/* -------------------------------------------------------------------------------------------------
+ * Tooltip Context
+ * -----------------------------------------------------------------------------------------------*/
+type TooltipContext = {
+  slots?: ReturnType<typeof tooltipVariants>;
+};
+
+const TooltipContext = createContext<TooltipContext>({});
+
+/* -------------------------------------------------------------------------------------------------
+ * Tooltip Root
+ * -----------------------------------------------------------------------------------------------*/
+type TooltipRootProps = ComponentPropsWithRef<typeof TooltipTriggerPrimitive>;
+
+const TooltipRoot = ({ children, ...props }: ComponentPropsWithRef<typeof TooltipTriggerPrimitive>) => {
+  const slots = React.useMemo(() => tooltipVariants(), []);
+
+  return (
+    <TooltipContext value={{ slots }}>
+      <TooltipTriggerPrimitive data-slot='tooltip-root' {...props}>
+        {children}
+      </TooltipTriggerPrimitive>
+    </TooltipContext>
+  );
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Tooltip Content
+ * -----------------------------------------------------------------------------------------------*/
+interface TooltipContentProps
+  extends Omit<ComponentPropsWithRef<typeof TooltipPrimitive>, 'children'>, TooltipVariants {
+  showArrow?: boolean;
+  children: React.ReactNode;
+}
+
+const TooltipContent = ({
+  children,
+  className,
+  offset: offsetProp,
+  showArrow = false,
+  ...props
+}: TooltipContentProps) => {
+  const { slots } = useContext(TooltipContext);
+  const offset = offsetProp ? offsetProp : showArrow ? 7 : 3;
+
+  return (
+    <TooltipPrimitive {...props} className={composeTwRenderProps(className, slots?.base())} offset={offset}>
+      {children}
+    </TooltipPrimitive>
+  );
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Tooltip Arrow
+ * -----------------------------------------------------------------------------------------------*/
+type TooltipArrowProps = Omit<ComponentPropsWithRef<typeof OverlayArrow>, 'children'> & {
+  children?: React.ReactNode;
+};
+
+const TooltipArrow = ({ children, className, ...props }: TooltipArrowProps) => {
+  const defaultArrow = (
+    <svg data-slot='overlay-arrow' height={12} viewBox='0 0 12 12' width={12}>
+      <path d='M0 0 Q6 9 12 0' />
+    </svg>
+  );
+
+  const arrow = React.isValidElement(children)
+    ? React.cloneElement(
+        children as React.ReactElement<{
+          'className'?: string;
+          'data-slot'?: 'overlay-arrow';
+        }>,
+        {
+          'data-slot': 'overlay-arrow'
+        }
+      )
+    : defaultArrow;
+
+  return (
+    <OverlayArrow data-slot='tooltip-arrow' {...props} className={className}>
+      {arrow}
+    </OverlayArrow>
+  );
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Tooltip Trigger
+ * -----------------------------------------------------------------------------------------------*/
+interface TooltipTriggerProps extends ComponentPropsWithRef<'div'> {}
+
+const TooltipTrigger = ({ children, className, ...props }: TooltipTriggerProps) => {
+  const { slots } = useContext(TooltipContext);
+
+  return (
+    <FocusablePrimitive>
+      <div
+        className={composeSlotClassName(slots?.trigger, className)}
+        data-slot='tooltip-trigger'
+        role='button'
+        {...props}
+      >
+        {children}
+      </div>
+    </FocusablePrimitive>
+  );
+};
+
+/* -------------------------------------------------------------------------------------------------
+ * Exports
+ * -----------------------------------------------------------------------------------------------*/
+export { TooltipRoot, TooltipTrigger, TooltipContent, TooltipArrow };
+
+export type { TooltipRootProps, TooltipArrowProps, TooltipContentProps, TooltipTriggerProps };

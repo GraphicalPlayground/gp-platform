@@ -1,49 +1,47 @@
-import { dirname, join } from 'path';
-import remarkGfm from 'remark-gfm';
 import type { StorybookConfig } from '@storybook/react-vite';
 
-const config: StorybookConfig = {
-  stories: [
-    './welcome.mdx',
-    '../../components/**/stories/**/*.stories.@(js|jsx|ts|tsx)',
-    '../../core/theme/stories/*.stories.@(js|jsx|ts|tsx)'
-  ],
+import { readFileSync as fsReadFileSync } from 'fs';
+import { dirname, join as pathJoin } from 'path';
+import { fileURLToPath } from 'url';
 
-  staticDirs: ['../public'],
+import { sync as globSync } from 'glob';
 
-  addons: [
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-essentials'),
-    getAbsolutePath('@storybook/addon-links'),
-    getAbsolutePath('storybook-dark-mode'),
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        mdxPluginOptions: {
-          mdxCompileOptions: {
-            remarkPlugins: [remarkGfm]
-          }
-        }
-      }
-    }
-  ],
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-  framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
-    options: {}
-  },
+export const getStories = () => {
+  const __STORYBOOK_READY_ONLY__ = process.env.STORYBOOK_READY_ONLY === 'true';
 
-  core: {
-    disableTelemetry: true
-  },
+  if (!__STORYBOOK_READY_ONLY__) return ['../../react/src/**/*.stories.@(ts|tsx)'];
 
-  typescript: {
-    reactDocgen: false
-  }
+  const readyStories = globSync(pathJoin(__dirname, '../../react/src/**/*.stories.@(ts|tsx)')).filter((file) => {
+    const content = fsReadFileSync(file, 'utf-8');
+
+    return /title:\s*["']Components/.test(content);
+  });
+
+  return readyStories;
 };
 
-function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, 'package.json')));
-}
+const config: StorybookConfig = {
+  addons: ['@storybook/addon-a11y', '@storybook/addon-docs'],
+  core: {
+    disableTelemetry: true,
+    disableWhatsNewNotifications: true,
+    enableCrashReports: false
+  },
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
+  },
+  staticDirs: [pathJoin(__dirname, '../public')],
+  stories: [
+    './welcome.mdx',
+    './stories/colors.stories.tsx',
+    // "./stories/colors-demo.stories.tsx",
+    // "./stories/demo.stories.tsx",
+    ...getStories()
+  ]
+};
 
 export default config;
