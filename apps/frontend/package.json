@@ -1,0 +1,24 @@
+{
+  "name": "@gp/frontend",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-router-dom": "7.13.1",
+    "tailwind-merge": "3.4.0",
+    "tailwind-variants": "3.2.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.18",
+    "@vitejs/plugin-react": "4.5.2",
+    "tailwindcss": "4.1.18",
+    "vite": "6.3.5"
+  }
+}

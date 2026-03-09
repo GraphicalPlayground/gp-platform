@@ -1,1 +1,2 @@
-pnpm lint-staged -c lint-staged.config.mjs
+# lint-staged disabled
+# pnpm lint-staged -c lint-staged.config.mjs

@@ -15,6 +15,8 @@
   "scripts": {
     "dev": "dotenv -- turbo dev --filter=@gp/storybook",
     "dev:docs": "dotenv -- turbo dev --filter=@gp/docs",
+    "dev:frontend": "pnpm -F @gp/frontend dev",
+    "dev:all": "pnpm -F @gp/frontend dev",
     "build": "turbo build --filter=@gp/styles --filter=@gp/react",
     "build:docs": "dotenv -- turbo build --filter=@gp/docs",
     "build:react": "turbo build --filter=@gp/react",

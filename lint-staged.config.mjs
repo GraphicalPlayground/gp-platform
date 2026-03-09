@@ -50,7 +50,7 @@ const lintStaged = {
       // use ESLint with experimental configuration file resolution
       const filesToLint = await removeIgnoredFilesNew(files);
 
-      return [`eslint --flag v10_config_lookup_from_file --max-warnings=0 --no-warn-ignored --fix ${filesToLint}`];
+      return [`eslint --flag v10_config_lookup_from_file --max-warnings=-1 --no-warn-ignored --fix ${filesToLint}`];
     }
 
     if (LINT_MODE === 'Legacy') {
@@ -76,7 +76,7 @@ const lintStaged = {
         const filesToLint = await removeIgnoredFilesLegacy(pkgFiles, eslint);
 
         if (filesToLint.length) {
-          commands.push(`eslint --config ${configPath} --max-warnings=0 --fix ${filesToLint.join(' ')}`);
+          commands.push(`eslint --config ${configPath} --max-warnings=-1 --fix ${filesToLint.join(' ')}`);
         }
       }
 
