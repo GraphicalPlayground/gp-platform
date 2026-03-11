@@ -10,7 +10,7 @@ const updatePreviewTheme = (theme: string) => {
   const root = document.documentElement;
 
   root.setAttribute('data-theme', theme);
-  root.classList.remove('light', 'dark');
+  root.classList.remove('light', 'dark', 'graphical');
   root.classList.add(theme);
 };
 

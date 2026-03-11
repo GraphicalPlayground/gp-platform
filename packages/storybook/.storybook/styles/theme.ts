@@ -122,7 +122,41 @@ const darkTheme = create({
   inputBorderRadius: 8
 });
 
+const graphicalTheme = create({
+  ...storybookThemes.dark,
+  base: 'dark',
+  brandTitle: `<img src="/logo-light.svg" style="width: 120px; height: auto;" alt="Graphical Playground"/>`,
+  brandTarget: '_self',
+  // Colors
+  colorPrimary: '#26bbff',
+  colorSecondary: '#26bbff',
+  // UI
+  appBg: '#101014',
+  appContentBg: '#101014',
+  appPreviewBg: '#101014',
+  appBorderColor: 'rgba(255, 255, 255, 0.15)',
+  appBorderRadius: 12,
+  // Typography
+  fontBase,
+  fontCode,
+  // Text
+  textColor: '#ffffff',
+  textInverseColor: '#000000',
+  textMutedColor: 'rgba(255, 255, 255, 0.65)',
+  // Toolbar
+  barBg: '#18181c',
+  barTextColor: 'rgba(255, 255, 255, 0.65)',
+  barSelectedColor: '#26bbff',
+  barHoverColor: '#ffffff',
+  // Form colors
+  inputBg: '#202024',
+  inputBorder: 'rgba(255, 255, 255, 0.35)',
+  inputTextColor: '#ffffff',
+  inputBorderRadius: 8
+});
+
 export const themes = {
   dark: darkTheme,
-  light: lightTheme
+  light: lightTheme,
+  graphical: graphicalTheme
 };

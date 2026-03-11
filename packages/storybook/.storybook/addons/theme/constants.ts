@@ -3,7 +3,7 @@ export const THEME_GLOBAL_TYPE_ID = 'gp-theme';
 export const THEME_PARAM_KEY = 'gp-theme';
 export const THEME_EVENT_NAME = 'gp-theme-changed';
 
-export const THEME_VALUES = ['light', 'dark'] as const;
+export const THEME_VALUES = ['light', 'dark', 'graphical'] as const;
 export type ThemeKey = (typeof THEME_VALUES)[number];
 
 export const DEFAULT_THEME: ThemeKey = THEME_VALUES[1];
@@ -24,6 +24,11 @@ export const THEME_OPTIONS: ThemeOption[] = [
     value: THEME_VALUES[1],
     title: 'Dark',
     description: 'Dark theme'
+  },
+  {
+    value: THEME_VALUES[2],
+    title: 'Graphical',
+    description: 'Graphical dark theme'
   }
 ];
 

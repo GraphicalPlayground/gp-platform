@@ -30,3 +30,10 @@ body {
   --background: lab(1.54547% 0.178337 -0.64671);
   --foreground: lab(98.9676% -0.0000298023 -0.0000119209);
 }
+
+.graphical,
+[data-theme='graphical'] {
+  --background: #101014;
+  --foreground: #ffffff;
+  color-scheme: dark;
+}

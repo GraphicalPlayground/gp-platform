@@ -55,6 +55,12 @@
   --cursor-interactive: pointer;
 }
 
+/* Graphical theme overrides using data-theme or class */
+[data-theme='graphical'],
+.graphical {
+  --cursor-interactive: pointer;
+}
+
 /* @theme inline { */
 /* Radius */
 /* --radius-xs: calc(var(--radius) * 0.25);
