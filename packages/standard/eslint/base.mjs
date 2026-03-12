@@ -114,26 +114,9 @@ const config = defineConfig([
           caseSensitive: true
         }
       ],
-      'sort-imports': [
-        'error',
-        {
-          allowSeparatedGroups: true,
-          ignoreCase: false,
-          ignoreDeclarationSort: true,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-        }
-      ],
-      'sort-keys': [
-        'error',
-        'asc',
-        {
-          caseSensitive: true,
-          minKeys: 2,
-          natural: false
-        }
-      ],
-      'sort-keys-fix/sort-keys-fix': 'error',
+      'sort-imports': 'off',
+      'sort-keys': 'off',
+      'sort-keys-fix/sort-keys-fix': 'off',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'error',
