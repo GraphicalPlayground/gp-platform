@@ -3,7 +3,7 @@ import React from 'react';
 import { useAuth } from '../auth_context.jsx';
 import { LogoMark } from '../components/Logo.jsx';
 
-/* ── Shared keyframes (same pattern as landing_page) ─────────────── */
+/* ── Shared keyframes (same pattern as homepage) ─────────────── */
 const KEYFRAMES = `
   @keyframes ap-pulse { from{opacity:.5} to{opacity:1} }
   @keyframes ap-fadein {

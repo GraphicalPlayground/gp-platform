@@ -6,14 +6,13 @@ import { CATALOG } from '../auth_store.js';
 /* ─────────────────────────────────────────────────────────────────
    catalog.jsx  —  Course Catalog / Library
    Layout:  Track rail (left)  ›  Module list (right)
-            Click a module     ›  Detail drawer slides in from right
+            Click a module     ›  Navigate to /module/:id
    Auth-guarded: /catalog requires login.
    ───────────────────────────────────────────────────────────────── */
 
 /* ── Keyframes ── */
 const KF = `
   @keyframes cl-fadein  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-  @keyframes cl-slidein { from{opacity:0;transform:translateX(24px)} to{opacity:1;transform:none} }
   @keyframes cl-pulse   { from{opacity:.55} to{opacity:1} }
   @keyframes cl-shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
 
@@ -22,7 +21,6 @@ const KF = `
   .cl-f2 { animation: cl-fadein  .4s .12s ease both }
   .cl-f3 { animation: cl-fadein  .4s .18s ease both }
   .cl-f4 { animation: cl-fadein  .4s .24s ease both }
-  .cl-slide { animation: cl-slidein .3s ease both }
   .cl-pulse { animation: cl-pulse 6s ease-in-out infinite alternate }
 
   .cl-shimmer-text {
@@ -56,36 +54,6 @@ const KF = `
     background: rgba(0,166,255,.04);
     box-shadow: 0 4px 24px rgba(0,0,0,.35);
   }
-  .cl-mod-row.selected {
-    border-color: rgba(0,166,255,.35);
-    box-shadow: 0 0 0 1px rgba(0,166,255,.10), 0 8px 32px rgba(0,0,0,.4);
-  }
-
-  .cl-detail-panel {
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,.08);
-    background: rgba(10,10,18,.85);
-    backdrop-filter: blur(18px);
-    overflow: hidden;
-  }
-
-  .cl-img-placeholder {
-    width: 100%; aspect-ratio: 16/7;
-    background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.02) 100%);
-    border-bottom: 1px solid rgba(255,255,255,.06);
-    display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden;
-  }
-
-  .cl-btn-primary {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 11px 22px; border-radius: 10px; border: none; cursor: pointer;
-    font-size: 13px; font-weight: 700; color: #fff;
-    background: linear-gradient(135deg,#0ea5e9,#7c3aed);
-    box-shadow: 0 6px 20px rgba(14,165,233,.25);
-    transition: opacity .15s, box-shadow .15s;
-  }
-  .cl-btn-primary:hover { opacity:.9; box-shadow: 0 8px 28px rgba(14,165,233,.38) }
 
   .cl-btn-ghost {
     display: inline-flex; align-items: center; gap: 8px;
@@ -129,43 +97,7 @@ const TRACKS = (() => {
 
 /* ── Icons ── */
 const IcoBack   = <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="15 18 9 12 15 6"/></svg>;
-const IcoPlay   = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>;
-const IcoBook   = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>;
-const IcoList   = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>;
 const IcoChevR  = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="9 18 15 12 9 6"/></svg>;
-const IcoImage  = <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" style={{color:'rgba(255,255,255,.12)'}}><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>;
-const IcoLock   = <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>;
-
-/* ─────────────────────────────────────────────────────────────────
-   MODULE IMAGE PLACEHOLDER
-   Leave space for a real cover image later.
-   ───────────────────────────────────────────────────────────────── */
-function ModuleImagePlaceholder({ color }) {
-  return (
-    <div className="cl-img-placeholder">
-      {/* Subtle gradient blobs */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: `radial-gradient(ellipse 70% 60% at 30% 50%, ${color}14 0%, transparent 70%),
-                     radial-gradient(ellipse 50% 70% at 80% 30%, ${color}0a 0%, transparent 70%)`,
-      }} />
-      {/* Grid lines */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        backgroundImage: `linear-gradient(${color}10 1px, transparent 1px),
-                          linear-gradient(90deg, ${color}10 1px, transparent 1px)`,
-        backgroundSize: '40px 40px',
-      }} />
-      {/* Centre icon + label */}
-      <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
-        {IcoImage}
-        <span style={{ fontSize: 11, color: 'rgba(255,255,255,.18)', letterSpacing: '0.08em', fontWeight: 600 }}>
-          MODULE COVER
-        </span>
-      </div>
-    </div>
-  );
-}
 
 /* ─────────────────────────────────────────────────────────────────
    TRACK RAIL  (left column)
@@ -215,7 +147,7 @@ function TrackRail({ activeTrackId, onSelect }) {
 /* ─────────────────────────────────────────────────────────────────
    MODULE ROW  (centre column)
    ───────────────────────────────────────────────────────────────── */
-function ModuleRow({ mod, selected, animDelay, onClick }) {
+function ModuleRow({ mod, animDelay, onClick }) {
   return (
     <div
       className={`cl-mod-row cl-f1`}
@@ -247,107 +179,12 @@ function ModuleRow({ mod, selected, animDelay, onClick }) {
 
         {/* Arrow */}
         <span style={{
-          color: selected ? mod.color : '#334155',
-          transition: 'color .15s, transform .15s',
-          transform: selected ? 'translateX(3px)' : 'none',
+          color: '#334155',
+          transition: 'color .15s',
           flexShrink: 0,
         }}>
           {IcoChevR}
         </span>
-
-      </div>
-    </div>
-  );
-}
-
-/* ─────────────────────────────────────────────────────────────────
-   MODULE DETAIL PANEL  (right column)
-   ───────────────────────────────────────────────────────────────── */
-function ModuleDetail({ mod, onClose }) {
-  return (
-    <div key={mod.id} className="cl-detail-panel cl-slide" style={{ display: 'flex', flexDirection: 'column' }}>
-
-      {/* Cover image placeholder */}
-      <ModuleImagePlaceholder color={mod.color} />
-
-      {/* Content */}
-      <div style={{ padding: '24px 24px 28px', display: 'flex', flexDirection: 'column', gap: 20 }}>
-
-        {/* Track + tier badge */}
-        <div style={{ display: 'flex', items: 'center', gap: 8, flexWrap: 'wrap' }}>
-          <span style={{
-            fontSize: 10, fontWeight: 800, letterSpacing: '0.1em',
-            color: mod.color, background: `${mod.color}16`,
-            borderRadius: 6, padding: '3px 8px', border: `1px solid ${mod.color}28`,
-          }}>
-            {mod.tierLabel}
-          </span>
-        </div>
-
-        {/* Module number + title */}
-        <div>
-          <p style={{ fontSize: 11, color: '#475569', fontWeight: 700, letterSpacing: '0.08em', marginBottom: 6 }}>
-            MODULE {mod.id.replace('mod-', '').replace(/^0/, '')}
-          </p>
-          <h2 style={{ fontSize: 20, fontWeight: 800, color: '#f8fafc', lineHeight: 1.25 }}>
-            {mod.title}
-          </h2>
-        </div>
-
-        {/* Learning objectives (derived from chapters as a teaser) */}
-        <div>
-          <p style={{ fontSize: 11, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>
-            What you'll learn
-          </p>
-          <ul style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            {mod.chapters.map((ch, i) => (
-              <li key={ch.id ?? i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                <span style={{
-                  marginTop: 2, flexShrink: 0, width: 18, height: 18, borderRadius: '50%',
-                  background: `${mod.color}16`, border: `1px solid ${mod.color}28`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{ fontSize: 9, fontWeight: 800, color: mod.color }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </span>
-                <span style={{ fontSize: 13, color: '#94a3b8', lineHeight: 1.55 }}>{ch.title}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Divider */}
-        <div style={{ height: 1, background: 'rgba(255,255,255,.06)' }} />
-
-        {/* Stats row */}
-        <div style={{ display: 'flex', gap: 20 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#475569' }}>{IcoList}</span>
-            <span style={{ fontSize: 12, color: '#64748b' }}>
-              {mod.chapters.length} chapters
-            </span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ color: '#475569' }}>{IcoBook}</span>
-            <span style={{ fontSize: 12, color: '#64748b' }}>C++ · GLSL</span>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div style={{ display: 'flex', gap: 10 }}>
-          <button className="cl-btn-primary" style={{ flex: 1, justifyContent: 'center' }}>
-            {IcoPlay}
-            Start module
-          </button>
-        </div>
-
-        {/* Close (mobile / dismiss) */}
-        {onClose && (
-          <button className="cl-btn-ghost" style={{ justifyContent: 'center' }} onClick={onClose}>
-            {IcoBack} Back to modules
-          </button>
-        )}
 
       </div>
     </div>
@@ -360,23 +197,12 @@ function ModuleDetail({ mod, onClose }) {
 export default function CatalogPage() {
   const navigate = useNavigate();
 
-  const [activeTrackId,  setActiveTrackId]  = React.useState(TRACKS[0].id);
-  const [selectedModId,  setSelectedModId]  = React.useState(TRACKS[0].modules[0]?.id ?? null);
-  const [showDetail,     setShowDetail]     = React.useState(false); // mobile
+  const [activeTrackId, setActiveTrackId] = React.useState(TRACKS[0].id);
 
-  const activeTrack  = TRACKS.find(t => t.id === activeTrackId) ?? TRACKS[0];
-  const selectedMod  = activeTrack.modules.find(m => m.id === selectedModId) ?? null;
+  const activeTrack = TRACKS.find(t => t.id === activeTrackId) ?? TRACKS[0];
 
   function selectTrack(id) {
     setActiveTrackId(id);
-    const track = TRACKS.find(t => t.id === id);
-    setSelectedModId(track?.modules[0]?.id ?? null);
-    setShowDetail(false);
-  }
-
-  function selectMod(id) {
-    setSelectedModId(id);
-    setShowDetail(true);
   }
 
   return (
@@ -426,8 +252,8 @@ export default function CatalogPage() {
           </h2>
         </div>
 
-        {/* ── Three-column layout ── */}
-        <div className="grid gap-6" style={{ gridTemplateColumns: '220px 1fr 380px', alignItems: 'start' }}>
+        {/* ── Two-column layout ── */}
+        <div className="grid gap-6" style={{ gridTemplateColumns: '220px 1fr', alignItems: 'start' }}>
 
           {/* ── Col 1: Track rail ── */}
           <div className="cl-f1 sticky top-[76px]"
@@ -464,48 +290,14 @@ export default function CatalogPage() {
               <ModuleRow
                 key={mod.id}
                 mod={mod}
-                selected={mod.id === selectedModId}
                 animDelay={i * 40}
-                onClick={() => selectMod(mod.id)}
+                onClick={() => navigate(`/module/${mod.id}`)}
               />
             ))}
           </div>
 
-          {/* ── Col 3: Detail panel (desktop) ── */}
-          <div className="sticky top-[76px]">
-            {selectedMod ? (
-              <ModuleDetail mod={selectedMod} />
-            ) : (
-              /* Empty state */
-              <div className="cl-f2 cl-detail-panel"
-                style={{ padding: '60px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: 12 }}>
-                <div style={{
-                  width: 56, height: 56, borderRadius: 14, marginBottom: 4,
-                  background: 'rgba(255,255,255,.04)', border: '1px solid rgba(255,255,255,.07)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{ color: '#334155' }}>{IcoBook}</span>
-                </div>
-                <p style={{ fontSize: 14, fontWeight: 600, color: '#334155' }}>Select a module</p>
-                <p style={{ fontSize: 12, color: '#1e293b', maxWidth: 200 }}>
-                  Click any module on the left to see its chapters and learning objectives.
-                </p>
-              </div>
-            )}
-          </div>
-
         </div>
       </div>
-
-      {/* ── Mobile: full-screen detail overlay ── */}
-      {showDetail && selectedMod && (
-        <div className="fixed inset-0 z-50 overflow-y-auto"
-          style={{ background: 'rgba(6,6,10,.97)', backdropFilter: 'blur(16px)' }}>
-          <div className="relative z-10 mx-auto max-w-[600px] pt-4 pb-12 px-4">
-            <ModuleDetail mod={selectedMod} onClose={() => setShowDetail(false)} />
-          </div>
-        </div>
-      )}
 
     </div>
   );

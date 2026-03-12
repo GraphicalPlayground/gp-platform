@@ -1,7 +1,9 @@
 import CatalogPage from '@pages/catalog.jsx';
 import DashboardPage from '@pages/dashboard.jsx';
-import LandingPage from '@pages/landing_page.jsx';
+import LandingPage from '@pages/homepage.jsx';
+import LessonPage from '@pages/lesson.jsx';
 import LoginPage from '@pages/login.jsx';
+import ModulePage from '@pages/module.jsx';
 import OnboardingPage from '@pages/onboarding.jsx';
 import SignUpPage from '@pages/sign_up.jsx';
 import React from 'react';
@@ -60,6 +62,10 @@ function OnboardingRoute() {
         markOnboardingDone();
         navigate('/dashboard', { replace: true });
       }}
+      onGoToModule={() => {
+        markOnboardingDone();
+        navigate('/module/mod-01', { replace: true });
+      }}
     />
   );
 }
@@ -81,6 +87,22 @@ function CatalogRoute() {
   if (!loggedIn) return <Navigate to='/login' replace />;
 
   return <CatalogPage />;
+}
+
+function ModuleRoute() {
+  const { loggedIn } = useAuth();
+
+  if (!loggedIn) return <Navigate to='/login' replace />;
+
+  return <ModulePage />;
+}
+
+function LessonRoute() {
+  const { loggedIn } = useAuth();
+
+  if (!loggedIn) return <Navigate to='/login' replace />;
+
+  return <LessonPage />;
 }
 
 function LandingRoute() {
@@ -107,6 +129,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/onboarding' element={<OnboardingRoute />} />
           <Route path='/dashboard' element={<DashboardRoute />} />
           <Route path='/catalog' element={<CatalogRoute />} />
+          <Route path='/module/:moduleId' element={<ModuleRoute />} />
+          <Route path='/lesson/:moduleId' element={<LessonRoute />} />
           <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
       </BrowserRouter>

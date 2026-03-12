@@ -612,7 +612,7 @@ export default function SignUpPage({ onBack, onGoLogin, onSignUp, onSuccess }) {
                     boxShadow: '0 8px 28px rgba(14,165,233,.25)'
                   }}
                 >
-                  Create Account — it&apos;s free
+                  Create Account, it&apos;s free
                 </button>
               </form>
 

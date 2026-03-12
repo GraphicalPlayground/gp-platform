@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────────
-   auth_store.js  —  Fake single-account auth
+   auth_store.js  -  Fake single-account auth
    There is exactly ONE real account. Everything else is theatre.
 
    The "session" is a fake token stored in localStorage so it
@@ -41,7 +41,7 @@ export function isLoggedIn() {
  * @returns {{ ok: true, user: object } | { ok: false, error: string }}
  */
 export function login(email, password) {
-  // Simulate a tiny network delay feel — callers should await this
+  // Simulate a tiny network delay feel - callers should await this
   const emailMatch = email.trim().toLowerCase() === ACCOUNT.email.toLowerCase();
   const passwordMatch = password === ACCOUNT.password;
 
@@ -65,7 +65,7 @@ export function login(email, password) {
 }
 
 /**
- * "Sign up" — always succeeds (creates the same single session).
+ * "Sign up" - always succeeds (creates the same single session).
  * In a real app this would POST to an API.
  */
 export function signUp(email, _password, _name) {
@@ -81,6 +81,8 @@ export function signUp(email, _password, _name) {
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   // Always reset onboarding so a new sign-up goes through the tour
   localStorage.removeItem(ONBOARD_KEY);
+  // Clear enrolled courses so new sign-up gets fresh random courses
+  localStorage.removeItem('gp_user_courses');
 
   return { ok: true, user: session };
 }
@@ -89,6 +91,7 @@ export function signUp(email, _password, _name) {
 export function logout() {
   localStorage.removeItem(SESSION_KEY);
   localStorage.removeItem(RESET_KEY);
+  localStorage.removeItem('gp_user_courses'); // Clear enrolled courses on logout
 }
 
 /**
@@ -131,7 +134,7 @@ const PROGRESS_KEY = 'gp_progress';
 
 /* ── Full curriculum catalog ──────────────────────────────────── */
 export const CATALOG = [
-  /* ═══════════════════ TIER 1 — FOUNDATIONS ════════════════════ */
+  /* ═══════════════════ TIER 1 - FOUNDATIONS ════════════════════ */
   {
     chapters: [
       { id: 'mod-01-c1', title: 'Scalar Mathematics & Notation' },
@@ -143,7 +146,7 @@ export const CATALOG = [
     color: '#38bdf8',
     id: 'mod-01',
     tier: 1,
-    tierLabel: 'Tier 1 — Foundations',
+    tierLabel: 'Tier 1 - Foundations',
     title: 'Mathematical Foundations for Graphics Engineering',
     track: 'Foundations'
   },
@@ -156,7 +159,7 @@ export const CATALOG = [
     color: '#38bdf8',
     id: 'mod-02',
     tier: 1,
-    tierLabel: 'Tier 1 — Foundations',
+    tierLabel: 'Tier 1 - Foundations',
     title: 'C++ for Graphics Engineers',
     track: 'Foundations'
   },
@@ -168,12 +171,12 @@ export const CATALOG = [
     color: '#38bdf8',
     id: 'mod-03',
     tier: 1,
-    tierLabel: 'Tier 1 — Foundations',
+    tierLabel: 'Tier 1 - Foundations',
     title: 'Introduction to the GP Engine & Cloud Platform',
     track: 'Foundations'
   },
 
-  /* ══════════════ TIER 2 — CORE GRAPHICS PROGRAMMING ══════════ */
+  /* ══════════════ TIER 2 - CORE GRAPHICS PROGRAMMING ══════════ */
   {
     chapters: [
       { id: 'mod-04-c1', title: 'Pipeline Stages Overview' },
@@ -183,7 +186,7 @@ export const CATALOG = [
     color: '#a855f7',
     id: 'mod-04',
     tier: 2,
-    tierLabel: 'Tier 2 — Core Graphics Programming',
+    tierLabel: 'Tier 2 - Core Graphics Programming',
     title: 'The Rasterization Pipeline',
     track: 'Core Graphics'
   },
@@ -196,8 +199,8 @@ export const CATALOG = [
     color: '#a855f7',
     id: 'mod-05',
     tier: 2,
-    tierLabel: 'Tier 2 — Core Graphics Programming',
-    title: 'Shader Programming — HLSL & GLSL',
+    tierLabel: 'Tier 2 - Core Graphics Programming',
+    title: 'Shader Programming - HLSL & GLSL',
     track: 'Core Graphics'
   },
   {
@@ -209,7 +212,7 @@ export const CATALOG = [
     color: '#a855f7',
     id: 'mod-06',
     tier: 2,
-    tierLabel: 'Tier 2 — Core Graphics Programming',
+    tierLabel: 'Tier 2 - Core Graphics Programming',
     title: 'Texturing, Sampling & Materials',
     track: 'Core Graphics'
   },
@@ -221,7 +224,7 @@ export const CATALOG = [
     color: '#a855f7',
     id: 'mod-07',
     tier: 2,
-    tierLabel: 'Tier 2 — Core Graphics Programming',
+    tierLabel: 'Tier 2 - Core Graphics Programming',
     title: 'Lighting & Shading Models',
     track: 'Core Graphics'
   },
@@ -233,12 +236,12 @@ export const CATALOG = [
     color: '#a855f7',
     id: 'mod-08',
     tier: 2,
-    tierLabel: 'Tier 2 — Core Graphics Programming',
+    tierLabel: 'Tier 2 - Core Graphics Programming',
     title: 'GPU Architecture & the Memory Hierarchy',
     track: 'Core Graphics'
   },
 
-  /* ══════════════ TIER 3 — ADVANCED RENDERING ══════════════════ */
+  /* ══════════════ TIER 3 - ADVANCED RENDERING ══════════════════ */
   {
     chapters: [
       { id: 'mod-09-c1', title: 'The Physics of Light' },
@@ -248,7 +251,7 @@ export const CATALOG = [
     color: '#10b981',
     id: 'mod-09',
     tier: 3,
-    tierLabel: 'Tier 3 — Advanced Rendering',
+    tierLabel: 'Tier 3 - Advanced Rendering',
     title: 'Physically Based Rendering (PBR)',
     track: 'Advanced Rendering'
   },
@@ -261,7 +264,7 @@ export const CATALOG = [
     color: '#10b981',
     id: 'mod-10',
     tier: 3,
-    tierLabel: 'Tier 3 — Advanced Rendering',
+    tierLabel: 'Tier 3 - Advanced Rendering',
     title: 'Global Illumination Techniques',
     track: 'Advanced Rendering'
   },
@@ -274,7 +277,7 @@ export const CATALOG = [
     color: '#10b981',
     id: 'mod-11',
     tier: 3,
-    tierLabel: 'Tier 3 — Advanced Rendering',
+    tierLabel: 'Tier 3 - Advanced Rendering',
     title: 'Ray Tracing & Path Tracing',
     track: 'Advanced Rendering'
   },
@@ -286,7 +289,7 @@ export const CATALOG = [
     color: '#10b981',
     id: 'mod-12',
     tier: 3,
-    tierLabel: 'Tier 3 — Advanced Rendering',
+    tierLabel: 'Tier 3 - Advanced Rendering',
     title: 'Shadows',
     track: 'Advanced Rendering'
   },
@@ -299,12 +302,12 @@ export const CATALOG = [
     color: '#10b981',
     id: 'mod-13',
     tier: 3,
-    tierLabel: 'Tier 3 — Advanced Rendering',
+    tierLabel: 'Tier 3 - Advanced Rendering',
     title: 'Temporal Techniques & Anti-Aliasing',
     track: 'Advanced Rendering'
   },
 
-  /* ══════════ TIER 4 — ENGINE ARCHITECTURE & EXPERT SYSTEMS ════ */
+  /* ══════════ TIER 4 - ENGINE ARCHITECTURE & EXPERT SYSTEMS ════ */
   {
     chapters: [
       { id: 'mod-14-c1', title: 'Low-Level API Mastery' },
@@ -313,7 +316,7 @@ export const CATALOG = [
     color: '#f59e0b',
     id: 'mod-14',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Render Hardware Interface (RHI) Design',
     track: 'Engine Architecture'
   },
@@ -325,7 +328,7 @@ export const CATALOG = [
     color: '#f59e0b',
     id: 'mod-15',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Frame Graph & Render Graph Architecture',
     track: 'Engine Architecture'
   },
@@ -338,21 +341,21 @@ export const CATALOG = [
     color: '#f59e0b',
     id: 'mod-16',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Visibility, Culling & Scene Representation',
     track: 'Engine Architecture'
   },
   {
     chapters: [
-      { id: 'mod-17-c1', title: 'Unreal Engine 5 — System Architecture' },
+      { id: 'mod-17-c1', title: 'Unreal Engine 5 - System Architecture' },
       { id: 'mod-17-c2', title: 'DECIMA Engine (Guerrilla Games)' },
-      { id: 'mod-17-c3', title: 'ID Tech 7 (id Software — DOOM Eternal)' },
-      { id: 'mod-17-c4', title: "Anvil Engine (Ubisoft — Assassin's Creed)" }
+      { id: 'mod-17-c3', title: 'ID Tech 7 (id Software - DOOM Eternal)' },
+      { id: 'mod-17-c4', title: "Anvil Engine (Ubisoft - Assassin's Creed)" }
     ],
     color: '#f59e0b',
     id: 'mod-17',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Modern Production Engine Rendering Systems',
     track: 'Engine Architecture'
   },
@@ -366,7 +369,7 @@ export const CATALOG = [
     color: '#f59e0b',
     id: 'mod-18',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Specialized Rendering Domains',
     track: 'Engine Architecture'
   },
@@ -378,26 +381,26 @@ export const CATALOG = [
     color: '#f59e0b',
     id: 'mod-19',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Low-Level Optimization & Performance Engineering',
     track: 'Engine Architecture'
   },
   {
     chapters: [
-      { id: 'mod-20-c1', title: 'Capstone Project — Path-Traced Deferred Hybrid Renderer' },
+      { id: 'mod-20-c1', title: 'Capstone Project - Path-Traced Deferred Hybrid Renderer' },
       { id: 'mod-20-c2', title: 'Certification & Industry Readiness' }
     ],
     color: '#f59e0b',
     id: 'mod-20',
     tier: 4,
-    tierLabel: 'Tier 4 — Engine Architecture & Expert Systems',
+    tierLabel: 'Tier 4 - Engine Architecture & Expert Systems',
     title: 'Capstone: Build Your Own Renderer',
     track: 'Engine Architecture'
   }
 ];
 
 /**
- * Default "seed" progress — shows the first module partially started.
+ * Default "seed" progress - shows the first module partially started.
  * completedLessons counts completed chapters.
  * lastLesson = most recently touched chapter.
  */
@@ -408,12 +411,12 @@ const DEFAULT_PROGRESS = {
       body: 'All 5 modules of Tier 2 are available, including GPU Architecture & the Memory Hierarchy.',
       id: 'ann-01',
       read: false,
-      title: 'Tier 2 — Core Graphics is now live',
+      title: 'Tier 2 - Core Graphics is now live',
       type: 'new'
     },
     {
       at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
-      body: 'Even if you know the math — Ch 1.3 (Matrices & Transformations) reveals how rendering engines think about it. Do not skip.',
+      body: 'Even if you know the math - Ch 1.3 (Matrices & Transformations) reveals how rendering engines think about it. Do not skip.',
       id: 'ann-02',
       read: false,
       title: 'Tip: start with Module 1',

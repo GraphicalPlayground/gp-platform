@@ -115,12 +115,12 @@ const STEPS = [
   {
     num: '01',
     title: 'Pick an Engineering Track',
-    desc: 'From Tier 1 Foundations to Tier 4 Engine Architecture — structured from first principles, no experience assumed.',
+    desc: 'From Tier 1 Foundations to Tier 4 Engine Architecture, structured from first principles, no experience assumed.',
   },
   {
     num: '02',
     title: 'Code It from Scratch',
-    desc: 'Every lesson is hands-on C++ or GLSL/HLSL. No black boxes — you write every system, understand every line.',
+    desc: 'Every lesson is hands-on C++ or GLSL/HLSL. No black boxes. You write every system, understand every line.',
   },
   {
     num: '03',
@@ -143,7 +143,7 @@ const TESTIMONIALS = [
     avatar: IMAGES.testimonialAvatar2,
   },
   {
-    quote: 'ECS from scratch — no Unity, no Unreal. Just pure C++ and solid theory. Exactly what I was looking for.',
+    quote: 'ECS from scratch. No Unity, no Unreal. Just pure C++ and solid theory. Exactly what I was looking for.',
     name: 'Hana T.',
     role: 'Systems Programmer',
     avatar: IMAGES.testimonialAvatar3,
@@ -537,7 +537,7 @@ export default function LandingPage({ onLogin, onSignUp, onCatalog }) {
           {/* Subtitle */}
           <p className="lp-anim-f2 text-[16px] leading-[1.75] text-slate-400 mb-2">
             <strong className="text-slate-200">Graphical Playground</strong> is the first structured learning platform
-            for engine programmers — real-time rendering, Vulkan, ECS, physics engines — built for developers who want to go low-level.
+            for engine programmers: real-time rendering, Vulkan, ECS, physics engines. Built for developers who want to go low-level.
           </p>
           <p className="lp-anim-f2 text-[15px] leading-[1.75] text-slate-500 mb-10">
             C++, GLSL, HLSL, Vulkan, OpenGL. No magic. No black boxes. Just systems.
@@ -546,7 +546,7 @@ export default function LandingPage({ onLogin, onSignUp, onCatalog }) {
           {/* CTAs */}
           <div className="lp-anim-f3 flex flex-wrap gap-3 items-center">
             <button className={`${btn({ variant: 'primary' })} lp-btn-shine`} onClick={handleSignUp}>
-              Start Learning — it&apos;s free
+              Start Learning, it&apos;s free
             </button>
             <button className={btn({ variant: 'ghost' })} onClick={handleLogin}>
               I have an account
@@ -574,7 +574,7 @@ export default function LandingPage({ onLogin, onSignUp, onCatalog }) {
               <span className="w-2.5 h-2.5 rounded-full bg-red-500/55" />
               <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/55" />
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/55" />
-              <span className="flex-1 mx-3 text-[10px] text-slate-600 truncate">renderer.cpp — Vulkan Swapchain Init</span>
+              <span className="flex-1 mx-3 text-[10px] text-slate-600 truncate">renderer.cpp | Vulkan Swapchain Init</span>
             </div>
             <div className="flex-1">
               <ImageSlot src={IMAGES.heroScreenshot} alt="Unreal Engine viewport" />
@@ -684,7 +684,7 @@ export default function LandingPage({ onLogin, onSignUp, onCatalog }) {
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                 <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-                <span className="flex-1 mx-2 text-[11px] text-slate-600">Lesson 4 — Render Pass · Vulkan & Modern Graphics</span>
+                <span className="flex-1 mx-2 text-[11px] text-slate-600">Lesson 4 | Render Pass · Vulkan & Modern Graphics</span>
               </div>
               {/* Lesson thumb */}
               <div style={{ height: 190 }}>

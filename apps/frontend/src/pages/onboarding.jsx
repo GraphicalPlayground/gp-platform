@@ -56,9 +56,9 @@ injectKf();
 const STEPS = [
   {
     body: [
-      { icon: '🧮', text: 'Start from math & C++ — Module 1 covers everything you need' },
-      { icon: '🔺', text: 'Rasterization, shaders, Vulkan, PBR, ray tracing — step by step' },
-      { icon: '🏗️', text: 'RHI design, render graphs, ECS, physics — Tier 3 & 4' },
+      { icon: '🧮', text: 'Start from math & C++. Module 1 covers everything you need' },
+      { icon: '🔺', text: 'Rasterization, shaders, Vulkan, PBR, ray tracing. Step by step' },
+      { icon: '🏗️', text: 'RHI design, render graphs, ECS, physics. Tier 3 & 4' },
       { icon: '🆓', text: '100% free. No paywalls. No fluff.' }
     ],
     cta: 'Show me how it works →',
@@ -76,7 +76,7 @@ const STEPS = [
       </svg>
     ),
     id: 'welcome',
-    sub: "You're about to learn how to build game engines from scratch. Not use them — build them."
+    sub: "You're about to learn how to build game engines from scratch. Not use them. Build them."
   },
   {
     cards: [
@@ -87,7 +87,7 @@ const STEPS = [
       },
       {
         color: '#a855f7',
-        desc: 'Each module is a focused engineering subject — math, shaders, PBR, render graphs, ECS and more.',
+        desc: 'Each module is a focused engineering subject: math, shaders, PBR, render graphs, ECS and more.',
         title: '20 Modules'
       },
       {
@@ -96,7 +96,7 @@ const STEPS = [
         title: '58 Chapters'
       }
     ],
-    cta: 'Got it — what do I build first? →',
+    cta: 'Got it, what do I build first? →',
     headline: "How it's structured",
     icon: (
       <svg width='44' height='44' viewBox='0 0 24 24' fill='none' stroke='url(#ob-g2)' strokeWidth='1.6'>
@@ -113,10 +113,10 @@ const STEPS = [
       </svg>
     ),
     id: 'navigate',
-    sub: '4 tiers, 20 modules, 58 chapters — each one building directly on the last.'
+    sub: '4 tiers, 20 modules, 58 chapters. Each one building directly on the last.'
   },
   {
-    code: `// Module 1 → Chapter 1.1  — Scalar Mathematics
+    code: `// Module 1 → Chapter 1.1 | Scalar Mathematics
 // Everything in graphics starts here.
 
 float lerp(float a, float b, float t) {
@@ -144,7 +144,7 @@ float b = lerp(0.0f, 0.0f, 0.5f);  // → 0.0
       </svg>
     ),
     id: 'first-project',
-    sub: "Start with Module 1 — Mathematical Foundations. Chapter 1.1 is Scalar Mathematics & Notation. By Module 3 you'll be writing your first Vulkan instance."
+    sub: "Start with Module 1, Mathematical Foundations. Chapter 1.1 is Scalar Mathematics & Notation. By Module 3 you'll be writing your first Vulkan instance."
   }
 ];
 
@@ -285,7 +285,7 @@ function StepFirstProject({ step }) {
           <span className='h-3 w-3 rounded-full bg-red-500/60' />
           <span className='h-3 w-3 rounded-full bg-yellow-500/60' />
           <span className='h-3 w-3 rounded-full bg-green-500/60' />
-          <span className='ml-3 font-mono text-[11px] text-slate-600'>math_foundations.cpp — Module 1, Ch 1.1</span>
+          <span className='ml-3 font-mono text-[11px] text-slate-600'>math_foundations.cpp | Module 1, Ch 1.1</span>
         </div>
         <pre
           className='overflow-x-auto p-5 text-[12px] leading-[1.8]'
@@ -331,10 +331,11 @@ const STEP_COMPONENTS = [StepWelcome, StepNavigate, StepFirstProject];
 /* ─────────────────────────────────────────────────────────────────
    MAIN COMPONENT
    ───────────────────────────────────────────────────────────────── */
-export default function OnboardingPage({ onFinish }) {
+export default function OnboardingPage({ onFinish, onGoToModule }) {
   const [step, setStep] = React.useState(0);
   const [exiting, setExiting] = React.useState(false);
   const total = STEPS.length;
+  const isLastStep = step === total - 1;
 
   function goTo(n) {
     if (exiting) return;
@@ -346,7 +347,7 @@ export default function OnboardingPage({ onFinish }) {
   }
 
   function next() {
-    step < total - 1 ? goTo(step + 1) : onFinish?.();
+    step < total - 1 ? goTo(step + 1) : onGoToModule?.();
   }
   function skip() {
     onFinish?.();
@@ -399,18 +400,47 @@ export default function OnboardingPage({ onFinish }) {
 
       {/* ── Bottom nav ── */}
       <div className='relative z-10 flex flex-col items-center gap-4 px-5 pb-10'>
-        {/* CTA button */}
-        <button
-          onClick={next}
-          className='relative cursor-pointer overflow-hidden rounded-[12px] border-none px-10 py-4 text-[15px] font-bold text-white'
-          style={{
-            background: 'linear-gradient(135deg,#0ea5e9,#7c3aed)',
-            boxShadow: '0 8px 28px rgba(14,165,233,.28)',
-            minWidth: 220
-          }}
-        >
-          {step === total - 1 ? "Let's build →" : currentStep.cta}
-        </button>
+        {/* CTA buttons */}
+        {isLastStep ? (
+          <div className='flex items-center gap-3'>
+            {/* Primary: go to Dashboard */}
+            <button
+              onClick={() => onFinish?.()}
+              className='relative cursor-pointer rounded-[12px] px-8 py-4 text-[15px] font-semibold text-slate-400 transition-colors hover:text-white'
+              style={{
+                background: 'rgba(255,255,255,.06)',
+                border: '1px solid rgba(255,255,255,.10)',
+                minWidth: 160
+              }}
+            >
+              Go to Dashboard
+            </button>
+            {/* Secondary: go to Module 01 (blue, prominent) */}
+            <button
+              onClick={() => onGoToModule?.()}
+              className='relative cursor-pointer overflow-hidden rounded-[12px] border-none px-10 py-4 text-[15px] font-bold text-white'
+              style={{
+                background: 'linear-gradient(135deg,#0ea5e9,#38bdf8)',
+                boxShadow: '0 8px 28px rgba(14,165,233,.35)',
+                minWidth: 200
+              }}
+            >
+              Start Module 01 →
+            </button>
+          </div>
+        ) : (
+          <button
+            onClick={next}
+            className='relative cursor-pointer overflow-hidden rounded-[12px] border-none px-10 py-4 text-[15px] font-bold text-white'
+            style={{
+              background: 'linear-gradient(135deg,#0ea5e9,#7c3aed)',
+              boxShadow: '0 8px 28px rgba(14,165,233,.28)',
+              minWidth: 220
+            }}
+          >
+            {currentStep.cta}
+          </button>
+        )}
 
         {/* Dots + step label */}
         <div className='flex flex-col items-center gap-2'>

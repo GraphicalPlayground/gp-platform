@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../auth_context.jsx';
-import { getProgress, markAnnouncementRead } from '../auth_store.js';
+import { CATALOG, getProgress, markAnnouncementRead } from '../auth_store.js';
 import { LogoCompact } from '../components/Logo.jsx';
 
 /* ─────────────────────────────────────────────────────────────────
@@ -234,7 +234,12 @@ const ANN_META = {
 
 /* ── Track definitions — match CATALOG tracks in auth_store ── */
 const TRACKS = [
-  { color: '#38bdf8', desc: 'Math, C++, platform orientation (Modules 1–3)', id: 'Foundations', label: 'Foundations' },
+  {
+    color: '#38bdf8',
+    desc: 'Math, C++, platform orientation (Modules 1–3)',
+    id: 'Foundations',
+    label: 'Foundations'
+  },
   {
     color: '#a855f7',
     desc: 'Rasterization, shaders, lighting, GPU arch (Modules 4–8)',
@@ -552,14 +557,94 @@ function TrackOverviewPanel({ courses }) {
 /* ─────────────────────────────────────────────────────────────────
    MAIN COMPONENT
    ───────────────────────────────────────────────────────────────── */
+
+const USER_COURSES_KEY = 'gp_user_courses';
+
+/**
+ * Generate course data from CATALOG.
+ * Picks 4 random modules for the user's enrolled courses.
+ */
+function generateCoursesFromCatalog() {
+  // Shuffle and pick 4 modules
+  const shuffled = [...CATALOG].sort(() => Math.random() - 0.5);
+  const selected = shuffled.slice(0, 4);
+
+  return selected.map((module, idx) => {
+    const totalLessons = module.chapters.length;
+    // Give first module some progress, others 0-2 lessons
+    const completedLessons = idx === 0 ? 2 : Math.floor(Math.random() * 3);
+    const lastLesson =
+      completedLessons > 0
+        ? {
+            at: new Date(Date.now() - 1000 * 60 * 60 * (idx + 1) * 2).toISOString(),
+            id: module.chapters[completedLessons - 1].id,
+            title: module.chapters[completedLessons - 1].title
+          }
+        : null;
+
+    return {
+      color: module.color,
+      completedLessons,
+      id: module.id,
+      lastLesson,
+      title: module.title,
+      totalLessons,
+      track: module.track
+    };
+  });
+}
+
+/**
+ * Get or create user's enrolled courses.
+ * Persists to localStorage so courses stay consistent across refreshes.
+ */
+function getUserCourses() {
+  try {
+    const stored = localStorage.getItem(USER_COURSES_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch {
+    // If parse fails, fall through to generate new
+  }
+
+  // Generate new courses and save them
+  const courses = generateCoursesFromCatalog();
+  localStorage.setItem(USER_COURSES_KEY, JSON.stringify(courses));
+  return courses;
+}
+
 export default function DashboardPage() {
   const { logout, session } = useAuth();
   const navigate = useNavigate();
   const [progress, setProgress] = React.useState(() => getProgress());
-  const [tab, setTab] = React.useState('dashboard'); // sidebar active tab
   const [sidebarOpen, setSidebarOpen] = React.useState(false); // mobile
 
-  const courses = progress.courses;
+  // Track active tab via URL hash
+  const [tab, setTab] = React.useState(() => {
+    const hash = window.location.hash.slice(1); // Remove '#'
+    return hash || 'dashboard';
+  });
+
+  // Update tab when hash changes
+  React.useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      setTab(hash || 'dashboard');
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  // Helper to change tab and update URL hash
+  const changeTab = (newTab) => {
+    setTab(newTab);
+    setSidebarOpen(false);
+    window.location.hash = newTab;
+  };
+
+  // Get persisted courses (only generates once, then saved to localStorage)
+  const courses = React.useMemo(() => getUserCourses(), []);
   const announcements = progress.announcements;
   const activeCourses = courses.filter((c) => c.completedLessons > 0);
   const recentLessons = courses
@@ -582,13 +667,11 @@ export default function DashboardPage() {
   }
 
   function handleContinue(course) {
-    // Navigate to the course — placeholder
-    alert(`Continuing "${course.title}" from lesson ${course.completedLessons + 1}`);
+    navigate(`/module/${course.id}`);
   }
 
   function handleStart(course) {
-    // Navigate to course — placeholder
-    alert(`Starting "${course.title}"`);
+    navigate(`/module/${course.id}`);
   }
 
   const greeting = (() => {
@@ -616,35 +699,26 @@ export default function DashboardPage() {
         icon={Icon.grid}
         label='Dashboard'
         active={tab === 'dashboard'}
-        onClick={() => {
-          setTab('dashboard');
-          setSidebarOpen(false);
-        }}
+        onClick={() => changeTab('dashboard')}
       />
       <NavItem
         icon={Icon.book}
         label='My Courses'
         active={tab === 'courses'}
-        onClick={() => {
-          setTab('courses');
-          setSidebarOpen(false);
-        }}
+        onClick={() => changeTab('courses')}
       />
       <NavItem icon={Icon.map} label='Catalog' active={false} onClick={() => navigate('/catalog')} />
       <NavItem
         icon={Icon.bell}
         label={unreadCount > 0 ? `Notifications (${unreadCount})` : 'Notifications'}
         active={tab === 'notifs'}
-        onClick={() => {
-          setTab('notifs');
-          setSidebarOpen(false);
-        }}
+        onClick={() => changeTab('notifs')}
       />
 
       <div className='flex-1' />
       <div className='mt-4 pt-4' style={{ borderTop: '1px solid rgba(255,255,255,.06)' }}>
-        <NavItem icon={Icon.user} label='Profile' active={tab === 'profile'} onClick={() => setTab('profile')} />
-        <NavItem icon={Icon.settings} label='Settings' active={tab === 'settings'} onClick={() => setTab('settings')} />
+        <NavItem icon={Icon.user} label='Profile' active={tab === 'profile'} onClick={() => changeTab('profile')} />
+        <NavItem icon={Icon.settings} label='Settings' active={tab === 'settings'} onClick={() => changeTab('settings')} />
         <NavItem
           icon={Icon.logout}
           label='Sign Out'
@@ -753,7 +827,7 @@ export default function DashboardPage() {
               recentLessons.map((c) => <RecentLessonRow key={c.id} course={c} />)
             ) : (
               <div className='py-8 text-center text-[13px] text-slate-600'>
-                No lessons started yet — pick a course above.
+                No lessons started yet. Pick a course above.
               </div>
             )}
           </div>
@@ -792,7 +866,186 @@ export default function DashboardPage() {
         <line x1='12' y1='8' x2='12' y2='12' />
         <line x1='12' y1='16' x2='12.01' y2='16' />
       </svg>
-      <p className='text-[14px] text-slate-500'>{title} — coming soon</p>
+      <p className='text-[14px] text-slate-500'>{title}, coming soon</p>
+    </div>
+  );
+
+  /* ── Profile Section ── */
+  const ProfileSection = () => (
+    <div className='flex min-w-0 flex-1 flex-col gap-7 pb-12'>
+      <div className='db-f0'>
+        <h1 className='text-[26px] leading-tight font-extrabold tracking-tight text-white'>Profile</h1>
+        <p className='mt-1 text-[13px] text-slate-500'>Manage your account information</p>
+      </div>
+
+      <div className='db-f1 max-w-[720px]'>
+        <div className='db-card flex flex-col gap-6 p-6'>
+          {/* Avatar & Basic Info */}
+          <div className='flex items-center gap-6'>
+            <div
+              className='flex h-20 w-20 shrink-0 items-center justify-center rounded-full text-[32px]'
+              style={{ background: 'linear-gradient(135deg,#0ea5e9,#7c3aed)' }}
+            >
+              {session?.avatar ? (
+                <img src={session.avatar} alt='Avatar' className='h-full w-full rounded-full object-cover' />
+              ) : (
+                <span>👤</span>
+              )}
+            </div>
+            <div className='flex-1'>
+              <h2 className='text-[18px] font-bold text-white'>{session?.name ?? 'Developer'}</h2>
+              <p className='mt-0.5 text-[13px] text-slate-400'>@{session?.username ?? 'enginedev'}</p>
+              <p className='mt-1 text-[12px] text-slate-500'>{session?.email ?? 'dev@graphicalplayground.com'}</p>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <div className='grid grid-cols-3 gap-4 pt-4' style={{ borderTop: '1px solid rgba(255,255,255,.06)' }}>
+            <div className='flex flex-col gap-1'>
+              <span className='db-shimmer-text text-[20px] font-extrabold'>{level}</span>
+              <span className='text-[11px] text-slate-500'>Level</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <span className='db-shimmer-text text-[20px] font-extrabold'>{xpTotal.toLocaleString()}</span>
+              <span className='text-[11px] text-slate-500'>Total XP</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <span className='text-[20px] font-extrabold' style={{ color: '#fb923c' }}>
+                {streak}
+              </span>
+              <span className='text-[11px] text-slate-500'>Day Streak</span>
+            </div>
+          </div>
+
+          {/* Edit button */}
+          <button className='db-btn-ghost mt-2 justify-center'>
+            {Icon.settings}
+            <span>Edit Profile</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Learning Progress */}
+      <div className='db-f2 max-w-[720px]'>
+        <h2 className='mb-3 text-[13px] font-bold tracking-[1.5px] text-slate-400 uppercase'>Learning Progress</h2>
+        <div className='db-card flex flex-col gap-4 p-5'>
+          <div className='grid grid-cols-2 gap-4 sm:grid-cols-4'>
+            <div className='flex flex-col gap-1'>
+              <span className='text-[20px] font-bold' style={{ color: '#38bdf8' }}>
+                {courses.length}
+              </span>
+              <span className='text-[11px] text-slate-500'>Courses Enrolled</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <span className='text-[20px] font-bold' style={{ color: '#a78bfa' }}>
+                {totalLessons}
+              </span>
+              <span className='text-[11px] text-slate-500'>Lessons Completed</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <span className='text-[20px] font-bold' style={{ color: '#34d399' }}>
+                {activeCourses.length}
+              </span>
+              <span className='text-[11px] text-slate-500'>Active Courses</span>
+            </div>
+            <div className='flex flex-col gap-1'>
+              <span className='text-[20px] font-bold' style={{ color: '#fbbf24' }}>
+                {Math.round((totalLessons / courses.reduce((s, c) => s + c.totalLessons, 0)) * 100) || 0}%
+              </span>
+              <span className='text-[11px] text-slate-500'>Overall Progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  /* ── Settings Section ── */
+  const SettingsSection = () => (
+    <div className='flex min-w-0 flex-1 flex-col gap-7 pb-12'>
+      <div className='db-f0'>
+        <h1 className='text-[26px] leading-tight font-extrabold tracking-tight text-white'>Settings</h1>
+        <p className='mt-1 text-[13px] text-slate-500'>Customize your learning experience</p>
+      </div>
+
+      {/* Account Settings */}
+      <div className='db-f1 max-w-[720px]'>
+        <h2 className='mb-3 text-[13px] font-bold tracking-[1.5px] text-slate-400 uppercase'>Account</h2>
+        <div className='db-card flex flex-col gap-5 p-6'>
+          <div className='flex items-center justify-between'>
+            <div>
+              <p className='text-[14px] font-semibold text-white'>Email Address</p>
+              <p className='mt-0.5 text-[12px] text-slate-500'>{session?.email ?? 'dev@graphicalplayground.com'}</p>
+            </div>
+            <button className='db-btn-ghost'>Change</button>
+          </div>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,.06)' }} />
+          <div className='flex items-center justify-between'>
+            <div>
+              <p className='text-[14px] font-semibold text-white'>Password</p>
+              <p className='mt-0.5 text-[12px] text-slate-500'>••••••••••</p>
+            </div>
+            <button className='db-btn-ghost'>Change</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Preferences */}
+      <div className='db-f2 max-w-[720px]'>
+        <h2 className='mb-3 text-[13px] font-bold tracking-[1.5px] text-slate-400 uppercase'>Preferences</h2>
+        <div className='db-card flex flex-col gap-5 p-6'>
+          <div className='flex items-center justify-between'>
+            <div>
+              <p className='text-[14px] font-semibold text-white'>Email Notifications</p>
+              <p className='mt-0.5 text-[12px] text-slate-500'>Receive updates about new courses and announcements</p>
+            </div>
+            <div
+              className='relative h-6 w-11 cursor-pointer rounded-full'
+              style={{ background: 'rgba(14,165,233,.3)' }}
+            >
+              <div
+                className='absolute top-1 h-4 w-4 rounded-full transition-all'
+                style={{ background: '#0ea5e9', right: '4px' }}
+              />
+            </div>
+          </div>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,.06)' }} />
+          <div className='flex items-center justify-between'>
+            <div>
+              <p className='text-[14px] font-semibold text-white'>Dark Mode</p>
+              <p className='mt-0.5 text-[12px] text-slate-500'>Always enabled for optimal coding experience</p>
+            </div>
+            <div
+              className='relative h-6 w-11 cursor-pointer rounded-full'
+              style={{ background: 'rgba(14,165,233,.3)' }}
+            >
+              <div
+                className='absolute top-1 h-4 w-4 rounded-full transition-all'
+                style={{ background: '#0ea5e9', right: '4px' }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Danger Zone */}
+      <div className='db-f3 max-w-[720px]'>
+        <h2 className='mb-3 text-[13px] font-bold tracking-[1.5px] text-red-400 uppercase'>Danger Zone</h2>
+        <div className='flex flex-col gap-4 rounded-[14px] border p-6' style={{ borderColor: 'rgba(239,68,68,.3)', background: 'rgba(239,68,68,.05)' }}>
+          <div className='flex items-center justify-between'>
+            <div>
+              <p className='text-[14px] font-semibold text-white'>Delete Account</p>
+              <p className='mt-0.5 text-[12px] text-slate-500'>Permanently delete your account and all data</p>
+            </div>
+            <button
+              className='db-btn-ghost'
+              style={{ borderColor: 'rgba(239,68,68,.3)', color: '#ef4444' }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 
@@ -809,8 +1062,8 @@ export default function DashboardPage() {
         </div>
       </div>
     ),
-    profile: <Placeholder title='Profile' />,
-    settings: <Placeholder title='Settings' />
+    profile: <ProfileSection />,
+    settings: <SettingsSection />
   };
 
   return (
