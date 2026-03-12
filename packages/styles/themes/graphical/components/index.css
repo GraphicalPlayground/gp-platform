@@ -2,3 +2,11 @@
 /*
  * This file can contain theme-specific overrides for component styles.
  */
+
+@import './card.css';
+@import './alert.css';
+@import './alert-dialog.css';
+@import './toast.css';
+@import './modal.css';
+@import './popover.css';
+@import './tooltip.css';

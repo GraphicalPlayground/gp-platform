@@ -1,0 +1,4 @@
+.alert-dialog__dialog {
+  box-shadow: none;
+  @apply rounded-[16px] border-[0.0625rem] border-solid border-white/5;
+}

@@ -1,4 +1,5 @@
-@layer theme, base, components, utilities;
+/* @layer theme, base, components, utilities; */
+@layer base, components, theme, utilities, variants;
 
 /* Base layer - Tailwind CSS v4 */
 @import 'tailwindcss';
