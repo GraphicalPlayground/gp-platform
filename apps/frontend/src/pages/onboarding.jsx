@@ -292,14 +292,103 @@ function StepFirstProject({ step }) {
           style={{ color: '#94a3b8', fontFamily: "'JetBrains Mono','Fira Code','Cascadia Code',monospace" }}
         >
           {step.code.split('\n').map((line, i) => {
-            // Naive syntax highlighting
-            const highlighted = line
-              .replace(/(\/\/.*$)/g, '<span style="color:#4b5563;font-style:italic">$1</span>')
-              .replace(/\b(float|int|return|const)\b/g, '<span style="color:#38bdf8">$1</span>')
-              .replace(/\b(lerp)\b/g, '<span style="color:#a78bfa">$1</span>')
-              .replace(/\b([0-9]+\.[0-9]+f?)\b/g, '<span style="color:#34d399">$1</span>')
-              .replace(/"([^"]*)"/g, '<span style="color:#fbbf24">"$1"</span>')
-              .replace(/\b(nullptr|true|false)\b/g, '<span style="color:#f87171">$1</span>');
+            // Syntax highlighting with React elements
+            const renderLine = () => {
+              const parts = [];
+              let remaining = line;
+              let key = 0;
+
+              // Helper to add text part
+              const addPart = (text, style = {}) => {
+                if (text) parts.push(<span key={key++} style={style}>{text}</span>);
+              };
+
+              // Comments
+              const commentMatch = remaining.match(/(\/\/.*$)/);
+              if (commentMatch) {
+                const beforeComment = remaining.slice(0, commentMatch.index);
+                const comment = commentMatch[0];
+
+                // Process before comment
+                processNonComment(beforeComment);
+                // Add comment
+                addPart(comment, { color: '#4b5563', fontStyle: 'italic' });
+                return parts;
+              }
+
+              processNonComment(remaining);
+              return parts;
+
+              function processNonComment(text) {
+                // Keywords: float, int, return, const
+                const keywordRegex = /\b(float|int|return|const)\b/g;
+                // Function names: lerp
+                const funcRegex = /\b(lerp)\b/g;
+                // Numbers
+                const numRegex = /\b([0-9]+\.[0-9]+f?)\b/g;
+                // Strings
+                const strRegex = /"([^"]*)"/g;
+                // Boolean/null
+                const boolRegex = /\b(nullptr|true|false)\b/g;
+
+                let lastIndex = 0;
+                const tokens = [];
+
+                // Find all matches
+                const allMatches = [];
+                let match;
+
+                while ((match = keywordRegex.exec(text)) !== null) {
+                  allMatches.push({ index: match.index, length: match[0].length, text: match[0], color: '#38bdf8' });
+                }
+                keywordRegex.lastIndex = 0;
+
+                while ((match = funcRegex.exec(text)) !== null) {
+                  allMatches.push({ index: match.index, length: match[0].length, text: match[0], color: '#a78bfa' });
+                }
+                funcRegex.lastIndex = 0;
+
+                while ((match = numRegex.exec(text)) !== null) {
+                  allMatches.push({ index: match.index, length: match[0].length, text: match[0], color: '#34d399' });
+                }
+                numRegex.lastIndex = 0;
+
+                while ((match = strRegex.exec(text)) !== null) {
+                  allMatches.push({ index: match.index, length: match[0].length, text: match[0], color: '#fbbf24' });
+                }
+                strRegex.lastIndex = 0;
+
+                while ((match = boolRegex.exec(text)) !== null) {
+                  allMatches.push({ index: match.index, length: match[0].length, text: match[0], color: '#f87171' });
+                }
+
+                // Sort by index
+                allMatches.sort((a, b) => a.index - b.index);
+
+                // Remove overlaps (keep first match at each position)
+                const filtered = [];
+                let lastEnd = 0;
+                for (const m of allMatches) {
+                  if (m.index >= lastEnd) {
+                    filtered.push(m);
+                    lastEnd = m.index + m.length;
+                  }
+                }
+
+                // Build parts
+                lastIndex = 0;
+                for (const token of filtered) {
+                  if (token.index > lastIndex) {
+                    addPart(text.slice(lastIndex, token.index));
+                  }
+                  addPart(token.text, { color: token.color });
+                  lastIndex = token.index + token.length;
+                }
+                if (lastIndex < text.length) {
+                  addPart(text.slice(lastIndex));
+                }
+              }
+            };
 
             return (
               <span key={i} className='block'>
@@ -316,7 +405,7 @@ function StepFirstProject({ step }) {
                 >
                   {i + 1}
                 </span>
-                <span dangerouslySetInnerHTML={{ __html: highlighted }} />
+                <span>{renderLine()}</span>
               </span>
             );
           })}
