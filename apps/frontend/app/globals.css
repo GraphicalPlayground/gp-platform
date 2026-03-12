@@ -1,0 +1,3 @@
+/* Import all GP component styles, Tailwind v4, design tokens and themes */
+@import 'tailwindcss';
+@import '@gp/styles';
