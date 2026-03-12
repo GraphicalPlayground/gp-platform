@@ -602,5 +602,13 @@
 
     /* Skeleton Global Animation */
     --skeleton-animation: shimmer;
+
+    /* Border Radius */
+    --radius: 0.125rem;
+    --field-radius: 0.75rem;
+
+    /* Font Family */
+    /* Make sure to load Inter font in your app */
+    --font-sans: var(--font-inter);
   }
 }

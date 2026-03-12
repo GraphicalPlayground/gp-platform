@@ -6,7 +6,7 @@ export const THEME_EVENT_NAME = 'gp-theme-changed';
 export const THEME_VALUES = ['light', 'dark', 'graphical'] as const;
 export type ThemeKey = (typeof THEME_VALUES)[number];
 
-export const DEFAULT_THEME: ThemeKey = THEME_VALUES[1];
+export const DEFAULT_THEME: ThemeKey = THEME_VALUES[2];
 
 export interface ThemeOption {
   value: string;
