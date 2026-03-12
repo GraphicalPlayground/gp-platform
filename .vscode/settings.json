@@ -44,5 +44,14 @@
       "packages/storybook/**",
       "packages/styles/**"
     ]
-  }
+  },
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "editor.tabCompletion": "on",
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.wordBasedSuggestions": "allDocuments"
 }
