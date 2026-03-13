@@ -1,1 +1,2 @@
-export { Navbar } from './Navbar';
+/** Forward exports */
+export { Navbar } from './navbar';

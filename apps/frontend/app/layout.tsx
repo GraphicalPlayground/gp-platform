@@ -1,5 +1,6 @@
 export { metadata } from './metadata';
-import { Navbar } from '@/components/navbar';
+
+import { SiteLayout } from '@/layouts/site-layout';
 
 import './globals.css';
 
@@ -7,8 +8,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html className='graphical' data-theme='graphical' lang='en-US'>
       <body>
-        <Navbar />
-        {children}
+        <SiteLayout>{children}</SiteLayout>
       </body>
     </html>
   );

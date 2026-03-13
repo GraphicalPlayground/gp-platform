@@ -1,6 +1,6 @@
 'use client';
 
-import './Navbar.css';
+import './navbar.css';
 
 export const Navbar = () => {
   return <nav />;
