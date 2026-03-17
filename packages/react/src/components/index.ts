@@ -34,6 +34,7 @@ export * from './link';
 export * from './popover';
 export * from './scroll-shadow';
 export * from './separator';
+export * from './sidebar';
 export * from './skeleton';
 export * from './spinner';
 export * from './surface';
