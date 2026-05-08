@@ -14,6 +14,12 @@
     "url": "https://github.com/GraphicalPlayground/gp-platform"
   },
   "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean",
     "format": "prettier --ignore-path .prettierignore --check .",
     "format:fix": "prettier --ignore-path .prettierignore --write ."
   },
