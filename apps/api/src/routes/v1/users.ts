@@ -19,7 +19,8 @@ usersRouter.get('/', authenticate, authorize('admin'), zValidator('query', listQ
   const { page, perPage } = c.req.valid('query');
   const offset = (page - 1) * perPage;
 
-  const [{ total }] = await db.select({ total: count() }).from(users);
+  const countResult = await db.select({ total: count() }).from(users);
+  const total = countResult[0]?.total ?? 0;
   const rows = await db
     .select({
       id: users.id,
@@ -33,7 +34,7 @@ usersRouter.get('/', authenticate, authorize('admin'), zValidator('query', listQ
     .limit(perPage)
     .offset(offset);
 
-  return paginated(c, rows, { total: total ?? 0, page, perPage });
+  return paginated(c, rows, { total, page, perPage });
 });
 
 usersRouter.get('/:id', authenticate, authorize('admin'), async (c) => {

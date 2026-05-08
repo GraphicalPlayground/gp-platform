@@ -15,41 +15,49 @@ immortalized in the next stable release of the platform.
 ## Patrons
 
 ```
+
 ```
 
 ## Platinum sponsors
 
 ```
+
 ```
 
 ## Gold sponors
 
 ```
+
 ```
 
 ## Silver sponsors
 
 ```
+
 ```
 
 ## Diamond members
 
 ```
+
 ```
 
 ## Titanium members
 
 ```
+
 ```
 
 ## Platinum members
 
 ```
+
 ```
 
 ## Gold members
 
 ```
+
 ```
 
 ## Silver and bronze donors

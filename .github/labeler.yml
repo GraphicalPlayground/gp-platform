@@ -1,11 +1,11 @@
-"type: documentation":
+'type: documentation':
   - changed-files:
-    - any-glob-to-any-file: ['**/docs/**', 'README.md', 'CHANGELOG.md']
+      - any-glob-to-any-file: ['**/docs/**', 'README.md', 'CHANGELOG.md']
 
-"type: ci-cd":
+'type: ci-cd':
   - changed-files:
-    - any-glob-to-any-file: ['.github/workflows/**']
+      - any-glob-to-any-file: ['.github/workflows/**']
 
-"type: tests":
+'type: tests':
   - changed-files:
-    - any-glob-to-any-file: ['**/tests/**']
+      - any-glob-to-any-file: ['**/tests/**']

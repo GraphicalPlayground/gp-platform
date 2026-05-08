@@ -23,10 +23,11 @@ coursesRouter.get('/', zValidator('query', listQuerySchema), async (c) => {
 
   const where = and(eq(courses.status, 'published'), level ? eq(courses.level, level) : undefined);
 
-  const [{ total }] = await db.select({ total: count() }).from(courses).where(where);
+  const countResult = await db.select({ total: count() }).from(courses).where(where);
+  const total = countResult[0]?.total ?? 0;
   const rows = await db.select().from(courses).where(where).limit(perPage).offset(offset);
 
-  return paginated(c, rows, { total: total ?? 0, page, perPage });
+  return paginated(c, rows, { total, page, perPage });
 });
 
 coursesRouter.get('/:slug', async (c) => {
