@@ -1,57 +1,26 @@
 {
-  "npm.packageManager": "pnpm",
-  "css.lint.emptyRules": "ignore",
-  "css.lint.unknownAtRules": "ignore",
-  "scss.lint.unknownAtRules": "ignore",
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "prettier.prettierPath": "node_modules/prettier",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.options": { "flags": ["v10_config_lookup_from_file"] },
-  "editor.formatOnSave": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  "material-icon-theme.files.associations": {
+    "LICENSE_HEADER": "license",
+    "DONORS.md": "github-sponsors"
   },
-  "files.associations": {
-    "**/.vscode/*.json": "jsonc"
+  "material-icon-theme.folders.associations": {
   },
-  "[html]": {
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "[typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[css]": {
+  "[typescriptreact]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[scss]": {
+  "[javascript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[json]": {
+  "[javascriptreact]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "tailwindCSS.classFunctions": ["tv", "clsx", "cn"],
-  "tailwindCSS.classAttributes": ["className", "classNames"],
-  "tailwindCSS.experimental.configFile": {
-    "packages/storybook/styles/globals.css": [
-      "apps/**",
-      "packages/react/**",
-      "packages/storybook/**",
-      "packages/styles/**"
-    ]
-  },
-  "js/ts.tsdk.path": "node_modules/typescript/lib",
-  "editor.tabCompletion": "on",
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": true
-  },
-  "editor.suggestOnTriggerCharacters": true,
-  "editor.wordBasedSuggestions": "allDocuments"
+  }
 }

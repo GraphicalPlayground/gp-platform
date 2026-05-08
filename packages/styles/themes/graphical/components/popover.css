@@ -1,9 +1,0 @@
-.popover {
-  box-shadow: none;
-  @apply rounded-[12px] bg-none outline-none;
-}
-
-.popover__dialog {
-  box-shadow: none;
-  @apply rounded-[12px] border-[0.0625rem] border-solid border-white/5 outline-none;
-}

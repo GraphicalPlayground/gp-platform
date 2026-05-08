@@ -1,7 +1,0 @@
-.alert__indicator {
-  @apply h-full;
-}
-
-.alert {
-  @apply rounded-[16px] border-[0.0625rem] border-solid border-white/5;
-}

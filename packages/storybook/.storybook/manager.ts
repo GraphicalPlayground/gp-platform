@@ -1,1 +1,0 @@
-import './addons/theme/manager';

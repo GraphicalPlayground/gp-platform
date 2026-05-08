@@ -1,7 +1,0 @@
-.gp-site-layout {
-  @apply flex min-h-screen flex-col;
-}
-
-.gp-site-content {
-  @apply flex-1;
-}

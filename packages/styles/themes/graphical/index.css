@@ -1,8 +1,0 @@
-/* Declares the theme variables - @see https://tailwindcss.com/docs/theme */
-@import '../shared/theme.css';
-
-/* Graphical Theme */
-@import './variables.css' layer(theme);
-
-/* Component customizations for graphical theme */
-@import './components/index.css' layer(components);

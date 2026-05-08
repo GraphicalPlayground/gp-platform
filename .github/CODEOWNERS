@@ -1,0 +1,10 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# Owners can be @users, @org/teams or emails.
+
+# Avaiable teams:
+#   - @GraphicalPlayground/engine-architecture
+#   - @GraphicalPlayground/graphics-engineering
+#   - @GraphicalPlayground/documentation-knowledge
+#   - @GraphicalPlayground/curriculum-learning-design
+#   - @GraphicalPlayground/infrastructure-devops

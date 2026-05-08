@@ -1,8 +1,0 @@
-.card {
-  @apply border-[0.0625rem] border-solid border-white/5;
-}
-
-.card--transparent {
-  /* We want a transparent border to keep the width */
-  @apply border-transparent;
-}
