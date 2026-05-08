@@ -6,6 +6,8 @@ out/
 logs/
 docs/
 .turbo/
+.next/
+.cache/
 
 # Miscs
 pnpm-lock.yaml

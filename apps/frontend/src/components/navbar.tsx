@@ -17,10 +17,16 @@ export function Navbar() {
             </span>
           </Link>
           <div className='hidden md:flex md:items-center md:gap-6'>
-            <Link href='/courses' className='text-sm font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400'>
+            <Link
+              href='/courses'
+              className='text-sm font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400'
+            >
               Courses
             </Link>
-            <Link href='/playground' className='text-sm font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400'>
+            <Link
+              href='/playground'
+              className='text-sm font-medium text-slate-600 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-indigo-400'
+            >
               Playground
             </Link>
           </div>
@@ -30,11 +36,13 @@ export function Navbar() {
             <>
               {user ? (
                 <div className='flex items-center gap-4'>
-                  <span className='text-sm font-medium text-slate-700 dark:text-slate-300'>
-                    {user.pseudo}
-                  </span>
+                  <span className='text-sm font-medium text-slate-700 dark:text-slate-300'>{user.pseudo}</span>
                   {user.role === 'admin' && (
-                    <a href={process.env.NEXT_PUBLIC_ADMIN_URL ?? 'http://localhost:3000'} target='_blank' rel='noreferrer'>
+                    <a
+                      href={process.env.NEXT_PUBLIC_ADMIN_URL ?? 'http://localhost:3000'}
+                      target='_blank'
+                      rel='noreferrer'
+                    >
                       <Button variant='outline' size='sm'>
                         Admin
                       </Button>

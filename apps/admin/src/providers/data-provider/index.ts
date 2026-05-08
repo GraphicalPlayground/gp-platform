@@ -12,10 +12,10 @@ export const dataProvider = {
   getList: async ({ resource, pagination, filters, sorters, meta }: any) => {
     const token = Cookies.get('token');
     const { current = 1, pageSize = 10 } = pagination ?? {};
-    
+
     const query: any = {
       page: current,
-      perPage: pageSize,
+      perPage: pageSize
     };
 
     // Simple mapping for demonstration, you might need more complex filter/sort mapping
@@ -23,9 +23,9 @@ export const dataProvider = {
 
     const response = await fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      credentials: 'include',
+      credentials: 'include'
     });
 
     const json = await response.json();
@@ -36,7 +36,7 @@ export const dataProvider = {
 
     return {
       data: json.data,
-      total: json.meta?.total ?? json.data.length,
+      total: json.meta?.total ?? json.data.length
     };
   },
   getOne: async ({ resource, id, meta }: any) => {
@@ -45,9 +45,9 @@ export const dataProvider = {
 
     const response = await fetch(url, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      credentials: 'include',
+      credentials: 'include'
     });
 
     const json = await response.json();
@@ -57,7 +57,7 @@ export const dataProvider = {
     }
 
     return {
-      data: json.data,
+      data: json.data
     };
   },
   // Add other methods if needed (create, update, delete)
@@ -68,9 +68,9 @@ export const dataProvider = {
     const response = await fetch(url, {
       method: 'DELETE',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}`
       },
-      credentials: 'include',
+      credentials: 'include'
     });
 
     const json = await response.json();
@@ -80,7 +80,7 @@ export const dataProvider = {
     }
 
     return {
-      data: json.data,
+      data: json.data
     };
-  },
+  }
 };

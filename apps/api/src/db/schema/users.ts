@@ -11,13 +11,13 @@ export const users = pgTable('users', {
   passwordHash: text('password_hash'), // Nullable for OAuth-only users
   role: userRoleEnum('role').notNull().default('student'),
   avatarUrl: text('avatar_url'),
-  
+
   // Auth/Security fields
   googleId: text('google_id').unique(),
   githubId: text('github_id').unique(),
   mfaEnabled: boolean('mfa_enabled').notNull().default(false),
   mfaSecret: text('mfa_secret'),
-  
+
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow()
 });

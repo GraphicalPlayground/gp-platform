@@ -12,8 +12,8 @@ export default function Home() {
               Master Graphical Engineering by <span className='text-indigo-600'>Doing</span>
             </Typography>
             <Typography variant='p' className='mb-10 text-xl text-slate-600 dark:text-slate-400 sm:text-2xl'>
-              An interactive playground to learn, experiment, and visualize complex graphical concepts. 
-              Built for students and creators.
+              An interactive playground to learn, experiment, and visualize complex graphical concepts. Built for
+              students and creators.
             </Typography>
             <div className='flex flex-col items-center justify-center gap-4 sm:flex-row'>
               <Link href='/register'>
@@ -43,7 +43,19 @@ export default function Home() {
           <div className='grid gap-12 md:grid-cols-3'>
             <div className='space-y-4'>
               <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='m8 3 4 8 5-5 5 15H2L8 3z'/></svg>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='m8 3 4 8 5-5 5 15H2L8 3z' />
+                </svg>
               </div>
               <Typography variant='h3'>Interactive Playgrounds</Typography>
               <Typography variant='p' className='text-slate-600 dark:text-slate-400'>
@@ -52,7 +64,23 @@ export default function Home() {
             </div>
             <div className='space-y-4'>
               <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z'/><path d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z'/><path d='M8 6h10'/><path d='M8 10h10'/><path d='M8 14h10'/></svg>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <path d='M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z' />
+                  <path d='M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z' />
+                  <path d='M8 6h10' />
+                  <path d='M8 10h10' />
+                  <path d='M8 14h10' />
+                </svg>
               </div>
               <Typography variant='h3'>Structured Learning</Typography>
               <Typography variant='p' className='text-slate-600 dark:text-slate-400'>
@@ -61,7 +89,20 @@ export default function Home() {
             </div>
             <div className='space-y-4'>
               <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 text-white'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><polyline points='16 18 22 12 16 6'/><polyline points='8 6 2 12 8 18'/></svg>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='24'
+                  height='24'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='currentColor'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                >
+                  <polyline points='16 18 22 12 16 6' />
+                  <polyline points='8 6 2 12 8 18' />
+                </svg>
               </div>
               <Typography variant='h3'>Code-First Approach</Typography>
               <Typography variant='p' className='text-slate-600 dark:text-slate-400'>

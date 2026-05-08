@@ -39,9 +39,7 @@ export default function UserList() {
         cell: ({ getValue }) => {
           const role = getValue();
           return (
-            <Badge 
-              variant={role === 'admin' ? 'default' : role === 'instructor' ? 'secondary' : 'outline'}
-            >
+            <Badge variant={role === 'admin' ? 'default' : role === 'instructor' ? 'secondary' : 'outline'}>
               {role}
             </Badge>
           );

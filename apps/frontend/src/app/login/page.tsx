@@ -53,9 +53,7 @@ export default function LoginPage() {
       <Card className='w-full max-w-md'>
         <CardHeader className='space-y-1 text-center'>
           <CardTitle className='text-2xl'>Welcome back</CardTitle>
-          <CardDescription>
-            Enter your email and password to log in to your account
-          </CardDescription>
+          <CardDescription>Enter your email and password to log in to your account</CardDescription>
         </CardHeader>
         <form onSubmit={handleSubmit}>
           <CardContent className='grid gap-4'>
