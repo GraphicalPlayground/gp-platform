@@ -35,6 +35,12 @@ importers:
 
   apps/admin:
     dependencies:
+      '@gp/types':
+        specifier: workspace:*
+        version: link:../../packages/types
+      '@gp/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.2.2(react-hook-form@7.75.0(react@19.2.4))
@@ -298,6 +304,9 @@ importers:
       '@gp/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      js-cookie:
+        specifier: ^3.0.5
+        version: 3.0.5
       next:
         specifier: 16.2.6
         version: 16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -311,6 +320,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.2.4
+      '@types/js-cookie':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@types/node':
         specifier: ^20
         version: 20.19.40

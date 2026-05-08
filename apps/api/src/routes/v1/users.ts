@@ -25,9 +25,12 @@ usersRouter.get('/', authenticate, authorize('admin'), zValidator('query', listQ
     .select({
       id: users.id,
       email: users.email,
-      name: users.name,
+      pseudo: users.pseudo,
+      firstName: users.firstName,
+      lastName: users.lastName,
       role: users.role,
       avatarUrl: users.avatarUrl,
+      mfaEnabled: users.mfaEnabled,
       createdAt: users.createdAt
     })
     .from(users)
@@ -43,9 +46,12 @@ usersRouter.get('/:id', authenticate, authorize('admin'), async (c) => {
     .select({
       id: users.id,
       email: users.email,
-      name: users.name,
+      pseudo: users.pseudo,
+      firstName: users.firstName,
+      lastName: users.lastName,
       role: users.role,
       avatarUrl: users.avatarUrl,
+      mfaEnabled: users.mfaEnabled,
       createdAt: users.createdAt
     })
     .from(users)

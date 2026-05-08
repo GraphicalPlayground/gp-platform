@@ -10,14 +10,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@gp/types": "workspace:*",
+    "@gp/ui": "workspace:*",
+    "js-cookie": "^3.0.5",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "@gp/ui": "workspace:*",
-    "@gp/types": "workspace:*"
+    "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -19,3 +19,7 @@ out/
 # Environnement
 .env*
 !.env.example
+
+GEMINI.md
+CLAUDE.md
+AGENTS.md

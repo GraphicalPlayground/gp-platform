@@ -33,6 +33,14 @@ export const RefineContext = ({ children }: RefineContextProps) => {
           routerProvider={routerProvider}
           resources={[
             {
+              name: 'users',
+              list: '/users',
+              show: '/users/show/:id',
+              meta: {
+                canDelete: true
+              }
+            },
+            {
               name: 'blog_posts',
               list: '/blog-posts',
               create: '/blog-posts/create',

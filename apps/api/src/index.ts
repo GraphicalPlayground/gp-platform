@@ -18,11 +18,7 @@ app.onError(errorHandler);
 
 app.notFound((c) => c.json({ success: false, error: { code: 'NOT_FOUND', message: 'Route not found' } }, 404));
 
-const server = Bun.serve({
+export default {
   port: env.PORT,
   fetch: app.fetch
-});
-
-console.log(`🚀 API running on http://localhost:${server.port}`);
-
-export default app;
+};

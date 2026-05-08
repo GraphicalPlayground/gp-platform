@@ -44,4 +44,37 @@ const Text = forwardRef<HTMLParagraphElement, TextProps>(({ className, variant =
 
 Text.displayName = 'Text';
 
-export { Heading, Text };
+export interface TypographyProps extends HTMLAttributes<HTMLElement> {
+  variant: HeadingTag | 'p' | 'lead' | 'muted' | 'small' | 'code';
+}
+
+const Typography = forwardRef<HTMLElement, TypographyProps>(({ variant, ...props }, ref) => {
+  if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(variant)) {
+    const sizeMap: Record<string, keyof typeof headingSizeMap> = {
+      h1: '2xl',
+      h2: 'xl',
+      h3: 'lg',
+      h4: 'md',
+      h5: 'sm',
+      h6: 'xs'
+    };
+    const tag = variant as HeadingTag;
+    return <Heading ref={ref as any} as={tag} size={sizeMap[tag]} {...props} />;
+  }
+
+  const variantToTextMap: Record<string, keyof typeof textVariantMap> = {
+    p: 'default',
+    lead: 'lead',
+    muted: 'muted',
+    small: 'small',
+    code: 'code'
+  };
+
+  const textVariant = (variantToTextMap[variant] || 'default') as keyof typeof textVariantMap;
+
+  return <Text ref={ref as any} variant={textVariant} {...props} />;
+});
+
+Typography.displayName = 'Typography';
+
+export { Heading, Text, Typography };

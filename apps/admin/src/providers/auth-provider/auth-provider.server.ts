@@ -4,9 +4,9 @@ import { cookies } from 'next/headers';
 export const authProviderServer: Pick<AuthProvider, 'check'> = {
   check: async () => {
     const cookieStore = await cookies();
-    const auth = cookieStore.get('auth');
+    const token = cookieStore.get('token');
 
-    if (auth) {
+    if (token) {
       return {
         authenticated: true
       };
