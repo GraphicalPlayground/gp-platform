@@ -1,0 +1,29 @@
+name: Synchronize Source of Truth
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  synchronize:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+      - name: Fetch Sync Branch Reference
+        run: |
+          git fetch origin refs/heads/sync/source-of-truth:refs/remotes/origin/sync/source-of-truth || true
+      - name: Synchronize Source of Truth
+        uses: GraphicalPlayground/gp-actions/sync/source-of-truth@main
+        with:
+          sot-repository: 'GraphicalPlayground/gp-source-of-truth'
+          sot-branch: 'main'
+          license: 'MIT' # TODO: Change the license to totally protect the project
+          allow-templatization: true
+          # file-to-sync: '' # Use default value if not specified
+          push-changes: true
+          create-pr: true
