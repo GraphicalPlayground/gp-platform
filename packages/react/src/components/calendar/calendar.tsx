@@ -1,0 +1,368 @@
+'use client';
+
+import type { DOMRenderProps } from '../../utils/dom';
+import type { CalendarVariants } from '@gp/styles';
+import type { CalendarIdentifier } from '@internationalized/date';
+import type { ComponentPropsWithRef, ReactNode } from 'react';
+import type { DateValue } from 'react-aria-components/Calendar';
+
+import { calendarVariants } from '@gp/styles';
+import { CalendarDate, DateFormatter, createCalendar } from '@internationalized/date';
+import { useControlledState } from '@react-stately/utils';
+import React, { createContext, useContext } from 'react';
+import { Button as ButtonPrimitive } from 'react-aria-components/Button';
+import {
+  CalendarCell as CalendarCellPrimitive,
+  CalendarGridBody as CalendarGridBodyPrimitive,
+  CalendarGridHeader as CalendarGridHeaderPrimitive,
+  CalendarGrid as CalendarGridPrimitive,
+  CalendarHeaderCell as CalendarHeaderCellPrimitive,
+  Calendar as CalendarPrimitive,
+  CalendarStateContext,
+  Heading as HeadingPrimitive
+} from 'react-aria-components/Calendar';
+import { useLocale } from 'react-aria-components/I18nProvider';
+
+import { getGregorianYearOffset } from '../../utils/calendar';
+import { composeSlotClassName, composeTwRenderProps } from '../../utils/compose';
+import { dom } from '../../utils/dom';
+import { YearPickerContext, YearPickerStateContext } from '../calendar-year-picker/year-picker-context';
+import { IconChevronLeft, IconChevronRight } from '../icons';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Context
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarContext {
+  slots?: ReturnType<typeof calendarVariants>;
+}
+
+const CalendarContext = createContext<CalendarContext>({});
+
+const CalendarYearPickerStateBridge = ({ children }: { children: React.ReactNode }) => {
+  const state = React.useContext(CalendarStateContext);
+
+  if (!state) {
+    throw new Error('Calendar year picker state must be used within <Calendar>.');
+  }
+
+  const yearPickerStateValue = {
+    focusedDate: state.focusedDate,
+    maxValue: state.maxValue,
+    minValue: state.minValue,
+    setFocusedDate: (value: DateValue) => state.setFocusedDate(value as typeof state.focusedDate),
+    timeZone: state.timeZone
+  };
+
+  return <YearPickerStateContext value={yearPickerStateValue}>{children}</YearPickerStateContext>;
+};
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Root
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarRootProps<T extends DateValue = DateValue>
+  extends ComponentPropsWithRef<typeof CalendarPrimitive<T>>, CalendarVariants {
+  isYearPickerOpen?: boolean;
+  onYearPickerOpenChange?: (isYearPickerOpen: boolean) => void;
+  defaultYearPickerOpen?: boolean;
+}
+
+function CalendarRoot<T extends DateValue = DateValue>({
+  children,
+  className,
+  defaultYearPickerOpen: defaultYearPickerOpenProp = false,
+  isYearPickerOpen: isYearPickerOpenProp,
+  maxValue: maxValueProp,
+  minValue: minValueProp,
+  onYearPickerOpenChange: onYearPickerOpenChangeProp,
+  ...rest
+}: CalendarRootProps<T>) {
+  const { locale } = useLocale();
+  const slots = React.useMemo(() => calendarVariants(), []);
+  const calendarRef = React.useRef<HTMLDivElement>(null);
+  const [isYearPickerOpen, setIsYearPickerOpen] = useControlledState(
+    isYearPickerOpenProp,
+    defaultYearPickerOpenProp,
+    onYearPickerOpenChangeProp
+  );
+  const calendarProp = React.useMemo(() => {
+    const calendarIdentifier = new DateFormatter(locale).resolvedOptions().calendar as CalendarIdentifier;
+
+    return createCalendar(calendarIdentifier);
+  }, [locale]);
+  const gregorianYearOffset = React.useMemo(
+    () => getGregorianYearOffset(calendarProp.identifier),
+    [calendarProp.identifier]
+  );
+  const minValue = minValueProp ?? (new CalendarDate(calendarProp, 1900 + gregorianYearOffset, 1, 1) as unknown as T);
+  const maxValue = maxValueProp ?? (new CalendarDate(calendarProp, 2099 + gregorianYearOffset, 12, 31) as unknown as T);
+
+  return (
+    <YearPickerContext
+      value={{
+        calendarGridSlot: 'calendar-grid',
+        isYearPickerOpen,
+        setIsYearPickerOpen,
+        calendarRef
+      }}
+    >
+      <CalendarContext value={{ slots }}>
+        <CalendarPrimitive
+          ref={calendarRef}
+          data-slot='calendar'
+          maxValue={maxValue}
+          minValue={minValue}
+          {...rest}
+          className={composeTwRenderProps(className, slots.base())}
+        >
+          {(values) => (
+            <CalendarYearPickerStateBridge>
+              {typeof children === 'function' ? children(values) : children}
+            </CalendarYearPickerStateBridge>
+          )}
+        </CalendarPrimitive>
+      </CalendarContext>
+    </YearPickerContext>
+  );
+}
+
+CalendarRoot.displayName = 'GPlayd.Calendar';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Header
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarHeaderProps<E extends keyof React.JSX.IntrinsicElements = 'header'> extends DOMRenderProps<
+  E,
+  undefined
+> {
+  children?: ReactNode;
+  className?: string;
+}
+
+const CalendarHeader = <E extends keyof React.JSX.IntrinsicElements = 'header'>({
+  children,
+  className,
+  ...props
+}: CalendarHeaderProps<E> & Omit<React.JSX.IntrinsicElements[E], keyof CalendarHeaderProps<E>>) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <dom.header
+      className={composeSlotClassName(slots?.header, className)}
+      data-slot='calendar-header'
+      {...(props as any)}
+    >
+      {children}
+    </dom.header>
+  );
+};
+
+CalendarHeader.displayName = 'GPlayd.Calendar.Header';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Heading
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarHeadingProps extends ComponentPropsWithRef<typeof HeadingPrimitive> {}
+
+const CalendarHeading = ({ className, ...props }: CalendarHeadingProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <HeadingPrimitive
+      data-slot='calendar-heading'
+      {...props}
+      className={composeSlotClassName(slots?.heading, className)}
+    />
+  );
+};
+
+CalendarHeading.displayName = 'GPlayd.Calendar.Heading';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Nav Button
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarNavButtonProps extends ComponentPropsWithRef<typeof ButtonPrimitive> {
+  slot?: 'previous' | 'next';
+}
+
+const CalendarNavButton = ({ children, className, slot, ...props }: CalendarNavButtonProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <ButtonPrimitive
+      data-slot='calendar-nav-button'
+      slot={slot}
+      {...props}
+      className={composeTwRenderProps(className, slots?.navButton())}
+    >
+      {children ||
+        (slot === 'previous' ? (
+          <IconChevronLeft className={slots?.navButtonIcon()} data-slot='calendar-nav-button-icon' />
+        ) : (
+          <IconChevronRight className={slots?.navButtonIcon()} data-slot='calendar-nav-button-icon' />
+        ))}
+    </ButtonPrimitive>
+  );
+};
+
+CalendarNavButton.displayName = 'GPlayd.Calendar.NavButton';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Grid
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarGridProps extends ComponentPropsWithRef<typeof CalendarGridPrimitive> {}
+
+const CalendarGrid = ({ children, className, weekdayStyle = 'short', ...props }: CalendarGridProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <CalendarGridPrimitive
+      data-slot='calendar-grid'
+      weekdayStyle={weekdayStyle}
+      {...props}
+      className={composeSlotClassName(slots?.grid, className)}
+    >
+      {children}
+    </CalendarGridPrimitive>
+  );
+};
+
+CalendarGrid.displayName = 'GPlayd.Calendar.Grid';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Grid Header
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarGridHeaderProps extends ComponentPropsWithRef<typeof CalendarGridHeaderPrimitive> {}
+
+const CalendarGridHeader = ({ className, ...props }: CalendarGridHeaderProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <CalendarGridHeaderPrimitive
+      data-slot='calendar-grid-header'
+      {...props}
+      className={composeSlotClassName(slots?.gridHeader, className)}
+    />
+  );
+};
+
+CalendarGridHeader.displayName = 'GPlayd.Calendar.GridHeader';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Grid Body
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarGridBodyProps extends ComponentPropsWithRef<typeof CalendarGridBodyPrimitive> {}
+
+const CalendarGridBody = ({ className, ...props }: CalendarGridBodyProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <CalendarGridBodyPrimitive
+      data-slot='calendar-grid-body'
+      {...props}
+      className={composeSlotClassName(slots?.gridBody, className)}
+    />
+  );
+};
+
+CalendarGridBody.displayName = 'GPlayd.Calendar.GridBody';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Header Cell
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarHeaderCellProps extends ComponentPropsWithRef<typeof CalendarHeaderCellPrimitive> {}
+
+const CalendarHeaderCell = ({ className, ...props }: CalendarHeaderCellProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <CalendarHeaderCellPrimitive
+      data-slot='calendar-header-cell'
+      {...props}
+      className={composeSlotClassName(slots?.headerCell, className)}
+    />
+  );
+};
+
+CalendarHeaderCell.displayName = 'GPlayd.Calendar.HeaderCell';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Cell
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarCellProps extends ComponentPropsWithRef<typeof CalendarCellPrimitive> {}
+
+const CalendarCell = ({ children, className, ...props }: CalendarCellProps) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <CalendarCellPrimitive
+      data-slot='calendar-cell'
+      {...props}
+      className={composeTwRenderProps(className, slots?.cell())}
+    >
+      {(values) => {
+        const { formattedDate } = values;
+
+        return typeof children === 'function' ? children(values) : children || formattedDate;
+      }}
+    </CalendarCellPrimitive>
+  );
+};
+
+CalendarCell.displayName = 'GPlayd.Calendar.Cell';
+
+/* -------------------------------------------------------------------------------------------------
+| * Calendar Cell Indicator
+| * -----------------------------------------------------------------------------------------------*/
+interface CalendarCellIndicatorProps<E extends keyof React.JSX.IntrinsicElements = 'span'> extends DOMRenderProps<
+  E,
+  undefined
+> {
+  children?: ReactNode;
+  className?: string;
+}
+
+const CalendarCellIndicator = <E extends keyof React.JSX.IntrinsicElements = 'span'>({
+  className,
+  ...props
+}: CalendarCellIndicatorProps<E> & Omit<React.JSX.IntrinsicElements[E], keyof CalendarCellIndicatorProps<E>>) => {
+  const { slots } = useContext(CalendarContext);
+
+  return (
+    <dom.span
+      aria-hidden='true'
+      className={composeSlotClassName(slots?.cellIndicator, className)}
+      data-slot='calendar-cell-indicator'
+      {...(props as any)}
+    />
+  );
+};
+
+CalendarCellIndicator.displayName = 'GPlayd.Calendar.CellIndicator';
+
+/* -------------------------------------------------------------------------------------------------
+| * Exports
+| * -----------------------------------------------------------------------------------------------*/
+export {
+  CalendarRoot,
+  CalendarHeader,
+  CalendarHeading,
+  CalendarNavButton,
+  CalendarGrid,
+  CalendarGridHeader,
+  CalendarGridBody,
+  CalendarHeaderCell,
+  CalendarCell,
+  CalendarCellIndicator
+};
+export type {
+  CalendarRootProps,
+  CalendarHeaderProps,
+  CalendarHeadingProps,
+  CalendarNavButtonProps,
+  CalendarGridProps,
+  CalendarGridHeaderProps,
+  CalendarGridBodyProps,
+  CalendarHeaderCellProps,
+  CalendarCellProps,
+  CalendarCellIndicatorProps
+};

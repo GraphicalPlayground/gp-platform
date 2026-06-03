@@ -1,20 +1,54 @@
-import turboPlugin from 'eslint-config-turbo/flat';
-import js from '@eslint/js';
-import ts from 'typescript-eslint';
+import baseConfig from '@gp/standard/eslint/base.mjs';
+import { defineConfig } from 'eslint/config';
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
-  js.configs.recommended,
-  ...ts.configs.recommended,
-  ...turboPlugin,
+const config = defineConfig([
   {
-    rules: {
-      'turbo/no-undeclared-env-vars': 'warn',
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      '@typescript-eslint/no-explicit-any': 'warn'
-    }
+    ignores: [
+      // Build outputs
+      '**/.temp',
+      '**/.next',
+      '**/.swc',
+      '**/.turbo',
+      '**/.cache',
+      '**/.build',
+      '**/.vercel',
+      '**/dist',
+      '**/build',
+      '**/storybook-static',
+      '**/.rollup.cache',
+      '**/.rollup.cache/**',
+      // Dependencies
+      '**/node_modules/',
+      '**/public/*',
+      // Generated files
+      'pnpm-lock.yaml',
+      '**/.contentlayer/',
+      '**/.source/**',
+      // Test coverage
+      '**/coverage',
+      '**/__snapshots__',
+      // OS files
+      '**/.DS_Store',
+      // Exceptions - files we want to lint
+      '!public/manifest.json',
+      '!.vscode',
+      '!scripts',
+      '!.*.js',
+      '!.*.cjs',
+      '!.*.mjs',
+      '!.*.ts',
+      '!contentlayer.config.ts',
+      '!next-sitemap.config.ts'
+    ]
   },
+  ...baseConfig,
+  // Allow console usage in skill scripts
   {
-    ignores: ['**/node_modules/**', '**/.next/**', '**/dist/**', '**/.turbo/**', '**/pnpm-lock.yaml']
+    files: ['skills/**/*.mjs'],
+    rules: {
+      'no-console': 'off'
+    }
   }
-];
+]);
+
+export default config;

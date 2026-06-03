@@ -1,0 +1,87 @@
+{
+  "name": "@gp/react",
+  "version": "1.0.0",
+  "description": "🚀 Beautiful and modern React UI library built with Tailwind CSS 4.0.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "GPlayd <support@graphical-playground.com>",
+  "homepage": "https://graphical-playground.com",
+  "keywords": [
+    "components",
+    "modern components",
+    "react components",
+    "react ui"
+  ],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts"
+    },
+    "./package.json": "./package.json",
+    "./styles": {
+      "default": "./src/styles.css",
+      "style": "./src/styles.css"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GraphicalPlayground/gp-platform.git",
+    "directory": "packages/react"
+  },
+  "bugs": {
+    "url": "https://github.com/GraphicalPlayground/gp-platform/issues"
+  },
+  "scripts": {
+    "dev": "rollup -c rollup.config.mjs --watch",
+    "build": "node scripts/build.mjs --tsc",
+    "build:fast": "node scripts/build.mjs",
+    "add:component": "node scripts/add-component.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package && node scripts/update-exports.mjs",
+    "postpack": "clean-package restore"
+  },
+  "clean-package": "./clean-package.config.json",
+  "dependencies": {
+    "@gp/styles": "workspace:*",
+    "@radix-ui/react-avatar": "1.1.11",
+    "@react-aria/ssr": "3.10.0",
+    "@react-aria/i18n": "3.13.0",
+    "@react-aria/utils": "3.34.0",
+    "@react-types/shared": "3.34.0",
+    "@react-types/color": "3.2.0",
+    "@react-stately/utils": "3.12.0",
+    "input-otp": "1.4.2",
+    "react-aria-components": "1.17.0",
+    "tailwind-merge": "3.4.0",
+    "tailwind-variants": "3.2.2"
+  },
+  "devDependencies": {
+    "@gp/standard": "workspace:*",
+    "@iconify/react": "6.0.2",
+    "@internationalized/date": "3.12.1",
+    "@react-stately/data": "3.16.0",
+    "@storybook/react": "10.1.10",
+    "@types/fs-extra": "11.0.4",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "fs-extra": "11.3.3",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwindcss": "4.1.18"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "tailwindcss": ">=4.0.0"
+  }
+}
