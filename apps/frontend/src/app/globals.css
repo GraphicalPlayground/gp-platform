@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@import "@gp/styles";
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Thin.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT Haptik';
+  src: url('/fonts/GT Haptik/GT-Haptik-Lazer.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PP Mori/PPMori-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PP Mori/PPMori-Extralight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PP Mori/PPMori-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  src: url('/fonts/Iosevka/Iosevka-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
