@@ -92,8 +92,13 @@ apps/docs/public/skills
 # SEO analysis output
 .seo-output
 
+# AI Related
 CLAUDE.md
 AGENTS.md
 .claude/
 prompts/
 skills/
+
+# IDE specific
+.vscode/
+.idea/
