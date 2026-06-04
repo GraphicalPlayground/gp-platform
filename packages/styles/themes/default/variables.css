@@ -31,7 +31,7 @@
     --cursor-disabled: not-allowed;
 
     /* Radius */
-    --radius: 0.5rem;
+    --radius: 0.2rem;
     --field-radius: calc(var(--radius) * 1.5);
 
     /* == Light Theme Variables == */
@@ -66,8 +66,8 @@
     --default: oklch(94% 0.001 286.375);
     --default-foreground: var(--eclipse);
 
-    --accent: oklch(0.6204 0.195 253.83);
-    --accent-foreground: var(--snow);
+    --accent: #26BBFF;
+    --accent-foreground: var(--eclipse);
 
     /* Form Fields */
     --field-background: var(--white);
@@ -163,6 +163,42 @@
     --field-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 1px 0 rgba(0, 0, 0, 0.06);
     /* Skeleton Default Global Animation */
     --skeleton-animation: shimmer; /* shimmer, pulse, none */
+
+    /* Vibrant GPLayd Colors */
+    --gp-primary-lightest: #f9ffe0;
+    --gp-primary-lighter: #f2ffb3;
+    --gp-primary: #ecff77;
+    --gp-primary-darker: #b2cc33;
+    --gp-primary-darkest: #668000;
+
+    --gp-on-primary: #1a2000;
+
+    --gp-pink-lightest: #faf5ff;
+    --gp-pink-lighter: #f2e8ff;
+    --gp-pink: #e9d8fd;
+    --gp-pink-darker: #a680df;
+    --gp-pink-darkest: #552b99;
+
+    --gp-on-pink: #1e0640;
+
+    --gp-green-lightest: #f0fdf4;
+    --gp-green-lighter: #dcfce7;
+    --gp-green: #c6f6d5;
+    --gp-green-darker: #5ec98a;
+    --gp-green-darkest: #166534;
+
+    --gp-on-green: #052e16;
+
+    --gp-blue-lightest: #f0f9ff;
+    --gp-blue-lighter: #ddf0fa;
+    --gp-blue: #bde2f8;
+    --gp-blue-darker: #63a7d4;
+    --gp-blue-darkest: #1e5a85;
+    --gp-on-blue: #07263b;
+
+    --font-sans: 'PP Mori', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-heading: 'GT Haptik', var(--font-sans);
+    --font-mono: 'Iosevka', SF Mono, SF Mono Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   }
 
   .dark,
