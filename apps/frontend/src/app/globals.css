@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "@gp/styles";
+@import 'tailwindcss';
+@import '@gp/styles';
 
 @font-face {
   font-family: 'GT Haptik';
@@ -76,4 +76,43 @@
   src: url('/fonts/Iosevka/Iosevka-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+}
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --font-sans: 'PP Mori', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'GT Haptik', var(--font-sans);
+  --font-mono: 'Iosevka', SF Mono, SF Mono Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+pre,
+code {
+  font-family: var(--font-mono);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+@keyframes draw-highlight {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
 }
