@@ -41,7 +41,7 @@ export default function Home() {
       </main>
 
       <Footer callToAction='Start learning today'>
-        <div className='flex md:max-xl:flex-col md:max-xl:gap-13.5 gap-[10%]'>
+        <div className='flex flex-col xl:flex-row gap-13.5 xl:gap-[10%]'>
           <Footer.Brand>
             <Footer.Logo src='/logo-light.svg' />
             <div className='flex md:max-xl:flex-row md:max-xl:items-start md:max-xl:gap-11 md:flex-col gap-18'>

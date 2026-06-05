@@ -9,7 +9,7 @@ export interface FooterSocialProps extends React.HTMLAttributes<HTMLUListElement
 
 export const FooterSocial: React.FC<FooterSocialProps> = ({ className, children, ...rest }) => {
   return (
-    <ul className={cn('flex items-center flex-row wrap gap-2 p-0 m-0', className)} {...rest}>
+    <ul className={cn('flex items-center flex-row flex-wrap gap-2 p-0 m-0', className)} {...rest}>
       {children}
     </ul>
   );

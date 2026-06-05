@@ -9,7 +9,10 @@ export interface FooterBottomBarProps extends React.HTMLAttributes<HTMLDivElemen
 
 export const FooterBottomBar: React.FC<FooterBottomBarProps> = ({ children, className, ...rest }) => {
   return (
-    <div className={cn('flex flex-row justify-between w-full', className)} {...rest}>
+    <div
+      className={cn('flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 w-full', className)}
+      {...rest}
+    >
       {children}
     </div>
   );

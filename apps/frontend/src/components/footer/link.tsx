@@ -10,7 +10,13 @@ export interface FooterLegalLinksProps extends React.HTMLAttributes<HTMLUListEle
 
 export const FooterLegalLinks: React.FC<FooterLegalLinksProps> = ({ children, className, ...rest }) => {
   return (
-    <ul className={cn('flex flex-row gap-6 text-sm text-white/50', className)} {...rest}>
+    <ul
+      className={cn(
+        'flex flex-row flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-white/50',
+        className
+      )}
+      {...rest}
+    >
       {children}
     </ul>
   );
