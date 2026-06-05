@@ -84,6 +84,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  --scaling-factor: clamp(0px, 100 * 1cqw * 1, min(9999px, 9999px));
+
   --font-sans: 'PP Mori', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'GT Haptik', var(--font-sans);
   --font-mono: 'Iosevka', SF Mono, SF Mono Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
