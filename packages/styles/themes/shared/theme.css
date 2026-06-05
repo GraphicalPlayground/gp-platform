@@ -145,6 +145,7 @@
   --animate-spin-fast: spin 0.75s linear infinite;
   --animate-skeleton: skeleton 2s linear infinite;
   --animate-caret-blink: caret-blink 1.2s ease-out infinite;
+  --animate-shimmer: shimmer 5s linear infinite;
 
   @keyframes skeleton {
     100% {
@@ -161,6 +162,15 @@
     20%,
     50% {
       opacity: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    from {
+      background-position: -200% 0;
+    }
+    to {
+      background-position: 200% 0;
     }
   }
 }
