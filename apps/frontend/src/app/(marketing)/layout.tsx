@@ -65,7 +65,7 @@ export default function RootLayout({
               <Footer.Link href='#'>Blog</Footer.Link>
               <Footer.Link href='/help'>Help Center</Footer.Link>
               <Footer.Link href='/pricing'>Pricing</Footer.Link>
-              <Footer.Link href='#'>Brand Guidelines</Footer.Link>
+              <Footer.Link href='/brand-guidelines'>Brand Guidelines</Footer.Link>
             </Footer.Column>
 
             <Footer.Column title='DEVELOPERS'>
@@ -78,7 +78,7 @@ export default function RootLayout({
               <Footer.Link href='/about'>About GPlayd</Footer.Link>
               <Footer.Link href='/contact'>Contact Us</Footer.Link>
               <Footer.Link href='/press'>Press & Media</Footer.Link>
-              <Footer.Link href='#'>Accessibility Statement</Footer.Link>
+              <Footer.Link href='/accessibility'>Accessibility Statement</Footer.Link>
               <Footer.Link href='#'>Site Map</Footer.Link>
               <Footer.Link href='/careers'>Careers</Footer.Link>
             </Footer.Column>
@@ -88,8 +88,8 @@ export default function RootLayout({
         <Footer.Divider />
         <Footer.BottomBar>
           <Footer.LegalLinks>
-            <Footer.Link href='#'>Terms of Use</Footer.Link>
-            <Footer.Link href='#'>Privacy Policy</Footer.Link>
+            <Footer.Link href='/terms'>Terms of Use</Footer.Link>
+            <Footer.Link href='/privacy'>Privacy Policy</Footer.Link>
           </Footer.LegalLinks>
 
           <Footer.Social className='sm:hidden flex'>
