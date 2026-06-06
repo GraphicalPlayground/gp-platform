@@ -26,11 +26,11 @@ export const FooterRoot: React.FC<FooterRootProps> = ({ children, className, cal
           <div className='group cursor-pointer flex justify-between w-full bg-(--gp-primary) text-black grow'>
             <h1
               className='ml-[4.5%] transition-all duration-300 group-hover:ml-[5%] flex items-center'
-              style={{ fontSize: 'max(0.5px, 0.0425 * (var(--scaling-factor)))' }}
+              style={{ fontSize: 'max(26px, 0.0425 * (var(--scaling-factor)))' }}
             >
               {callToAction}
             </h1>
-            <div className='relative aspect-square bg-black w-[8vw] flex justify-center items-center'>
+            <div className='relative aspect-square bg-black w-[max(8vw,60px)] flex justify-center items-center'>
               <svg
                 className='w-[50%] h-[50%]'
                 width='500'
