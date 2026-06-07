@@ -4,6 +4,8 @@
 
 import React from 'react';
 import { cn } from '@/utils/cn';
+import { Link } from '@gp/react';
+import type { LinkProps } from '@gp/react';
 
 export interface FooterSocialProps extends React.HTMLAttributes<HTMLUListElement> {}
 
@@ -15,7 +17,7 @@ export const FooterSocial: React.FC<FooterSocialProps> = ({ className, children,
   );
 };
 
-export interface FooterSocialIconProps extends Omit<React.HTMLAttributes<HTMLAnchorElement>, 'children'> {
+export interface FooterSocialIconProps extends LinkProps {
   href: string;
   icon: 'facebook' | 'twitter' | 'tiktok' | 'instagram' | 'youtube';
 }
@@ -23,7 +25,14 @@ export interface FooterSocialIconProps extends Omit<React.HTMLAttributes<HTMLAnc
 export const FooterSocialIcon: React.FC<FooterSocialIconProps> = ({ className, href, icon, ...rest }) => {
   return (
     <li>
-      <a href={href} className={cn('w-6 h-6 flex outline-none justify-center items-center text-white hover:text-white/75', className)} {...rest}>
+      <Link
+        href={href}
+        className={cn(
+          'w-6 h-6 flex outline-none justify-center items-center text-white hover:text-white/75',
+          className
+        )}
+        {...rest}
+      >
         {icon === 'youtube' && (
           <svg xmlns='http://www.w3.org/2000/svg' xmlSpace='preserve' viewBox='0 0 192 192'>
             <path
@@ -72,7 +81,7 @@ export const FooterSocialIcon: React.FC<FooterSocialIconProps> = ({ className, h
             ></path>
           </svg>
         )}
-      </a>
+      </Link>
     </li>
   );
 };
