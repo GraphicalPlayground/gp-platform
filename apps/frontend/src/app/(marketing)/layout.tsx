@@ -7,7 +7,6 @@
 import React from 'react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { Button } from '@gp/react';
 
 export default function RootLayout({
   children
@@ -17,15 +16,34 @@ export default function RootLayout({
   return (
     <div>
       <Header>
-        <a className='shrink-0'>
-          <img src='/logo-dark.svg' className='shrink-0 max-[400px]:block h-[26px]' alt='Logo' />
-        </a>
-        <div className='flex h-8 items-center gap-4'>
-          <Button>Getting Started</Button>
-        </div>
+        <Header.Logo srcFull='/images/logo-long-text-black.svg' srcShort='/images/logo-short-text-black.svg' />
+
+        <Header.Navigation>
+          <Header.Navigation.Dropdown label='Product'></Header.Navigation.Dropdown>
+          <Header.Navigation.Dropdown label='Resources'></Header.Navigation.Dropdown>
+          <Header.Navigation.Dropdown label='Enterprise'></Header.Navigation.Dropdown>
+          <Header.Navigation.Item href='/pricing'>Pricing</Header.Navigation.Item>
+        </Header.Navigation>
+
+        <Header.Actions>
+          <Header.Link href='/login' className='hidden lg:flex'>
+            Log In
+          </Header.Link>
+          <Header.Button className='bg-accent lg:bg-black'>Start Creating</Header.Button>
+          <Header.Button className='lg:hidden p-0 w-12.5 flex items-center justify-center'>
+            <svg xmlns='http://www.w3.org/2000/svg' width='50' height='46' fill='none' className='w-full h-full'>
+              <path fill='#000' d='M0 0h50v46H0z'></path>
+              <path
+                stroke='#fff'
+                strokeLinecap='square'
+                d='M15.435 16.49h19.13M15.435 23.362h19.13M15.435 30.229h19.13'
+              ></path>
+            </svg>
+          </Header.Button>
+        </Header.Actions>
       </Header>
 
-      <main>{children}</main>
+      <main className='min-h-[50vh]'>{children}</main>
 
       <Footer callToAction='Start learning today'>
         <div className='flex flex-col xl:flex-row gap-13.5 xl:gap-[10%]'>
