@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { cn } from '@/utils/cn';
+import { Link } from '@gp/react';
 
 export interface FooterRootProps extends React.HTMLAttributes<HTMLElement> {
   callToAction?: string;
@@ -22,7 +23,7 @@ export const FooterRoot: React.FC<FooterRootProps> = ({ children, className, cal
       {...rest}
     >
       {callToAction && (
-        <a href='#'>
+        <Link href='#' className='w-full hover:no-underline no-underline font-normal'>
           <div className='group cursor-pointer flex justify-between w-full bg-(--gp-primary) text-black grow'>
             <h1
               className='ml-[4.5%] transition-all duration-300 group-hover:ml-[5%] flex items-center'
@@ -48,7 +49,7 @@ export const FooterRoot: React.FC<FooterRootProps> = ({ children, className, cal
               </svg>
             </div>
           </div>
-        </a>
+        </Link>
       )}
       <div className='flex flex-col gap-10 pt-15.25 px-[7%] pb-7.5 max-md:gap-12.5 md:pt-8.75 md:px-[10%] md:pb-7 xl:pt-19 xl:px-[5%] xl:pb-14.25'>
         {children}
