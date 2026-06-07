@@ -118,3 +118,15 @@ h6 {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
 }
+
+::selection {
+  background: var(--gp-primary);
+  color: black;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--gp-primary);
+  color: black;
+  text-shadow: none;
+}
