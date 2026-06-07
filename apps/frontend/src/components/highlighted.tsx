@@ -22,7 +22,7 @@ export const HighLighted: React.FC<HighLightedProps> = ({
   return (
     <span className={`relative inline-block whitespace-nowrap ${className}`} {...rest}>
       <span
-        className='absolute -left-2 bottom-1 -z-10 h-[65%] w-[105%] -rotate-1 rounded-sm opacity-80'
+        className='absolute -left-2 bottom-1 -z-1 h-[65%] w-[105%] -rotate-1 rounded-sm opacity-80'
         style={{
           backgroundImage: `linear-gradient(104deg, transparent 0%, ${color} 4%, ${color} 96%, transparent 100%)`,
           animation: animate ? 'draw-highlight 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards' : 'none'
