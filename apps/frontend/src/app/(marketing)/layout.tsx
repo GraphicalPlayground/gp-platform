@@ -87,6 +87,7 @@ export default function RootLayout({
               <Footer.Link href='#'>Community</Footer.Link>
               <Footer.Link href='#'>Forum</Footer.Link>
               <Footer.Link href='#'>Inspiration</Footer.Link>
+              <Footer.Link href='/changelog'>Changelog</Footer.Link>
               <Footer.Link href='https://docs.graphical-playground.com/blog'>Blog</Footer.Link>
               <Footer.Link href='https://status.graphical-playground.com'>Status</Footer.Link>
               <Footer.Link href='#'>Site Map</Footer.Link>
