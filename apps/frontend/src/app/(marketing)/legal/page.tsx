@@ -4,6 +4,6 @@
 
 import React from 'react';
 
-export default function CookiesPage() {
-  return <div>Cookies</div>;
+export default function LegalPage() {
+  return <div></div>;
 }

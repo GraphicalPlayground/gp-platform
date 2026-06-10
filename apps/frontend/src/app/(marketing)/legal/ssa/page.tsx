@@ -4,6 +4,6 @@
 
 import React from 'react';
 
-export default function PrivacyPage() {
-  return <div>Privacy</div>;
+export default function SoftwareServicesAgreementPage() {
+  return <div></div>;
 }

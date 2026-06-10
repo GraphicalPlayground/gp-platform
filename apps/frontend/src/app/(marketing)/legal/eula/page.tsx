@@ -4,6 +4,6 @@
 
 import React from 'react';
 
-export default function TermsPage() {
-  return <div>Terms</div>;
+export default function EndUserLicenseAgreementPage() {
+  return <div></div>;
 }

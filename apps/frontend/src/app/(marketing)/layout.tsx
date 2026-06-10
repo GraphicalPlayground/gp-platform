@@ -68,37 +68,39 @@ export default function RootLayout({
 
           <Footer.NavGrid>
             <Footer.Column title='PRODUCT'>
+              <Footer.Link href='/pricing'>Pricing</Footer.Link>
               <Footer.Link href='#'>GPlayd Engine</Footer.Link>
               <Footer.Link href='#'>GPlayd Cloud</Footer.Link>
               <Footer.Link href='#'>GPlayd Studio</Footer.Link>
-              <Footer.Link href='#'>GPlayd Docs</Footer.Link>
-            </Footer.Column>
-
-            <Footer.Column title='RESOURCES'>
-              <Footer.Link href='https://github.com/GraphicalPlayground'>Github</Footer.Link>
-              <Footer.Link href='#'>Community</Footer.Link>
-              <Footer.Link href='#'>Forum</Footer.Link>
-              <Footer.Link href='https://docs.graphical-playground.com'>Documentation</Footer.Link>
-              <Footer.Link href='#'>Inspiration</Footer.Link>
-              <Footer.Link href='#'>Blog</Footer.Link>
-              <Footer.Link href='/help'>Help Center</Footer.Link>
-              <Footer.Link href='/pricing'>Pricing</Footer.Link>
-              <Footer.Link href='/brand-guidelines'>Brand Guidelines</Footer.Link>
             </Footer.Column>
 
             <Footer.Column title='DEVELOPERS'>
+              <Footer.Link href='https://docs.graphical-playground.com'>Documentation</Footer.Link>
+              <Footer.Link href='https://github.com/GraphicalPlayground'>Github Organization</Footer.Link>
               <Footer.Link href='#'>GPlayd SDK</Footer.Link>
               <Footer.Link href='#'>GPlayd API</Footer.Link>
               <Footer.Link href='#'>GPlayd CLI</Footer.Link>
             </Footer.Column>
 
+            <Footer.Column title='RESOURCES'>
+              <Footer.Link href='/help'>Help Center</Footer.Link>
+              <Footer.Link href='#'>Community</Footer.Link>
+              <Footer.Link href='#'>Forum</Footer.Link>
+              <Footer.Link href='#'>Inspiration</Footer.Link>
+              <Footer.Link href='https://docs.graphical-playground.com/blog'>Blog</Footer.Link>
+              <Footer.Link href='https://status.graphical-playground.com'>Status</Footer.Link>
+              <Footer.Link href='#'>Site Map</Footer.Link>
+              <Footer.Link href='/brand-guidelines'>Brand Guidelines</Footer.Link>
+            </Footer.Column>
+
             <Footer.Column title='COMPANY'>
-              <Footer.Link href='/about'>About GPlayd</Footer.Link>
+              <Footer.Link href='/about'>About Us</Footer.Link>
+              <Footer.Link href='/careers'>Careers</Footer.Link>
               <Footer.Link href='/contact'>Contact Us</Footer.Link>
+              <Footer.Link href='/sponsors'>Sponsors</Footer.Link>
               <Footer.Link href='/press'>Press & Media</Footer.Link>
               <Footer.Link href='/accessibility'>Accessibility Statement</Footer.Link>
-              <Footer.Link href='#'>Site Map</Footer.Link>
-              <Footer.Link href='/careers'>Careers</Footer.Link>
+              <Footer.Link href='/legal'>Legal</Footer.Link>
             </Footer.Column>
           </Footer.NavGrid>
         </div>
@@ -106,8 +108,8 @@ export default function RootLayout({
         <Footer.Divider />
         <Footer.BottomBar>
           <Footer.LegalLinks>
-            <Footer.Link href='/terms'>Terms of Use</Footer.Link>
-            <Footer.Link href='/privacy'>Privacy Policy</Footer.Link>
+            <Footer.Link href='/legal/tos'>Terms of Service</Footer.Link>
+            <Footer.Link href='/legal/privacy'>Privacy Policy</Footer.Link>
           </Footer.LegalLinks>
 
           <Footer.Social className='sm:hidden flex'>
