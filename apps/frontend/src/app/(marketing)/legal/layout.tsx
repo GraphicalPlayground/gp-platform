@@ -48,7 +48,7 @@ export default function LegalLayout({
           <aside className='w-full mb-12 md:mt-4'>
             <LegalNav />
           </aside>
-          <div className='w-full min-h-[50vh] bg-red-500'>{children}</div>
+          <div className='w-full min-h-[50vh]'>{children}</div>
         </div>
       </main>
     </div>

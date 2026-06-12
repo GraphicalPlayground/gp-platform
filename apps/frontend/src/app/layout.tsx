@@ -7,6 +7,12 @@ import type { Metadata } from 'next';
 import { createMetadata } from '@/utils/metadata';
 import { JsonLd } from '@/components/jsonld';
 import { organization, persons, website, softwareSourceCode, softwareApplication, faqPage } from '@/config/schema.org';
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = createMetadata();
 
@@ -16,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='h-full antialiased'>
+    <html lang='en' className={`h-full antialiased ${inter.variable}`}>
       <body className='min-h-full flex flex-col'>
         <JsonLd
           data={[organization, ...Object.values(persons), website, softwareSourceCode, softwareApplication, faqPage]}
