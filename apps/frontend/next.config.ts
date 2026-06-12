@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import createMDX from '@next/mdx';
 
 const allowedDevOrigins = process.env['ALLOWED_DEV_ORIGINS']
   ? process.env['ALLOWED_DEV_ORIGINS'].split(',').map((ip) => ip.trim())
@@ -7,6 +8,7 @@ const allowedDevOrigins = process.env['ALLOWED_DEV_ORIGINS']
 const nextConfig: NextConfig = {
   allowedDevOrigins,
   compress: true,
+  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   experimental: {
     optimizePackageImports: ['@gp/react']
   },
@@ -23,4 +25,8 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/
+});
+
+export default withMDX(nextConfig);
