@@ -2,9 +2,132 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import type { WithContext, Person, Organization } from 'schema-dts';
+import type {
+  WithContext,
+  Person,
+  Organization,
+  WebSite,
+  SoftwareSourceCode,
+  SoftwareApplication,
+  FAQPage
+} from 'schema-dts';
 import { siteConfig } from './site';
 
+/**
+ * @brief WebSite entity for the main marketing/learning platform site.
+ * Links to the Organization as publisher and (optionally) declares a
+ * SearchAction for sitelinks search box eligibility.
+ */
+export const website: WithContext<WebSite> = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteConfig.links.website}/#website`,
+  'name': siteConfig.name,
+  'alternateName': siteConfig.shortName,
+  'url': siteConfig.links.website,
+  'description': siteConfig.description,
+  'publisher': {
+    '@id': `${siteConfig.links.website}/#organization`
+  },
+  'inLanguage': ['en', 'fr']
+  // If/when a site search exists, uncomment and adjust the target URL:
+  // 'potentialAction': {
+  //   '@type': 'SearchAction',
+  //   'target': {
+  //     '@type': 'EntryPoint',
+  //     'urlTemplate': `${siteConfig.links.website}/search?q={search_term_string}`
+  //   },
+  //   'query-input': 'required name=search_term_string'
+  // }
+};
+
+/**
+ * @brief SoftwareSourceCode entity describing the GP engine itself, distinct from the marketing site/Organization.
+ * Represents the open-source codebase hosted on GitHub.
+ */
+export const softwareSourceCode: WithContext<SoftwareSourceCode> = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  '@id': `${siteConfig.links.website}/#source-code`,
+  'name': 'Graphical Playground Engine',
+  'alternateName': 'GP',
+  'description':
+    'An open-source C++23 game engine and educational platform, targeting Windows, Linux, macOS, with support for Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, and HLSL rendering pipelines.',
+  'codeRepository': siteConfig.links.github,
+  'programmingLanguage': [
+    {
+      '@type': 'ComputerLanguage',
+      'name': 'C++23'
+    },
+    {
+      '@type': 'ComputerLanguage',
+      'name': 'GLSL'
+    },
+    {
+      '@type': 'ComputerLanguage',
+      'name': 'HLSL'
+    }
+  ],
+  'runtimePlatform': ['Windows', 'Linux', 'macOS'],
+  'license': 'Apache License 2.0',
+  'author': {
+    '@id': `${siteConfig.links.website}/#organization`
+  },
+  'creator': {
+    '@id': `${siteConfig.links.website}/#organization`
+  },
+  'isPartOf': {
+    '@id': `${siteConfig.links.website}/#organization`
+  },
+  'keywords': siteConfig.keywords.join(', ')
+};
+
+/**
+ * @brief SoftwareApplication entity for the e-learning platform itself
+ * (the web app, as opposed to the engine's source code). Useful for
+ * "free software" / "available on web" rich result signals.
+ */
+export const softwareApplication: WithContext<SoftwareApplication> = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  '@id': `${siteConfig.links.website}/#application`,
+  'name': siteConfig.name,
+  'applicationCategory': 'EducationalApplication',
+  'applicationSubCategory': 'Game Development',
+  'operatingSystem': 'Web Browser',
+  'url': siteConfig.links.website,
+  'description': siteConfig.description,
+  'offers': {
+    '@type': 'Offer',
+    'price': '0',
+    'priceCurrency': 'EUR',
+    'url': `${siteConfig.links.website}/pricing`
+  },
+  'publisher': {
+    '@id': `${siteConfig.links.website}/#organization`
+  },
+  'softwareHelp': {
+    '@type': 'CreativeWork',
+    'url': siteConfig.links.documentation
+  }
+};
+
+/**
+ * @brief FAQPage entity for the /faq route. The `mainEntity` array MUST
+ * mirror the visible Q&A content on the page exactly, Google's FAQ
+ * rich results require text parity between markup and rendered content.
+ */
+export const faqPage: WithContext<FAQPage> = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${siteConfig.links.website}/faq/#faqpage`,
+  'mainEntity': []
+};
+
+/**
+ * @brief Person entities for the core team members, linked to the Organization as founders and contributors.
+ * Each person has their own unique @id and links to their GitHub and LinkedIn profiles.
+ */
 export const persons: { [key: string]: WithContext<Person> } = {
   'mallory-scotton': {
     '@context': 'https://schema.org',
@@ -73,6 +196,10 @@ export const persons: { [key: string]: WithContext<Person> } = {
   }
 };
 
+/**
+ * @brief Organization entity representing Graphical Playground as a whole, linking to the WebSite and SoftwareSourceCode entities, and listing the core team members as founders.
+ * This is the central entity that ties everything together and provides comprehensive information about the organization, its mission, and its offerings.
+ */
 export const organization: WithContext<Organization> = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
