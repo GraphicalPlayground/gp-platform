@@ -1,6 +1,12 @@
-import './globals.css';
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
 
-export { metadata } from './metadata';
+import './globals.css';
+import type { Metadata } from 'next';
+import { createMetadata } from '@/utils/metadata';
+
+export const metadata: Metadata = createMetadata();
 
 export default function RootLayout({
   children
