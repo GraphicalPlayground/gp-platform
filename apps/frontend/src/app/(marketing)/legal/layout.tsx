@@ -5,6 +5,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { createMetadata } from '@/utils/metadata';
+import { LegalNav } from '@/components/legal-nav';
 
 export const metadata: Metadata = createMetadata({
   title: 'Graphical Playground Legal',
@@ -42,8 +43,14 @@ export default function LegalLayout({
 }>) {
   return (
     <div className='w-full flex flex-col'>
-      <header className=''></header>
-      <main className='grow'>{children}</main>
+      <main className='w-[calc(min(var(--max-content-width),100vw)-var(--gutter)*2)] mx-auto py-20'>
+        <div className='min-[960px]:grid min-[960px]:gap-[calc(var(--col-width)*3)] min-[960px]:grid-cols-[calc(var(--col-width)*14)_calc(var(--col-width)*27)] min-[1440px]:grid-cols-[calc(var(--col-width)*12)_calc(var(--col-width)*26)] min-[1920px]:grid-cols-[calc(var(--col-width)*13)_calc(var(--col-width)*24)]'>
+          <aside className='w-full mb-12 md:mt-4'>
+            <LegalNav />
+          </aside>
+          <div className='w-full min-h-[50vh] bg-red-500'>{children}</div>
+        </div>
+      </main>
     </div>
   );
 }
