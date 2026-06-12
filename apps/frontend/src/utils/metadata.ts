@@ -37,7 +37,7 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
       siteName: siteConfig.name,
       images: [
         {
-          url: '/og-image.png',
+          url: '/images/gplayd-social-card.png',
           width: 1200,
           height: 630,
           alt: description
@@ -49,7 +49,7 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
       title: siteConfig.name,
       description: description,
       creator: '@GraphicalPlayground',
-      images: ['/og-image.png']
+      images: ['/images/gplayd-social-card.png']
     }
   } = options || {};
 
