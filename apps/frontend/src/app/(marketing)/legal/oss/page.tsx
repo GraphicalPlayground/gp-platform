@@ -6,8 +6,8 @@ import React from 'react';
 import { metadata as layoutMetadata } from '../layout';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { ...layoutMetadata, title: 'Software Services Agreement' };
+export const metadata: Metadata = { ...layoutMetadata, title: 'Open Source Softwares' };
 
-export default function SoftwareServicesAgreementPage() {
+export default function OpenSourceSoftwaresPage() {
   return <div></div>;
 }

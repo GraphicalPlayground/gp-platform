@@ -3,6 +3,10 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { metadata as layoutMetadata } from '../layout';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = { ...layoutMetadata, title: 'End User License Agreement' };
 
 export default function EndUserLicenseAgreementPage() {
   return <div></div>;
