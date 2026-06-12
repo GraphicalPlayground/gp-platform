@@ -5,6 +5,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { createMetadata } from '@/utils/metadata';
+import { JsonLd } from '@/components/jsonld';
+import { organization, persons } from '@/config/schema.org';
 
 export const metadata: Metadata = createMetadata();
 
@@ -15,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className='h-full antialiased'>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='min-h-full flex flex-col'>
+        <JsonLd data={[organization, ...Object.values(persons)]} />
+        {children}
+      </body>
     </html>
   );
 }
