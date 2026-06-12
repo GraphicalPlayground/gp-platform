@@ -6,12 +6,20 @@ import { cn } from '@/utils/cn';
 import React from 'react';
 import { Link } from '@gp/react';
 import type { LinkProps } from '@gp/react';
+import NextLink from 'next/link';
 
-export interface HeaderLinkProps extends LinkProps {}
+export interface HeaderLinkProps extends LinkProps {
+  href: string;
+}
 
-export const HeaderLink: React.FC<HeaderLinkProps> = ({ children, className, ...rest }) => {
+export const HeaderLink: React.FC<HeaderLinkProps> = ({ children, href, className, ...rest }) => {
   return (
-    <Link className={cn('mx-4 text-base underline', className)} {...rest}>
+    <Link
+      href={href}
+      className={cn('mx-4 text-base underline', className)}
+      {...rest}
+      render={({ ref, ...props }) => <NextLink {...props} href={href} ref={ref as React.Ref<HTMLAnchorElement>} />}
+    >
       {children}
     </Link>
   );

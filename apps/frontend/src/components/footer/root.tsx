@@ -5,6 +5,7 @@
 import React from 'react';
 import { cn } from '@/utils/cn';
 import { Link } from '@gp/react';
+import NextLink from 'next/link';
 
 export interface FooterRootProps extends React.HTMLAttributes<HTMLElement> {
   callToAction?: string;
@@ -23,7 +24,11 @@ export const FooterRoot: React.FC<FooterRootProps> = ({ children, className, cal
       {...rest}
     >
       {callToAction && (
-        <Link href='#' className='w-full hover:no-underline no-underline font-normal'>
+        <Link
+          href='#'
+          className='w-full hover:no-underline no-underline font-normal'
+          render={({ ref, ...props }) => <NextLink {...props} href='#' ref={ref as React.Ref<HTMLAnchorElement>} />}
+        >
           <div className='group cursor-pointer flex justify-between w-full bg-(--gp-primary) text-black grow'>
             <h1
               className='ml-[4.5%] transition-all duration-300 group-hover:ml-[5%] flex items-center'

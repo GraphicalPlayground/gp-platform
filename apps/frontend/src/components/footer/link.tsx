@@ -5,6 +5,7 @@
 import React from 'react';
 import { Link } from '@gp/react';
 import { cn } from '@/utils/cn';
+import NextLink from 'next/link';
 
 export interface FooterLegalLinksProps extends React.HTMLAttributes<HTMLUListElement> {}
 
@@ -32,6 +33,7 @@ export const FooterLink: React.FC<FooterLinkProps> = ({ children, className, hre
       <Link
         href={href}
         className={cn('w-fit text-inherit text-base leading-8.5 flex items-center cursor-pointer', className)}
+        render={({ ref, ...props }) => <NextLink {...props} href={href} ref={ref as React.Ref<HTMLAnchorElement>} />}
       >
         {children}
       </Link>
