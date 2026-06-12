@@ -13,7 +13,7 @@ export default function Home() {
 
       <div className='relative z-0 flex flex-col items-center w-full'>
         <p className='text-center text-lg font-medium leading-[normal] max-md:text-sm inline-block bg-size-[200%_100%] bg-linear-to-r from-blue-500 via-blue-200 to-blue-500 bg-clip-text text-transparent animate-shimmer'>
-          Graphical Playground is now live
+          Graphical Playground is still in early development.
         </p>
         <h1 className='mx-auto mt-6 max-w-5xl text-center text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-normal leading-tight lg:leading-none tracking-[-0.02em] text-black'>
           Experiment with Graphics
