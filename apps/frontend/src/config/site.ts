@@ -68,5 +68,10 @@ export const siteConfig = {
     'game engine',
     'courses',
     'tutorials'
-  ]
+  ],
+  emails: {
+    support: 'support@graphical-playground.com',
+    security: 'security@graphical-playground.com',
+    press: 'press@graphical-playground.com'
+  }
 };
