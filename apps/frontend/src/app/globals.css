@@ -85,6 +85,9 @@
   -moz-osx-font-smoothing: grayscale;
 
   --scaling-factor: clamp(0px, 100 * 1cqw * 1, min(9999px, 9999px));
+  --max-content-width: 1680px;
+  --gutter: calc(calc(min(100vw, 1680px) / 48) * 2);
+  --col-width: calc(min(100vw, 1680px) / 48);
 
   --font-sans: 'PP Mori', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'GT Haptik', var(--font-sans);
