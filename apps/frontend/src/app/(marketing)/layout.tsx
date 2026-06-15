@@ -18,6 +18,12 @@ export default function MarketingLayout({
 }>) {
   const router = useRouter();
 
+  const socials = {
+    linkedin: 'https://www.linkedin.com/company/graphical-playground',
+    github: 'https://github.com/GraphicalPlayground',
+    discord: 'https://discord.graphical-playground.com'
+  };
+
   return (
     <div>
       <Header>
@@ -89,11 +95,9 @@ export default function MarketingLayout({
                 efficiency.
               </Footer.Description>
               <Footer.Social className='hidden sm:flex'>
-                <Footer.SocialIcon href='#' icon='youtube' />
-                <Footer.SocialIcon href='#' icon='twitter' />
-                <Footer.SocialIcon href='#' icon='instagram' />
-                <Footer.SocialIcon href='#' icon='facebook' />
-                <Footer.SocialIcon href='#' icon='tiktok' />
+                {Object.entries(socials).map(([key, value]) => {
+                  return <Footer.SocialIcon key={key} href={value} icon={key as any} />;
+                })}
               </Footer.Social>
             </div>
           </Footer.Brand>
@@ -146,11 +150,9 @@ export default function MarketingLayout({
           </Footer.LegalLinks>
 
           <Footer.Social className='sm:hidden flex'>
-            <Footer.SocialIcon href='#' icon='youtube' />
-            <Footer.SocialIcon href='#' icon='twitter' />
-            <Footer.SocialIcon href='#' icon='instagram' />
-            <Footer.SocialIcon href='#' icon='facebook' />
-            <Footer.SocialIcon href='#' icon='tiktok' />
+            {Object.entries(socials).map(([key, value]) => {
+              return <Footer.SocialIcon key={key} href={value} icon={key as any} />;
+            })}
           </Footer.Social>
 
           <div className='flex flex-row items-center gap-4'>

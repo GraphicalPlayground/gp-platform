@@ -3,6 +3,14 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { createMetadata } from '@/utils/metadata';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = createMetadata({
+  title: 'Accessibility | Graphical Playground',
+  description: 'Learn about our commitment to accessibility and inclusive design.',
+  keywords: ['accessibility', 'inclusive design', 'user experience']
+});
 
 export default function AccessibilityPage() {
   return <div>Accessibility</div>;
