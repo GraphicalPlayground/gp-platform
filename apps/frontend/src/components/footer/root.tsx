@@ -6,6 +6,7 @@ import React from 'react';
 import { cn } from '@/utils/cn';
 import { Link } from '@gp/react';
 import NextLink from 'next/link';
+import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env';
 
 export interface FooterRootProps extends React.HTMLAttributes<HTMLElement> {
   callToAction?: string;
@@ -25,9 +26,15 @@ export const FooterRoot: React.FC<FooterRootProps> = ({ children, className, cal
     >
       {callToAction && (
         <Link
-          href='#'
+          href={__HAS_WAITLIST__ ? __WAITLIST_URL__ : __SIGN_IN_URL__}
           className='w-full hover:no-underline no-underline font-normal'
-          render={({ ref, ...props }) => <NextLink {...props} href='#' ref={ref as React.Ref<HTMLAnchorElement>} />}
+          render={({ ref, ...props }) => (
+            <NextLink
+              {...props}
+              href={__HAS_WAITLIST__ ? __WAITLIST_URL__ : __SIGN_IN_URL__}
+              ref={ref as React.Ref<HTMLAnchorElement>}
+            />
+          )}
         >
           <div className='group cursor-pointer flex justify-between w-full bg-(--gp-primary) text-black grow'>
             <h1
