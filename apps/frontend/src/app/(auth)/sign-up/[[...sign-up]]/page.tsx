@@ -2,8 +2,12 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import React from 'react';
+import { SignUp } from '@clerk/nextjs';
 
-export default function ForgotPasswordPage() {
-  return <div></div>;
+export default function SignUpPage() {
+  return (
+    <>
+      <SignUp />
+    </>
+  );
 }

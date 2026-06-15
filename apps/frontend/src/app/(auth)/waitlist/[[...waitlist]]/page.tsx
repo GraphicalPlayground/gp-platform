@@ -2,8 +2,12 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import React from 'react';
+import { Waitlist } from '@clerk/nextjs';
 
-export default function ResetPasswordPage() {
-  return <div></div>;
+export default function WaitlistPage() {
+  return (
+    <>
+      <Waitlist />
+    </>
+  );
 }
