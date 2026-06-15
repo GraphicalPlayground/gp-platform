@@ -12,6 +12,7 @@
     "typegen": "next typegen"
   },
   "dependencies": {
+    "@clerk/nextjs": "7.5.2",
     "@gp/react": "workspace:*",
     "@mdx-js/loader": "3.1.1",
     "@mdx-js/react": "3.1.1",
