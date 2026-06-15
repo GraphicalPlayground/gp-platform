@@ -6,8 +6,14 @@ import React from 'react';
 import { metadata as layoutMetadata } from '../layout';
 import type { Metadata } from 'next';
 
+import Content from './content.md';
+
 export const metadata: Metadata = { ...layoutMetadata, title: 'End User License Agreement' };
 
 export default function EndUserLicenseAgreementPage() {
-  return <div></div>;
+  return (
+    <article className='legal-article'>
+      <Content />
+    </article>
+  );
 }
