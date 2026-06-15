@@ -4,12 +4,16 @@
 
 import { cn } from '@/utils/cn';
 import React from 'react';
+import { Link } from '@/components/link';
 
 export interface HeaderNavigationProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const HeaderNavigation: React.FC<HeaderNavigationProps> = ({ children, className, ...rest }) => {
   return (
-    <nav className={cn('h-full items-center flex-row hidden lg:flex absolute left-1/2 -translate-x-1/2', className)} {...rest}>
+    <nav
+      className={cn('h-full items-center flex-row hidden lg:flex absolute left-1/2 -translate-x-1/2', className)}
+      {...rest}
+    >
       <ul className='flex-row flex items-center h-full'>{children}</ul>
     </nav>
   );
@@ -40,9 +44,9 @@ export interface HeaderNavItemProps extends React.HTMLAttributes<HTMLLIElement> 
 export const HeaderNavItem: React.FC<HeaderNavItemProps> = ({ children, href, className, ...rest }) => {
   return (
     <li className={cn('px-4', className)} {...rest}>
-      <a href={href} className='pt-1 flex flex-row gap-1.25 hover:font-bold cursor-pointer'>
+      <Link href={href} className='pt-1 flex flex-row gap-1.25 hover:font-bold cursor-pointer'>
         {children}
-      </a>
+      </Link>
     </li>
   );
 };
