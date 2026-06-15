@@ -5,14 +5,19 @@
 'use client';
 
 import React from 'react';
+import { UserButton, Show, ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env';
+import { useRouter } from 'next/navigation';
 
-export default function RootLayout({
+export default function MarketingLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const router = useRouter();
+
   return (
     <div>
       <Header>
@@ -26,10 +31,37 @@ export default function RootLayout({
         </Header.Navigation>
 
         <Header.Actions>
-          <Header.Link href='/login' className='hidden lg:flex'>
-            Log In
-          </Header.Link>
-          <Header.Button className='bg-accent lg:bg-black'>Start Creating</Header.Button>
+          <ClerkLoading>
+            <div className='h-8 w-24 mx-4 bg-gray-200 animate-pulse rounded lg:flex hidden' />
+          </ClerkLoading>
+
+          <ClerkLoaded>
+            <Show when='signed-out'>
+              {__HAS_WAITLIST__ ? (
+                <Header.Link href={__WAITLIST_URL__} className='hidden lg:flex mt-1'>
+                  Join Waitlist
+                </Header.Link>
+              ) : (
+                <Header.Link href={__SIGN_IN_URL__} className='hidden lg:flex mt-1'>
+                  Log In
+                </Header.Link>
+              )}
+            </Show>
+            <Show when='signed-in'>
+              <div className='mx-4 justify-center items-center hidden lg:flex'>
+                <UserButton appearance={{ elements: { avatarBox: 'w-8! h-8!' } }} />
+              </div>
+            </Show>
+          </ClerkLoaded>
+          <Header.Button
+            className='bg-accent lg:bg-black'
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(__HAS_WAITLIST__ ? __WAITLIST_URL__ : __SIGN_IN_URL__);
+            }}
+          >
+            Start Creating
+          </Header.Button>
           <Header.Button className='lg:hidden p-0 w-12.5 flex items-center justify-center'>
             <svg xmlns='http://www.w3.org/2000/svg' width='50' height='46' fill='none' className='w-full h-full'>
               <path fill='#000' d='M0 0h50v46H0z'></path>
