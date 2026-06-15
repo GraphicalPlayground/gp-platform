@@ -5,7 +5,6 @@
 'use client';
 
 import React from 'react';
-import { Link } from '@gp/react';
 
 export default function AuthLayout({
   children

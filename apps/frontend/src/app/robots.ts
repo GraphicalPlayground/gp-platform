@@ -12,7 +12,7 @@ import type { MetadataRoute } from 'next';
  */
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = siteConfig.links.website;
-  const disallow = ['/api/', '/admin/', '/dashboard/', '/_next/', '/legal/'];
+  const disallow = ['/api/', '/admin/', '/app/', '/_next/', '/legal/', '/sign-in', '/waitlist', '/sign-up'];
 
   return {
     rules: [
