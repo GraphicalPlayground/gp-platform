@@ -43,7 +43,7 @@ export function LegalNav() {
 
   return (
     <nav>
-      <Accordion className='w-full max-w-md' expandedKeys={expandedKeys} onExpandedChange={setExpandedKeys}>
+      <Accordion className='w-full lg:max-w-md' expandedKeys={expandedKeys} onExpandedChange={setExpandedKeys}>
         {accordionsItems.map((item, index) => {
           const itemValue = index.toString();
 
