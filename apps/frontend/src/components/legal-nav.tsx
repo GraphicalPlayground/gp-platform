@@ -6,8 +6,8 @@
 
 import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { Accordion, Link } from '@gp/react';
-import NextLink from 'next/link';
+import { Accordion } from '@gp/react';
+import { Link } from '@/components/link';
 
 const accordionsItems = [
   {
@@ -62,14 +62,7 @@ export function LegalNav() {
                       const isActive = pathname === child.href;
 
                       return (
-                        <Link
-                          key={childIndex}
-                          href={child.href}
-                          className={`text-base ${isActive ? 'underline' : ''}`}
-                          render={({ ref, ...props }) => (
-                            <NextLink {...props} href={child.href} ref={ref as React.Ref<HTMLAnchorElement>} />
-                          )}
-                        >
+                        <Link key={childIndex} href={child.href} className={`text-base ${isActive ? 'underline' : ''}`}>
                           {child.title}
                           {!child.href.startsWith('/') && <Link.Icon />}
                         </Link>

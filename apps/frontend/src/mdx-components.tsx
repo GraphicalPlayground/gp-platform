@@ -3,15 +3,15 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MDXComponents } from 'mdx/types';
-import { MdxLink } from './components/mdx-link';
+import { Link } from './components/link';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     a: ({ href, children, ...props }) => (
-      <MdxLink href={href as string} style={{ fontSize: 'inherit', color: 'inherit' }} {...props}>
+      <Link href={href as string} style={{ fontSize: 'inherit', color: 'inherit' }} {...props}>
         {children}
-      </MdxLink>
+      </Link>
     ),
     h1: ({ children }) => <h1 className='text-6xl mb-4'>{children}</h1>,
     h2: ({ children }) => <h2 className='text-4xl mb-4 mt-12'>{children}</h2>,

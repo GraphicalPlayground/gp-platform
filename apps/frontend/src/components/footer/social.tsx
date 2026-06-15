@@ -4,8 +4,8 @@
 
 import React from 'react';
 import { cn } from '@/utils/cn';
-import { Link } from '@gp/react';
-import type { LinkProps } from '@gp/react';
+import { Link } from '@/components/link';
+import type { LinkProps } from '@/components/link';
 
 export interface FooterSocialProps extends React.HTMLAttributes<HTMLUListElement> {}
 
