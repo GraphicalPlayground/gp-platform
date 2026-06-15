@@ -147,3 +147,21 @@ h6 {
   border-radius: 5px;
   overflow-x: auto;
 }
+
+.marquee-inner {
+  animation: marqueeScroll 20s linear infinite;
+}
+
+.marquee-inner-testimonials {
+  animation: marqueeScroll 35s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 1.25rem));
+  }
+}
