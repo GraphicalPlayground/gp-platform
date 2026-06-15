@@ -5,5 +5,5 @@
 import React from 'react';
 
 export default function LegalPage() {
-  return <div></div>;
+  return <div className='w-full h-fit grid gap-y-16 md:grid-cols-2 md:gap-x-(--col-width)'></div>;
 }
