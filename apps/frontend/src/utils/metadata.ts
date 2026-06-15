@@ -24,7 +24,7 @@ interface CreateMetadataOptions {
  */
 export function createMetadata(options?: CreateMetadataOptions): Metadata {
   const {
-    title = siteConfig.name,
+    title = `${siteConfig.name} | Build Graphics Engines from Scratch`,
     description = siteConfig.description,
     robots = { index: true, follow: true, nocache: true },
     keywords = [],
