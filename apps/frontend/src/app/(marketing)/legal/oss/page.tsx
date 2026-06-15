@@ -6,8 +6,14 @@ import React from 'react';
 import { metadata as layoutMetadata } from '../layout';
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = { ...layoutMetadata, title: 'Open Source Softwares' };
+import Content from './content.md';
+
+export const metadata: Metadata = { ...layoutMetadata, title: 'Open Source Software Notice' };
 
 export default function OpenSourceSoftwaresPage() {
-  return <div></div>;
+  return (
+    <article className='legal-article'>
+      <Content />
+    </article>
+  );
 }
