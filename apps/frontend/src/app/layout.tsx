@@ -9,6 +9,7 @@ import { JsonLd } from '@/components/jsonld';
 import { organization, persons, website, softwareSourceCode, softwareApplication, faqPage } from '@/config/schema.org';
 import { Inter } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
+import { CookieBanner } from '@/components/cookie-banner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
             data={[organization, ...Object.values(persons), website, softwareSourceCode, softwareApplication, faqPage]}
           />
           {children}
+          <CookieBanner />
         </ClerkProvider>
       </body>
     </html>
