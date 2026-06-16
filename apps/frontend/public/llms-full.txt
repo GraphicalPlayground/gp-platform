@@ -5,6 +5,10 @@
 ## Site Map
 
 - [Home](https://graphical-playground.com)
+- [Products](https://graphical-playground.com/products)
+    - [GPlayd Engine](https://graphical-playground.com/products/engine)
+    - [GPlayd Cloud](https://graphical-playground.com/products/cloud)
+    - [GPlayd Studio](https://graphical-playground.com/products/studio)
 - [Features](https://graphical-playground.com/features)
 - [Pricing](https://graphical-playground.com/pricing)
 - [About](https://graphical-playground.com/about)
@@ -15,6 +19,7 @@
 - [Help](https://graphical-playground.com/help)
 - [Careers](https://graphical-playground.com/careers)
 - [Press](https://graphical-playground.com/press)
+- [Donate](https://graphical-playground.com/donate): Support the project through donations.
 - [Sponsors](https://graphical-playground.com/sponsors)
 - [Accessibility](https://graphical-playground.com/accessibility)
 - [Brand Guidelines](https://graphical-playground.com/brand-guidelines)

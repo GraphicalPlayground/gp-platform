@@ -11,12 +11,17 @@ Graphical Playground (GP) is an open-source C++23 game engine and educational pl
 
 ## Product
 
+- [Products](https://graphical-playground.com/products): Overview of the engine and learning platform offerings.
+    - [GPlayd Engine](https://graphical-playground.com/products/engine): High-performance, cross-platform graphics engine.
+    - [GPlayd Cloud](https://graphical-playground.com/products/cloud): Cloud-native learning platform for graphics programming.
+    - [GPlayd Studio](https://graphical-playground.com/products/studio): Integrated development environment for graphics projects.
 - [Features](https://graphical-playground.com/features): Overview of the engine and learning platform capabilities.
 - [Pricing](https://graphical-playground.com/pricing): Plans for individuals, students, and institutions.
 - [Changelog](https://graphical-playground.com/changelog): Release notes and engine updates.
 
 ## Community
 
+- [GitHub](https://github.com/GraphicalPlayground): Source code, issue tracker, and contribution guidelines.
 - [Discord](https://discord.graphical-playground.com): Community discussion, support, and contributor coordination.
 - [LinkedIn](https://linkedin.com/company/graphical-playground): Company updates and announcements.
 - [Status](https://status.graphical-playground.com): Live service status and incident history.
@@ -35,6 +40,7 @@ Graphical Playground (GP) is an open-source C++23 game engine and educational pl
 - [Help Center](https://graphical-playground.com/help): Support articles and troubleshooting.
 - [Security](https://graphical-playground.com/security): Security practices and vulnerability disclosure.
 - [Accessibility](https://graphical-playground.com/accessibility): Accessibility statement and compliance.
+- [Donate](https://graphical-playground.com/donate): Support the project through donations.
 - [Sponsors](https://graphical-playground.com/sponsors): Sponsorship and funding information.
 - [Licensing](https://graphical-playground.com/licensing): Open-source licenses and usage terms.
 - [Terms of Service](https://graphical-playground.com/legal/tos): Terms governing use of the platform.
