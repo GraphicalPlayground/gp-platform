@@ -37,7 +37,7 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
       siteName: siteConfig.name,
       images: [
         {
-          url: '/images/gplayd-social-card.png',
+          url: `${siteConfig.links.website}/images/gplayd-social-card.png`,
           width: 1200,
           height: 630,
           alt: description
@@ -49,11 +49,12 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
       title: siteConfig.name,
       description: description,
       creator: '@GraphicalPlayground',
-      images: ['/images/gplayd-social-card.png']
+      images: [`${siteConfig.links.website}/images/gplayd-social-card.png`]
     }
   } = options || {};
 
   return {
+    metadataBase: new URL(siteConfig.links.website),
     title,
     description,
     applicationName: siteConfig.name,
@@ -71,7 +72,7 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
       }
     },
     icons: {
-      icon: 'icons/favicon.svg'
+      icon: `${siteConfig.links.website}/icons/favicon.svg`
     },
     openGraph,
     twitter,
@@ -91,6 +92,6 @@ export function createMetadata(options?: CreateMetadataOptions): Metadata {
     abstract: description,
     category: 'Education',
     classification: 'Education',
-    manifest: '/manifest.webmanifest'
+    manifest: `${siteConfig.links.website}/manifest.webmanifest`
   } as Metadata;
 }
