@@ -8,12 +8,12 @@ import type { Metadata } from 'next';
 import { UnderConstruction } from '@/components/under-construction';
 
 export const metadata: Metadata = createMetadata({
-  title: 'Press | Graphical Playground',
-  description: 'Stay updated with the latest news and announcements about Graphical Playground.',
-  keywords: ['press', 'news', 'announcements', 'updates']
+  title: 'Cloud | Graphical Playground',
+  description: 'Discover the power of our cloud platform and how it can enhance your creative projects.',
+  keywords: ['cloud', 'creative tools', 'scalability', 'capabilities']
 });
 
-export default function PressPage() {
+export default function CloudPage() {
   return (
     <div className='w-full h-[50vh] flex justify-center items-center'>
       <UnderConstruction />

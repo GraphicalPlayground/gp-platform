@@ -5,13 +5,19 @@
 import React from 'react';
 import { createMetadata } from '@/utils/metadata';
 import type { Metadata } from 'next';
+import { UnderConstruction } from '@/components/under-construction';
 
 export const metadata: Metadata = createMetadata({
   title: 'Features | Graphical Playground',
-  description: 'Discover the powerful features of Graphical Playground and how they can enhance your creative workflow.',
+  description:
+    'Discover the powerful features of Graphical Playground and how they can enhance your creative workflow.',
   keywords: ['features', 'capabilities', 'tools', 'creative']
 });
 
 export default function FeaturesPage() {
-  return <div>Features</div>;
+  return (
+    <div className='w-full h-[50vh] flex justify-center items-center'>
+      <UnderConstruction />
+    </div>
+  );
 }

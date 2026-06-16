@@ -108,9 +108,9 @@ export default function MarketingLayout({
           <Footer.NavGrid>
             <Footer.Column title='PRODUCT'>
               <Footer.Link href='/pricing'>Pricing</Footer.Link>
-              <Footer.Link href='#'>GPlayd Engine</Footer.Link>
-              <Footer.Link href='#'>GPlayd Cloud</Footer.Link>
-              <Footer.Link href='#'>GPlayd Studio</Footer.Link>
+              <Footer.Link href='/products/engine'>GPlayd Engine</Footer.Link>
+              <Footer.Link href='/products/cloud'>GPlayd Cloud</Footer.Link>
+              <Footer.Link href='/products/studio'>GPlayd Studio</Footer.Link>
             </Footer.Column>
 
             <Footer.Column title='DEVELOPERS'>
@@ -138,6 +138,7 @@ export default function MarketingLayout({
               <Footer.Link href='/careers'>Careers</Footer.Link>
               <Footer.Link href='/contact'>Contact Us</Footer.Link>
               <Footer.Link href='/sponsors'>Sponsors</Footer.Link>
+              <Footer.Link href='/donate'>Donate</Footer.Link>
               <Footer.Link href='/press'>Press & Media</Footer.Link>
               <Footer.Link href='/accessibility'>Accessibility Statement</Footer.Link>
               <Footer.Link href='/legal'>Legal</Footer.Link>

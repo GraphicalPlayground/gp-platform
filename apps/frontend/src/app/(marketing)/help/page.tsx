@@ -5,6 +5,7 @@
 import React from 'react';
 import { createMetadata } from '@/utils/metadata';
 import type { Metadata } from 'next';
+import { UnderConstruction } from '@/components/under-construction';
 
 export const metadata: Metadata = createMetadata({
   title: 'Help | Graphical Playground',
@@ -13,5 +14,9 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function HelpPage() {
-  return <div>Help</div>;
+  return (
+    <div className='w-full h-[50vh] flex justify-center items-center'>
+      <UnderConstruction />
+    </div>
+  );
 }
