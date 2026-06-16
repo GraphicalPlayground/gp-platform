@@ -15,6 +15,7 @@ import { FooterLogo } from './logo';
 import { FooterBottomBar } from './bottom-bar';
 import { FooterCopyright } from './copyright';
 import { FooterBackToTop } from './back-to-top';
+import { FooterCallToAction } from './call-to-action';
 
 export const Footer = Object.assign(FooterRoot, {
   Root: FooterRoot,
@@ -30,7 +31,8 @@ export const Footer = Object.assign(FooterRoot, {
   Divider: FooterDivider,
   BottomBar: FooterBottomBar,
   Copyright: FooterCopyright,
-  BackToTop: FooterBackToTop
+  BackToTop: FooterBackToTop,
+  CallToAction: FooterCallToAction
 });
 
 export type Footer = {
@@ -49,6 +51,7 @@ export type Footer = {
   BottomBar: ComponentProps<typeof FooterBottomBar>;
   Copyright: ComponentProps<typeof FooterCopyright>;
   BackToTop: ComponentProps<typeof FooterBackToTop>;
+  CallToAction: ComponentProps<typeof FooterCallToAction>;
 };
 
 export {
@@ -65,5 +68,6 @@ export {
   FooterDivider,
   FooterBottomBar,
   FooterCopyright,
-  FooterBackToTop
+  FooterBackToTop,
+  FooterCallToAction
 };

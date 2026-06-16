@@ -3,7 +3,20 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { createMetadata } from '@/utils/metadata';
+import type { Metadata } from 'next';
+import { UnderConstruction } from '@/components/under-construction';
+
+export const metadata: Metadata = createMetadata({
+  title: 'Pricing | Graphical Playground',
+  description: 'View our pricing options and find the perfect plan for your needs.',
+  keywords: ['pricing', 'plans', 'subscriptions', 'cost']
+});
 
 export default function PricingPage() {
-  return <div>Pricing</div>;
+  return (
+    <div className='w-full h-[50vh] flex justify-center items-center'>
+      <UnderConstruction />
+    </div>
+  );
 }

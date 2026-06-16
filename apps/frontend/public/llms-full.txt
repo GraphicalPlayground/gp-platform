@@ -1,0 +1,45 @@
+# Graphical Playground - Full Index
+
+> Complete reference index for Graphical Playground (GP), an open-source C++23 game engine and educational platform based in Lyon, France.
+
+## Site Map
+
+- [Home](https://graphical-playground.com)
+- [Products](https://graphical-playground.com/products)
+    - [GPlayd Engine](https://graphical-playground.com/products/engine)
+    - [GPlayd Cloud](https://graphical-playground.com/products/cloud)
+    - [GPlayd Studio](https://graphical-playground.com/products/studio)
+- [Features](https://graphical-playground.com/features)
+- [Pricing](https://graphical-playground.com/pricing)
+- [About](https://graphical-playground.com/about)
+- [Contact](https://graphical-playground.com/contact)
+- [Changelog](https://graphical-playground.com/changelog)
+- [FAQ](https://graphical-playground.com/faq)
+- [Security](https://graphical-playground.com/security)
+- [Help](https://graphical-playground.com/help)
+- [Careers](https://graphical-playground.com/careers)
+- [Press](https://graphical-playground.com/press)
+- [Donate](https://graphical-playground.com/donate): Support the project through donations.
+- [Sponsors](https://graphical-playground.com/sponsors)
+- [Accessibility](https://graphical-playground.com/accessibility)
+- [Brand Guidelines](https://graphical-playground.com/brand-guidelines)
+- [Licensing](https://graphical-playground.com/licensing)
+
+## Legal
+
+- [Privacy Policy](https://graphical-playground.com/legal/privacy)
+- [Terms of Service](https://graphical-playground.com/legal/tos)
+- [Acceptable Use Policy](https://graphical-playground.com/legal/aup)
+- [Cookie Policy](https://graphical-playground.com/legal/cookie)
+- [Data Processing Agreement](https://graphical-playground.com/legal/dpa)
+- [End User License Agreement](https://graphical-playground.com/legal/eula)
+- [Open Source Licenses](https://graphical-playground.com/legal/oss)
+- [Subscription Service Agreement](https://graphical-playground.com/legal/ssa)
+
+## Documentation
+
+- [Documentation Home](https://docs.graphical-playground.com)
+
+## Source
+
+- [GitHub Organization](https://github.com/GraphicalPlayground)

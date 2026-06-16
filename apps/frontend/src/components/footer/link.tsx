@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { Link } from '@gp/react';
+import { Link } from '@/components/link';
 import { cn } from '@/utils/cn';
 
 export interface FooterLegalLinksProps extends React.HTMLAttributes<HTMLUListElement> {}
@@ -27,13 +27,21 @@ export interface FooterLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEl
 }
 
 export const FooterLink: React.FC<FooterLinkProps> = ({ children, className, href }) => {
+  // Check if the href starts with http:, https:, mailto:, or tel:
+  const isExternal = /^(https?:|mailto:|tel:)/.test(href);
+
+  // If external, apply the standard target and rel attributes for security
+  const externalProps = isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+
   return (
     <li>
       <Link
         href={href}
         className={cn('w-fit text-inherit text-base leading-8.5 flex items-center cursor-pointer', className)}
+        {...externalProps}
       >
         {children}
+        {isExternal && <Link.Icon />}
       </Link>
     </li>
   );

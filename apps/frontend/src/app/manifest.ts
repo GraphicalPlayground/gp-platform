@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_NAME, SITE_DESCRIPTION, SITE_SHORT_NAME } from './metadata';
+import { siteConfig } from '@/config/site';
 
 /**
  * @brief This file defines the web app manifest for the GPlayd web application.
@@ -8,7 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     background_color: '#ffffff',
     categories: ['education', 'graphical-engineering', 'playground', 'explore', 'learning', 'creativity'],
-    description: SITE_DESCRIPTION,
+    description: siteConfig.description,
     orientation: 'portrait',
     related_applications: [
       {
@@ -34,8 +34,8 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: 'any'
       }
     ],
-    name: SITE_NAME,
-    short_name: SITE_SHORT_NAME,
+    name: siteConfig.name,
+    short_name: siteConfig.shortName,
     start_url: '/',
     theme_color: '#ffffff'
   };

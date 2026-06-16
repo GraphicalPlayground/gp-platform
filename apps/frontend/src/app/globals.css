@@ -85,15 +85,27 @@
   -moz-osx-font-smoothing: grayscale;
 
   --scaling-factor: clamp(0px, 100 * 1cqw * 1, min(9999px, 9999px));
+  --max-content-width: 1680px;
+  --gutter: calc(calc(min(100vw, 1680px) / 48) * 2);
+  --col-width: calc(min(100vw, 1680px) / 48);
 
   --font-sans: 'PP Mori', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-heading: 'GT Haptik', var(--font-sans);
   --font-mono: 'Iosevka', SF Mono, SF Mono Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+  --header-height: 46px;
+}
+
+@media (width >= 64rem /* 1024px */) {
+  :root {
+    --header-height: 56px;
+  }
 }
 
 html,
 body {
   font-family: var(--font-sans);
+  scroll-behavior: smooth;
 }
 
 pre,
@@ -117,4 +129,58 @@ h6 {
   100% {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   }
+}
+
+::selection {
+  background: var(--gp-primary);
+  color: black;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--gp-primary);
+  color: black;
+  text-shadow: none;
+}
+
+.legal-article {
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.legal-article pre {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 2rem;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.marquee-inner {
+  animation: marqueeScroll 20s linear infinite;
+}
+
+.marquee-inner-testimonials {
+  animation: marqueeScroll 35s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 1.25rem));
+  }
+}
+
+.under-construction-bg {
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 7%),
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 7%) 6px,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 11%) 6px,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 11%) 12px
+  );
+  mask-image: linear-gradient(transparent 0%, black);
 }

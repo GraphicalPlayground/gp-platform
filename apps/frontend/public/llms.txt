@@ -1,0 +1,47 @@
+# Graphical Playground
+
+> An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.
+
+Graphical Playground (GP) is an open-source C++23 game engine and educational platform, pairing a high-performance cross-platform engine (Windows, Linux, macOS, iOS, Android, WASM) with a cloud-native e-learning curriculum covering Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, HLSL, and real-time rendering pipelines.
+
+## Docs
+
+- [Documentation](https://docs.graphical-playground.com): Engine architecture, API reference, build system (GPBT), and curriculum guides.
+- [GitHub Organization](https://github.com/GraphicalPlayground): Source code, issue tracker, and contribution guidelines.
+
+## Product
+
+- [Products](https://graphical-playground.com/products): Overview of the engine and learning platform offerings.
+    - [GPlayd Engine](https://graphical-playground.com/products/engine): High-performance, cross-platform graphics engine.
+    - [GPlayd Cloud](https://graphical-playground.com/products/cloud): Cloud-native learning platform for graphics programming.
+    - [GPlayd Studio](https://graphical-playground.com/products/studio): Integrated development environment for graphics projects.
+- [Features](https://graphical-playground.com/features): Overview of the engine and learning platform capabilities.
+- [Pricing](https://graphical-playground.com/pricing): Plans for individuals, students, and institutions.
+- [Changelog](https://graphical-playground.com/changelog): Release notes and engine updates.
+
+## Community
+
+- [GitHub](https://github.com/GraphicalPlayground): Source code, issue tracker, and contribution guidelines.
+- [Discord](https://discord.graphical-playground.com): Community discussion, support, and contributor coordination.
+- [LinkedIn](https://linkedin.com/company/graphical-playground): Company updates and announcements.
+- [Status](https://status.graphical-playground.com): Live service status and incident history.
+
+## Company
+
+- [About](https://graphical-playground.com/about): Project background, team, and mission.
+- [Contact](https://graphical-playground.com/contact): Support and business inquiries.
+- [Careers](https://graphical-playground.com/careers): Open contributor and team roles.
+- [Press](https://graphical-playground.com/press): Media resources and brand assets.
+- [Brand Guidelines](https://graphical-playground.com/brand-guidelines): Logo, color palette, and typography usage.
+
+## Optional
+
+- [FAQ](https://graphical-playground.com/faq): Common questions about the platform and engine.
+- [Help Center](https://graphical-playground.com/help): Support articles and troubleshooting.
+- [Security](https://graphical-playground.com/security): Security practices and vulnerability disclosure.
+- [Accessibility](https://graphical-playground.com/accessibility): Accessibility statement and compliance.
+- [Donate](https://graphical-playground.com/donate): Support the project through donations.
+- [Sponsors](https://graphical-playground.com/sponsors): Sponsorship and funding information.
+- [Licensing](https://graphical-playground.com/licensing): Open-source licenses and usage terms.
+- [Terms of Service](https://graphical-playground.com/legal/tos): Terms governing use of the platform.
+- [Privacy Policy](https://graphical-playground.com/legal/privacy): Data handling and privacy practices.

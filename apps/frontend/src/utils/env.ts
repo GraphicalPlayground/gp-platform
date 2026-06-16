@@ -10,10 +10,10 @@ const getBaseURL = (): URL => {
   let host = 'localhost:3000';
 
   // preview
-  if (__PREVIEW__) host = 'preview.graphical-playground.com';
+  if (__PREVIEW__) host = 'staging.graphical-playground.com';
 
   // production
-  if (__PROD__) host = 'www.graphical-playground.com';
+  if (__PROD__) host = 'graphical-playground.com';
 
   // protocol
   const protocol = host.startsWith('localhost') ? 'http' : 'https';
@@ -23,3 +23,9 @@ const getBaseURL = (): URL => {
 
 export const __BASE_URL__ = getBaseURL();
 export const __CDN_URL__ = env.NEXT_PUBLIC_CDN_URL;
+
+export const __SIGN_IN_URL__ = env.NEXT_PUBLIC_CLERK_SIGN_IN_URL;
+export const __SIGN_UP_URL__ = env.NEXT_PUBLIC_CLERK_SIGN_UP_URL;
+export const __WAITLIST_URL__ = env.NEXT_PUBLIC_CLERK_WAITLIST_URL;
+
+export const __HAS_WAITLIST__ = env.NEXT_PUBLIC_WAITLIST_MODE === 'true';
