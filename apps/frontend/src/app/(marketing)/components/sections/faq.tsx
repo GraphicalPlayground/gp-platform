@@ -257,6 +257,10 @@ export const FAQSection = () => {
           </Accordion.Item>
         ))}
       </Accordion>
+      <Link href='/faq' className='underline text-[max(18px,max(0.5px,0.01*var(--scaling-factor)))] font-normal'>
+        See all frequently asked questions
+        <Link.Icon/>
+      </Link>
     </section>
   );
 };
