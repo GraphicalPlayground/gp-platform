@@ -47,7 +47,7 @@ export const CookieBanner = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: '100%', opacity: 0 }}
           transition={{ type: 'spring', bounce: 0, duration: 0.5 }}
-          className='fixed bottom-0 left-0 right-0 flex items-center justify-between bg-white px-22.5 pt-6 pb-7.5 shadow-[-8px_-7px_20px_0_rgba(0,0,0,0.1)] max-[1110px]:justify-start max-[1110px]:px-7.5 max-[834px]:flex-col max-[834px]:items-end max-[834px]:pr-14 max-[750px]:px-4.5 max-[750px]:pt-4.5 max-[750px]:pb-6 max-[750px]:rounded-t-xl'
+          className='fixed bottom-0 left-0 right-0 flex items-center justify-between bg-white px-22.5 pt-6 pb-7.5 shadow-[-8px_-7px_20px_0_rgba(0,0,0,0.1)] max-[1110px]:justify-start max-[1110px]:px-7.5 max-[834px]:flex-col max-[834px]:items-end max-[834px]:pr-14 max-[750px]:px-4.5 max-[750px]:pt-4.5 max-[750px]:pb-6 max-[750px]:rounded-t-xl z-999'
         >
           <div className='max-[1110px]:w-full w-2/3'>
             <p className='text-sm leading-5'>
