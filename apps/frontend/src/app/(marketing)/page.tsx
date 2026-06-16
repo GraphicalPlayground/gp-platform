@@ -6,6 +6,7 @@ import { HeroSection } from './components/sections/hero';
 import { CertificationsSection } from './components/sections/certifications';
 import { UsageSection } from './components/sections/usage';
 import { EditorSection } from './components/sections/editor';
+import { FAQSection } from './components/sections/faq';
 import { CallToActionSection } from './components/sections/call-to-action';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <UsageSection />
       <EditorSection />
       <CertificationsSection />
+      <FAQSection />
       <CallToActionSection />
     </>
   );
