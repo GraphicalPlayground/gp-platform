@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <HeroSection />
       <UsageSection />
-      <EditorSection />
+      {/* <EditorSection /> */}
       <CertificationsSection />
       <FAQSection />
       <CallToActionSection />
