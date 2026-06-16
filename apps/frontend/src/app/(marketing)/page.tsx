@@ -6,6 +6,7 @@ import { HeroSection } from './components/sections/hero';
 import { CertificationsSection } from './components/sections/certifications';
 import { UsageSection } from './components/sections/usage';
 import { EditorSection } from './components/sections/editor';
+import { CallToActionSection } from './components/sections/call-to-action';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <UsageSection />
       <EditorSection />
       <CertificationsSection />
+      <CallToActionSection />
     </>
   );
 }

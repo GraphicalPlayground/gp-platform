@@ -7,17 +7,26 @@ import { cn } from '@/utils/cn';
 
 export interface BackgroundDotsProps extends React.HTMLAttributes<HTMLDivElement> {
   backgroundColor?: string;
+  dotColor?: string;
+  dotSize?: number;
 }
 
-export const BackgroundDots: React.FC<BackgroundDotsProps> = ({ backgroundColor, children, className, ...rest }) => {
+export const BackgroundDots: React.FC<BackgroundDotsProps> = ({
+  backgroundColor,
+  dotColor = 'rgba(214, 214, 214, 0.18)',
+  dotSize = 8,
+  children,
+  className,
+  ...rest
+}) => {
   return (
     <div
       className={cn('w-full h-full', className)}
       style={{
         backgroundColor,
-        backgroundImage: 'radial-gradient(rgba(214, 214, 214, 0.18) 10.6%, transparent 23.6%)',
+        backgroundImage: `radial-gradient(${dotColor} 10.6%, transparent 23.6%)`,
         backgroundPosition: '10px 10px',
-        backgroundSize: '8px 8px'
+        backgroundSize: `${dotSize}px ${dotSize}px`
       }}
       {...rest}
     >

@@ -9,7 +9,7 @@ import { UserButton, Show, ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function MarketingLayout({
   children
@@ -17,6 +17,7 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const socials = {
     linkedin: 'https://www.linkedin.com/company/graphical-playground',
@@ -83,7 +84,9 @@ export default function MarketingLayout({
 
       <main className='min-h-[50vh]'>{children}</main>
 
-      <Footer callToAction='Start learning today'>
+      {pathname !== '/' && <Footer.CallToAction title='Start learning today' />}
+
+      <Footer>
         <div className='flex flex-col xl:flex-row gap-13.5 xl:gap-[10%]'>
           <Footer.Brand>
             <Footer.Logo src='/logo-light.svg' />
