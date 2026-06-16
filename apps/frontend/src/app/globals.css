@@ -173,3 +173,14 @@ h6 {
     transform: translateX(calc(-100% - 1.25rem));
   }
 }
+
+.under-construction-bg {
+  background: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 7%),
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 7%) 6px,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 11%) 6px,
+    color-mix(in srgb, transparent, var(--clerk-color-warning, #f36b16) 11%) 12px
+  );
+  mask-image: linear-gradient(transparent 0%, black);
+}
