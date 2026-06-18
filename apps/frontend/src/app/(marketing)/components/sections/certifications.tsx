@@ -93,7 +93,7 @@ export const CertificationsSection = () => {
                   y: boxY,
                   filter: boxBlur
                 }}
-                className='relative w-full max-w-360 max-h-100 xl:max-h-none rounded-[24px] xl:rounded-[34px] overflow-hidden border border-white/30 bg-white/10 backdrop-blur-2xl aspect-video'
+                className='relative w-full max-w-360 max-h-100 xl:max-h-none rounded-[16px] sm:rounded-[24px] xl:rounded-[34px] overflow-hidden border border-white/30 bg-white/10 backdrop-blur-2xl aspect-[4/3] sm:aspect-video'
               >
                 <style>{`
                   @keyframes shimmer-overlay {
@@ -107,7 +107,7 @@ export const CertificationsSection = () => {
                 <div className='absolute inset-0 bg-linear-to-br from-white/20 via-white/5 to-transparent' />
                 <div className='shimmer-overlay absolute inset-0 bg-linear-to-r from-transparent via-white/30 to-transparent pointer-events-none' />
                 <motion.div
-                  className='relative z-10 h-full flex flex-col justify-between px-6 py-6 2xl:py-10 md:px-10 lg:px-16 select-none'
+                  className='relative z-10 h-full flex flex-col justify-between px-4 py-5 sm:px-6 sm:py-6 2xl:py-10 md:px-10 lg:px-16 select-none'
                   initial='hidden'
                   whileInView='visible'
                   viewport={{ once: true, margin: '-10% 0px' }}
@@ -122,46 +122,50 @@ export const CertificationsSection = () => {
                     }
                   }}
                 >
-                  <motion.div className='flex justify-between items-start'>
+                  <motion.div className='flex justify-between items-start gap-4'>
                     <img
                       src='/images/logo-long-text-white.svg'
                       alt='Company Logo'
-                      className='h-4 md:h-6 xl:h-5 2xl:h-8 opacity-90'
+                      className='h-3 sm:h-4 md:h-6 xl:h-5 2xl:h-8 opacity-90 mt-1'
                     />
-                    <span className='text-white/60 text-[10px] md:text-sm tracking-widest uppercase font-medium'>
+                    <span className='text-white/60 text-[8px] sm:text-[10px] md:text-sm tracking-widest uppercase font-medium text-right'>
                       Verified Certificate
                     </span>
                   </motion.div>
 
-                  <motion.div className='text-center mt-auto mb-auto space-y-2 md:space-y-4'>
-                    <p className='text-white/70 text-[10px] md:text-sm uppercase tracking-[0.2em]'>
+                  <motion.div className='text-center mt-auto mb-auto space-y-1.5 sm:space-y-2 md:space-y-4'>
+                    <p className='text-white/70 text-[8px] sm:text-[10px] md:text-sm uppercase tracking-[0.2em]'>
                       Proudly Presented To
                     </p>
-                    <h1 className='text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-serif text-white tracking-wide border-b border-white/20 inline-block px-6 pb-2 md:pb-4'>
+                    <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-serif text-white tracking-wide border-b border-white/20 inline-block px-4 sm:px-6 pb-2 md:pb-4'>
                       {certificateName}
                     </h1>
-                    <p className='text-white/60 text-xs md:text-base max-w-md mx-auto pt-2'>
+                    <p className='text-white/60 text-[9px] sm:text-xs md:text-base max-w-[250px] sm:max-w-md mx-auto pt-1 sm:pt-2 leading-relaxed'>
                       For demonstrating exceptional mastery and successfully completing the required curriculum.
                     </p>
                   </motion.div>
 
-                  <motion.div className='flex justify-between items-end border-t border-white/10 pt-4 md:pt-8'>
+                  <motion.div className='flex justify-between items-end border-t border-white/10 pt-3 md:pt-8'>
                     <div className='text-left'>
-                      <p className='text-white/90 text-xs md:text-base font-medium'>{formattedDate}</p>
-                      <p className='text-white/50 text-[9px] md:text-xs tracking-wider uppercase mt-1'>Date of Issue</p>
+                      <p className='text-white/90 text-[10px] sm:text-xs md:text-base font-medium'>{formattedDate}</p>
+                      <p className='text-white/50 text-[7px] sm:text-[9px] md:text-xs tracking-wider uppercase mt-0.5 sm:mt-1'>
+                        Date of Issue
+                      </p>
                     </div>
 
                     <div className='flex items-center justify-center'>
                       <img
                         src='/images/logo-icon-white.svg'
                         alt='Seal'
-                        className='h-10 md:h-16 w-10 md:w-16 opacity-30 drop-shadow-lg'
+                        className='h-8 sm:h-10 md:h-16 w-8 sm:w-10 md:w-16 opacity-30 drop-shadow-lg'
                       />
                     </div>
 
                     <div className='text-right'>
-                      <p className='text-white/90 font-serif italic text-sm md:text-2xl'>{randomAuthor}</p>
-                      <p className='text-white/50 text-[9px] md:text-xs tracking-wider uppercase mt-1'>
+                      <p className='text-white/90 font-serif italic text-[11px] sm:text-sm md:text-2xl'>
+                        {randomAuthor}
+                      </p>
+                      <p className='text-white/50 text-[7px] sm:text-[9px] md:text-xs tracking-wider uppercase mt-0.5 sm:mt-1'>
                         Authorized Signature
                       </p>
                     </div>
