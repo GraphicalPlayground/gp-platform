@@ -8,6 +8,8 @@ import { useRef, useEffect, useState } from 'react';
 import { Button } from '@gp/react';
 import { Link } from '@/components/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env';
+import { useRouter } from 'next/navigation';
 
 const CAROUSEL_ITEMS = [
   { id: 1, title: 'Foundations', color: 'bg-red-500' },
@@ -23,6 +25,7 @@ const CAROUSEL_ITEMS = [
 export const CurriculumSection = ({ items = CAROUSEL_ITEMS }) => {
   const targetRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,11 +61,22 @@ export const CurriculumSection = ({ items = CAROUSEL_ITEMS }) => {
               then progress to advanced 3D techniques, shaders, and GPU programming.
             </p>
             <div className='flex flex-col h-full items-start sm:flex-row sm:items-center gap-4 mt-auto'>
-              <Button className='rounded-full text-base px-8 py-6 w-full sm:w-auto' variant='secondary'>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (__HAS_WAITLIST__) {
+                    router.push(__WAITLIST_URL__);
+                  } else {
+                    router.push(__SIGN_IN_URL__);
+                  }
+                }}
+                className='rounded-full text-base px-8 py-6 w-full sm:w-auto'
+                variant='secondary'
+              >
                 Start Learning
               </Button>
               <Link
-                href='#'
+                href='/curriculum'
                 className='text-base px-8 py-6 w-full sm:w-auto flex items-center justify-center sm:justify-start'
               >
                 Explore Curriculum
