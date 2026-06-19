@@ -73,7 +73,7 @@ export const CurriculumSection = ({ items = CAROUSEL_ITEMS }) => {
         </div>
 
         <div
-          className={`bg-[#E4EAEA] grow flex items-center w-full py-8 lg:py-0 ${isDesktop ? 'overflow-hidden' : 'overflow-x-auto no-scrollbar'}`}
+          className={`bg-[#E4EAEA] grow flex h-full items-center w-full py-8 lg:py-0 ${isDesktop ? 'overflow-hidden' : 'overflow-x-auto no-scrollbar'}`}
         >
           <motion.div
             className='flex flex-row gap-4 md:gap-6 lg:gap-[2vw] px-6 md:px-[4vw] w-max'
