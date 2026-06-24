@@ -98,6 +98,9 @@
   --font-mono: 'Iosevka', SF Mono, SF Mono Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 
   --header-height: 46px;
+
+  --sidebar-collapsed-width: 64px;
+  --sidebar-expanded-width: 240px;
 }
 
 @media (width >= 64rem /* 1024px */) {
