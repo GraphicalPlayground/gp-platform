@@ -48,6 +48,13 @@ import { TicketExpiredIcon } from './ticket-expired';
 import { TicketIcon } from './ticket';
 import { UnlockIcon } from './unlock';
 import { UserIcon } from './user';
+import { BoxIcon } from './box';
+import { GlobalIcon } from './global';
+import { TickCircleIcon } from './tick-circle';
+import { CardIcon } from './card';
+import { StatusUpIcon } from './status-up';
+import { SettingsIcon } from './settings';
+import { DocumentTextIcon } from './document-text';
 
 export const Icon = Object.assign(
   {},
@@ -57,6 +64,8 @@ export const Icon = Object.assign(
     Briefcase: BriefcaseIcon,
     Category: CategoryIcon,
     Chart: ChartIcon,
+    Box: BoxIcon,
+    Global: GlobalIcon,
     Code: CodeIcon,
     Command: CommandIcon,
     CpuCharge: CpuChargeIcon,
@@ -72,6 +81,7 @@ export const Icon = Object.assign(
     Hierarchy2: Hierarchy2Icon,
     Hierarchy3: Hierarchy3Icon,
     Hierarchy: HierarchyIcon,
+    Card: CardIcon,
     Home: HomeIcon,
     LockSlash: LockSlashIcon,
     Lock: LockIcon,
@@ -84,7 +94,9 @@ export const Icon = Object.assign(
     ShieldCross: ShieldCrossIcon,
     ShieldSlash: ShieldSlashIcon,
     ShieldTick: ShieldTickIcon,
+    DocumentText: DocumentTextIcon,
     Shield: ShieldIcon,
+    StatusUp: StatusUpIcon,
     Slash: SlashIcon,
     Tag: TagIcon,
     Teacher: TeacherIcon,
@@ -97,7 +109,9 @@ export const Icon = Object.assign(
     TicketExpired: TicketExpiredIcon,
     Ticket: TicketIcon,
     Unlock: UnlockIcon,
-    User: UserIcon
+    User: UserIcon,
+    TickCircle: TickCircleIcon,
+    Settings: SettingsIcon
   }
 );
 
@@ -112,6 +126,9 @@ export {
   CpuChargeIcon,
   CpuIcon,
   CrownIcon,
+  BoxIcon,
+  TickCircleIcon,
+  DocumentTextIcon,
   CupIcon,
   Data2Icon,
   DataIcon,
@@ -126,11 +143,14 @@ export {
   LockSlashIcon,
   LockIcon,
   MenuIcon,
+  CardIcon,
   PeopleIcon,
+  GlobalIcon,
   Profile2userIcon,
   ProgrammingArrowIcon,
   ProgrammingArrowsIcon,
   ReceiptItemIcon,
+  StatusUpIcon,
   ShieldCrossIcon,
   ShieldSlashIcon,
   ShieldTickIcon,
@@ -147,5 +167,6 @@ export {
   TicketExpiredIcon,
   TicketIcon,
   UnlockIcon,
-  UserIcon
+  UserIcon,
+  SettingsIcon
 };
