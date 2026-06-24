@@ -9,6 +9,7 @@ import { Button, Tooltip } from '@gp/react';
 import type { ButtonProps } from '@gp/react';
 import { cn } from '@/utils/cn';
 import { SidebarContext } from './root';
+import { useRouter } from 'next/navigation';
 
 export const SidebarNavSection: React.FC<React.HTMLAttributes<HTMLLIElement> & { title?: string }> = ({
   title,
@@ -37,6 +38,7 @@ export interface SidebarNavItemProps extends ButtonProps {
 
 export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({ children, className, href, icon, ...props }) => {
   const { collapsed } = React.useContext(SidebarContext);
+  const router = useRouter();
 
   return (
     <li className={cn('w-full', className)}>
@@ -46,6 +48,10 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({ children, classN
             {...props}
             variant='ghost'
             className='w-full rounded-[10px] h-10 justify-start overflow-hidden px-3 flex items-center py-0 hover:bg-[#E3E9F0]'
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(href);
+            }}
           >
             {icon &&
               React.createElement(icon, {
