@@ -18,7 +18,7 @@ export const SlashIcon: React.FC<IconProps> = ({ className, size = 24, color = '
       d='M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
@@ -26,7 +26,7 @@ export const SlashIcon: React.FC<IconProps> = ({ className, size = 24, color = '
       d='M18.8999 5L4.8999 19'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />

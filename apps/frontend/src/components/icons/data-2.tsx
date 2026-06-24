@@ -39,7 +39,7 @@ export const Data2Icon: React.FC<IconProps> = ({ className, size = 24, color = '
       d='M9 5H16'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
@@ -48,7 +48,7 @@ export const Data2Icon: React.FC<IconProps> = ({ className, size = 24, color = '
       d='M12.5 5V18C12.5 19.1 13.4 20 14.5 20H16'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
@@ -56,7 +56,7 @@ export const Data2Icon: React.FC<IconProps> = ({ className, size = 24, color = '
       d='M12.5 12.5H16'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />

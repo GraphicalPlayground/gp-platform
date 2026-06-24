@@ -25,7 +25,7 @@ export const ShieldCrossIcon: React.FC<IconProps> = ({ className, size = 24, col
       d='M14.15 13.4399L9.90002 9.18994'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
@@ -33,7 +33,7 @@ export const ShieldCrossIcon: React.FC<IconProps> = ({ className, size = 24, col
       d='M14.1 9.24023L9.84998 13.4902'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />

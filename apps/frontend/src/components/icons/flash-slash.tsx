@@ -18,7 +18,7 @@ export const FlashSlashIcon: React.FC<IconProps> = ({ className, size = 24, colo
       d='M9.17993 18.0402V20.4802C9.17993 22.1602 10.0899 22.5002 11.1999 21.2402L18.7699 12.6402C19.6999 11.5902 19.3099 10.7202 17.8999 10.7202H16.9699'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
@@ -26,7 +26,7 @@ export const FlashSlashIcon: React.FC<IconProps> = ({ className, size = 24, colo
       d='M14.82 8.8399V3.5199C14.82 1.8399 13.91 1.4999 12.8 2.7599L5.23 11.3599C4.3 12.4099 4.69 13.2799 6.1 13.2799H9.19V14.4599'
       stroke={color}
       strokeWidth='1.5'
-      stroke-miterlimit='10'
+      strokeMiterlimit='10'
       strokeLinecap='round'
       strokeLinejoin='round'
     />
