@@ -12,14 +12,19 @@ import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env
 import { useRouter } from 'next/navigation';
 
 const CAROUSEL_ITEMS = [
-  { id: 1, title: 'Foundations', color: 'bg-red-500' },
-  { id: 2, title: 'Computer Graphics Fundamentals', color: 'bg-blue-500' },
-  { id: 3, title: 'Shader Programming', color: 'bg-pink-500' },
-  { id: 4, title: 'Real-Time Rendering Pipelines', color: 'bg-purple-500' },
-  { id: 5, title: 'Engine Architecture', color: 'bg-cyan-500' },
-  { id: 6, title: 'Advanced Rendering', color: 'bg-emerald-500' },
-  { id: 7, title: 'GPU Optimization', color: 'bg-teal-500' },
-  { id: 8, title: 'Specialized Tracks', color: 'bg-yellow-500' }
+  { id: 1, title: 'Foundations', color: 'bg-red-500', image: '/images/storyset/Formula-amico.svg' },
+  { id: 2, title: 'Computer Graphics Fundamentals', color: 'bg-blue-500', image: '/images/storyset/Create-amico.svg' },
+  { id: 3, title: 'Shader Programming', color: 'bg-pink-500', image: '/images/storyset/Collab-amico.svg' },
+  {
+    id: 4,
+    title: 'Real-Time Rendering Pipelines',
+    color: 'bg-purple-500',
+    image: '/images/storyset/metaverso-amico.svg'
+  },
+  { id: 5, title: 'Engine Architecture', color: 'bg-cyan-500', image: '/images/storyset/Launching-amico.svg' },
+  { id: 6, title: 'Advanced Rendering', color: 'bg-emerald-500', image: '/images/storyset/Innovation-amico.svg' },
+  { id: 7, title: 'GPU Optimization', color: 'bg-teal-500', image: '/images/storyset/Learning-amico.svg' },
+  { id: 8, title: 'Specialized Tracks', color: 'bg-yellow-500', image: '/images/storyset/Select player-amico.svg' }
 ];
 
 export const CurriculumSection = ({ items = CAROUSEL_ITEMS }) => {
@@ -98,7 +103,10 @@ export const CurriculumSection = ({ items = CAROUSEL_ITEMS }) => {
                 key={item.id}
                 className={`aspect-video w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] shrink-0 rounded-(--corner-radius,24px) ${item.color} flex items-center justify-center`}
               >
-                <h3 className='text-white text-xl md:text-2xl'>{item.title}</h3>
+                <div className='w-full h-full flex justify-between flex-row px-[4vw] py-[2vw] items-center relative'>
+                  <h3 className='text-white text-xl md:text-2xl w-[70%]'>{item.title}</h3>
+                  <img src={item.image} alt={item.title} className='w-full h-full object-cover' />
+                </div>
               </div>
             ))}
           </motion.div>
