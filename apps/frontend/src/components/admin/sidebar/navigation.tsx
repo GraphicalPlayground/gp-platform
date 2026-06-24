@@ -4,12 +4,12 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Button, Tooltip } from '@gp/react';
 import type { ButtonProps } from '@gp/react';
 import { cn } from '@/utils/cn';
 import { SidebarContext } from './root';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export const SidebarNavSection: React.FC<React.HTMLAttributes<HTMLLIElement> & { title?: string }> = ({
   title,
@@ -37,17 +37,26 @@ export interface SidebarNavItemProps extends ButtonProps {
 }
 
 export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({ children, className, href, icon, ...props }) => {
-  const { collapsed } = React.useContext(SidebarContext);
+  const { collapsed } = useContext(SidebarContext);
   const router = useRouter();
+  const pathname = usePathname();
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(pathname === href);
+  }, [pathname, href]);
 
   return (
     <li className={cn('w-full', className)}>
       <Tooltip delay={100} closeDelay={200} isDisabled={!collapsed}>
-        <Tooltip.Trigger className='w-full'>
+        <Tooltip.Trigger className='w-full' tabIndex={-1}>
           <Button
             {...props}
             variant='ghost'
-            className='w-full rounded-[10px] h-10 justify-start overflow-hidden px-3 flex items-center py-0 hover:bg-[#E3E9F0]'
+            className={cn(
+              'w-full rounded-[10px] h-10 justify-start overflow-hidden px-3 flex items-center py-0 hover:bg-[#E3E9F0]',
+              isActive && 'bg-[#E3E9F0]'
+            )}
             onClick={(e) => {
               e.preventDefault();
               router.push(href);
