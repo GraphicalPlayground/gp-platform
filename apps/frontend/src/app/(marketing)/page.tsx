@@ -8,12 +8,14 @@ import { UsageSection } from './components/sections/usage';
 import { EditorSection } from './components/sections/editor';
 import { FAQSection } from './components/sections/faq';
 import { CallToActionSection } from './components/sections/call-to-action';
+import { CurriculumSection } from './components/sections/curriculum';
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <UsageSection />
+      <CurriculumSection />
       {/* <EditorSection /> */}
       <CertificationsSection />
       <FAQSection />
