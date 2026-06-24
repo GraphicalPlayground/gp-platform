@@ -3,11 +3,13 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { ComponentProps } from 'react';
-import { SidebarRoot } from './root';
+import { SidebarRoot, SidebarMobileTrigger, SidebarContext } from './root';
 import { SidebarNavItem, SidebarNavSection } from './navigation';
 
 export const Sidebar = Object.assign(SidebarRoot, {
   Root: SidebarRoot,
+  MobileTrigger: SidebarMobileTrigger,
+  Context: SidebarContext,
   NavItem: SidebarNavItem,
   NavSection: SidebarNavSection
 });
@@ -15,8 +17,10 @@ export const Sidebar = Object.assign(SidebarRoot, {
 export type Sidebar = {
   Props: ComponentProps<typeof SidebarRoot>;
   Root: ComponentProps<typeof SidebarRoot>;
+  MobileTrigger: ComponentProps<typeof SidebarMobileTrigger>;
+  Context: ComponentProps<typeof SidebarContext>;
   NavItem: ComponentProps<typeof SidebarNavItem>;
   NavSection: ComponentProps<typeof SidebarNavSection>;
 };
 
-export { SidebarRoot, SidebarNavItem, SidebarNavSection };
+export { SidebarRoot, SidebarMobileTrigger, SidebarContext, SidebarNavItem, SidebarNavSection };

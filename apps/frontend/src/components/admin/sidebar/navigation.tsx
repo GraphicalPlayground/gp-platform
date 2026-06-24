@@ -37,7 +37,7 @@ export interface SidebarNavItemProps extends ButtonProps {
 }
 
 export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({ children, className, href, icon, ...props }) => {
-  const { collapsed } = useContext(SidebarContext);
+  const { collapsed, toggleMobileOpen } = useContext(SidebarContext);
   const router = useRouter();
   const pathname = usePathname();
   const [isActive, setIsActive] = useState(false);
@@ -60,6 +60,7 @@ export const SidebarNavItem: React.FC<SidebarNavItemProps> = ({ children, classN
             onClick={(e) => {
               e.preventDefault();
               router.push(href);
+              toggleMobileOpen();
             }}
           >
             {icon &&
