@@ -10,6 +10,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { __HAS_WAITLIST__, __SIGN_IN_URL__, __WAITLIST_URL__ } from '@/utils/env';
 import { useRouter, usePathname } from 'next/navigation';
+import { useAuth } from '@clerk/nextjs';
 
 export default function MarketingLayout({
   children
@@ -25,6 +26,9 @@ export default function MarketingLayout({
     discord: 'https://discord.graphical-playground.com'
   };
 
+  const { sessionClaims } = useAuth();
+  const role = sessionClaims?.metadata?.role;
+
   return (
     <div>
       <Header>
@@ -35,6 +39,7 @@ export default function MarketingLayout({
           <Header.Navigation.Dropdown label='Resources'></Header.Navigation.Dropdown>
           <Header.Navigation.Dropdown label='Enterprise'></Header.Navigation.Dropdown>
           <Header.Navigation.Item href='/pricing'>Pricing</Header.Navigation.Item>
+          {role === 'admin' && <Header.Navigation.Item href='/admin'>Admin</Header.Navigation.Item>}
         </Header.Navigation>
 
         <Header.Actions>
