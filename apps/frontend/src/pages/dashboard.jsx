@@ -2,8 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../auth_context.jsx';
-import { CATALOG, getProgress, markAnnouncementRead } from '../auth_store.js';
+import { getProgress, markAnnouncementRead } from '../auth_store.js';
 import { LogoCompact } from '../components/Logo.jsx';
+import Button from '../components/Button.jsx';
+import { NavItem, Sidebar as SidebarWrapper } from '../components/Navbar.jsx';
+import LeftPanel from './dashboard/LeftPanel.jsx';
+import Topbar from './dashboard/Topbar.jsx';
+import Background from './dashboard/Background.jsx';
 
 /* ─────────────────────────────────────────────────────────────────
    dashboard.jsx — Main hub after login
@@ -277,14 +282,7 @@ function ProgressBar({ color, value }) {
 }
 
 /* ── Sidebar nav item ── */
-function NavItem({ active, icon, label, onClick }) {
-  return (
-    <button className={`db-nav-item${active ? ' active' : ''}`} onClick={onClick}>
-      {icon}
-      <span>{label}</span>
-    </button>
-  );
-}
+// NavItem moved to components/Navbar.jsx
 
 /* ── Course card (enrolled course with progress) ── */
 function CourseCard({ animClass, course, onContinue, onStart }) {
@@ -558,61 +556,7 @@ function TrackOverviewPanel({ courses }) {
    MAIN COMPONENT
    ───────────────────────────────────────────────────────────────── */
 
-const USER_COURSES_KEY = 'gp_user_courses';
-
-/**
- * Generate course data from CATALOG.
- * Picks 4 random modules for the user's enrolled courses.
- */
-function generateCoursesFromCatalog() {
-  // Shuffle and pick 4 modules
-  const shuffled = [...CATALOG].sort(() => Math.random() - 0.5);
-  const selected = shuffled.slice(0, 4);
-
-  return selected.map((module, idx) => {
-    const totalLessons = module.chapters.length;
-    // Give first module some progress, others 0-2 lessons
-    const completedLessons = idx === 0 ? 2 : Math.floor(Math.random() * 3);
-    const lastLesson =
-      completedLessons > 0
-        ? {
-            at: new Date(Date.now() - 1000 * 60 * 60 * (idx + 1) * 2).toISOString(),
-            id: module.chapters[completedLessons - 1].id,
-            title: module.chapters[completedLessons - 1].title
-          }
-        : null;
-
-    return {
-      color: module.color,
-      completedLessons,
-      id: module.id,
-      lastLesson,
-      title: module.title,
-      totalLessons,
-      track: module.track
-    };
-  });
-}
-
-/**
- * Get or create user's enrolled courses.
- * Persists to localStorage so courses stay consistent across refreshes.
- */
-function getUserCourses() {
-  try {
-    const stored = localStorage.getItem(USER_COURSES_KEY);
-    if (stored) {
-      return JSON.parse(stored);
-    }
-  } catch {
-    // If parse fails, fall through to generate new
-  }
-
-  // Generate new courses and save them
-  const courses = generateCoursesFromCatalog();
-  localStorage.setItem(USER_COURSES_KEY, JSON.stringify(courses));
-  return courses;
-}
+// No random course generation: use progress.courses so default progress starts at 0
 
 export default function DashboardPage() {
   const { logout, session } = useAuth();
@@ -643,8 +587,8 @@ export default function DashboardPage() {
     window.location.hash = newTab;
   };
 
-  // Get persisted courses (only generates once, then saved to localStorage)
-  const courses = React.useMemo(() => getUserCourses(), []);
+  // Use progress.courses (default progress is empty so enrolled courses are 0)
+  const courses = progress.courses;
   const announcements = progress.announcements;
   const activeCourses = courses.filter((c) => c.completedLessons > 0);
   const recentLessons = courses
@@ -683,55 +627,6 @@ export default function DashboardPage() {
     return 'Good evening';
   })();
 
-  /* ── Sidebar ── */
-  const Sidebar = ({ mobile = false }) => (
-    <aside
-      className={mobile ? 'flex flex-col gap-1' : 'flex h-full flex-col gap-1'}
-      style={mobile ? {} : { flexShrink: 0, width: 220 }}
-    >
-      {!mobile && (
-        <div className='mb-6 px-1'>
-          <LogoCompact size={30} href='/' />
-        </div>
-      )}
-
-      <NavItem
-        icon={Icon.grid}
-        label='Dashboard'
-        active={tab === 'dashboard'}
-        onClick={() => changeTab('dashboard')}
-      />
-      <NavItem
-        icon={Icon.book}
-        label='My Courses'
-        active={tab === 'courses'}
-        onClick={() => changeTab('courses')}
-      />
-      <NavItem icon={Icon.map} label='Catalog' active={false} onClick={() => navigate('/catalog')} />
-      <NavItem
-        icon={Icon.bell}
-        label={unreadCount > 0 ? `Notifications (${unreadCount})` : 'Notifications'}
-        active={tab === 'notifs'}
-        onClick={() => changeTab('notifs')}
-      />
-
-      <div className='flex-1' />
-      <div className='mt-4 pt-4' style={{ borderTop: '1px solid rgba(255,255,255,.06)' }}>
-        <NavItem icon={Icon.user} label='Profile' active={tab === 'profile'} onClick={() => changeTab('profile')} />
-        <NavItem icon={Icon.settings} label='Settings' active={tab === 'settings'} onClick={() => changeTab('settings')} />
-        <NavItem
-          icon={Icon.logout}
-          label='Sign Out'
-          active={false}
-          onClick={() => {
-            logout();
-            navigate('/', { replace: true });
-          }}
-        />
-      </div>
-    </aside>
-  );
-
   /* ── Main content ── */
   const Main = () => (
     <div className='flex min-w-0 flex-1 flex-col gap-7 pb-12'>
@@ -744,14 +639,12 @@ export default function DashboardPage() {
           </h1>
         </div>
         <div className='flex items-center gap-2'>
-          <button className='db-btn-ghost' onClick={() => navigate('/')}>
-            {Icon.home}
-            <span>Home</span>
-          </button>
-          <button className='db-btn-primary' onClick={() => setTab('courses')}>
-            {Icon.plus}
-            <span>New course</span>
-          </button>
+          <Button variant='ghost' onClick={() => navigate('/')} icon={Icon.home}>
+            Home
+          </Button>
+          <Button onClick={() => setTab('courses')} icon={Icon.plus}>
+            New course
+          </Button>
         </div>
       </div>
 
@@ -918,10 +811,9 @@ export default function DashboardPage() {
           </div>
 
           {/* Edit button */}
-          <button className='db-btn-ghost mt-2 justify-center'>
-            {Icon.settings}
-            <span>Edit Profile</span>
-          </button>
+          <Button variant='ghost' className='mt-2 justify-center' icon={Icon.settings}>
+            Edit Profile
+          </Button>
         </div>
       </div>
 
@@ -977,7 +869,7 @@ export default function DashboardPage() {
               <p className='text-[14px] font-semibold text-white'>Email Address</p>
               <p className='mt-0.5 text-[12px] text-slate-500'>{session?.email ?? 'dev@graphicalplayground.com'}</p>
             </div>
-            <button className='db-btn-ghost'>Change</button>
+            <Button variant='ghost'>Change</Button>
           </div>
           <div style={{ borderTop: '1px solid rgba(255,255,255,.06)' }} />
           <div className='flex items-center justify-between'>
@@ -985,7 +877,7 @@ export default function DashboardPage() {
               <p className='text-[14px] font-semibold text-white'>Password</p>
               <p className='mt-0.5 text-[12px] text-slate-500'>••••••••••</p>
             </div>
-            <button className='db-btn-ghost'>Change</button>
+            <Button variant='ghost'>Change</Button>
           </div>
         </div>
       </div>
@@ -1037,12 +929,12 @@ export default function DashboardPage() {
               <p className='text-[14px] font-semibold text-white'>Delete Account</p>
               <p className='mt-0.5 text-[12px] text-slate-500'>Permanently delete your account and all data</p>
             </div>
-            <button
-              className='db-btn-ghost'
+            <Button
+              variant='ghost'
               style={{ borderColor: 'rgba(239,68,68,.3)', color: '#ef4444' }}
             >
               Delete
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -1071,42 +963,13 @@ export default function DashboardPage() {
       className='relative min-h-screen bg-[#06060a] text-slate-100 antialiased'
       style={{ fontFamily: "'Inter',ui-sans-serif,system-ui,sans-serif" }}
     >
-      {/* Ambient bg */}
-      <div
-        className='db-pulse pointer-events-none fixed inset-0 z-0'
-        style={{
-          background:
-            'radial-gradient(ellipse 900px 500px at 0% 0%,rgba(0,166,255,.07) 0%,transparent 65%),radial-gradient(ellipse 700px 400px at 100% 100%,rgba(125,0,255,.06) 0%,transparent 65%)'
-        }}
-      />
+      {/* Ambient bg (extracted) */}
+      <Background />
 
-      {/* ── Mobile top bar ── */}
-      <div
-        className='fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-4 py-3 md:hidden'
-        style={{
-          backdropFilter: 'blur(14px)',
-          background: 'rgba(6,6,10,.90)',
-          borderBottom: '1px solid rgba(255,255,255,.06)'
-        }}
-      >
-        <LogoCompact size={28} />
-        <button onClick={() => setSidebarOpen((v) => !v)} className='p-1 text-slate-400 hover:text-white'>
-          {sidebarOpen ? (
-            <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
-              <line x1='18' y1='6' x2='6' y2='18' />
-              <line x1='6' y1='6' x2='18' y2='18' />
-            </svg>
-          ) : (
-            <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2'>
-              <line x1='3' y1='6' x2='21' y2='6' />
-              <line x1='3' y1='12' x2='21' y2='12' />
-              <line x1='3' y1='18' x2='21' y2='18' />
-            </svg>
-          )}
-        </button>
-      </div>
+      {/* Mobile top bar (extracted) */}
+      <Topbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-      {/* ── Mobile sidebar overlay ── */}
+      {/* Mobile sidebar overlay (keeps behaviour) */}
       {sidebarOpen && (
         <div className='fixed inset-0 z-40 flex md:hidden' onClick={() => setSidebarOpen(false)}>
           <div
@@ -1121,7 +984,7 @@ export default function DashboardPage() {
             <div className='mb-5'>
               <LogoCompact size={28} />
             </div>
-            <Sidebar mobile />
+            <LeftPanel mobile />
           </div>
           <div className='flex-1' style={{ background: 'rgba(0,0,0,.5)' }} />
         </div>
@@ -1129,18 +992,8 @@ export default function DashboardPage() {
 
       {/* ── Desktop layout ── */}
       <div className='relative z-10 flex min-h-screen'>
-        {/* Desktop sidebar */}
-        <div
-          className='sticky top-0 hidden h-screen flex-col px-4 py-6 md:flex'
-          style={{
-            backdropFilter: 'blur(12px)',
-            background: 'rgba(6,6,10,.6)',
-            borderRight: '1px solid rgba(255,255,255,.06)',
-            width: 240
-          }}
-        >
-          <Sidebar />
-        </div>
+        {/* Desktop sidebar (extracted) */}
+        <LeftPanel unreadCount={unreadCount} tab={tab} changeTab={changeTab} logout={logout} navigate={navigate} />
 
         {/* Main scroll area */}
         <main className='flex min-w-0 flex-1 flex-col gap-0 px-5 pt-[72px] md:px-10 md:pt-10'>

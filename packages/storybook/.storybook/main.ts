@@ -12,7 +12,11 @@ const __dirname = dirname(__filename);
 export const getStories = () => {
   const __STORYBOOK_READY_ONLY__ = process.env.STORYBOOK_READY_ONLY === 'true';
 
-  if (!__STORYBOOK_READY_ONLY__) return ['../../react/src/**/*.stories.@(ts|tsx)'];
+  if (!__STORYBOOK_READY_ONLY__)
+    return [
+      //pathJoin(__dirname, '../../react/src/**/*.stories.@(ts|tsx)'),
+      pathJoin(__dirname, '../../apps/frontend/src/**/*.stories.@(js|jsx|ts|tsx)')
+    ];
 
   const readyStories = globSync(pathJoin(__dirname, '../../react/src/**/*.stories.@(ts|tsx)')).filter((file) => {
     const content = fsReadFileSync(file, 'utf-8');

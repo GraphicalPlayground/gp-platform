@@ -19,12 +19,10 @@ const RESET_KEY = 'gp_reset_requested';
 const ONBOARD_KEY = 'gp_onboarding_done';
 
 /* ── Helpers ──────────────────────────────────────────────────── */
-
 /** Returns the stored session object, or null */
 export function getSession() {
   try {
     const raw = localStorage.getItem(SESSION_KEY);
-
     return raw ? JSON.parse(raw) : null;
   } catch {
     return null;
@@ -81,8 +79,7 @@ export function signUp(email, _password, _name) {
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
   // Always reset onboarding so a new sign-up goes through the tour
   localStorage.removeItem(ONBOARD_KEY);
-  // Clear enrolled courses so new sign-up gets fresh random courses
-  localStorage.removeItem('gp_user_courses');
+  // Note: do not persist generated user courses here. Keep progress in PROGRESS_KEY.
 
   return { ok: true, user: session };
 }
@@ -91,7 +88,6 @@ export function signUp(email, _password, _name) {
 export function logout() {
   localStorage.removeItem(SESSION_KEY);
   localStorage.removeItem(RESET_KEY);
-  localStorage.removeItem('gp_user_courses'); // Clear enrolled courses on logout
 }
 
 /**
@@ -423,30 +419,7 @@ const DEFAULT_PROGRESS = {
       type: 'tip'
     }
   ],
-  courses: [
-    {
-      color: '#38bdf8',
-      completedLessons: 2,
-      id: 'mod-01',
-      lastLesson: {
-        at: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
-        id: 'mod-01-c2',
-        title: 'Vectors & the Geometric Toolkit'
-      },
-      title: 'Mathematical Foundations for Graphics Engineering',
-      totalLessons: 5,
-      track: 'Foundations'
-    },
-    {
-      color: '#a855f7',
-      completedLessons: 0,
-      id: 'mod-04',
-      lastLesson: null,
-      title: 'The Rasterization Pipeline',
-      totalLessons: 3,
-      track: 'Core Graphics'
-    }
-  ]
+  courses: []
 };
 
 /** Returns the full progress object (seeded from DEFAULT_PROGRESS on first call). */
