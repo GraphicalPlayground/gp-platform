@@ -8,6 +8,6 @@ authors:
     email: "support@graphical-playground.com"
     affiliation: "Graphical Playground"
 type: "software"
-repository-code: "https://github.com/GraphicalPlayground/gp-engine"
+repository-code: "https://github.com/GraphicalPlayground/gp-platform"
 url: "https://graphical-playground.com"
 license: "Apache-2.0"
