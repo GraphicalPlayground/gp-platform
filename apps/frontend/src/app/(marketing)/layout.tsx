@@ -35,11 +35,105 @@ export default function MarketingLayout({
         <Header.Logo srcFull='/images/logo-long-text-black.svg' srcShort='/images/logo-short-text-black.svg' />
 
         <Header.Navigation>
-          <Header.Navigation.Dropdown label='Product'></Header.Navigation.Dropdown>
-          <Header.Navigation.Dropdown label='Resources'></Header.Navigation.Dropdown>
-          <Header.Navigation.Dropdown label='Enterprise'></Header.Navigation.Dropdown>
-          <Header.Navigation.Item href='/pricing'>Pricing</Header.Navigation.Item>
-          {role === 'admin' && <Header.Navigation.Item href='/admin'>Admin</Header.Navigation.Item>}
+              <Header.Navigation.Dropdown label="Product">
+            <Header.Navigation.Dropdown.Item
+              href="/products/engine"
+              title="GPlayd Engine"
+              description="Real-time graphics engine."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/products/cloud"
+              title="GPlayd Cloud"
+              description="Cloud compilation and project hosting."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/products/studio"
+              title="GPlayd Studio"
+              description="Browser-based graphics development."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/pricing"
+              title="Pricing"
+              description="Plans for individuals and teams."
+            />
+          </Header.Navigation.Dropdown>
+
+          <Header.Navigation.Dropdown label="Resources">
+            <Header.Navigation.Dropdown.Item
+              href="https://docs.graphical-playground.com"
+              title="Documentation"
+              description="Learn every part of the platform."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/help"
+              title="Help Center"
+              description="Answers to common questions."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="https://docs.graphical-playground.com/blog"
+              title="Blog"
+              description="Tutorials, articles and announcements."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/changelog"
+              title="Changelog"
+              description="See what's new."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="https://status.graphical-playground.com"
+              title="Status"
+              description="Platform uptime and incidents."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="https://github.com/GraphicalPlayground"
+              title="GitHub"
+              description="Open-source projects and examples."
+            />
+          </Header.Navigation.Dropdown>
+
+          <Header.Navigation.Dropdown label="Enterprise">
+            <Header.Navigation.Dropdown.Item
+              href="/enterprise"
+              title="Enterprise"
+              description="Overview of enterprise features."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/education"
+              title="Education"
+              description="Solutions for schools and universities."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/contact"
+              title="Contact Sales"
+              description="Talk to our team."
+            />
+
+            <Header.Navigation.Dropdown.Item
+              href="/about"
+              title="About Graphical Playground"
+              description="Learn about our mission."
+            />
+          </Header.Navigation.Dropdown>
+
+          <Header.Navigation.Item href="/pricing">
+            Pricing
+          </Header.Navigation.Item>
+
+          {role === "admin" && (
+            <Header.Navigation.Item href="/admin">
+              Admin
+            </Header.Navigation.Item>
+          )}
         </Header.Navigation>
 
         <Header.Actions>
