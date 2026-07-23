@@ -3,7 +3,7 @@
 SEO/GEO content for the marketing platform. Every `.mdx` file's frontmatter
 must validate against `articleFrontmatterUnionSchema` from `@gp/content`.
 
-| Folder             | Type            | Schema                          |
+| Folder             | Type            | Schema                           |
 | ------------------ | --------------- | -------------------------------- |
 | `guides/`          | `guide`         | `guideFrontmatterSchema`         |
 | `comparisons/`     | `comparison`    | `comparisonFrontmatterSchema`    |
