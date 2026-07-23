@@ -23,9 +23,9 @@ override).
 
 - **Breakdowns** dissect a specific technology or system end-to-end (e.g.
   "How Nanite Works", "Godot's Rendering Pipeline"). Adds `subject`,
-  `prerequisites`, and an optional `sources` list of the talks/papers/blog
-  posts the breakdown is grounded in — useful both for credibility and for
-  readers who want to go to the primary source.
+  `prerequisites`, and an optional `sources` list of the talks, papers, or
+  blog posts the breakdown draws on, so readers can go straight to the
+  primary source.
 - **Interviews** feature a named `interviewee` (name, title, company, socials)
   distinct from the piece's `author`. Adds `format` (`text` / `video` /
   `podcast`) and an optional `highlightQuote` for pull-quotes and OG/social
@@ -38,8 +38,8 @@ override).
   and an optional `relatedChangelogSlug` to link forward once shipped.
 - **Showcases** spotlight a learner's project, distinct from the writeup's
   `author` via a dedicated `creator`. Adds `projectUrl`, `repositoryUrl`,
-  `technologies`, and an optional `certificateSlug` tying the showcase back
-  to the certificate track that produced it.
+  `technologies`, and an optional `certificateSlug` that links back to the
+  certificate track that produced it.
 - **Research** covers rigorous, data-backed writeups. Adds an `abstract`,
   optional `contributors` (beyond the single `author`), `references`,
   and optional `methodology`/`datasetUrl` fields.
