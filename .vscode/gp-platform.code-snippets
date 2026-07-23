@@ -1,0 +1,41 @@
+{
+  "GP JS/TS License Header": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "gpl",
+    "include": ["**/*.js", "**/*.ts", "**/*.jsx", "**/*.tsx", "**/*.mjs", "**/*.cjs"],
+    "body": [
+      "// Copyright (c) - Graphical Playground. All rights reserved.",
+      "// For more information, see https://graphical-playground/legal",
+      "// mailto:support AT graphical-playground DOT com",
+      ""
+    ],
+    "description": "Standard JS/TS license header"
+  },
+  "GP CSS License Header": {
+    "scope": "css,scss,sass,less",
+    "prefix": "gpl",
+    "include": ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less"],
+    "body": [
+      "/**",
+      " * Copyright (c) - Graphical Playground. All rights reserved.",
+      " * For more information, see https://graphical-playground/legal",
+      " * mailto:support AT graphical-playground DOT com",
+      " */",
+      ""
+    ],
+    "description": "Standard CSS license header"
+  },
+  "GP Shell Script License Header": {
+    "scope": "shellscript",
+    "include": ["**/*.sh", "**/*.bash"],
+    "prefix": "gpl",
+    "body": [
+      "#!/bin/bash",
+      "# Copyright (c) - Graphical Playground. All rights reserved.",
+      "# For more information, see https://graphical-playground/legal",
+      "# mailto:support AT graphical-playground DOT com",
+      ""
+    ],
+    "description": "Standard Shell Script file"
+  }
+}

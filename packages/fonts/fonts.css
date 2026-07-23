@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+    url('./MonaSans/MonaSansVF[wdth\,wght\,opsz\,ital].woff2') format('woff2 supports variations'),
+    url('./MonaSans/MonaSansVF[wdth\,wght\,opsz\,ital].woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-display: swap;
+  font-synthesis: none;
+  font-feature-settings: 'liga' 0;
+}
+
+@font-face {
+  font-family: 'Mona Sans Mono';
+  src:
+    url('./MonaSans/MonaSansMonoVF[wdth\,wght].woff2') format('woff2 supports variations'),
+    url('./MonaSans/MonaSansMonoVF[wdth\,wght].woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-display: swap;
+  font-synthesis: none;
+}
+
+@font-face {
+  font-family: 'Hubot Sans';
+  src:
+    url('./HubotSans/Hubot-Sans.woff2') format('woff2 supports variations'),
+    url('./HubotSans/Hubot-Sans.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-display: swap;
+  font-stretch: 75% 125%;
+}
+
+:root {
+  --font-mona-sans: 'Mona Sans', sans-serif;
+  --font-mona-sans-mono: 'Mona Sans Mono', monospace;
+  --font-hubot-sans: 'Hubot Sans', sans-serif;
+}

@@ -1,0 +1,3 @@
+**/dist/**/*.css
+**/.next/**/*.css
+**/storybook-static/**

@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "DavidAnson.vscode-markdownlint",
+    "hex-ci.stylelint-plus",
+    "ZixuanChen.vitest-explorer"
+  ],
+  "unwantedRecommendations": []
+}

@@ -1,0 +1,109 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# Owners can be @users, @org/teams or emails.
+
+# Available users:
+#   - @mallory-scotton <mallory.scotton@graphical-playground.com>
+#   - @bombabobo <raphael.ostier@graphical-playground.com>
+#   - @natan-fievet <nathan.fievet@graphical-playground.com>
+#   - @Hugo-Cathelain <hugo.cathelain@graphical-playground.com>
+#   - @Omegalpha28 <ossan.msoili@graphical-playground.com>
+
+# Available teams:
+#   - @GraphicalPlayground/engine-architecture
+#   - @GraphicalPlayground/graphics-engineering
+#   - @GraphicalPlayground/documentation-knowledge
+#   - @GraphicalPlayground/curriculum-learning-design
+#   - @GraphicalPlayground/infrastructure-devops
+#   - @GraphicalPlayground/platform-frontend
+#   - @GraphicalPlayground/platform-backend
+#   - @GraphicalPlayground/community-devrel
+#   - @GraphicalPlayground/security
+#   - @GraphicalPlayground/qa-test-infrastructure
+#   - @GraphicalPlayground/legal-compliance
+#   - @GraphicalPlayground/design-product-ux
+#   - @GraphicalPlayground/data-analytics
+#   - @GraphicalPlayground/billing-growth
+
+# Legal compliance
+
+/packages/content/legal/                @GraphicalPlayground/legal-compliance
+/LICENSE_HEADER                         @GraphicalPlayground/legal-compliance
+/LICENSE.md                             @GraphicalPlayground/legal-compliance
+/**/LICENSE.md                          @GraphicalPlayground/legal-compliance
+
+# Governance & community
+
+/SECURITY.md                            @GraphicalPlayground/security
+/GOVERNANCE.md                          @GraphicalPlayground/community-devrel
+/CODE_OF_CONDUCT.md                     @GraphicalPlayground/community-devrel
+/CONTRIBUTING.md                        @GraphicalPlayground/community-devrel
+/DONORS.md                              @GraphicalPlayground/community-devrel
+/.github/FUNDING.yml                    @GraphicalPlayground/community-devrel
+/README.md                              @GraphicalPlayground/documentation-knowledge
+/CHANGELOG.md                           @GraphicalPlayground/documentation-knowledge
+/CITATION.cff                           @GraphicalPlayground/documentation-knowledge
+
+# Platform applications
+
+/apps/app                               @GraphicalPlayground/platform-frontend
+/apps/admin                             @GraphicalPlayground/platform-frontend
+/apps/marketing                         @GraphicalPlayground/platform-frontend
+/apps/backend                           @GraphicalPlayground/platform-backend
+
+/apps/**/playwright.config.ts           @GraphicalPlayground/qa-test-infrastructure
+
+# Packages
+
+/packages/ui                            @GraphicalPlayground/platform-frontend @GraphicalPlayground/design-product-ux
+/packages/fonts                         @GraphicalPlayground/design-product-ux
+/packages/seo                           @GraphicalPlayground/platform-frontend
+/packages/types                         @GraphicalPlayground/platform-backend @GraphicalPlayground/platform-frontend
+/packages/standard                      @GraphicalPlayground/infrastructure-devops
+/packages/logger                        @GraphicalPlayground/infrastructure-devops
+/packages/database                      @GraphicalPlayground/platform-backend
+/packages/certificates                  @GraphicalPlayground/platform-backend
+/packages/auth                          @GraphicalPlayground/platform-backend @GraphicalPlayground/security
+/packages/payments                      @GraphicalPlayground/platform-backend @GraphicalPlayground/billing-growth
+/packages/queue                         @GraphicalPlayground/platform-backend @GraphicalPlayground/infrastructure-devops
+/packages/realtime                      @GraphicalPlayground/platform-backend @GraphicalPlayground/graphics-engineering
+/packages/engine                        @GraphicalPlayground/platform-backend @GraphicalPlayground/graphics-engineering
+/packages/content                       @GraphicalPlayground/platform-backend
+
+# Documentation
+
+/**/docs/                               @GraphicalPlayground/documentation-knowledge
+/docs/                                  @GraphicalPlayground/documentation-knowledge
+/examples/                              @GraphicalPlayground/documentation-knowledge
+/guides/                                @GraphicalPlayground/documentation-knowledge
+
+# CI/CD
+
+/.github/workflows/                     @GraphicalPlayground/infrastructure-devops
+/.github/ISSUE_TEMPLATE/                @GraphicalPlayground/infrastructure-devops
+/.github/pull_request_template.md       @GraphicalPlayground/infrastructure-devops
+/.github/CODEOWNERS                     @GraphicalPlayground/infrastructure-devops @GraphicalPlayground/security
+
+# Repo tooling & config
+
+/.vscode/                               @GraphicalPlayground/infrastructure-devops
+/package.json                           @GraphicalPlayground/infrastructure-devops
+/pnpm-workspace.yaml                    @GraphicalPlayground/infrastructure-devops
+/pnpm-lock.yaml                         @GraphicalPlayground/infrastructure-devops
+/turbo.json                             @GraphicalPlayground/infrastructure-devops
+/.npmrc                                 @GraphicalPlayground/infrastructure-devops
+/.nvmrc                                 @GraphicalPlayground/infrastructure-devops
+/.editorconfig                          @GraphicalPlayground/infrastructure-devops
+/eslint.config.mjs                      @GraphicalPlayground/infrastructure-devops
+/commitlint.config.mjs                  @GraphicalPlayground/infrastructure-devops
+/lint-staged.config.mjs                 @GraphicalPlayground/infrastructure-devops
+/.prettierrc                            @GraphicalPlayground/infrastructure-devops
+/.prettierignore                        @GraphicalPlayground/infrastructure-devops
+/.pre-commit-config.yaml                @GraphicalPlayground/infrastructure-devops
+/.stylelintignore                       @GraphicalPlayground/infrastructure-devops
+/gp-platform.code-workspace             @GraphicalPlayground/infrastructure-devops
+/.mailmap                               @GraphicalPlayground/infrastructure-devops
+
+# Overrides: last-match-wins, keep these below every general rule above
+
+/packages/content/legal/                @GraphicalPlayground/legal-compliance

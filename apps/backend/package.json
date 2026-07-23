@@ -1,0 +1,10 @@
+{
+  "name": "@gp/backend",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@gp/standard": "workspace:*"
+  }
+}

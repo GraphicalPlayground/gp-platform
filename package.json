@@ -1,0 +1,97 @@
+{
+  "name": "gp-platform",
+  "private": true,
+  "version": "0.0.2",
+  "license": "MIT",
+  "author": {
+    "name": "Graphical Playground",
+    "email": "support@graphical-playground.com",
+    "url": "https://graphical-playground.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GraphicalPlayground/gp-platform",
+    "directory": "."
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:backend": "turbo dev --filter=@gp/backend",
+    "dev:app": "turbo dev --filter=@gp/app",
+    "dev:admin": "turbo dev --filter=@gp/admin",
+    "dev:marketing": "turbo dev --filter=@gp/marketing",
+
+    "build": "turbo build",
+    "build:backend": "turbo build --filter=@gp/backend",
+    "build:app": "turbo build --filter=@gp/app",
+    "build:admin": "turbo build --filter=@gp/admin",
+    "build:marketing": "turbo build --filter=@gp/marketing",
+
+    "start": "turbo start",
+    "start:backend": "turbo start --filter=@gp/backend",
+    "start:app": "turbo start --filter=@gp/app",
+    "start:admin": "turbo start --filter=@gp/admin",
+    "start:marketing": "turbo start --filter=@gp/marketing",
+
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint -- --fix",
+    "lint:backend": "turbo lint --filter=@gp/backend",
+    "lint:app": "turbo lint --filter=@gp/app",
+    "lint:admin": "turbo lint --filter=@gp/admin",
+    "lint:marketing": "turbo lint --filter=@gp/marketing",
+
+    "format": "prettier --ignore-path .prettierignore --check .",
+    "format:fix": "prettier --ignore-path .prettierignore --write .",
+
+    "typecheck": "turbo typecheck",
+    "typecheck:backend": "turbo typecheck --filter=@gp/backend",
+    "typecheck:app": "turbo typecheck --filter=@gp/app",
+    "typecheck:admin": "turbo typecheck --filter=@gp/admin",
+    "typecheck:marketing": "turbo typecheck --filter=@gp/marketing"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.1",
+    "@commitlint/config-conventional": "21.2.0",
+    "@eslint/eslintrc": "3.3.6",
+    "@eslint/js": "9.39.5",
+    "@gp/standard": "workspace:*",
+    "@types/node": "26.1.1",
+    "@typescript-eslint/eslint-plugin": "8.65.0",
+    "@typescript-eslint/parser": "8.65.0",
+    "dotenv": "17.4.2",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.11",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-only-warn": "1.2.1",
+    "eslint-plugin-prettier": "5.5.6",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.3",
+    "eslint-plugin-sort-destructure-keys": "3.0.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-storybook": "10.5.3",
+    "eslint-plugin-unused-imports": "4.4.1",
+    "lint-staged": "17.1.1",
+    "postcss": "8.5.22",
+    "prettier": "3.9.6",
+    "prettier-plugin-css-order": "2.2.0",
+    "prettier-plugin-tailwindcss": "0.8.1",
+    "tsup": "8.5.1",
+    "tsx": "4.23.1",
+    "turbo": "2.10.5",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.65.0",
+    "vitest": "4.1.10"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp"
+    ]
+  },
+  "engines": {
+    "node": ">=20.x",
+    "pnpm": ">=10.x"
+  },
+  "packageManager": "pnpm@10.26.2"
+}

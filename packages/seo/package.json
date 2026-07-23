@@ -1,0 +1,15 @@
+{
+  "name": "@gp/seo",
+  "private": true,
+  "version": "0.0.2",
+  "exports": {
+    ".": "./src/index.ts",
+    "./jsonld": "./src/jsonld/index.ts",
+    "./og": "./src/og/index.ts"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "@gp/standard": "workspace:*"
+  }
+}

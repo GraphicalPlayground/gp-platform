@@ -1,0 +1,15 @@
+{
+  "name": "@gp/ui",
+  "version": "0.0.2",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles/globals.css",
+    "./components/*": "./src/components/*",
+    "./hooks/*": "./src/hooks/*",
+    "./utils/*": "./src/utils/*"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

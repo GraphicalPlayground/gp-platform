@@ -1,0 +1,7 @@
+"documentation":
+  - changed-files:
+    - any-glob-to-any-file: ['**/{docs,doc,documentation}/**', '/*.md']
+
+"topic:tests":
+  - changed-files:
+    - any-glob-to-any-file: ['**/{tests,test,__tests__,__test__}/**']

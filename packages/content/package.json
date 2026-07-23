@@ -1,0 +1,15 @@
+{
+  "name": "@gp/content",
+  "private": true,
+  "version": "0.0.2",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {},
+  "dependencies": {
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@gp/standard": "workspace:*"
+  }
+}
