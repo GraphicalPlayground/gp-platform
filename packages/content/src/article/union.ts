@@ -4,16 +4,20 @@
 
 import { z } from 'zod';
 
+import { breakdownFrontmatterSchema } from './breakdown';
 import { comparisonFrontmatterSchema } from './comparison';
 import { glossaryFrontmatterSchema } from './glossary';
 import { guideFrontmatterSchema } from './guide';
+import { interviewFrontmatterSchema } from './interview';
 import { techArticleFrontmatterSchema } from './tech-article';
 
 export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
   guideFrontmatterSchema,
   comparisonFrontmatterSchema,
   techArticleFrontmatterSchema,
-  glossaryFrontmatterSchema
+  glossaryFrontmatterSchema,
+  breakdownFrontmatterSchema,
+  interviewFrontmatterSchema
 ]);
 
 export type Article = z.infer<typeof articleFrontmatterUnionSchema>;

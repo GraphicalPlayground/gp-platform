@@ -8,3 +8,5 @@
   - `comparisons/` — `comparisonFrontmatterSchema` (`type: 'comparison'`)
   - `tech-articles/` — `techArticleFrontmatterSchema` (`type: 'tech-article'`)
   - `glossary/` — `glossaryFrontmatterSchema` (`type: 'glossary'`)
+  - `breakdowns/` — `breakdownFrontmatterSchema` (`type: 'breakdown'`)
+  - `interviews/` — `interviewFrontmatterSchema` (`type: 'interview'`)
