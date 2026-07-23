@@ -4,8 +4,8 @@ Assignee: [@bombabobo](https://github.com/bombabobo), [@Omegalpha28](https://git
 
 - [ ] Connect the `gp-platform` with the `gp-docs` repository to ensure that the documentation is up-to-date and reflects the latest changes in the platform.
 - [ ] Implement a CI/CD pipeline to automate the testing and deployment of the platform.
-- [ ] Separate the `@gp/frontend` into 4 distinct packages: `@gp/api`, `@gp/web`, `@gp/marketing`, and `@gp/admin` to improve modularity and maintainability.
-- [ ] Move away a lot of utilities from `@gp/frontend` to the respective packages to reduce redundancy and improve code organization.
+- [~] Separate the `@gp/frontend` into 4 distinct packages: `@gp/backend`, `@gp/app`, `@gp/marketing`, and `@gp/admin` to improve modularity and maintainability.
+- [~] Move away a lot of utilities from `@gp/frontend` to the respective packages to reduce redundancy and improve code organization.
 - [ ] Write the comprehensive `CONTRIBUTING.md` file to provide clear guidelines for contributors, including code style, testing requirements, and submission process.
 - [ ] Update the `README.md` file to include detailed instructions on how to set up the development environment, run tests, and contribute to the project.
 - [ ] Implement a robust error handling mechanism across the platform to ensure that errors are logged and reported effectively, improving the overall reliability of the system.
