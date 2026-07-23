@@ -22,7 +22,13 @@
       "playwright": "test",
       "jsonld": "json",
       "og": "images",
-      "engine": "bicep"
+      "engine": "bicep",
+      "breakdowns": "assembly",
+      "comparisons": "ci",
+      "glossary": "enum",
+      "guides": "docs",
+      "interviews": "java",
+      "tech-articles": "template"
     },
     "material-icon-theme.files.associations": {
       "eslint/base.mjs": "eslint",
