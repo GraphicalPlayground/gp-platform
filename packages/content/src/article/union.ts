@@ -4,10 +4,10 @@
 
 import { z } from 'zod';
 
-import { comparisonFrontmatterSchema } from './comparison-frontmatter';
-import { glossaryFrontmatterSchema } from './glossary-frontmatter';
-import { guideFrontmatterSchema } from './guide-frontmatter';
-import { techArticleFrontmatterSchema } from './tech-article-frontmatter';
+import { comparisonFrontmatterSchema } from './comparison';
+import { glossaryFrontmatterSchema } from './glossary';
+import { guideFrontmatterSchema } from './guide';
+import { techArticleFrontmatterSchema } from './tech-article';
 
 export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
   guideFrontmatterSchema,

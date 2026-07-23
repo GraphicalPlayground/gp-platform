@@ -4,10 +4,10 @@
 
 import { z } from 'zod';
 
-import { articleCategorySchema } from './article-category';
-import { authorSchema } from './author';
-import { difficultySchema } from './difficulty';
-import { faqEntrySchema } from './faq';
+import { authorSchema } from '../shared/author';
+import { difficultySchema } from '../shared/difficulty';
+import { faqEntrySchema } from '../shared/faq';
+import { articleCategorySchema } from './category';
 
 export const articleSeoOverrideSchema = z.object({
   title: z.string().min(1).optional(),

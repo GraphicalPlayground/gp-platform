@@ -4,7 +4,7 @@
 
 import { z } from 'zod';
 
-import { articleFrontmatterSchema } from './article-frontmatter';
+import { articleFrontmatterSchema } from './frontmatter';
 
 export const comparisonSubjectSchema = z.object({
   name: z.string().min(1),

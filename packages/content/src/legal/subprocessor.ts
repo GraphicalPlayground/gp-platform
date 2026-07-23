@@ -4,7 +4,7 @@
 
 import { z } from 'zod';
 
-import { legalFrontmatterSchema } from './legal-frontmatter';
+import { legalFrontmatterSchema } from './frontmatter';
 
 export const subprocessorSchema = z.object({
   name: z.string().min(1),

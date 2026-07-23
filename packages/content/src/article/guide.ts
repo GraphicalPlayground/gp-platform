@@ -4,7 +4,7 @@
 
 import { z } from 'zod';
 
-import { articleFrontmatterSchema } from './article-frontmatter';
+import { articleFrontmatterSchema } from './frontmatter';
 
 export const guideFrontmatterSchema = articleFrontmatterSchema.extend({
   type: z.literal('guide'),
