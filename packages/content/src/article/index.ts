@@ -4,10 +4,14 @@
 
 export * from './breakdown';
 export * from './category';
+export * from './changelog';
 export * from './comparison';
 export * from './frontmatter';
 export * from './glossary';
 export * from './guide';
 export * from './interview';
+export * from './research';
+export * from './roadmap';
+export * from './showcase';
 export * from './tech-article';
 export * from './union';

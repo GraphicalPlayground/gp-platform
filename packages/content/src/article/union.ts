@@ -5,10 +5,14 @@
 import { z } from 'zod';
 
 import { breakdownFrontmatterSchema } from './breakdown';
+import { changelogFrontmatterSchema } from './changelog';
 import { comparisonFrontmatterSchema } from './comparison';
 import { glossaryFrontmatterSchema } from './glossary';
 import { guideFrontmatterSchema } from './guide';
 import { interviewFrontmatterSchema } from './interview';
+import { researchFrontmatterSchema } from './research';
+import { roadmapFrontmatterSchema } from './roadmap';
+import { showcaseFrontmatterSchema } from './showcase';
 import { techArticleFrontmatterSchema } from './tech-article';
 
 export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
@@ -17,7 +21,11 @@ export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
   techArticleFrontmatterSchema,
   glossaryFrontmatterSchema,
   breakdownFrontmatterSchema,
-  interviewFrontmatterSchema
+  interviewFrontmatterSchema,
+  changelogFrontmatterSchema,
+  roadmapFrontmatterSchema,
+  showcaseFrontmatterSchema,
+  researchFrontmatterSchema
 ]);
 
 export type Article = z.infer<typeof articleFrontmatterUnionSchema>;

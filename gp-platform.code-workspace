@@ -28,7 +28,11 @@
       "glossary": "enum",
       "guides": "docs",
       "interviews": "java",
-      "tech-articles": "template"
+      "tech-articles": "template",
+      "roadmaps": "context",
+      "changelogs": "update",
+      "research": "debug",
+      "showcases": "bicep"
     },
     "material-icon-theme.files.associations": {
       "eslint/base.mjs": "eslint",

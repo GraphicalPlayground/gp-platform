@@ -4,20 +4,14 @@
 
 import { z } from 'zod';
 
+import { referenceSchema } from '../shared/reference';
 import { articleFrontmatterSchema } from './frontmatter';
-
-export const breakdownSourceSchema = z.object({
-  title: z.string().min(1),
-  url: z.url()
-});
-
-export type BreakdownSource = z.infer<typeof breakdownSourceSchema>;
 
 export const breakdownFrontmatterSchema = articleFrontmatterSchema.extend({
   type: z.literal('breakdown'),
   subject: z.string().min(1),
   prerequisites: z.array(z.string().min(1)).default([]),
-  sources: z.array(breakdownSourceSchema).default([])
+  sources: z.array(referenceSchema).default([])
 });
 
 export type BreakdownFrontmatter = z.infer<typeof breakdownFrontmatterSchema>;
