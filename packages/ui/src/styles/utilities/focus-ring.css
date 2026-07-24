@@ -36,3 +36,25 @@
 @utility no-highlight {
   -webkit-tap-highlight-color: transparent;
 }
+
+@utility status-focused {
+  @apply focus-ring;
+}
+
+@utility status-focused-field {
+  @apply focus-field-ring;
+}
+
+@utility status-invalid-field {
+  @apply invalid-field-ring;
+}
+
+@utility status-disabled {
+  opacity: var(--disabled-opacity);
+  cursor: var(--cursor-disabled);
+  pointer-events: none;
+}
+
+@utility status-pending {
+  @apply pointer-events-none;
+}

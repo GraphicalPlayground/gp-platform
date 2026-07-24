@@ -3,10 +3,15 @@
   "version": "0.0.2",
   "private": true,
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "import": "./src/index.ts",
+      "default": "./src/index.ts",
+      "style": "./index.css",
+      "types": "./src/index.ts"
+    },
     "./css": {
-      "style": "./src/styles/globals.css",
-      "default": "./src/styles/globals.css"
+      "style": "./index.css",
+      "default": "./index.css"
     },
     "./components": "./src/components/index.ts",
     "./hooks": "./src/hooks/index.ts",
@@ -31,7 +36,7 @@
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.3.3",
     "typescript": "6.0.3"
   },
   "dependencies": {
