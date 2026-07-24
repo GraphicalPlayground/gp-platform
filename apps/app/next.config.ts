@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
   typedRoutes: true,
+  experimental: {
+    optimizePackageImports: ['@gp/ui']
+  },
   transpilePackages: ['@gp/ui'],
   typescript: {
     ignoreBuildErrors: true
