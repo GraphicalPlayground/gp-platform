@@ -3,11 +3,16 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { Text } from '@gp/ui/components';
 
 /**
  * @brief Principal home page of the marketing application.
  * @returns A JSX page displaying the home page content.
  */
 export default function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Text>Hello World, this is a text !</Text>
+    </div>
+  );
 }

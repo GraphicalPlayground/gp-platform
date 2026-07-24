@@ -5,7 +5,7 @@
  */
 
 @import 'tailwindcss';
-@import '@gp/ui/style.css';
+@import '@gp/ui/css';
 
 * {
   box-sizing: border-box;
