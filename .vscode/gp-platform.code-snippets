@@ -12,7 +12,7 @@
     "description": "Standard JS/TS license header"
   },
   "GP CSS License Header": {
-    "scope": "css,scss,sass,less",
+    "scope": "css,scss,sass,less,tailwindcss",
     "prefix": "gpl",
     "include": ["**/*.css", "**/*.scss", "**/*.sass", "**/*.less"],
     "body": [

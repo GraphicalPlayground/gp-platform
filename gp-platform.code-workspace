@@ -4,6 +4,9 @@
     { "path": "." }
   ],
   "settings": {
+    "files.associations": {
+      "*.css": "tailwindcss"
+    },
     "material-icon-theme.folders.associations": {
       "standard": "coverage",
       "tsconfig": "typescript",
