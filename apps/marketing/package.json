@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.6.0",
+    "@gp/ui": "workspace:*",
     "@t3-oss/env-nextjs": "0.13.11",
     "clsx": "2.1.1",
     "framer-motion": "12.40.0",
