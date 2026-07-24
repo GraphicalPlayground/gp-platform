@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@custom-variant dark {
+  /* Explicit: .dark class or data-theme="dark" on element or ancestor */
+  &:is(.dark, .dark *, [data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+
+    &::before,
+    &::after {
+      @slot;
+    }
+  }
+
+  /* Fallback: system prefers dark color scheme */
+  @media (prefers-color-scheme: dark) {
+    &:not(:is(.dark, .dark *, [data-theme='dark'], [data-theme='dark'] *)) & {
+      @slot;
+
+      &::before,
+      &::after {
+        @slot;
+      }
+    }
+  }
+}

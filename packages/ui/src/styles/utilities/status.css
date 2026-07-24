@@ -1,0 +1,27 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@utility status-focused {
+  @apply focus-ring;
+}
+
+@utility status-focused-field {
+  @apply focus-field-ring;
+}
+
+@utility status-invalid-field {
+  @apply invalid-field-ring;
+}
+
+@utility status-disabled {
+  opacity: var(--disabled-opacity);
+  cursor: var(--cursor-disabled);
+  pointer-events: none;
+}
+
+@utility status-pending {
+  @apply pointer-events-none;
+}
