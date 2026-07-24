@@ -4,7 +4,12 @@
     "dbaeumer.vscode-eslint",
     "DavidAnson.vscode-markdownlint",
     "hex-ci.stylelint-plus",
-    "ZixuanChen.vitest-explorer"
+    "ZixuanChen.vitest-explorer",
+    "unifiedjs.vscode-mdx",
+    "midudev.better-svg",
+    "yzhang.markdown-all-in-one",
+    "PKief.material-icon-theme",
+    "redhat.vscode-yaml"
   ],
   "unwantedRecommendations": []
 }
