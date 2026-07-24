@@ -3,6 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
 
@@ -14,7 +15,9 @@ import './globals.css';
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className='h-full antialiased scroll-smooth'>
-      <body className='min-h-full flex flex-col scroll-smooth'>{children}</body>
+      <body className='min-h-full flex flex-col scroll-smooth'>
+        <ClerkProvider>{children}</ClerkProvider>
+      </body>
     </html>
   );
 }

@@ -3,6 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { ClerkProvider } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 
 import './globals.css';
 
@@ -11,10 +13,14 @@ import './globals.css';
  * @param children - The child components to be rendered within the layout.
  * @returns The root layout component.
  */
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  await auth.protect();
+
   return (
     <html lang='en' className='h-full antialiased scroll-smooth'>
-      <body className='min-h-full flex flex-col scroll-smooth'>{children}</body>
+      <body className='min-h-full flex flex-col scroll-smooth'>
+        <ClerkProvider>{children}</ClerkProvider>
+      </body>
     </html>
   );
 }
