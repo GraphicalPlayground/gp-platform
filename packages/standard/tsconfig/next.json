@@ -9,7 +9,8 @@
     "moduleDetection": "force",
     "moduleResolution": "Bundler",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "plugins": [{ "name": "next" }]
+    "plugins": [{ "name": "next" }],
+    "allowImportingTsExtensions": true
   },
   "include": [],
   "exclude": ["node_modules"]

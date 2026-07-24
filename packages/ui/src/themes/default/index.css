@@ -3,3 +3,12 @@
  * For more information, see https://graphical-playground/legal
  * mailto:support AT graphical-playground DOT com
  */
+
+/* Declares the theme variables - @see https://tailwindcss.com/docs/theme */
+@import '../shared/theme.css';
+
+/* Default Theme */
+@import './variables.css' layer(theme);
+
+/* Component customizations for default theme */
+@import './components/index.css' layer(components);

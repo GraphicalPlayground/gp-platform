@@ -4,11 +4,10 @@
  * mailto:support AT graphical-playground DOT com
  */
 
-@layer theme, base, components, utilities, variants;
+@layer theme, base, components, utilities;
 
 /* Base layer - Tailwind CSS v4 */
 @import 'tailwindcss';
-@import 'tw-animate-css';
 
 /* Base styles */
 @import './base.css' layer(base);
@@ -21,7 +20,7 @@
 @import '../themes/default/index.css' layer(theme);
 
 /* Utilities */
-@import './utilities/index.css' layer(utilities);
+@import './utilities/index.css';
 
 /* Variants */
-@import './variants/index.css' layer(variants);
+@import './variants/index.css';
