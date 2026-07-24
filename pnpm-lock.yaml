@@ -77,6 +77,9 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 4.4.1
         version: 4.4.1(@typescript-eslint/eslint-plugin@8.65.0(@typescript-eslint/parser@8.65.0(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))(typescript@6.0.3))(eslint@9.39.5(jiti@2.7.0))
+      husky:
+        specifier: ^9.1.7
+        version: 9.1.7
       lint-staged:
         specifier: 17.1.1
         version: 17.1.1
@@ -299,6 +302,72 @@ importers:
       typescript:
         specifier: 6.0.3
         version: 6.0.3
+
+  packages/auth:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/certificates:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/content:
+    dependencies:
+      zod:
+        specifier: 4.4.3
+        version: 4.4.3
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/database:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/engine:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/fonts: {}
+
+  packages/logger:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/payments:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/queue:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/realtime:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+
+  packages/seo:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
 
   packages/standard: {}
 
@@ -2815,6 +2884,11 @@ packages:
 
   hermes-parser@0.25.1:
     resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
+
+  husky@9.1.7:
+    resolution: {integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
@@ -6532,6 +6606,8 @@ snapshots:
   hermes-parser@0.25.1:
     dependencies:
       hermes-estree: 0.25.1
+
+  husky@9.1.7: {}
 
   ignore@5.3.2: {}
 

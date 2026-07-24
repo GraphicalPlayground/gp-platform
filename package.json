@@ -19,34 +19,30 @@
     "dev:app": "turbo dev --filter=@gp/app",
     "dev:admin": "turbo dev --filter=@gp/admin",
     "dev:marketing": "turbo dev --filter=@gp/marketing",
-
     "build": "turbo build",
     "build:backend": "turbo build --filter=@gp/backend",
     "build:app": "turbo build --filter=@gp/app",
     "build:admin": "turbo build --filter=@gp/admin",
     "build:marketing": "turbo build --filter=@gp/marketing",
-
     "start": "turbo start",
     "start:backend": "turbo start --filter=@gp/backend",
     "start:app": "turbo start --filter=@gp/app",
     "start:admin": "turbo start --filter=@gp/admin",
     "start:marketing": "turbo start --filter=@gp/marketing",
-
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",
     "lint:backend": "turbo lint --filter=@gp/backend",
     "lint:app": "turbo lint --filter=@gp/app",
     "lint:admin": "turbo lint --filter=@gp/admin",
     "lint:marketing": "turbo lint --filter=@gp/marketing",
-
     "format": "prettier --ignore-path .prettierignore --check .",
     "format:fix": "prettier --ignore-path .prettierignore --write .",
-
     "typecheck": "turbo typecheck",
     "typecheck:backend": "turbo typecheck --filter=@gp/backend",
     "typecheck:app": "turbo typecheck --filter=@gp/app",
     "typecheck:admin": "turbo typecheck --filter=@gp/admin",
-    "typecheck:marketing": "turbo typecheck --filter=@gp/marketing"
+    "typecheck:marketing": "turbo typecheck --filter=@gp/marketing",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.1",
@@ -72,6 +68,7 @@
     "eslint-plugin-sort-keys-fix": "1.1.2",
     "eslint-plugin-storybook": "10.5.3",
     "eslint-plugin-unused-imports": "4.4.1",
+    "husky": "^9.1.7",
     "lint-staged": "17.1.1",
     "postcss": "8.5.22",
     "prettier": "3.9.6",
