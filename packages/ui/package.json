@@ -9,7 +9,13 @@
     "./hooks/*": "./src/hooks/*",
     "./utils/*": "./src/utils/*"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "tsc --noEmit",
+    "dev": "tsc --noEmit --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo node_modules"
+  },
   "peerDependencies": {
     "next": "^14.0.0 || ^15.0.0",
     "react": "^18.2.0 || ^19.0.0",
