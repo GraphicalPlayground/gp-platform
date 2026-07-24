@@ -152,6 +152,24 @@
   --color-indigo-8: var(--gp-color-indigo-8);
   --color-indigo-9: var(--gp-color-indigo-9);
 
+  --color-background: var(--gp-color-background);
+  --color-foreground: var(--gp-color-foreground);
+
+  --color-accent: var(--gp-color-accent);
+  --color-danger: var(--gp-color-danger);
+  --color-attention: var(--gp-color-attention);
+  --color-disabled: var(--gp-color-disabled);
+  --color-neutral: var(--gp-color-neutral);
+  --color-done: var(--gp-color-done);
+  --color-muted: var(--gp-color-muted);
+  --color-severe: var(--gp-color-severe);
+  --color-sponsors: var(--gp-color-sponsors);
+  --color-success: var(--gp-color-success);
+
+  /* Color Aliases */
+  --color-focus: var(--gp-color-accent);
+  --color-link: var(--gp-color-accent);
+
   /* Transition Timing Functions */
   --ease-smooth: ease; /* same as transition: ease; */
 
