@@ -16,7 +16,29 @@ const commitLintConfig = {
     'type-enum': [
       2,
       'always',
-      ['feat', 'fix', 'refactor', 'style', 'docs', 'test', 'build', 'ci', 'chore', 'revert', 'feature']
+      [
+        'feat',
+        'fix',
+        'refactor',
+        'style',
+        'docs',
+        'test',
+        'build',
+        'ci',
+        'chore',
+        'revert',
+        'feature',
+        'add',
+        'remove',
+        'update',
+        'upgrade',
+        'downgrade',
+        'release',
+        'merge',
+        'hotfix',
+        'config',
+        'lint'
+      ]
     ]
   }
 };
