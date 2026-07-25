@@ -7,11 +7,18 @@ import { people } from './people';
 import { languages } from './languages';
 import { contacts } from './contacts';
 import { keywords } from './keywords';
+import { localization } from './localization';
 
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground platform.
  */
-export const graph = [organization, ...Object.values(people), ...Object.values(languages), ...Object.values(contacts)];
+export const graph = [
+  organization,
+  ...Object.values(people),
+  ...Object.values(languages),
+  ...Object.values(contacts),
+  localization
+];
 
 /* Forward exports */
-export { organization, people, languages, contacts, keywords };
+export { organization, people, languages, contacts, keywords, localization };
