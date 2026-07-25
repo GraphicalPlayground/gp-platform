@@ -50,5 +50,13 @@ export const keywords: string[] = [
   'Mathematics for Graphics',
   'Physics for Graphics',
   'Computer Science',
-  'Software Engineering'
+  'Software Engineering',
+  'Learn Graphics Programming',
+  'Learn Game Development',
+  'Learn Computer Graphics',
+  'Learn Engine Architecture',
+  'Learn OpenGL',
+  'Learn Vulkan',
+  'Learn DirectX',
+  'Learn Metal'
 ] as const;
