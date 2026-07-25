@@ -4,6 +4,8 @@
 
 import React from 'react';
 import { ClerkProvider } from '@clerk/nextjs';
+import { JsonLd } from '@gp/seo/react';
+import { graph } from '@gp/seo/jsonld';
 
 import './globals.css';
 
@@ -16,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en' className='h-full antialiased scroll-smooth'>
       <body className='min-h-full flex flex-col scroll-smooth'>
+        <JsonLd data={graph} />
         <ClerkProvider>{children}</ClerkProvider>
       </body>
     </html>
