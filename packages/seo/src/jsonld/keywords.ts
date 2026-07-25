@@ -1,0 +1,54 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+/**
+ * @brief A collection of keywords related to the Graphical Playground platform.
+ */
+export const keywords: string[] = [
+  'Education',
+  'E-Learning',
+  'Graphics Programming',
+  'Computer Graphics',
+  'Graphics Engine',
+  'Graphics Engineering',
+  'Creative Coding',
+  '3D Rendering',
+  '2D Rendering',
+  'Real-time Rendering',
+  'Ray Tracing',
+  'Rasterization',
+  'Shaders',
+  'Live Coding',
+  'Interactive Coding',
+  'Visual Programming',
+  'Rapid Prototyping',
+  'Data Visualization',
+  'Vulkan',
+  'WebGPU',
+  'WebGL',
+  'OpenGL',
+  'OpenGLES',
+  'DirectX',
+  'DirectX 11',
+  'DirectX 12 Ultimate',
+  'DirectX 12',
+  'Metal',
+  'AGC',
+  'Advanced Graphics Compiler',
+  'GNM',
+  'GNMX',
+  'NVN',
+  'Render Hardware Interface',
+  'RHI',
+  'Low-Level Graphics API',
+  'Low-Level Graphics Programming',
+  'Hardware Abstraction Layer',
+  'HAL',
+  'Game Development',
+  'Computational Geometry',
+  'Mathematics for Graphics',
+  'Physics for Graphics',
+  'Computer Science',
+  'Software Engineering'
+] as const;
