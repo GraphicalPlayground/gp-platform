@@ -3,6 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MetadataRoute } from 'next';
+import { SeoRobots } from '@gp/seo';
 
 /**
  * @brief This function generates the robots.txt content for the website.
@@ -10,7 +11,7 @@ import type { MetadataRoute } from 'next';
  * @returns An object representing the robots.txt rules and sitemap location.
  */
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: []
-  };
+  return SeoRobots.for('marketing', {
+    baseUrl: 'https://graphical-playground.com'
+  }).toMetadataRoute();
 }
