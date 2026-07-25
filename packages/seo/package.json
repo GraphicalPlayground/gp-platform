@@ -4,8 +4,8 @@
   "version": "0.0.2",
   "exports": {
     ".": "./src/index.ts",
-    "./jsonld": "./src/jsonld/index.ts",
-    "./og": "./src/og/index.ts"
+    "./react": "./src/components/index.ts",
+    "./jsonld": "./src/jsonld/index.ts"
   },
   "scripts": {},
   "dependencies": {
