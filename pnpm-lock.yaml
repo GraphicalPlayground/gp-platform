@@ -137,6 +137,9 @@ importers:
       '@gp/fonts':
         specifier: workspace:*
         version: link:../../packages/fonts
+      '@gp/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
       '@gp/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -207,6 +210,9 @@ importers:
       '@gp/fonts':
         specifier: workspace:*
         version: link:../../packages/fonts
+      '@gp/seo':
+        specifier: workspace:*
+        version: link:../../packages/seo
       '@gp/ui':
         specifier: workspace:*
         version: link:../../packages/ui
