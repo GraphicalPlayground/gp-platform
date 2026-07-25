@@ -35,7 +35,17 @@
       "roadmaps": "context",
       "changelogs": "update",
       "research": "debug",
-      "showcases": "bicep"
+      "showcases": "bicep",
+      "[slug]": "template",
+      "[...slug]": "template",
+      "default": "base",
+
+      /* Fonts */
+      "HubotSans": "font",
+      "MonaSans": "font",
+
+      /* Components */
+      "Text": "log"
     },
     "material-icon-theme.files.associations": {
       "eslint/base.mjs": "eslint",
