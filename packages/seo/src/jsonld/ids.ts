@@ -22,6 +22,13 @@ export const Urls = {
   SubDomain: (sub: string) => `https://${sub}.${BASE_DOMAIN}`,
 
   /**
+   * @brief Generates a URL for a GitHub repository under the Graphical Playground organization.
+   * @param slug - The slug of the repository to generate the URL for.
+   * @returns The full URL for the specified GitHub repository.
+   */
+  Repository: (slug: string) => `https://github.com/GraphicalPlayground/${slug}`,
+
+  /**
    * @brief A collection of social media URLs for the Graphical Playground platform.
    */
   Socials: {
