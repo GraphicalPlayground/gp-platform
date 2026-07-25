@@ -3,3 +3,4 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './components';
+export * from './robots';
