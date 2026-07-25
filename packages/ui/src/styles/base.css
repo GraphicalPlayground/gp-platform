@@ -3,3 +3,39 @@
  * For more information, see https://graphical-playground/legal
  * mailto:support AT graphical-playground DOT com
  */
+
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+  border-color: var(--border, currentColor);
+}
+
+:root {
+  view-transition-name: none;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  @apply bg-background text-foreground font-sans;
+}

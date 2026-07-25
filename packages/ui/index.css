@@ -9,6 +9,9 @@
 /* Base layer - Tailwind CSS v4 */
 @import 'tailwindcss';
 
+/* Fonts */
+@import '@gp/fonts/fonts.css';
+
 /* Base styles */
 @import './src/styles/base.css' layer(base);
 @import './src/styles/scrollbar.css' layer(base);

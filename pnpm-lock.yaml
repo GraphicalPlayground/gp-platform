@@ -439,6 +439,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@gp/fonts':
+        specifier: workspace:*
+        version: link:../fonts
       clsx:
         specifier: 2.1.1
         version: 2.1.1

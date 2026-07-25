@@ -5,6 +5,11 @@
  */
 
 @layer base {
+  :root {
+    --gp-font-sans: var(--font-mona-sans), ui-sans-serif, system-ui, sans-serif;
+    --gp-font-mono: var(--font-mona-sans-mono), ui-monospace, monospace;
+  }
+
   :root,
   .light,
   .default,

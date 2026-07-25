@@ -5,6 +5,10 @@
  */
 
 @theme inline {
+  /* Font Families */
+  --font-sans: var(--gp-font-sans);
+  --font-mono: var(--gp-font-mono);
+
   /* Color Palette */
   --color-white: var(--gp-color-white);
   --color-black: var(--gp-color-black);
