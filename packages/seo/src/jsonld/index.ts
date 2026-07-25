@@ -1,3 +1,17 @@
 // Copyright (c) - Graphical Playground. All rights reserved.
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
+
+import { organization } from './organization';
+import { people } from './people';
+import { languages } from './languages';
+import { contacts } from './contacts';
+import { keywords } from './keywords';
+
+/**
+ * @brief A collection of JSON-LD representations of the Graphical Playground platform.
+ */
+export const graph = [organization, ...Object.values(people), ...Object.values(languages), ...Object.values(contacts)];
+
+/* Forward exports */
+export { organization, people, languages, contacts, keywords };
