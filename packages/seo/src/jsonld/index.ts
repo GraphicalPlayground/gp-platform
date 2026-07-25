@@ -9,6 +9,7 @@ import { contacts } from './contacts';
 import { keywords } from './keywords';
 import { localization } from './localization';
 import { website } from './website';
+import { softwaresSourceCode, softwaresApplication } from './softwares';
 
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground platform.
@@ -19,8 +20,20 @@ export const graph = [
   ...Object.values(languages),
   ...Object.values(contacts),
   localization,
-  website
+  website,
+  ...Object.values(softwaresSourceCode),
+  ...Object.values(softwaresApplication)
 ];
 
 /* Forward exports */
-export { organization, people, languages, contacts, keywords, localization, website };
+export {
+  organization,
+  people,
+  languages,
+  contacts,
+  keywords,
+  localization,
+  website,
+  softwaresSourceCode,
+  softwaresApplication
+};
