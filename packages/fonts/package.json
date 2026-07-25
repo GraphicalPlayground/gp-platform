@@ -2,5 +2,7 @@
   "name": "@gp/fonts",
   "version": "0.0.2",
   "private": true,
-  "files": ["fonts"]
+  "exports": {
+    "./fonts.css": "./fonts.css"
+  }
 }

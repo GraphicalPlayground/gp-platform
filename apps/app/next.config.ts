@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['@gp/ui']
   },
-  transpilePackages: ['@gp/ui'],
+  transpilePackages: ['@gp/ui', '@gp/fonts'],
   typescript: {
     ignoreBuildErrors: true
   }

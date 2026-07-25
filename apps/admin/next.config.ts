@@ -20,9 +20,9 @@ const nextConfig: NextConfig = {
   trailingSlash: false,
   typedRoutes: true,
   experimental: {
-    optimizePackageImports: ['@gp/ui']
+    optimizePackageImports: ['@gp/ui'],
   },
-  transpilePackages: ['@gp/ui'],
+  transpilePackages: ['@gp/ui', '@gp/fonts'],
   typescript: {
     ignoreBuildErrors: true
   }
