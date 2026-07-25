@@ -33,7 +33,7 @@ export const organization: WithContext<Organization> = {
   'foundingLocation': { '@id': `${Urls.BaseUrl}/#localization` },
   'location': { '@id': `${Urls.BaseUrl}/#localization` },
   'legalAddress': { '@id': `${Urls.BaseUrl}/#localization` },
-  'sameAs': Object.values(Urls.Socials),
+  'sameAs': [Urls.SubDomain('docs'), Urls.SubDomain('status'), ...Object.values(Urls.Socials)],
   'founder': [
     { '@id': JsonLdIds.person('mallory-scotton') },
     { '@id': JsonLdIds.person('hugo-cathelain') },
