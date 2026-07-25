@@ -81,7 +81,9 @@
       "app/robots.ts": "dependabot",
       "app/sitemap.ts": "routing",
       "app/manifest.ts": "contributing",
-      "layout.tsx": "roadmap"
+      "layout.tsx": "roadmap",
+      "page.tsx": "document",
+      "not-found.tsx": "lintstaged"
     }
   },
   "extensions": {
