@@ -13,7 +13,7 @@ export default async function LegalPage() {
       <ul>
         {docs.map((doc) => (
           <li key={doc.frontmatter.slug}>
-            <a className='hover:text-link' href={`/legal/${doc.frontmatter.slug}`}>
+            <a className='text-text-link-rest hover:text-text-link-pressed underline' href={`/legal/${doc.frontmatter.slug}`}>
               {doc.frontmatter.title}
             </a>
           </li>
