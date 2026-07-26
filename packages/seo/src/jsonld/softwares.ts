@@ -4,7 +4,8 @@
 
 import type { WithContext, SoftwareApplication, SoftwareSourceCode } from 'schema-dts';
 import type { SoftwareSlug } from './ids';
-import { JsonLdIds, Urls } from './ids';
+import { JsonLdIds } from './ids';
+import { Urls, Constants } from '../utils';
 
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground software source code.
@@ -14,7 +15,7 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-docs'),
-    'name': 'Graphical Playground Docs',
+    'name': Constants.product('Docs'),
     'alternateName': ['GPlayd Docs', 'GP Docs', 'gp-docs'],
     'description':
       'Technical documentation for the Graphical Playground ecosystem, including engine internals, platform architecture, APIs, and contributor guidelines.',
@@ -41,7 +42,7 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-engine'),
-    'name': 'Graphical Playground Engine',
+    'name': Constants.product('Engine'),
     'alternateName': ['GPlayd Engine', 'GP Engine', 'gp-engine'],
     'description':
       'An open-source C++23 game engine and educational platform, targeting Windows, Linux, macOS, with support for Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, and HLSL rendering pipelines.',
@@ -68,7 +69,7 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-platform'),
-    'name': 'Graphical Playground Platform',
+    'name': Constants.product('Platform'),
     'alternateName': ['GPlayd Platform', 'GP Platform', 'gp-platform'],
     'description':
       'The cloud-native learning platform powering Graphical Playground. Hosts interactive courses, executes graphics code on remote GPUs, and delivers real-time visual feedback through a web-based environment.',
@@ -91,7 +92,7 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-docs'),
-    'name': 'Graphical Playground Docs',
+    'name': Constants.product('Docs'),
     'alternateName': ['GPlayd Docs', 'GP Docs', 'gp-docs'],
     'description':
       'Technical documentation for the Graphical Playground ecosystem, including engine internals, platform architecture, APIs, and contributor guidelines.',
@@ -108,7 +109,7 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-engine'),
-    'name': 'Graphical Playground Engine',
+    'name': Constants.product('Engine'),
     'alternateName': ['GPlayd Engine', 'GP Engine', 'gp-engine'],
     'description':
       'An open-source C++23 game engine and educational platform, targeting Windows, Linux, macOS, with support for Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, and HLSL rendering pipelines.',
@@ -136,7 +137,7 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-platform'),
-    'name': 'Graphical Playground Platform',
+    'name': Constants.product('Platform'),
     'alternateName': ['GPlayd Platform', 'GP Platform', 'gp-platform'],
     'description':
       'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.',

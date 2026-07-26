@@ -3,8 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { ContactPoint, WithContext } from 'schema-dts';
-import { JsonLdIds, Urls } from './ids';
+import { JsonLdIds } from './ids';
 import type { ContactSlug } from './ids';
+import { Urls } from '../utils';
 
 /**
  * @brief Generates a JSON-LD representation of a ContactPoint for the Graphical Playground platform.

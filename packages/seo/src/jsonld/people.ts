@@ -3,8 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { WithContext, Person } from 'schema-dts';
-import { JsonLdIds, Urls } from './ids';
+import { JsonLdIds } from './ids';
 import type { PersonSlug } from './ids';
+import { Urls } from '../utils';
 
 /**
  * @brief A collection of JSON-LD representations of people associated with the Graphical Playground platform.

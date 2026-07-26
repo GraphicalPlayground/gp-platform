@@ -3,8 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { WithContext, WebSite } from 'schema-dts';
-import { JsonLdIds, Urls } from './ids';
-import { keywords } from './keywords';
+import { JsonLdIds } from './ids';
+import { Urls, Constants } from '../utils';
 
 /**
  * @brief JSON-LD representation of the Graphical Playground website.
@@ -28,7 +28,7 @@ export const website: WithContext<WebSite> = {
   'inLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }],
   'isAccessibleForFree': true,
   'isFamilyFriendly': true,
-  'keywords': keywords,
-  'teaches': keywords,
+  'keywords': Constants.keywords,
+  'teaches': Constants.keywords,
   'sameAs': [Urls.SubDomain('docs'), Urls.SubDomain('status'), ...Object.values(Urls.Socials)]
 };

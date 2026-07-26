@@ -3,7 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { PostalAddress, WithContext } from 'schema-dts';
-import { JsonLdIds, Urls } from './ids';
+import { JsonLdIds } from './ids';
+import { Urls } from '../utils';
 
 /**
  * @brief JSON-LD representation of the Graphical Playground localization.

@@ -6,7 +6,6 @@ import { organization } from './organization';
 import { people } from './people';
 import { languages } from './languages';
 import { contacts } from './contacts';
-import { keywords } from './keywords';
 import { localization } from './localization';
 import { website } from './website';
 import { softwaresSourceCode, softwaresApplication } from './softwares';
@@ -26,14 +25,4 @@ export const graph = [
 ];
 
 /* Forward exports */
-export {
-  organization,
-  people,
-  languages,
-  contacts,
-  keywords,
-  localization,
-  website,
-  softwaresSourceCode,
-  softwaresApplication
-};
+export { organization, people, languages, contacts, localization, website, softwaresSourceCode, softwaresApplication };
