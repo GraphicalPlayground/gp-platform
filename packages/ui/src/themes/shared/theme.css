@@ -159,20 +159,47 @@
   --color-background: var(--gp-color-background);
   --color-foreground: var(--gp-color-foreground);
 
-  --color-accent: var(--gp-color-accent);
-  --color-danger: var(--gp-color-danger);
-  --color-attention: var(--gp-color-attention);
-  --color-disabled: var(--gp-color-disabled);
-  --color-neutral: var(--gp-color-neutral);
-  --color-done: var(--gp-color-done);
-  --color-muted: var(--gp-color-muted);
-  --color-severe: var(--gp-color-severe);
-  --color-sponsors: var(--gp-color-sponsors);
   --color-success: var(--gp-color-success);
-
-  /* Color Aliases */
-  --color-focus: var(--gp-color-accent);
-  --color-link: var(--gp-color-accent);
+  --color-success-fg: var(--gp-color-success-fg);
+  --color-success-emphasis: var(--gp-color-success-emphasis);
+  --color-success-muted: var(--gp-color-success-muted);
+  --color-success-subtle: var(--gp-color-success-subtle);
+  --color-danger: var(--gp-color-danger);
+  --color-danger-fg: var(--gp-color-danger-fg);
+  --color-danger-emphasis: var(--gp-color-danger-emphasis);
+  --color-danger-muted: var(--gp-color-danger-muted);
+  --color-danger-subtle: var(--gp-color-danger-subtle);
+  --color-error: var(--gp-color-error);
+  --color-error-fg: var(--gp-color-error-fg);
+  --color-error-emphasis: var(--gp-color-error-emphasis);
+  --color-error-muted: var(--gp-color-error-muted);
+  --color-error-subtle: var(--gp-color-error-subtle);
+  --color-accent: var(--gp-color-accent);
+  --color-accent-primary: var(--gp-color-accent-primary);
+  --color-accent-secondary: var(--gp-color-accent-secondary);
+  --color-text-default: var(--gp-color-text-default);
+  --color-text-muted: var(--gp-color-text-muted);
+  --color-text-subtle: var(--gp-color-text-subtle);
+  --color-text-on-emphasis: var(--gp-color-text-on-emphasis);
+  --color-text-emphasized: var(--gp-color-text-emphasized);
+  --color-text-link-rest: var(--gp-color-text-link-rest);
+  --color-text-link-pressed: var(--gp-color-text-link-pressed);
+  --color-text-danger: var(--gp-color-text-danger);
+  --color-text-error: var(--gp-color-text-error);
+  --color-neutral-emphasis-plus: var(--gp-color-neutral-emphasis-plus);
+  --color-neutral-emphasis: var(--gp-color-neutral-emphasis);
+  --color-neutral-muted: var(--gp-color-neutral-muted);
+  --color-neutral-subtle: var(--gp-color-neutral-subtle);
+  --color-canvas-default: var(--gp-color-canvas-default);
+  --color-canvas-invert: var(--gp-color-canvas-invert);
+  --color-canvas-overlay: var(--gp-color-canvas-overlay);
+  --color-canvas-inset: var(--gp-color-canvas-inset);
+  --color-canvas-subtle: var(--gp-color-canvas-subtle);
+  --color-canvas-muted: var(--gp-color-canvas-muted);
+  --color-border-default: var(--gp-color-border-default);
+  --color-border-muted: var(--gp-color-border-muted);
+  --color-border-subtle: var(--gp-color-border-subtle);
+  --color-focus: var(--gp-color-focus);
 
   /* Transition Timing Functions */
   --ease-smooth: ease; /* same as transition: ease; */

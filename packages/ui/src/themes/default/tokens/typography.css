@@ -1,0 +1,188 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@layer base {
+  :root {
+    --gp-font-stack-system:
+      -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --gp-font-stack-sans-serif:
+      'Mona Sans', 'MonaSansFallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji';
+    --gp-font-stack-sans-serif-alt:
+      'Hubot Sans', 'Hubot SansHeaderFallback', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --gp-font-stack-monospace: 'Mona Sans Mono', monospace;
+
+    --gp-body-font-family: var(--gp-font-stack-sans-serif);
+    --gp-body-font-family-alt: var(--gp-font-stack-sans-serif-alt);
+    --gp-heading-font-family: var(--gp-font-stack-sans-serif);
+    --gp-heading-font-family-alt: var(--gp-font-stack-sans-serif-alt);
+
+    --gp-text-weight-extralight: 400;
+    --gp-text-weight-light: 400;
+    --gp-text-weight-regular: 400;
+    --gp-text-weight-normal: 400;
+    --gp-text-weight-medium: 500;
+    --gp-text-weight-semibold: 525;
+    --gp-text-weight-bold: 537;
+    --gp-text-weight-extrabold: 543;
+    --gp-text-weight-heavy: 550;
+
+    --gp-text-weight-100: var(--gp-text-weight-normal);
+    --gp-text-weight-200: var(--gp-text-weight-normal);
+    --gp-text-weight-300: var(--gp-text-weight-normal);
+    --gp-text-weight-350: var(--gp-text-weight-normal);
+    --gp-text-weight-400: var(--gp-text-weight-normal);
+    --gp-text-weight-500: var(--gp-text-weight-normal);
+    --gp-text-weight-600: var(--gp-text-weight-normal);
+    --gp-text-weight-700: var(--gp-text-weight-normal);
+    --gp-text-weight-800: var(--gp-text-weight-normal);
+    --gp-text-weight-900: var(--gp-text-weight-normal);
+    --gp-text-weight-1000: var(--gp-text-weight-normal);
+
+    --gp-text-style-italic-1: 'ital' 1;
+    --gp-text-style-italic-2: 'ital' 2;
+    --gp-text-style-italic-3: 'ital' 3;
+    --gp-text-style-italic-4: 'ital' 4;
+    --gp-text-style-italic-5: 'ital' 5;
+    --gp-text-style-italic-6: 'ital' 6;
+    --gp-text-style-italic-7: 'ital' 7;
+    --gp-text-style-italic-8: 'ital' 8;
+    --gp-text-style-italic-9: 'ital' 9;
+    --gp-text-style-italic-10: 'ital' 10;
+
+    --gp-text-letter-spacing-100: 0.21px;
+    --gp-text-letter-spacing-200: 0.24px;
+    --gp-text-letter-spacing-300: 0.18px;
+    --gp-text-letter-spacing-350: 0.18px;
+    --gp-text-letter-spacing-400: 0;
+    --gp-text-letter-spacing-500: 0;
+    --gp-text-letter-spacing-600: 0;
+    --gp-text-letter-spacing-700: 0;
+    --gp-text-letter-spacing-800: 0;
+    --gp-text-letter-spacing-900: 0;
+    --gp-text-letter-spacing-1000: 0;
+
+    --gp-text-line-height-100: 1.5;
+    --gp-text-line-height-200: 1.5;
+    --gp-text-line-height-300: 1.5;
+    --gp-text-line-height-350: 1.5;
+    --gp-text-line-height-400: 1.4;
+    --gp-text-line-height-500: 1.3;
+    --gp-text-line-height-600: 1.3;
+    --gp-text-line-height-700: 1.2;
+    --gp-text-line-height-800: 1.2;
+    --gp-text-line-height-900: 1.2;
+    --gp-text-line-height-1000: 1.149;
+
+    --gp-text-size-100: 14px;
+    --gp-text-size-200: 16px;
+    --gp-text-size-300: 18px;
+    --gp-text-size-350: 18px;
+    --gp-text-size-400: 20px;
+    --gp-text-size-500: 22px;
+    --gp-text-size-600: 24px;
+    --gp-text-size-700: 28px;
+    --gp-text-size-800: 32px;
+    --gp-text-size-900: 36px;
+    --gp-text-size-1000: 40px;
+
+    --gp-text-subhead-size-medium: 16px;
+    --gp-text-subhead-size-large: 18px;
+
+    --gp-text-subhead-letter-spacing-medium: 0.24px;
+    --gp-text-subhead-letter-spacing-large: 0.1px;
+
+    --gp-text-subhead-weight-medium: 550;
+    --gp-text-subhead-weight-large: 475;
+
+    --gp-text-subhead-line-height-medium: 1.3;
+    --gp-text-subhead-line-height-large: 1.3;
+
+    --gp-heading-line-height-400: 1.3;
+    --gp-heading-line-height-500: 1.3;
+    --gp-heading-line-height-600: 1.3;
+    --gp-heading-line-height-700: 1.2;
+    --gp-heading-line-height-800: 1.2;
+    --gp-heading-line-height-900: 1.1;
+    --gp-heading-line-height-1000: 1.1;
+
+    --gp-heading-letter-spacing-400: 0;
+    --gp-heading-letter-spacing-500: 0;
+    --gp-heading-letter-spacing-600: 0;
+    --gp-heading-letter-spacing-700: 0;
+    --gp-heading-letter-spacing-800: 0;
+    --gp-heading-letter-spacing-900: 0;
+    --gp-heading-letter-spacing-1000: 0;
+
+    --gp-heading-weight-400: 480;
+    --gp-heading-weight-500: 480;
+    --gp-heading-weight-600: 460;
+    --gp-heading-weight-700: 460;
+    --gp-heading-weight-800: 465;
+    --gp-heading-weight-900: 440;
+    --gp-heading-weight-1000: 440;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gp-heading-weight-700: 460;
+      --gp-heading-weight-800: 465;
+      --gp-heading-weight-900: 440;
+      --gp-heading-weight-1000: 440;
+
+      --gp-heading-line-height-900: 1.05;
+      --gp-heading-line-height-1000: 1.05;
+
+      --gp-text-subhead-weight-large: 525;
+
+      --gp-text-size-400: 20px;
+      --gp-text-size-500: 24px;
+      --gp-text-size-600: 28px;
+      --gp-text-size-700: 34px;
+      --gp-text-size-800: 40px;
+      --gp-text-size-900: 48px;
+      --gp-text-size-1000: 56px;
+
+      --gp-text-line-height-800: 1.2;
+      --gp-text-line-height-900: 1.2;
+      --gp-text-line-height-1000: 1.08;
+    }
+  }
+
+  @media (min-width: 1012px) {
+    :root {
+      --gp-heading-weight-700: 460;
+      --gp-heading-weight-800: 440;
+      --gp-heading-weight-900: 440;
+      --gp-heading-weight-1000: 425;
+
+      --gp-heading-letter-spacing-1000: -0.224px;
+
+      --gp-heading-line-height-600: 1.2;
+      --gp-heading-line-height-900: 1;
+      --gp-heading-line-height-1000: 1;
+
+      --gp-text-subhead-size-large: 20px;
+      --gp-text-subhead-weight-large: 500;
+
+      --gp-text-size-350: 20px;
+      --gp-text-size-400: 22px;
+      --gp-text-size-500: 28px;
+      --gp-text-size-600: 34px;
+      --gp-text-size-700: 40px;
+      --gp-text-size-800: 48px;
+      --gp-text-size-900: 56px;
+      --gp-text-size-1000: 64px;
+
+      --gp-text-line-height-500: 1.35;
+      --gp-text-line-height-800: 1.18;
+      --gp-text-line-height-900: 1.1;
+      --gp-text-line-height-1000: 1.08;
+      --gp-text-letter-spacing-1000: -0.035em;
+    }
+  }
+}
