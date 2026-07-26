@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^7.6.0",
+    "@gp/content": "workspace:*",
     "@gp/fonts": "workspace:*",
     "@gp/seo": "workspace:*",
     "@gp/ui": "workspace:*",
