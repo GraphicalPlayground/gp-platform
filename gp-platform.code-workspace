@@ -63,7 +63,17 @@
       "MonaSans": "font",
 
       /* Components */
-      "Text": "log"
+      "Text": "log",
+
+      /* Articles Categories */
+      "animation-and-vfx": "animation",
+      "lighting-and-gi": "skills",
+      "materials-and-shading": "theme",
+      "math-and-geometry": "functions",
+      "optimization-and-culling": "benchmark",
+      "post-processing": "element",
+      "rendering-core": "core",
+      "shaders-and-gpu": "shader"
     },
     "material-icon-theme.files.associations": {
       "eslint/base.mjs": "eslint",
