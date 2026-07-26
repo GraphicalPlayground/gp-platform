@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { cms } from '@/lib/cms';
+import Link from 'next/link';
 
 export default async function LegalPage() {
   const docs = await cms.legal.getAll();
@@ -13,9 +14,12 @@ export default async function LegalPage() {
       <ul>
         {docs.map((doc) => (
           <li key={doc.frontmatter.slug}>
-            <a className='text-text-link-rest hover:text-text-link-pressed underline' href={`/legal/${doc.frontmatter.slug}`}>
+            <Link
+              className='text-text-link-rest hover:text-text-link-pressed underline'
+              href={`/legal/${doc.frontmatter.slug}`}
+            >
               {doc.frontmatter.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
