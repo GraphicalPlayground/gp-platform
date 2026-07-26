@@ -11,9 +11,10 @@ export const legalFrontmatterSchema = z.object({
   slug: z.string().min(1),
   category: legalCategorySchema,
   version: z.string().regex(/^\d+\.\d+\.\d+$/, 'version must be semver (x.y.z)'),
-  effectiveDate: z.iso.date(),
+  effectiveDate: z.date(),
   summary: z.string().min(1),
-  requiresExplicitConsent: z.boolean()
+  requiresExplicitConsent: z.boolean(),
+  draft: z.boolean().optional().default(false),
 });
 
 export type LegalFrontmatter = z.infer<typeof legalFrontmatterSchema>;

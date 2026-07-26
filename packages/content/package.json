@@ -7,9 +7,13 @@
   },
   "scripts": {},
   "dependencies": {
+    "@next/mdx": "^16.2.12",
+    "gray-matter": "^4.0.3",
+    "next-mdx-remote": "^6.0.0",
     "zod": "4.4.3"
   },
   "devDependencies": {
-    "@gp/standard": "workspace:*"
+    "@gp/standard": "workspace:*",
+    "@types/mdx": "^2.0.14"
   }
 }

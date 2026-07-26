@@ -2,7 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-export * from './article';
-export * from './legal';
-export * from './shared';
 export * from './cms';
+export * from './repositories';
+export * from './mdx-collection';
+export * from './types';
