@@ -3,11 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MetadataRoute, Metadata } from 'next';
-
-/**
- * @brief Type for the app target, used to determine which robots.txt rules to apply.
- */
-export type AppTarget = 'admin' | 'app' | 'marketing';
+import type { AppTarget } from '../utils/target';
+import { isPubliclyIndexable } from '../utils/target';
+import { trimTrailingSlash } from '../utils/urls';
 
 /**
  * @brief Type for the robots.txt rules, as defined in Next.js MetadataRoute.Robots
@@ -108,7 +106,7 @@ export class SeoRobots {
     const rules = this.buildRules();
     const route: MetadataRoute.Robots = { rules: rules as any };
 
-    if (this.target === 'marketing') {
+    if (isPubliclyIndexable(this.target)) {
       const sitemapPath = this.options.sitemapPath ?? '/sitemap.xml';
       route.sitemap = `${this.trimBaseUrl()}${sitemapPath}`;
       route.host = this.trimBaseUrl();
@@ -122,7 +120,7 @@ export class SeoRobots {
    * @returns The base URL without trailing slashes.
    */
   private trimBaseUrl(): string {
-    return this.options.baseUrl.replace(/\/+$/, '');
+    return trimTrailingSlash(this.options.baseUrl);
   }
 
   /**
@@ -132,23 +130,16 @@ export class SeoRobots {
   private buildRules(): RobotsRule[] {
     const extra = this.options.additionalRules ?? [];
 
-    switch (this.target) {
-      case 'admin':
-        // No exceptions. Admin is never indexed, by anyone.
-        return [{ userAgent: '*', disallow: '/' }, ...extra];
-
-      case 'app':
-        // No exceptions. The app is a private product surface, never indexed.
-        return [{ userAgent: '*', disallow: '/' }, ...extra];
-
-      case 'marketing': {
-        const rules: RobotsRule[] = [{ userAgent: '*', allow: '/' }];
-        if (!this.options.disableAiCrawlers) {
-          AI_CRAWLERS.forEach((bot) => rules.push({ userAgent: bot, allow: '/' }));
-        }
-        return [...rules, ...extra];
-      }
+    if (!isPubliclyIndexable(this.target)) {
+      // No exceptions. Admin and the private app product surface are never indexed, by anyone.
+      return [{ userAgent: '*', disallow: '/' }, ...extra];
     }
+
+    const rules: RobotsRule[] = [{ userAgent: '*', allow: '/' }];
+    if (!this.options.disableAiCrawlers) {
+      AI_CRAWLERS.forEach((bot) => rules.push({ userAgent: bot, allow: '/' }));
+    }
+    return [...rules, ...extra];
   }
 
   /**
