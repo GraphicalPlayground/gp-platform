@@ -5,10 +5,18 @@
   "exports": {
     ".": "./src/index.ts",
     "./react": "./src/components/index.ts",
-    "./jsonld": "./src/jsonld/index.ts"
+    "./jsonld": "./src/jsonld/index.ts",
+    "./metadata": "./src/metadata/index.ts",
+    "./metadata/opengraph-image": "./src/metadata/opengraph-image.tsx",
+    "./robots": "./src/robots/index.ts",
+    "./sitemap": "./src/sitemap/index.ts",
+    "./llms": "./src/llms/index.ts",
+    "./utils": "./src/utils/index.ts"
   },
   "scripts": {},
   "dependencies": {
+    "@gp/content": "workspace:*",
+    "@gp/types": "workspace:*",
     "schema-dts": "^2.0.0"
   },
   "peerDependencies": {

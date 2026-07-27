@@ -60,6 +60,9 @@
       "primitives": "sandbox",
       "cms": "cluster",
       "collection": "stack",
+      "llms": "prompts",
+      "llms.txt": "prompts",
+      "sitemap": "routes",
 
       /* Fonts */
       "HubotSans": "font",
