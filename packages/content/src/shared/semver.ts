@@ -2,6 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+import { z } from 'zod';
 import { isSemver } from '@gp/types';
 import type { Semver } from '@gp/types';
 
