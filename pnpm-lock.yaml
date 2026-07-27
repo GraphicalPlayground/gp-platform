@@ -371,6 +371,9 @@ importers:
 
   packages/content:
     dependencies:
+      '@gp/types':
+        specifier: workspace:*
+        version: link:../types
       '@next/mdx':
         specifier: ^16.2.12
         version: 16.2.12(@mdx-js/react@3.1.1(@types/react@19.2.17)(react@19.2.8))
@@ -459,7 +462,14 @@ importers:
 
   packages/standard: {}
 
-  packages/types: {}
+  packages/types:
+    devDependencies:
+      '@gp/standard':
+        specifier: workspace:*
+        version: link:../standard
+      typescript:
+        specifier: 6.0.3
+        version: 6.0.3
 
   packages/ui:
     dependencies:
