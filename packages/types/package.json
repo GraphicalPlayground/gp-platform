@@ -2,7 +2,15 @@
   "name": "@gp/types",
   "version": "0.0.2",
   "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./primitives": "./src/primitives/index.ts",
+    "./utils": "./src/utils/index.ts"
+  },
   "scripts": {},
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@gp/standard": "workspace:*",
+    "typescript": "6.0.3"
+  }
 }

@@ -2,5 +2,4 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-export * from './primitives';
-export * from './utils';
+export * from './brand';

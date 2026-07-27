@@ -57,6 +57,7 @@
       "sign-up": "input",
       "waitlist": "backup",
       "community": "client",
+      "primitives": "sandbox",
 
       /* Fonts */
       "HubotSans": "font",
