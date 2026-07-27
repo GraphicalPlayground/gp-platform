@@ -10,6 +10,7 @@
 - Added a `TimeZone` primitive, validated against IANA time zone identifiers.
 - Added `Email`, `PhoneNumber`, `Url` and `SocialPlatform` primitives for contact information.
 - Added `Slug`, `HexColor`, `Rating`, `Duration` and `ISODateString` primitives for content frontmatter and display values.
+- Added `RgbColor`, `RgbaColor`, `HslColor`, `HslaColor` and `HwbColor` primitives, plus a `CssColor` union covering every supported color format.
 - Added a `Money` primitive that pairs an amount with a `CurrencyCode`.
 - Added `Percentage` and `Progress` primitives for bounded numeric ranges, plus a `progressToPercentage` helper.
 - Added a `Uuid` primitive to validate UUID strings.
