@@ -10,6 +10,11 @@ import { localization } from './localization';
 import { website } from './website';
 import { softwaresSourceCode, softwaresApplication } from './softwares';
 
+export * from './ids';
+export * from './article';
+export * from './breadcrumb';
+export * from './faq';
+
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground platform.
  */

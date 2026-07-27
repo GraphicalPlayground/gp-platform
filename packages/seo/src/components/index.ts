@@ -3,3 +3,5 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './JsonLd';
+export * from './BreadcrumbJsonLd';
+export * from './FaqJsonLd';
