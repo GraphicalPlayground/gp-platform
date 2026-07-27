@@ -58,6 +58,7 @@
       "waitlist": "backup",
       "community": "client",
       "primitives": "sandbox",
+      "cms": "cluster",
 
       /* Fonts */
       "HubotSans": "font",
