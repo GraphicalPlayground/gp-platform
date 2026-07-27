@@ -6,6 +6,17 @@
 const BASE_DOMAIN = 'graphical-playground.com';
 
 /**
+ * @brief Strips trailing slashes from a URL, without relying on a backtracking-prone regex.
+ * @param url - The URL to trim.
+ * @returns The URL without any trailing slashes.
+ */
+export const trimTrailingSlash = (url: string): string => {
+  let end = url.length;
+  while (end > 0 && url[end - 1] === '/') end--;
+  return url.slice(0, end);
+};
+
+/**
  * @brief A collection of URLs used in the Graphical Playground platform.
  */
 export const Urls = {
