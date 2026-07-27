@@ -59,6 +59,7 @@
       "community": "client",
       "primitives": "sandbox",
       "cms": "cluster",
+      "collection": "stack",
 
       /* Fonts */
       "HubotSans": "font",

@@ -2,52 +2,16 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import fs from 'node:fs';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { cache } from 'react';
 import type { ZodType } from 'zod';
 
-import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument } from './types';
-import { MdxFrontmatterError } from './types';
-
-const WORDS_PER_MINUTE = 220;
-
-/**
- * @brief Estimates the reading time in minutes for a given content string.
- * @param content - The content string to estimate reading time for.
- * @returns The estimated reading time in minutes, rounded to the nearest whole number.
- * Returns a minimum of 1 minute for any non-empty content.
- */
-function estimateReadingTimeMinutes(content: string): number {
-  const words = content.trim().split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
-}
-
-/**
- * @brief Recursively lists every `.mdx`/`.md` file under `dir`.
- * @param dir - The directory to search for MDX files.
- * @returns An array of file paths to all `.mdx`/`.md` files found under `dir`.
- */
-function walkMdxFiles(dir: string): string[] {
-  if (!fs.existsSync(dir)) return [];
-
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  const files: string[] = [];
-
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      files.push(...walkMdxFiles(fullPath));
-    } else if (/\.mdx?$/i.test(entry.name)) {
-      files.push(fullPath);
-    }
-  }
-
-  return files;
-}
+import { estimateReadingTimeMinutes, walkMdxFiles } from './fs-utils';
+import { MdxFrontmatterError } from '../errors';
+import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument } from '../types';
 
 /**
  * @brief Configuration for an {@link MdxCollection}.
@@ -89,8 +53,13 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
   private readonly resolveSlug: (frontmatter: TFrontmatter, relativePath: string) => string;
   private readonly isDraft: (frontmatter: TFrontmatter) => boolean;
 
-  /** Process-lifetime cache: relativePath -> parsed document. */
-  private documentCache: Map<string, MdxDocument<TFrontmatter>> | null = null;
+  /**
+   * @brief Process-lifetime cache of the in-flight/completed load.
+   * @details A single promise (rather than a promise + a separate result map) so that
+   * concurrent callers arriving before the first load resolves all await the same
+   * filesystem walk instead of each triggering their own.
+   */
+  private loadingPromise: Promise<Map<string, MdxDocument<TFrontmatter>>> | null = null;
 
   /**
    * @brief Constructs a new {@link MdxCollection} instance.
@@ -112,7 +81,41 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
    * @brief Drops the in-memory cache. Useful for dev-mode hot reload scripts.
    */
   public invalidateCache(): void {
-    this.documentCache = null;
+    this.loadingPromise = null;
+  }
+
+  /**
+   * @brief Reads, parses, and validates a single content file.
+   * @param filePath - Absolute path to the `.mdx`/`.md` file.
+   * @returns The slug the file resolves to, and its parsed {@link MdxDocument}.
+   * @throws {@link MdxFrontmatterError} if the file's frontmatter fails validation.
+   */
+  private async loadDocument(filePath: string): Promise<{ slug: string; doc: MdxDocument<TFrontmatter> }> {
+    const relativePath = path.relative(this.contentDir, filePath);
+    const raw = await fs.readFile(filePath, 'utf-8');
+    const { data, content } = matter(raw);
+
+    const parsed = this.schema.safeParse(data);
+    if (!parsed.success) {
+      throw new MdxFrontmatterError(filePath, parsed.error);
+    }
+
+    const frontmatter = parsed.data;
+    const slug = this.resolveSlug(frontmatter, relativePath);
+    const readingTimeMinutes =
+      (frontmatter as { readingTimeMinutes?: number }).readingTimeMinutes ?? estimateReadingTimeMinutes(content);
+
+    return {
+      slug,
+      doc: {
+        slug,
+        filePath,
+        relativePath,
+        frontmatter,
+        rawContent: content,
+        readingTimeMinutes
+      }
+    };
   }
 
   /**
@@ -120,47 +123,37 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
    * @returns A map of slug -> {@link MdxDocument} for all documents in the collection.
    * @throws {@link MdxFrontmatterError} if any document's frontmatter fails validation.
    */
-  private loadAll = cache(async (): Promise<Map<string, MdxDocument<TFrontmatter>>> => {
-    if (this.documentCache) return this.documentCache;
-
-    const filePaths = walkMdxFiles(this.contentDir);
-    const cacheMap = new Map<string, MdxDocument<TFrontmatter>>();
-
-    for (const filePath of filePaths) {
-      const relativePath = path.relative(this.contentDir, filePath);
-      const raw = fs.readFileSync(filePath, 'utf-8');
-      const { data, content } = matter(raw);
-
-      const parsed = this.schema.safeParse(data);
-      if (!parsed.success) {
-        throw new MdxFrontmatterError(filePath, parsed.error);
-      }
-
-      const frontmatter = parsed.data;
-      const slug = this.resolveSlug(frontmatter, relativePath);
-
-      if (cacheMap.has(slug)) {
-        throw new Error(
-          `Duplicate slug "${slug}" in collection "${this.contentDir}" ` + `(conflicting file: ${relativePath})`
-        );
-      }
-
-      const readingTimeMinutes =
-        (frontmatter as { readingTimeMinutes?: number }).readingTimeMinutes ?? estimateReadingTimeMinutes(content);
-
-      cacheMap.set(slug, {
-        slug,
-        filePath,
-        relativePath,
-        frontmatter,
-        rawContent: content,
-        readingTimeMinutes
+  private loadAll(): Promise<Map<string, MdxDocument<TFrontmatter>>> {
+    if (!this.loadingPromise) {
+      this.loadingPromise = this.buildCache().catch((error: unknown) => {
+        // Don't cache a failed load - let the next caller retry.
+        this.loadingPromise = null;
+        throw error;
       });
     }
+    return this.loadingPromise;
+  }
 
-    this.documentCache = cacheMap;
+  /**
+   * @brief Walks the content directory and parses every file concurrently.
+   * @returns A map of slug -> {@link MdxDocument} for all documents in the collection.
+   */
+  private async buildCache(): Promise<Map<string, MdxDocument<TFrontmatter>>> {
+    const filePaths = await walkMdxFiles(this.contentDir);
+    const results = await Promise.all(filePaths.map((filePath) => this.loadDocument(filePath)));
+
+    const cacheMap = new Map<string, MdxDocument<TFrontmatter>>();
+    for (const { slug, doc } of results) {
+      if (cacheMap.has(slug)) {
+        throw new Error(
+          `Duplicate slug "${slug}" in collection "${this.contentDir}" ` + `(conflicting file: ${doc.relativePath})`
+        );
+      }
+      cacheMap.set(slug, doc);
+    }
+
     return cacheMap;
-  });
+  }
 
   /**
    * @brief Returns all documents in the collection, optionally filtering out drafts.

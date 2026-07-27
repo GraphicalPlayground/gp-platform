@@ -2,9 +2,9 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import { MdxCollection } from '../mdx-collection';
+import { MdxCollection } from '../collection';
 import type { MdxCollectionOptions, MdxDocument } from '../types';
-import type { Article, articleFrontmatterUnionSchema } from '../../article';
+import type { Article } from '../../article';
 import { articleFrontmatterUnionSchema as articleUnionSchema } from '../../article';
 
 export type ArticleType = Article['type'];
@@ -52,25 +52,41 @@ export class ArticlesRepository {
     });
   }
 
+  /**
+   * @brief Drops the collection's in-memory cache. Useful for dev-mode hot reload scripts.
+   */
   public invalidateCache(): void {
     this.collection.invalidateCache();
   }
 
+  /**
+   * @brief Returns the slugs of every article in the collection, optionally filtering out drafts.
+   * @param options - Options for filtering the returned slugs, including whether to include drafts.
+   */
   public getSlugs(options?: MdxCollectionOptions) {
     return this.collection.getSlugs(options);
   }
 
+  /**
+   * @brief Returns a single article by slug, frontmatter only (MDX uncompiled).
+   * @param slug - The slug of the article to retrieve.
+   */
   public getBySlug(slug: string) {
     return this.collection.getBySlug(slug);
   }
 
+  /**
+   * @brief Returns a single article by slug, with the MDX body compiled to React content.
+   */
   public getCompiledBySlug(...args: Parameters<MdxCollection<Article>['getCompiledBySlug']>) {
     return this.collection.getCompiledBySlug(...args);
   }
 
   /**
-   * Filtered, sorted, paginated article listing - the workhorse for
-   * index pages, category pages, and type-specific pages (e.g. `/glossary`).
+   * @brief Filtered, sorted, paginated article listing.
+   * @details The workhorse for index pages, category pages, and type-specific pages (e.g. `/glossary`).
+   * @param options - Type/category/tag filters, sort order, and pagination limit.
+   * @returns Articles matching every supplied filter, sorted by `datePublished`.
    */
   public async getAll(options: ArticleListOptions = {}): Promise<MdxDocument<Article>[]> {
     const { types, category, tag, sortBy = 'desc', limit, ...baseOptions } = options;
@@ -87,15 +103,21 @@ export class ArticlesRepository {
       docs = docs.filter((doc) => doc.frontmatter.tags?.includes(tag));
     }
 
-    docs = docs.sort((a, b) => {
-      const diff = new Date(a.frontmatter.datePublished).getTime() - new Date(b.frontmatter.datePublished).getTime();
-      return sortBy === 'desc' ? -diff : diff;
-    });
+    // Precompute each document's sort key once rather than re-parsing
+    // `datePublished` on every comparison inside `.sort()`.
+    const sorted = docs
+      .map((doc) => ({ doc, time: new Date(doc.frontmatter.datePublished).getTime() }))
+      .sort((a, b) => (sortBy === 'desc' ? b.time - a.time : a.time - b.time))
+      .map(({ doc }) => doc);
 
-    return typeof limit === 'number' ? docs.slice(0, limit) : docs;
+    return typeof limit === 'number' ? sorted.slice(0, limit) : sorted;
   }
 
-  /** Convenience wrapper narrowing the result to a single article type. */
+  /**
+   * @brief Convenience wrapper narrowing the result of {@link getAll} to a single article type.
+   * @param type - The article type to filter by.
+   * @param options - The same filters as {@link getAll}, minus `types`.
+   */
   public async getByType<T extends ArticleType>(
     type: T,
     options: Omit<ArticleListOptions, 'types'> = {}
@@ -104,59 +126,75 @@ export class ArticlesRepository {
     return docs as MdxDocument<ArticleOfType<T>>[];
   }
 
+  /** @brief Shorthand for `getByType('guide', options)`. */
   public getGuides(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('guide', options);
   }
 
+  /** @brief Shorthand for `getByType('comparison', options)`. */
   public getComparisons(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('comparison', options);
   }
 
+  /** @brief Shorthand for `getByType('tech-article', options)`. */
   public getTechArticles(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('tech-article', options);
   }
 
+  /** @brief Shorthand for `getByType('glossary', options)`. */
   public getGlossaryEntries(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('glossary', options);
   }
 
+  /** @brief Shorthand for `getByType('breakdown', options)`. */
   public getBreakdowns(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('breakdown', options);
   }
 
+  /** @brief Shorthand for `getByType('interview', options)`. */
   public getInterviews(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('interview', options);
   }
 
+  /** @brief Shorthand for `getByType('changelog', options)`. */
   public getChangelogEntries(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('changelog', options);
   }
 
+  /** @brief Shorthand for `getByType('roadmap', options)`. */
   public getRoadmapEntries(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('roadmap', options);
   }
 
+  /** @brief Shorthand for `getByType('showcase', options)`. */
   public getShowcases(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('showcase', options);
   }
 
+  /** @brief Shorthand for `getByType('research', options)`. */
   public getResearchEntries(options?: Omit<ArticleListOptions, 'types'>) {
     return this.getByType('research', options);
   }
 
-  /** Distinct list of every tag used across all (non-draft) articles. */
+  /**
+   * @brief Distinct list of every tag used across all (non-draft) articles.
+   * @param options - Options for filtering the underlying articles, including whether to include drafts.
+   */
   public async getAllTags(options?: MdxCollectionOptions): Promise<string[]> {
     const docs = await this.collection.getAll(options);
     const tags = new Set<string>();
     for (const doc of docs) {
       doc.frontmatter.tags?.forEach((tag: string) => tags.add(tag));
     }
-    return [...tags].sort();
+    return [...tags].sort((a, b) => a.localeCompare(b));
   }
 
   /**
-   * Related articles for a given document, based on its `relatedSlugs`
-   * field, falling back to same-category articles if the field is empty.
+   * @brief Related articles for a given document.
+   * @details Based on its `relatedSlugs` field, falling back to same-category articles if the field is empty
+   * or none of the referenced slugs resolve to an existing article.
+   * @param doc - The article to find related articles for.
+   * @param limit - Maximum number of related articles to return. Defaults to `3`.
    */
   public async getRelated(doc: MdxDocument<Article>, limit = 3): Promise<MdxDocument<Article>[]> {
     const related: string[] = doc.frontmatter.relatedSlugs ?? [];
