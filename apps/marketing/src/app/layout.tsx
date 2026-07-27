@@ -3,11 +3,19 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { JsonLd } from '@gp/seo/react';
 import { graph } from '@gp/seo/jsonld';
+import { SeoMetadata } from '@gp/seo/metadata';
+import { Urls } from '@gp/seo/utils';
 
 import './globals.css';
+
+/**
+ * @brief Root metadata for every page of the marketing site, unless overridden by a more specific page.
+ */
+export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).base();
 
 /**
  * @brief This function defines the root layout for the application.

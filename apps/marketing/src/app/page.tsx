@@ -3,7 +3,20 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { Text } from '@gp/ui/components';
+import { SeoMetadata } from '@gp/seo/metadata';
+import { Urls } from '@gp/seo/utils';
+
+/**
+ * @brief Metadata for the marketing home page.
+ */
+export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).page({
+  path: '/',
+  title: 'Learn Graphics Programming by Building It',
+  description:
+    'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines.'
+});
 
 /**
  * @brief Principal home page of the marketing application.

@@ -3,11 +3,21 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MetadataRoute } from 'next';
+import { Constants } from '@gp/seo/utils';
 
 /**
  * @brief This function generates the manifest for the application.
  * @returns The NextJS manifest object.
  */
 export default function manifest(): MetadataRoute.Manifest {
-  return {};
+  return {
+    name: Constants.name,
+    short_name: 'GPlayd',
+    description: Constants.description,
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#ffffff',
+    icons: [{ src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }]
+  };
 }
