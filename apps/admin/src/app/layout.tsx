@@ -3,11 +3,19 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { ClerkProvider } from '@clerk/nextjs';
 import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
+import { SeoMetadata } from '@gp/seo/metadata';
+import { Urls } from '@gp/seo/utils';
 
 import './globals.css';
+
+/**
+ * @brief Root metadata for the admin app. Never indexed: this is a private, authenticated product surface.
+ */
+export const metadata: Metadata = SeoMetadata.for('admin', { baseUrl: Urls.SubDomain('admin') }).base();
 
 /**
  * @brief This function defines the root layout for the application.

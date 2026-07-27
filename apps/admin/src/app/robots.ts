@@ -3,7 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MetadataRoute } from 'next';
-import { SeoRobots } from '@gp/seo';
+import { SeoRobots } from '@gp/seo/robots';
+import { Urls } from '@gp/seo/utils';
 
 /**
  * @brief This function generates the robots.txt content for the website.
@@ -12,6 +13,6 @@ import { SeoRobots } from '@gp/seo';
  */
 export default function robots(): MetadataRoute.Robots {
   return SeoRobots.for('admin', {
-    baseUrl: 'https://admin.graphical-playground.com'
+    baseUrl: Urls.SubDomain('admin')
   }).toMetadataRoute();
 }
