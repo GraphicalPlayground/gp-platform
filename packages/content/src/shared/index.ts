@@ -6,3 +6,4 @@ export * from './author';
 export * from './difficulty';
 export * from './faq';
 export * from './reference';
+export * from './semver';

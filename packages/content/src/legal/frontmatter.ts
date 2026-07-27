@@ -5,16 +5,17 @@
 import { z } from 'zod';
 
 import { legalCategorySchema } from './category';
+import { semverSchema } from '../shared';
 
 export const legalFrontmatterSchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
   category: legalCategorySchema,
-  version: z.string().regex(/^\d+\.\d+\.\d+$/, 'version must be semver (x.y.z)'),
+  version: semverSchema,
   effectiveDate: z.date(),
   summary: z.string().min(1),
   requiresExplicitConsent: z.boolean(),
-  draft: z.boolean().optional().default(false),
+  draft: z.boolean().optional().default(false)
 });
 
 export type LegalFrontmatter = z.infer<typeof legalFrontmatterSchema>;
