@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import { NextResponse } from 'next/server';
-import { SeoRobots } from '@gp/seo';
+import { SeoRobots } from '@gp/seo/robots';
 
 /**
  * @brief Middleware function to set SEO-related headers for all requests.

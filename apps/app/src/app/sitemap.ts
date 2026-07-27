@@ -3,11 +3,14 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { MetadataRoute } from 'next';
+import { SeoSitemap } from '@gp/seo/sitemap';
+import { Urls } from '@gp/seo/utils';
 
 /**
- * @brief Generates the sitemap for the website.
+ * @brief Generates the sitemap for the website. Always empty: `app` is a private, authenticated
+ * product surface and is never publicly indexed.
  * @returns An object representing the sitemap entries.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [];
+  return SeoSitemap.for('app', Urls.SubDomain('app')).build([]);
 }
