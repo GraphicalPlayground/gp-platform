@@ -13,8 +13,8 @@ indexed. `app` and `admin` are authenticated product surfaces, so they get noind
 | `@gp/seo/robots` | `SeoRobots` — robots.txt rules, per-page `<meta name="robots">`, and the `X-Robots-Tag` middleware header. |
 | `@gp/seo/sitemap` | `SeoSitemap` — `sitemap.xml` entries, always empty for non-indexable targets. |
 | `@gp/seo/llms` | `SeoLlms` — `/llms.txt` generation (GEO: what AI agents/answer engines read instead of crawling). |
-| `@gp/seo/jsonld` | Static entity graph (organization/people/website/...) plus `buildArticleJsonLd`/`buildBreadcrumbJsonLd`/`buildFaqJsonLd`. |
-| `@gp/seo/react` | `<JsonLd>`, `<BreadcrumbJsonLd>`, `<FaqJsonLd>` components. |
+| `@gp/seo/jsonld` | Static entity graph (organization/people/website/...) plus `buildArticleJsonLd`/`buildBreadcrumbJsonLd`/`buildFaqJsonLd`/`buildCourseJsonLd`/`buildCollectionPageJsonLd`. |
+| `@gp/seo/react` | `<JsonLd>`, `<BreadcrumbJsonLd>`, `<FaqJsonLd>`, `<CourseJsonLd>`, `<CollectionJsonLd>` components. |
 | `@gp/seo/utils` | `Urls`, `Constants`, `AppTarget`, `isPubliclyIndexable`. |
 
 ## Usage
@@ -63,3 +63,7 @@ Instead:
 
 Render the JSON-LD component next to the visual one, sourced from the same data. That's the only way to guarantee
 the two stay in sync.
+
+The same rule applies to `<CourseJsonLd>`/`<CollectionJsonLd>`: never pass an `offer`, `rating`, or `items` array
+that isn't the exact data rendered on the page, a price or rating mismatch between structured data and visible
+content is a Google Search Console penalty risk, not just a style nit.

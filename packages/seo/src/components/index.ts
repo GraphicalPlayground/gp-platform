@@ -5,3 +5,5 @@
 export * from './JsonLd';
 export * from './BreadcrumbJsonLd';
 export * from './FaqJsonLd';
+export * from './CourseJsonLd';
+export * from './CollectionJsonLd';
