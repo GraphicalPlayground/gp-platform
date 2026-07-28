@@ -21,15 +21,15 @@
   color: var(--gp-color-text-muted);
 }
 
-.Text-font--mona-sans {
+.text-font--mona-sans {
   font-family: var(--gp-body-font-family);
 }
 
-.Text-font--hubot-sans {
+.text-font--hubot-sans {
   font-family: var(--gp-body-font-family-alt);
 }
 
-.Text-font--monospace {
+.text-font--monospace {
   font-family: var(--gp-font-stack-monospace);
 }
 
@@ -109,121 +109,121 @@
 }
 
 .text--weight-heavy,
-.Text-narrow--weight-heavy {
+.text-narrow--weight-heavy {
   font-weight: var(--gp-text-weight-heavy);
 }
 
 .text--weight-extrabold,
-.Text-narrow--weight-extrabold {
+.text-narrow--weight-extrabold {
   font-weight: var(--gp-text-weight-extrabold);
 }
 
 .text--weight-bold,
-.Text-narrow--weight-bold {
+.text-narrow--weight-bold {
   font-weight: var(--gp-text-weight-bold);
 }
 
 .text--weight-semibold,
-.Text-narrow--weight-semibold {
+.text-narrow--weight-semibold {
   font-weight: var(--gp-text-weight-semibold);
 }
 
 .text--weight-medium,
-.Text-narrow--weight-medium {
+.text-narrow--weight-medium {
   font-weight: var(--gp-text-weight-medium);
 }
 
 .text--weight-normal,
-.Text-narrow--weight-normal {
+.text-narrow--weight-normal {
   font-weight: var(--gp-text-weight-normal);
 }
 
 .text--weight-light,
-.Text-narrow--weight-light {
+.text-narrow--weight-light {
   font-weight: var(--gp-text-weight-light);
 }
 
 .text--weight-extralight,
-.Text-narrow--weight-extralight {
+.text-narrow--weight-extralight {
   font-weight: var(--gp-text-weight-extralight);
 }
 
 @media screen and (min-width: 48rem) {
-  .Text-regular--weight-heavy {
+  .text-regular--weight-heavy {
     font-weight: var(--gp-text-weight-heavy);
   }
 
-  .Text-regular--weight-extrabold {
+  .text-regular--weight-extrabold {
     font-weight: var(--gp-text-weight-extrabold);
   }
 
-  .Text-regular--weight-bold {
+  .text-regular--weight-bold {
     font-weight: var(--gp-text-weight-bold);
   }
 
-  .Text-regular--weight-semibold {
+  .text-regular--weight-semibold {
     font-weight: var(--gp-text-weight-semibold);
   }
 
-  .Text-regular--weight-medium {
+  .text-regular--weight-medium {
     font-weight: var(--gp-text-weight-medium);
   }
 
-  .Text-regular--weight-normal {
+  .text-regular--weight-normal {
     font-weight: var(--gp-text-weight-normal);
   }
 
-  .Text-regular--weight-light {
+  .text-regular--weight-light {
     font-weight: var(--gp-text-weight-light);
   }
 
-  .Text-regular--weight-extralight {
+  .text-regular--weight-extralight {
     font-weight: var(--gp-text-weight-extralight);
   }
 }
 
 @media screen and (min-width: 80rem) {
-  .Text-wide--weight-heavy {
+  .text-wide--weight-heavy {
     font-weight: var(--gp-text-weight-heavy);
   }
 
-  .Text-wide--weight-extrabold {
+  .text-wide--weight-extrabold {
     font-weight: var(--gp-text-weight-extrabold);
   }
 
-  .Text-wide--weight-bold {
+  .text-wide--weight-bold {
     font-weight: var(--gp-text-weight-bold);
   }
 
-  .Text-wide--weight-semibold {
+  .text-wide--weight-semibold {
     font-weight: var(--gp-text-weight-semibold);
   }
 
-  .Text-wide--weight-medium {
+  .text-wide--weight-medium {
     font-weight: var(--gp-text-weight-medium);
   }
 
-  .Text-wide--weight-normal {
+  .text-wide--weight-normal {
     font-weight: var(--gp-text-weight-normal);
   }
 
-  .Text-wide--weight-light {
+  .text-wide--weight-light {
     font-weight: var(--gp-text-weight-light);
   }
 
-  .Text-wide--weight-extralight {
+  .text-wide--weight-extralight {
     font-weight: var(--gp-text-weight-extralight);
   }
 }
 
-.Text-align--start {
+.text-align--start {
   text-align: start;
 }
 
-.Text-align--end {
+.text-align--end {
   text-align: end;
 }
 
-.Text-align--center {
+.text-align--center {
   text-align: center;
 }
