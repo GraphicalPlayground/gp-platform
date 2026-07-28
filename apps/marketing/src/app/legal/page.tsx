@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { cms } from '@/lib/cms';
-import Link from 'next/link';
+import { Link } from '@gp/ui/components';
 
 export default async function LegalPage() {
   const docs = await cms.legal.getAll();
@@ -17,6 +17,7 @@ export default async function LegalPage() {
             <Link
               className='text-text-link-rest hover:text-text-link-pressed underline'
               href={`/legal/${doc.frontmatter.slug}`}
+              title={doc.frontmatter.title}
             >
               {doc.frontmatter.title}
             </Link>
