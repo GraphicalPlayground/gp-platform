@@ -16,7 +16,7 @@ export interface {{pascalCase name}}Props extends React.HTMLAttributes<HTMLEleme
  * @brief {{pascalCase name}} component.
  * @details
  */
-export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({className, ...rest}) => {
+export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({ className, ...rest }) => {
   return <div className={clsx(styles['{{kebabCase name}}'], className)} {...rest} />;
 };
 
