@@ -156,20 +156,20 @@
   --color-indigo-8: var(--gp-color-indigo-8);
   --color-indigo-9: var(--gp-color-indigo-9);
 
-  --color-background: var(--gp-color-background);
-  --color-foreground: var(--gp-color-foreground);
+  --color-background: var(--gp-color-canvas-default);
+  --color-foreground: var(--gp-color-text-default);
 
-  --color-success: var(--gp-color-success);
+  --color-success: var(--gp-color-success-fg);
   --color-success-fg: var(--gp-color-success-fg);
   --color-success-emphasis: var(--gp-color-success-emphasis);
   --color-success-muted: var(--gp-color-success-muted);
   --color-success-subtle: var(--gp-color-success-subtle);
-  --color-danger: var(--gp-color-danger);
+  --color-danger: var(--gp-color-danger-fg);
   --color-danger-fg: var(--gp-color-danger-fg);
   --color-danger-emphasis: var(--gp-color-danger-emphasis);
   --color-danger-muted: var(--gp-color-danger-muted);
   --color-danger-subtle: var(--gp-color-danger-subtle);
-  --color-error: var(--gp-color-error);
+  --color-error: var(--gp-color-error-fg);
   --color-error-fg: var(--gp-color-error-fg);
   --color-error-emphasis: var(--gp-color-error-emphasis);
   --color-error-muted: var(--gp-color-error-muted);

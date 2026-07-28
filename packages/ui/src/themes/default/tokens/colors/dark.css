@@ -157,7 +157,42 @@
     --gp-color-indigo-8: #161962;
     --gp-color-indigo-9: #0d103f;
 
-    --gp-color-background: #0d1117;
-    --gp-color-foreground: #f0f6fc;
+    --gp-color-success-fg: var(--gp-color-green-3);
+    --gp-color-success-emphasis: var(--gp-color-green-6);
+    --gp-color-success-muted: #0d302499;
+    --gp-color-success-subtle: #0e422cd9;
+    --gp-color-danger-fg: var(--gp-color-red-4);
+    --gp-color-danger-emphasis: var(--gp-color-red-5);
+    --gp-color-danger-muted: #5e021799;
+    --gp-color-danger-subtle: #fa383dd9;
+    --gp-color-error-fg: var(--brand-color-danger-fg);
+    --gp-color-error-emphasis: var(--brand-color-danger-emphasis);
+    --gp-color-error-muted: var(--brand-color-danger-muted);
+    --gp-color-error-subtle: var(--brand-color-danger-subtle);
+    --gp-color-accent-primary: var(--gp-color-green-2);
+    --gp-color-accent-secondary: var(--gp-color-yellow-3);
+    --gp-color-text-default: var(--gp-color-white-0);
+    --gp-color-text-muted: var(--gp-color-gray-2);
+    --gp-color-text-subtle: var(--brand-color-text-muted);
+    --gp-color-text-on-emphasis: var(--gp-color-black-0);
+    --gp-color-text-emphasized: var(--gp-color-green-3);
+    --gp-color-text-link-rest: var(--gp-color-blue-1);
+    --gp-color-text-link-pressed: var(--gp-color-blue-1);
+    --gp-color-text-danger: #ff8182;
+    --gp-color-text-error: var(--brand-color-text-danger);
+    --gp-color-neutral-emphasis-plus: var(--gp-color-gray-3);
+    --gp-color-neutral-emphasis: var(--gp-color-gray-3);
+    --gp-color-neutral-muted: #7c8980fe;
+    --gp-color-neutral-subtle: #7c8980ff;
+    --gp-color-canvas-default: var(--gp-color-black-0);
+    --gp-color-canvas-invert: var(--gp-color-white-0);
+    --gp-color-canvas-overlay: var(--gp-color-gray-6);
+    --gp-color-canvas-inset: var(--gp-color-black-0);
+    --gp-color-canvas-subtle: var(--gp-color-gray-8);
+    --gp-color-canvas-muted: #090d0a;
+    --gp-color-border-default: var(--gp-color-gray-5);
+    --gp-color-border-muted: var(--gp-color-gray-7);
+    --gp-color-border-subtle: var(--gp-color-gray-6);
+    --gp-color-focus: var(--gp-color-blue-3);
   }
 }
