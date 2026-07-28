@@ -73,6 +73,7 @@
       "text": "log",
       "link": "link",
       "expandable-arrow": "input",
+      "prose": "mjml",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

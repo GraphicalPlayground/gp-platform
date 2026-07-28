@@ -9,3 +9,4 @@ export * from './helper';
 export * from './link';
 export * from './text';
 export * from './expandable-arrow';
+export * from './prose';
