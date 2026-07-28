@@ -2,9 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-/* Export the helper */
-export * from './helper';
+declare const styles: {
+  readonly 'link': string;
+};
 
-/* Export the components */
-export * from './link';
-export * from './text';
+export = styles;
