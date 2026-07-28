@@ -118,3 +118,6 @@ export const Text: React.FC<TextProps> = ({
     </UnderlyingTag>
   );
 };
+
+/** Set the display name for the Text component. */
+Text.displayName = 'gp.Text';
