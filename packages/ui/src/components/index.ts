@@ -6,4 +6,4 @@
 export * from './helper';
 
 /* Export the components */
-export * from './Text';
+export * from './text';

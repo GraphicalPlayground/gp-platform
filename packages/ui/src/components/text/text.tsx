@@ -4,7 +4,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import styles from './Text.module.css';
+import styles from './text.module.css';
 
 export const textSizes = ['1000', '900', '800', '700', '600', '500', '400', '300', '200', '100'] as const;
 export const textTags = ['p', 'span', 'div', 'strong', 'em'] as const;
