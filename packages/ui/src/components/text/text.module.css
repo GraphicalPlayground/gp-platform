@@ -4,20 +4,20 @@
  * mailto:support AT graphical-playground DOT com
  */
 
-.Text {
+.text {
   font-family: var(--gp-body-font-family);
 }
 
-[data-color-mode='dark'] .Text--antialiased {
+[data-color-mode='dark'] .text--antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
 }
 
-.Text--default {
+.text--default {
   color: var(--gp-color-text-default);
 }
 
-.Text--muted {
+.text--muted {
   color: var(--gp-color-text-muted);
 }
 
@@ -33,117 +33,117 @@
   font-family: var(--gp-font-stack-monospace);
 }
 
-.Text--1000 {
+.text--1000 {
   font-weight: var(--gp-text-weight-1000);
   font-size: var(--gp-text-size-1000);
   line-height: var(--gp-text-line-height-1000);
   letter-spacing: var(--gp-text-letter-spacing-1000);
 }
 
-.Text--900 {
+.text--900 {
   font-weight: var(--gp-text-weight-900);
   font-size: var(--gp-text-size-900);
   line-height: var(--gp-text-line-height-900);
   letter-spacing: var(--gp-text-letter-spacing-900);
 }
 
-.Text--800 {
+.text--800 {
   font-weight: var(--gp-text-weight-800);
   font-size: var(--gp-text-size-800);
   line-height: var(--gp-text-line-height-800);
   letter-spacing: var(--gp-text-letter-spacing-800);
 }
 
-.Text--700 {
+.text--700 {
   font-weight: var(--gp-text-weight-700);
   font-size: var(--gp-text-size-700);
   line-height: var(--gp-text-line-height-700);
   letter-spacing: var(--gp-text-letter-spacing-700);
 }
 
-.Text--600 {
+.text--600 {
   font-weight: var(--gp-text-weight-600);
   font-size: var(--gp-text-size-600);
   line-height: var(--gp-text-line-height-600);
 }
 
-.Text--500 {
+.text--500 {
   font-weight: var(--gp-text-weight-500);
   font-size: var(--gp-text-size-500);
   line-height: var(--gp-text-line-height-500);
 }
 
-.Text--400 {
+.text--400 {
   font-weight: var(--gp-text-weight-400);
   font-size: var(--gp-text-size-400);
   line-height: var(--gp-text-line-height-400);
   letter-spacing: var(--gp-text-letter-spacing-400);
 }
 
-.Text--350 {
+.text--350 {
   font-weight: var(--gp-text-weight-350);
   font-size: var(--gp-text-size-350);
   line-height: var(--gp-text-line-height-350);
   letter-spacing: var(--gp-text-letter-spacing-350);
 }
 
-.Text--300 {
+.text--300 {
   font-weight: var(--gp-text-weight-300);
   font-size: var(--gp-text-size-300);
   line-height: var(--gp-text-line-height-300);
   letter-spacing: var(--gp-text-letter-spacing-300);
 }
 
-.Text--200 {
+.text--200 {
   font-weight: var(--gp-text-weight-200);
   font-size: var(--gp-text-size-200);
   line-height: var(--gp-text-line-height-200);
   letter-spacing: var(--gp-text-letter-spacing-200);
 }
 
-.Text--100 {
+.text--100 {
   font-weight: var(--gp-text-weight-100);
   font-size: var(--gp-text-size-100);
   line-height: var(--gp-text-line-height-100);
   letter-spacing: var(--gp-text-letter-spacing-100);
 }
 
-.Text--weight-heavy,
+.text--weight-heavy,
 .Text-narrow--weight-heavy {
   font-weight: var(--gp-text-weight-heavy);
 }
 
-.Text--weight-extrabold,
+.text--weight-extrabold,
 .Text-narrow--weight-extrabold {
   font-weight: var(--gp-text-weight-extrabold);
 }
 
-.Text--weight-bold,
+.text--weight-bold,
 .Text-narrow--weight-bold {
   font-weight: var(--gp-text-weight-bold);
 }
 
-.Text--weight-semibold,
+.text--weight-semibold,
 .Text-narrow--weight-semibold {
   font-weight: var(--gp-text-weight-semibold);
 }
 
-.Text--weight-medium,
+.text--weight-medium,
 .Text-narrow--weight-medium {
   font-weight: var(--gp-text-weight-medium);
 }
 
-.Text--weight-normal,
+.text--weight-normal,
 .Text-narrow--weight-normal {
   font-weight: var(--gp-text-weight-normal);
 }
 
-.Text--weight-light,
+.text--weight-light,
 .Text-narrow--weight-light {
   font-weight: var(--gp-text-weight-light);
 }
 
-.Text--weight-extralight,
+.text--weight-extralight,
 .Text-narrow--weight-extralight {
   font-weight: var(--gp-text-weight-extralight);
 }

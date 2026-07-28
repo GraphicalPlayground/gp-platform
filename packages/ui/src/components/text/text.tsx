@@ -81,14 +81,14 @@ export const Text: React.FC<TextProps> = ({
     if (!weight) return null;
 
     if (typeof weight === 'string') {
-      return styles[`Text--weight-${weight}` as keyof typeof styles];
+      return styles[`text--weight-${weight}` as keyof typeof styles];
     }
 
     return (Object.keys(weight) as Array<keyof ResponsiveWeightMap>)
       .map((viewport) => {
         const viewportWeight = weight[viewport];
         if (!viewportWeight) return null;
-        return styles[`Text-${viewport}--weight-${viewportWeight}` as keyof typeof styles];
+        return styles[`text-${viewport}--weight-${viewportWeight}` as keyof typeof styles];
       })
       .filter(Boolean)
       .join(' ');
@@ -101,13 +101,13 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const textClassName = clsx(
-    styles.Text,
-    styles[`Text-font--${font}`],
-    styles[`Text--${variant}`],
-    styles[`Text--${size}`],
-    !dontApplyAA && styles['Text--antialiased'],
+    styles.text,
+    styles[`text-font--${font}`],
+    styles[`text--${variant}`],
+    styles[`text--${size}`],
+    !dontApplyAA && styles['text--antialiased'],
     weight && weightClass,
-    align && styles[`Text-align--${align}`],
+    align && styles[`text-align--${align}`],
     className
   );
 
