@@ -63,6 +63,7 @@
       "llms": "prompts",
       "llms.txt": "prompts",
       "sitemap": "routes",
+      "component": "components",
 
       /* Fonts */
       "HubotSans": "font",

@@ -42,7 +42,9 @@
     "typecheck:app": "turbo typecheck --filter=@gp/app",
     "typecheck:admin": "turbo typecheck --filter=@gp/admin",
     "typecheck:marketing": "turbo typecheck --filter=@gp/marketing",
-    "prepare": "husky"
+    "prepare": "husky",
+    "gen": "turbo gen",
+    "gen:component": "turbo gen component"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
@@ -53,6 +55,7 @@
     "@eslint/eslintrc": "3.3.6",
     "@eslint/js": "9.39.5",
     "@gp/standard": "workspace:*",
+    "@turbo/gen": "^2.10.7",
     "@types/node": "26.1.1",
     "@types/react": "^19.2.17",
     "@typescript-eslint/eslint-plugin": "8.65.0",
