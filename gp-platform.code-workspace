@@ -70,7 +70,9 @@
       "MonaSans": "font",
 
       /* Components */
-      "Text": "log",
+      "text": "log",
+      "link": "link",
+      "expandable-arrow": "input",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
