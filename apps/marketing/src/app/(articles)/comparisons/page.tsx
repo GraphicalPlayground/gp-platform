@@ -3,7 +3,28 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { cms } from '@/lib/cms';
+import { Link } from '@gp/ui/components';
 
-export default function ComparisonsPage() {
-  return <div>Comparisons</div>;
+export default async function ComparisonsPage() {
+  const articles = await cms.articles.getComparisons();
+
+  return (
+    <div>
+      <h1>Comparisons</h1>
+      <ul>
+        {articles.map((article) => (
+          <li key={article.frontmatter.slug}>
+            <Link
+              className='text-text-link-rest hover:text-text-link-pressed underline'
+              href={`/comparisons/${article.frontmatter.slug}`}
+              title={article.frontmatter.title}
+            >
+              {article.frontmatter.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

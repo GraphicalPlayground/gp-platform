@@ -3,7 +3,28 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { cms } from '@/lib/cms';
+import { Link } from '@gp/ui/components';
 
-export default function TechArticlesPage() {
-  return <div>TechArticles</div>;
+export default async function TechArticlesPage() {
+  const articles = await cms.articles.getTechArticles();
+
+  return (
+    <div>
+      <h1>Tech Articles</h1>
+      <ul>
+        {articles.map((article) => (
+          <li key={article.frontmatter.slug}>
+            <Link
+              className='text-text-link-rest hover:text-text-link-pressed underline'
+              href={`/tech-articles/${article.frontmatter.slug}`}
+              title={article.frontmatter.title}
+            >
+              {article.frontmatter.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }

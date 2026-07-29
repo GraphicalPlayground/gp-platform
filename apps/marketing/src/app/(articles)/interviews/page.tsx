@@ -3,7 +3,28 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { cms } from '@/lib/cms';
+import { Link } from '@gp/ui/components';
 
-export default function InterviewsPage() {
-  return <div>Interviews</div>;
+export default async function InterviewsPage() {
+  const articles = await cms.articles.getInterviews();
+
+  return (
+    <div>
+      <h1>Interviews</h1>
+      <ul>
+        {articles.map((article) => (
+          <li key={article.frontmatter.slug}>
+            <Link
+              className='text-text-link-rest hover:text-text-link-pressed underline'
+              href={`/interviews/${article.frontmatter.slug}`}
+              title={article.frontmatter.title}
+            >
+              {article.frontmatter.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
