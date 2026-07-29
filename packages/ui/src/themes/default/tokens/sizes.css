@@ -30,6 +30,18 @@
     --gp-grid-spacing-row: 16px;
     --gp-grid-spacing-column-gap: 16px;
     --gp-grid-spacing-margin: 16px;
+
+    --gp-box-spacing-condensed: 16px;
+    --gp-box-spacing-normal: 24px;
+    --gp-box-spacing-spacious: 48px;
+
+    --gp-stack-padding-condensed: 16px;
+    --gp-stack-padding-normal: 24px;
+    --gp-stack-padding-spacious: 48px;
+
+    --gp-stack-gap-condensed: 16px;
+    --gp-stack-gap-normal: 24px;
+    --gp-stack-gap-spacious: 48px;
   }
 
   @media (min-width: 768px) {

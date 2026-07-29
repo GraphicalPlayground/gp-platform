@@ -4,7 +4,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { Text, Link, Grid } from '@gp/ui/components';
+import { Text, Link, Grid, Stack } from '@gp/ui/components';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 
@@ -48,6 +48,15 @@ export default function HomePage() {
           <Grid.Column span={10}></Grid.Column>
           <Grid.Column span={2}></Grid.Column>
         </Grid>
+
+        <Stack>
+          <Text size='200' weight='heavy'>
+            Learn Graphics Programming by Building It
+          </Text>
+          <Text size='100' weight='normal'>
+            An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines.
+          </Text>
+        </Stack>
       </div>
       <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
         <div>
