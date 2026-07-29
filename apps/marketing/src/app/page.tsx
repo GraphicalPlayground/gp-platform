@@ -24,7 +24,7 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
  */
 export default function HomePage() {
   return (
-    <div className='w-full h-100vh flex flex-col gap-4 p-4 justify-center items-center'>
+    <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
       <div>
         <h2>Aligned Text</h2>
         <div className='flex w-100 flex-col border'>
