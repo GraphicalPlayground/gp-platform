@@ -1,0 +1,50 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@layer base {
+  :root {
+    --gp-breakpoint-xsmall: 320px;
+    --gp-breakpoint-small: 544px;
+    --gp-breakpoint-medium: 768px;
+    --gp-breakpoint-large: 1012px;
+    --gp-breakpoint-xlarge: 1280px;
+    --gp-breakpoint-xxlarge: 1400px;
+
+    --gp-border-width-thin: max(1px, 0.0625rem);
+    --gp-border-width-thick: max(2px, 0.125rem);
+    --gp-border-width-thicker: max(4px, 0.25rem);
+
+    --gp-border-inset-thin: inset 0 0 0 var(--gp-border-width-thin);
+    --gp-border-inset-thick: inset 0 0 0 var(--gp-border-width-thick);
+    --gp-border-inset-thicker: inset 0 0 0 var(--gp-border-width-thicker);
+
+    --gp-border-radius-small: 4px;
+    --gp-border-radius-medium: 8px;
+    --gp-border-radius-large: 16px;
+    --gp-border-radius-xlarge: 24px;
+    --gp-border-radius-full: 9999px;
+
+    --gp-grid-spacing-row: 16px;
+    --gp-grid-spacing-column-gap: 16px;
+    --gp-grid-spacing-margin: 16px;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gp-grid-spacing-row: 32px;
+      --gp-grid-spacing-column-gap: 32px;
+      --gp-grid-spacing-margin: 40px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --gp-grid-spacing-row: 48px;
+      --gp-grid-spacing-column-gap: 48px;
+      --gp-grid-spacing-margin: 16px;
+    }
+  }
+}
