@@ -13,6 +13,7 @@ export const legalFrontmatterSchema = z.object({
   category: legalCategorySchema,
   version: semverSchema,
   effectiveDate: z.date(),
+  updateDate: z.date().optional(),
   summary: z.string().min(1),
   requiresExplicitConsent: z.boolean(),
   draft: z.boolean().optional().default(false)
