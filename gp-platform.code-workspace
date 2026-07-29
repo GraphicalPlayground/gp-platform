@@ -64,6 +64,10 @@
       "llms.txt": "prompts",
       "sitemap": "routes",
       "component": "components",
+      "(articles)": "template",
+      ".clerk": "secure",
+      ".well-known": "mappings",
+      "security.txt": "secure",
 
       /* Fonts */
       "HubotSans": "font",
