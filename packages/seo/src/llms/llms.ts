@@ -26,9 +26,10 @@ export interface LlmsSection {
  */
 export interface LlmsTxtInput {
   name: string;
-  summary: string;
+  summary: string | string[];
   baseUrl: string;
   sections: LlmsSection[];
+  footnotes: string | string[];
 }
 
 /**
@@ -43,15 +44,31 @@ export class SeoLlms {
    */
   static build(input: LlmsTxtInput): string {
     const base = trimTrailingSlash(input.baseUrl);
-    const lines: string[] = [`# ${input.name}`, '', `> ${input.summary}`, ''];
+    const lines: string[] = [
+      `# ${input.name}`,
+      '',
+      ...(Array.isArray(input.summary) ? input.summary.map((s) => `> ${s}`) : [`> ${input.summary}`]),
+      ''
+    ];
 
     for (const section of input.sections) {
       lines.push(`## ${section.heading}`, '');
       for (const link of section.links) {
+        const url = link.path.startsWith('http') ? link.path : `${base}${link.path}`;
+
         const description = link.description ? `: ${link.description}` : '';
-        lines.push(`- [${link.title}](${base}${link.path})${description}`);
+        lines.push(`- [${link.title}](${url})${description}`);
       }
       lines.push('');
+    }
+
+    if (input.footnotes.length > 0) {
+      lines.push('---', '');
+      if (Array.isArray(input.footnotes)) {
+        lines.push(...input.footnotes);
+      } else {
+        lines.push(input.footnotes);
+      }
     }
 
     return `${lines.join('\n').trimEnd()}\n`;
