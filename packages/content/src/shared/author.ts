@@ -11,13 +11,16 @@ export const socialLinkSchema = z.object({
 
 export type SocialLink = z.infer<typeof socialLinkSchema>;
 
-export const authorSchema = z.object({
-  name: z.string().min(1),
-  slug: z.string().min(1),
-  avatarUrl: z.url().optional(),
-  bio: z.string().min(1).optional(),
-  url: z.url().optional(),
-  socialLinks: z.array(socialLinkSchema).default([])
-});
+export const authorSchema = z.union([
+  z.object({
+    name: z.string().min(1),
+    slug: z.string().min(1),
+    avatarUrl: z.url().optional(),
+    bio: z.string().min(1).optional(),
+    url: z.url().optional(),
+    socialLinks: z.array(socialLinkSchema).default([])
+  }),
+  z.string().min(1)
+]);
 
 export type Author = z.infer<typeof authorSchema>;

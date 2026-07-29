@@ -5,6 +5,7 @@
 import { z } from 'zod';
 
 export const articleCategorySchema = z.enum([
+  'uncategorized',
   'rendering-pipeline',
   'graphics-apis',
   'shaders',

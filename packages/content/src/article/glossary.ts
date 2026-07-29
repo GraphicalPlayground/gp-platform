@@ -9,6 +9,7 @@ import { articleFrontmatterSchema } from './frontmatter';
 export const glossaryFrontmatterSchema = articleFrontmatterSchema.extend({
   type: z.literal('glossary'),
   term: z.string().min(1),
+  synonims: z.array(z.string().min(1)).default([]),
   shortDefinition: z.string().min(1).max(300),
   relatedTerms: z.array(z.string().min(1)).default([])
 });
