@@ -25,7 +25,7 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function HomePage() {
   return (
     <div className='h-screen w-full flex flex-row justify-between px-10'>
-      <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
+      <div className='w-full flex flex-col gap-4 p-4'>
         <Stack gap='condensed' style={{ width: '100%' }}>
           <Heading size='display'>Display: 96px</Heading>
           <Heading size='1'>1: 72px</Heading>
