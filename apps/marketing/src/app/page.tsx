@@ -4,7 +4,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { Text, Link, Grid, Stack } from '@gp/ui/components';
+import { Text, Link, Grid, Stack, Heading } from '@gp/ui/components';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 
@@ -25,6 +25,86 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function HomePage() {
   return (
     <div className='h-screen w-full flex flex-row justify-between px-10'>
+      <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
+        <Stack gap='condensed' style={{ width: '100%' }}>
+          <Heading size='display'>Display: 96px</Heading>
+          <Heading size='1'>1: 72px</Heading>
+          <Heading size='2'>2: 64px</Heading>
+          <Heading size='3'>3: 48px</Heading>
+          <Heading size='4'>4: 40px</Heading>
+          <Heading size='5'>5: 32px</Heading>
+          <Heading size='6'>6: 24px</Heading>
+          <Heading size='subhead-large'>subhead-large: 20px</Heading>
+          <Heading size='subhead-medium'>subhead-medium: 16px</Heading>
+        </Stack>
+        <Stack gap='condensed' style={{ width: '100%' }}>
+          <Heading as='h6'>This is my super sweet heading as a h6</Heading>
+
+          <Heading as='h2' size='4'>
+            This h2 will appear visually identical to a h4
+          </Heading>
+        </Stack>
+        <Stack gap='condensed' style={{ width: '100%' }}>
+          <Heading as='h3' weight='heavy'>
+            heavy
+          </Heading>
+          <Heading as='h3' weight='extrabold'>
+            extrabold
+          </Heading>
+          <Heading as='h3' weight='bold'>
+            bold
+          </Heading>
+          <Heading as='h3' weight='semibold'>
+            semibold
+          </Heading>
+          <Heading as='h3' weight='medium'>
+            medium
+          </Heading>
+          <Heading as='h3' weight='normal'>
+            normal
+          </Heading>
+          <Heading as='h3' weight='light'>
+            light
+          </Heading>
+
+          <br />
+          <br />
+          <Heading
+            as='h4'
+            weight={{
+              narrow: 'heavy',
+              regular: 'semibold',
+              wide: 'light'
+            }}
+          >
+            Responsive
+          </Heading>
+        </Stack>
+        <Stack gap='condensed' style={{ width: '100%' }}>
+          <Heading as='h3' stretch='condensed'>
+            condensed
+          </Heading>
+          <Heading as='h3' stretch='normal'>
+            normal
+          </Heading>
+          <Heading as='h3' stretch='expanded'>
+            expanded
+          </Heading>
+
+          <br />
+          <br />
+          <Heading
+            as='h4'
+            stretch={{
+              narrow: 'condensed',
+              regular: 'normal',
+              wide: 'expanded'
+            }}
+          >
+            Responsive
+          </Heading>
+        </Stack>
+      </div>
       <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
         <Grid enableOverlay>
           <Grid.Column span={1}></Grid.Column>
@@ -54,7 +134,8 @@ export default function HomePage() {
             Learn Graphics Programming by Building It
           </Text>
           <Text size='100' weight='normal'>
-            An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines.
+            An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from
+            the ground up, from raw Vulkan commands to full render pipelines.
           </Text>
         </Stack>
       </div>

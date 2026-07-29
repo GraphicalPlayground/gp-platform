@@ -1,0 +1,290 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.heading {
+  --condensed-stretch: 75%;
+  color: var(--gp-color-text-default);
+}
+
+.heading--text-wrap-balance {
+  text-wrap: balance;
+}
+
+.heading--text-wrap-wrap {
+  text-wrap: wrap;
+}
+
+.heading-font--hubot-sans {
+  --condensed-stretch: 90%;
+}
+
+[data-color-mode='dark'] .heading {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.heading-font--mona-sans {
+  font-family: var(--gp-heading-font-family);
+}
+
+.heading-font--hubot-sans {
+  font-family: var(--gp-heading-font-family-alt);
+}
+
+.heading-font--monospace {
+  font-family: var(--gp-font-stack-monospace);
+}
+
+.heading--display {
+  font-weight: var(--gp-heading-weight-1000);
+  font-size: var(--gp-text-size-1000);
+  line-height: var(--gp-text-line-height-1000);
+  letter-spacing: var(--gp-text-letter-spacing-1000);
+}
+
+.heading--subhead-large {
+  font-weight: var(--gp-text-subhead-weight-large);
+  font-size: var(--gp-text-subhead-size-large);
+  line-height: var(--gp-text-subhead-line-height-large);
+}
+
+.heading--subhead-medium {
+  font-weight: var(--gp-text-subhead-weight-medium);
+  font-size: var(--gp-text-subhead-size-medium);
+  line-height: var(--gp-text-subhead-line-height-medium);
+}
+
+.heading--1 {
+  font-weight: var(--gp-heading-weight-900);
+  font-size: var(--gp-text-size-900);
+  line-height: var(--gp-text-line-height-900);
+  letter-spacing: var(--gp-text-letter-spacing-900);
+}
+
+.heading--2 {
+  font-weight: var(--gp-heading-weight-800);
+  font-size: var(--gp-text-size-800);
+  line-height: var(--gp-text-line-height-800);
+  letter-spacing: var(--gp-text-letter-spacing-800);
+}
+
+.heading--3 {
+  font-weight: var(--gp-heading-weight-700);
+  font-size: var(--gp-text-size-700);
+  line-height: var(--gp-heading-line-height-700);
+  letter-spacing: var(--gp-heading-letter-spacing-700);
+}
+
+.heading--4 {
+  font-weight: var(--gp-heading-weight-600);
+  font-size: var(--gp-text-size-600);
+  line-height: var(--gp-text-line-height-600);
+  letter-spacing: var(--gp-heading-letter-spacing-600);
+}
+
+.heading--5 {
+  font-weight: var(--gp-heading-weight-500);
+  font-size: var(--gp-text-size-500);
+  line-height: var(--gp-text-line-height-500);
+  letter-spacing: var(--gp-heading-letter-spacing-500);
+}
+
+.heading--6 {
+  font-weight: var(--gp-heading-weight-400);
+  font-size: var(--gp-text-size-400);
+  line-height: var(--gp-text-line-height-400);
+  letter-spacing: var(--gp-heading-letter-spacing-400);
+}
+
+.heading--weight-heavy,
+.heading-narrow--weight-heavy {
+  font-weight: var(--gp-text-weight-heavy);
+}
+
+.heading--weight-extrabold,
+.heading-narrow--weight-extrabold {
+  font-weight: var(--gp-text-weight-extrabold);
+}
+
+.heading--weight-bold,
+.heading-narrow--weight-bold {
+  font-weight: var(--gp-text-weight-bold);
+}
+
+.heading--weight-semibold,
+.heading-narrow--weight-semibold {
+  font-weight: var(--gp-text-weight-semibold);
+}
+
+.heading--weight-medium,
+.heading-narrow--weight-medium {
+  font-weight: var(--gp-text-weight-medium);
+}
+
+.heading--weight-normal,
+.heading-narrow--weight-normal {
+  font-weight: var(--gp-text-weight-normal);
+}
+
+.heading--weight-light,
+.heading-narrow--weight-light {
+  font-weight: var(--gp-text-weight-light);
+}
+
+.heading--weight-extralight,
+.heading-narrow--weight-extralight {
+  font-weight: var(--gp-text-weight-extralight);
+}
+
+@media screen and (min-width: 48rem) {
+  .heading-regular--weight-heavy {
+    font-weight: var(--gp-text-weight-heavy);
+  }
+
+  .heading-regular--weight-extrabold {
+    font-weight: var(--gp-text-weight-extrabold);
+  }
+
+  .heading-regular--weight-bold {
+    font-weight: var(--gp-text-weight-bold);
+  }
+
+  .heading-regular--weight-semibold {
+    font-weight: var(--gp-text-weight-semibold);
+  }
+
+  .heading-regular--weight-medium {
+    font-weight: var(--gp-text-weight-medium);
+  }
+
+  .heading-regular--weight-normal {
+    font-weight: var(--gp-text-weight-normal);
+  }
+
+  .heading-regular--weight-light {
+    font-weight: var(--gp-text-weight-light);
+  }
+
+  .heading-regular--weight-extralight {
+    font-weight: var(--gp-text-weight-extralight);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .heading-wide--weight-heavy {
+    font-weight: var(--gp-text-weight-heavy);
+  }
+
+  .heading-wide--weight-extrabold {
+    font-weight: var(--gp-text-weight-extrabold);
+  }
+
+  .heading-wide--weight-bold {
+    font-weight: var(--gp-text-weight-bold);
+  }
+
+  .heading-wide--weight-semibold {
+    font-weight: var(--gp-text-weight-semibold);
+  }
+
+  .heading-wide--weight-medium {
+    font-weight: var(--gp-text-weight-medium);
+  }
+
+  .heading-wide--weight-normal {
+    font-weight: var(--gp-text-weight-normal);
+  }
+
+  .heading-wide--weight-light {
+    font-weight: var(--gp-text-weight-light);
+  }
+}
+
+.heading--stretch-condensed,
+.heading-narrow--stretch-condensed {
+  font-stretch: var(--condensed-stretch);
+}
+
+.heading--stretch-normal,
+.heading-narrow--stretch-normal {
+  font-stretch: 100%;
+}
+
+.heading--stretch-expanded,
+.heading-narrow--stretch-expanded {
+  font-stretch: 125%;
+}
+
+@media screen and (min-width: 48rem) {
+  .heading-regular--stretch-condensed {
+    font-stretch: var(--condensed-stretch);
+  }
+
+  .heading-regular--stretch-normal {
+    font-stretch: 100%;
+  }
+
+  .heading-regular--stretch-expanded {
+    font-stretch: 125%;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .heading-narrow--weight-expanded .heading-wide--stretch-condensed {
+    font-stretch: var(--condensed-stretch);
+  }
+
+  .heading-wide--stretch-normal {
+    font-stretch: 100%;
+  }
+
+  .heading-wide--stretch-expanded {
+    font-stretch: 125%;
+  }
+}
+
+.heading--letter-spacing-condensed,
+.heading-narrow--letter-spacing-condensed {
+  letter-spacing: var(--gp-text-letter-spacing-900);
+}
+
+.heading--letter-spacing-normal,
+.heading-narrow--letter-spacing-normal {
+  letter-spacing: var(--gp-heading-letter-spacing-700);
+}
+
+.heading--letter-spacing-none,
+.heading-narrow--letter-spacing-none {
+  letter-spacing: 0;
+}
+
+@media screen and (min-width: 48rem) {
+  .heading-regular--letter-spacing-condensed {
+    letter-spacing: var(--gp-text-letter-spacing-900);
+  }
+
+  .heading-regular--letter-spacing-normal {
+    letter-spacing: var(--gp-heading-letter-spacing-700);
+  }
+
+  .heading-regular--letter-spacing-none {
+    letter-spacing: 0;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .heading-narrow--weight-wide .heading-wide--letter-spacing-condensed {
+    letter-spacing: var(--gp-text-letter-spacing-900);
+  }
+
+  .heading-wide--letter-spacing-normal {
+    letter-spacing: var(--gp-heading-letter-spacing-700);
+  }
+
+  .heading-wide--letter-spacing-none {
+    letter-spacing: 0;
+  }
+}
