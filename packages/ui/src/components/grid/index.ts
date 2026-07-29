@@ -2,12 +2,4 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-/* Export the helper */
-export * from './helper';
-
-/* Export the components */
 export * from './grid';
-export * from './link';
-export * from './text';
-export * from './expandable-arrow';
-export * from './prose';

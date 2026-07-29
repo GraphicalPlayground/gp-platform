@@ -68,6 +68,7 @@
       ".clerk": "secure",
       ".well-known": "mappings",
       "security.txt": "secure",
+      "grid": "app",
 
       /* Fonts */
       "HubotSans": "font",
