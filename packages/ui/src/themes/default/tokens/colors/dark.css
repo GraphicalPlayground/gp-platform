@@ -194,5 +194,9 @@
     --gp-color-border-muted: var(--gp-color-gray-7);
     --gp-color-border-subtle: var(--gp-color-gray-6);
     --gp-color-focus: var(--gp-color-blue-3);
+
+    --gp-color-link-default: var(--gp-color-text-default);
+    --gp-color-link-accent: var(--gp-color-text-link-rest);
+    --gp-color-grid-overlay: #fb51544d;
   }
 }
