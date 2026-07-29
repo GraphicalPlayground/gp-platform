@@ -140,7 +140,9 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
    */
   private async buildCache(): Promise<Map<string, MdxDocument<TFrontmatter>>> {
     const filePaths = await walkMdxFiles(this.contentDir);
-    const results = await Promise.all(filePaths.map((filePath) => this.loadDocument(filePath)));
+    const results = await Promise.all(
+      filePaths.filter((file) => !file.endsWith('README.md')).map((filePath) => this.loadDocument(filePath))
+    );
 
     const cacheMap = new Map<string, MdxDocument<TFrontmatter>>();
     for (const { slug, doc } of results) {
