@@ -45,16 +45,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/accessibility', changeFrequency: 'yearly', priority: 0.3 },
     { path: '/legal', changeFrequency: 'monthly', priority: 0.4 },
     ...legals,
-    { path: '/breakdowns', changeFrequency: 'weekly', priority: 0.6 },
+    { path: '/breakdowns', changeFrequency: 'weekly', priority: 0.7 },
     { path: '/changelogs', changeFrequency: 'weekly', priority: 0.6 },
-    { path: '/comparisons', changeFrequency: 'weekly', priority: 0.6 },
-    { path: '/glossary', changeFrequency: 'weekly', priority: 0.6 },
-    { path: '/guides', changeFrequency: 'weekly', priority: 0.6 },
-    { path: '/interviews', changeFrequency: 'weekly', priority: 0.6 },
+    { path: '/comparisons', changeFrequency: 'weekly', priority: 0.7 },
+    { path: '/glossary', changeFrequency: 'weekly', priority: 0.7 },
+    { path: '/guides', changeFrequency: 'weekly', priority: 0.7 },
+    { path: '/interviews', changeFrequency: 'weekly', priority: 0.7 },
     { path: '/research', changeFrequency: 'weekly', priority: 0.6 },
     { path: '/roadmaps', changeFrequency: 'weekly', priority: 0.6 },
     { path: '/showcases', changeFrequency: 'weekly', priority: 0.6 },
-    { path: '/tech-articles', changeFrequency: 'weekly', priority: 0.6 },
+    { path: '/tech-articles', changeFrequency: 'weekly', priority: 0.7 },
     ...articles
   ]);
 }
