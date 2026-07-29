@@ -75,12 +75,12 @@
 
 .link--default,
 .link--default span {
-  color: var(--gp-color-text-link-rest);
+  color: var(--gp-color-link-default);
 }
 
 .link--accent,
 .link--accent span {
-  color: var(--gp-color-accent);
+  color: var(--gp-color-link-accent);
 }
 
 .link--label {
