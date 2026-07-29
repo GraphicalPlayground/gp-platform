@@ -68,7 +68,6 @@
       ".clerk": "secure",
       ".well-known": "mappings",
       "security.txt": "secure",
-      "grid": "app",
 
       /* Fonts */
       "HubotSans": "font",
@@ -78,7 +77,9 @@
       "text": "log",
       "link": "link",
       "expandable-arrow": "input",
+      "grid": "app",
       "prose": "mjml",
+      "heading": "zed",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
