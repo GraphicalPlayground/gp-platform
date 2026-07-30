@@ -15,7 +15,8 @@ export class LegalRepository {
   constructor(contentDir: string) {
     this.collection = new MdxCollection<LegalFrontmatter>({
       contentDir,
-      schema: legalFrontmatterSchema
+      schema: legalFrontmatterSchema,
+      useSmartypants: true
     });
   }
 

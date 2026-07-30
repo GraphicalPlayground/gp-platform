@@ -7,6 +7,7 @@ import path from 'node:path';
 
 import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
+import remarkSmartypants from 'remark-smartypants';
 import type { ZodType } from 'zod';
 
 import { estimateReadingTimeMinutes, walkMdxFiles } from './fs-utils';
@@ -38,6 +39,12 @@ export interface MdxCollectionConfig<TFrontmatter> {
    * @brief Type guard used to decide whether a document counts as a draft.
    */
   isDraft?: (frontmatter: TFrontmatter) => boolean;
+
+  /**
+   * @brief Whether to enable smartypants transformations (e.g., converting straight quotes to curly quotes) when compiling MDX content. Defaults to `false`.
+   * @details This option is passed to the `remark-smartypants` plugin used by `next-mdx-remote`. If enabled, it will apply typographic transformations to the MDX content during compilation.
+   */
+  useSmartypants?: boolean;
 }
 
 /**
@@ -65,7 +72,7 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
    * @brief Constructs a new {@link MdxCollection} instance.
    * @param config - Configuration for the collection, including content directory, frontmatter schema, and optional slug resolver and draft checker.
    */
-  constructor(config: MdxCollectionConfig<TFrontmatter>) {
+  constructor(private readonly config: MdxCollectionConfig<TFrontmatter>) {
     this.contentDir = path.isAbsolute(config.contentDir)
       ? config.contentDir
       : path.join(process.cwd(), config.contentDir);
@@ -201,7 +208,12 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
 
     const { content } = await compileMDX<TFrontmatter>({
       source: doc.rawContent,
-      options: { parseFrontmatter: false },
+      options: {
+        parseFrontmatter: false,
+        mdxOptions: {
+          remarkPlugins: this.config.useSmartypants ? [remarkSmartypants] : []
+        }
+      },
       components: options.components
     });
 

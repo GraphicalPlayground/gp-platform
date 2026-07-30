@@ -48,7 +48,8 @@ export class ArticlesRepository {
       contentDir,
       schema: articleUnionSchema,
       // frontmatter.slug is authoritative; falls back to filename otherwise
-      resolveSlug: (frontmatter, relativePath) => frontmatter.slug ?? relativePath
+      resolveSlug: (frontmatter, relativePath) => frontmatter.slug ?? relativePath,
+      useSmartypants: false
     });
   }
 
