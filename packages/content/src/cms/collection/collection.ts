@@ -13,6 +13,7 @@ import type { ZodType } from 'zod';
 import { estimateReadingTimeMinutes, walkMdxFiles } from './fs-utils';
 import { MdxFrontmatterError } from '../errors';
 import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument } from '../types';
+import type { PluggableList } from 'unified';
 
 /**
  * @brief Configuration for an {@link MdxCollection}.
@@ -45,6 +46,11 @@ export interface MdxCollectionConfig<TFrontmatter> {
    * @details This option is passed to the `remark-smartypants` plugin used by `next-mdx-remote`. If enabled, it will apply typographic transformations to the MDX content during compilation.
    */
   useSmartypants?: boolean;
+
+  /**
+   * @brief Additional remark plugins to apply when compiling MDX content. Defaults to an empty array.
+   */
+  remarkPlugins?: PluggableList;
 }
 
 /**
@@ -73,6 +79,7 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
    * @param config - Configuration for the collection, including content directory, frontmatter schema, and optional slug resolver and draft checker.
    */
   constructor(private readonly config: MdxCollectionConfig<TFrontmatter>) {
+    this.config.remarkPlugins = this.config.remarkPlugins ?? [];
     this.contentDir = path.isAbsolute(config.contentDir)
       ? config.contentDir
       : path.join(process.cwd(), config.contentDir);
@@ -211,7 +218,9 @@ export class MdxCollection<TFrontmatter extends { draft?: boolean }> {
       options: {
         parseFrontmatter: false,
         mdxOptions: {
-          remarkPlugins: this.config.useSmartypants ? [remarkSmartypants] : []
+          remarkPlugins: this.config.useSmartypants
+            ? [remarkSmartypants, ...this.config.remarkPlugins!]
+            : this.config.remarkPlugins
         }
       },
       components: options.components

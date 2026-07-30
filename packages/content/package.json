@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@gp/standard": "workspace:*",
-    "@types/mdx": "^2.0.14"
+    "@types/mdx": "^2.0.14",
+    "unified": "^11.0.5"
   }
 }
