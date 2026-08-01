@@ -10,6 +10,8 @@ import { graph } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 
+import { Footer } from '@/components/footer';
+
 import './globals.css';
 
 /**
@@ -25,9 +27,12 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en' className='min-h-screen antialiased scroll-smooth'>
-      <body className='min-h-screen flex flex-col scroll-smooth'>
+      <body className='relative min-h-screen flex flex-col scroll-smooth'>
         <JsonLd data={graph} />
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider>
+          <main>{children}</main>
+          <Footer />
+        </ClerkProvider>
       </body>
     </html>
   );

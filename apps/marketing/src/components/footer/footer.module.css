@@ -1,0 +1,55 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.footer {
+  background-color: var(--gp-color-canvas-subtle);
+  border-top: var(--gp-border-width-thick) solid var(--gp-color-accent-primary, #08872b);
+  color: var(--gp-color-text-default);
+  font-family: var(--gp-body-font-family, var(--gp-font-stack-sans-serif));
+  position: relative;
+}
+
+:global([data-color-mode='dark']) .footer {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+.footer-container {
+  max-width: var(--gp-footer-max-width, 1280px);
+  padding-block: var(--gp-size-64) var(--gp-size-40);
+  padding-inline: var(--gp-size-24);
+  margin-inline: auto;
+}
+
+.footer-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-48);
+}
+
+.footer-newsletter {
+  min-width: 0;
+}
+
+.footer-columns {
+  display: grid;
+  gap: var(--gp-size-32);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    padding-inline: var(--gp-size-32);
+  }
+}
+
+@media (min-width: 1012px) {
+  .footer-columns {
+    gap: var(--gp-size-24);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
