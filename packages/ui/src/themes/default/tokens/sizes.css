@@ -6,6 +6,41 @@
 
 @layer base {
   :root {
+    --gp-size-2: 0.125rem;
+    --gp-size-4: 0.25rem;
+    --gp-size-6: 0.375rem;
+    --gp-size-8: 0.5rem;
+    --gp-size-12: 0.75rem;
+    --gp-size-16: 1rem;
+    --gp-size-20: 1.25rem;
+    --gp-size-24: 1.5rem;
+    --gp-size-28: 1.75rem;
+    --gp-size-32: 2rem;
+    --gp-size-36: 2.25rem;
+    --gp-size-40: 2.5rem;
+    --gp-size-44: 2.75rem;
+    --gp-size-48: 3rem;
+    --gp-size-64: 4rem;
+    --gp-size-80: 5rem;
+    --gp-size-96: 6rem;
+    --gp-size-112: 7rem;
+    --gp-size-128: 8rem;
+
+    --gp-size-negative-2: -0.125rem;
+    --gp-size-negative-4: -0.25rem;
+    --gp-size-negative-6: -0.375rem;
+    --gp-size-negative-8: -0.5rem;
+    --gp-size-negative-12: -0.75rem;
+    --gp-size-negative-16: -1rem;
+    --gp-size-negative-20: -1.25rem;
+    --gp-size-negative-24: -1.5rem;
+    --gp-size-negative-28: -1.75rem;
+    --gp-size-negative-32: -2rem;
+    --gp-size-negative-36: -2.25rem;
+    --gp-size-negative-40: -2.5rem;
+    --gp-size-negative-44: -2.75rem;
+    --gp-size-negative-48: -3rem;
+
     --gp-breakpoint-xsmall: 320px;
     --gp-breakpoint-small: 544px;
     --gp-breakpoint-medium: 768px;
