@@ -47,7 +47,7 @@
 
 .grid--has-overlay .grid-column {
   background-color: var(--gp-color-grid-overlay);
-  min-height: 24px;
+  min-height: var(--gp-size-24);
 }
 
 .grid--has-gutters {

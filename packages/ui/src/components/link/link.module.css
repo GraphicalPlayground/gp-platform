@@ -18,8 +18,8 @@
 
 .link--arrow-start,
 .link--arrow-end {
-  --gap: 4px;
-  --arrow-size: 16px;
+  --gap: var(--gp-size-4);
+  --arrow-size: var(--gp-size-16);
 
   /* Optical alignment */
   position: relative;
@@ -28,16 +28,16 @@
 
 .link--arrow-start.link--large,
 .link--arrow-end.link--large {
-  --arrow-size: 20px;
+  --arrow-size: var(--gp-size-20);
 }
 
 .link--is-external {
-  --gap: 4px;
-  --external-icon-size: 16px;
+  --gap: var(--gp-size-4);
+  --external-icon-size: var(--gp-size-16);
 }
 
 .link--is-external.link--large {
-  --external-icon-size: 20px;
+  --external-icon-size: var(--gp-size-20);
 }
 
 .link:hover {
@@ -68,8 +68,8 @@
 }
 
 .link:focus:focus-visible {
-  outline: max(2px, 0.125rem) solid var(--gp-color-focus);
-  outline-offset: 2px;
+  outline: var(--gp-border-width-thick) solid var(--gp-color-focus);
+  outline-offset: var(--gp-size-2);
   border-radius: 2px;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .link--large .link--label {
-  font-size: 20px;
+  font-size: var(--gp-size-20);
 }
 
 .link--large .link-arrow {
