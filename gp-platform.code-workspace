@@ -76,10 +76,12 @@
       /* Components */
       "text": "log",
       "link": "link",
+      "link-column": "link",
       "expandable-arrow": "input",
       "grid": "app",
       "prose": "mjml",
       "heading": "zed",
+      "footer": "layout",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
