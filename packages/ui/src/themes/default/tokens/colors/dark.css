@@ -201,5 +201,35 @@
 
     --gp-prose-code-bg-color: var(--gp-color-indigo-9);
     --gp-prose-unordered-list-image-url: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='img' viewBox='0 -3 16 16' width='16' height='16' fill='white' style='display: inline-block; vertical-align: text-bottom; overflow: visible;'%3e%3cpath d='M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z'%3e%3c/path%3e%3c/svg%3e ");
+
+    --gp-icon-background-default: var(--gp-icon-background-green);
+    --gp-icon-background-blue: var(--gp-color-blue-8);
+    --gp-icon-background-coral: var(--gp-color-coral-8);
+    --gp-icon-background-green: var(--gp-color-green-8);
+    --gp-icon-background-gray: var(--gp-color-gray-6);
+    --gp-icon-background-indigo: var(--gp-color-indigo-8);
+    --gp-icon-background-lemon: var(--gp-color-lemon-8);
+    --gp-icon-background-lime: var(--gp-color-lime-8);
+    --gp-icon-background-orange: var(--gp-color-orange-8);
+    --gp-icon-background-pink: var(--gp-color-pink-8);
+    --gp-icon-background-purple: var(--gp-color-purple-8);
+    --gp-icon-background-red: var(--gp-color-red-8);
+    --gp-icon-background-teal: var(--gp-color-teal-8);
+    --gp-icon-background-yellow: var(--gp-color-yellow-8);
+
+    --gp-icon-color-default: var(--gp-icon-color-green);
+    --gp-icon-color-blue: var(--gp-color-blue-2);
+    --gp-icon-color-coral: var(--gp-color-coral-2);
+    --gp-icon-color-green: var(--gp-color-green-2);
+    --gp-icon-color-gray: var(--gp-color-gray-2);
+    --gp-icon-color-indigo: var(--gp-color-indigo-2);
+    --gp-icon-color-lemon: var(--gp-color-lemon-2);
+    --gp-icon-color-lime: var(--gp-color-lime-2);
+    --gp-icon-color-orange: var(--gp-color-orange-2);
+    --gp-icon-color-pink: var(--gp-color-pink-2);
+    --gp-icon-color-purple: var(--gp-color-purple-2);
+    --gp-icon-color-red: var(--gp-color-red-2);
+    --gp-icon-color-teal: var(--gp-color-teal-2);
+    --gp-icon-color-yellow: var(--gp-color-yellow-2);
   }
 }

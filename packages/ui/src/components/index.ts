@@ -15,3 +15,4 @@ export * from './expandable-arrow';
 export * from './prose';
 export * from './link-column';
 export * from './staff-toggle-bar';
+export * from './icon';

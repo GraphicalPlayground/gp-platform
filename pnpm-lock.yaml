@@ -491,6 +491,9 @@ importers:
       '@gp/fonts':
         specifier: workspace:*
         version: link:../fonts
+      '@primer/octicons-react':
+        specifier: ^19.32.0
+        version: 19.32.0(react@19.2.4)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -1986,6 +1989,12 @@ packages:
   '@pkgr/core@0.3.6':
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
+
+  '@primer/octicons-react@19.32.0':
+    resolution: {integrity: sha512-BMFi+6rdP4rB0Ex97OKQF1RnCo4OmDGi0NVAYyGjPs7DbHe/KbU5BhxDTjBCfrcLJNXXldh+bbxYm7RS0+RF/Q==}
+    engines: {node: '>=8'}
+    peerDependencies:
+      react: '>=16.3'
 
   '@react-types/shared@3.36.0':
     resolution: {integrity: sha512-DkP/H0C2YjjS7gZWKNqOmU8a16qHPjQNdzMwmTq9SzplM6Iw0kVMTZ0OIoe6FOgGqa+FwMsE2QbPjh/n3g/jXQ==}
@@ -6646,6 +6655,10 @@ snapshots:
     optional: true
 
   '@pkgr/core@0.3.6': {}
+
+  '@primer/octicons-react@19.32.0(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
 
   '@react-types/shared@3.36.0(react@19.2.4)':
     dependencies:
