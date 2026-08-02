@@ -69,6 +69,7 @@
       ".well-known": "mappings",
       "security.txt": "secure",
       "testimonials": "messages",
+      "curriculum": "atom",
 
       /* Fonts */
       "HubotSans": "font",
