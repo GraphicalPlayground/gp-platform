@@ -11,6 +11,7 @@ import NextLink from 'next/link';
 import type { LinkProps as NextLinkProps } from 'next/link';
 import { ExpandableArrow } from '../expandable-arrow';
 import styles from './link.module.css';
+import { LinkExternalIcon } from '@primer/octicons-react';
 
 export const linkVariants = ['default', 'accent'] as const;
 export const linkSizes = ['small', 'medium', 'large'] as const;
@@ -106,6 +107,10 @@ export const Link: React.FC<LinkProps> = ({
     [onBlur, isFocused]
   );
 
+  if (typeof isExternal === 'undefined') {
+    isExternal = rest.target === '_blank' || (rest.href && (rest.href as string).startsWith('http'));
+  }
+
   return (
     <NextLink
       className={clsx(
@@ -133,7 +138,7 @@ export const Link: React.FC<LinkProps> = ({
         <ExpandableArrow className={styles['link-arrow']} expanded={isHovered || isFocused} hidden />
       )}
 
-      {/* {isExternal && <LinkExternalIcon size={LinkExternalIconSizes[size]} aria-label="External link" />} */}
+      {isExternal && <LinkExternalIcon size={LinkExternalIconSizes[size]} aria-label='External link' />}
     </NextLink>
   );
 };
