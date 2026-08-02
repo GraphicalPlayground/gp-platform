@@ -3,10 +3,13 @@
 // mailto:support AT graphical-playground DOT com
 
 declare const styles: {
-  readonly 'footer': string;
   readonly 'container': string;
-  readonly 'top-row': string;
-  readonly 'columns': string;
+  readonly 'bar': string;
+  readonly 'legal': string;
+  readonly 'legal-list': string;
+  readonly 'legal-link': string;
+  readonly 'copyright': string;
+  readonly 'social-and-locale': string;
 };
 
 export = styles;

@@ -2,7 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import type { FooterLinkSection } from './footer.types';
+import type { FooterLinkSection, LegalLink } from './footer.types';
+import type { SocialLink } from '@gp/ui/components';
 
 /**
  * @brief The data for the footer sections.
@@ -72,4 +73,38 @@ export const footerSections: FooterLinkSection[] = [
       { label: 'Legal', href: '/legal' }
     ]
   }
+] as const;
+
+/**
+ * @brief The social links for the footer.
+ */
+export const socialLinks: SocialLink[] = [
+  {
+    srLabel: 'Graphical Playground on LinkedIn',
+    url: 'https://www.linkedin.com/company/graphical-playground',
+    iconName: 'linkedin'
+  },
+  {
+    srLabel: 'Graphical Playground\u2019s organization on Github',
+    url: 'https://github.com/GraphicalPlayground',
+    iconName: 'github'
+  },
+  {
+    srLabel: 'Graphical Playground on Discord',
+    url: 'https://discord.graphical-playground.com',
+    iconName: 'discord'
+  }
+] as const;
+
+/**
+ * @brief The legal links for the footer.
+ */
+export const legalLinks: LegalLink[] = [
+  { label: 'Terms', href: '/legal/terms-of-service' },
+  { label: 'Privacy', href: '/legal/privacy' },
+  { label: 'Eula', href: '/legal/eula' },
+  { label: 'Cookies', href: '/legal/cookies' },
+  { label: 'Data Processing', href: '/legal/data-processing' },
+  { label: 'Accessibility', href: '/legal/accessibility' },
+  { label: 'Security', href: '/legal/security' }
 ] as const;

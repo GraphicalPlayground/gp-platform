@@ -19,3 +19,11 @@ export interface FooterLinkSection {
   context: string;
   links: FooterLink[];
 }
+
+/**
+ * @brief Represents a social media link in the footer.
+ */
+export interface LegalLink {
+  label: string;
+  href: string;
+}

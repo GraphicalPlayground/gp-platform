@@ -7,28 +7,30 @@ import clsx from 'clsx';
 import styles from './footer.module.css';
 
 import { LinkColumn, StaffToggleBar } from '@gp/ui/components';
+import { SubFooter } from './subfooter';
 
-import { footerSections } from './footer.data';
+import { footerSections, socialLinks, legalLinks } from './footer.data';
 
 export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'light' | 'dark';
 }
 
 // TODO:
-//   - Move away the data
 //   - Add a newslater subscription form
-//   - Add a SubFooter element with social, copyright, locale, and legal links...
 
 export const Footer: React.FC<FooterProps> = ({ className, variant = 'dark', ...rest }) => {
+  const currentYear = new Date().getFullYear();
+  const copyrightLabel = `\u00a9 ${currentYear} Graphical Playground, Inc.`;
+
   return (
     <footer className={clsx(styles.footer, variant, className)} {...rest}>
       <h2 className='visually-hidden'>Site-wide Links</h2>
 
-      <div className={styles['footer-container']}>
-        <div className={styles['footer-top-row']}>
+      <div className={styles.container}>
+        <div className={styles['top-row']}>
           {/* <Newsletter {...newsletter()} className={styles.newsletter} /> */}
 
-          <div className={styles['footer-columns']}>
+          <div className={styles.columns}>
             {footerSections.map((section, index) => (
               <LinkColumn key={index} id={section.id} title={section.title} links={section.links} />
             ))}
@@ -36,15 +38,13 @@ export const Footer: React.FC<FooterProps> = ({ className, variant = 'dark', ...
         </div>
       </div>
 
-      {/* <SubFooter
-        subFooter={subFooter}
-        legalNavLabel={LEGAL_NAV_LABEL()}
-        socialNavLabel={SOCIAL_NAV_LABEL()}
-        localeOverlayLabel={SELECT_LANGUAGE_LABEL()}
-        socialLinks={socialLinks()}
-        locale={localeConfig}
-        cookieConsentEnabled={cookieConsentEnabled}
-      /> */}
+      <SubFooter
+        socialLinks={socialLinks}
+        cookieConsentEnabled={true}
+        copyrightLabel={copyrightLabel}
+        copyrightYear={currentYear}
+        legalLinks={legalLinks}
+      />
 
       <StaffToggleBar
         showAdminToggle={false}
