@@ -39,3 +39,14 @@ body {
 body {
   @apply bg-background text-foreground font-sans;
 }
+
+.visually-hidden {
+  clip: rect(0, 0, 0, 0);
+  word-wrap: normal;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
