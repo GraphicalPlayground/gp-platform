@@ -49,6 +49,7 @@ export const footerSections: FooterLinkSection[] = [
       { label: 'Comparisons', href: '/comparisons' },
       { label: 'Glossary', href: '/glossary' },
       { label: 'Guides', href: '/guides' },
+      { label: 'Interviews', href: '/interviews' },
       { label: 'Technical Articles', href: '/tech-articles' },
       { label: 'Brand Guidelines', href: '/brand-guidelines' }
     ]
