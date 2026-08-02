@@ -71,6 +71,7 @@
       "testimonials": "messages",
       "curriculum": "atom",
       "(txts)": "log",
+      "brand-guidelines": "theme",
 
       /* Fonts */
       "HubotSans": "font",

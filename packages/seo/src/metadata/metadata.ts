@@ -116,12 +116,12 @@ export class SeoMetadata {
       title: frontmatter.seo?.title ?? frontmatter.title,
       description: frontmatter.seo?.description ?? frontmatter.description,
       type: 'article',
-      images: [{ url: frontmatter.coverImage, alt: frontmatter.coverImageAlt }],
+      images: frontmatter.coverImage ? [{ url: frontmatter.coverImage, alt: frontmatter.coverImageAlt ?? '' }] : [],
       keywords: frontmatter.tags,
       noindex: frontmatter.noindex || frontmatter.draft,
-      publishedTime: frontmatter.datePublished,
-      modifiedTime: frontmatter.dateModified,
-      authors: [frontmatter.author.name],
+      publishedTime: frontmatter.datePublished.toISOString(),
+      modifiedTime: frontmatter.dateModified?.toISOString(),
+      authors: [typeof frontmatter.author === 'string' ? frontmatter.author : frontmatter.author.name],
       section: frontmatter.category,
       locale: frontmatter.locale
     });

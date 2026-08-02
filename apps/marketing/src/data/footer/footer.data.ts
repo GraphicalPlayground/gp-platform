@@ -17,7 +17,6 @@ export const footerSections: FooterLinkSection[] = [
       { label: 'Features', href: '/features' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Curriculum', href: '/curriculum' },
-      { label: 'Handbook', href: '/handbook' },
       { label: 'Roadmaps', href: '/roadmaps' },
       { label: 'Changelogs', href: '/changelogs' },
       { label: 'Showcases', href: '/showcases' },
@@ -35,6 +34,7 @@ export const footerSections: FooterLinkSection[] = [
       { label: 'GP Engine', href: '/products/engine' },
       { label: 'GP Cloud', href: '/products/cloud' },
       { label: 'GP Studio', href: '/products/studio' },
+      { label: 'GP Handbook', href: '/products/handbook' },
       { label: 'GP Platform', href: '/products/platform' }
     ]
   },

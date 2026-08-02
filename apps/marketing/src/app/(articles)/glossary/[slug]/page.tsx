@@ -3,6 +3,35 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { cms } from '@/lib/cms';
+import type { Metadata } from 'next';
+import { Urls, SeoMetadata } from '@gp/seo';
+
+export async function generateStaticParams() {
+  return (await cms.articles.getGlossaryEntries()).map((entries) => ({ slug: entries.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const doc = await cms.articles.getBySlug(slug);
+
+  if (!doc) {
+    return {};
+  }
+
+  const term = doc.frontmatter.title;
+  const dynamicSeoTitle = `${term}: Definition & Meaning`;
+
+  const seoOptimizedFrontmatter = {
+    ...doc.frontmatter,
+    seo: {
+      ...doc.frontmatter.seo,
+      title: doc.frontmatter.seo?.title ?? dynamicSeoTitle
+    }
+  };
+
+  return SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).article(seoOptimizedFrontmatter, `/glossary/${slug}`);
+}
 
 export default function GlossarySlugPage() {
   return <div>Glossary Slug</div>;
