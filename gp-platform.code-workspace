@@ -115,7 +115,13 @@
       "app/manifest.ts": "contributing",
       "layout.tsx": "roadmap",
       "page.tsx": "document",
-      "not-found.tsx": "lintstaged"
+      "not-found.tsx": "lintstaged",
+      "forbidden.tsx": "lintstaged",
+      "unauthorized.tsx": "lintstaged",
+      "global-error.tsx": "lintstaged",
+      "error.tsx": "lintstaged",
+      "loading.tsx": "syncpack",
+      "opengraph-image.tsx": "context",
     }
   },
   "extensions": {
