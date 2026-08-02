@@ -9,7 +9,7 @@ import styles from './footer.module.css';
 import { LinkColumn, StaffToggleBar } from '@gp/ui/components';
 import { SubFooter } from './subfooter';
 
-import { footerSections, socialLinks, legalLinks } from './footer.data';
+import { footerSections, socialLinks, legalLinks } from '@/data/footer';
 
 export interface FooterProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'light' | 'dark';
