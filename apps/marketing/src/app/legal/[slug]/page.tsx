@@ -8,6 +8,7 @@ import { cms } from '@/lib/cms';
 import { notFound } from 'next/navigation';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
+import { Prose } from '@gp/ui/components';
 
 export async function generateStaticParams() {
   return (await cms.legal.getSlugs()).map((slug) => ({ slug }));
@@ -33,9 +34,11 @@ export default async function LegalSlugPage({ params }: { params: Promise<{ slug
   }
 
   return (
-    <article>
+    <article className='w-full'>
       <h1>{doc.frontmatter.title}</h1>
-      {doc.content}
+      <div className="w-full max-w-3xl mx-auto">
+        <Prose variant='editorial'>{doc.content}</Prose>
+      </div>
     </article>
   );
 }
