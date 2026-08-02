@@ -16,3 +16,4 @@ export * from './prose';
 export * from './link-column';
 export * from './staff-toggle-bar';
 export * from './icon';
+export * from './social-links';
