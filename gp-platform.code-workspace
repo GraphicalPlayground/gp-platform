@@ -68,6 +68,7 @@
       ".clerk": "secure",
       ".well-known": "mappings",
       "security.txt": "secure",
+      "testimonials": "messages",
 
       /* Fonts */
       "HubotSans": "font",
@@ -82,6 +83,7 @@
       "prose": "mjml",
       "heading": "zed",
       "footer": "layout",
+      "staff-toggle-bar": "admin",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

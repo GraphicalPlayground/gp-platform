@@ -15,3 +15,4 @@ export * from './roadmap';
 export * from './showcase';
 export * from './tech-article';
 export * from './union';
+export * from './testimonial';

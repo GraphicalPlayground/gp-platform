@@ -14,6 +14,7 @@ import { researchFrontmatterSchema } from './research';
 import { roadmapFrontmatterSchema } from './roadmap';
 import { showcaseFrontmatterSchema } from './showcase';
 import { techArticleFrontmatterSchema } from './tech-article';
+import { testimonialFrontmatterSchema } from './testimonial';
 
 export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
   guideFrontmatterSchema,
@@ -25,7 +26,8 @@ export const articleFrontmatterUnionSchema = z.discriminatedUnion('type', [
   changelogFrontmatterSchema,
   roadmapFrontmatterSchema,
   showcaseFrontmatterSchema,
-  researchFrontmatterSchema
+  researchFrontmatterSchema,
+  testimonialFrontmatterSchema
 ]);
 
 export type Article = z.infer<typeof articleFrontmatterUnionSchema>;

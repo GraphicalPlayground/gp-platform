@@ -177,6 +177,11 @@ export class ArticlesRepository {
     return this.getByType('research', options);
   }
 
+  /** @brief Shorthand for `getByType('testimonial', options)`. */
+  public getTestimonials(options?: Omit<ArticleListOptions, 'types'>) {
+    return this.getByType('testimonial', options);
+  }
+
   /**
    * @brief Distinct list of every tag used across all (non-draft) articles.
    * @param options - Options for filtering the underlying articles, including whether to include drafts.
