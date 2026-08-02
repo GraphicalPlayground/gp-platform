@@ -15,24 +15,25 @@ import styles from './link-column.module.css';
  * @see LinkColumn
  */
 export interface LinkColumnProps extends React.HTMLAttributes<HTMLDivElement> {
-  heading: string;
-  items: { text: string; href: string }[];
+  id?: string;
+  title: string;
+  links: { label: string; href: string }[];
 }
 
 /**
  * @brief A component that renders a column of links with a heading.
  */
-export const LinkColumn: React.FC<LinkColumnProps> = ({ className, heading, items, ...rest }) => {
+export const LinkColumn: React.FC<LinkColumnProps> = ({ id, className, title, links, ...rest }) => {
   return (
-    <nav className={clsx(styles['link-column'], className)} {...rest}>
-      <Heading as='h3' font='monospace' size='6' className={styles['link-column--heading']}>
-        {heading}
+    <nav aria-labelledby={id} className={clsx(styles['link-column'], className)} {...rest}>
+      <Heading id={id} as='h3' font='monospace' size='6' className={styles['link-column--heading']}>
+        {title}
       </Heading>
       <ul className={styles['link-column--list']}>
-        {items.map((item, index) => (
+        {links.map((link, index) => (
           <li key={index} className={styles['link-column--item']}>
-            <Link href={item.href} arrowDirection='none' variant='default' size='small'>
-              {item.text}
+            <Link href={link.href} arrowDirection='none' variant='default' size='small'>
+              {link.label}
             </Link>
           </li>
         ))}

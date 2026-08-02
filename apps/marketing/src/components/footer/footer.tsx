@@ -24,49 +24,49 @@ export const Footer: React.FC<FooterProps> = ({ className, variant = 'dark', ...
         <div className={styles['footer-top-row']}>
           <div className={styles['footer-columns']}>
             <LinkColumn
-              heading='Products'
-              items={[
-                { text: 'Pricing', href: '/pricing' },
-                { text: 'GP Engine', href: '/products/engine' },
-                { text: 'GP Cloud', href: '/products/cloud' },
-                { text: 'GP Studio', href: '/products/studio' }
+              title='Products'
+              links={[
+                { label: 'Pricing', href: '/pricing' },
+                { label: 'GP Engine', href: '/products/engine' },
+                { label: 'GP Cloud', href: '/products/cloud' },
+                { label: 'GP Studio', href: '/products/studio' }
               ]}
             />
             <LinkColumn
-              heading='Developers'
-              items={[
-                { text: 'Documentation', href: 'https://docs.graphical-playground.com' },
-                { text: 'Github Organization', href: 'https://github.com/GraphicalPlayground' },
-                { text: 'GP SDK', href: '/developers/sdk' },
-                { text: 'GP API', href: '/developers/api' },
-                { text: 'GP CLI', href: '/developers/cli' }
+              title='Developers'
+              links={[
+                { label: 'Documentation', href: 'https://docs.graphical-playground.com' },
+                { label: 'Github Organization', href: 'https://github.com/GraphicalPlayground' },
+                { label: 'GP SDK', href: '/developers/sdk' },
+                { label: 'GP API', href: '/developers/api' },
+                { label: 'GP CLI', href: '/developers/cli' }
               ]}
             />
             <LinkColumn
-              heading='Resources'
-              items={[
-                { text: 'Help Center', href: '/help' },
-                { text: 'Community', href: '/community' },
-                { text: 'Forum', href: '/forum' },
-                { text: 'Inspiration', href: '/inspiration' },
-                { text: 'Changelog', href: '/changelog' },
-                { text: 'Blog', href: '/blog' },
-                { text: 'Status', href: '/status' },
-                { text: 'Site Map', href: '/sitemap' },
-                { text: 'Brand Guidelines', href: '/brand-guidelines' }
+              title='Resources'
+              links={[
+                { label: 'Help Center', href: '/help' },
+                { label: 'Community', href: '/community' },
+                { label: 'Forum', href: '/forum' },
+                { label: 'Inspiration', href: '/inspiration' },
+                { label: 'Changelog', href: '/changelog' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'Status', href: '/status' },
+                { label: 'Site Map', href: '/sitemap' },
+                { label: 'Brand Guidelines', href: '/brand-guidelines' }
               ]}
             />
             <LinkColumn
-              heading='Company'
-              items={[
-                { text: 'About Us', href: '/about' },
-                { text: 'Careers', href: '/careers' },
-                { text: 'Contact Us', href: '/contact' },
-                { text: 'Sponsors', href: '/sponsors' },
-                { text: 'Donate', href: '/donate' },
-                { text: 'Press & Media', href: '/press' },
-                { text: 'Accessibility Statement', href: '/accessibility' },
-                { text: 'Legal', href: '/legal' }
+              title='Company'
+              links={[
+                { label: 'About Us', href: '/about' },
+                { label: 'Careers', href: '/careers' },
+                { label: 'Contact Us', href: '/contact' },
+                { label: 'Sponsors', href: '/sponsors' },
+                { label: 'Donate', href: '/donate' },
+                { label: 'Press & Media', href: '/press' },
+                { label: 'Accessibility Statement', href: '/accessibility' },
+                { label: 'Legal', href: '/legal' }
               ]}
             />
           </div>
