@@ -25,6 +25,15 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@gp/ui', '@gp/fonts', '@gp/seo'],
   typescript: {
     ignoreBuildErrors: true
+  },
+  async redirects() {
+    return [
+      {
+        source: '/humans.txt',
+        destination: '/about',
+        permanent: true
+      }
+    ];
   }
 };
 

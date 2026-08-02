@@ -16,13 +16,14 @@ export async function GET(): Promise<NextResponse> {
   expires.setFullYear(expires.getFullYear() + 1);
 
   const body = [
-    `Contact: mailto:${Urls.Mail('security')}`,
+    `Contact: ${Urls.Mail('security')}`,
     `Contact: ${Urls.BaseUrl}/security`,
     `Expires: ${expires.toISOString()}`,
     `Canonical: ${Urls.BaseUrl}/.well-known/security.txt`,
     `Preferred-Languages: ${Object.keys(languages).join(', ')}`,
     `Policy: ${Urls.BaseUrl}/security`,
-    `Acknowledgments: ${Urls.BaseUrl}/security#hall-of-fame`
+    `Acknowledgments: ${Urls.BaseUrl}/security#hall-of-fame`,
+    `Hiring: ${Urls.BaseUrl}/careers`
   ].join('\n');
 
   return new NextResponse(body, {

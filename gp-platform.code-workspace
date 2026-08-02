@@ -70,6 +70,7 @@
       "security.txt": "secure",
       "testimonials": "messages",
       "curriculum": "atom",
+      "(txts)": "log",
 
       /* Fonts */
       "HubotSans": "font",
