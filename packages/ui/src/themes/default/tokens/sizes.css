@@ -77,6 +77,10 @@
     --gp-stack-gap-condensed: 16px;
     --gp-stack-gap-normal: 24px;
     --gp-stack-gap-spacious: 48px;
+
+    --gp-prose-line-length: 68ch;
+    --gp-prose-img-spacing: var(--gp-size-48);
+    --gp-prose-blockquote-spacing: var(--gp-size-24);
   }
 
   @media (min-width: 768px) {
