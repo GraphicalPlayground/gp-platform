@@ -15,6 +15,7 @@ export const footerSections: FooterLinkSection[] = [
     links: [
       { label: 'Features', href: '/features' },
       { label: 'Pricing', href: '/pricing' },
+      { label: 'Curriculum', href: '/curriculum' },
       { label: 'Handbook', href: '/handbook' },
       { label: 'Roadmaps', href: '/roadmaps' },
       { label: 'Changelogs', href: '/changelogs' },
