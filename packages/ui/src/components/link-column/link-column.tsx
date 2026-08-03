@@ -18,12 +18,20 @@ export interface LinkColumnProps extends React.HTMLAttributes<HTMLDivElement> {
   id?: string;
   title: string;
   links: { label: string; href: string }[];
+  hasAutoExternalLinks?: boolean;
 }
 
 /**
  * @brief A component that renders a column of links with a heading.
  */
-export const LinkColumn: React.FC<LinkColumnProps> = ({ id, className, title, links, ...rest }) => {
+export const LinkColumn: React.FC<LinkColumnProps> = ({
+  className,
+  hasAutoExternalLinks = true,
+  id,
+  links,
+  title,
+  ...rest
+}) => {
   return (
     <nav aria-labelledby={id} className={clsx(styles['link-column'], className)} {...rest}>
       <Heading id={id} as='h3' font='monospace' size='6' className={styles['link-column--heading']}>
@@ -32,7 +40,13 @@ export const LinkColumn: React.FC<LinkColumnProps> = ({ id, className, title, li
       <ul className={styles['link-column--list']}>
         {links.map((link, index) => (
           <li key={index} className={styles['link-column--item']}>
-            <Link href={link.href} arrowDirection='none' variant='default' size='small'>
+            <Link
+              isExternal={hasAutoExternalLinks ? 'auto' : false}
+              href={link.href}
+              arrowDirection='none'
+              variant='default'
+              size='small'
+            >
               {link.label}
             </Link>
           </li>

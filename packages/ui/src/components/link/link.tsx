@@ -52,7 +52,7 @@ export interface LinkProps extends Omit<NextLinkProps<any>, 'href'>, Omit<React.
   /**
    * @brief Show an external link icon
    */
-  isExternal?: boolean;
+  isExternal?: boolean | 'auto';
 
   /**
    * @brief The variant of the link.
@@ -119,7 +119,9 @@ export const Link: React.FC<LinkProps> = ({
   );
 
   const isExternal =
-    isExternalProp ?? (rest.target === '_blank' || (typeof href === 'string' && href.startsWith('http')));
+    isExternalProp === 'auto'
+      ? rest.target === '_blank' || (typeof href === 'string' && href.startsWith('http'))
+      : isExternalProp;
 
   return (
     <NextLink
