@@ -19,3 +19,4 @@ export * from './icon';
 export * from './social-links';
 export * from './icons';
 export * from './image';
+export * from './pillar';

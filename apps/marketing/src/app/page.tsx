@@ -4,7 +4,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { Text, Link, Grid, Stack, Heading, Prose } from '@gp/ui/components';
+import { Text, Link, Grid, Stack, Heading, Prose, Pillar } from '@gp/ui/components';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 
@@ -108,26 +108,26 @@ export default function HomePage() {
         </div>
         <div className='w-full h-screen flex flex-col gap-4 p-4 justify-center items-center'>
           <Grid enableOverlay>
-            <Grid.Column span={1}></Grid.Column>
-            <Grid.Column span={11}></Grid.Column>
-            <Grid.Column span={2}></Grid.Column>
-            <Grid.Column span={10}></Grid.Column>
-            <Grid.Column span={3}></Grid.Column>
-            <Grid.Column span={9}></Grid.Column>
-            <Grid.Column span={4}></Grid.Column>
-            <Grid.Column span={8}></Grid.Column>
-            <Grid.Column span={5}></Grid.Column>
-            <Grid.Column span={7}></Grid.Column>
-            <Grid.Column span={6}></Grid.Column>
-            <Grid.Column span={6}></Grid.Column>
-            <Grid.Column span={7}></Grid.Column>
-            <Grid.Column span={5}></Grid.Column>
-            <Grid.Column span={8}></Grid.Column>
-            <Grid.Column span={4}></Grid.Column>
-            <Grid.Column span={9}></Grid.Column>
-            <Grid.Column span={3}></Grid.Column>
-            <Grid.Column span={10}></Grid.Column>
-            <Grid.Column span={2}></Grid.Column>
+            <Grid.Column span={1} />
+            <Grid.Column span={11} />
+            <Grid.Column span={2} />
+            <Grid.Column span={10} />
+            <Grid.Column span={3} />
+            <Grid.Column span={9} />
+            <Grid.Column span={4} />
+            <Grid.Column span={8} />
+            <Grid.Column span={5} />
+            <Grid.Column span={7} />
+            <Grid.Column span={6} />
+            <Grid.Column span={6} />
+            <Grid.Column span={7} />
+            <Grid.Column span={5} />
+            <Grid.Column span={8} />
+            <Grid.Column span={4} />
+            <Grid.Column span={9} />
+            <Grid.Column span={3} />
+            <Grid.Column span={10} />
+            <Grid.Column span={2} />
           </Grid>
 
           <Stack>
@@ -205,17 +205,17 @@ export default function HomePage() {
             </div>
             <div>
               <div>
-                <Link href='/legal' arrowDirection='end'>
+                <Link arrowDirection='end' href='/legal'>
                   Go to legal page
                 </Link>
               </div>
               <div>
-                <Link href='/legal' arrowDirection='none'>
+                <Link arrowDirection='none' href='/legal'>
                   Go to legal page
                 </Link>
               </div>
               <div>
-                <Link href='/legal' arrowDirection='start'>
+                <Link arrowDirection='start' href='/legal'>
                   Go to legal page
                 </Link>
               </div>
@@ -223,9 +223,19 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      <div className='w-full max-w-3xl mx-auto'>
-        <Prose
-          html={`
+      <div className='w-full flex-row'>
+        <div>
+          <Pillar>
+            <Pillar.Heading>Code search & code view</Pillar.Heading>
+            <Pillar.Description>
+              Enables you to rapidly search, navigate, and understand code, right from Graphical-Playground.com.
+            </Pillar.Description>
+            <Pillar.Link href='/about'>Learn more</Pillar.Link>
+          </Pillar>
+        </div>
+        <div className='w-full max-w-3xl mx-auto'>
+          <Prose
+            html={`
     <h2>Heading level 2</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor lectus ipsum, consectetur convallis diam pretium quis. Proin ut felis ut eros tristique tincidunt.</p>
     <figure>
@@ -330,7 +340,8 @@ export default function HomePage() {
     </table>
     <p>Nunc velit odio, posuere eu felis eget, consectetur fermentum nisi. Aenean tempor odio id ornare ultrices. Quisque blandit condimentum tellus, semper efficitur sapien dapibus nec. </p>
     `}
-        />
+          />
+        </div>
       </div>
     </div>
   );

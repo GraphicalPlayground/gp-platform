@@ -1,0 +1,68 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.pillar {
+  color: var(--gp-color-text-default);
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar--has-max-width {
+  max-width: 50ch;
+}
+
+.pillar--has-border {
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-default);
+  border-radius: var(--gp-border-radius-medium);
+  padding: var(--gp-size-32);
+}
+
+.pillar.pillar--align-center {
+  align-items: center;
+  text-align: center;
+}
+
+.pillar.pillar--align-start {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.pillar__image {
+  margin-bottom: var(--gp-size-28);
+  border-radius: var(--gp-border-radius-medium);
+  overflow: hidden;
+}
+
+.pillar__image img,
+.pillar__image span,
+.pillar__image picture {
+  display: block;
+}
+
+.pillar__icon {
+  margin-bottom: var(--gp-size-48);
+}
+
+.pillar__icon--with-background {
+  border-radius: var(--gp-size-12);
+}
+
+.pillar__icon--with-background > svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pillar__heading {
+  margin-bottom: var(--gp-size-16);
+}
+
+.pillar__description:not(.pillar--has-border .pillar__description:last-child) {
+  margin-bottom: var(--gp-size-24);
+}
+
+.pillar__link {
+  margin-top: auto;
+}
