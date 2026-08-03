@@ -3,19 +3,33 @@ title: Deferred Shading vs. Forward+
 type: glossary
 slug: deferred-shading-vs-forward-plus
 term: Deferred Shading vs. Forward+
-shortDefinition: TODO
-description: TODO
+shortDefinition: Deferred shading writes surface data to a G-buffer and shades lighting in a separate full-screen pass, while Forward+ tiles the screen to cull lights per tile before shading in a single forward pass.
+description: How deferred shading and Forward+ each handle scenes with many dynamic lights, and the trade-offs that decide which fits a given renderer.
 synonims:
-  - TODO
+  - Deferred Rendering
+  - Tiled Forward Shading
+  - Forward Plus
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - rendering-pipeline
+  - real-time-rendering
+  - gpu-architecture
+  - compute-shaders
+  - performance-optimization
 relatedTerms:
-  - TODO
+  - Fragment Shader
+  - Compute Shaders
+  - Screen Space Ambient Occlusion (SSAO)
+  - Screen Space Reflections (SSR)
+  - Variable Rate Shading (VRS)
 relatedSlugs:
-  - TODO
-difficulty: beginner
+  - fragment-shader
+  - compute-shaders
+  - screen-space-ambient-occlusion
+  - screen-space-reflections
+  - variable-rate-shading
+difficulty: intermediate
 datePublished: 2026-07-29
 dateModified: 2026-07-29
 locale: en

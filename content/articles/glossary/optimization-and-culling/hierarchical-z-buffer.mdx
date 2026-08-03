@@ -3,19 +3,32 @@ title: Hierarchical Z-Buffer (Hi-Z)
 type: glossary
 slug: hierarchical-z-buffer
 term: Hierarchical Z-Buffer
-shortDefinition: TODO
-description: TODO
+shortDefinition: A Hierarchical Z-Buffer is a mipmap-style pyramid of the depth buffer, storing conservative min/max depth per region, that lets a renderer reject occluded geometry with a handful of coarse depth tests.
+description: How the hierarchical Z-buffer accelerates occlusion culling by testing bounding volumes against a depth mip pyramid instead of raw per-pixel depth.
 synonims:
-  - TODO
+  - Hi-Z
+  - Depth Pyramid
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - visibility-culling
+  - performance-optimization
+  - gpu-driven-rendering
+  - rendering-pipeline
+  - real-time-rendering
 relatedTerms:
-  - TODO
+  - Depth Buffer (Z-Buffer)
+  - Frustum Culling
+  - Bounding Volume Hierarchy (BVH)
+  - Virtualized Geometry
+  - Level of Detail (LOD)
 relatedSlugs:
-  - TODO
-difficulty: beginner
+  - depth-buffer
+  - frustum-culling
+  - bounding-volume-hierarchy
+  - virtualized-geometry
+  - level-of-detail
+difficulty: intermediate
 datePublished: 2026-07-29
 dateModified: 2026-07-29
 locale: en

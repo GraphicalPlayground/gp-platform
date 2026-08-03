@@ -3,19 +3,28 @@ title: Screen Space Reflections (SSR)
 type: glossary
 slug: screen-space-reflections
 term: Screen Space Reflections
-shortDefinition: TODO
-description: TODO
+shortDefinition: Screen space reflections approximate specular reflections by ray marching through the depth buffer of the current frame, reusing color already on screen instead of tracing full scene geometry.
+description: How screen space reflections reuse the current frame's depth buffer to fake specular reflections cheaply, and why geometry off-screen breaks them.
 synonims:
-  - TODO
+  - SSR
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - post-processing
+  - real-time-rendering
+  - ray-tracing
+  - performance-optimization
 relatedTerms:
-  - TODO
+  - Screen Space Ambient Occlusion (SSAO)
+  - Raytracing
+  - Depth Buffer (Z-Buffer)
+  - Ray Marching
 relatedSlugs:
-  - TODO
-difficulty: beginner
+  - screen-space-ambient-occlusion
+  - raytracing
+  - depth-buffer
+  - ray-marching
+difficulty: intermediate
 datePublished: 2026-07-29
 dateModified: 2026-07-29
 locale: en

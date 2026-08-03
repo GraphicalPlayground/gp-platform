@@ -3,19 +3,31 @@ title: Cascaded Shadow Maps (CSM)
 type: glossary
 slug: cascaded-shadow-maps
 term: Cascaded Shadow Maps
-shortDefinition: TODO
-description: TODO
+shortDefinition: Cascaded shadow maps split the camera frustum into depth ranges, each rendered as its own shadow map at matching resolution, so shadow detail stays sharp near the camera and coarser at a distance.
+description: How cascaded shadow maps fix shadow aliasing at a distance by rendering separate shadow maps per frustum split, a standard technique for large open scenes.
 synonims:
-  - TODO
+  - CSM
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - shadow-mapping
+  - real-time-rendering
+  - rendering-pipeline
+  - performance-optimization
+  - gpu-memory-optimization
 relatedTerms:
-  - TODO
+  - Depth Buffer (Z-Buffer)
+  - Frustum Culling
+  - Field of View (FOV)
+  - Variable Rate Shading (VRS)
+  - Level of Detail (LOD)
 relatedSlugs:
-  - TODO
-difficulty: beginner
+  - depth-buffer
+  - frustum-culling
+  - field-of-view
+  - variable-rate-shading
+  - level-of-detail
+difficulty: intermediate
 datePublished: 2026-07-29
 dateModified: 2026-07-29
 locale: en

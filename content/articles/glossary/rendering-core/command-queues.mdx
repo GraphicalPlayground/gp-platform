@@ -3,19 +3,30 @@ title: Command Queues
 type: glossary
 slug: command-queues
 term: Command Queues
-shortDefinition: TODO
-description: TODO
-synonims:
-  - TODO
+shortDefinition: A command queue is a GPU-side queue that receives recorded command buffers and executes them in order, letting the CPU submit graphics, compute, or copy work without waiting for it to finish.
+description: How command queues schedule submitted GPU work, and why separate graphics, compute, and copy queues let modern APIs overlap rendering tasks.
+synonims: []
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - command-buffers
+  - gpu-architecture
+  - vulkan
+  - directx12
+  - graphics-apis
 relatedTerms:
-  - TODO
+  - Command Buffers
+  - Pipeline State Objects (PSO)
+  - Compute Shaders
+  - Work Graphs (GPU-driven rendering)
+  - Bindless Resources
 relatedSlugs:
-  - TODO
-difficulty: beginner
+  - command-buffers
+  - pipeline-state-objects
+  - compute-shaders
+  - work-graphs
+  - bindless-resources
+difficulty: intermediate
 datePublished: 2026-07-29
 dateModified: 2026-07-29
 locale: en

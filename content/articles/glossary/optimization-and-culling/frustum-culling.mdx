@@ -3,18 +3,29 @@ title: Frustum Culling
 type: glossary
 slug: frustum-culling
 term: Frustum Culling
-shortDefinition: TODO
-description: TODO
-synonims:
-  - TODO
+shortDefinition: Frustum culling discards objects that lie entirely outside the camera's view frustum before they reach the rendering pipeline, so the GPU never processes geometry the viewer cannot see.
+description: Why frustum culling is one of the cheapest ways to cut wasted draw calls, and how it fits alongside occlusion and LOD systems in a real-time engine.
+synonims: []
 author: mallory-scotton
 category: uncategorized
 tags:
-  - TODO
+  - visibility-culling
+  - performance-optimization
+  - real-time-rendering
+  - rendering-pipeline
+  - spatial-data-structures
 relatedTerms:
-  - TODO
+  - Hierarchical Z-Buffer (Hi-Z)
+  - Bounding Volume Hierarchy (BVH)
+  - Level of Detail (LOD)
+  - Field of View (FOV)
+  - Bounding Box
 relatedSlugs:
-  - TODO
+  - hierarchical-z-buffer
+  - bounding-volume-hierarchy
+  - level-of-detail
+  - field-of-view
+  - bounding-box
 difficulty: beginner
 datePublished: 2026-07-29
 dateModified: 2026-07-29
