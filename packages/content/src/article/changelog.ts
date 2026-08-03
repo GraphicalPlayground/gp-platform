@@ -12,7 +12,10 @@ export type ChangelogEntryType = z.infer<typeof changelogEntryTypeSchema>;
 
 export const changelogFrontmatterSchema = articleFrontmatterSchema.extend({
   type: z.literal('changelog'),
-  version: z.string().regex(/^\d+\.\d+\.\d+$/, 'version must be semver (x.y.z)').optional(),
+  version: z
+    .string()
+    .regex(/^\d+\.\d+\.\d+$/, 'version must be semver (x.y.z)')
+    .optional(),
   changeTypes: z.array(changelogEntryTypeSchema).min(1)
 });
 

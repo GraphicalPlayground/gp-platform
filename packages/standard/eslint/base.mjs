@@ -58,51 +58,11 @@ const config = defineConfig([
       'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
       'import/newline-after-import': ['error', { count: 1 }],
       'import/no-duplicates': 'error',
-      'import/order': [
-        'error',
-        {
-          'alphabetize': {
-            caseInsensitive: true,
-            order: 'asc'
-          },
-          'groups': ['type', 'builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'unknown'],
-          'newlines-between': 'always',
-          'pathGroups': [
-            {
-              group: 'type',
-              pattern: 'server-only',
-              position: 'before'
-            },
-            {
-              group: 'unknown',
-              pattern: '**/*.+(css|sass|scss)',
-              patternOptions: { dot: true, nocomment: true },
-              position: 'after'
-            },
-            {
-              group: 'unknown',
-              pattern: '{.,..}/**/*.+(css|sass|scss)',
-              patternOptions: { dot: true, nocomment: true },
-              position: 'after'
-            },
-            {
-              group: 'internal',
-              pattern: '~env',
-              position: 'before'
-            },
-            {
-              group: 'internal',
-              pattern: '@/**',
-              position: 'after'
-            }
-          ],
-          'pathGroupsExcludedImportTypes': ['type'],
-          'warnOnUnassignedImports': true
-        }
-      ],
+      'import/order': 'off',
       'no-console': 'warn',
       'no-unused-vars': 'off',
-      'object-curly-spacing': ['error', 'never'],
+      'object-curly-spacing': 'off',
+      'react/jsx-sort-props': 'off',
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', next: '*', prev: 'directive' },
@@ -118,26 +78,9 @@ const config = defineConfig([
           caseSensitive: true
         }
       ],
-      'sort-imports': [
-        'error',
-        {
-          allowSeparatedGroups: true,
-          ignoreCase: false,
-          ignoreDeclarationSort: true,
-          ignoreMemberSort: false,
-          memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-        }
-      ],
-      'sort-keys': [
-        'error',
-        'asc',
-        {
-          caseSensitive: true,
-          minKeys: 2,
-          natural: false
-        }
-      ],
-      'sort-keys-fix/sort-keys-fix': 'error',
+      'sort-imports': 'off',
+      'sort-keys': 'off',
+      'sort-keys-fix/sort-keys-fix': 'off',
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'error',

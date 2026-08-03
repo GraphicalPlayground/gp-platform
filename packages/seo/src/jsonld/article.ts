@@ -23,12 +23,12 @@ export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): W
     'headline': article.title,
     'description': article.seo?.description ?? article.description,
     'image': article.coverImage,
-    'datePublished': article.datePublished,
-    'dateModified': article.dateModified ?? article.datePublished,
+    'datePublished': article.datePublished.toISOString(),
+    'dateModified': article.dateModified?.toISOString() ?? article.datePublished.toISOString(),
     'author': {
       '@type': 'Person',
-      'name': article.author.name,
-      ...(article.author.url && { url: article.author.url })
+      'name': typeof article.author === 'string' ? article.author : article.author.name,
+      ...(typeof article.author !== 'string' && article.author.url && { url: article.author.url })
     },
     'publisher': { '@id': JsonLdIds.organization },
     'mainEntityOfPage': { '@type': 'WebPage', '@id': url },

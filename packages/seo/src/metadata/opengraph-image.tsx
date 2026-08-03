@@ -32,26 +32,22 @@ export interface OgImageInput {
  */
 export const renderOgImage = ({ title, subtitle }: OgImageInput): ImageResponse =>
   new ImageResponse(
-    (
-      <div
-        style={{
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '80px',
-          backgroundColor: '#ffffff',
-          color: '#1f2328',
-          fontFamily: 'sans-serif'
-        }}
-      >
-        <div style={{ fontSize: 28, fontWeight: 600, opacity: 0.6, marginBottom: 24 }}>{Constants.name}</div>
-        <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 960 }}>{title}</div>
-        {subtitle ? (
-          <div style={{ fontSize: 32, marginTop: 24, opacity: 0.7, maxWidth: 960 }}>{subtitle}</div>
-        ) : null}
-      </div>
-    ),
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '80px',
+        backgroundColor: '#ffffff',
+        color: '#1f2328',
+        fontFamily: 'sans-serif'
+      }}
+    >
+      <div style={{ fontSize: 28, fontWeight: 600, opacity: 0.6, marginBottom: 24 }}>{Constants.name}</div>
+      <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 960 }}>{title}</div>
+      {subtitle ? <div style={{ fontSize: 32, marginTop: 24, opacity: 0.7, maxWidth: 960 }}>{subtitle}</div> : null}
+    </div>,
     { ...OG_IMAGE_SIZE }
   );

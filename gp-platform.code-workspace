@@ -1,8 +1,6 @@
 {
   "name": "gp-platform",
-  "folders": [
-    { "path": "." }
-  ],
+  "folders": [{ "path": "." }],
   "settings": {
     "files.associations": {
       "*.css": "tailwindcss"
@@ -123,7 +121,7 @@
       "global-error.tsx": "lintstaged",
       "error.tsx": "lintstaged",
       "loading.tsx": "syncpack",
-      "opengraph-image.tsx": "context",
+      "opengraph-image.tsx": "context"
     }
   },
   "extensions": {

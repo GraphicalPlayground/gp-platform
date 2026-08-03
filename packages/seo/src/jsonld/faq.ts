@@ -24,6 +24,6 @@ export const buildFaqJsonLd = (items: FaqEntry[], speakableCssSelectors?: string
     'acceptedAnswer': { '@type': 'Answer', 'text': item.answer }
   })),
   ...(speakableCssSelectors?.length && {
-    speakable: { '@type': 'SpeakableSpecification', cssSelector: speakableCssSelectors }
+    speakable: { '@type': 'SpeakableSpecification', 'cssSelector': speakableCssSelectors }
   })
 });

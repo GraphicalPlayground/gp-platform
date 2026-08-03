@@ -5,6 +5,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './subfooter.module.css';
+import type { Route } from 'next';
 import Link from 'next/link';
 
 import { SocialLinks, type SocialLink } from '@gp/ui/components';
@@ -43,7 +44,7 @@ export const SubFooter: React.FC<SubFooterProps> = ({
 
             {legalLinks.map((link) => (
               <li key={`${link.href}-${link.label}`}>
-                <Link href={link.href} className={styles['legal-link']}>
+                <Link href={link.href as Route} className={styles['legal-link']}>
                   {link.label}
                 </Link>
               </li>

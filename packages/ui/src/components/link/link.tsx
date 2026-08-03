@@ -33,7 +33,12 @@ const LinkExternalIconSizes = {
  * @brief Link component props interface.
  * @see Link
  */
-export interface LinkProps extends NextLinkProps, Omit<React.ComponentPropsWithoutRef<'a'>, 'href'> {
+export interface LinkProps extends Omit<NextLinkProps<any>, 'href'>, Omit<React.ComponentPropsWithoutRef<'a'>, 'href'> {
+  /**
+   * @brief The href of the link.
+   */
+  href: string | NextLinkProps<any>['href'];
+
   /**
    * @brief The size variations available in Link.
    */
@@ -60,11 +65,12 @@ export interface LinkProps extends NextLinkProps, Omit<React.ComponentPropsWitho
  * @details
  */
 export const Link: React.FC<LinkProps> = ({
+  href,
   size = 'medium',
   variant = 'default',
   className,
   children,
-  isExternal,
+  isExternal: isExternalProp,
   onMouseEnter,
   onMouseLeave,
   onFocus,
@@ -107,12 +113,12 @@ export const Link: React.FC<LinkProps> = ({
     [onBlur, isFocused]
   );
 
-  if (typeof isExternal === 'undefined') {
-    isExternal = rest.target === '_blank' || (rest.href && (rest.href as string).startsWith('http'));
-  }
+  const isExternal =
+    isExternalProp ?? (rest.target === '_blank' || (typeof href === 'string' && href.startsWith('http')));
 
   return (
     <NextLink
+      href={href}
       className={clsx(
         styles.link,
         styles[`link--${size}`],
