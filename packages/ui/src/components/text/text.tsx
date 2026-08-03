@@ -5,6 +5,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './text.module.css';
+import type { BaseProps } from '../helper';
 
 export const textSizes = ['1000', '900', '800', '700', '600', '500', '400', '300', '200', '100'] as const;
 export const textTags = ['p', 'span', 'div', 'strong', 'em'] as const;
@@ -38,11 +39,11 @@ export type ResponsiveWeightMap = {
 };
 
 type RestrictedPolymorphism =
-  | (React.HTMLAttributes<HTMLParagraphElement> & { as?: 'p' })
-  | (React.HTMLAttributes<HTMLSpanElement> & { as?: 'span' })
-  | (React.HTMLAttributes<HTMLDivElement> & { as?: 'div' })
-  | (React.HTMLAttributes<HTMLElement> & { as?: 'strong' })
-  | (React.HTMLAttributes<HTMLElement> & { as?: 'em' });
+  | (React.HTMLAttributes<HTMLParagraphElement> & BaseProps<HTMLParagraphElement> & { as?: 'p' })
+  | (React.HTMLAttributes<HTMLSpanElement> & BaseProps<HTMLSpanElement> & { as?: 'span' })
+  | (React.HTMLAttributes<HTMLDivElement> & BaseProps<HTMLDivElement> & { as?: 'div' })
+  | (React.HTMLAttributes<HTMLElement> & BaseProps<HTMLElement> & { as?: 'strong' })
+  | (React.HTMLAttributes<HTMLElement> & BaseProps<HTMLElement> & { as?: 'em' });
 
 type TextTags = {
   as?: (typeof textTags)[number];
@@ -68,13 +69,13 @@ export type TextProps = {
 export const Text: React.FC<TextProps> = ({
   align,
   as = defaultTextTag,
-  className,
   children,
+  className,
   font = defaultTextFontVariant,
+  hasAntiAliasing = true,
   size = defaultTextSize,
   variant = defaultTextVariant,
   weight,
-  hasAntiAliasing = true,
   ...rest
 }) => {
   const weightClass = React.useMemo(() => {
@@ -87,7 +88,9 @@ export const Text: React.FC<TextProps> = ({
     return (Object.keys(weight) as Array<keyof ResponsiveWeightMap>)
       .map((viewport) => {
         const viewportWeight = weight[viewport];
+
         if (!viewportWeight) return null;
+
         return styles[`text-${viewport}--weight-${viewportWeight}` as keyof typeof styles];
       })
       .filter(Boolean)
@@ -112,8 +115,9 @@ export const Text: React.FC<TextProps> = ({
   );
 
   const UnderlyingTag = as;
+
   return (
-    <UnderlyingTag className={textClassName} {...rest}>
+    <UnderlyingTag className={textClassName} {...(rest as React.HTMLAttributes<HTMLElement>)}>
       {children}
     </UnderlyingTag>
   );

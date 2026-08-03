@@ -58,6 +58,11 @@ export interface LinkProps extends Omit<NextLinkProps<any>, 'href'>, Omit<React.
    * @brief The variant of the link.
    */
   variant?: (typeof linkVariants)[number];
+
+  /**
+   * @brief Reference to the anchor element.
+   */
+  ref?: React.Ref<HTMLAnchorElement>;
 }
 
 /**
@@ -65,17 +70,17 @@ export interface LinkProps extends Omit<NextLinkProps<any>, 'href'>, Omit<React.
  * @details
  */
 export const Link: React.FC<LinkProps> = ({
-  href,
-  size = 'medium',
-  variant = 'default',
-  className,
+  arrowDirection = 'none',
   children,
+  className,
+  href,
   isExternal: isExternalProp,
+  onBlur,
+  onFocus,
   onMouseEnter,
   onMouseLeave,
-  onFocus,
-  onBlur,
-  arrowDirection = 'none',
+  size = 'medium',
+  variant = 'default',
   ...rest
 }) => {
   const [isHovered, setIsHovered] = React.useState(false);

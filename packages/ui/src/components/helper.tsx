@@ -49,7 +49,7 @@ export interface RedlineBackgroundProps extends React.HTMLAttributes<HTMLDivElem
  * @param [props.style] - Optional additional styles to apply to the redline background.
  * @returns A div element that displays a redline background with the specified height and border.
  */
-export const RedlineBackground: React.FC<RedlineBackgroundProps> = ({ height, hasBorder = true, style, ...rest }) => (
+export const RedlineBackground: React.FC<RedlineBackgroundProps> = ({ hasBorder = true, height, style, ...rest }) => (
   <div
     style={{
       display: 'flex',
@@ -68,3 +68,12 @@ export const RedlineBackground: React.FC<RedlineBackgroundProps> = ({ height, ha
     {...rest}
   />
 );
+
+/**
+ * @brief BaseProps interface for components that accept a generic type parameter T.
+ */
+export type BaseProps<T> = {
+  className?: string;
+  id?: string;
+  ref?: React.Ref<T>;
+};
