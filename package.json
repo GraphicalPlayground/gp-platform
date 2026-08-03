@@ -29,6 +29,7 @@
     "start:app": "turbo start --filter=@gp/app",
     "start:admin": "turbo start --filter=@gp/admin",
     "start:marketing": "turbo start --filter=@gp/marketing",
+    "lint-staged": "lint-staged",
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",
     "lint:backend": "turbo lint --filter=@gp/backend",
