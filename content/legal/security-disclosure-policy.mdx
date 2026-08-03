@@ -8,3 +8,144 @@ summary: How to report security vulnerabilities and what to expect from our resp
 requiresExplicitConsent: false
 draft: false
 ---
+
+# Security Disclosure Policy
+
+Effective Date: January 1, 2026
+
+Graphical Playground ("**GP**" or "**Graphical Playground**") values the work of independent
+security researchers who help keep the GP Platform and its users safe. This Security Disclosure Policy (this "**Policy**")
+describes how to report a suspected security vulnerability to GP, the scope of systems this Policy
+covers, and the protections GP offers to researchers who report in good faith and in accordance
+with this Policy. This Policy is the "program policy" referenced in GP's `SECURITY.md` file and at
+[graphical-playground.com/security](https://graphical-playground.com/security), and is
+incorporated into the
+[Terms of Service](https://graphical-playground.com/legal/terms-of-service) and the
+[Acceptable Use Policy](https://graphical-playground.com/legal/acceptable-use).
+
+## 1. Scope
+
+1.1. **In Scope**. This Policy applies to security testing of:
+
+(a) the GP Platform, including `graphical-playground.com` and its subdomains, the marketing site,
+the learner application, and the admin application;
+
+(b) GP's backend API and authentication systems; and
+
+(c) GP's cloud rendering and compilation infrastructure, where accessed through your own GP
+account and without affecting other Customers' Content or capacity.
+
+1.2. **Open-Source Engine**. Vulnerabilities in `gp-engine` or other public repositories under
+[github.com/GraphicalPlayground](https://github.com/GraphicalPlayground) should be reported through
+GitHub's private vulnerability reporting feature on the affected repository rather than under this
+Policy, so that the report reaches the maintainers of that specific module directly. GP will still
+honor the safe harbor in Section 4 of this Policy for good-faith research into those repositories
+conducted consistently with this Policy.
+
+1.3. **Out of Scope**. The following are not authorized under this Policy and reports concerning
+them will not be treated as vulnerability disclosures:
+
+(a) denial-of-service, distributed denial-of-service, or any testing that degrades the
+availability of the Services for other users;
+
+(b) social engineering, phishing, or physical attacks directed at GP's contributors, students, or
+infrastructure providers;
+
+(c) automated scanning at a volume that degrades Service performance, without prior written
+coordination with GP at
+[security@graphical-playground.com](mailto:security@graphical-playground.com);
+
+(d) accessing, modifying, or exfiltrating another Customer's Content or account data beyond what
+is strictly necessary to demonstrate a vulnerability;
+
+(e) findings affecting Non-GP Resources or third-party Infrastructure Providers listed at
+[graphical-playground.com/legal/subprocessors](https://graphical-playground.com/legal/subprocessors),
+which should be reported directly to the applicable provider; and
+
+(f) reports without a working proof of concept for issues that depend on one, such as theoretical
+best-practice deviations, missing security headers with no demonstrated impact, or vulnerabilities
+requiring a jailbroken or rooted device.
+
+## 2. How to Report
+
+2.1. **Reporting Channel**. Report a suspected vulnerability by emailing
+[security@graphical-playground.com](mailto:security@graphical-playground.com) or through
+[graphical-playground.com/security](https://graphical-playground.com/security). Do not create a
+public GitHub issue, forum post, or social media disclosure for an unresolved vulnerability in the
+GP Platform.
+
+2.2. **What to Include**. To help GP validate and reproduce your finding quickly, include: (a) the
+affected domain, endpoint, or repository; (b) a description of the vulnerability and its potential
+impact; (c) step-by-step reproduction instructions or a proof of concept; and (d) any tools,
+payloads, or scripts used.
+
+2.3. **Encrypted Reports**. If your report concerns a critical vulnerability or includes sensitive
+data, you may request GP's PGP public key by emailing
+[security@graphical-playground.com](mailto:security@graphical-playground.com) before sending
+further details.
+
+## 3. GP's Response Process
+
+3.1. **Acknowledgment**. GP will acknowledge receipt of a report within five (5) business days.
+
+3.2. **Triage and Severity**. GP will assess and assign a severity to each validated report based
+on factors including exploitability, impact on Customer Content or personal data, and the number
+of users affected.
+
+3.3. **Remediation Timelines**. GP targets the following timelines from validation of a report to
+remediation, though actual timelines may vary based on complexity: critical severity, 15 days;
+high severity, 30 days; medium severity, 60 days; low severity, 90 days. GP will keep the reporter
+reasonably informed of material progress.
+
+3.4. **Coordinated Disclosure**. GP asks that reporters keep a validated vulnerability
+confidential until GP has deployed a fix or ninety (90) days have elapsed since GP's
+acknowledgment under Section 3.1, whichever comes first, unless GP and the reporter agree to a
+different timeline in writing. Public disclosure before remediation, or against GP's reasonable
+request for additional time on a complex fix, is not protected by Section 4 of this Policy.
+
+## 4. Safe Harbor
+
+4.1. **Authorization**. GP authorizes security research conducted in good faith and in accordance
+with this Policy as necessary access under Article 323-1 et seq. of the French Penal Code and
+equivalent computer-misuse laws in the researcher's jurisdiction. GP will not pursue civil action,
+report you to law enforcement, or suspend your GP account for good-faith security research that:
+(a) stays within the scope defined in Section 1.1; (b) avoids the conduct listed in Section 1.3;
+(c) does not exceed the minimum access needed to demonstrate the vulnerability; and (d) complies
+with the reporting and confidentiality obligations in Sections 2 and 3.4.
+
+4.2. **Third-Party Claims**. If a third party brings a claim against a researcher for conduct that
+complied with this Policy, GP will take reasonable steps to make clear that the research was
+authorized by GP. This Policy does not bind Infrastructure Providers or other third parties, and
+GP cannot authorize testing of systems it does not control.
+
+4.3. **No Reward Guarantee**. GP does not currently operate a paid bug bounty program. With your
+permission, GP may credit you in a security acknowledgments page for a validated, responsibly
+disclosed vulnerability. Recognition under this Section 4.3 is at GP's discretion and is not
+compensation, employment, or a contractual entitlement.
+
+## 5. Personal Data and Breach Notification
+
+5.1. If a reported vulnerability involves, or GP otherwise becomes aware of, a breach of personal
+data, GP will assess and, where required under Article 33 of the GDPR, notify the Commission
+Nationale de l'Informatique et des Libertés (CNIL) without undue delay and, where feasible, within
+seventy-two (72) hours of becoming aware of the breach. Where the breach is likely to result in a
+high risk to affected individuals, GP will notify them in accordance with Article 34 of the GDPR.
+
+5.2. Reports submitted under this Policy are handled by GP's security contributors on a
+need-to-know basis and are not used for any purpose other than validating and remediating the
+reported issue, consistent with GP's [Privacy Policy](https://graphical-playground.com/legal/privacy).
+
+## 6. Changes to This Policy
+
+6.1. GP may update this Policy from time to time. GP will post the most current version at
+[graphical-playground.com/legal/security-disclosure](https://graphical-playground.com/legal/security-disclosure).
+A change to this Policy does not retroactively remove the safe harbor in Section 4 for research
+conducted, or a report submitted, while a prior version was in effect.
+
+## 7. Contact
+
+> Graphical Playground  
+> c/o EPITECH Lyon  
+> 2 Rue du Professeur Charles Appleton  
+> 69007 Lyon, France  
+> Email: [security@graphical-playground.com](mailto:security@graphical-playground.com)
