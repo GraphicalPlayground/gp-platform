@@ -18,3 +18,4 @@ export * from './staff-toggle-bar';
 export * from './icon';
 export * from './social-links';
 export * from './icons';
+export * from './image';
