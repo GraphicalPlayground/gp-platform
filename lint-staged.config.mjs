@@ -92,7 +92,9 @@ const lintStaged = {
 
   '**/*.{html,css,scss,json,jsonc,md,mdx}': async (files) => {
     return [`prettier --ignore-path .prettierignore --write ${files.join(' ')}`];
-  }
+  },
+
+  '**/*.{ts,tsx}': () => 'pnpm typecheck'
 };
 
 export default lintStaged;
