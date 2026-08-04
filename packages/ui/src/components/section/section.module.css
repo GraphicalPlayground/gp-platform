@@ -1,0 +1,159 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.section {
+  --rounded-padding-overlap-adjustment: 0px;
+  --rounded-radius: var(--gp-border-radius-xlarge);
+  --padding-block-end: var(--gp-section-padding-normal);
+  --adjusted-padding-block-end: calc(var(--padding-block-end) + var(--rounded-padding-overlap-adjustment));
+
+  background-repeat: no-repeat;
+  background-color: var(--gp-section-narrow-background-color, var(--gp-section-background-color));
+  background-image: var(--gp-section-narrow-background-image-src, var(--gp-section-background-image-src));
+  background-size: var(--gp-section-narrow-background-image-size, var(--gp-section-background-image-size));
+
+  background-position: var(
+    --gp-section-narrow-background-image-position,
+    var(--gp-section-background-image-position, center)
+  );
+
+  padding-block-start: var(--padding-block-start);
+  padding-block-end: var(--adjusted-padding-block-end);
+}
+
+.section__container {
+  width: 100%;
+  max-width: var(--gp-section-container-max-width);
+  margin-inline: auto;
+}
+
+.section__container--fullWidth {
+  max-width: none;
+}
+
+.section--rounded {
+  border-radius: var(--rounded-radius) var(--rounded-radius) 0 0;
+  margin-top: calc(-1 * var(--rounded-radius));
+}
+
+/* A progressive enhancment to adjust block-end padding to account for adjacent section rounded corners overlap. */
+.section:has(+ .section--rounded) {
+  --rounded-padding-overlap-adjustment: var(--rounded-radius);
+}
+
+.section--padding-block-start-none,
+.section-narrow--padding-block-start-none {
+  padding-block-start: 0;
+}
+
+.section--padding-block-start-condensed,
+.section-narrow--padding-block-start-condensed {
+  padding-block-start: var(--gp-section-padding-condensed);
+}
+.section--padding-block-start-normal,
+.section-narrow--padding-block-start-normal {
+  padding-block-start: var(--gp-section-padding-normal);
+}
+.section--padding-block-start-spacious,
+.section-narrow--padding-block-start-spacious {
+  padding-block-start: var(--gp-section-padding-spacious);
+}
+
+.section--padding-block-end-none,
+.section-narrow--padding-block-end-none {
+  --padding-block-end: 0px;
+}
+
+.section--padding-block-end-condensed,
+.section-narrow--padding-block-end-condensed {
+  --padding-block-end: var(--gp-section-padding-condensed);
+}
+.section--padding-block-end-normal,
+.section-narrow--padding-block-end-normal {
+  --padding-block-end: var(--gp-section-padding-normal);
+}
+.section--padding-block-end-spacious,
+.section-narrow--padding-block-end-spacious {
+  --padding-block-end: var(--gp-section-padding-spacious);
+}
+
+@media screen and (min-width: 48rem) {
+  .section {
+    background-color: var(--gp-section-regular-background-color, var(--gp-section-background-color));
+    background-image: var(--gp-section-regular-background-image-src, var(--gp-section-background-image-src));
+    background-size: var(--gp-section-regular-background-image-size, var(--gp-section-background-image-size));
+    background-position: var(
+      --gp-section-regular-background-image-position,
+      var(--gp-section-background-image-position)
+    );
+  }
+
+  .section-regular--padding-block-start-none {
+    padding-block-start: 0;
+  }
+
+  .section-regular--padding-block-start-condensed {
+    padding-block-start: var(--gp-section-padding-condensed);
+  }
+  .section-regular--padding-block-start-normal {
+    padding-block-start: var(--gp-section-padding-normal);
+  }
+  .section-regular--padding-block-start-spacious {
+    padding-block-start: var(--gp-section-padding-spacious);
+  }
+
+  .section-regular--padding-block-end-none {
+    --padding-block-end: 0px;
+  }
+
+  .section-regular--padding-block-end-condensed {
+    --padding-block-end: var(--gp-section-padding-condensed);
+  }
+  .section-regular--padding-block-end-normal {
+    --padding-block-end: var(--gp-section-padding-normal);
+  }
+  .section-regular--padding-block-end-spacious {
+    --padding-block-end: var(--gp-section-padding-spacious);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .section {
+    background-color: var(--gp-section-wide-background-color, var(--gp-section-background-color));
+    background-image: var(--gp-section-wide-background-image-src, var(--gp-section-background-image-src));
+    background-size: var(--gp-section-wide-background-image-size, var(--gp-section-background-image-size));
+
+    background-position: var(--gp-section-wide-background-image-position, var(--gp-section-background-image-position));
+  }
+
+  .section-wide--padding-block-start-none {
+    padding-block-start: 0;
+  }
+
+  .section-wide--padding-block-start-condensed {
+    padding-block-start: var(--gp-section-padding-condensed);
+  }
+  .section-wide--padding-block-start-normal {
+    padding-block-start: var(--gp-section-padding-normal);
+  }
+  .section-wide--padding-block-start-spacious {
+    padding-block-start: var(--gp-section-padding-spacious);
+  }
+
+  .section-wide--padding-block-end-none {
+    --padding-block-end: 0px;
+  }
+
+  .section-wide--padding-block-end-condensed {
+    --padding-block-end: var(--gp-section-padding-condensed);
+  }
+  .section-wide--padding-block-end-normal {
+    --padding-block-end: var(--gp-section-padding-normal);
+  }
+  .section-wide--padding-block-end-spacious {
+    --padding-block-end: var(--gp-section-padding-spacious);
+  }
+}
