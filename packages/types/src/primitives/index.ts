@@ -2,6 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+export * from './address';
 export * from './aspect-ratio';
 export * from './byte-size';
 export * from './color';
