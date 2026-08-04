@@ -88,6 +88,8 @@
       "staff-toggle-bar": "admin",
       "social-links": "contract",
       "pillar": "layout",
+      "button": "input",
+      "section": "layout",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

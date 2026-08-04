@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@gp/standard": "workspace:*",
+    "@gp/types": "workspace:*",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "react": "^19.2.4",
