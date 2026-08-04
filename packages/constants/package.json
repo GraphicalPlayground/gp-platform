@@ -1,0 +1,16 @@
+{
+  "name": "@gp/constants",
+  "private": true,
+  "version": "0.0.2",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@gp/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@gp/standard": "workspace:*",
+    "typescript": "6.0.3"
+  }
+}
