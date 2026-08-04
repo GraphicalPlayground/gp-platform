@@ -11,3 +11,4 @@ export * from './optional';
 export * from './prettify';
 export * from './require-at-least-one';
 export * from './value-of';
+export * from './loose';
