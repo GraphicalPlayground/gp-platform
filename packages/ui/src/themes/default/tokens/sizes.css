@@ -81,6 +81,70 @@
     --gp-prose-line-length: 68ch;
     --gp-prose-img-spacing: var(--gp-size-48);
     --gp-prose-blockquote-spacing: var(--gp-size-24);
+
+    --gp-control-min-target-auto: var(--gp-size-44);
+    --gp-control-stack-small-gap-auto: var(--gp-size-16);
+    --gp-control-stack-medium-gap-auto: var(--gp-size-12);
+
+    --gp-control-min-target-fine: var(--gp-size-16);
+    --gp-control-min-target-coarse: var(--gp-size-44);
+    --gp-control-small-size: var(--gp-size-32);
+    --gp-control-small-line-box-height: var(--gp-size-12);
+    --gp-control-small-padding-block: var(--gp-size-8);
+    --gp-control-small-padding-inline-condensed: var(--gp-size-8);
+
+    --gp-control-small-padding-inline-normal: var(--gp-size-12);
+    --gp-control-small-padding-inline-spacious: var(--gp-size-24);
+    --gp-control-small-gap: var(--gp-size-8);
+
+    --gp-control-medium-size: 43px;
+    --gp-control-medium-line-box-height: var(--gp-size-16);
+
+    --gp-control-medium-padding-block-condensed: var(--gp-size-6);
+    --gp-control-medium-padding-block-normal: var(--gp-size-16);
+    --gp-control-medium-padding-inline-condensed: var(--gp-size-12);
+    --gp-control-medium-padding-inline-normal: var(--gp-size-16);
+    --gp-control-medium-padding-inline-spacious: var(--gp-size-28);
+
+    --gp-control-medium-gap: var(--gp-size-12);
+
+    --gp-control-large-size: 60px;
+    --gp-control-large-line-box-height: var(--gp-size-20);
+    --gp-control-large-padding-block-condensed: var(--gp-size-12);
+    --gp-control-large-padding-block-normal: var(--gp-size-20);
+    --gp-control-large-padding-inline-condensed: var(--gp-size-16);
+    --gp-control-large-padding-inline-normal: var(--gp-size-20);
+    --gp-control-large-padding-inline-spacious: var(--gp-size-32);
+
+    --gp-control-large-gap: var(--gp-size-16);
+
+    --gp-control-animation-duration: 80ms;
+    --gp-control-animation-easing: var(--gp-animation-easing-glide);
+    --gp-box-spacing-condensed: var(--gp-size-16);
+    --gp-box-spacing-normal: var(--gp-size-24);
+    --gp-box-spacing-spacious: var(--gp-size-48);
+
+    --gp-stack-padding-condensed: var(--gp-size-16);
+    --gp-stack-padding-normal: var(--gp-size-24);
+    --gp-stack-padding-spacious: var(--gp-size-48);
+
+    --gp-stack-gap-condensed: var(--gp-size-16);
+    --gp-stack-gap-normal: var(--gp-size-24);
+    --gp-stack-gap-spacious: var(--gp-size-48);
+
+    --gp-control-stack-small-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-small-gap-spacious: var(--gp-size-16);
+    --gp-control-stack-medium-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-medium-gap-spacious: var(--gp-size-12);
+
+    --gp-control-stack-large-gap-auto: var(--gp-size-8);
+    --gp-control-stack-large-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-large-gap-spacious: var(--gp-size-12);
+
+    --gp-section-padding-condensed: var(--gp-size-16);
+    --gp-section-padding-normal: var(--gp-size-48);
+    --gp-section-padding-spacious: var(--gp-size-64);
+    --gp-section-container-max-width: 1280px;
   }
 
   @media (min-width: 768px) {
@@ -88,6 +152,18 @@
       --gp-grid-spacing-row: 32px;
       --gp-grid-spacing-column-gap: 32px;
       --gp-grid-spacing-margin: 40px;
+
+      --gp-section-padding-condensed: var(--gp-size-32);
+      --gp-section-padding-normal: var(--gp-size-64);
+      --gp-section-padding-spacious: var(--gp-size-80);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --gp-section-padding-condensed: var(--gp-size-48);
+      --gp-section-padding-normal: var(--gp-size-96);
+      --gp-section-padding-spacious: var(--gp-size-128);
     }
   }
 
