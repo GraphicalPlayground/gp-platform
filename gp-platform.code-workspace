@@ -97,7 +97,9 @@
       "optimization-and-culling": "benchmark",
       "post-processing": "element",
       "rendering-core": "core",
-      "shaders-and-gpu": "shader"
+      "shaders-and-gpu": "shader",
+      "engine-architecture": "project",
+      "physics-and-collision": "simulations"
     },
     "material-icon-theme.files.associations": {
       "eslint/base.mjs": "eslint",
