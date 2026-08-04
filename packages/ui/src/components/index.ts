@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './newsletter';
 export * from './section';
 export * from './heading';
 export * from './stack';

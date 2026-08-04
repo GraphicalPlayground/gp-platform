@@ -6,7 +6,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './footer.module.css';
 
-import { LinkColumn, StaffToggleBar } from '@gp/ui/components';
+import { LinkColumn, StaffToggleBar, Newsletter } from '@gp/ui/components';
 import { SubFooter } from './subfooter';
 
 import { footerSections, socialLinks, legalLinks } from '@/data/footer';
@@ -28,31 +28,39 @@ export const Footer: React.FC<FooterProps> = ({ className, variant = 'dark', ...
 
       <div className={styles.container}>
         <div className={styles['top-row']}>
-          {/* <Newsletter {...newsletter()} className={styles.newsletter} /> */}
+          <Newsletter
+            className={styles.newsletter}
+            ctaHref='/curriculum'
+            ctaLabel='Explore'
+            description='Join students and enthusiasts building custom render pipelines in the browser. Master system-level graphics through interactive canvas experiments.'
+            heading='Master Real-Time Graphics Programming'
+            logoAriaLabel='Go to Graphical Playground homepage'
+            logoHref='/'
+          />
 
           <div className={styles.columns}>
             {footerSections.map((section, index) => (
-              <LinkColumn key={index} id={section.id} title={section.title} links={section.links} />
+              <LinkColumn key={index} id={section.id} links={section.links} title={section.title} />
             ))}
           </div>
         </div>
       </div>
 
       <SubFooter
-        socialLinks={socialLinks}
-        cookieConsentEnabled={true}
+        cookieConsentEnabled
         copyrightLabel={copyrightLabel}
         copyrightYear={currentYear}
         legalLinks={legalLinks}
+        socialLinks={socialLinks}
       />
 
       <StaffToggleBar
+        isAdminModeOn
+        isUiOptedOut
+        adminTogglePath='/'
         showAdminToggle={false}
-        isAdminModeOn={true}
-        adminTogglePath={'/'}
         showUiOptOut={false}
-        isUiOptedOut={true}
-        uiOptOutTogglePath={'/'}
+        uiOptOutTogglePath='/'
       />
     </footer>
   );

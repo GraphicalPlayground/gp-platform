@@ -5,8 +5,8 @@
 import React from 'react';
 import type { BaseIconProps } from './shared';
 
-export const IconBrandIcon: React.FC<BaseIconProps> = ({ className, color = 'currentColor', ...rest }) => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='488' height='309' fill='none' viewBox='0 0 488 309' {...rest}>
+export const IconBrandIcon: React.FC<BaseIconProps> = ({ color = 'currentColor', ...rest }) => (
+  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 488 309' {...rest}>
     <path
       fill={color}
       d='M217 234.5V301a8 8 0 0 0 8 8h25a8 8 0 0 0 8-8v-92c0-16.569 13.431-30 30-30h176a8 8 0 0 0 8-8v-25a8 8 0 0 0-8-8H315.5c-6.351 0-11.5-5.149-11.5-11.5 0-2.66.903-5.109 2.419-7.057l74.882-73.586a8 8 0 0 0 .099-11.313l-18.224-18.545a8 8 0 0 0-11.313-.099l-77.23 75.894A11.45 11.45 0 0 1 269.5 93c-6.351 0-11.5-5.149-11.5-11.5V14a8 8 0 0 0-8-8h-25a8 8 0 0 0-8 8v94c0 16.569-13.431 30-30 30H8a8 8 0 0 0-8 8v25a8 8 0 0 0 8 8h150.5c6.351 0 11.5 5.149 11.5 11.5 0 1.559-.31 3.045-.872 4.4-.303.733-.802 1.361-1.367 1.917l-73.422 72.151a8 8 0 0 0-.098 11.313l18.223 18.545a8 8 0 0 0 11.314.098l72.369-71.117 2.825-2.776A11.44 11.44 0 0 1 205.5 223c6.351 0 11.5 5.149 11.5 11.5M446.156 46V12.533h13.185q5.705 0 8.849 2.988 3.167 2.965 3.167 7.95 0 3.438-1.549 5.885-1.529 2.426-4.38 3.64L472.548 46h-7.817l-6.334-11.86h-5.188V46zm11.837-27.672h-4.784v10.13h4.807q6.042 0 6.042-4.986 0-5.145-6.065-5.144'
@@ -20,8 +20,8 @@ export const IconBrandIcon: React.FC<BaseIconProps> = ({ className, color = 'cur
   </svg>
 );
 
-export const ShortBrandIcon: React.FC<BaseIconProps> = ({ className, color = 'currentColor', ...rest }) => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='779' height='154' fill='none' viewBox='0 0 779 154' {...rest}>
+export const ShortBrandIcon: React.FC<BaseIconProps> = ({ color = 'currentColor', ...rest }) => (
+  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 779 154' {...rest}>
     <path
       fill={color}
       d='M754.591 26.509V7.223h7.691q3.328 0 5.162 1.721 1.848 1.709 1.848 4.582 0 1.98-.904 3.391-.891 1.398-2.555 2.097l4.153 7.495h-4.559l-3.695-6.835h-3.027v6.835zm6.905-15.947h-2.791V16.4h2.804q3.525 0 3.525-2.874 0-2.964-3.538-2.964'
@@ -39,8 +39,8 @@ export const ShortBrandIcon: React.FC<BaseIconProps> = ({ className, color = 'cu
   </svg>
 );
 
-export const LongBrandIcon: React.FC<BaseIconProps> = ({ className, color = 'currentColor', ...rest }) => (
-  <svg xmlns='http://www.w3.org/2000/svg' width='1882' height='154' fill='none' viewBox='0 0 1882 154' {...rest}>
+export const LongBrandIcon: React.FC<BaseIconProps> = ({ color = 'currentColor', ...rest }) => (
+  <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 1882 154' {...rest}>
     <path
       fill={color}
       d='M1857.46 26.509V7.223h7.6q3.285 0 5.1 1.721 1.83 1.709 1.83 4.582 0 1.98-.9 3.391c-.58.932-1.43 1.631-2.52 2.097l4.1 7.495h-4.5l-3.65-6.835h-2.99v6.835zm6.82-15.947h-2.75V16.4h2.77q3.48 0 3.48-2.874c0-1.976-1.17-2.964-3.5-2.964'
