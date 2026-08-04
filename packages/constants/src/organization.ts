@@ -2,15 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import type {
-  Loose,
-  PostalAddress,
-  Locale,
-  type Url,
-  type SocialPlatform,
-  type Email,
-  type CurrencyCode
-} from '@gp/types';
+import type { Loose, PostalAddress, Locale, Url, SocialPlatform, Email, CurrencyCode } from '@gp/types';
 
 type OrganizationSocials = Extract<SocialPlatform, 'github' | 'linkedin' | 'discord'>;
 type OrganizationEmailNames =
