@@ -17,3 +17,4 @@ Assignee: [@bombabobo](https://github.com/bombabobo), [@Omegalpha28](https://git
 - [ ] Add CI to automatically update the `CHANGELOG.md` file based on the commit messages, ensuring that the changelog is always up-to-date with the latest changes in the platform.
 - [ ] Add CI to automatically update the `DONORS.md` and `SPONSORS.md` files based on the contributions and sponsorships received, ensuring that the recognition of contributors and sponsors is always up-to-date.
 - [ ] Protect the staging and production branches to prevent accidental changes and ensure that only authorized users can make modifications to these critical branches.
+- [ ] Add support for https://github.com/KKonstantinov/markdown-for-agents/tree/main/packages/middleware/nextjs
