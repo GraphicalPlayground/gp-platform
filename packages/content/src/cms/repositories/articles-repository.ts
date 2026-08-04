@@ -6,6 +6,7 @@ import { MdxCollection } from '../collection';
 import type { MdxCollectionOptions, MdxDocument } from '../types';
 import type { Article } from '../../article';
 import { articleFrontmatterUnionSchema as articleUnionSchema } from '../../article';
+import remarkGfm from 'remark-gfm';
 
 export type ArticleType = Article['type'];
 export type ArticleOfType<T extends ArticleType> = Extract<Article, { type: T }>;
@@ -49,7 +50,8 @@ export class ArticlesRepository {
       schema: articleUnionSchema,
       // frontmatter.slug is authoritative; falls back to filename otherwise
       resolveSlug: (frontmatter, relativePath) => frontmatter.slug ?? relativePath,
-      useSmartypants: false
+      useSmartypants: false,
+      remarkPlugins: [remarkGfm]
     });
   }
 
@@ -90,7 +92,7 @@ export class ArticlesRepository {
    * @returns Articles matching every supplied filter, sorted by `datePublished`.
    */
   public async getAll(options: ArticleListOptions = {}): Promise<MdxDocument<Article>[]> {
-    const { types, category, tag, sortBy = 'desc', limit, ...baseOptions } = options;
+    const { category, limit, sortBy = 'desc', tag, types, ...baseOptions } = options;
 
     let docs = await this.collection.getAll(baseOptions);
 
@@ -124,6 +126,7 @@ export class ArticlesRepository {
     options: Omit<ArticleListOptions, 'types'> = {}
   ): Promise<MdxDocument<ArticleOfType<T>>[]> {
     const docs = await this.getAll({ ...options, types: [type] });
+
     return docs as MdxDocument<ArticleOfType<T>>[];
   }
 
@@ -189,9 +192,11 @@ export class ArticlesRepository {
   public async getAllTags(options?: MdxCollectionOptions): Promise<string[]> {
     const docs = await this.collection.getAll(options);
     const tags = new Set<string>();
+
     for (const doc of docs) {
       doc.frontmatter.tags?.forEach((tag: string) => tags.add(tag));
     }
+
     return [...tags].sort((a, b) => a.localeCompare(b));
   }
 
@@ -208,10 +213,12 @@ export class ArticlesRepository {
     if (related.length > 0) {
       const resolved = await Promise.all(related.map((slug: string) => this.getBySlug(slug)));
       const found = resolved.filter((d: MdxDocument<Article> | undefined): d is MdxDocument<Article> => Boolean(d));
+
       if (found.length > 0) return found.slice(0, limit);
     }
 
     const sameCategory = await this.getAll({ category: doc.frontmatter.category, limit: limit + 1 });
+
     return sameCategory.filter((d) => d.slug !== doc.slug).slice(0, limit);
   }
 }

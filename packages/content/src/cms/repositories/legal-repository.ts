@@ -5,6 +5,7 @@
 import { MdxCollection } from '../collection';
 import { legalFrontmatterSchema } from '../../legal';
 import type { LegalFrontmatter } from '../../legal';
+import remarkGfm from 'remark-gfm';
 
 /**
  * @brief Repository for managing legal documents in the CMS.
@@ -16,7 +17,8 @@ export class LegalRepository {
     this.collection = new MdxCollection<LegalFrontmatter>({
       contentDir,
       schema: legalFrontmatterSchema,
-      useSmartypants: true
+      useSmartypants: true,
+      remarkPlugins: [remarkGfm]
     });
   }
 
