@@ -4,6 +4,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
+import { Section, Stack } from '@gp/ui/components';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 
@@ -22,5 +23,17 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
  * @returns A JSX page displaying the home page content.
  */
 export default function HomePage() {
-  return <div />;
+  return (
+    <Stack className='w-full' direction='vertical' gap='none' padding='none'>
+      <Section fullWidth backgroundColor='subtle' className='h-screen'>
+        Hello World
+      </Section>
+      <Section fullWidth backgroundColor='default' className='h-screen'>
+        Default Section
+      </Section>
+      <Section fullWidth backgroundColor='subtle' className='h-screen'>
+        Subtle Section
+      </Section>
+    </Stack>
+  );
 }

@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className='relative w-full min-h-screen flex flex-col scroll-smooth'>
         <JsonLd data={graph} />
         <ClerkProvider>
-          <main className='flex w-full min-h-screen'>{children}</main>
+          <main className='w-full'>{children}</main>
           <Footer />
         </ClerkProvider>
       </body>
