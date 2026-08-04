@@ -70,6 +70,7 @@
       "curriculum": "atom",
       "(txts)": "log",
       "brand-guidelines": "theme",
+      "persons": "admin",
 
       /* Fonts */
       "HubotSans": "font",
