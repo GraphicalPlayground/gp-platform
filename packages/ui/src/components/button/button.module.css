@@ -1,0 +1,246 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.button {
+  appearance: none;
+  user-select: none;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+  text-decoration: none;
+  border-radius: var(--gp-size-6);
+  cursor: pointer;
+  border: solid var(--gp-border-width-thin) transparent;
+  background: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: var(--gp-control-medium-gap);
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button:focus-visible {
+  transition: none;
+  outline: 4px solid var(--gp-color-focus);
+  outline-offset: 2px;
+}
+
+.button--disabled,
+.button--disabled:hover,
+.button--disabled:focus {
+  cursor: not-allowed;
+}
+
+.button--size-small .button__text {
+  display: flex;
+}
+
+.button__text {
+  position: relative;
+}
+
+.button--label {
+  font-family: var(--gp-body-fontFamily);
+  font-style: normal;
+  font-weight: var(--gp-text-weight-medium);
+  text-align: center;
+}
+
+.button__icon-visual {
+  display: flex;
+  align-self: center;
+  height: var(--gp-size-16);
+  width: auto;
+  fill: currentcolor;
+}
+
+.button__trailing-visual,
+.button__leading-visual {
+  display: flex;
+}
+
+/* optically adjust arrow to align with the end (right) padding */
+/* reduce gap between label and arrow */
+.button-arrow {
+  margin-inline-end: calc(var(--gp-size-4) * -1);
+  margin-inline-start: calc(var(--gp-size-8) * -1);
+}
+
+/* primary */
+
+.button--primary {
+  color: var(--gp-button-primary-fg-color-rest);
+  background-color: var(--gp-button-primary-bg-color-rest);
+}
+
+.button--size-small.button--primary {
+  border-width: var(--gp-border-width-thin);
+}
+
+.button--primary:not(.button[disabled], .button[aria-disabled='true'], [aria-expanded='true']):hover {
+  background-color: var(--gp-button-primary-bg-color-hover);
+}
+
+.button--primary:not(.button[disabled], .button[aria-disabled='true']):active,
+.button--primary[aria-expanded='true'] {
+  background: var(--gp-button-primary-bg-color-active);
+  border-color: var(--gp-button-primary-border-color-active);
+}
+
+.button--label-primary {
+  color: var(--gp-button-primary-fg-color-rest);
+}
+
+.button--primary:disabled,
+.button--primary[aria-disabled='true'],
+.button--primary.button--disabled {
+  background-color: var(--gp-button-primary-bg-color-disabled);
+}
+
+.button--primary:disabled .button-arrow--disabled,
+.button--primary[aria-disabled='true'] .button-arrow--disabled,
+.button--primary.button--disabled .button-arrow--disabled,
+.button--primary:disabled .button__icon-visual--disabled,
+.button--primary[aria-disabled='true'] .button__icon-visual--disabled,
+.button--primary.button--disabled .button__icon-visual--disabled,
+.button--label-primary.button-label--disabled {
+  color: var(--gp-button-primary-fg-color-disabled);
+}
+
+/* secondary */
+
+.button--secondary {
+  background-color: var(--gp-button-secondary-bg-color-rest);
+  border-color: var(--gp-button-secondary-border-color-rest);
+  color: var(--gp-button-secondary-fg-color-rest);
+  backdrop-filter: blur(var(--gp-size-20));
+}
+
+.button--secondary:not(.button[disabled], .button[aria-disabled='true'], [aria-expanded='true']):hover {
+  background-color: var(--gp-button-secondary-bg-color-hover);
+  border-color: var(--gp-button-secondary-border-color-hover);
+}
+
+.button--secondary:not(.button[disabled], .button[aria-disabled='true']):active,
+.button--secondary[aria-expanded='true'] {
+  background-color: var(--gp-button-secondary-bg-color-active);
+  border-color: var(--gp-button-secondary-border-color-active);
+}
+
+.button--secondary:disabled {
+  border-color: var(--gp-button-secondary-fg-color-disabled);
+}
+
+.button--secondary:disabled .button-arrow--disabled,
+.button--secondary[aria-disabled='true'] .button-arrow--disabled,
+.button--secondary.button--disabled .button-arrow--disabled,
+.button--secondary:disabled .button__icon-visual--disabled,
+.button--secondary[aria-disabled='true'] .button__icon-visual--disabled,
+.button--secondary.button--disabled .button__icon-visual--disabled,
+.button--label-secondary.button-label--disabled {
+  color: var(--gp-button-secondary-fg-color-disabled);
+}
+
+/* subtle */
+
+.button--subtle {
+  background-color: var(--gp-button-subtle-bg-color-rest);
+  border-width: var(--gp-border-width-thin);
+  border-color: var(--gp-button-subtle-border-color-rest);
+  color: var(--gp-color-text-default);
+  backdrop-filter: blur(var(--gp-size-20));
+}
+
+.button--subtle:not(.button[disabled], .button[aria-disabled='true'], [aria-expanded='true']):hover {
+  background-color: var(--gp-button-subtle-bg-color-hover);
+  border-color: var(--gp-button-subtle-border-color-hover);
+}
+
+.button--subtle:not(.button[disabled], .button[aria-disabled='true']):active,
+.button--subtle[aria-expanded='true'] {
+  background-color: var(--gp-button-subtle-bg-color-active);
+  border-color: var(--gp-button-subtle-border-color-active);
+}
+
+.button--label-subtle {
+  color: var(--gp-button-subtle-fg-color-rest);
+}
+
+.button--subtle:disabled .button-arrow--disabled,
+.button--subtle[aria-disabled='true'] .button-arrow--disabled,
+.button--subtle.button--disabled .button-arrow--disabled,
+.button--subtle:disabled .button__icon-visual--disabled,
+.button--subtle[aria-disabled='true'] .button__icon-visual--disabled,
+.button--subtle.button--disabled .button__icon-visual--disabled,
+.button--label-subtle.button-label--disabled {
+  color: var(--gp-button-subtle-fg-color-disabled);
+}
+
+/* size */
+
+.button--size-small {
+  min-height: var(--gp-control-small-size);
+  padding-inline: var(--gp-control-small-padding-inline-normal);
+}
+
+.button--size-medium {
+  min-height: var(--gp-control-medium-size);
+  padding: var(--gp-control-medium-padding-block-condensed) var(--gp-size-20);
+}
+
+.button--size-large {
+  min-height: var(--gp-control-large-size);
+  padding: var(--gp-control-large-padding-block-condensed) var(--gp-control-large-padding-inline-spacious);
+}
+
+.button--size-large .button__icon-visual,
+.button--size-large .button-arrow {
+  height: var(--gp-size-20);
+  width: var(--gp-size-20);
+}
+
+.button--label-medium {
+  font-size: var(--gp-text-size-200);
+  line-height: var(--gp-text-line-height-200);
+  letter-spacing: 0.01rem;
+}
+
+.button--label-large {
+  font-size: var(--gp-text-subhead-size-large);
+  line-height: var(--gp-text-subhead-line-height-large);
+}
+
+.button--block {
+  width: 100%;
+}
+
+@media (forced-colors: active) {
+  .button--disabled {
+    outline-color: GrayText;
+  }
+
+  /* Indicates disabled state in WHCM */
+  .button--label.button-label--disabled {
+    color: GrayText;
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button::before,
+  .button::after,
+  .button * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

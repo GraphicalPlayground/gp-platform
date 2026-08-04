@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './section';
 export * from './heading';
 export * from './stack';
 export * from './grid';
@@ -20,3 +21,4 @@ export * from './social-links';
 export * from './icons';
 export * from './image';
 export * from './pillar';
+export * from './button';
