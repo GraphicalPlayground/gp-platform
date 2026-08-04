@@ -1,0 +1,34 @@
+---
+title: Job System
+type: glossary
+slug: job-system
+term: Job System
+shortDefinition: A job system splits engine work, such as animation, physics, and culling, into small independent tasks that a pool of worker threads pulls from a queue, letting the engine scale across CPU cores without hand-managing threads for every subsystem.
+description: How breaking a frame's work into small tasks instead of a handful of dedicated threads lets an engine actually use the cores modern CPUs give it.
+synonims:
+  - Task Graph
+  - Fiber Scheduler
+author: mallory-scotton
+category: uncategorized
+tags:
+  - engine-architecture
+  - multithreading
+  - performance-optimization
+  - data-oriented-design
+relatedTerms:
+  - Entity Component System (ECS)
+  - Memory Allocators
+  - GPU Synchronization Primitives
+  - Frame Graph (Render Graph)
+relatedSlugs:
+  - entity-component-system
+  - memory-allocators
+  - gpu-synchronization
+  - frame-graph
+difficulty: advanced
+datePublished: 2026-08-04
+dateModified: 2026-08-04
+locale: en
+draft: false
+noindex: false
+---
