@@ -132,6 +132,11 @@
   list-style-image: var(--gp-prose-unordered-list-image-url);
 }
 
+.prose ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
 .prose li {
   --spacing: 0;
 }
