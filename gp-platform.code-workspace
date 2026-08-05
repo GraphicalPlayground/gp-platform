@@ -50,7 +50,6 @@
       "cloud": "cloudflare",
       "studio": "client",
       "handbook": "bibliography",
-      "(auth)": "secure",
       "sign-in": "input",
       "sign-up": "input",
       "waitlist": "backup",
@@ -62,15 +61,23 @@
       "llms.txt": "prompts",
       "sitemap": "routes",
       "component": "components",
-      "(articles)": "template",
       ".clerk": "secure",
       ".well-known": "mappings",
       "security.txt": "secure",
       "testimonials": "messages",
       "curriculum": "atom",
-      "(txts)": "log",
       "brand-guidelines": "theme",
       "persons": "admin",
+      "faq": "include",
+
+      /* Categories */
+      "(content)": "template",
+      "(txts)": "log",
+      "(auth)": "secure",
+      "(legal)": "policy",
+      "(marketing)": "cart",
+      "(resources)": "attachment",
+      "(company)": "skills",
 
       /* Fonts */
       "HubotSans": "font",

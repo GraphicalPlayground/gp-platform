@@ -8,6 +8,7 @@ import { Link } from '@gp/ui/components';
 
 export default async function LegalPage() {
   const docs = await cms.legal.getAll();
+
   return (
     <div>
       <h1>Legal</h1>
