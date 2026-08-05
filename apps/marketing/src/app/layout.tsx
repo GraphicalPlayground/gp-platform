@@ -26,7 +26,7 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
  */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html className='min-h-screen antialiased scroll-smooth' lang='en'>
+    <html className='min-h-screen antialiased scroll-smooth' data-scroll-behavior='smooth' lang='en'>
       <body className='relative w-full min-h-screen flex flex-col scroll-smooth'>
         <JsonLd data={graph} />
         <ClerkProvider>
