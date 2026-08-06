@@ -6,10 +6,10 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpSourceOfTruth extends GenericRepository {
-  public static readonly name: string = 'gp-source-of-truth';
+  public static override readonly name: string = 'gp-source-of-truth';
 
-  public static readonly description: string =
+  public static override readonly description: string =
     'Centralized source of truth for organization-wide community files, compliance templates, and automated configuration sync.';
 
-  public static readonly license: LicenseIdentifier = 'Apache-2.0';
+  public static override readonly license: LicenseIdentifier = 'Apache-2.0';
 }

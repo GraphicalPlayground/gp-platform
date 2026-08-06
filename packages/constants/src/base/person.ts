@@ -74,6 +74,18 @@ export class GenericPerson {
     return Organization.mail(this.slug('.'));
   }
 
+  /**
+   * @brief Returns a mailto link for the person's email address.
+   * @returns A string representing the mailto link for the person's email address.
+   * @example
+   * ```ts
+   * const mailto = GenericPerson.mailto; // "mailto:generic.person@graphical-playground.com"
+   * ```
+   */
+  public static get mailto(): string {
+    return `mailto:${this.email}`;
+  }
+
   public static readonly socials: Partial<Record<SocialPlatform, Url>> = {};
   public static readonly emails: Email[] = [this.email] as Email[];
 

@@ -13,6 +13,7 @@ type OrganizationEmailNames =
   | 'marketing'
   | 'sponsor'
   | 'partnerships'
+  | 'sales'
   | 'security'
   | 'contact'
   | 'account'
@@ -35,13 +36,18 @@ export class Organization {
   public static readonly shortName: string = 'GPlayd';
   public static readonly initials: string = 'GP';
 
-  public static readonly description: string = '';
-  public static readonly tagline: string = '';
-  public static readonly mission: string = '';
+  public static readonly description: string =
+    'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.';
+  public static readonly tagline: string = 'Learn how AAA graphics engines are really built. No GPU required.';
+  public static readonly mission: string =
+    'To make the knowledge behind modern real-time rendering accessible to anyone who wants to learn it, regardless of their hardware or their background.';
+
+  public static readonly alternateNames: string[] = ['GP', 'GPlayd', 'Graphical Playground Platform', 'gp-platform'];
 
   public static readonly address: PostalAddress = {
     line1: '2 Rue du Professeur Charles Appleton',
     city: 'Lyon',
+    state: 'Auvergne-Rhône-Alpes',
     postalCode: '69007',
     country: 'FR'
   };
@@ -75,6 +81,7 @@ export class Organization {
     marketing: Organization.mail('marketing'),
     sponsor: Organization.mail('sponsor'),
     partnerships: Organization.mail('partnerships'),
+    sales: Organization.mail('sales'),
     security: Organization.mail('security'),
     contact: Organization.mail('contact'),
     account: Organization.mail('account'),
@@ -85,6 +92,15 @@ export class Organization {
     feedback: Organization.mail('feedback'),
     careers: Organization.mail('careers')
   };
+
+  /**
+   * @brief Generates the full product name for a given product under the organization's brand.
+   * @param name - The name of the product (e.g., 'Engine', 'Platform', 'Docs').
+   * @returns A string representing the full product name, prefixed with the organization's name.
+   */
+  public static product(name: string): string {
+    return `${Organization.name} ${name}`;
+  }
 
   /**
    * @brief Generates a mailto link for the specified email name.

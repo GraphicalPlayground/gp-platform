@@ -6,10 +6,10 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpHandbook extends GenericRepository {
-  public static readonly name: string = 'gp-handbook';
+  public static override readonly name: string = 'gp-handbook';
 
-  public static readonly description: string =
+  public static override readonly description: string =
     'A practical reference for graphics engineering concepts taught within Graphical Playground. Focuses on theory-to-implementation explanations, design patterns, and best practices.';
 
-  public static readonly license: LicenseIdentifier = 'Apache-2.0';
+  public static override readonly license: LicenseIdentifier = 'Apache-2.0';
 }
