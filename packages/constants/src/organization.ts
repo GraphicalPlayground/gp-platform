@@ -3,6 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { Loose, PostalAddress, Locale, Url, SocialPlatform, Email, CurrencyCode } from '@gp/types';
+import { KnowsAbout } from './knows-about';
 
 type OrganizationSocials = Extract<SocialPlatform, 'github' | 'linkedin' | 'discord'>;
 type OrganizationEmailNames =
@@ -51,6 +52,10 @@ export class Organization {
   public static readonly currency: CurrencyCode = 'EUR';
   public static readonly currencySymbol: string = '€';
   public static readonly currencyName: string = 'Euro';
+
+  public static readonly knowsAbout = KnowsAbout;
+
+  public static readonly foundingDate: Date = new Date('2025-12-01T00:00:00Z');
 
   public static readonly locales = {
     supported: ['en', 'fr'] as Locale[],
@@ -106,5 +111,14 @@ export class Organization {
    */
   public static subdomain(name: Loose<OrganizationSubdomains>): Url {
     return `https://${name}.${Organization.domain}` as Url;
+  }
+
+  /**
+   * @brief Generates a URL for a specific repository under the organization's GitHub account.
+   * @param name - The name of the repository to generate a URL for.
+   * @returns  A string representing the URL for the specified repository under the organization's GitHub account.
+   */
+  public static repository(name: string): Url {
+    return (this.socials.github + '/' + name) as Url;
   }
 }

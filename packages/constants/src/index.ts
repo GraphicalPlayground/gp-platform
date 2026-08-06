@@ -4,3 +4,6 @@
 
 export * from './organization';
 export * from './persons';
+export * from './repositories';
+export * from './knows-about';
+export * from './keywords';
