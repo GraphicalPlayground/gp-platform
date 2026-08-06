@@ -44,14 +44,15 @@ export interface ArticleListOptions extends MdxCollectionOptions {
 export class ArticlesRepository {
   private readonly collection: MdxCollection<Article>;
 
-  constructor(contentDir: string) {
+  constructor(contentDir: string, defaultLocale?: string) {
     this.collection = new MdxCollection<Article>({
       contentDir,
       schema: articleUnionSchema,
       // frontmatter.slug is authoritative; falls back to filename otherwise
       resolveSlug: (frontmatter, relativePath) => frontmatter.slug ?? relativePath,
       useSmartypants: false,
-      remarkPlugins: [remarkGfm]
+      remarkPlugins: [remarkGfm],
+      defaultLocale
     });
   }
 
@@ -72,10 +73,9 @@ export class ArticlesRepository {
 
   /**
    * @brief Returns a single article by slug, frontmatter only (MDX uncompiled).
-   * @param slug - The slug of the article to retrieve.
    */
-  public getBySlug(slug: string) {
-    return this.collection.getBySlug(slug);
+  public getBySlug(...args: Parameters<MdxCollection<Article>['getBySlug']>) {
+    return this.collection.getBySlug(...args);
   }
 
   /**
@@ -220,5 +220,19 @@ export class ArticlesRepository {
     const sameCategory = await this.getAll({ category: doc.frontmatter.category, limit: limit + 1 });
 
     return sameCategory.filter((d) => d.slug !== doc.slug).slice(0, limit);
+  }
+
+  /**
+   * @brief Every locale variant belonging to the same translation group.
+   * @details Matches on `frontmatter.translationGroupId`, falling back to `frontmatter.slug`
+   * for documents that don't set one (i.e. untranslated documents only ever match themselves).
+   * @param translationGroupId - The translation group id (or default-locale slug) to match.
+   */
+  public async getTranslations(translationGroupId: string): Promise<MdxDocument<Article>[]> {
+    const all = await this.collection.getAll({
+      statuses: ['draft', 'in-review', 'scheduled', 'published', 'archived']
+    });
+
+    return all.filter((doc) => (doc.frontmatter.translationGroupId ?? doc.frontmatter.slug) === translationGroupId);
   }
 }

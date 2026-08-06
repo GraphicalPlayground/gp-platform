@@ -14,6 +14,12 @@ export interface CmsConfig {
    * @details Expected to contain one subdirectory per repository (`articles/`, `legal/`).
    */
   contentRootDirectory: string;
+
+  /**
+   * @brief Locale assumed for documents that don't set `frontmatter.locale`, and used as the
+   * fallback when a requested locale has no variant. Defaults to `'en'`.
+   */
+  defaultLocale?: string;
 }
 
 /**
@@ -31,8 +37,9 @@ export class Cms {
    */
   constructor(config: CmsConfig) {
     const contentRootDirectory = config.contentRootDirectory;
-    this.articles = new ArticlesRepository(path.join(contentRootDirectory, 'articles'));
-    this.legal = new LegalRepository(path.join(contentRootDirectory, 'legal'));
+
+    this.articles = new ArticlesRepository(path.join(contentRootDirectory, 'articles'), config.defaultLocale);
+    this.legal = new LegalRepository(path.join(contentRootDirectory, 'legal'), config.defaultLocale);
   }
 
   /**

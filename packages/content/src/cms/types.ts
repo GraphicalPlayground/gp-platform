@@ -5,6 +5,8 @@
 import type { MDXComponents } from 'mdx/types';
 import type { ReactElement } from 'react';
 
+import type { PublishStatus } from '../shared/publish-status';
+
 /**
  * @brief A single content file discovered on disk, with its frontmatter parsed and validated but its MDX body left uncompiled.
  * @details Cheap to produce for every file in a collection, safe to use for index/listing/category pages.
@@ -57,9 +59,27 @@ export interface CompiledMdxDocument<TFrontmatter> extends MdxDocument<TFrontmat
  */
 export interface MdxCollectionOptions {
   /**
-   * @brief Whether draft documents (`frontmatter.draft === true`) should be included. Defaults to `process.env.NODE_ENV !== 'production'`.
+   * @brief Whether non-published documents should be included. Defaults to `process.env.NODE_ENV !== 'production'`.
+   * @details Ignored when `statuses` is provided.
    */
   includeDrafts?: boolean;
+
+  /**
+   * @brief Explicit allow-list of publish statuses to return. Overrides `includeDrafts` when provided.
+   */
+  statuses?: PublishStatus[];
+
+  /**
+   * @brief The "current time" used to resolve `scheduled` documents whose `publishAt` has passed.
+   * Defaults to `new Date()`. Mostly useful for deterministic tests/previews.
+   */
+  now?: Date;
+
+  /**
+   * @brief Restrict results to a single locale, falling back to the collection's default locale
+   * for any translation group that has no variant in the requested locale.
+   */
+  locale?: string;
 }
 
 /**

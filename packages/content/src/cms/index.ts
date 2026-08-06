@@ -6,4 +6,5 @@ export * from './cms';
 export * from './repositories';
 export * from './collection';
 export * from './errors';
+export * from './preview';
 export * from './types';

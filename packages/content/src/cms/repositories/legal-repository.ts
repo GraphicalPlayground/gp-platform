@@ -5,6 +5,7 @@
 import { MdxCollection } from '../collection';
 import { legalFrontmatterSchema } from '../../legal';
 import type { LegalFrontmatter } from '../../legal';
+import type { MdxDocument } from '../types';
 import remarkGfm from 'remark-gfm';
 
 /**
@@ -13,12 +14,13 @@ import remarkGfm from 'remark-gfm';
 export class LegalRepository {
   private readonly collection: MdxCollection<LegalFrontmatter>;
 
-  constructor(contentDir: string) {
+  constructor(contentDir: string, defaultLocale?: string) {
     this.collection = new MdxCollection<LegalFrontmatter>({
       contentDir,
       schema: legalFrontmatterSchema,
       useSmartypants: true,
-      remarkPlugins: [remarkGfm]
+      remarkPlugins: [remarkGfm],
+      defaultLocale
     });
   }
 
@@ -55,5 +57,19 @@ export class LegalRepository {
    */
   public getCompiledBySlug(...args: Parameters<MdxCollection<LegalFrontmatter>['getCompiledBySlug']>) {
     return this.collection.getCompiledBySlug(...args);
+  }
+
+  /**
+   * @brief Every locale variant belonging to the same translation group.
+   * @details Matches on `frontmatter.translationGroupId`, falling back to `frontmatter.slug`
+   * for documents that don't set one (i.e. untranslated documents only ever match themselves).
+   * @param translationGroupId - The translation group id (or default-locale slug) to match.
+   */
+  public async getTranslations(translationGroupId: string): Promise<MdxDocument<LegalFrontmatter>[]> {
+    const all = await this.collection.getAll({
+      statuses: ['draft', 'in-review', 'scheduled', 'published', 'archived']
+    });
+
+    return all.filter((doc) => (doc.frontmatter.translationGroupId ?? doc.frontmatter.slug) === translationGroupId);
   }
 }
