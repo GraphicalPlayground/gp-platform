@@ -1,0 +1,15 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import type { LicenseIdentifier } from '@gp/types';
+import { GenericRepository } from '../base/repository';
+
+export class GpBuildTool extends GenericRepository {
+  public static readonly name: string = 'gp-build-tool';
+
+  public static readonly description: string =
+    'The core build orchestrator for Graphical Playground, abstracting CMake configuration, dependencies, and source management.';
+
+  public static readonly license: LicenseIdentifier = 'Apache-2.0';
+}
