@@ -94,7 +94,9 @@ const lintStaged = {
     return [`prettier --ignore-path .prettierignore --write ${files.join(' ')}`];
   },
 
-  '**/*.{ts,tsx}': () => 'pnpm typecheck'
+  '**/*.{ts,tsx}': () => 'pnpm typecheck',
+
+  'content/**/*.mdx': (files) => files.map((file) => `pnpm --filter @gp/content content:validate -- --file ${file}`)
 };
 
 export default lintStaged;
