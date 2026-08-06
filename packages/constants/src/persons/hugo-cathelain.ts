@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { Locale, SocialPlatform, Url, Email, Pronouns } from '@gp/types';
-import { GenericPerson } from '../person';
+import { GenericPerson } from '../base/person';
 
 export class HugoCathelain extends GenericPerson {
   public static readonly firstName: string = 'Hugo';
