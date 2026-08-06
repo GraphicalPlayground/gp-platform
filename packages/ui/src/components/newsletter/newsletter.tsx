@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import styles from './newsletter.module.css';
 import { Text, Heading, BrandIcon, Link } from '..';
 import NextLink from 'next/link';
+import type { Route } from 'next';
 
 /**
  * @brief Newsletter component props interface.
@@ -37,7 +38,7 @@ export const Newsletter: React.FC<NewsletterProps> = ({
 }) => {
   return (
     <section className={clsx(styles['newsletter'], className)} {...rest} aria-labelledby='subscribe-to-newsletter'>
-      <NextLink href={logoHref} className={styles['logo-link']} aria-label={logoAriaLabel}>
+      <NextLink href={logoHref as Route} className={styles['logo-link']} aria-label={logoAriaLabel}>
         <BrandIcon variant='short' style={{ height: 'var(--gp-size-32)' }} className={styles.logo} />
       </NextLink>
 
