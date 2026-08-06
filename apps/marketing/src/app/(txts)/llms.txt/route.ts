@@ -154,8 +154,17 @@ export function GET(): Response {
         ]
       }
     ],
-    footnotes: ['End of llms.txt']
+    footnotes: [
+      `See [llms-full.txt](${Urls.BaseUrl}/llms-full.txt) for the full text of every article.`,
+      '',
+      'End of llms.txt'
+    ]
   });
 
-  return new Response(body, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  return new Response(body, {
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400'
+    }
+  });
 }

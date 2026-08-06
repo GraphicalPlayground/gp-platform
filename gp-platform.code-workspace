@@ -59,6 +59,7 @@
       "collection": "stack",
       "llms": "prompts",
       "llms.txt": "prompts",
+      "llms-full.txt": "prompts",
       "sitemap": "routes",
       "component": "components",
       ".clerk": "secure",
