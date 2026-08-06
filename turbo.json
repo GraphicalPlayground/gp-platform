@@ -35,6 +35,11 @@
     "typecheck": {
       "dependsOn": [],
       "outputs": []
+    },
+    "content:validate": {
+      "dependsOn": [],
+      "inputs": ["$TURBO_DEFAULT$", "../../content/**/*.mdx"],
+      "outputs": []
     }
   }
 }

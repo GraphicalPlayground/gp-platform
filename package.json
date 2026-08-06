@@ -45,7 +45,11 @@
     "typecheck:marketing": "turbo typecheck --filter=@gp/marketing",
     "prepare": "husky",
     "gen": "turbo gen",
-    "gen:component": "turbo gen component"
+    "gen:component": "turbo gen component",
+    "gen:article": "turbo gen article",
+    "gen:legal": "turbo gen legal",
+    "content:validate": "turbo content:validate --filter=@gp/content",
+    "content:bump-version": "pnpm --filter @gp/content content:bump-version --"
   },
   "devDependencies": {
     "@babel/core": "^8.0.1",
