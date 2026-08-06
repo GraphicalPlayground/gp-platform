@@ -2,37 +2,38 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import type { Organization, WithContext } from 'schema-dts';
+import type { Organization as SchemaOrganization, WithContext } from 'schema-dts';
+import { Organization } from '@gp/constants';
 import { JsonLdIds } from './ids';
-import { Urls, Constants } from '../utils';
 
 /**
  * @brief JSON-LD representation of the Graphical Playground organization.
  */
-export const organization: WithContext<Organization> = {
+export const organization: WithContext<SchemaOrganization> = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': JsonLdIds.organization,
-  'name': Constants.name,
-  'alternateName': Constants.alternateNames,
-  'legalName': Constants.name,
-  'description': Constants.description,
-  'url': Urls.BaseUrl,
+  'name': Organization.name,
+  'alternateName': Organization.alternateNames,
+  'legalName': Organization.legalName,
+  'description': Organization.description,
+  'url': Organization.url,
   'logo': {
     '@type': 'ImageObject',
     '@id': JsonLdIds.logo,
-    'url': `${Urls.BaseUrl}/icons/icon-square-512x512.png`,
-    'contentUrl': `${Urls.BaseUrl}/icons/icon-square-512x512.png`,
-    'caption': Constants.product('Logo')
+    'url': `${Organization.url}/icons/icon-square-512x512.png`,
+    'contentUrl': `${Organization.url}/icons/icon-square-512x512.png`,
+    'caption': Organization.product('Logo')
   },
   'image': {
     '@id': JsonLdIds.logo
   },
-  'email': Urls.Mail('support'),
-  'foundingLocation': { '@id': `${Urls.BaseUrl}/#localization` },
-  'location': { '@id': `${Urls.BaseUrl}/#localization` },
-  'legalAddress': { '@id': `${Urls.BaseUrl}/#localization` },
-  'sameAs': [Urls.SubDomain('docs'), Urls.SubDomain('status'), ...Object.values(Urls.Socials)],
+  'email': Organization.mailto('support'),
+  'foundingDate': Organization.foundingDate.toISOString(),
+  'foundingLocation': { '@id': JsonLdIds.localization },
+  'location': { '@id': JsonLdIds.localization },
+  'legalAddress': { '@id': JsonLdIds.localization },
+  'sameAs': [Organization.subdomain('docs'), Organization.subdomain('status'), ...Object.values(Organization.socials)],
   'founder': [
     { '@id': JsonLdIds.person('mallory-scotton') },
     { '@id': JsonLdIds.person('hugo-cathelain') },
@@ -41,7 +42,7 @@ export const organization: WithContext<Organization> = {
     { '@id': JsonLdIds.person('nathan-fievet') }
   ],
   'knowsLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }],
-  'knowsAbout': Constants.keywords,
+  'knowsAbout': Organization.knowsAbout,
   'contactPoint': [
     { '@id': JsonLdIds.contact('support') },
     { '@id': JsonLdIds.contact('legal') },

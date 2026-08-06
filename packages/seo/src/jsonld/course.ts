@@ -3,8 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { AggregateRating, Course, CourseInstance, WithContext } from 'schema-dts';
+import { Organization } from '@gp/constants';
 import { JsonLdIds } from './ids';
-import { Urls } from '../utils';
 
 /**
  * @brief JSON-LD `Course` type, augmented with `aggregateRating`.
@@ -78,7 +78,7 @@ export interface CourseJsonLdInput {
  * @param input - The course's name, description, offerings, pricing, and rating.
  */
 export const buildCourseJsonLd = (input: CourseJsonLdInput): CourseJsonLd => {
-  const url = `${Urls.BaseUrl}${input.path}`;
+  const url = `${Organization.url}${input.path}`;
   const instances = input.instances?.length ? input.instances : [{ courseMode: 'online' as const }];
 
   const hasCourseInstance: CourseInstance[] = instances.map((instance) => ({

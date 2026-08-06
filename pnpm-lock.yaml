@@ -462,6 +462,9 @@ importers:
 
   packages/seo:
     dependencies:
+      '@gp/constants':
+        specifier: workspace:*
+        version: link:../constants
       '@gp/content':
         specifier: workspace:*
         version: link:../content

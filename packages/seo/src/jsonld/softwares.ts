@@ -3,9 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { WithContext, SoftwareApplication, SoftwareSourceCode } from 'schema-dts';
+import { Organization, Repositories } from '@gp/constants';
 import type { SoftwareSlug } from './ids';
 import { JsonLdIds } from './ids';
-import { Urls, Constants } from '../utils';
 
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground software source code.
@@ -15,12 +15,11 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-docs'),
-    'name': Constants.product('Docs'),
+    'name': Organization.product('Docs'),
     'alternateName': ['GPlayd Docs', 'GP Docs', 'gp-docs'],
-    'description':
-      'Technical documentation for the Graphical Playground ecosystem, including engine internals, platform architecture, APIs, and contributor guidelines.',
-    'codeRepository': Urls.Repository('gp-docs'),
-    'url': Urls.SubDomain('docs'),
+    'description': Repositories.GpDocs.description,
+    'codeRepository': Repositories.GpDocs.url,
+    'url': Organization.subdomain('docs'),
     'programmingLanguage': [
       'CSS',
       'TailwindCSS',
@@ -32,7 +31,7 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
       'NextJS',
       'Docusaurus'
     ],
-    'license': 'Apache License 2.0',
+    'license': Repositories.GpDocs.licenseUrl,
     'runtimePlatform': ['Web Browser'],
     'author': { '@id': JsonLdIds.organization },
     'creator': { '@id': JsonLdIds.organization },
@@ -42,11 +41,10 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-engine'),
-    'name': Constants.product('Engine'),
+    'name': Organization.product('Engine'),
     'alternateName': ['GPlayd Engine', 'GP Engine', 'gp-engine'],
-    'description':
-      'An open-source C++23 game engine and educational platform, targeting Windows, Linux, macOS, with support for Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, and HLSL rendering pipelines.',
-    'codeRepository': Urls.Repository('gp-engine'),
+    'description': Repositories.GpEngine.description,
+    'codeRepository': Repositories.GpEngine.url,
     'programmingLanguage': ['C++23', 'GLSL', 'HLSL'],
     'runtimePlatform': [
       'Windows',
@@ -60,7 +58,7 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
       'Android',
       'iOS'
     ],
-    'license': 'Apache License 2.0',
+    'license': Repositories.GpEngine.licenseUrl,
     'author': { '@id': JsonLdIds.organization },
     'creator': { '@id': JsonLdIds.organization },
     'isPartOf': { '@id': JsonLdIds.organization }
@@ -69,14 +67,13 @@ export const softwaresSourceCode: Record<SoftwareSlug, WithContext<SoftwareSourc
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
     '@id': JsonLdIds.sourceCode('gp-platform'),
-    'name': Constants.product('Platform'),
+    'name': Organization.product('Platform'),
     'alternateName': ['GPlayd Platform', 'GP Platform', 'gp-platform'],
-    'description':
-      'The cloud-native learning platform powering Graphical Playground. Hosts interactive courses, executes graphics code on remote GPUs, and delivers real-time visual feedback through a web-based environment.',
-    'codeRepository': Urls.Repository('gp-platform'),
-    'url': Urls.BaseUrl,
+    'description': Repositories.GpPlatform.description,
+    'codeRepository': Repositories.GpPlatform.url,
+    'url': Organization.url,
     'programmingLanguage': ['CSS', 'TailwindCSS', 'TypeScript', 'JavaScript', 'HTML', 'Markdown', 'React', 'NextJS'],
-    'license': 'Apache License 2.0',
+    'license': Repositories.GpPlatform.licenseUrl,
     'runtimePlatform': ['Web Browser'],
     'author': { '@id': JsonLdIds.organization },
     'creator': { '@id': JsonLdIds.organization },
@@ -92,11 +89,10 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-docs'),
-    'name': Constants.product('Docs'),
+    'name': Organization.product('Docs'),
     'alternateName': ['GPlayd Docs', 'GP Docs', 'gp-docs'],
-    'description':
-      'Technical documentation for the Graphical Playground ecosystem, including engine internals, platform architecture, APIs, and contributor guidelines.',
-    'url': Urls.SubDomain('docs'),
+    'description': Repositories.GpDocs.description,
+    'url': Organization.subdomain('docs'),
     'applicationCategory': 'EducationalApplication',
     'applicationSubCategory': 'Game Development',
     'operatingSystem': 'Web Browser',
@@ -109,11 +105,10 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-engine'),
-    'name': Constants.product('Engine'),
+    'name': Organization.product('Engine'),
     'alternateName': ['GPlayd Engine', 'GP Engine', 'gp-engine'],
-    'description':
-      'An open-source C++23 game engine and educational platform, targeting Windows, Linux, macOS, with support for Vulkan, DirectX 11/12, OpenGL/OpenGL ES, GLSL, and HLSL rendering pipelines.',
-    'url': Urls.Repository('gp-engine'),
+    'description': Repositories.GpEngine.description,
+    'url': Repositories.GpEngine.url,
     'applicationCategory': 'EducationalApplication',
     'applicationSubCategory': 'Game Development',
     'operatingSystem': [
@@ -137,19 +132,18 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': JsonLdIds.application('gp-platform'),
-    'name': Constants.product('Platform'),
+    'name': Organization.product('Platform'),
     'alternateName': ['GPlayd Platform', 'GP Platform', 'gp-platform'],
-    'description':
-      'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.',
-    'url': Urls.BaseUrl,
+    'description': Organization.description,
+    'url': Organization.url,
     'applicationCategory': 'EducationalApplication',
     'applicationSubCategory': 'Game Development',
     'operatingSystem': 'Web Browser',
     'offers': {
       '@type': 'Offer',
       'price': '0',
-      'priceCurrency': 'EUR',
-      'url': `${Urls.BaseUrl}/pricing`
+      'priceCurrency': Organization.currency,
+      'url': `${Organization.url}/pricing`
     },
     'publisher': { '@id': JsonLdIds.organization },
     'owner': { '@id': JsonLdIds.organization },

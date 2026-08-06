@@ -4,8 +4,8 @@
 
 import type { Article as SchemaArticle, WithContext } from 'schema-dts';
 import type { Article as ArticleFrontmatter } from '@gp/content';
+import { Organization } from '@gp/constants';
 import { JsonLdIds } from './ids';
-import { Urls } from '../utils';
 
 /**
  * @brief Builds the JSON-LD `Article` representation of an `@gp/content` article, for any of its 10 article types
@@ -14,7 +14,7 @@ import { Urls } from '../utils';
  * @param path - The path the article is served at, e.g. `/guides/my-guide`.
  */
 export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): WithContext<SchemaArticle> => {
-  const url = `${Urls.BaseUrl}${path}`;
+  const url = `${Organization.url}${path}`;
 
   return {
     '@context': 'https://schema.org',

@@ -3,8 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { PostalAddress, WithContext } from 'schema-dts';
+import { Organization } from '@gp/constants';
 import { JsonLdIds } from './ids';
-import { Urls } from '../utils';
 
 /**
  * @brief JSON-LD representation of the Graphical Playground localization.
@@ -13,11 +13,11 @@ export const localization: WithContext<PostalAddress> = {
   '@context': 'https://schema.org',
   '@type': 'PostalAddress',
   '@id': JsonLdIds.localization,
-  'addressCountry': 'FR',
-  'addressLocality': 'Lyon',
-  'postalCode': '69007',
-  'streetAddress': '2 rue Professeur Charles Appleton',
-  'addressRegion': 'Auvergne-Rhône-Alpes',
+  'addressCountry': Organization.address.country,
+  'addressLocality': Organization.address.city,
+  'postalCode': Organization.address.postalCode,
+  'streetAddress': Organization.address.line1,
+  'addressRegion': Organization.address.state,
   'availableLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }],
-  'email': Urls.Mail('support')
+  'email': Organization.mailto('support')
 };

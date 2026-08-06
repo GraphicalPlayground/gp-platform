@@ -2,8 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-/* Base domain for the Graphical Playground platform */
-const BASE_DOMAIN = 'graphical-playground.com';
+import { Organization } from '@gp/constants';
 
 /**
  * @brief Strips trailing slashes from a URL, without relying on a backtracking-prone regex.
@@ -12,46 +11,21 @@ const BASE_DOMAIN = 'graphical-playground.com';
  */
 export const trimTrailingSlash = (url: string): string => {
   let end = url.length;
+
   while (end > 0 && url[end - 1] === '/') end--;
+
   return url.slice(0, end);
 };
 
 /**
- * @brief A collection of URLs used in the Graphical Playground platform.
+ * @brief Backwards-compatible facade over `@gp/constants`'s `Organization`, kept for the app-level consumers
+ * (`apps/marketing`, `apps/app`, `apps/admin`) that import `Urls` from `@gp/seo/utils`. New code within `@gp/seo`
+ * itself should import `Organization` from `@gp/constants` directly instead.
  */
 export const Urls = {
-  /**
-   * @brief The base URL for the Graphical Playground platform.
-   */
-  BaseUrl: `https://${BASE_DOMAIN}`,
-
-  /**
-   * @brief Generates a URL for a subdomain of the Graphical Playground platform.
-   * @param sub - The subdomain to generate the URL for.
-   * @returns The full URL for the specified subdomain.
-   */
-  SubDomain: (sub: string) => `https://${sub}.${BASE_DOMAIN}`,
-
-  /**
-   * @brief Generates a URL for a GitHub repository under the Graphical Playground organization.
-   * @param slug - The slug of the repository to generate the URL for.
-   * @returns The full URL for the specified GitHub repository.
-   */
-  Repository: (slug: string) => `https://github.com/GraphicalPlayground/${slug}`,
-
-  /**
-   * @brief A collection of social media URLs for the Graphical Playground platform.
-   */
-  Socials: {
-    LinkedIn: 'https://www.linkedin.com/company/GraphicalPlayground',
-    GitHub: 'https://github.com/GraphicalPlayground',
-    Discord: `https://discord.${BASE_DOMAIN}`
-  },
-
-  /**
-   * @brief Generates a mailto link for the specified user on the Graphical Playground platform.
-   * @param user - The user to generate the mailto link for.
-   * @returns The mailto link for the specified user.
-   */
-  Mail: (user: string) => `mailto:${user}@${BASE_DOMAIN}`
+  BaseUrl: Organization.url,
+  SubDomain: Organization.subdomain,
+  Repository: (name: string) => Organization.repository(name),
+  Socials: Organization.socials,
+  Mail: Organization.mailto
 } as const;

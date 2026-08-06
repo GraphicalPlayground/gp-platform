@@ -3,8 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { WithContext, WebSite } from 'schema-dts';
+import { Organization, Keywords } from '@gp/constants';
 import { JsonLdIds } from './ids';
-import { Urls, Constants } from '../utils';
 
 /**
  * @brief JSON-LD representation of the Graphical Playground website.
@@ -13,11 +13,10 @@ export const website: WithContext<WebSite> = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': JsonLdIds.website,
-  'name': 'Graphical Playground',
-  'alternateName': ['GPlayd', 'GP', 'Graphical Playground Platform', 'gp-platform'],
-  'url': Urls.BaseUrl,
-  'description':
-    'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.',
+  'name': Organization.name,
+  'alternateName': Organization.alternateNames,
+  'url': Organization.url,
+  'description': Organization.description,
   'publisher': { '@id': JsonLdIds.organization },
   'creator': { '@id': JsonLdIds.organization },
   'owner': { '@id': JsonLdIds.organization },
@@ -28,7 +27,7 @@ export const website: WithContext<WebSite> = {
   'inLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }],
   'isAccessibleForFree': true,
   'isFamilyFriendly': true,
-  'keywords': Constants.keywords,
-  'teaches': Constants.keywords,
-  'sameAs': [Urls.SubDomain('docs'), Urls.SubDomain('status'), ...Object.values(Urls.Socials)]
+  'keywords': Keywords,
+  'teaches': Keywords,
+  'sameAs': [Organization.subdomain('docs'), Organization.subdomain('status'), ...Object.values(Organization.socials)]
 };

@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { BreadcrumbList, WithContext } from 'schema-dts';
-import { Urls } from '../utils';
+import { Organization } from '@gp/constants';
 
 /**
  * @brief A single crumb in a breadcrumb trail.
@@ -31,6 +31,6 @@ export const buildBreadcrumbJsonLd = (items: BreadcrumbItem[]): WithContext<Brea
     '@type': 'ListItem',
     'position': index + 1,
     'name': item.name,
-    'item': `${Urls.BaseUrl}${item.path}`
+    'item': `${Organization.url}${item.path}`
   }))
 });

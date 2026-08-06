@@ -4,9 +4,9 @@
 
 import type { Metadata } from 'next';
 import type { Article, LegalFrontmatter } from '@gp/content';
+import { Organization, Keywords } from '@gp/constants';
 import type { AppTarget } from '../utils/target';
 import { isPubliclyIndexable } from '../utils/target';
-import { Constants } from '../utils/constants';
 import { trimTrailingSlash } from '../utils/urls';
 import { SeoRobots } from '../robots/robots';
 import type { PageMetadataInput, SeoMetadataOptions } from './types';
@@ -49,25 +49,25 @@ export class SeoMetadata {
     const indexable = isPubliclyIndexable(this.target);
     const homeInput: PageMetadataInput = {
       path: '/',
-      title: this.options.defaultTitle ?? Constants.name,
-      description: this.options.description ?? Constants.description
+      title: this.options.defaultTitle ?? Organization.name,
+      description: this.options.description ?? Organization.description
     };
 
     return {
       metadataBase: new URL(this.options.baseUrl),
       title: {
-        default: this.options.defaultTitle ?? Constants.name,
-        template: this.options.titleTemplate ?? `%s | ${Constants.name}`
+        default: this.options.defaultTitle ?? Organization.name,
+        template: this.options.titleTemplate ?? `%s | ${Organization.name}`
       },
-      description: this.options.description ?? Constants.description,
-      applicationName: Constants.name,
+      description: this.options.description ?? Organization.description,
+      applicationName: Organization.name,
       generator: 'Next.js',
       referrer: 'strict-origin-when-cross-origin',
       formatDetection: { email: false, address: false, telephone: false },
       robots: SeoRobots.pageRobots(indexable),
       icons: { icon: '/favicon.svg' },
       ...(indexable && {
-        keywords: [...Constants.keywords],
+        keywords: [...Keywords],
         alternates: { canonical: '/' },
         openGraph: buildOpenGraph(this.target, homeInput, this.options, this.resolveUrl('/')),
         twitter: buildTwitter(this.target, homeInput, this.options),

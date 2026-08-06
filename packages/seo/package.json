@@ -15,6 +15,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@gp/constants": "workspace:*",
     "@gp/content": "workspace:*",
     "@gp/types": "workspace:*",
     "schema-dts": "^2.0.0"

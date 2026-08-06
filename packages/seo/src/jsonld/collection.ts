@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { CollectionPageLeaf, WithContext } from 'schema-dts';
-import { Urls } from '../utils';
+import { Organization } from '@gp/constants';
 
 /**
  * @brief A single entry in a collection/catalog listing, e.g. a course card on a catalog page.
@@ -42,7 +42,7 @@ export interface CollectionPageJsonLdInput {
  * @param input - The listing page's name/description and the items it lists, in display order.
  */
 export const buildCollectionPageJsonLd = (input: CollectionPageJsonLdInput): WithContext<CollectionPageLeaf> => {
-  const url = `${Urls.BaseUrl}${input.path}`;
+  const url = `${Organization.url}${input.path}`;
 
   return {
     '@context': 'https://schema.org',
@@ -58,7 +58,7 @@ export const buildCollectionPageJsonLd = (input: CollectionPageJsonLdInput): Wit
         '@type': 'ListItem',
         'position': index + 1,
         'name': item.name,
-        'item': `${Urls.BaseUrl}${item.path}`,
+        'item': `${Organization.url}${item.path}`,
         ...(item.image && { image: item.image })
       }))
     }

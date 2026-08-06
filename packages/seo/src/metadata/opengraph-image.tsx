@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import { ImageResponse } from 'next/og';
-import { Constants } from '../utils/constants';
+import { Organization } from '@gp/constants';
 
 /**
  * @brief Pixel dimensions every generated Open Graph image is rendered at.
@@ -30,7 +30,7 @@ export interface OgImageInput {
  * @param input - The title (and optional subtitle) to render on the image.
  * @returns An ImageResponse suitable as the default export's return value of an `opengraph-image.tsx` route.
  */
-export const renderOgImage = ({ title, subtitle }: OgImageInput): ImageResponse =>
+export const renderOgImage = ({ subtitle, title }: OgImageInput): ImageResponse =>
   new ImageResponse(
     <div
       style={{
@@ -45,7 +45,7 @@ export const renderOgImage = ({ title, subtitle }: OgImageInput): ImageResponse 
         fontFamily: 'sans-serif'
       }}
     >
-      <div style={{ fontSize: 28, fontWeight: 600, opacity: 0.6, marginBottom: 24 }}>{Constants.name}</div>
+      <div style={{ fontSize: 28, fontWeight: 600, opacity: 0.6, marginBottom: 24 }}>{Organization.name}</div>
       <div style={{ fontSize: 64, fontWeight: 700, lineHeight: 1.1, maxWidth: 960 }}>{title}</div>
       {subtitle ? <div style={{ fontSize: 32, marginTop: 24, opacity: 0.7, maxWidth: 960 }}>{subtitle}</div> : null}
     </div>,

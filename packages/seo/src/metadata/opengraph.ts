@@ -3,10 +3,10 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { Metadata } from 'next';
+import { Organization } from '@gp/constants';
 import type { AppTarget } from '../utils/target';
 import { isPubliclyIndexable } from '../utils/target';
 import type { PageMetadataInput, SeoImage, SeoMetadataOptions } from './types';
-import { Constants } from '../utils/constants';
 
 /**
  * @brief Normalizes a list of SeoImage into the shape Open Graph/Twitter card metadata expects.
@@ -31,15 +31,15 @@ export const buildOpenGraph = (
 ): Metadata['openGraph'] | undefined => {
   if (!isPubliclyIndexable(target)) return undefined;
 
-  const title = input.title ?? options.defaultTitle ?? Constants.name;
-  const description = input.description ?? options.description ?? Constants.description;
+  const title = input.title ?? options.defaultTitle ?? Organization.name;
+  const description = input.description ?? options.description ?? Organization.description;
   const images = toOgImages(input.images);
   const locale = input.locale ?? options.locale ?? 'en';
 
   if (input.type === 'article') {
     return {
       type: 'article',
-      siteName: Constants.name,
+      siteName: Organization.name,
       title,
       description,
       url: resolvedUrl,
@@ -55,7 +55,7 @@ export const buildOpenGraph = (
 
   return {
     type: 'website',
-    siteName: Constants.name,
+    siteName: Organization.name,
     title,
     description,
     url: resolvedUrl,
@@ -83,8 +83,8 @@ export const buildTwitter = (
   return {
     card: images?.length ? 'summary_large_image' : 'summary',
     site: options.twitterSite,
-    title: input.title ?? options.defaultTitle ?? Constants.name,
-    description: input.description ?? options.description ?? Constants.description,
+    title: input.title ?? options.defaultTitle ?? Organization.name,
+    description: input.description ?? options.description ?? Organization.description,
     images
   };
 };

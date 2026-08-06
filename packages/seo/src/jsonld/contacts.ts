@@ -3,9 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { ContactPoint, WithContext } from 'schema-dts';
+import { Organization } from '@gp/constants';
 import { JsonLdIds } from './ids';
 import type { ContactSlug } from './ids';
-import { Urls } from '../utils';
 
 /**
  * @brief Generates a JSON-LD representation of a ContactPoint for the Graphical Playground platform.
@@ -16,7 +16,7 @@ const generateContactPoint = (slug: ContactSlug): WithContext<ContactPoint> => (
   '@context': 'https://schema.org',
   '@type': 'ContactPoint',
   '@id': JsonLdIds.contact(slug),
-  'email': Urls.Mail(slug),
+  'email': Organization.mailto(slug),
   'contactType': slug,
   'availableLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }]
 });
