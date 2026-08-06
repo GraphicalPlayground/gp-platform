@@ -14,6 +14,7 @@ export * from './duration';
 export * from './email';
 export * from './geo';
 export * from './language';
+export * from './license';
 export * from './locale';
 export * from './mime';
 export * from './money';
