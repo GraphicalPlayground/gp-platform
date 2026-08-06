@@ -5,7 +5,7 @@
 import { z } from 'zod';
 
 import { legalCategorySchema } from './category';
-import { semverSchema } from '../shared';
+import { publishStatusSchema, semverSchema } from '../shared';
 
 export const legalFrontmatterSchema = z.object({
   title: z.string().min(1),
@@ -16,7 +16,13 @@ export const legalFrontmatterSchema = z.object({
   updateDate: z.date().optional(),
   summary: z.string().min(1),
   requiresExplicitConsent: z.boolean(),
-  draft: z.boolean().optional().default(false)
+  locale: z.string().min(2).default('en'),
+  translationGroupId: z.string().min(1).optional(),
+  draft: z.boolean().optional().default(false),
+  publishStatus: publishStatusSchema.optional(),
+  publishAt: z.date().optional(),
+  reviewedBy: z.string().min(1).optional(),
+  approvedBy: z.string().min(1).optional()
 });
 
 export type LegalFrontmatter = z.infer<typeof legalFrontmatterSchema>;

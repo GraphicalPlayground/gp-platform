@@ -7,6 +7,8 @@ import { z } from 'zod';
 import { authorSchema } from '../shared/author';
 import { difficultySchema } from '../shared/difficulty';
 import { faqEntrySchema } from '../shared/faq';
+import { publishStatusSchema } from '../shared/publish-status';
+import { semverSchema } from '../shared/semver';
 import { articleCategorySchema } from './category';
 
 export const articleSeoOverrideSchema = z.object({
@@ -30,7 +32,13 @@ export const articleFrontmatterSchema = z.object({
   coverImageAlt: z.string().min(1).optional(),
   readingTimeMinutes: z.number().int().positive().optional(),
   locale: z.string().min(2).default('en'),
+  translationGroupId: z.string().min(1).optional(),
   draft: z.boolean().default(false),
+  publishStatus: publishStatusSchema.optional(),
+  publishAt: z.date().optional(),
+  reviewedBy: z.string().min(1).optional(),
+  approvedBy: z.string().min(1).optional(),
+  contentVersion: semverSchema.optional(),
   noindex: z.boolean().default(false),
   canonicalUrl: z.url().optional(),
   relatedSlugs: z.array(z.string().min(1)).default([]),
