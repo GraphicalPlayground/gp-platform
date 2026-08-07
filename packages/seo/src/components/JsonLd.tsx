@@ -33,10 +33,12 @@ export const JsonLd = <T extends Thing>({ data, indent = 2, ...rest }: JsonLdPro
     const graphData: Graph = { '@context': 'https://schema.org', '@graph': data };
     const jsonString = JSON.stringify(graphData, null, indent);
     const xssSafeData = jsonString.replace(/</g, String.raw`\u003c`).replace(/>/g, String.raw`\u003e`);
+
     return <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: xssSafeData }} {...rest} />;
   }
 
   const jsonString = JSON.stringify(data, null, indent);
   const xssSafeData = jsonString.replace(/</g, String.raw`\u003c`).replace(/>/g, String.raw`\u003e`);
+
   return <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: xssSafeData }} {...rest} />;
 };
