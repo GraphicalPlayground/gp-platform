@@ -234,5 +234,11 @@
 
     --gp-inline-link-color-rest: var(--gp-color-text-link-rest);
     --gp-inline-link-color-pressed: var(--gp-color-text-link-pressed);
+
+    --gp-faq-color-heading: var(--gp-color-text-default);
+    --gp-faq-color-tab-label-selected: var(--gp-color-text-default);
+    --gp-faq-group-button-indicator-idle: var(--gp-color-gray-7);
+    --gp-faq-group-button-indicator-hover: var(--gp-color-gray-5);
+    --gp-faq-group-button-indicator-active: var(--gp-color-accent-primary);
   }
 }

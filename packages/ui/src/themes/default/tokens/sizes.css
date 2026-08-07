@@ -145,6 +145,15 @@
     --gp-section-padding-normal: var(--gp-size-48);
     --gp-section-padding-spacious: var(--gp-size-64);
     --gp-section-container-max-width: 1280px;
+
+    --gp-faq-max-width-list: 816px;
+    --gp-faq-heading-margin-bottom: var(--gp-size-40);
+  }
+
+  @media (min-width: 544px) {
+    :root {
+      --gp-faq-heading-margin-bottom: var(--gp-size-40);
+    }
   }
 
   @media (min-width: 768px) {
@@ -156,6 +165,14 @@
       --gp-section-padding-condensed: var(--gp-size-32);
       --gp-section-padding-normal: var(--gp-size-64);
       --gp-section-padding-spacious: var(--gp-size-80);
+
+      --gp-faq-heading-margin-bottom: var(--gp-size-64);
+    }
+  }
+
+  @media (min-width: 1012px) {
+    :root {
+      --gp-faq-heading-margin-bottom: var(--gp-size-96);
     }
   }
 
