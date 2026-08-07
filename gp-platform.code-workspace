@@ -87,6 +87,7 @@
       /* Components */
       "text": "log",
       "link": "link",
+      "inline-link": "link",
       "link-column": "link",
       "expandable-arrow": "input",
       "grid": "app",
@@ -98,6 +99,8 @@
       "pillar": "layout",
       "button": "input",
       "section": "layout",
+      "footnotes": "attachment",
+      "newsletter": "mail",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
