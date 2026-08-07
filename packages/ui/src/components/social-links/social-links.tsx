@@ -5,7 +5,8 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './social-links.module.css';
-import { SocialIcon, type SocialIconName } from './social-icons';
+import { SocialIcon } from './social-icons';
+import type { SocialIconName } from './social-icons';
 import Link from 'next/link';
 import type { Route } from 'next';
 
@@ -28,7 +29,7 @@ export interface SocialLinksProps extends React.HTMLAttributes<HTMLUListElement>
 /**
  * @brief A React component that renders a list of social media links with icons.
  */
-export const SocialLinks: React.FC<SocialLinksProps> = ({ links, className, ...rest }) => {
+export const SocialLinks: React.FC<SocialLinksProps> = ({ className, links, ...rest }) => {
   return (
     <ul className={clsx(styles['social-links--list'], className)} {...rest}>
       {links.map((link, index) => (

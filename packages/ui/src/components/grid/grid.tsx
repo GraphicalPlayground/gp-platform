@@ -2,7 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import React, { type JSX } from 'react';
+import React from 'react';
+import type { JSX } from 'react';
 import clsx from 'clsx';
 import styles from './grid.module.css';
 
@@ -68,13 +69,13 @@ type GridRootProps<T extends keyof JSX.IntrinsicElements = 'div'> = React.HTMLAt
  */
 const GridRoot: React.FC<GridRootProps> = React.memo(
   ({
-    className,
-    children,
     as = 'div',
-    fullWidth = false,
-    enableOverlay = false,
-    enableGutters = true,
+    children,
+    className,
     columnGap = 'default',
+    enableGutters = true,
+    enableOverlay = false,
+    fullWidth = false,
     rowGap = 'default',
     ...rest
   }) => {
@@ -117,7 +118,7 @@ type GridColumnProps<T extends keyof JSX.IntrinsicElements = 'div'> = {
     : React.HTMLAttributes<HTMLDivElement>);
 
 const GridColumn: React.FC<GridColumnProps> = React.memo(
-  ({ children, as = 'div', span = 12, start, className, ...rest }) => {
+  ({ as = 'div', children, className, span = 12, start, ...rest }) => {
     const validElements = ['div', 'span', 'section'];
     const UnderlyingTag = validElements.includes(as) ? as : 'div';
 

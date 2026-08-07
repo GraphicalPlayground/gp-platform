@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import styles from './button.module.css';
 
 import type { BaseProps } from '../helper';
-import { Text } from '..';
+import { Text } from '../text';
 import type { Icon } from '@primer/octicons-react';
 
 export const ButtonVariants = ['primary', 'secondary', 'subtle'] as const;

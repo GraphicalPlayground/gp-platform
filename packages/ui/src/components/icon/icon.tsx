@@ -6,7 +6,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './icon.module.css';
 import { colors } from '../constants';
-import { type Icon as OcticonProps } from '@primer/octicons-react';
+import type { Icon as OcticonProps } from '@primer/octicons-react';
 import type { BaseIconProps } from '../icons';
 
 export const namedIconSizes = ['small', 'medium', 'large'] as const;
@@ -47,10 +47,10 @@ export interface IconProps extends React.SVGAttributes<SVGElement> {
 }
 
 export const Icon: React.FC<IconProps> = ({
-  icon: Octicon,
   className,
   color = defaultIconColor,
   hasBackground = false,
+  icon: Octicon,
   size = defaultIconSize,
   ...rest
 }) => {

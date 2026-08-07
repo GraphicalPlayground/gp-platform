@@ -6,7 +6,9 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './footnotes.module.css';
 
-import { Heading, Text, InlineLink } from '../';
+import { Heading } from '../heading';
+import { Text } from '../text';
+import { InlineLink } from '../inline-link';
 import type { BaseProps } from '../helper';
 import { getTextContent } from '../helper';
 import { ReplyIcon } from '@primer/octicons-react';

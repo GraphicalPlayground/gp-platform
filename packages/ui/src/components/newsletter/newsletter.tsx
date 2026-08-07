@@ -5,7 +5,10 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './newsletter.module.css';
-import { Text, Heading, BrandIcon, Link } from '..';
+import { Text } from '../text';
+import { Heading } from '../heading';
+import { BrandIcon } from '../icons';
+import { Button } from '../button';
 import NextLink from 'next/link';
 import type { Route } from 'next';
 
@@ -51,13 +54,9 @@ export const Newsletter: React.FC<NewsletterProps> = ({
         {description}
       </Text>
 
-      <Link as='a' href={ctaHref} variant='accent' size='large' arrowDirection='end' className={styles.cta}>
+      <Button as='a' href={ctaHref} variant='primary' size='small' className={styles.cta}>
         {ctaLabel}
-      </Link>
-
-      {/* <Button as='a' href={ctaHref} variant='primary' size='small' className={styles.cta}>
-        {ctaLabel}
-      </Button> */}
+      </Button>
     </section>
   );
 };

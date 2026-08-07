@@ -6,9 +6,13 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './faq-group.module.css';
 
-import { FAQ } from '.';
-import type { FAQSubheadingProps, FAQRootProps } from '.';
-import { Accordion, Grid, Heading, Stack, Box } from '..';
+import { FAQ } from './faq';
+import type { FAQSubheadingProps, FAQRootProps } from './faq';
+import { Accordion } from '../accordion';
+import { Grid } from '../grid';
+import { Heading } from '../heading';
+import { Stack } from '../stack';
+import { Box } from '../box';
 
 const HeadingBase: React.FC<FAQSubheadingProps> = ({ as = 'h3', children, className, ...rest }) => {
   return (

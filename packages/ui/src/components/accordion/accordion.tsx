@@ -8,8 +8,8 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './accordion.module.css';
 
-import { Heading } from '..';
-import type { HeadingProps } from '..';
+import { Heading } from '../heading';
+import type { HeadingProps } from '../heading';
 import { TriangleDownIcon } from '@primer/octicons-react';
 import { colors, biColorGradients as gradients } from '../constants';
 import { useProvidedRefOrCreate } from '@gp/ui/hooks';

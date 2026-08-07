@@ -8,8 +8,12 @@ import styles from './logo-suite.module.css';
 
 import { PauseIcon, PlayIcon } from '@primer/octicons-react';
 import type { BaseProps } from '../helper';
-import { Heading, defaultHeadingTag, Text, Grid, Button } from '..';
-import type { HeadingProps, TextProps } from '..';
+import { Heading, defaultHeadingTag } from '../heading';
+import { Text } from '../text';
+import { Grid } from '../grid';
+import { Button } from '../button';
+import type { HeadingProps } from '../heading';
+import type { TextProps } from '../text';
 import { useReducedMotion } from '@gp/ui/hooks';
 
 /**

@@ -6,8 +6,9 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './faq.module.css';
 
-import { Heading, AccordionHeading, AccordionContent, AccordionRoot } from '..';
-import type { HeadingProps } from '..';
+import { AccordionHeading, AccordionContent, AccordionRoot } from '../accordion';
+import { Heading } from '../heading';
+import type { HeadingProps } from '../heading';
 import type { BaseProps } from '../helper';
 import { isFragmentElement } from '../helper';
 

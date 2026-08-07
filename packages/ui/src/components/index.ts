@@ -6,8 +6,11 @@
 export * from './helper';
 
 /* Export the components */
+export * from './text';
+export * from './navlist';
 export * from './logo-suite';
 export * from './box';
+export * from './button';
 export * from './accordion';
 export * from './inline-link';
 export * from './footnotes';
@@ -17,7 +20,6 @@ export * from './heading';
 export * from './stack';
 export * from './grid';
 export * from './link';
-export * from './text';
 export * from './expandable-arrow';
 export * from './prose';
 export * from './link-column';
@@ -27,5 +29,4 @@ export * from './social-links';
 export * from './icons';
 export * from './image';
 export * from './pillar';
-export * from './button';
 export * from './faq';

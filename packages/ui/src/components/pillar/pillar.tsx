@@ -6,8 +6,15 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './pillar.module.css';
 import type { BaseProps } from '../helper';
-import { Heading, Text, Image, Link, Icon } from '..';
-import type { HeadingProps, ImageProps, LinkProps, IconProps } from '..';
+import { Heading } from '../heading';
+import { Text } from '../text';
+import { Image } from '../image';
+import { Link } from '../link';
+import { Icon } from '../icon';
+import type { HeadingProps } from '../heading';
+import type { ImageProps } from '../image';
+import type { LinkProps } from '../link';
+import type { IconProps } from '../icon';
 
 export const defaultPillarIconColor = 'green';
 export const defaultPillarIconSize = 32;
