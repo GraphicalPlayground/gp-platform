@@ -3,3 +3,4 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './use-provided-ref-or-create';
+export * from './use-reduced-motion';
