@@ -234,5 +234,8 @@
     --gp-icon-color-red: var(--gp-color-red-5);
     --gp-icon-color-teal: var(--gp-color-teal-5);
     --gp-icon-color-yellow: var(--gp-color-yellow-5);
+
+    --gp-inline-link-color-rest: var(--gp-color-text-link-rest);
+    --gp-inline-link-color-pressed: var(--gp-color-text-link-pressed);
   }
 }

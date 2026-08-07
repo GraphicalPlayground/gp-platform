@@ -48,3 +48,12 @@ body {
   position: absolute;
   overflow: hidden;
 }
+
+ol {
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}

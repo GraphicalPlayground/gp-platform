@@ -7,6 +7,7 @@
 @import './tokens/colors.css';
 @import './tokens/typography.css';
 @import './tokens/sizes.css';
+@import './tokens/animations.css';
 
 @layer base {
   :root {
