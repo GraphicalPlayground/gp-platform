@@ -102,3 +102,14 @@ export function getTextContent(node: React.ReactNode): string {
 
   return '';
 }
+
+/**
+ * @brief Determines if a given React node is a React Fragment element.
+ * @param node - The React node to check.
+ * @returns True if the node is a React Fragment element, false otherwise.
+ */
+export const isFragmentElement = (
+  node: React.ReactNode | null | undefined
+): node is React.ReactElement<{ children?: React.ReactNode }> => {
+  return React.isValidElement(node) && node.type === React.Fragment;
+};

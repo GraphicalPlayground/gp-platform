@@ -1,0 +1,178 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.faq-group {
+  display: none;
+  justify-content: space-between;
+  gap: var(--gp-stack-gap-spacious);
+}
+
+.faq-group__accordion {
+  margin-block-start: var(--gp-size-48);
+}
+
+.faq-group__panel-sub-heading {
+  margin-block-start: calc(var(--gp-size-8) + 1px);
+  text-transform: uppercase;
+  font-size: var(--gp-text-size-100);
+  line-height: var(--gp-text-line-height-100);
+}
+
+.faq-group__tablist .faq__heading {
+  display: none;
+}
+
+.faq-group__tablist-button {
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  padding-block: var(--gp-size-8);
+  padding-inline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-12);
+  width: 100%;
+  font-family: var(--gp-font-stack-monospace);
+  font-size: var(--gp-text-size-100);
+  font-weight: var(--gp-text-weight-500);
+  line-height: var(--gp-text-line-height-100);
+  letter-spacing: 0.15px;
+  text-transform: uppercase;
+  text-align: start;
+  color: var(--gp-color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: gap var(--gp-animation-duration-fast) var(--gp-animation-easing-default);
+}
+
+.faq-group__tablist-button:focus-visible {
+  outline: var(--gp-border-width-thick) solid var(--gp-color-focus);
+  outline-offset: 2px;
+}
+
+.faq-group__tablist-button::before {
+  content: '';
+  display: block;
+  width: calc(var(--gp-size-8) + var(--gp-size-2));
+  height: var(--gp-size-12);
+  flex-shrink: 0;
+  background-color: var(--gp-faq-group-button-indicator-idle);
+  transform: scaleX(0.7);
+  transform-origin: left;
+  transition:
+    transform var(--gp-animation-duration-fast) var(--gp-animation-easing-default),
+    background-color var(--gp-animation-duration-fast) var(--gp-animation-easing-default);
+}
+
+.faq-group__tablist-button:hover::before {
+  background-color: var(--gp-faq-group-button-indicator-hover);
+}
+
+.faq-group__tablist-button[aria-selected='true'] {
+  color: var(--gp-faq-color-tab-label-selected);
+  gap: calc(var(--gp-size-12) + 3px);
+}
+
+.faq-group__tablist-button[aria-selected='true']::before {
+  transform: scaleX(1);
+  background-color: var(--gp-faq-group-button-indicator-active);
+}
+
+.faq-group__nested-accordion-item summary h4 {
+  font-weight: var(--gp-text-weight-200);
+  font-size: var(--gp-text-size-200);
+  line-height: var(--gp-text-line-height-200);
+}
+
+/* Gridline variant */
+
+.faq-group__tablist--gridline {
+  padding-inline-start: var(--gp-size-48);
+  padding-block: var(--gp-size-80);
+}
+
+.faq-group__content--gridline {
+  border-inline-start: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  padding-inline: var(--gp-size-64);
+  padding-block-start: var(--gp-size-80);
+  padding-block-end: var(--gp-size-96);
+}
+
+@media (forced-colors: active) {
+  .faq-group__tablist-button[aria-selected='true'] {
+    border-color: Highlight;
+    border-width: var(--gp-border-width-thicker);
+    color: HighlightText;
+  }
+}
+
+.faq-group__heading {
+  padding-inline: var(--gp-size-20);
+}
+
+/* Custom tablet breakpoint */
+@media screen and (min-width: 618px) {
+  .faq-group__gridline-wrapper {
+    border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+
+  .faq-group__accordion {
+    margin-block-start: 0;
+    max-width: 618px;
+    margin-inline: auto;
+    border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+  .faq-group__heading {
+    max-width: 618px;
+    margin: 0 auto;
+  }
+
+  .faq-group__heading-wrapper {
+    padding-block-end: var(--gp-size-40);
+  }
+  .faq-group__heading-wrapper--gridline {
+    border-block-end: var(--gp-color-border-muted) var(--gp-border-width-thin) solid;
+  }
+
+  .faq-group__accordion--gridline:first-child summary {
+    border-block-start: none !important;
+  }
+
+  .faq-group__accordion--gridline:last-child summary {
+    border-block-end: none !important;
+  }
+}
+
+@media screen and (min-width: 63.25rem) {
+  .faq-group {
+    display: grid;
+  }
+
+  .faq-group__accordion {
+    display: none;
+  }
+
+  .faq-group__heading {
+    padding-inline: 0;
+    max-width: 100%;
+  }
+
+  .faq-group__heading-wrapper {
+    padding-block-end: var(--gp-size-64);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .faq-group__tablist--gridline {
+    border-inline-start: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+
+  .faq-group__content--gridline {
+    border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+}

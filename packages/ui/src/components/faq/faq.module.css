@@ -1,0 +1,86 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.faq {
+  max-width: var(--gp-faq-max-width-list);
+  margin: 0 auto;
+}
+
+.faq--variant-gridline {
+  padding-block-end: var(--gp-size-40);
+  border-block-end: var(--gp-color-border-muted) var(--gp-border-width-thin) solid;
+  max-width: 100%;
+}
+
+.faq__content-wrapper--gridline {
+  max-width: var(--gp-faq-max-width-list);
+  margin: 0 auto;
+}
+
+.faq__heading-wrapper--gridline {
+  border-block-end: var(--gp-color-border-muted) var(--gp-border-width-thin) solid;
+  margin-block-end: var(--gp-size-40);
+}
+
+.faq__heading {
+  color: var(--gp-faq-color-heading);
+  margin-bottom: var(--gp-faq-heading-marginBottom);
+}
+
+.faq__subheading {
+  margin-bottom: var(--gp-size-16);
+  color: var(--gp-color-text-muted);
+  text-transform: uppercase;
+  font-size: var(--gp-text-size-100);
+  line-height: var(--gp-text-line-height-100);
+}
+
+.faq__heading--start {
+  text-align: left;
+}
+
+.faq__heading--center {
+  text-align: center;
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq__heading--large {
+  /*Visual appearance as a h2*/
+  font-weight: var(--gp-text-weight-normal);
+  font-size: var(--gp-text-size-800);
+  line-height: var(--gp-text-line-height-800);
+  letter-spacing: var(--gp-text-letter-spacing-800);
+}
+
+.faq details + .faq__subheading {
+  margin-top: var(--gp-size-48);
+}
+
+.faq.details__summary {
+  font-weight: var(--gp-text-weight-normal);
+  font-size: var(--gp-text-size-800);
+  line-height: var(--gp-text-line-height-800);
+  letter-spacing: var(--gp-text-letter-spacing-800);
+  color: var(--gp-faq-color-heading);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .faq__heading-wrapper--gridline {
+    margin-block-end: var(--gp-size-48);
+  }
+
+  .faq--variant-gridline {
+    padding-block-end: var(--gp-size-64);
+  }
+}
