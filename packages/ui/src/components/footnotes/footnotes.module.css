@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.footnotes {
+  padding-block: var(--gp-size-80);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-12);
+}
+
+.footnotes--variant-citations {
+  margin: 0;
+  padding-inline-start: var(--gp-size-16);
+  font-family: var(--gp-body-font-family);
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  line-height: var(--gp-text-line-height-100);
+  letter-spacing: var(--gp-text-letter-spacing-100);
+  color: var(--gp-color-text-muted);
+}
+
+.footnotes--variant-disclaimer {
+  margin: 0;
+  padding-inline-start: var(--gp-size-16);
+  font-family: var(--gp-body-font-family);
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  line-height: var(--gp-text-line-height-100);
+  letter-spacing: var(--gp-text-letter-spacing-100);
+  color: var(--gp-color-text-muted);
+}
+
+.footnotes--variant-citations .footnotes-item {
+  padding-inline-start: var(--gp-size-12);
+}
+
+.footnotes-item {
+  scroll-margin-top: 80px;
+}
+
+.footnotes-item__citation-icon {
+  transform: scaleY(-1);
+  margin-inline-start: var(--gp-size-4);
+}
+
+.footnotes-item__citation-text {
+  display: inline-flex;
+  gap: var(--gp-size-4);
+}
