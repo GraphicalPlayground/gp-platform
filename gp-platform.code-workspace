@@ -104,6 +104,7 @@
       "box": "layout",
       "accordion": "import",
       "logo-suite": "queue",
+      "navlist": "enum",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
