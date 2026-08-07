@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.inline-link {
+  position: relative;
+  text-decoration: underline;
+  text-decoration-color: var(--gp-inline-link-color-rest);
+  text-decoration-thickness: var(--gp-border-width-thin);
+  text-underline-position: under;
+  transition: var(--gp-inline-link-transition-timing) text-decoration;
+}
+
+.inline-link:hover {
+  text-decoration-thickness: var(--gp-border-width-thick);
+}
+
+.inline-link,
+.inline-link > span {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--gp-inline-link-color-rest);
+}
+
+.inline-link:active,
+.inline-link:active > span {
+  color: var(--gp-inline-link-color-pressed);
+}
+
+[data-color-mode='dark'] .inline-link {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .inline-link,
+  .inline-link::before,
+  .inline-link::after,
+  .inline-link * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
