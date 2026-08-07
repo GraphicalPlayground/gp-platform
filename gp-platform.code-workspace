@@ -101,6 +101,7 @@
       "section": "layout",
       "footnotes": "attachment",
       "newsletter": "mail",
+      "accordion": "import",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
