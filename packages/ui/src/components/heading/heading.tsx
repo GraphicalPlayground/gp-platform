@@ -93,20 +93,21 @@ export type HeadingProps = React.HTMLAttributes<HTMLHeadingElement> & {
  * @details
  */
 export const Heading: React.FC<HeadingProps> = ({
-  className,
-  children,
   as: HeadingComponent = defaultHeadingTag,
-  size,
-  letterSpacing,
-  weight,
-  stretch,
+  children,
+  className,
   font = 'mona-sans',
-  textWrap = 'balance',
+  letterSpacing,
   ref,
+  size,
+  stretch,
+  textWrap = 'balance',
+  weight,
   ...rest
 }) => {
   const buildClass = (type: string, value: any) => {
     if (!value) return null;
+
     return typeof value === 'string'
       ? styles[`heading--${type}-${value}` as keyof typeof styles]
       : Object.keys(value)
@@ -135,6 +136,7 @@ export const Heading: React.FC<HeadingProps> = ({
   if (!headingTags.includes(HeadingComponent)) {
     // eslint-disable-next-line no-console
     console.error(`Heading: 'as' prop must be one of ${headingTags.join(', ')}`);
+
     return null;
   }
 
