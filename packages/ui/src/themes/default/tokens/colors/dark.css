@@ -269,5 +269,7 @@
     --gp-button-subtle-border-color-active: rgba(255, 255, 255, 0.12);
     --gp-button-subtle-fg-color-rest: var(--gp-color-text-default);
     --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-4);
+
+    --gp-navlist-active-indicator-color: var(--gp-color-accent-primary);
   }
 }

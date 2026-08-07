@@ -272,5 +272,7 @@
     --gp-button-subtle-border-color-active: var(--gp-color-gray-2);
     --gp-button-subtle-fg-color-rest: var(--gp-color-text-default);
     --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-3);
+
+    --gp-navlist-active-indicator-color: var(--gp-color-text-emphasized);
   }
 }
