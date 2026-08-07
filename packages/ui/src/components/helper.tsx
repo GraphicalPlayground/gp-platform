@@ -77,3 +77,28 @@ export type BaseProps<T> = {
   id?: string;
   ref?: React.Ref<T>;
 };
+
+/**
+ * @brief Recursively extracts and concatenates text content from a React node.
+ * @param node - The React node from which to extract text content.
+ * @returns A string containing the concatenated text content of the node and its children.
+ */
+export function getTextContent(node: React.ReactNode): string {
+  if (!node) return '';
+
+  if (typeof node === 'string' || typeof node === 'number') {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getTextContent).join('');
+  }
+
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+
+    return getTextContent(props.children);
+  }
+
+  return '';
+}

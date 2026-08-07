@@ -6,6 +6,8 @@
 export * from './helper';
 
 /* Export the components */
+export * from './inline-link';
+export * from './footnotes';
 export * from './newsletter';
 export * from './section';
 export * from './heading';
