@@ -168,21 +168,21 @@
     --gp-color-danger-emphasis: var(--gp-color-red-5);
     --gp-color-danger-muted: #ffaba899;
     --gp-color-danger-subtle: var(--gp-color-red-0);
-    --gp-color-error-fg: var(--brand-color-danger-fg);
-    --gp-color-error-emphasis: var(--brand-color-danger-emphasis);
-    --gp-color-error-muted: var(--brand-color-danger-muted);
-    --gp-color-error-subtle: var(--brand-color-danger-subtle);
+    --gp-color-error-fg: var(--gp-color-danger-fg);
+    --gp-color-error-emphasis: var(--gp-color-danger-emphasis);
+    --gp-color-error-muted: var(--gp-color-danger-muted);
+    --gp-color-error-subtle: var(--gp-color-danger-subtle);
     --gp-color-accent-primary: var(--gp-color-green-7);
     --gp-color-accent-secondary: var(--gp-color-yellow-5);
     --gp-color-text-default: var(--gp-color-black-0);
     --gp-color-text-muted: var(--gp-color-gray-7);
-    --gp-color-text-subtle: var(--brand-color-text-muted);
+    --gp-color-text-subtle: var(--gp-color-text-muted);
     --gp-color-text-on-emphasis: var(--gp-color-white-0);
     --gp-color-text-emphasized: var(--gp-color-green-6);
     --gp-color-text-link-rest: var(--gp-color-blue-6);
     --gp-color-text-link-pressed: var(--gp-color-blue-8);
     --gp-color-text-danger: #cf222e;
-    --gp-color-text-error: var(--brand-color-text-danger);
+    --gp-color-text-error: var(--gp-color-text-danger);
     --gp-color-neutral-emphasis-plus: var(--gp-color-gray-8);
     --gp-color-neutral-emphasis: var(--gp-color-gray-6);
     --gp-color-neutral-muted: #c4ccc6fe;
@@ -243,5 +243,34 @@
     --gp-faq-group-button-indicator-idle: var(--gp-color-gray-3);
     --gp-faq-group-button-indicator-hover: var(--gp-color-gray-5);
     --gp-faq-group-button-indicator-active: var(--gp-color-accent-primary);
+
+    --gp-button-primary-bg-color-rest: var(--gp-color-green-6);
+    --gp-button-primary-bg-color-hover: color-mix(in srgb, var(--gp-color-green-6), #000 16%);
+    --gp-button-primary-bg-color-active:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%), var(--gp-color-green-6);
+    --gp-button-primary-bg-color-disabled: var(--gp-color-gray-4);
+    --gp-button-primary-border-color-rest: transparent;
+    --gp-button-primary-border-color-hover: transparent;
+    --gp-button-primary-border-color-active: var(--gp-color-green-7);
+    --gp-button-primary-border-color-disabled: transparent;
+    --gp-button-primary-fg-color-rest: var(--gp-color-white-0);
+    --gp-button-primary-fg-color-disabled: var(--gp-color-gray-2);
+    --gp-button-primary-shadow-active: none;
+    --gp-button-secondary-bg-color-rest: rgba(0, 0, 0, 0.06);
+    --gp-button-secondary-bg-color-hover: rgba(0, 0, 0, 0.1164);
+    --gp-button-secondary-bg-color-active: rgba(0, 0, 0, 0.2104);
+    --gp-button-secondary-border-color-rest: var(--gp-color-gray-2);
+    --gp-button-secondary-border-color-hover: var(--gp-color-gray-2);
+    --gp-button-secondary-border-color-active: var(--gp-color-gray-2);
+    --gp-button-secondary-fg-color-rest: var(--gp-color-text-default);
+    --gp-button-secondary-fg-color-disabled: var(--gp-color-gray-3);
+    --gp-button-subtle-bg-color-rest: rgba(0, 0, 0, 0.01);
+    --gp-button-subtle-bg-color-hover: rgba(0, 0, 0, 0.1164);
+    --gp-button-subtle-bg-color-active: rgba(0, 0, 0, 0.2104);
+    --gp-button-subtle-border-color-rest: var(--gp-color-gray-2);
+    --gp-button-subtle-border-color-hover: var(--gp-color-gray-2);
+    --gp-button-subtle-border-color-active: var(--gp-color-gray-2);
+    --gp-button-subtle-fg-color-rest: var(--gp-color-text-default);
+    --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-3);
   }
 }
