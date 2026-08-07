@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './logo-suite';
 export * from './box';
 export * from './accordion';
 export * from './inline-link';

@@ -103,6 +103,7 @@
       "newsletter": "mail",
       "box": "layout",
       "accordion": "import",
+      "logo-suite": "queue",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
