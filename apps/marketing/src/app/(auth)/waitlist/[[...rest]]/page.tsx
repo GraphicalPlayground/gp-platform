@@ -3,7 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { Waitlist } from '@clerk/nextjs';
 
 export default function WaitlistPage() {
-  return <div>Waitlist</div>;
+  return <Waitlist />;
 }

@@ -3,7 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { SignIn } from '@clerk/nextjs';
 
 export default function SignInPage() {
-  return <div>SignIn</div>;
+  return <SignIn waitlistUrl='/waitlist' />;
 }
