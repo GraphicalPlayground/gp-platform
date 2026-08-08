@@ -28,7 +28,7 @@ type ResponsiveMap = {
  * @brief Grid component props interface.
  * @see Grid
  */
-type GridRootProps<T extends keyof JSX.IntrinsicElements = 'div'> = React.HTMLAttributes<T> & {
+export type GridProps<T extends keyof JSX.IntrinsicElements = 'div'> = React.HTMLAttributes<T> & {
   /**
    * @brief The HTML element used to render the grid.
    */
@@ -67,7 +67,7 @@ type GridRootProps<T extends keyof JSX.IntrinsicElements = 'div'> = React.HTMLAt
 /**
  * @brief Grid component.
  */
-const GridRoot: React.FC<GridRootProps> = React.memo(
+const GridRoot: React.FC<GridProps> = React.memo(
   ({
     as = 'div',
     children,
@@ -174,6 +174,6 @@ export const Grid = Object.assign(GridRoot, {
  */
 export type Grid = {
   Props: React.ComponentProps<typeof GridRoot>;
-  Root: React.ComponentType<GridRootProps>;
+  Root: React.ComponentType<GridProps>;
   Column: React.ComponentType<GridColumnProps>;
 };
