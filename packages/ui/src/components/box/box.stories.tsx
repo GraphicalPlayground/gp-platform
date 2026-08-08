@@ -1,0 +1,25 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react';
+import { Box } from './box';
+import { Text } from '../';
+
+const meta = {
+  title: 'Components/Box',
+  component: Box
+} satisfies Meta<typeof Box>;
+
+export default meta;
+type Story = StoryObj<typeof Box>;
+
+export const Default: Story = {
+  render: (args) => (
+    <Box {...args}>
+      <Text>Default Box</Text>
+    </Box>
+  )
+};
