@@ -10,3 +10,4 @@ allowBuilds:
   esbuild: true
   unrs-resolver: true
   '@parcel/watcher': true
+  core-js-pure: true
