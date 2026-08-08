@@ -274,5 +274,14 @@
     --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-3);
 
     --gp-navlist-active-indicator-color: var(--gp-color-text-emphasized);
+
+    --gp-logo-suite-color-control-rest: var(--gp-color-canvas-muted);
+    --gp-logo-suite-color-control-hover: var(--gp-color-gray-1);
+    --gp-logo-suite-color-logo-muted: var(--gp-color-text-muted);
+    --gp-logo-suite-color-logo-emphasis: var(--gp-color-text-default);
+    --gp-logo-suite-color-logo-filter-muted: brightness(0) saturate(100%) invert(37%) sepia(7%) saturate(778%)
+      hue-rotate(171deg) brightness(96%) contrast(91%);
+    --gp-logo-suite-color-logo-filter-emphasis: brightness(0) saturate(100%) invert(12%) sepia(20%) saturate(450%)
+      hue-rotate(172deg) brightness(100%) contrast(91%);
   }
 }

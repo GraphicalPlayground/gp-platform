@@ -19,5 +19,8 @@
       transform var(--gp-animation-duration-default) var(--gp-animation-easing-default);
 
     --gp-inline-link-transition-timing: var(--gp-animation-duration-fast);
+
+    --gp-logo-suite-logobar-marquee-default: 30s;
+    --gp-logo-suite-logobar-marquee-slow: 60s;
   }
 }

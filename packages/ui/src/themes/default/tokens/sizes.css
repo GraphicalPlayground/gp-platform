@@ -148,6 +148,12 @@
 
     --gp-faq-max-width-list: 816px;
     --gp-faq-heading-margin-bottom: var(--gp-size-40);
+
+    --gp-logo-suite-logobar-column-gap-default: var(--gp-size-80);
+    --gp-logo-suite-logobar-column-gap-condensed: var(--gp-size-40);
+    --gp-logo-suite-logobar-row-gap: var(--gp-size-40);
+    --gp-logo-suite-logobar-marquee-gap-default: var(--gp-size-96);
+    --gp-logo-suite-logobar-marquee-gap-condensed: var(--gp-size-40);
   }
 
   @media (min-width: 544px) {
