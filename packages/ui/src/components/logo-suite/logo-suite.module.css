@@ -49,12 +49,12 @@
 
 .logo-suite__logobar--gap-default {
   --marquee-gap: var(--gp-logo-suite-logobar-marquee-gap-default);
-  column-gap: var(--gp-logo-suite-logobar-columnGap-default);
+  column-gap: var(--gp-logo-suite-logobar-column-gap-default);
 }
 
 .logo-suite__logobar--gap-condensed {
   --marquee-gap: var(--gp-logo-suite-logobar-marquee-gap-condensed);
-  column-gap: var(--gp-logo-suite-logobar-columnGap-condensed);
+  column-gap: var(--gp-logo-suite-logobar-column-gap-condensed);
 }
 
 .logo-suite:not(.logo-suite + .logo-suite)
