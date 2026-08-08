@@ -1,0 +1,41 @@
+{
+  "name": "@gp/storybook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev --host 127.0.0.1 --port 6006 --no-open",
+    "build": "storybook build",
+    "start": "storybook start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@gp/fonts": "workspace:*",
+    "@gp/ui": "workspace:*",
+    "apcach": "^0.6.4",
+    "culori": "^4.0.2",
+    "react": "^19.2.4",
+    "react-aria-components": "1.17.0",
+    "react-dom": "^19.2.4",
+    "react-scan": "^0.5.7"
+  },
+  "devDependencies": {
+    "@gp/standard": "workspace:*",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/icons": "^2.1.0",
+    "@storybook/nextjs": "^10.5.7",
+    "@storybook/react": "^10.5.7",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "26.1.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "glob": "^13.0.6",
+    "postcss": "8.5.22",
+    "storybook": "^10.5.7",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.1"
+  }
+}
