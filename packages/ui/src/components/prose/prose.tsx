@@ -25,34 +25,38 @@ export interface ProseProps extends React.HTMLAttributes<HTMLDivElement> {
    * @brief Whether to enable full width prose or not.
    */
   enableFullWidth?: boolean;
-
-  /**
-   * @brief Ref element for the prose container.
-   */
-  ref?: React.Ref<HTMLDivElement>;
 }
 
 /**
  * @brief Prose component for rendering rich text content.
  */
-export const Prose: React.FC<ProseProps> = ({
-  ref,
-  className,
-  html,
-  enableFullWidth = false,
-  variant = 'default',
-  children,
-  ...rest
-}) => {
-  if (!html && !children) {
-    return null;
-  }
+export const Prose = React.forwardRef<HTMLDivElement, ProseProps>(
+  ({ children, className, enableFullWidth = false, html, variant = 'default', ...rest }, ref) => {
+    if (!html && !children) {
+      return null;
+    }
 
-  if (html && children) {
-    console.warn('Prose component received both `html` and `children`. `html` will take precedence over `children`.');
-  }
+    if (html && children) {
+      // eslint-disable-next-line no-console
+      console.warn('Prose component received both `html` and `children`. `html` will take precedence over `children`.');
+    }
 
-  if (html) {
+    if (html) {
+      return (
+        <div
+          ref={ref}
+          className={clsx(
+            styles.prose,
+            !enableFullWidth && styles['prose--line-length'],
+            styles[`prose--${variant}`],
+            className
+          )}
+          {...rest}
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      );
+    }
+
     return (
       <div
         ref={ref}
@@ -63,26 +67,12 @@ export const Prose: React.FC<ProseProps> = ({
           className
         )}
         {...rest}
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      >
+        {children}
+      </div>
     );
   }
-
-  return (
-    <div
-      ref={ref}
-      className={clsx(
-        styles.prose,
-        !enableFullWidth && styles['prose--line-length'],
-        styles[`prose--${variant}`],
-        className
-      )}
-      {...rest}
-    >
-      {children}
-    </div>
-  );
-};
+);
 
 /** Set the display name for the Prose component. */
 Prose.displayName = 'gp.Prose';
