@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpSampleProjects extends GenericRepository {
-  public static override readonly name: string = 'gp-sample-projects';
+  public static override readonly displayName: string = 'gp-sample-projects';
 
   public static override readonly description: string =
     'A collection of guided sample projects demonstrating core graphics engineering concepts, rendering techniques, and system-level implementations used throughout the learning platform.';

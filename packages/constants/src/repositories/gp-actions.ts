@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpActions extends GenericRepository {
-  public static override readonly name: string = 'gp-actions';
+  public static override readonly displayName: string = 'gp-actions';
 
   public static override readonly description: string =
     'A collection of reusable GitHub Actions designed for automation and continuous integration. Provides standardized workflows over modern development pipelines, enabling contributors to build, test, and maintain core graphics projects and ecosystem infrastructure.';

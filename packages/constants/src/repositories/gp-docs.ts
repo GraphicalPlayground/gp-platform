@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpDocs extends GenericRepository {
-  public static override readonly name: string = 'gp-docs';
+  public static override readonly displayName: string = 'gp-docs';
 
   public static override readonly description: string =
     'Technical documentation for the Graphical Playground ecosystem, including engine internals, platform architecture, APIs, and contributor guidelines.';

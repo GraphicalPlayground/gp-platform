@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpPlatform extends GenericRepository {
-  public static override readonly name: string = 'gp-platform';
+  public static override readonly displayName: string = 'gp-platform';
 
   public static override readonly description: string =
     'The Next.js monorepo powering the Graphical Playground platform: marketing site, app, admin, and backend.';

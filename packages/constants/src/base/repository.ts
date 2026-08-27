@@ -9,7 +9,7 @@ import type { LicenseIdentifier, Url } from '@gp/types';
  * @brief A generic representation of a repository with basic properties and methods.
  */
 export class GenericRepository {
-  public static readonly name: string = '.github';
+  public static readonly displayName: string = '.github';
   public static readonly description: string = '';
 
   public static readonly license: LicenseIdentifier = 'MIT';
@@ -24,7 +24,7 @@ export class GenericRepository {
    * ```
    */
   public static get url(): Url {
-    return Organization.repository(this.name);
+    return Organization.repository(this.displayName);
   }
 
   /**
@@ -50,7 +50,7 @@ export class GenericRepository {
    */
   public static toJSON() {
     return {
-      name: this.name,
+      name: this.displayName,
       description: this.description,
       url: this.url,
       license: this.license,

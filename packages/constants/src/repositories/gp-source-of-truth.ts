@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpSourceOfTruth extends GenericRepository {
-  public static override readonly name: string = 'gp-source-of-truth';
+  public static override readonly displayName: string = 'gp-source-of-truth';
 
   public static override readonly description: string =
     'Centralized source of truth for organization-wide community files, compliance templates, and automated configuration sync.';

@@ -31,7 +31,7 @@ type OrganizationSubdomains = 'app' | 'docs' | 'api' | 'blog' | 'status' | 'disc
  * It serves as a centralized place to manage and retrieve organization-related data in a consistent manner.
  */
 export class Organization {
-  public static readonly name: string = 'Graphical Playground';
+  public static readonly displayName: string = 'Graphical Playground';
   public static readonly legalName: string = 'Graphical Playground, Inc.';
   public static readonly shortName: string = 'GPlayd';
   public static readonly initials: string = 'GP';
@@ -99,7 +99,7 @@ export class Organization {
    * @returns A string representing the full product name, prefixed with the organization's name.
    */
   public static product(name: string): string {
-    return `${Organization.name} ${name}`;
+    return `${Organization.displayName} ${name}`;
   }
 
   /**

@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpEnginePlaystation extends GenericRepository {
-  public static override readonly name: string = 'gp-engine-playstation';
+  public static override readonly displayName: string = 'gp-engine-playstation';
 
   public static override readonly description: string =
     'PlayStation 4 and PlayStation 5 platform abstraction layer for the gp-engine. Implements AGC/GNM rendering backends, PSSL shader pipelines, and Sony SDK integrations for studying console architecture and low-level optimization under NDA.';

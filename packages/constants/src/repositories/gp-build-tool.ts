@@ -6,7 +6,7 @@ import type { LicenseIdentifier } from '@gp/types';
 import { GenericRepository } from '../base/repository';
 
 export class GpBuildTool extends GenericRepository {
-  public static override readonly name: string = 'gp-build-tool';
+  public static override readonly displayName: string = 'gp-build-tool';
 
   public static override readonly description: string =
     'The core build orchestrator for Graphical Playground, abstracting CMake configuration, dependencies, and source management.';
