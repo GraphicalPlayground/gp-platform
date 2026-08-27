@@ -8,18 +8,21 @@ import type { Metadata } from 'next';
 import { Urls, SeoMetadata } from '@gp/seo';
 
 export async function generateStaticParams() {
-  return (await cms.articles.getInterviews()).map((entries) => ({ slug: entries.slug }));
+  return (await cms.articles.getInterviews()).map((entries) => ({ slug: entries.slug.split('/') }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
   const { slug } = await params;
-  const doc = await cms.articles.getBySlug(slug);
+  const doc = await cms.articles.getBySlug(slug.join('/'));
 
   if (!doc) {
     return {};
   }
 
-  return SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).article(doc.frontmatter, `/interviews/${slug}`);
+  return SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).article(
+    doc.frontmatter,
+    `/interviews/${slug.join('/')}`
+  );
 }
 
 export default function InterviewSlugPage() {
