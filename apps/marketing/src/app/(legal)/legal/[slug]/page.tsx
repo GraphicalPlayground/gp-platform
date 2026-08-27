@@ -34,8 +34,7 @@ export default async function LegalSlugPage({ params }: { params: Promise<{ slug
   }
 
   return (
-    <article className='w-full'>
-      <h1>{doc.frontmatter.title}</h1>
+    <article className='w-full p-0.5 sm:p-1 md:p-2'>
       <div className='w-full max-w-3xl mx-auto'>
         <Prose variant='editorial'>{doc.content}</Prose>
       </div>
