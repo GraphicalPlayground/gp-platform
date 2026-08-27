@@ -4,3 +4,5 @@
 
 export * from './use-provided-ref-or-create';
 export * from './use-reduced-motion';
+export * from './use-keyboard-escape';
+export * from './use-window-size';
