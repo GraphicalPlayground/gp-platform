@@ -95,6 +95,7 @@
       "brand-guidelines": "theme",
       "persons": "admin",
       "faq": "include",
+      "marquees": "queue",
 
       /* Categories */
       "(content)": "template",
