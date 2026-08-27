@@ -96,6 +96,7 @@
       "persons": "admin",
       "faq": "include",
       "marquees": "queue",
+      "brands": "favicon",
 
       /* Categories */
       "(content)": "template",
