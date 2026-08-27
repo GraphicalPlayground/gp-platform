@@ -2,9 +2,34 @@
   "name": "gp-platform",
   "folders": [{ "path": "." }],
   "settings": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.rulers": [119]
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.rulers": [119]
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.rulers": [119]
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true,
+      "editor.rulers": [119]
+    },
+
     "files.associations": {
       "*.css": "tailwindcss"
     },
+
     "material-icon-theme.folders.associations": {
       "standard": "coverage",
       "tsconfig": "typescript",
@@ -143,7 +168,23 @@
       "error.tsx": "lintstaged",
       "loading.tsx": "syncpack",
       "opengraph-image.tsx": "context"
-    }
+    },
+
+    "prettier.printWidth": 120,
+    "prettier.tabWidth": 2,
+    "prettier.useTabs": false,
+    "prettier.semi": true,
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
+    "prettier.trailingComma": "none",
+    "prettier.bracketSpacing": true,
+    "prettier.bracketSameLine": false,
+    "prettier.arrowParens": "always",
+    "prettier.insertPragma": false,
+    "prettier.proseWrap": "preserve",
+    "prettier.quoteProps": "consistent",
+    "prettier.htmlWhitespaceSensitivity": "css",
+    "prettier.endOfLine": "lf",
   },
   "extensions": {
     "recommendations": [
