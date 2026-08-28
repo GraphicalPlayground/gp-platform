@@ -7,6 +7,16 @@ import type { Metadata } from 'next';
 import { Section, Stack } from '@gp/ui/components';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
+import { FaqJsonLd } from '@gp/seo/react';
+import { FAQClient } from '@/components/faq';
+
+import {
+  aboutCommunityVisual,
+  aboutCurriculumVisual,
+  aboutEngineVisual,
+  aboutPlaygroundVisual,
+  jsonLdEntries
+} from './content';
 
 /**
  * @brief Metadata for the marketing home page.
@@ -31,8 +41,33 @@ export default function HomePage() {
       <Section fullWidth backgroundColor='default' className='h-screen'>
         Default Section
       </Section>
-      <Section fullWidth backgroundColor='subtle' className='h-screen'>
-        Subtle Section
+      <Section fullWidth backgroundColor='subtle'>
+        <FaqJsonLd items={jsonLdEntries} />
+        <FAQClient
+          faqs={[
+            {
+              heading: 'About Graphical Playground',
+              questions: aboutPlaygroundVisual
+            },
+            {
+              heading: 'About our engine',
+              questions: aboutEngineVisual
+            },
+            {
+              heading: 'About Curriculum & Learning Methodology',
+              questions: aboutCurriculumVisual
+            },
+            {
+              heading: 'About Open Source & Community',
+              questions: aboutCommunityVisual
+            }
+          ]}
+          heading={
+            <>
+              Frequently asked <br /> questions
+            </>
+          }
+        />
       </Section>
     </Stack>
   );
