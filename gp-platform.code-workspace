@@ -1,6 +1,19 @@
 {
   "name": "gp-platform",
-  "folders": [{ "path": "." }],
+  "folders": [
+    { "path": ".", "name": "Platform" },
+    { "path": "./apps/marketing", "name": "Marketing App" },
+    { "path": "./apps/admin", "name": "Admin App" },
+    { "path": "./apps/app", "name": "Web App" },
+    { "path": "./apps/backend", "name": "Backend" },
+    { "path": "./content", "name": "Content" },
+    { "path": "./packages/ui", "name": "React UI Library" },
+    { "path": "./packages/seo", "name": "SEO Library" },
+    { "path": "./packages/constants", "name": "Constants Library" },
+    { "path": "./packages/content", "name": "Content/CMS Library" },
+    { "path": "./packages/types", "name": "Types Library" },
+    { "path": "./packages/storybook", "name": "Storybook" },
+  ],
   "settings": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
