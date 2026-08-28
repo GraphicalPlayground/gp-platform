@@ -168,12 +168,12 @@ export const Section = React.forwardRef<HTMLDivElement, React.PropsWithChildren<
     );
 
     const paddingBlockStartClass = React.useMemo(
-      () => createPaddingClasses(paddingBlockStart, 'paddingBlockStart'),
+      () => createPaddingClasses(paddingBlockStart, 'padding-block-start'),
       [paddingBlockStart, createPaddingClasses]
     );
 
     const paddingBlockEndClass = React.useMemo(
-      () => createPaddingClasses(paddingBlockEnd, 'paddingBlockEnd'),
+      () => createPaddingClasses(paddingBlockEnd, 'padding-block-end'),
       [paddingBlockEnd, createPaddingClasses]
     );
 
