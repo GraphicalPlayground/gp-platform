@@ -145,6 +145,8 @@
       "accordion": "import",
       "logo-suite": "queue",
       "navlist": "enum",
+      "subdomain-navbar": "enum",
+      "header": "layout",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
