@@ -283,5 +283,14 @@
       hue-rotate(171deg) brightness(96%) contrast(91%);
     --gp-logo-suite-color-logo-filter-emphasis: brightness(0) saturate(100%) invert(12%) sepia(20%) saturate(450%)
       hue-rotate(172deg) brightness(100%) contrast(91%);
+
+    --gp-subdomain-navbar-canvas-default: #ffffff80;
+    --gp-subdomain-navbar-canvas-search: var(--gp-color-white-0);
+    --gp-subdomain-navbar-canvas-overflow-default: var(--gp-color-white-0);
+    --gp-subdomain-navbar-canvas-overflow-hover: var(--gp-color-gray-0);
+    --gp-subdomain-navbar-fg-overflow-default: var(--gp-color-text-default);
+    --gp-subdomain-navbar-border-nav-default: var(--gp-color-gray-9);
+    --gp-subdomain-navbar-border-nav-pressed: var(--gp-color-black-0);
+    --gp-subdomain-navbar-border-button-hover: var(--gp-color-black-0);
   }
 }

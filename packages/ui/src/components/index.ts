@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './subdomain-navbar';
 export * from './text';
 export * from './navlist';
 export * from './logo-suite';

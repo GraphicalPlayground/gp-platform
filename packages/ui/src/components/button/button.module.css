@@ -96,7 +96,7 @@
 }
 
 .button--label-primary {
-  color: var(--gp-button-primary-fg-color-rest);
+  color: var(--gp-button-primary-fg-color-rest) !important;
 }
 
 .button--primary:disabled,
