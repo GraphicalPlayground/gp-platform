@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React from 'react';
 import clsx from 'clsx';
 import styles from './subdomain-navbar.module.css';
