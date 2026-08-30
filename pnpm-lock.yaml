@@ -604,9 +604,15 @@ importers:
       '@gp/fonts':
         specifier: workspace:*
         version: link:../fonts
+      '@primer/behaviors':
+        specifier: ^1.10.3
+        version: 1.10.3
       '@primer/octicons-react':
         specifier: ^19.32.0
         version: 19.32.0(react@19.2.4)
+      '@primer/react-brand':
+        specifier: ^0.74.0
+        version: 0.74.0(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       clsx:
         specifier: 2.1.1
         version: 2.1.1
@@ -3001,6 +3007,20 @@ packages:
 
   '@primer/primitives@11.10.0':
     resolution: {integrity: sha512-ihZxIst4Izry284StKFjpbYvX6R/IBFTLu+qiuAmR93PsKF2hdjoabhSYwKI8iCxOUx94jVP55bI3NoY7STjYQ==}
+
+  '@primer/react-brand@0.74.0':
+    resolution: {integrity: sha512-bOgO48EBP7EYRE4/JSqrd33jj4islNBgCUNTs+DZqwCjsxLxlnzq8ezoeEQP2Pr1fpZcke7ImtPzU7h3VQuXLQ==}
+    engines: {node: '>=24.0.0', npm: '>=8.0.0'}
+    peerDependencies:
+      '@types/react': '>=18 <20'
+      '@types/react-dom': '>=18 <20'
+      react: '>=18 <20'
+      react-dom: '>=18 <20'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
 
   '@primer/react@38.36.0':
     resolution: {integrity: sha512-mI+s1QpOPQ5PjN5sooxJ71W+MYf4OymExtNnydHyt20oren45+H1/re6x4tSuIvyDsmNyCbTdBOBIpTatkKafA==}
@@ -10388,6 +10408,16 @@ snapshots:
       react: 19.2.4
 
   '@primer/primitives@11.10.0': {}
+
+  '@primer/react-brand@0.74.0(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@oddbird/popover-polyfill': 0.5.2
+      '@primer/behaviors': 1.10.3
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+    optionalDependencies:
+      '@types/react': 19.2.17
+      '@types/react-dom': 19.2.3(@types/react@19.2.17)
 
   '@primer/react@38.36.0(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.4(react@19.2.4))(react-is@19.2.8)(react@19.2.4)':
     dependencies:
