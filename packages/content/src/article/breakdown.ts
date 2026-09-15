@@ -10,6 +10,7 @@ import { articleFrontmatterSchema } from './frontmatter';
 export const breakdownFrontmatterSchema = articleFrontmatterSchema.extend({
   type: z.literal('breakdown'),
   subject: z.string().min(1),
+  synonims: z.array(z.string().min(1)).default([]),
   prerequisites: z.array(z.string().min(1)).default([]),
   sources: z.array(referenceSchema).default([])
 });
