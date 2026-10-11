@@ -1,0 +1,185 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.container {
+  display: block;
+  isolation: isolate;
+  position: relative;
+
+  &:global(.open) {
+    .button {
+      margin-bottom: var(--gp-size-12);
+    }
+
+    .buttonIcon {
+      transform: rotate(90deg);
+    }
+
+    .dropdown {
+      opacity: 1;
+      visibility: visible;
+      position: static;
+    }
+  }
+
+  @media (min-width: 1012px) {
+    &:global(.open) {
+      .button {
+        margin-bottom: 0;
+      }
+
+      .buttonIcon {
+        transform: rotate(90deg);
+      }
+
+      .dropdown {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+      }
+    }
+  }
+}
+
+.title {
+  display: block;
+  font-weight: var(--gp-text-weight-semibold);
+}
+
+.button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--gp-color-text-default, var(--gp-fg-color-default));
+  display: flex;
+  font-family: var(--gp-body-font-family);
+  font-size: var(--gp-text-size-400);
+  font-weight: var(--gp-text-weight-semibold);
+  justify-content: space-between;
+  letter-spacing: var(--gp-text-letter-spacing-200);
+  line-height: var(--gp-text-line-height-200);
+  padding: var(--gp-size-12) 0;
+  white-space: nowrap;
+  width: 100%;
+
+  @media (min-width: 1012px) {
+    color: var(--gp-color-text-default, var(--gp-fg-color-default));
+    font-size: var(--gp-text-size-200);
+    font-weight: var(--gp-text-weight-medium);
+    margin: 0;
+    padding: var(--gp-size-8);
+    width: auto;
+
+    &:hover {
+      color: var(--gp-color-text-muted, var(--gp-fg-color-muted));
+    }
+  }
+
+  &.button:focus-visible {
+    outline: 2px solid;
+    outline-offset: 0;
+    border-radius: var(--gp-border-radius-small);
+  }
+}
+
+.buttonIcon {
+  @media (min-width: 1012px) {
+    margin-left: var(--gp-size-4);
+    transform: rotate(90deg);
+  }
+}
+
+.dropdown {
+  --marketing-navigation-floating-shadow-fallback: 0 0 0 var(--gp-border-width-thin) var(--gp-color-border-default);
+
+  background-color: var(--gp-color-canvas-default, var(--gp-bg-color-default));
+  margin: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-bottom: var(--gp-size-24);
+  position: fixed;
+  transform-origin: top;
+  visibility: hidden;
+
+  @media (min-width: 1012px) {
+    border-radius: var(--gp-border-radius-medium);
+    box-shadow: var(--shadow-floating-small, var(--marketing-navigation-floating-shadow-fallback));
+    left: 0;
+    padding: 0;
+    position: absolute;
+    width: max-content;
+
+    &:global(.open-offset-left) {
+      transform: translateX(-48px);
+    }
+
+    &:global(.open-center) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:global(.open-left) {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+
+.container:global(.open) .dropdown:global(.open-center) {
+  @media (min-width: 1012px) {
+    transform: translateX(-50%);
+  }
+}
+
+.container:global(.open) .dropdown:global(.open-offset-left) {
+  @media (min-width: 1012px) {
+    transform: translateX(-48px);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-32);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 1012px) {
+    display: grid;
+    gap: var(--gp-size-24);
+    grid-auto-flow: column;
+    /* stylelint-disable-next-line declaration-property-value-no-unknown */
+    grid-template-columns: repeat(auto-fit, max-content);
+    padding: var(--gp-size-28);
+  }
+
+  @media (min-width: 1280px) {
+    gap: var(--gp-size-40);
+    padding: var(--gp-size-32);
+  }
+}
+
+.listItem {
+  display: block;
+}
+
+.trailingLinkContainer {
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted, var(--gp-border-color-muted));
+  margin-top: var(--gp-size-32);
+  padding: var(--gp-size-32) 0 0;
+
+  @media (min-width: 1012px) {
+    background-color: var(--gp-color-canvas-subtle, var(--gp-bg-color-muted));
+    border: 0;
+    margin: 0;
+    padding: var(--gp-size-16) var(--gp-size-28);
+  }
+
+  @media (min-width: 1280px) {
+    padding: var(--gp-size-16) var(--gp-size-32);
+  }
+}
