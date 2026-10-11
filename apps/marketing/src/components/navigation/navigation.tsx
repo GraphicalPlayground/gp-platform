@@ -19,7 +19,7 @@ export interface NavigationProps {
 /**
  * @brief Marketing navigation component that renders a list of navigation items, which can be either dropdowns or links.
  */
-export const Navigation: React.FC<NavigationProps> = ({ data }) => {
+export const MarketingNavigation: React.FC<NavigationProps> = ({ data }) => {
   const [openId, setOpenId] = useState<string | null>(null);
 
   const handleOpenChange = useCallback((id: string, nextOpen: boolean) => {
