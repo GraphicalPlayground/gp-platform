@@ -147,6 +147,9 @@
       "navlist": "enum",
       "subdomain-navbar": "enum",
       "header": "layout",
+      "nav-link": "toc",
+      "nav-group": "toc",
+      "nav-dropdown": "toc",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
