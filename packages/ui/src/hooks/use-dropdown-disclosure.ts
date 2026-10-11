@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import type { FocusEvent, KeyboardEvent, MouseEvent, RefObject } from 'react';
 
