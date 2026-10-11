@@ -1,0 +1,55 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.nav {
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--gp-body-font-family, var(--gp-font-stack-sans-serif));
+}
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: 1012px) {
+    display: flex;
+  }
+}
+
+/* Using .nav overrides NavLink styles used in the dropdown */
+.nav .navLink {
+  color: var(--gp-color-text-default, var(--gp-fg-color-default));
+  display: block;
+  font-family: var(--gp-body-font-family);
+  font-size: var(--gp-text-size-400);
+  font-weight: var(--gp-text-weight-semibold);
+  letter-spacing: var(--gp-text-letter-spacing-200);
+  line-height: var(--gp-text-line-height-200);
+  padding: var(--gp-size-12) 0;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--gp-color-text-default, var(--gp-fg-color-default));
+  }
+
+  &:focus-visible {
+    outline: 2px solid;
+    outline-offset: 0;
+    border-radius: var(--gp-border-radius-small);
+  }
+
+  @media (min-width: 1012px) {
+    color: var(--gp-color-text-default, var(--gp-fg-color-default));
+    font-size: var(--gp-text-size-200);
+    font-weight: var(--gp-text-weight-medium);
+    padding: var(--gp-size-8);
+
+    &:hover {
+      color: var(--gp-color-text-muted, var(--gp-fg-color-muted));
+    }
+  }
+}
