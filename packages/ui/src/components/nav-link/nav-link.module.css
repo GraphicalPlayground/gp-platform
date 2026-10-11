@@ -1,0 +1,23 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.icon {
+  margin-right: var(--base-size-8);
+}
+
+.title {
+  align-items: center;
+  display: flex;
+}
+
+.label {
+  color: var(--gp-color-text-link-rest, var(--gp-color-accent));
+  margin-left: var(--base-size-4);
+}
+
+.link .subtitle {
+  color: var(--gp-color-text-muted, var(--gp-color-muted));
+}
