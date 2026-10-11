@@ -92,7 +92,7 @@ export const jsonLdEntries: FaqEntry[] = [
   {
     question: 'Is Graphical Playground open source?',
     answer:
-      'Yes. Both the engine (gp-engine) and the platform (gp-platform) are open source. Our GitHub organization at https://github.com/GraphicalPlayground holds all our repositories. These include the engine, the platform monorepo (app, admin, marketing, SEO), a CMake build system (gp-build-system), shared GitHub Actions (gp-actions), an organization-wide source of truth for standards (gp-source-of-truth), and a documentation site (gp-docs). Only the NDA-protected console target modules are in private repositories.'
+      'Yes. Both the engine (gp-engine) and the platform (gp-platform) are open source. Our GitHub organization at https://github.com/GraphicalPlayground holds all our repositories. These include the engine, the platform monorepo (app, admin, marketing, SEO), a CMake build system (gp-build-tool), shared GitHub Actions (gp-actions), an organization-wide source of truth for standards (gp-source-of-truth), and a documentation site (gp-docs). Only the NDA-protected console target modules are in private repositories.'
   },
   {
     question: 'Who is behind the Graphical Playground project?',
@@ -427,7 +427,7 @@ export const aboutCommunityVisual = [
         <br />
         <br />
         These include the engine, the platform monorepo (app, admin, marketing, SEO), a CMake build system (
-        <strong>gp-build-system</strong>), shared GitHub Actions (<strong>gp-actions</strong>), an organization-wide
+        <strong>gp-build-tool</strong>), shared GitHub Actions (<strong>gp-actions</strong>), an organization-wide
         source of truth for standards (<strong>gp-source-of-truth</strong>), and a documentation site (
         <strong>gp-docs</strong>).
         <br />
