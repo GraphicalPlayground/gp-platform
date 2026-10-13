@@ -3,3 +3,4 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './subdomain-navbar-header';
+export * from './marketing-header';

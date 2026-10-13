@@ -10,7 +10,7 @@ import { Urls } from '@gp/seo/utils';
 import { FaqJsonLd } from '@gp/seo/react';
 import { FAQClient } from '@/components/faq';
 
-import { MarketingNavigation } from '@/components/navigation';
+import { MarketingHeader } from '@/components/header';
 
 import {
   aboutCommunityVisual,
@@ -37,49 +37,7 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function HomePage() {
   return (
     <Stack className='w-full' direction='vertical' gap='none' padding='none'>
-      <MarketingNavigation
-        data={[
-          {
-            render: true,
-            title: 'Platform',
-            trailingLink: {
-              title: 'View all features',
-              url: '/features'
-            },
-            groups: [
-              {
-                title: 'EXPLORE',
-                items: [
-                  {
-                    title: 'Why Graphical Playground?',
-                    url: '/why-graphical-playground'
-                  },
-                  {
-                    title: 'Documentation',
-                    url: 'https://docs.graphical-playground.com'
-                  },
-                  {
-                    title: 'Blog',
-                    url: 'https://blog.graphical-playground.com'
-                  },
-                  {
-                    title: 'Changelog',
-                    url: '/changelogs'
-                  },
-                  {
-                    title: 'Marketplace',
-                    url: '/marketplace'
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            title: 'Pricing',
-            url: 'pricing'
-          }
-        ]}
-      />
+      <MarketingHeader fixed />
       <Section fullWidth backgroundColor='subtle' className='h-screen'>
         Hello World
       </Section>
