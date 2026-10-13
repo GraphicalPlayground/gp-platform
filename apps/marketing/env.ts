@@ -14,7 +14,8 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_SIGN_IN_URL: z.string().min(1),
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: z.string().min(1),
     NEXT_PUBLIC_CLERK_WAITLIST_URL: z.string().min(1),
-    NEXT_PUBLIC_WAITLIST_MODE: z.enum(['true', 'false']).default('false')
+    NEXT_PUBLIC_WAITLIST_MODE: z.enum(['true', 'false']).default('false'),
+    NEXT_PUBLIC_GA_ID: z.string().min(1).optional()
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_ENV: process.env['NEXT_PUBLIC_APP_ENV'],
@@ -25,7 +26,8 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_SIGN_UP_URL: process.env['NEXT_PUBLIC_CLERK_SIGN_UP_URL'],
     NEXT_PUBLIC_CLERK_WAITLIST_URL: process.env['NEXT_PUBLIC_CLERK_WAITLIST_URL'],
     NEXT_PUBLIC_WAITLIST_MODE: process.env['NEXT_PUBLIC_WAITLIST_MODE'],
-    NODE_ENV: process.env['NODE_ENV']
+    NODE_ENV: process.env['NODE_ENV'],
+    NEXT_PUBLIC_GA_ID: process.env['NEXT_PUBLIC_GA_ID']
   },
   server: {
     NODE_ENV: z.enum(['development', 'production']).default('development')

@@ -9,8 +9,11 @@ import { JsonLd } from '@gp/seo/react';
 import { graph } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
+import { env } from '~env';
 
 import { Footer } from '@/components/footer';
+
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import './globals.css';
 
@@ -34,6 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </ClerkProvider>
       </body>
+
+      {env.NEXT_PUBLIC_GA_ID !== undefined && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />}
     </html>
   );
 }
