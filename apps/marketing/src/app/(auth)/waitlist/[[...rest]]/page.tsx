@@ -4,7 +4,12 @@
 
 import React from 'react';
 import { Waitlist } from '@clerk/nextjs';
+import { Section } from '@gp/ui/components';
 
 export default function WaitlistPage() {
-  return <Waitlist />;
+  return (
+    <Section fullWidth>
+      <Waitlist />
+    </Section>
+  );
 }

@@ -4,7 +4,12 @@
 
 import React from 'react';
 import { SignUp } from '@clerk/nextjs';
+import { Section } from '@gp/ui/components';
 
 export default function SignUpPage() {
-  return <SignUp waitlistUrl='/waitlist' />;
+  return (
+    <Section fullWidth>
+      <SignUp waitlistUrl='/waitlist' />
+    </Section>
+  );
 }
