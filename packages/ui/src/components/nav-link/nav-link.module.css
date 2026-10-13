@@ -5,7 +5,7 @@
  */
 
 .icon {
-  margin-right: var(--base-size-8);
+  margin-right: var(--gp-size-8);
 }
 
 .title {
@@ -15,7 +15,7 @@
 
 .label {
   color: var(--gp-color-text-link-rest, var(--gp-color-accent));
-  margin-left: var(--base-size-4);
+  margin-left: var(--gp-size-4);
 }
 
 .link .subtitle {
