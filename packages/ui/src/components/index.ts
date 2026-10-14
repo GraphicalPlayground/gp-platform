@@ -35,3 +35,4 @@ export * from './faq';
 export * from './nav-dropdown';
 export * from './nav-group';
 export * from './nav-link';
+export * from './lede';

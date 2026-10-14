@@ -140,6 +140,7 @@
       "nav-group": "toc",
       "nav-dropdown": "toc",
       "table-of-contents": "toc",
+      "lede": "zed",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
