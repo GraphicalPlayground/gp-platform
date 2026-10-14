@@ -12,3 +12,4 @@ export * from './use-dropdown-disclosure';
 export * from './use-dropdown-positioning';
 export * from './use-intersection-observer';
 export * from './use-resize-observer';
+export * from './use-current-visible-heading';
