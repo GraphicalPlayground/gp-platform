@@ -46,11 +46,21 @@ export interface MdxDocument<TFrontmatter> {
 }
 
 /**
+ * @brief Heading extracted from an {@link MdxDocument}'s body, used to generate a table of contents.
+ */
+export interface MdxHeading {
+  id: string;
+  text: string;
+  level: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+}
+
+/**
  * @brief An {@link MdxDocument} whose body has additionally been compiled to renderable React content via `next-mdx-remote/rsc`.
  * @details Expensive, only produce this for the single document being rendered on a page, never for a whole collection at once.
  */
 export interface CompiledMdxDocument<TFrontmatter> extends MdxDocument<TFrontmatter> {
   content: ReactElement;
+  headings: MdxHeading[];
 }
 
 /**

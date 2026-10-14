@@ -12,7 +12,7 @@ import type { ZodType } from 'zod';
 
 import { estimateReadingTimeMinutes, walkMdxFiles } from './fs-utils';
 import { MdxFrontmatterError } from '../errors';
-import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument } from '../types';
+import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument, MdxHeading } from '../types';
 import type { PluggableList } from 'unified';
 import type { PublishStatus, PublishWorkflowFields } from '../../shared/publish-status';
 import { resolvePublishStatus, validatePublishWorkflow } from '../../shared/publish-status';
@@ -59,6 +59,11 @@ export interface MdxCollectionConfig<TFrontmatter> {
    * @brief Additional remark plugins to apply when compiling MDX content. Defaults to an empty array.
    */
   remarkPlugins?: PluggableList;
+
+  /**
+   * @brief Additional rehype plugins to apply when compiling MDX content. Defaults to an empty array.
+   */
+  rehypePlugins?: PluggableList;
 }
 
 /**
@@ -89,6 +94,7 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
    */
   constructor(private readonly config: MdxCollectionConfig<TFrontmatter>) {
     this.config.remarkPlugins = this.config.remarkPlugins ?? [];
+    this.config.rehypePlugins = this.config.rehypePlugins ?? [];
     this.contentDir = path.isAbsolute(config.contentDir)
       ? config.contentDir
       : path.join(process.cwd(), config.contentDir);
@@ -284,6 +290,51 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
   }
 
   /**
+   * @brief Helper to generate URL-safe slugs matching rehype-slug output
+   * @param text - The text to generate a slug from.
+   * @return A URL-safe slug derived from the input text.
+   */
+  private generateSlug(text: string): string {
+    return text
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-') // Replace spaces with -
+      .replace(/[^\w-]+/g, '') // Remove all non-word chars
+      .replace(/--+/g, '-'); // Replace multiple - with single -
+  }
+
+  /**
+   * @brief Extracts headings from raw MDX content for generating a table of contents.
+   * @param rawContent - The raw MDX content to extract headings from.
+   * @returns An array of {@link MdxHeading} representing the headings in the content.
+   */
+  private extractHeadingsFromRawMdx(rawContent: string): MdxHeading[] {
+    // Matches 1 to 6 hashes at the start of a line, followed by space and the text
+    const headingRegex = /^(#{1,6})\s+(.+)$/gm;
+    const headings: MdxHeading[] = [];
+
+    let match: RegExpExecArray | null;
+
+    while ((match = headingRegex.exec(rawContent)) !== null) {
+      const levelCount = match[1]!.length;
+      const level = `h${levelCount}` as MdxHeading['level'];
+      const rawText = match[2]!.trim();
+
+      // Clean markdown syntax from the display text (links, bold, italic, code)
+      const cleanText = rawText.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*_`~]/g, '');
+
+      headings.push({
+        id: this.generateSlug(cleanText),
+        text: cleanText,
+        level
+      });
+    }
+
+    return headings;
+  }
+
+  /**
    * @brief Returns a single document by slug and locale, with the MDX body compiled to React content.
    * @param slug - The slug of the document to retrieve.
    * @param locale - The locale to look up, with the same fallback semantics as {@link getBySlug}.
@@ -305,12 +356,13 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
         mdxOptions: {
           remarkPlugins: this.config.useSmartypants
             ? [remarkSmartypants, ...this.config.remarkPlugins!]
-            : this.config.remarkPlugins
+            : this.config.remarkPlugins,
+          rehypePlugins: this.config.rehypePlugins
         }
       },
       components: options.components
     });
 
-    return { ...doc, content };
+    return { ...doc, content, headings: this.extractHeadingsFromRawMdx(doc.rawContent) };
   }
 }

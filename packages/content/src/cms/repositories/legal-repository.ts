@@ -6,7 +6,9 @@ import { MdxCollection } from '../collection';
 import { legalFrontmatterSchema } from '../../legal';
 import type { LegalFrontmatter } from '../../legal';
 import type { MdxDocument } from '../types';
+
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
 
 /**
  * @brief Repository for managing legal documents in the CMS.
@@ -20,6 +22,7 @@ export class LegalRepository {
       schema: legalFrontmatterSchema,
       useSmartypants: true,
       remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSlug],
       defaultLocale
     });
   }

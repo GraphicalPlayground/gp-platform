@@ -6,7 +6,9 @@ import { MdxCollection } from '../collection';
 import type { MdxCollectionOptions, MdxDocument } from '../types';
 import type { Article } from '../../article';
 import { articleFrontmatterUnionSchema as articleUnionSchema } from '../../article';
+
 import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
 
 export type ArticleType = Article['type'];
 export type ArticleOfType<T extends ArticleType> = Extract<Article, { type: T }>;
@@ -52,6 +54,7 @@ export class ArticlesRepository {
       resolveSlug: (frontmatter, relativePath) => frontmatter.slug ?? relativePath,
       useSmartypants: false,
       remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSlug],
       defaultLocale
     });
   }
