@@ -139,6 +139,7 @@
       "nav-link": "toc",
       "nav-group": "toc",
       "nav-dropdown": "toc",
+      "table-of-contents": "toc",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
