@@ -273,6 +273,27 @@
     --gp-button-subtle-fg-color-rest: var(--gp-color-text-default);
     --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-3);
 
+    --gp-label-color-default: var(--gp-color-text-default);
+    --gp-label-color-blue: var(--gp-color-blue-5);
+    --gp-label-color-coral: var(--gp-color-coral-5);
+    --gp-label-color-green: var(--gp-color-green-6);
+    --gp-label-color-gray: var(--gp-color-gray-5);
+    --gp-label-color-indigo: var(--gp-color-indigo-5);
+    --gp-label-color-lemon: var(--gp-color-lemon-5);
+    --gp-label-color-lime: var(--gp-color-lime-5);
+    --gp-label-color-orange: var(--gp-color-orange-5);
+    --gp-label-color-pink: var(--gp-color-pink-5);
+    --gp-label-color-purple: var(--gp-color-purple-5);
+    --gp-label-color-red: var(--gp-color-red-5);
+    --gp-label-color-teal: var(--gp-color-teal-5);
+    --gp-label-color-yellow: var(--gp-color-yellow-5);
+    --gp-label-color-blue-purple: linear-gradient(var(--gp-color-blue-5), var(--gp-color-purple-5));
+    --gp-label-color-green-blue: linear-gradient(var(--gp-color-green-6), var(--gp-color-blue-5));
+    --gp-label-color-pink-blue: linear-gradient(var(--gp-color-pink-5), var(--gp-color-blue-5));
+    --gp-label-color-purple-red: linear-gradient(var(--gp-color-purple-5), var(--gp-color-red-5));
+    --gp-label-color-red-orange: linear-gradient(var(--gp-color-red-5), var(--gp-color-orange-5));
+    --gp-label-color-green-blue-purple: linear-gradient(#000aff, #096bde, var(--gp-color-green-6), #8250df);
+
     --gp-navlist-active-indicator-color: var(--gp-color-text-emphasized);
 
     --gp-logo-suite-color-control-rest: var(--gp-color-canvas-muted);

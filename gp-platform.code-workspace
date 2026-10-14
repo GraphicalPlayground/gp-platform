@@ -141,6 +141,7 @@
       "nav-dropdown": "toc",
       "table-of-contents": "toc",
       "lede": "zed",
+      "label": "interceptor",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
