@@ -198,39 +198,39 @@ export const Box: React.FC<BoxProps> = ({
 }) => {
   const paddingClasses = React.useMemo(() => classBuilder('padding', padding), [padding]);
   const paddingBlockStartClasses = React.useMemo(
-    () => classBuilder('paddingBlockStart', paddingBlockStart),
+    () => classBuilder('padding-block-start', paddingBlockStart),
     [paddingBlockStart]
   );
   const paddingInlineEndClasses = React.useMemo(
-    () => classBuilder('paddingInlineEnd', paddingInlineEnd),
+    () => classBuilder('padding-inline-end', paddingInlineEnd),
     [paddingInlineEnd]
   );
   const paddingBlockEndClasses = React.useMemo(
-    () => classBuilder('paddingBlockEnd', paddingBlockEnd),
+    () => classBuilder('padding-block-end', paddingBlockEnd),
     [paddingBlockEnd]
   );
   const paddingInlineStartClasses = React.useMemo(
-    () => classBuilder('paddingInlineStart', paddingInlineStart),
+    () => classBuilder('padding-inline-start', paddingInlineStart),
     [paddingInlineStart]
   );
   const marginClasses = React.useMemo(() => classBuilder('margin', margin), [margin]);
   const marginBlockStartClasses = React.useMemo(
-    () => classBuilder('marginBlockStart', marginBlockStart),
+    () => classBuilder('margin-block-start', marginBlockStart),
     [marginBlockStart]
   );
   const marginInlineEndClasses = React.useMemo(
-    () => classBuilder('marginInlineEnd', marginInlineEnd),
+    () => classBuilder('margin-inline-end', marginInlineEnd),
     [marginInlineEnd]
   );
-  const marginBlockEndClasses = React.useMemo(() => classBuilder('marginBlockEnd', marginBlockEnd), [marginBlockEnd]);
+  const marginBlockEndClasses = React.useMemo(() => classBuilder('margin-block-end', marginBlockEnd), [marginBlockEnd]);
   const marginInlineStartClasses = React.useMemo(
-    () => classBuilder('marginInlineStart', marginInlineStart),
+    () => classBuilder('margin-inline-start', marginInlineStart),
     [marginInlineStart]
   );
   const backgroundColorClasses = React.useMemo(
     () =>
       backgroundColor && isNamedBackgroundColor(backgroundColor)
-        ? classBuilder('backgroundColor', backgroundColor)
+        ? classBuilder('background-color', backgroundColor)
         : '',
     [backgroundColor]
   );
@@ -238,26 +238,26 @@ export const Box: React.FC<BoxProps> = ({
     () => (backgroundColor && !isNamedBackgroundColor(backgroundColor) ? { backgroundColor } : {}),
     [backgroundColor]
   );
-  const borderRadiusClasses = React.useMemo(() => classBuilder('borderRadius', borderRadius), [borderRadius]);
-  const borderWidthClasses = React.useMemo(() => classBuilder('borderWidth', borderWidth), [borderWidth]);
+  const borderRadiusClasses = React.useMemo(() => classBuilder('border-radius', borderRadius), [borderRadius]);
+  const borderWidthClasses = React.useMemo(() => classBuilder('border-width', borderWidth), [borderWidth]);
   const borderBlockStartWidthClasses = React.useMemo(
-    () => classBuilder('borderBlockStartWidth', borderBlockStartWidth),
+    () => classBuilder('border-block-start-width', borderBlockStartWidth),
     [borderBlockStartWidth]
   );
   const borderInlineEndWidthClasses = React.useMemo(
-    () => classBuilder('borderInlineEndWidth', borderInlineEndWidth),
+    () => classBuilder('border-inline-end-width', borderInlineEndWidth),
     [borderInlineEndWidth]
   );
   const borderBlockEndWidthClasses = React.useMemo(
-    () => classBuilder('borderBlockEndWidth', borderBlockEndWidth),
+    () => classBuilder('border-block-end-width', borderBlockEndWidth),
     [borderBlockEndWidth]
   );
   const borderInlineStartWidthClasses = React.useMemo(
-    () => classBuilder('borderInlineStartWidth', borderInlineStartWidth),
+    () => classBuilder('border-inline-start-width', borderInlineStartWidth),
     [borderInlineStartWidth]
   );
-  const borderColorClasses = React.useMemo(() => classBuilder('borderColor', borderColor), [borderColor]);
-  const borderStyleClasses = React.useMemo(() => classBuilder('borderStyle', borderStyle), [borderStyle]);
+  const borderColorClasses = React.useMemo(() => classBuilder('border-color', borderColor), [borderColor]);
+  const borderStyleClasses = React.useMemo(() => classBuilder('border-style', borderStyle), [borderStyle]);
 
   return (
     <div
