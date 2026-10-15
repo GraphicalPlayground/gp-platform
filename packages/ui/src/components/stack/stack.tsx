@@ -64,7 +64,7 @@ type ResponsiveFlexWrapMap = {
  * @see Stack
  */
 export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode[] | React.ReactNode;
+  children?: React.ReactNode[] | React.ReactNode;
   /**
    * @brief Defines the flex-direction CSS property.
    * A string value will be applied to all viewports.
@@ -115,14 +115,14 @@ export interface StackProps extends React.HTMLAttributes<HTMLDivElement> {
  * @brief Stack component.
  */
 export const Stack: React.FC<StackProps> = ({
-  children,
-  direction = defaultStackDirection,
-  gap = defaultStackSpacing,
   alignItems,
-  padding = defaultStackSpacing,
-  justifyContent,
+  children,
   className,
+  direction = defaultStackDirection,
   flexWrap,
+  gap = defaultStackSpacing,
+  justifyContent,
+  padding = defaultStackSpacing,
   ref,
   ...rest
 }) => {
