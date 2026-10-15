@@ -20,7 +20,8 @@ export const authorSchema = z.union([
     url: z.url().optional(),
     socialLinks: z.array(socialLinkSchema).default([])
   }),
-  z.string().min(1)
+  z.string().min(1),
+  z.array(z.string().min(1))
 ]);
 
 export type Author = z.infer<typeof authorSchema>;
