@@ -142,6 +142,7 @@
       "table-of-contents": "toc",
       "lede": "zed",
       "label": "interceptor",
+      "breadcrumbs": "queue",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
