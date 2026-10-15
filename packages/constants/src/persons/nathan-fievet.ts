@@ -20,6 +20,7 @@ export class NathanFievet extends GenericPerson {
   };
 
   public static override readonly url: Url = this.socials.github! as Url;
+  public static override readonly avatarUrl: Url = (this.socials.github! + '.png') as Url;
 
   public static override readonly locales = {
     spoken: ['en', 'fr'] as Locale[],

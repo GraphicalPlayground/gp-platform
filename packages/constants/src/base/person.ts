@@ -13,6 +13,8 @@ export class GenericPerson {
   public static readonly lastName: string = 'Person';
   public static readonly alternateName: string = 'GP';
 
+  public static readonly avatarUrl: Url = 'https://github.com/GraphicalPlayground.png' as Url;
+
   public static readonly pronouns: Pronouns = 'they/them';
 
   public static readonly position: string = 'Non Existing Person';
