@@ -21,10 +21,10 @@
 }
 
 .socialLink {
-  color: var(--gp-fg-color-muted);
+  color: var(--gp-color-text-muted);
 
   &:hover {
-    color: var(--gp-fg-color-link);
+    color: var(--gp-color-text-link-rest);
   }
 
   &:focus-visible {
