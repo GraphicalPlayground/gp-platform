@@ -143,6 +143,7 @@
       "lede": "zed",
       "label": "interceptor",
       "breadcrumbs": "queue",
+      "avatar": "admin",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

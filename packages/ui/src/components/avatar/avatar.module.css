@@ -1,0 +1,121 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  width: var(--gp-size-40);
+  height: var(--gp-size-40);
+}
+
+.avatar--shape-circle {
+  border-radius: var(--gp-border-radius-full);
+}
+
+.avatar--shape-square {
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar--size-32 {
+  width: var(--gp-size-32);
+  height: var(--gp-size-32);
+}
+
+.avatar--size-40 {
+  width: var(--gp-size-40);
+  height: var(--gp-size-40);
+}
+
+.avatar--size-48 {
+  width: var(--gp-size-48);
+  height: var(--gp-size-48);
+}
+
+.avatar--size-64 {
+  width: var(--gp-size-64);
+  height: var(--gp-size-64);
+}
+
+.avatar--size-80 {
+  width: var(--gp-size-80);
+  height: var(--gp-size-80);
+}
+
+.avatar-narrow--size-32 {
+  width: var(--gp-size-32);
+  height: var(--gp-size-32);
+}
+
+.avatar-narrow--size-40 {
+  width: var(--gp-size-40);
+  height: var(--gp-size-40);
+}
+
+.avatar-narrow--size-48 {
+  width: var(--gp-size-48);
+  height: var(--gp-size-48);
+}
+
+@media screen and (min-width: 48rem) {
+  .avatar-regular--size-32 {
+    width: var(--gp-size-32);
+    height: var(--gp-size-32);
+  }
+
+  .avatar-regular--size-40 {
+    width: var(--gp-size-40);
+    height: var(--gp-size-40);
+  }
+
+  .avatar-regular--size-48 {
+    width: var(--gp-size-48);
+    height: var(--gp-size-48);
+  }
+
+  .avatar-regular--size-64 {
+    width: var(--gp-size-64);
+    height: var(--gp-size-64);
+  }
+
+  .avatar-regular--size-80 {
+    width: var(--gp-size-80);
+    height: var(--gp-size-80);
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .avatar-wide--size-32 {
+    width: var(--gp-size-32);
+    height: var(--gp-size-32);
+  }
+
+  .avatar-wide--size-40 {
+    width: var(--gp-size-40);
+    height: var(--gp-size-40);
+  }
+
+  .avatar-wide--size-48 {
+    width: var(--gp-size-48);
+    height: var(--gp-size-48);
+  }
+
+  .avatar-wide--size-64 {
+    width: var(--gp-size-64);
+    height: var(--gp-size-64);
+  }
+
+  .avatar-wide--size-80 {
+    width: var(--gp-size-80);
+    height: var(--gp-size-80);
+  }
+}
