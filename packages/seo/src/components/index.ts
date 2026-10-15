@@ -7,3 +7,4 @@ export * from './BreadcrumbJsonLd';
 export * from './FaqJsonLd';
 export * from './CourseJsonLd';
 export * from './CollectionJsonLd';
+export * from './ArticleJsonLd';

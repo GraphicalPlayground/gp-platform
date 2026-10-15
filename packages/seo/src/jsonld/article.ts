@@ -2,10 +2,11 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-import type { Article as SchemaArticle, WithContext } from 'schema-dts';
+import type { ArticleLeaf as SchemaArticle, WithContext } from 'schema-dts';
 import type { Article as ArticleFrontmatter } from '@gp/content';
 import { Organization, Persons } from '@gp/constants';
 import { JsonLdIds } from './ids';
+import type { PersonSlug } from './ids';
 
 /**
  * @brief Builds the JSON-LD `Article` representation of an `@gp/content` article, for any of its 10 article types
@@ -25,8 +26,7 @@ export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): W
 
     return {
       '@type': 'Person' as const,
-      'name': person.fullName,
-      'url': person.url as string
+      '@id': JsonLdIds.person(slug as PersonSlug)
     };
   };
 
@@ -41,11 +41,9 @@ export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): W
     'dateModified': article.dateModified?.toISOString() ?? article.datePublished.toISOString(),
     'author': Array.isArray(article.author)
       ? [...article.author.map((author) => getPersonFromSlug(author) ?? { '@type': 'Person' as const, 'name': author })]
-      : {
-          '@type': 'Person' as const,
-          'name': typeof article.author === 'string' ? article.author : article.author.name,
-          ...(typeof article.author !== 'string' && article.author.url && { url: article.author.url })
-        },
+      : typeof article.author === 'string'
+        ? [getPersonFromSlug(article.author) ?? { '@type': 'Person' as const, 'name': article.author }]
+        : [{ '@type': 'Person' as const, 'name': article.author.name, 'url': article.author.url }],
     'publisher': { '@id': JsonLdIds.organization },
     'mainEntityOfPage': { '@type': 'WebPage', '@id': url },
     'keywords': article.tags,
