@@ -197,6 +197,12 @@
     "prettier.quoteProps": "consistent",
     "prettier.htmlWhitespaceSensitivity": "css",
     "prettier.endOfLine": "lf",
+
+    /* Git Settings */
+    "git.addAICoAuthor": "off",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "files.eol": "\n",
   },
   "extensions": {
     "recommendations": [
