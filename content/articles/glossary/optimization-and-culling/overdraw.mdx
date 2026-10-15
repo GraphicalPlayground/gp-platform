@@ -2,6 +2,7 @@
 title: Overdraw
 type: glossary
 slug: overdraw
+lede: "Overdraw happens when the GPU shades the same pixel several times in one frame, and it is one of the most common hidden costs behind particle effects, foliage, and transparency."
 term: Overdraw
 shortDefinition: Overdraw happens when the GPU shades the same pixel more than once in a single frame because multiple overlapping surfaces were drawn to it, wasting work on pixels that get overwritten anyway.
 description: How overlapping transparent effects and unsorted opaque geometry quietly multiply your pixel shading cost, and why draw order is a performance decision, not just a visual one.

@@ -2,6 +2,7 @@
 title: Spatial Partitioning
 type: glossary
 slug: spatial-partitioning
+lede: "Finding nearby enemies, testing collisions, or culling visible objects would mean checking everything against everything without spatial partitioning, which divides the world into regions that can be queried quickly."
 term: Spatial Partitioning
 shortDefinition: Spatial partitioning divides a scene into a hierarchy of regions, such as an octree or BSP tree, so that queries like collision checks, visibility tests, or nearest-neighbor searches only need to examine nearby objects instead of the entire scene.
 description: How splitting a scene into regions turns an expensive check-everything-against-everything problem into one that only looks where it needs to.

@@ -2,6 +2,7 @@
 title: Global Illumination (GI) Caching
 type: glossary
 slug: global-illumination-caching
+lede: "Tracing indirect light from scratch for every pixel every frame is far too expensive for real time, so engines cache global illumination and reuse it across frames and across space."
 term: Global Illumination Caching
 shortDefinition: GI caching stores precomputed or partially computed indirect lighting in a reusable data structure. It lets a renderer reuse those results across frames or pixels instead of recomputing full light transport each time.
 description: How global illumination caching reuses indirect lighting samples across frames to make real-time GI affordable, and where irradiance caching fits the picture.

@@ -2,6 +2,7 @@
 title: Deferred Shading vs. Forward+
 type: glossary
 slug: deferred-shading-vs-forward-plus
+lede: "How a renderer handles hundreds of dynamic lights largely comes down to one architectural choice: deferred shading or Forward+."
 term: Deferred Shading vs. Forward+
 shortDefinition: Deferred shading writes surface data to a G-buffer and shades lighting in a separate full-screen pass, while Forward+ tiles the screen to cull lights per tile before shading in a single forward pass.
 description: How deferred shading and Forward+ each handle scenes with many dynamic lights, and the trade-offs that decide which fits a given renderer.

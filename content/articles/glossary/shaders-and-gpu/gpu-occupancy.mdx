@@ -2,6 +2,7 @@
 title: GPU Occupancy
 type: glossary
 slug: gpu-occupancy
+lede: "A shader can be mathematically efficient and still run slowly if it uses too many registers, because GPU occupancy limits how much work the hardware can keep in flight to hide memory latency."
 term: Occupancy
 shortDefinition: Occupancy is the ratio of active warps to the maximum a GPU's compute unit could run at once, and it is one of the main levers for hiding memory latency behind other work.
 description: Why occupancy governs how well a GPU hides memory stalls, and why maximizing it is not always the same as maximizing performance.

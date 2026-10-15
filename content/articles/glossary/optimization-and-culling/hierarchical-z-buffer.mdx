@@ -2,6 +2,7 @@
 title: Hierarchical Z-Buffer (Hi-Z)
 type: glossary
 slug: hierarchical-z-buffer
+lede: "A hierarchical Z-buffer stores progressively coarser versions of the depth buffer, letting the GPU reject whole groups of hidden objects or pixels with a single depth test."
 term: Hierarchical Z-Buffer
 shortDefinition: A Hierarchical Z-Buffer is a mipmap-style pyramid of the depth buffer, storing conservative min/max depth per region, that lets a renderer reject occluded geometry with a handful of coarse depth tests.
 description: How the hierarchical Z-buffer accelerates occlusion culling by testing bounding volumes against a depth mip pyramid instead of raw per-pixel depth.

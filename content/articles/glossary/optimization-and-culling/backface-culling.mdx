@@ -2,6 +2,7 @@
 title: Backface Culling
 type: glossary
 slug: backface-culling
+lede: "On any closed 3D object, roughly half of the triangles face away from the camera at any moment, and backface culling is the cheap trick that skips drawing them."
 term: Backface Culling
 shortDefinition: Backface culling discards triangles that face away from the camera before shading them, using the winding order of their vertices to decide which side is the front.
 description: Why an engine can throw away roughly half of a closed mesh's triangles for free, just by checking which way each one is facing.

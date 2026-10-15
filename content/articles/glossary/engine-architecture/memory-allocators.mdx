@@ -2,6 +2,7 @@
 title: Memory Allocators
 type: glossary
 slug: memory-allocators
+lede: "Calling a general-purpose allocator thousands of times per frame is a fast way to fragment memory and stall a game, which is why engines build their own specialized memory allocators."
 term: Memory Allocator
 shortDefinition: Custom memory allocators, such as arena, pool, and stack allocators, replace generic malloc calls with patterns that match how an engine actually uses memory, trading general-purpose flexibility for predictable allocation cost and less fragmentation.
 description: Why engines write their own memory allocators instead of trusting the one the operating system already gives them for free.

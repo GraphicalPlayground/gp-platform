@@ -2,6 +2,7 @@
 title: Wave Intrinsics
 type: glossary
 slug: wave-intrinsics
+lede: "Wave intrinsics let threads in the same GPU warp share data and vote on decisions directly, enabling fast reductions and prefix sums without going through shared memory."
 term: Wave Intrinsics
 shortDefinition: Wave intrinsics are shader instructions that let threads within the same warp share data directly, such as summing values or broadcasting a result, without round-tripping through memory.
 description: How wave intrinsics let threads in the same warp talk to each other directly, cutting out memory traffic that older shaders needed for the same result.

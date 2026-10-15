@@ -2,6 +2,7 @@
 title: Mipmapping
 type: glossary
 slug: mipmapping
+lede: "Without mipmapping, distant textures shimmer and sparkle as the camera moves, because each screen pixel ends up sampling a tiny, random sliver of a much larger image."
 term: Mipmap
 shortDefinition: Mipmapping precomputes a chain of progressively smaller versions of a texture, so the GPU can sample a lower-resolution version when a surface is far from the camera, reducing aliasing and memory bandwidth.
 description: Why sampling a full-resolution texture on a distant object makes the image noisier, not sharper, and how a precomputed chain of smaller copies fixes it.

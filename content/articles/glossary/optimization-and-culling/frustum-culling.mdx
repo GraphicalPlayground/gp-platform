@@ -2,6 +2,7 @@
 title: Frustum Culling
 type: glossary
 slug: frustum-culling
+lede: "There is no point asking the GPU to draw objects that are behind the camera or off to the side, and frustum culling is the first line of defense against that wasted work."
 term: Frustum Culling
 shortDefinition: Frustum culling discards objects that lie entirely outside the camera's view frustum before they reach the rendering pipeline, so the GPU never processes geometry the viewer cannot see.
 description: Why frustum culling is one of the cheapest ways to cut wasted draw calls, and how it fits alongside occlusion and LOD systems in a real-time engine.

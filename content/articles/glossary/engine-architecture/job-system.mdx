@@ -2,6 +2,7 @@
 title: Job System
 type: glossary
 slug: job-system
+lede: "Modern CPUs have many cores, and a job system is how a game engine keeps all of them busy by splitting each frame's work into small tasks that run in parallel."
 term: Job System
 shortDefinition: A job system splits engine work, such as animation, physics, and culling, into small independent tasks that a pool of worker threads pulls from a queue, letting the engine scale across CPU cores without hand-managing threads for every subsystem.
 description: How breaking a frame's work into small tasks instead of a handful of dedicated threads lets an engine actually use the cores modern CPUs give it.

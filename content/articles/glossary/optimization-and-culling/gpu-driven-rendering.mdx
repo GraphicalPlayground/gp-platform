@@ -2,6 +2,7 @@
 title: GPU-Driven Rendering
 type: glossary
 slug: gpu-driven-rendering
+lede: "GPU-driven rendering moves decisions such as culling, LOD selection, and draw submission off the CPU and onto the GPU, so scenes with millions of objects no longer bottleneck on draw calls."
 term: GPU-Driven Rendering
 shortDefinition: GPU-driven rendering moves culling and draw-call generation from the CPU onto the GPU itself, using compute shaders to decide what to draw and indirect draw calls to issue it, removing the CPU as a bottleneck for scene complexity.
 description: Why the CPU used to decide what the GPU should draw, and why modern engines flip that around so scenes can scale past what a CPU loop could ever keep up with.

@@ -2,6 +2,7 @@
 title: Uniform Buffer (Constant Buffer)
 type: glossary
 slug: uniform-buffer
+lede: "Camera matrices, light colors, and material parameters that every shader invocation needs to read are passed to the GPU through uniform buffers, also known as constant buffers."
 term: Uniform Buffer
 shortDefinition: A uniform buffer is a block of GPU memory holding values that stay the same across every vertex or pixel in a draw call, such as a transform matrix or light color, letting the CPU update shader state without touching the shader code itself.
 description: How uniform buffers move per-draw data from CPU to GPU without recompiling shaders, and why their layout rules trip up almost everyone the first time.

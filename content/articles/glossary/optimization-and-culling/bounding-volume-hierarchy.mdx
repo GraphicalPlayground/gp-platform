@@ -2,6 +2,7 @@
 title: Bounding Volume Hierarchy (BVH)
 type: glossary
 slug: bounding-volume-hierarchy
+lede: "Testing a ray against every triangle in a scene would make ray tracing hopelessly slow, so renderers organize geometry into a bounding volume hierarchy that discards most of it in a few steps."
 term: Bounding Volume Hierarchy
 shortDefinition: A BVH is a tree of nested bounding volumes that wrap groups of geometry, letting a renderer skip large portions of a scene when testing visibility, collisions, or ray intersections.
 description: How bounding volume hierarchies organize scene geometry into a tree for fast ray intersection and culling, and why they underpin real-time ray tracing.

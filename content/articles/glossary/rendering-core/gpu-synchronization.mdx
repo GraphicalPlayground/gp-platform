@@ -2,6 +2,7 @@
 title: GPU Synchronization Primitives
 type: glossary
 slug: gpu-synchronization
+lede: "The CPU and GPU, and even different parts of the GPU, run asynchronously, and synchronization primitives such as fences, semaphores, and barriers keep them from reading data before it is ready."
 term: GPU Synchronization
 shortDefinition: GPU synchronization primitives, fences, semaphores, and barriers, tell the GPU and CPU when it is safe to read a resource another pass just wrote, since work on modern APIs runs asynchronously by default rather than in the order it was submitted.
 description: Why explicit APIs make you say out loud when one GPU pass depends on another, and what happens to your image when you forget.

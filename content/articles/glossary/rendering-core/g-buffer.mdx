@@ -2,6 +2,7 @@
 title: G-Buffer
 type: glossary
 slug: g-buffer
+lede: "The G-buffer is the set of render targets where a deferred renderer stores surface properties like albedo, normals, and roughness for every pixel before any lighting is computed."
 term: G-Buffer
 shortDefinition: A G-buffer is a set of full-screen textures that store per-pixel surface data, such as normal, albedo, and depth, produced in a first geometry pass and read back during lighting.
 description: How the G-buffer splits deferred rendering into a geometry pass and a lighting pass, and why that split scales better with many lights than forward rendering does.

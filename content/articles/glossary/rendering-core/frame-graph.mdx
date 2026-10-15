@@ -2,6 +2,7 @@
 title: Frame Graph (Render Graph)
 type: glossary
 slug: frame-graph
+lede: "As modern renderers grew to dozens of passes per frame, managing their dependencies and resources by hand became unworkable, so engines adopted frame graphs to organize it automatically."
 term: Frame Graph
 shortDefinition: A frame graph is a data structure that describes every render pass in a frame as nodes with declared inputs and outputs, letting the engine automatically work out pass ordering, resource barriers, and memory reuse.
 description: How declaring passes as a graph instead of hand-scheduling them lets an engine figure out barriers and memory aliasing on its own, and why most modern engines have converged on this design.

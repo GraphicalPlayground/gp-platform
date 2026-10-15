@@ -2,6 +2,7 @@
 title: SIMD and Warp Execution
 type: glossary
 slug: simd-warp
+lede: "A GPU does not run one shader thread at a time; it executes groups of threads in lockstep, called warps or wavefronts, and understanding that is key to writing fast shaders."
 term: SIMD (Warp/Wavefront)
 shortDefinition: SIMD execution runs the same instruction across a group of GPU threads at once, called a warp on NVIDIA hardware or a wavefront on AMD, which is why branching code that disagrees between threads slows everything down.
 description: Why GPUs group threads into warps that execute in lockstep, and why divergent branches in a shader cost more than they look like they should.

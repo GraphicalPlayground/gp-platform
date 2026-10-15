@@ -2,6 +2,7 @@
 title: GPU Instancing
 type: glossary
 slug: instancing
+lede: "Rendering a forest of thousands of identical trees one draw call at a time would choke the CPU, which is why GPU instancing lets a single call draw many copies of the same mesh."
 term: Instancing
 shortDefinition: Instancing draws many copies of the same mesh, such as a forest of trees or a crowd, in a single GPU call by feeding per-copy data like position and color through a separate buffer instead of issuing one draw call each.
 description: How instancing collapses thousands of identical draw calls into one, and why draw call count is often the real bottleneck long before triangle count is.

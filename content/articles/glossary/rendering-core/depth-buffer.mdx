@@ -2,6 +2,7 @@
 title: Depth Buffer (Z-Buffer)
 type: glossary
 slug: depth-buffer
+lede: "When two objects overlap on screen, the GPU needs to know which one is in front, and the depth buffer is the per-pixel record that answers that question."
 term: Depth Buffer
 shortDefinition: A depth buffer stores the closest depth value seen so far at each pixel, letting the rasterizer discard fragments hidden behind previously drawn geometry without sorting objects by distance.
 description: How the depth buffer solves visibility during rasterization, and why its precision and access patterns shape real-time rendering performance.

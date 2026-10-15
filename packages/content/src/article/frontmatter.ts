@@ -21,6 +21,7 @@ export type ArticleSeoOverride = z.infer<typeof articleSeoOverrideSchema>;
 export const articleFrontmatterSchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
+  lede: z.string().min(1),
   description: z.string().min(1),
   category: articleCategorySchema,
   tags: z.array(z.string().min(1)).default([]),
