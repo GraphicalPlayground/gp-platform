@@ -44,32 +44,32 @@ export const SocialShare: React.FC<SocialShareProps> = ({ url }) => {
   return (
     <Stack direction='horizontal' justifyContent='space-between' padding='none'>
       <Text>Share</Text>
-      <div className='d-flex flex-items-center'>
-        <div className='position-relative'>
-          <button className={`tmp-ml-3 ${styles.copyLink} ${styles.socialLink}`} onClick={copyToClipboard}>
+      <div className='flex items-center'>
+        <div className='relative'>
+          <button className={`ml-3 cursor-pointer ${styles.copyLink} ${styles.socialLink}`} onClick={copyToClipboard}>
             <LinkIcon size={16} />
             <Text as='span' className='sr-only'>
               Copy link to share
             </Text>
           </button>
 
-          <div aria-live='polite' className='position-absolute bottom-0'>
+          <div aria-live='polite' className='absolute bottom-0'>
             {copied === true && <CopyClip />}
           </div>
         </div>
 
-        <Link
-          className={`${styles.socialLink} d-flex flex-items-center tmp-ml-3`}
+        {/* <Link
+          className={`${styles.socialLink} flex items-center ml-3`}
           href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
           rel='noopener noreferrer'
         >
           <Text as='span' className='sr-only'>
             Share on Facebook
           </Text>
-          {/* <Facebook /> */}
-        </Link>
+          <Facebook />
+        </Link> */}
         <Link
-          className={`${styles.socialLink} d-flex flex-items-center tmp-ml-3`}
+          className={`${styles.socialLink} flex items-center ml-3`}
           href={`https://x.com/intent/tweet?url=${url}`}
           rel='noopener noreferrer'
         >
@@ -79,7 +79,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({ url }) => {
           <XIcon />
         </Link>
         <Link
-          className={`${styles.socialLink} d-flex flex-items-center tmp-ml-3`}
+          className={`${styles.socialLink} flex items-center ml-3`}
           href={`https://www.linkedin.com/shareArticle?mini=true&url=${url}`}
           rel='noopener noreferrer'
         >
