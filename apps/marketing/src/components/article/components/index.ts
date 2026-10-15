@@ -8,6 +8,6 @@ export * from './breadcrumbs-list';
 // export * from './filters';
 // export * from './people';
 // export * from './profile-card';
-// export * from './published-date';
+export * from './published-date';
 // export * from './related-article';
 export * from './social-share';

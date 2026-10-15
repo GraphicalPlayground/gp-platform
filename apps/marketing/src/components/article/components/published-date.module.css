@@ -3,3 +3,13 @@
  * For more information, see https://graphical-playground/legal
  * mailto:support AT graphical-playground DOT com
  */
+
+.date {
+  font-size: var(--gp-text-size-100);
+  font-family: var(--gp-font-stack-monospace);
+  margin-block-end: var(--gp-size-36);
+}
+
+[data-color-mode='dark'] .date {
+  color: var(--gp-color-text-muted);
+}

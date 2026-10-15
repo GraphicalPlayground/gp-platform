@@ -10,7 +10,7 @@ import styles from './article.module.css';
 import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label } from '@gp/ui/components';
 import type { CompiledMdxDocument, ArticleFrontmatter } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
-import { SocialShare, BreadcrumbsList } from './components';
+import { SocialShare, BreadcrumbsList, PublishedDate } from './components';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
 import Link from 'next/link';
 
@@ -174,8 +174,9 @@ interface HeaderProps {
 
 const defaultBreadcrumbs: Array<BreadcrumbItem> = [] as const;
 
-const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs }) => {
+const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, document }) => {
   // const {hero, featuredImage, publishedDate} = component.fields
+  const { dateModified, datePublished } = document.frontmatter;
 
   return (
     <header>
@@ -193,7 +194,7 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs }) => 
       >
         {/* {hero ? <ContentfulHero component={hero} heroClassName={styles.hero} paddingBlockEnd='none' data-hpc /> : null} */}
 
-        {/* {publishedDate && <PublishedDate publishedDate={publishedDate} />} */}
+        <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
 
         {/* {featuredImage ? (
           <Image
