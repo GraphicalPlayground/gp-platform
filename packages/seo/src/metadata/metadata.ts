@@ -121,7 +121,9 @@ export class SeoMetadata {
       noindex: frontmatter.noindex || frontmatter.draft,
       publishedTime: frontmatter.datePublished.toISOString(),
       modifiedTime: frontmatter.dateModified?.toISOString(),
-      authors: [typeof frontmatter.author === 'string' ? frontmatter.author : frontmatter.author.name],
+      authors: Array.isArray(frontmatter.author)
+        ? frontmatter.author
+        : [typeof frontmatter.author === 'string' ? frontmatter.author : frontmatter.author.name],
       section: frontmatter.category,
       locale: frontmatter.locale
     });

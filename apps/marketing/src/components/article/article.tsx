@@ -10,7 +10,7 @@ import styles from './article.module.css';
 import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label } from '@gp/ui/components';
 import type { CompiledMdxDocument, ArticleFrontmatter } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
-import { SocialShare, BreadcrumbsList, PublishedDate } from './components';
+import { SocialShare, BreadcrumbsList, PublishedDate, People } from './components';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
 import Link from 'next/link';
 
@@ -114,13 +114,17 @@ interface ContentProps {
 }
 
 const Content: React.FC<ContentProps> = ({ document, indexPath, socialShareUrl }) => {
+  const { author, lede, tags, tagsLabel } = document.frontmatter;
+
+  const hasMultipleAuthors = Array.isArray(author) && author.length > 1;
+
   return (
     <>
       <Stack padding='none'>
-        {document.frontmatter.lede.length > 0 && (
+        {lede.length > 0 && (
           <Box marginBlockEnd={{ narrow: 24, wide: 48 }}>
             <header>
-              <Lede>{document.frontmatter.lede}</Lede>
+              <Lede>{lede}</Lede>
             </header>
           </Box>
         )}
@@ -135,18 +139,16 @@ const Content: React.FC<ContentProps> = ({ document, indexPath, socialShareUrl }
         </Box>
       </Stack>
 
-      {/* {people && people.length > 0 ? (
-        <Box
-          paddingBlockStart={40}
-          paddingBlockEnd={40}
-          borderBlockStartWidth='thin'
-          borderBlockEndWidth='thin'
-          borderColor='muted'
-          borderStyle='solid'
-        >
-          <People label={peopleLabel || ''} people={people} />
-        </Box>
-      ) : null} */}
+      <Box
+        borderBlockEndWidth='thin'
+        borderBlockStartWidth='thin'
+        borderColor='muted'
+        borderStyle='solid'
+        paddingBlockEnd={40}
+        paddingBlockStart={40}
+      >
+        <People label={hasMultipleAuthors ? 'Authors' : 'Author'} people={Array.isArray(author) ? author : [author]} />
+      </Box>
 
       <Box
         borderBlockEndWidth='thin'
@@ -159,9 +161,7 @@ const Content: React.FC<ContentProps> = ({ document, indexPath, socialShareUrl }
         <SocialShare url={socialShareUrl} />
       </Box>
 
-      {document.frontmatter.tagsLabel && (document.frontmatter.tags.length ?? 0) > 0 ? (
-        <Tags indexPath={indexPath} tags={document.frontmatter.tags} tagsLabel={document.frontmatter.tagsLabel} />
-      ) : null}
+      {tagsLabel && (tags.length ?? 0) > 0 ? <Tags indexPath={indexPath} tags={tags} tagsLabel={tagsLabel} /> : null}
     </>
   );
 };

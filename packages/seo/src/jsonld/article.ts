@@ -4,17 +4,31 @@
 
 import type { Article as SchemaArticle, WithContext } from 'schema-dts';
 import type { Article as ArticleFrontmatter } from '@gp/content';
-import { Organization } from '@gp/constants';
+import { Organization, Persons } from '@gp/constants';
 import { JsonLdIds } from './ids';
 
 /**
  * @brief Builds the JSON-LD `Article` representation of an `@gp/content` article, for any of its 10 article types
  * (guide, comparison, glossary, ...) since they all extend the same base frontmatter fields.
- * @param article - The article's frontmatter.
- * @param path - The path the article is served at, e.g. `/guides/my-guide`.
+ * @param article The article's frontmatter.
+ * @param path The path the article is served at, e.g. `/guides/my-guide`.
  */
 export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): WithContext<SchemaArticle> => {
   const url = `${Organization.url}${path}`;
+
+  const getPersonFromSlug = (slug: string) => {
+    const person = Object.values(Persons).find((p) => p.slug() === slug);
+
+    if (!person) {
+      return undefined;
+    }
+
+    return {
+      '@type': 'Person' as const,
+      'name': person.fullName,
+      'url': person.url as string
+    };
+  };
 
   return {
     '@context': 'https://schema.org',
@@ -25,11 +39,13 @@ export const buildArticleJsonLd = (article: ArticleFrontmatter, path: string): W
     'image': article.coverImage,
     'datePublished': article.datePublished.toISOString(),
     'dateModified': article.dateModified?.toISOString() ?? article.datePublished.toISOString(),
-    'author': {
-      '@type': 'Person',
-      'name': typeof article.author === 'string' ? article.author : article.author.name,
-      ...(typeof article.author !== 'string' && article.author.url && { url: article.author.url })
-    },
+    'author': Array.isArray(article.author)
+      ? [...article.author.map((author) => getPersonFromSlug(author) ?? { '@type': 'Person' as const, 'name': author })]
+      : {
+          '@type': 'Person' as const,
+          'name': typeof article.author === 'string' ? article.author : article.author.name,
+          ...(typeof article.author !== 'string' && article.author.url && { url: article.author.url })
+        },
     'publisher': { '@id': JsonLdIds.organization },
     'mainEntityOfPage': { '@type': 'WebPage', '@id': url },
     'keywords': article.tags,
