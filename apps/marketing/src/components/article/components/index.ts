@@ -2,7 +2,7 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-// export * from './breadcrumbs-list';
+export * from './breadcrumbs-list';
 // export * from './category-card';
 // export * from './featured-content';
 // export * from './filters';

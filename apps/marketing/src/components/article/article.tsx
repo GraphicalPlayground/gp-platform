@@ -10,7 +10,8 @@ import styles from './article.module.css';
 import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label } from '@gp/ui/components';
 import type { CompiledMdxDocument, ArticleFrontmatter } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
-import { SocialShare } from './components';
+import { SocialShare, BreadcrumbsList } from './components';
+import type { BreadcrumbItem } from '@gp/seo/jsonld';
 import Link from 'next/link';
 
 interface AsideProps {
@@ -166,23 +167,23 @@ const Content: React.FC<ContentProps> = ({ document, indexPath, socialShareUrl }
 };
 
 interface HeaderProps {
-  // component: ResourceDetailsPage;
-  // breadcrumbs?: Array<{ name: string; url: string }>;
+  document: CompiledMdxDocument<ArticleFrontmatter>;
+  breadcrumbs?: Array<BreadcrumbItem>;
   // contentFormCta?: string;
 }
 
-// const defaultBreadcrumbs = [] as Array<{ name: string; url: string }>;
+const defaultBreadcrumbs: Array<BreadcrumbItem> = [] as const;
 
-const Header: React.FC<HeaderProps> = () => {
+const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs }) => {
   // const {hero, featuredImage, publishedDate} = component.fields
 
   return (
     <header>
-      {/* {breadcrumbs.length > 0 ? (
+      {breadcrumbs.length > 0 ? (
         <Box marginBlockStart={20}>
-          <BreadcrumbsList items={breadcrumbs} selectLastItem />
+          <BreadcrumbsList selectLastItem items={breadcrumbs} />
         </Box>
-      ) : null} */}
+      ) : null}
 
       <Box
         borderBlockEndWidth='thin'
@@ -271,6 +272,7 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article }) => {
         <Grid className={styles.grid}>
           <Grid.Column span={12}>
             {/* <Header component={template} breadcrumbs={breadcrumbListItems} contentFormCta={form?.fields.submitText} /> */}
+            <Header document={article} />
           </Grid.Column>
 
           <Grid.Column span={12}>
