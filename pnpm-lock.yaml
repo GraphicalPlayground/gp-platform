@@ -292,6 +292,9 @@ importers:
       '@clerk/nextjs':
         specifier: ^7.6.0
         version: 7.6.0(next@16.2.7(@babel/core@8.0.1)(@opentelemetry/api@1.9.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@gp/constants':
+        specifier: workspace:*
+        version: link:../../packages/constants
       '@gp/content':
         specifier: workspace:*
         version: link:../../packages/content
@@ -301,6 +304,9 @@ importers:
       '@gp/seo':
         specifier: workspace:*
         version: link:../../packages/seo
+      '@gp/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@gp/ui':
         specifier: workspace:*
         version: link:../../packages/ui
