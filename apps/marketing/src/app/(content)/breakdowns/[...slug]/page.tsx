@@ -36,5 +36,5 @@ export default async function BreakdownSlugPage({ params }: { params: Promise<{ 
     return notFound();
   }
 
-  return <Article article={doc} />;
+  return <Article article={doc} basePath='/breakdowns' />;
 }

@@ -6,6 +6,8 @@ import React from 'react';
 import { cms } from '@/lib/cms';
 import type { Metadata } from 'next';
 import { Urls, SeoMetadata } from '@gp/seo';
+import { Article } from '@/components/article';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   return (await cms.articles.getChangelogEntries()).map((entries) => ({ slug: entries.slug.split('/') }));
@@ -25,6 +27,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   );
 }
 
-export default function ChangelogSlugPage() {
-  return <div>Changelog Slug</div>;
+export default async function ChangelogSlugPage({ params }: { params: Promise<{ slug: string | string[] }> }) {
+  const { slug } = await params;
+  const doc = await cms.articles.getCompiledBySlug(slug instanceof Array ? slug.join('/') : slug);
+
+  if (!doc) {
+    return notFound();
+  }
+
+  return <Article article={doc} basePath='/changelogs' />;
 }

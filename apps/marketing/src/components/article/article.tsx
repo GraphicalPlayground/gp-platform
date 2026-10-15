@@ -8,10 +8,11 @@ import React, { useRef } from 'react';
 import styles from './article.module.css';
 
 import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label } from '@gp/ui/components';
-import type { CompiledMdxDocument, ArticleFrontmatter } from '@gp/content';
+import type { CompiledMdxDocument, Article as ArticleFrontmatter } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
 import { SocialShare, BreadcrumbsList, PublishedDate, People } from './components';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
+import { ArticleJsonLd } from '@gp/seo/react';
 import Link from 'next/link';
 
 interface AsideProps {
@@ -227,9 +228,10 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, docum
 
 interface ArticleProps {
   article: CompiledMdxDocument<ArticleFrontmatter>;
+  basePath: string;
 }
 
-const ArticleRoot: React.FC<ArticleProps> = ({ article }) => {
+const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
   const contentRef = useRef<HTMLDivElement | null>(null);
   // const payload = toResourceDetailsPayload(useRoutePayload<unknown>());
   // const contentfulData = useContentfulData(payload.contentfulRawJsonResponse);
@@ -324,32 +326,8 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article }) => {
         </Box>
       ) : null} */}
 
-      {/* {isEventPage ? (
-        <ResourceEventSeoSchema
-          fields={template.fields}
-          title={page.fields.title ?? hero?.fields.heading ?? ''}
-          description={hero?.fields.description}
-          imageUrl={featuredImage?.fields.file?.url}
-          contributors={contributors}
-        />
-      ) : isArticlePage ? (
-        <ArticleSeoSchema
-          title={page.fields.title ?? hero?.fields.heading ?? ''}
-          imageUrl={articleImageUrl}
-          contributors={contributors}
-          dateModified={page.sys.updatedAt}
-          datePublished={page.sys.createdAt}
-        />
-      ) : (
-        <script type='application/ld+json'>
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Thing',
-            'name': hero?.fields.heading,
-            'description': hero?.fields.description
-          })}
-        </script>
-      )} */}
+      <ArticleJsonLd article={article.frontmatter} path={basePath + '/' + article.frontmatter.slug} />
+      {/* TODO: Make the path accurate to the current page (e.g. /breakdowns/...) */}
     </>
   );
 };
