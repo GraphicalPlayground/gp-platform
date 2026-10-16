@@ -241,6 +241,7 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
 
   // const { body, faq, featuredCta, featuredImage, form, hero, people, relatedResources, tableOfContents } =
   //   template.fields;
+  const { faq, relatedSlugs } = article.frontmatter;
 
   // const locationUrl = new URL(page.fields.path, ssrSafeLocation.origin);
   // const queryParams = new URLSearchParams(ssrSafeLocation.search);
@@ -260,7 +261,6 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
   // })();
   // const indexPath = payload.indexPath || fallbackIndexPath;
 
-  // const contributors = people ? people.map((p: Person) => ({ name: p.fields.fullName })) : [];
   // const articleImageUrl = featuredImage?.fields.file.url ?? page.fields.seo?.fields.socialMediaImage?.fields.file.url;
   // const isArticlePage = page.fields.path.includes('resources/articles');
   // const isEventPage =
@@ -292,42 +292,39 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
               </Grid.Column>
 
               <Grid.Column className={styles.formWrapper} span={{ xsmall: 12, large: 4 }} start={{ large: 9 }}>
-                {
-                  hasTableOfContents /* && body */ ? (
-                    <TableOfContents
-                      active={currentVisibleHeading}
-                      items={article.headings.filter((heading) => heading.level === 'h2')}
-                    />
-                  ) : null /* <Aside component={template} locationUrl={locationUrl} /> */
-                }
+                {hasTableOfContents /* && body */ ? (
+                  <TableOfContents
+                    active={currentVisibleHeading}
+                    items={article.headings.filter((heading) => heading.level === 'h2')}
+                  />
+                ) : (
+                  <Aside /> /* <Aside component={template} locationUrl={locationUrl} /> */
+                )}
               </Grid.Column>
             </Grid>
           </Grid.Column>
         </Grid>
       </Box>
 
-      {/* {relatedResources && relatedResources.length > 0 ? (
+      {relatedSlugs.length > 0 ? (
         <Box
-          paddingBlockStart={{ narrow: 48, regular: 80 }}
-          paddingBlockEnd={{ narrow: 64, regular: 96 }}
           backgroundColor='subtle'
+          paddingBlockEnd={{ narrow: 64, regular: 96 }}
+          paddingBlockStart={{ narrow: 48, regular: 80 }}
         >
           <Grid>
-            <Grid.Column>
-              <RelatedResources relatedResources={relatedResources} />
-            </Grid.Column>
+            <Grid.Column>{/* <RelatedResources relatedResources={relatedResources} /> */}</Grid.Column>
           </Grid>
         </Box>
-      ) : null} */}
+      ) : null}
 
-      {/* {faq ? (
-        <Box style={{ paddingTop: 'var(--base-size-96)', paddingBottom: 'var(--base-size-96)' }}>
-          <ContentfulFaqGroup component={faq} headingLevel={'h2'} />
+      {faq ? (
+        <Box style={{ paddingTop: 'var(--gp-size-96)', paddingBottom: 'var(--gp-size-96)' }}>
+          {/* <ContentfulFaqGroup component={faq} headingLevel={'h2'} /> */}
         </Box>
-      ) : null} */}
+      ) : null}
 
       <ArticleJsonLd article={article.frontmatter} path={basePath + '/' + article.frontmatter.slug} />
-      {/* TODO: Make the path accurate to the current page (e.g. /breakdowns/...) */}
     </>
   );
 };
