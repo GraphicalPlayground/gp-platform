@@ -72,12 +72,7 @@ const config = defineConfig([
         { blankLine: 'always', next: 'return', prev: '*' }
       ],
       'prettier/prettier': 'error',
-      'sort-destructure-keys/sort-destructure-keys': [
-        'error',
-        {
-          caseSensitive: true
-        }
-      ],
+      'sort-destructure-keys/sort-destructure-keys': 'off',
       'sort-imports': 'off',
       'sort-keys': 'off',
       'sort-keys-fix/sort-keys-fix': 'off',
