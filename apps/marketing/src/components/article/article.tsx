@@ -7,7 +7,7 @@
 import React, { useRef } from 'react';
 import styles from './article.module.css';
 
-import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label } from '@gp/ui/components';
+import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label, Hero } from '@gp/ui/components';
 import type { CompiledMdxDocument, Article as ArticleFrontmatter } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
 import { SocialShare, BreadcrumbsList, PublishedDate, People } from './components';
@@ -194,6 +194,10 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, docum
         marginBlockStart={{ narrow: 48, regular: 64 }}
       >
         {/* {hero ? <ContentfulHero component={hero} heroClassName={styles.hero} paddingBlockEnd='none' data-hpc /> : null} */}
+        <Hero className='pbe-(--gp-size-48)! pbs-0!'>
+          <Hero.Heading>{document.frontmatter.title}</Hero.Heading>
+          <Hero.Description>{document.frontmatter.description}</Hero.Description>
+        </Hero>
 
         <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
 
