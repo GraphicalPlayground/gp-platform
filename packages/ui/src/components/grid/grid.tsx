@@ -111,6 +111,7 @@ type GridColumnProps<T extends keyof JSX.IntrinsicElements = 'div'> = {
   as?: T | 'div' | 'span' | 'section';
   span?: GridColumnIndex | ResponsiveMap;
   start?: GridColumnIndex | ResponsiveMap;
+  ref?: React.Ref<HTMLDivElement | HTMLSpanElement | HTMLElement>;
 } & (T extends 'span'
   ? React.HTMLAttributes<HTMLSpanElement>
   : T extends 'section'
@@ -118,7 +119,7 @@ type GridColumnProps<T extends keyof JSX.IntrinsicElements = 'div'> = {
     : React.HTMLAttributes<HTMLDivElement>);
 
 const GridColumn: React.FC<GridColumnProps> = React.memo(
-  ({ as = 'div', children, className, span = 12, start, ...rest }) => {
+  ({ as = 'div', children, className, span = 12, start, ref, ...rest }) => {
     const validElements = ['div', 'span', 'section'];
     const UnderlyingTag = validElements.includes(as) ? as : 'div';
 
@@ -151,7 +152,7 @@ const GridColumn: React.FC<GridColumnProps> = React.memo(
     const classes = clsx(columnClassArray, className);
 
     return (
-      <UnderlyingTag className={classes} {...rest}>
+      <UnderlyingTag className={classes} ref={ref as React.Ref<HTMLDivElement>} {...rest}>
         {children}
       </UnderlyingTag>
     );
