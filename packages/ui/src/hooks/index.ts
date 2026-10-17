@@ -15,3 +15,5 @@ export * from './use-resize-observer';
 export * from './use-current-visible-heading';
 export * from './use-id';
 export * from './use-anchored-position';
+export * from './use-cursor-animation';
+export * from './use-isomorphic-layout-effect';
