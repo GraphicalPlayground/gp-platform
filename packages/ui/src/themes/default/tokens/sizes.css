@@ -154,6 +154,20 @@
     --gp-logo-suite-logobar-row-gap: var(--gp-size-40);
     --gp-logo-suite-logobar-marquee-gap-default: var(--gp-size-96);
     --gp-logo-suite-logobar-marquee-gap-condensed: var(--gp-size-40);
+
+    --gp-hero-narrow-padding: var(--gp-size-96) 0;
+    --gp-hero-regular-padding: var(--gp-size-128) 0;
+
+    --gp-icon-button-control-size-small: var(--gp-control-small-size);
+    --gp-icon-button-control-size-medium: var(--gp-control-medium-size);
+    --gp-icon-button-control-size-large: var(--gp-control-large-size);
+    --gp-icon-button-icon-size-small: var(--gp-size-16);
+    --gp-icon-button-icon-size-medium: var(--gp-size-16);
+    --gp-icon-button-icon-size-large: var(--gp-size-20);
+
+    --gp-spinner-size-small: var(--gp-size-12);
+    --gp-spinner-size-medium: var(--gp-size-16);
+    --gp-spinner-size-large: var(--gp-size-24);
   }
 
   @media (min-width: 544px) {

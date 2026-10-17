@@ -312,5 +312,29 @@
     --gp-subdomain-navbar-border-button-hover: var(--gp-color-white-0);
 
     --gp-breadcrumbs-separator-border-color: var(--gp-color-gray-1);
+
+    --gp-tooltip-color-default: var(--gp-color-text-default);
+
+    --gp-icon-button-danger-fg-color-rest: var(--gp-color-danger-fg);
+    --gp-icon-button-danger-fg-color-hover: var(--gp-color-white-0);
+    --gp-icon-button-danger-fg-color-active: var(--gp-color-white-0);
+    --gp-icon-button-danger-bg-color-rest: var(--gp-button-secondary-bg-color-rest);
+    --gp-icon-button-danger-bg-color-hover: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-bg-color-active: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-border-color-rest: var(--gp-button-secondary-border-color-rest);
+    --gp-icon-button-danger-border-color-hover: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-border-color-active: var(--gp-color-danger-emphasis);
+    --gp-icon-button-inactive-fg-color: var(--gp-color-text-muted);
+    --gp-icon-button-inactive-bg-color: var(--gp-color-canvas-subtle);
+    --gp-icon-button-inactive-border-color: var(--gp-color-canvas-subtle);
+    --gp-icon-button-invisible-bg-color: transparent;
+    --gp-icon-button-invisible-border-color: transparent;
+
+    --gp-action-menu-color-split-button-divider-default: var(--gp-color-border-muted);
+    --gp-action-menu-color-split-button-divider-primary: var(--gp-color-border-muted);
+    --gp-action-menu-color-item-hover: var(--gp-color-gray-6);
+    --gp-action-menu-color-scrollbar-thumb-bg: var(--gp-color-gray-3);
+
+    --gp-spinner-fg-color: var(--gp-color-text-muted);
   }
 }

@@ -22,5 +22,11 @@
 
     --gp-logo-suite-logobar-marquee-default: 30s;
     --gp-logo-suite-logobar-marquee-slow: 60s;
+
+    --gp-icon-button-spinner-animation-duration-default: 0.8s;
+    --gp-icon-button-spinner-animation-duration-reduced-motion: 1.6s;
+
+    --gp-spinner-animation-duration-default: 0.8s;
+    --gp-spinner-animation-duration-reduced-motion: 1.6s;
   }
 }
