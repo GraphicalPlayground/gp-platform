@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import type { Meta, StoryObj } from '@storybook/react';
-import { InlineCode } from '.';
+import { InlineCode } from './inline-code';
 
 const meta = {
   title: 'Components/InlineCode',

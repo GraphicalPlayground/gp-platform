@@ -6,7 +6,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { useTranslation } from 'react-i18next';
 
-import { NavList } from '.';
+import { NavList } from './navlist';
 
 const meta = {
   title: 'Components/NavList',

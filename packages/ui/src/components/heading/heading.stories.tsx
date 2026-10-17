@@ -13,7 +13,7 @@ import {
   headingStretch,
   headingSizes,
   headingFontVariants
-} from '.';
+} from './heading';
 
 import styles from './heading.stories.module.css';
 

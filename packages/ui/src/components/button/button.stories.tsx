@@ -5,7 +5,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { ChevronDownIcon, SearchIcon } from '@primer/octicons-react';
-import { Button, ButtonVariants, ButtonSizes, defaultButtonVariant, defaultButtonSize } from '.';
+import { Button, ButtonVariants, ButtonSizes, defaultButtonVariant, defaultButtonSize } from './button';
 
 const meta = {
   title: 'Components/Button',

@@ -6,7 +6,7 @@ import React from 'react';
 import type { Meta } from '@storybook/react';
 import { userEvent, waitFor } from 'storybook/test';
 
-import { Button } from '.';
+import { Button } from './button';
 import { HeartFillIcon, MarkGithubIcon, PlayIcon } from '@primer/octicons-react';
 import { Grid } from '../grid';
 import { Stack } from '../stack';

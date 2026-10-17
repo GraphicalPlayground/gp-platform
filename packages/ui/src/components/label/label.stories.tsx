@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Label, labelColors, labelSizes, defaultLabelColor, defaultLabelSize } from '.';
+import { Label, labelColors, labelSizes, defaultLabelColor, defaultLabelSize } from './label';
 
 const meta = {
   title: 'Components/Label',

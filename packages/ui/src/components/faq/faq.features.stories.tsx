@@ -4,7 +4,8 @@
 
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { FAQ, FAQGroup } from '.';
+import { FAQ } from './faq';
+import { FAQGroup } from './faq-group';
 import { Prose } from '..';
 import { Container } from '../helper';
 

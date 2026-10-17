@@ -5,7 +5,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Stack } from '.';
+import { Stack } from './stack';
 import placeholderImage from '../../fixtures/images/placeholder.png';
 
 const meta = {

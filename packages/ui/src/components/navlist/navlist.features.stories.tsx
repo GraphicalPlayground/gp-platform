@@ -14,7 +14,7 @@ import {
 } from '@primer/octicons-react';
 import { useTranslation } from 'react-i18next';
 
-import { NavList } from '.';
+import { NavList } from './navlist';
 
 import styles from './navlist.stories.module.css';
 

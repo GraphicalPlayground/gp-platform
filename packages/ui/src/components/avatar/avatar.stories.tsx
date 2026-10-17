@@ -5,7 +5,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar, AvatarSizes, AvatarShapes } from '.';
+import { Avatar, AvatarSizes, AvatarShapes } from './avatar';
 import placeholderAvatar from '../../fixtures/images/placeholder.png';
 
 const meta = {
