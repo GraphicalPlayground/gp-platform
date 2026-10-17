@@ -149,6 +149,7 @@
       "button-group": "class",
       "tooltip": "prompts",
       "spinner": "temp",
+      "inline-code": "less",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

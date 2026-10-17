@@ -1,0 +1,42 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.inline-code {
+  font-family: var(--gp-font-stack-monospace);
+  font-size: calc(1em - 1px);
+  font-weight: var(--gp-text-weight-regular);
+  line-height: 1.6;
+  color: var(--gp-inline-code-color-fg-default);
+  background-color: var(--gp-inline-code-bg-color);
+  padding-block: 0;
+  padding-inline: var(--gp-size-4);
+  border-radius: var(--gp-size-2);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.inline-code.inline-code--nowrap {
+  white-space: nowrap;
+  overflow-wrap: normal;
+}
+
+:where(h1, h2, h3, h4, h5, h6) .inline-code {
+  border-radius: var(--gp-size-4);
+}
+
+:where(h1, h2, h3, h4, h5, h6) .inline-code__text {
+  color: var(--gp-inline-code-color-fg-heading);
+}
+
+.inline-code__text {
+  position: relative;
+  /* TODO: this is some optical correction, but doesn't work well for uppercase. */
+  inset-block-start: -0.03em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
