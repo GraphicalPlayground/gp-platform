@@ -1,0 +1,13 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.icon-button__pauseAnimations * {
+  animation-play-state: paused;
+}
+
+.icon-button__tooltipDirections {
+  min-height: 100dvh;
+}
