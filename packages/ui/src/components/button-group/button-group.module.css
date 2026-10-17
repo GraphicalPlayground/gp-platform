@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.button-group {
+  display: inline-flex;
+  gap: var(--gp-size-8) var(--gp-size-16);
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.button-group > * {
+  flex-grow: 1;
+}
+
+.button-group--variant-joined {
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.button-group--variant-joined .button-group__item {
+  position: relative;
+  display: flex;
+  flex-grow: 0;
+}
+
+.button-group--variant-joined .button-group__item:not(:first-child) {
+  margin-inline-start: calc(var(--gp-border-width-thin) * -1);
+}
+
+.button-group--variant-joined .button-group__item:focus-within {
+  z-index: 1;
+}
+
+.button-group__joinedButton.button-group__joinedButton {
+  border-radius: 0;
+}
+
+.button-group__item:first-child .button-group__joinedButton {
+  border-start-start-radius: var(--gp-border-radius-medium);
+  border-end-start-radius: var(--gp-border-radius-medium);
+}
+
+.button-group__item:last-child .button-group__joinedButton {
+  border-start-end-radius: var(--gp-border-radius-medium);
+  border-end-end-radius: var(--gp-border-radius-medium);
+}
