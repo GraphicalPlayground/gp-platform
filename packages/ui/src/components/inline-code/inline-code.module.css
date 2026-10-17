@@ -10,7 +10,7 @@
   font-weight: var(--gp-text-weight-regular);
   line-height: 1.6;
   color: var(--gp-inline-code-color-fg-default);
-  background-color: var(--gp-inline-code-bg-color);
+  background-color: var(--gp-inline-code-color-bg-color);
   padding-block: 0;
   padding-inline: var(--gp-size-4);
   border-radius: var(--gp-size-2);
