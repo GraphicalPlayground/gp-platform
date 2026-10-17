@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import styles from './text-cursor-animation.module.css';
 
 import { useCursorAnimation } from '../../hooks';
-// import { EyebrowText } from '../EyebrowText';
+import { EyebrowText } from '../eyebrow-text';
 import type { TextProps } from '../text';
 
 export type TextCursorAnimationProps = {
