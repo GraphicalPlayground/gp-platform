@@ -14,3 +14,4 @@ export * from './use-intersection-observer';
 export * from './use-resize-observer';
 export * from './use-current-visible-heading';
 export * from './use-id';
+export * from './use-anchored-position';
