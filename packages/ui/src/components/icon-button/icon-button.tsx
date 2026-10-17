@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { clsx } from 'clsx';
 import React, { forwardRef } from 'react';
 import type { Icon } from '@primer/octicons-react';

@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { useEffect, useState } from 'react';
 import type { RefObject } from 'react';
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect';

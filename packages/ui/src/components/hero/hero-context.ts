@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React from 'react';
 
 export const HeroAlignOptions = ['start', 'center'] as const;

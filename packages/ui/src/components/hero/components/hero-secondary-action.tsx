@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React, { forwardRef } from 'react';
 import { Button } from '../../button';
 import type { ButtonBaseProps } from '../../button';
