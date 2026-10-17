@@ -152,6 +152,8 @@
       "inline-code": "less",
       "icon-button": "input",
       "action-menu": "input",
+      "eyebrow-text": "zed",
+      "text-cursor-animation": "animation",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
