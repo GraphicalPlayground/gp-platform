@@ -340,5 +340,9 @@
     --gp-inline-code-color-fg-default: var(--gp-color-text-muted);
     --gp-inline-code-color-fg-heading: var(--gp-color-text-default);
     --gp-inline-code-color-bg-color: var(--gp-color-gray-7);
+
+    --gp-text-cursor-animation-cursor-color: var(--gp-color-purple-3);
+    --gp-text-cursor-animation-cursor-delete-color: var(--gp-color-blue-3);
+    --gp-text-cursor-animation-cursor-final-color: var(--gp-color-green-2);
   }
 }

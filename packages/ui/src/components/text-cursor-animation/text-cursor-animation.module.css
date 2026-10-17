@@ -1,0 +1,90 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.text-cursor-animation {
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-cursor-animation__inner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-cursor-animation__text {
+  font-weight: var(--gp-text-weight-500);
+  white-space: pre;
+}
+
+.text-cursor-animation__sizingContainer {
+  display: inline-grid;
+  clip-path: inset(50%);
+}
+
+.text-cursor-animation__sizingText {
+  grid-area: 1 / 1;
+}
+
+.text-cursor-animation__content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gp-size-6);
+}
+
+.text-cursor-animation__content--animated {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+}
+
+.text-cursor-animation__cursor {
+  width: calc(var(--gp-size-8) + var(--gp-size-2) / 2);
+  height: calc(var(--gp-size-12) + var(--gp-size-2));
+  flex: 0 0 calc(var(--gp-size-8) + var(--gp-size-2) / 2);
+  position: relative;
+  top: -0.5px; /* optical adjustment*/
+}
+
+.text-cursor-animation__cursor--initial {
+  background-color: var(--gp-text-cursor-animation-cursor-color);
+}
+
+.text-cursor-animation__cursor--animated {
+  animation: text-cursor-animation-cursor-blink var(--gp-text-cursor-animation-cursor-animation-duration) steps(1, end)
+    250ms 3 forwards;
+}
+
+.text-cursor-animation__cursor--correction {
+  background-color: var(--gp-text-cursor-animation-cursor-delete-color);
+}
+
+.text-cursor-animation__cursor--final,
+.text-cursor-animation__cursor--complete {
+  background-color: var(--gp-text-cursor-animation-cursor-final-color);
+}
+
+@keyframes text-cursor-animation-cursor-blink {
+  0%,
+  79% {
+    opacity: 1;
+  }
+
+  80%,
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-cursor-animation__cursor {
+    animation: none;
+  }
+}

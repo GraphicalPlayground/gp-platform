@@ -28,5 +28,7 @@
 
     --gp-spinner-animation-duration-default: 0.8s;
     --gp-spinner-animation-duration-reduced-motion: 1.6s;
+
+    --gp-text-cursor-animation-cursor-animation-duration: 833ms;
   }
 }
