@@ -616,6 +616,9 @@ importers:
       '@gp/fonts':
         specifier: workspace:*
         version: link:../fonts
+      '@oddbird/popover-polyfill':
+        specifier: ^0.7.3
+        version: 0.7.3
       '@primer/behaviors':
         specifier: ^1.10.3
         version: 1.10.3
@@ -2450,6 +2453,9 @@ packages:
 
   '@oddbird/popover-polyfill@0.5.2':
     resolution: {integrity: sha512-iFrvar5SOMtKFOSjYvs4z9UlLqDdJbMx0mgISLcPedv+g0ac5sgeETLGtipHCVIae6HJPclNEH5aCyD1RZaEHw==}
+
+  '@oddbird/popover-polyfill@0.7.3':
+    resolution: {integrity: sha512-uOY7RLqS1M12u+EzZHQ8vPSh3NjwDlb4qwJ1WDzQ0inZ14+47Vv0NNs+1Lh4PtX1nLiiCbfJyIxPRHsgBTvhvg==}
 
   '@opentelemetry/api-logs@0.220.0':
     resolution: {integrity: sha512-CmVa4ImJ+ynfrPMNaAXHET6Bhb44SwzmfyVJFq9ni2jgXJR/l7C6gfVFddNmHP+ZOkP9cf4f9DBe68qVLTHc9w==}
@@ -10106,6 +10112,8 @@ snapshots:
   '@nolyfill/is-core-module@1.0.39': {}
 
   '@oddbird/popover-polyfill@0.5.2': {}
+
+  '@oddbird/popover-polyfill@0.7.3': {}
 
   '@opentelemetry/api-logs@0.220.0':
     dependencies:
