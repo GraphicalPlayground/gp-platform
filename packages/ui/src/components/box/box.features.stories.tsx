@@ -4,7 +4,8 @@
 
 import React from 'react';
 import type { Meta } from '@storybook/react';
-import { Stack, Text } from '..';
+import { Stack } from '../stack';
+import { Text } from '../text';
 import {
   Box,
   BoxBackgroundColors,

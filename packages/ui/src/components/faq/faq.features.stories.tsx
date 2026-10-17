@@ -6,7 +6,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { FAQ } from './faq';
 import { FAQGroup } from './faq-group';
-import { Prose } from '..';
+import { Prose } from '../prose';
 import { Container } from '../helper';
 
 const meta = {

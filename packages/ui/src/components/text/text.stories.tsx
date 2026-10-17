@@ -6,7 +6,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Text, textSizes, textWeights } from './text';
 import type { textFontVariants } from './text';
-import { Stack, Box, Grid } from '../';
+import { Stack } from '../stack';
+import { Box } from '../box';
+import { Grid } from '../grid';
 
 import styles from './text.stories.module.css';
 

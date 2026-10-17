@@ -4,8 +4,9 @@
 
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button, Box } from '..';
-import { Tooltip, TooltipDelays, TooltipDirections } from './';
+import { Button } from '../button';
+import { Box } from '../box';
+import { Tooltip, TooltipDelays, TooltipDirections } from './tooltip';
 
 const meta = {
   title: 'Components/Tooltip',

@@ -4,7 +4,10 @@
 
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stack, Grid, Text, Box } from '../';
+import { Text } from '../text';
+import { Grid } from '../grid';
+import { Stack } from '../stack';
+import { Box } from '../box';
 import {
   Heading,
   headingTags,
