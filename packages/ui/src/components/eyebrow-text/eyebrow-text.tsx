@@ -10,7 +10,7 @@ import type { TextProps } from '../text';
 import type { BaseProps } from '../helper';
 
 /** * Main Stylesheet (as a CSS Module) */
-import styles from './EyebrowText.module.css';
+import styles from './eyebrow-text.module.css';
 
 export const EyebrowTextVariants = ['default', 'muted', 'accent'] as const;
 
