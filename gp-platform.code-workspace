@@ -99,6 +99,7 @@
       "faq": "include",
       "marquees": "queue",
       "brands": "favicon",
+      "behaviors": "directive",
 
       /* Categories */
       "(content)": "template",
@@ -144,6 +145,10 @@
       "label": "interceptor",
       "breadcrumbs": "queue",
       "avatar": "admin",
+      "hero": "favicon",
+      "button-group": "class",
+      "tooltip": "prompts",
+      "spinner": "temp",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
