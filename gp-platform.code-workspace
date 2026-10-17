@@ -151,6 +151,7 @@
       "spinner": "temp",
       "inline-code": "less",
       "icon-button": "input",
+      "action-menu": "input",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
