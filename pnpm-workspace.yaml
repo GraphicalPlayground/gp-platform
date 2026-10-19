@@ -1,6 +1,6 @@
 packages:
-  - 'apps/**/**'
-  - 'packages/**/**'
+  - 'apps/**'
+  - 'packages/**'
 fetchRetries: 5
 fetchRetryMintimeout: 300000
 fetchRetryMaxtimeout: 300000
