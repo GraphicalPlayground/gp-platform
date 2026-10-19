@@ -18,6 +18,14 @@ export const articleSeoOverrideSchema = z.object({
 
 export type ArticleSeoOverride = z.infer<typeof articleSeoOverrideSchema>;
 
+export const schemaEntitySchema = z.object({
+  name: z.string().min(1),
+  type: z.string().min(1).default('Thing'), // schema.org type (e.g., 'Organization', 'SoftwareApplication')
+  sameAs: z.array(z.url()).min(1) // Array of Wikipedia, Wikidata, or Official URLs
+});
+
+export type SchemaEntity = z.infer<typeof schemaEntitySchema>;
+
 export const articleFrontmatterSchema = z.object({
   title: z.string().min(1),
   slug: z.string().min(1),
@@ -45,7 +53,9 @@ export const articleFrontmatterSchema = z.object({
   canonicalUrl: z.url().optional(),
   relatedSlugs: z.array(z.string().min(1)).default([]),
   faq: z.array(faqEntrySchema).optional(),
-  seo: articleSeoOverrideSchema.optional()
+  seo: articleSeoOverrideSchema.optional(),
+  about: z.array(schemaEntitySchema).optional(),
+  mentions: z.array(schemaEntitySchema).optional()
 });
 
 export type ArticleFrontmatter = z.infer<typeof articleFrontmatterSchema>;
