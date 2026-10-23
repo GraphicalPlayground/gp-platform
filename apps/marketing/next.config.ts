@@ -26,6 +26,19 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Signal',
+            value: 'ai-train=no, search=yes, ai-input=no'
+          }
+        ]
+      }
+    ];
+  },
   async redirects() {
     return [
       {

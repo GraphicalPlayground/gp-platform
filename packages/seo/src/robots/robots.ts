@@ -108,6 +108,7 @@ export class SeoRobots {
 
     if (isPubliclyIndexable(this.target)) {
       const sitemapPath = this.options.sitemapPath ?? '/sitemap.xml';
+
       route.sitemap = `${this.trimBaseUrl()}${sitemapPath}`;
       route.host = this.trimBaseUrl();
     }
@@ -135,10 +136,13 @@ export class SeoRobots {
       return [{ userAgent: '*', disallow: '/' }, ...extra];
     }
 
+    // TODO: Add Content-Signal: ai-train=no, search=yes, ai-input=no, to the rules for marketing
     const rules: RobotsRule[] = [{ userAgent: '*', allow: '/' }];
+
     if (!this.options.disableAiCrawlers) {
       AI_CRAWLERS.forEach((bot) => rules.push({ userAgent: bot, allow: '/' }));
     }
+
     return [...rules, ...extra];
   }
 
