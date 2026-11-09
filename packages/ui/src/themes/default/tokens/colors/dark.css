@@ -344,5 +344,8 @@
     --gp-text-cursor-animation-cursor-color: var(--gp-color-purple-3);
     --gp-text-cursor-animation-cursor-delete-color: var(--gp-color-blue-3);
     --gp-text-cursor-animation-cursor-final-color: var(--gp-color-green-2);
+
+    --gp-anchor-nav-link-underline-default: var(--gp-color-gray-3);
+    --gp-anchor-nav-link-underline-pressed: var(--gp-color-white-0);
   }
 }

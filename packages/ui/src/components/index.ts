@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './anchor-nav';
 export * from './avatar';
 export * from './breadcrumbs';
 export * from './label';
