@@ -175,6 +175,41 @@
     --gp-eyebrow-banner-label-size: var(--gp-text-size-100);
     --gp-eyebrow-banner-heading-size: var(--gp-text-size-100);
     --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-100);
+
+    --gp-testimonial-minimal-quote-font-size-large: 2rem;
+    --gp-testimonial-minimal-quote-line-height: 1.35;
+    --gp-testimonial-expressive-max-width: 1176px;
+    --gp-testimonial-expressive-quote-max-width: 744px;
+    --gp-testimonial-expressive-quote-font-size: 1.5rem;
+    --gp-testimonial-expressive-quote-font-weight: 425;
+    --gp-testimonial-expressive-quote-letter-spacing: -0.01em;
+    --gp-testimonial-expressive-name-letter-spacing: 0.0107em;
+    --gp-testimonial-expressive-position-line-height: 1.6;
+    --gp-testimonial-expressive-position-letter-spacing: 0.01em;
+    --gp-testimonial-expressive-media-width: 100%;
+    --gp-testimonial-quote-font-size-default: var(--gp-text-size-400);
+    --gp-testimonial-quote-font-size-large: var(--gp-text-size-500);
+    --gp-testimonial-quote-font-weight-default: var(--gp-heading-weight-1000);
+    --gp-testimonial-quote-font-weight-large: var(--gp-heading-weight-600);
+    --gp-testimonial-quote-letter-spacing-default: var(--gp-text-letterSpacing-400);
+    --gp-testimonial-quote-letter-spacing-large: var(--gp-text-letterSpacing-900);
+  }
+
+  @media (min-width: 48rem) {
+    :root {
+      --gp-testimonial-expressive-max-width: 618px;
+      --gp-testimonial-expressive-quote-font-size: 1.625rem;
+      --gp-testimonial-expressive-quote-letter-spacing: -0.02em;
+      --gp-testimonial-expressive-media-width: 356px;
+    }
+  }
+
+  @media (min-width: 63.25rem) {
+    :root {
+      --gp-testimonial-expressive-max-width-25rem: 1176px;
+      --gp-testimonial-expressive-quote-font-size-25rem: 2rem;
+      --gp-testimonial-expressive-media-width-25rem: 312px;
+    }
   }
 
   @media (min-width: 544px) {

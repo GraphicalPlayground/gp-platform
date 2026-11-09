@@ -6,6 +6,8 @@
 export * from './helper';
 
 /* Export the components */
+export * from './testimonial-group';
+export * from './testimonial';
 export * from './token';
 export * from './pagination';
 export * from './eyebrow-banner';

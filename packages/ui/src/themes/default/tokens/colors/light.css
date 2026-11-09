@@ -416,5 +416,38 @@
     --gp-token-fg-color-accent: var(--gp-color-white-0);
     --gp-token-fg-color-outline: var(--gp-color-text-default);
     --gp-token-fg-color-invisible: var(--gp-color-text-default);
+
+    --gp-testimonial-quote-mark-background-default: var(--gp-color-gray-0);
+    --gp-testimonial-quote-mark-background-blue: var(--gp-color-blue-0);
+    --gp-testimonial-quote-mark-background-coral: var(--gp-color-coral-0);
+    --gp-testimonial-quote-mark-background-green: var(--gp-color-green-0);
+    --gp-testimonial-quote-mark-background-gray: var(--gp-color-gray-0);
+    --gp-testimonial-quote-mark-background-indigo: var(--gp-color-indigo-0);
+    --gp-testimonial-quote-mark-background-lemon: var(--gp-color-lemon-0);
+    --gp-testimonial-quote-mark-background-lime: var(--gp-color-lime-0);
+    --gp-testimonial-quote-mark-background-orange: var(--gp-color-orange-0);
+    --gp-testimonial-quote-mark-background-pink: var(--gp-color-pink-0);
+    --gp-testimonial-quote-mark-background-purple: var(--gp-color-purple-0);
+    --gp-testimonial-quote-mark-background-red: var(--gp-color-red-0);
+    --gp-testimonial-quote-mark-background-teal: var(--gp-color-teal-0);
+    --gp-testimonial-quote-mark-background-yellow: var(--gp-color-yellow-0);
+    --gp-testimonial-border-mask-default: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    --gp-testimonial-border-mask-subtle: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    --gp-testimonial-quote-mark-color-default: var(--gp-color-text-default);
+    --gp-testimonial-quote-mark-color-blue: var(--gp-color-blue-5);
+    --gp-testimonial-quote-mark-color-coral: var(--gp-color-coral-5);
+    --gp-testimonial-quote-mark-color-green: var(--gp-color-green-6);
+    --gp-testimonial-quote-mark-color-gray: var(--gp-color-gray-5);
+    --gp-testimonial-quote-mark-color-indigo: var(--gp-color-indigo-5);
+    --gp-testimonial-quote-mark-color-lemon: var(--gp-color-lemon-5);
+    --gp-testimonial-quote-mark-color-lime: var(--gp-color-lime-5);
+    --gp-testimonial-quote-mark-color-orange: var(--gp-color-orange-5);
+    --gp-testimonial-quote-mark-color-pink: var(--gp-color-pink-5);
+    --gp-testimonial-quote-mark-color-purple: var(--gp-color-purple-5);
+    --gp-testimonial-quote-mark-color-red: var(--gp-color-red-5);
+    --gp-testimonial-quote-mark-color-teal: var(--gp-color-teal-5);
+    --gp-testimonial-quote-mark-color-yellow: var(--gp-color-yellow-5);
+    --gp-testimonial-quote-color-default: var(--gp-color-text-default);
+    --gp-testimonial-quote-color-emphasis: var(--gp-color-green-7);
   }
 }

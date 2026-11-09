@@ -101,6 +101,8 @@
       "brands": "favicon",
       "behaviors": "directive",
       "third-party-logos": "lib",
+      "testimonial": "messages",
+      "testimonial-group": "messages",
 
       /* Categories */
       "(content)": "template",

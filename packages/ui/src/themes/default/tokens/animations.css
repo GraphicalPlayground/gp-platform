@@ -30,5 +30,8 @@
     --gp-spinner-animation-duration-reduced-motion: 1.6s;
 
     --gp-text-cursor-animation-cursor-animation-duration: 833ms;
+
+    --gp-testimonial-group-fade-in-duration: 475ms;
+    --gp-testimonial-group-fade-out-duration: 250ms;
   }
 }
