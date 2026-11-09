@@ -9,7 +9,7 @@ import { useEffect, useLayoutEffect } from 'react';
 /**
  * @brief A custom React hook that uses useLayoutEffect on the client and useEffect on the server to avoid warnings during server-side rendering.
  */
-const useIsomorphicLayoutEffect =
+export const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' &&
   typeof window.document !== 'undefined' &&
   typeof window.document.createElement !== 'undefined'

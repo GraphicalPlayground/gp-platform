@@ -350,5 +350,12 @@
 
     --gp-anchor-nav-link-underline-default: var(--gp-color-gray-4);
     --gp-anchor-nav-link-underline-pressed: var(--gp-color-black-0);
+
+    --gp-carousel-pagination-bg-color: var(--gp-color-canvas-subtle);
+    --gp-carousel-pagination-indicator-bg-color: var(--gp-color-gray-6);
+    --gp-carousel-pagination-indicator-active-bg-color: var(--gp-color-gray-7);
+    --gp-carousel-pagination-arrow-button-fg-color: var(--gp-color-black-0);
+    --gp-carousel-pagination-arrow-button-border-color: var(--gp-color-gray-2);
+    --gp-carousel-pagination-arrow-button-inactive-fg-color: var(--gp-color-gray-3);
   }
 }

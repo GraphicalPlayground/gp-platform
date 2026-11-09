@@ -156,6 +156,7 @@
       "text-cursor-animation": "animation",
       "anchor-nav": "link",
       "breakout-banner": "layout",
+      "carousel-pagination": "constant",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
