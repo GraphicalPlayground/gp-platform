@@ -103,6 +103,7 @@
       "third-party-logos": "lib",
       "testimonial": "messages",
       "testimonial-group": "messages",
+      "tabs": "archive",
 
       /* Categories */
       "(content)": "template",

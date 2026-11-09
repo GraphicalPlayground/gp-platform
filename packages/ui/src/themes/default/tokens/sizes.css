@@ -193,6 +193,8 @@
     --gp-testimonial-quote-font-weight-large: var(--gp-heading-weight-600);
     --gp-testimonial-quote-letter-spacing-default: var(--gp-text-letterSpacing-400);
     --gp-testimonial-quote-letter-spacing-large: var(--gp-text-letterSpacing-900);
+
+    --gp-tabs-container-padding: var(--gp-size-4);
   }
 
   @media (min-width: 48rem) {

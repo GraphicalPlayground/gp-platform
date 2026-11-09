@@ -449,5 +449,16 @@
     --gp-testimonial-quote-mark-color-yellow: var(--gp-color-yellow-5);
     --gp-testimonial-quote-color-default: var(--gp-color-text-default);
     --gp-testimonial-quote-color-emphasis: var(--gp-color-green-7);
+
+    --gp-tabs-item-accent-bg-color-rest: var(--gp-color-green-6);
+    --gp-tabs-item-accent-fg-color-rest: var(--gp-color-white-0);
+    --gp-tabs-item-default-bg-color-active: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(153, 153, 153, 0.12) 100%
+    );
+    --gp-tabs-item-default-border-color-active: var(--gp-color-border-default);
+    --gp-tabs-item-underline-rest: var(--gp-color-black-0);
+    --gp-tabs-list-border-width-active: var(--gp-border-width-thin);
   }
 }

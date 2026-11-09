@@ -18,3 +18,4 @@ export * from './use-anchored-position';
 export * from './use-cursor-animation';
 export * from './use-isomorphic-layout-effect';
 export * from './use-expanded-menu';
+export * from './use-tabs';

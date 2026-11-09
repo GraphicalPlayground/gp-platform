@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './tabs';
 export * from './testimonial-group';
 export * from './testimonial';
 export * from './token';
