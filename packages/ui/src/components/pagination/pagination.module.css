@@ -1,0 +1,86 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.Pagination {
+  margin-top: var(--gp-size-20);
+  margin-bottom: var(--gp-size-16);
+  text-align: center;
+}
+
+.Pagination__inner {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gp-size-8);
+}
+
+.Pagination__pageItem {
+  transition: none; /* Prevents flash of background color when changing pages */
+  --gp-button-subtle-border-color-rest: transparent;
+  --gp-button-subtle-border-color-hover: transparent;
+  --gp-button-subtle-border-color-active: transparent;
+}
+
+.Pagination__controlContent {
+  position: relative;
+  display: inline-flex;
+  gap: var(--gp-size-4);
+  align-items: center;
+}
+
+.Pagination__controlArrowWrapper {
+  display: none;
+  flex-shrink: 0;
+}
+
+.Pagination__controlArrowWrapper--previous {
+  transform: translateX(var(--gp-size-2));
+}
+
+.Pagination__controlArrowWrapper--next {
+  transform: translateX(calc(var(--gp-size-2) * -1));
+}
+
+.Pagination__controlArrow {
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+}
+
+@media screen and (max-width: 47.99rem) {
+  .Pagination__controlItem {
+    padding-inline: var(--gp-size-8);
+    --gp-button-subtle-border-color-rest: transparent;
+    --gp-button-subtle-border-color-hover: transparent;
+    --gp-button-subtle-border-color-active: transparent;
+  }
+
+  .Pagination__controlText {
+    position: absolute;
+    width: var(--gp-size-2);
+    height: var(--gp-size-2);
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    word-wrap: normal;
+    border: 0;
+  }
+
+  .Pagination__controlArrowWrapper {
+    display: flex;
+  }
+
+  .Pagination__controlItem > span {
+    display: flex;
+    align-items: center;
+  }
+
+  .Pagination__controlItem > span > span {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+  }
+}

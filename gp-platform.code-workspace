@@ -158,6 +158,7 @@
       "breakout-banner": "layout",
       "carousel-pagination": "constant",
       "eyebrow-banner": "base",
+      "pagination": "routes",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
