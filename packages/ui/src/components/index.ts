@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './eyebrow-banner';
 export * from './carousel-pagination';
 export * from './breakout-banner';
 export * from './anchor-nav';

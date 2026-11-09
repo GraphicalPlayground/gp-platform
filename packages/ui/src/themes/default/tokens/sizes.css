@@ -168,6 +168,13 @@
     --gp-spinner-size-small: var(--gp-size-12);
     --gp-spinner-size-medium: var(--gp-size-16);
     --gp-spinner-size-large: var(--gp-size-24);
+
+    --gp-eyebrow-banner-border-radius: var(--gp-size-16);
+    --gp-eyebrow-banner-spacing-inner-block: 14px;
+    --gp-eyebrow-banner-spacing-inner-inline: var(--gp-size-16);
+    --gp-eyebrow-banner-label-size: var(--gp-text-size-100);
+    --gp-eyebrow-banner-heading-size: var(--gp-text-size-100);
+    --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-100);
   }
 
   @media (min-width: 544px) {
@@ -187,6 +194,12 @@
       --gp-section-padding-spacious: var(--gp-size-80);
 
       --gp-faq-heading-margin-bottom: var(--gp-size-64);
+
+      --gp-eyebrow-banner-border-radius: 100px;
+      --gp-eyebrow-banner-spacing-inner-inline: var(--gp-size-20);
+      --gp-eyebrow-banner-label-size: var(--gp-text-size-200);
+      --gp-eyebrow-banner-heading-size: var(--gp-text-size-200);
+      --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-200);
     }
   }
 
