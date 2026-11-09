@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './token';
 export * from './pagination';
 export * from './eyebrow-banner';
 export * from './carousel-pagination';

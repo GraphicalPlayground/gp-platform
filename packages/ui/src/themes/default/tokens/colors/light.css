@@ -402,5 +402,19 @@
     --gp-eyebrow-banner-fg-color-red-orange-end: var(--gp-color-orange-5);
     --gp-eyebrow-banner-fg-color-teal: var(--gp-color-teal-5);
     --gp-eyebrow-banner-fg-color-yellow: var(--gp-color-yellow-5);
+
+    --gp-token-bg-color-default: var(--gp-color-gray-0);
+    --gp-token-bg-color-accent: var(--gp-color-green-6);
+    --gp-token-bg-color-hover-default: var(--gp-color-gray-1);
+    --gp-token-bg-color-hover-accent: var(--gp-color-green-7);
+    --gp-token-bg-color-hover-outline: rgba(0, 0, 0, 0.06);
+    --gp-token-bg-color-hover-invisible: rgba(0, 0, 0, 0.06);
+    --gp-token-bg-color-invisible: var(--gp-color-gray-1);
+    --gp-token-bg-color-outline: transparent;
+    --gp-token-border-outline: var(--gp-color-border-muted);
+    --gp-token-fg-color-default: var(--gp-color-text-default);
+    --gp-token-fg-color-accent: var(--gp-color-white-0);
+    --gp-token-fg-color-outline: var(--gp-color-text-default);
+    --gp-token-fg-color-invisible: var(--gp-color-text-default);
   }
 }

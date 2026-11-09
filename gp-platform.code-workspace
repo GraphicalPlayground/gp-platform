@@ -100,6 +100,7 @@
       "marquees": "queue",
       "brands": "favicon",
       "behaviors": "directive",
+      "third-party-logos": "lib",
 
       /* Categories */
       "(content)": "template",
