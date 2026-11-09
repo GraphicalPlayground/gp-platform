@@ -85,7 +85,15 @@ const toKebabCase = (str) => {
 };
 
 const normalizeVariables = (value) => {
-  if (typeof value !== 'string' || !value.startsWith('var(--')) {
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  if (value.match(/^\{.*\}$/)) {
+    value = 'var(--' + value.replace(/^\{(.*)\}$/, '$1').replace(/\./g, '-') + ')';
+  }
+
+  if (!value.startsWith('var(--')) {
     return value;
   }
 
