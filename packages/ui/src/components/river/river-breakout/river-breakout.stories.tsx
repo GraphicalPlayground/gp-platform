@@ -11,7 +11,7 @@ import { RiverBreakout } from './river-breakout';
 import { Grid } from '../../grid';
 import { Link } from '../../link';
 import { Text } from '../../text';
-// import { Timeline } from '../../timeline';
+import { Timeline } from '../../timeline';
 
 const meta = {
   title: 'Components/RiverBreakout',
@@ -40,15 +40,14 @@ export const Default: Story = {
       </RiverBreakout.Visual>
       <RiverBreakout.Content
         trailingComponent={() => (
-          <></>
-          // <Timeline>
-          //   <Timeline.Item>
-          //     <b>GitHub Codespaces</b> offers a complete dev environment in seconds.
-          //   </Timeline.Item>
-          //   <Timeline.Item>
-          //     <b>GitHub Copilot</b> is your AI pair programmer that empowers you to complete tasks.
-          //   </Timeline.Item>
-          // </Timeline>
+          <Timeline>
+            <Timeline.Item>
+              <b>GitHub Codespaces</b> offers a complete dev environment in seconds.
+            </Timeline.Item>
+            <Timeline.Item>
+              <b>GitHub Copilot</b> is your AI pair programmer that empowers you to complete tasks.
+            </Timeline.Item>
+          </Timeline>
         )}
       >
         <Text>

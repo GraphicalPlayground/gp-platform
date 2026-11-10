@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './timeline';
 export * from './section-intro';
 export * from './river';
 export * from './pricing-options';

@@ -475,5 +475,7 @@
     --gp-pricing-options-actions-message-bg-color: color-mix(in srgb, var(--gp-color-blue-4) 10%, transparent);
     --gp-pricing-options-actions-message-border-color: color-mix(in srgb, var(--gp-color-blue-6) 20%, transparent);
     --gp-pricing-options-actions-message-accent-color: var(--gp-color-blue-5);
+
+    --gp-timeline-line-color: var(--gp-color-border-default);
   }
 }

@@ -230,6 +230,13 @@
     --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-40);
     --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-20);
     --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-16);
+
+    --gp-timeline-line-height: var(--gp-text-line-height-200);
+    --gp-timeline-line-length: 44ch;
+    --gp-timeline-stroke-width: 2px;
+    --gp-timeline-spacing: var(--gp-size-16);
+    --gp-timeline-bullet-size: var(--gp-size-8);
+    --gp-timeline-bullet-spacing: 2px;
   }
 
   @media (min-width: 48rem) {

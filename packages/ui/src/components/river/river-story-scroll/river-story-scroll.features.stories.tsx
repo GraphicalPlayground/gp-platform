@@ -12,7 +12,7 @@ import { Text } from '../../text';
 import { Link } from '../../link';
 import { River } from '../river';
 import { Box } from '../../box';
-// import { Timeline } from '../../timeline';
+import { Timeline } from '../../timeline';
 import { Container } from '../../helper';
 
 import placeholder1 from '../../../fixtures/images/placeholder-1.png';
@@ -109,12 +109,13 @@ export const WithTimeline: Story = {
 };
 
 function TimelineExample() {
-  return <></>;
-  /* <Timeline>
+  return (
+    <Timeline>
       <Timeline.Item>Increase developer velocity</Timeline.Item>
       <Timeline.Item>Faster feedback loops</Timeline.Item>
       <Timeline.Item>Secure every build</Timeline.Item>
-    </Timeline> */
+    </Timeline>
+  );
 }
 
 export const WithTimelineNarrow: Story = {

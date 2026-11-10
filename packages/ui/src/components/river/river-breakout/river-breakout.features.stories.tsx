@@ -18,7 +18,7 @@ import { Stack } from '../../stack';
 // import { Statistic } from '../../statistic';
 import { Testimonial } from '../../testimonial';
 import { Text } from '../../text';
-// import { Timeline } from '../../timeline';
+import { Timeline } from '../../timeline';
 
 const meta = {
   title: 'Components/RiverBreakout/Features',
@@ -51,15 +51,14 @@ export const HighlightedPortion: Story = {
         </RiverBreakout.Visual>
         <RiverBreakout.Content
           trailingComponent={() => (
-            <></>
-            // <Timeline>
-            //   <Timeline.Item>
-            //     <b>GitHub Codespaces</b> offers a complete dev environment in seconds.
-            //   </Timeline.Item>
-            //   <Timeline.Item>
-            //     <b>GitHub Copilot</b> is your AI pair programmer that empowers you to complete tasks.
-            //   </Timeline.Item>
-            // </Timeline>
+            <Timeline>
+              <Timeline.Item>
+                <b>GitHub Codespaces</b> offers a complete dev environment in seconds.
+              </Timeline.Item>
+              <Timeline.Item>
+                <b>GitHub Copilot</b> is your AI pair programmer that empowers you to complete tasks.
+              </Timeline.Item>
+            </Timeline>
           )}
         >
           <Text>

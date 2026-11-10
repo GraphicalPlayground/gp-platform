@@ -1,0 +1,102 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.Timeline {
+  --bulletY: calc(var(--gp-size-8) / 2 - var(--gp-timeline-bullet-size) / 2 + var(--gp-size-8));
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.Timeline__item {
+  position: relative;
+  max-width: var(--gp-timeline-line-length);
+  padding-inline-start: calc(var(--gp-timeline-bullet-size) + var(--gp-timeline-spacing));
+  color: var(--gp-color-text-default);
+  line-height: var(--gp-timeline-line-height);
+}
+
+.Timeline--full-width .Timeline__item {
+  max-width: none;
+}
+
+.Timeline__item:not(:last-child) {
+  padding-bottom: var(--gp-size-32);
+}
+
+.Timeline__item::before,
+.Timeline__item::after {
+  content: '';
+  position: absolute;
+}
+
+.Timeline__item::before {
+  width: var(--gp-timeline-bullet-size);
+  height: var(--gp-timeline-bullet-size);
+  top: var(--bulletY);
+  left: 0;
+  border-style: solid;
+  border-width: var(--gp-timeline-stroke-width);
+  border-color: var(--gp-timeline-line-color);
+  border-radius: var(--gp-border-radius-full);
+}
+
+.Timeline__item:not(:last-child)::after {
+  top: calc(var(--bulletY) + var(--gp-timeline-bullet-size) + var(--gp-timeline-bullet-spacing));
+  left: calc(var(--gp-timeline-bullet-size) / 2 - var(--gp-timeline-stroke-width) / 2);
+  width: var(--gp-timeline-stroke-width);
+  height: calc(100% - var(--gp-timeline-bullet-size) - var(--gp-timeline-bullet-spacing) * 2);
+  background-color: var(--gp-timeline-line-color);
+  border-radius: var(--gp-border-radius-full);
+}
+
+.Timeline__item-text em,
+.Timeline__item-text b {
+  color: var(--gp-color-text-default);
+  font-style: normal;
+  font-weight: var(--gp-text-weight-medium);
+}
+
+.Timeline__item a {
+  color: var(--gp-inline-link-color-rest);
+  position: relative;
+  text-decoration: underline;
+  text-decoration-color: var(--gp-inline-link-color-rest);
+  text-decoration-thickness: var(--gp-border-width-thin);
+  text-underline-position: under;
+  transition: var(--gp-inline-link-transition-timing) text-decoration;
+}
+
+.Timeline__item a:hover {
+  text-decoration-thickness: var(--gp-border-width-thick);
+}
+
+.Timeline__item a {
+  font-weight: inherit;
+  color: var(--gp-inline-link-color-rest);
+}
+
+.Timeline__item a:active {
+  color: var(--gp-inline-link-color-pressed);
+}
+
+.Timeline__item a:focus-visible {
+  outline: var(--gp-border-width-thick) solid var(--gp-color-focus);
+  outline-offset: var(--gp-size-2);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .Timeline__item,
+  .Timeline__item::before,
+  .Timeline__item::after,
+  .Timeline__item * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
