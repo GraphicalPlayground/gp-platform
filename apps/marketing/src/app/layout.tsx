@@ -11,6 +11,7 @@ import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 import { env } from '~env';
 
+import { MarketingChrome } from '@/components/auth';
 import { Footer } from '@/components/footer';
 import { MarketingHeader } from '@/components/header';
 
@@ -34,9 +35,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className='relative w-full min-h-screen flex flex-col scroll-smooth'>
         <JsonLd data={graph} />
         <ClerkProvider>
-          <MarketingHeader />
-          <main className='w-full'>{children}</main>
-          <Footer />
+          <MarketingChrome footer={<Footer />} header={<MarketingHeader />}>
+            {children}
+          </MarketingChrome>
         </ClerkProvider>
       </body>
 
