@@ -239,6 +239,13 @@
     --gp-timeline-bullet-spacing: 2px;
 
     --gp-tiles-item-max-size: 184px;
+
+    --gp-sub-nav-width-sub-menu: 300px;
+    --gp-sub-nav-width-overflow-menu-inset: 32px;
+    --gp-sub-nav-width-overflow-menu-min: 160px;
+    --gp-sub-nav-height-overflow-menu-inset: 128px;
+    --gp-sub-nav-height-overflow-menu-item-min: 40px;
+    --gp-sub-nav-offset-overflow-menu: 4px;
   }
 
   @media (min-width: 48rem) {

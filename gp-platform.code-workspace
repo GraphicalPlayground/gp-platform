@@ -179,6 +179,7 @@
       "section-intro": "layout",
       "timeline": "temp",
       "tiles": "app",
+      "sub-nav": "layout",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

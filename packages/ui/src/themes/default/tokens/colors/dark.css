@@ -478,5 +478,20 @@
     --gp-tiles-bg-color-rest: #090d0a;
     --gp-tiles-bg-color-hover: #101411;
     --gp-tiles-highlight-color: #5fed83;
+
+    --gp-sub-nav-bg-color: var(--gp-color-canvas-default);
+    --gp-sub-nav-overflow-menu-bg-color-rest: var(--gp-color-canvas-default);
+    --gp-sub-nav-overflow-menu-bg-color-hover: var(--gp-color-canvas-subtle);
+    --gp-sub-nav-overflow-menu-fg-color-rest: var(--gp-color-text-muted);
+    --gp-sub-nav-overflow-menu-fg-color-hover: var(--gp-color-text-default);
+    --gp-sub-nav-overflow-menu-toggle-bg-color-rest: transparent;
+    --gp-sub-nav-overflow-menu-toggle-bg-color-hover: var(--gp-color-gray-6);
+    --gp-sub-nav-overflow-menu-toggle-bg-color-active: var(--gp-color-gray-6);
+    --gp-sub-nav-color-link-rest: var(--gp-color-text-default);
+    --gp-sub-nav-color-link-active: var(--gp-color-text-default);
+    --gp-sub-nav-color-link-bg-color: #323834;
+    --gp-sub-nav-shadow:
+      0px 100px 80px rgba(0, 0, 0, 0.01), 0px 41px 33px rgba(0, 0, 0, 0.02), 0px 22px 17px rgba(0, 0, 0, 0.02),
+      0px 12px 10px rgba(0, 0, 0, 0.03), 0px 6px 5px rgba(0, 0, 0, 0.04), 0px 2px 2px rgba(0, 0, 0, 0.07);
   }
 }
