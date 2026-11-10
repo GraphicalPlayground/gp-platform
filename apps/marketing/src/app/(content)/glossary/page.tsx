@@ -9,9 +9,11 @@ import type { SearchParams } from '@/components/content-index';
 export default async function GlossaryPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
     <ContentIndexPage
+      searchable
       basePath='/glossary'
       description='Clear definitions of the graphics programming and engine architecture terms you will run into.'
       searchParams={await searchParams}
+      searchPlaceholder='Search glossary terms...'
       title='Glossary'
       type='glossary'
     />

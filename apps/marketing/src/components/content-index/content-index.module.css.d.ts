@@ -6,6 +6,7 @@ declare const styles: {
   readonly layoutGrid: string;
   readonly cardGrid: string;
   readonly filtersColumn: string;
+  readonly toolbar: string;
   readonly emptyStateWrapper: string;
   readonly spotlightCard: string;
 };

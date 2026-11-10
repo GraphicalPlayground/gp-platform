@@ -16,6 +16,15 @@
   }
 }
 
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-16);
+  padding: 0 0 var(--gp-size-32);
+}
+
 .emptyStateWrapper {
   border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
   color: var(--gp-color-text-muted);

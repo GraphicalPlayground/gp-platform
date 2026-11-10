@@ -4,4 +4,5 @@
 
 export * from './index-card';
 export * from './index-filters';
+export * from './index-search';
 export * from './index-sort';

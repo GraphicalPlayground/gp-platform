@@ -9,9 +9,11 @@ import type { SearchParams } from '@/components/content-index';
 export default async function ComparisonsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
     <ContentIndexPage
+      searchable
       basePath='/comparisons'
       description='Side-by-side comparisons of graphics APIs, techniques, and tools to help you pick the right one.'
       searchParams={await searchParams}
+      searchPlaceholder='Search comparisons...'
       title='Comparisons'
       type='comparison'
     />

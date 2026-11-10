@@ -9,9 +9,11 @@ import type { SearchParams } from '@/components/content-index';
 export default async function ShowcasesPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
     <ContentIndexPage
+      searchable
       basePath='/showcases'
       description='Projects built by the community with Graphical Playground.'
       searchParams={await searchParams}
+      searchPlaceholder='Search showcases...'
       title='Showcases'
       type='showcase'
     />

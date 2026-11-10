@@ -4,11 +4,11 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { clsx } from 'clsx';
 import styles from './index-filters.module.css';
 
-import { Box, Button, Heading, InlineLink, Stack } from '@gp/ui/components';
+import { Box, Button, Checkbox, CheckboxGroup, FormControl, Heading, InlineLink, Stack } from '@gp/ui/components';
 import { FilterIcon, XIcon } from '@primer/octicons-react';
 import type { FilterGroup } from '../content-index.utils';
 
@@ -39,6 +39,7 @@ export const IndexFilters: React.FC<IndexFiltersProps> = ({ groups, onApply, onC
   const [prevGroups, setPrevGroups] = useState(groups);
   const [selection, setSelection] = useState<Record<string, string[]>>(() => selectionFromGroups(groups));
   const [narrowMenuOpen, setNarrowMenuOpen] = useState(false);
+  const filtersContainerRef = useRef<HTMLDivElement>(null);
 
   // Sync local checkbox state whenever server-provided groups update after navigation.
   if (prevGroups !== groups) {
@@ -98,103 +99,102 @@ export const IndexFilters: React.FC<IndexFiltersProps> = ({ groups, onApply, onC
   if (groups.length === 0) return null;
 
   return (
-    <aside aria-labelledby='filters-heading' className={styles.aside}>
-      <Stack
-        className={clsx(styles.asideContent, narrowMenuOpen && styles['asideContent--open'])}
-        direction='vertical'
-        gap='none'
-        padding='none'
-      >
+    <div ref={filtersContainerRef}>
+      <aside aria-labelledby='filters-heading' className={styles.aside}>
         <Stack
-          alignItems='center'
-          className={clsx(styles.asideHeadingContainer, narrowMenuOpen && styles['asideHeadingContainer--open'])}
-          direction='horizontal'
-          justifyContent='space-between'
+          className={clsx(styles.asideContent, narrowMenuOpen && styles['asideContent--open'])}
+          direction='vertical'
+          gap='none'
           padding='none'
         >
-          <Heading
-            as='h2'
-            className={styles.asideHeading}
-            font='monospace'
-            id='filters-heading'
-            size='subhead-medium'
-            weight='medium'
-          >
-            Filters {filtersCount > 0 ? `(${filtersCount})` : ''}
-          </Heading>
-          <button
-            aria-controls='filters-form'
-            aria-expanded={narrowMenuOpen}
-            className={styles.filtersMenuToggle}
-            type='button'
-            onClick={() => setNarrowMenuOpen((open) => !open)}
-          >
-            <span className='sr-only'>{narrowMenuOpen ? 'Close' : 'Open'} filters</span>
-            {narrowMenuOpen ? <XIcon size={24} /> : <FilterIcon size={24} />}
-          </button>
-        </Stack>
-
-        <form noValidate id='filters-form' onSubmit={onSubmit}>
           <Stack
-            className={clsx(!narrowMenuOpen && styles.filtersStackCollapsed)}
-            direction='vertical'
-            gap={40}
+            alignItems='center'
+            className={clsx(styles.asideHeadingContainer, narrowMenuOpen && styles['asideHeadingContainer--open'])}
+            direction='horizontal'
+            justifyContent='space-between'
             padding='none'
           >
-            {groups.map((group) => (
-              <Box key={group.value} borderBlockStartWidth='thin' borderColor='subtle' borderStyle='solid'>
-                <fieldset className={styles.fieldset}>
+            <Heading
+              as='h2'
+              className={styles.asideHeading}
+              font='monospace'
+              id='filters-heading'
+              size='subhead-medium'
+              weight='medium'
+            >
+              Filters {filtersCount > 0 ? `(${filtersCount})` : ''}
+            </Heading>
+            <button
+              aria-controls='filters-form'
+              aria-expanded={narrowMenuOpen}
+              className={styles.filtersMenuToggle}
+              type='button'
+              onClick={() => setNarrowMenuOpen((open) => !open)}
+            >
+              <span className='sr-only'>{narrowMenuOpen ? 'Close' : 'Open'} Filters</span>
+              {narrowMenuOpen ? <XIcon size={24} /> : <FilterIcon size={24} />}
+            </button>
+          </Stack>
+
+          <form noValidate id='filters-form' onSubmit={onSubmit}>
+            <Stack
+              className={narrowMenuOpen ? undefined : styles.filtersStackCollapsed}
+              direction='vertical'
+              gap={40}
+              padding='none'
+            >
+              {groups.map((group) => (
+                <Box key={group.value} borderBlockStartWidth='thin' borderColor='subtle' borderStyle='solid'>
                   <Box paddingBlockEnd={24} paddingBlockStart={12}>
-                    <legend>
-                      <Heading
-                        as='h3'
-                        className={styles.groupHeading}
-                        font='monospace'
-                        size='subhead-medium'
-                        stretch='expanded'
-                        weight='normal'
-                      >
-                        {group.label}
-                      </Heading>
-                    </legend>
+                    <Heading
+                      as='h3'
+                      className={styles.navListHeading}
+                      font='monospace'
+                      size='subhead-medium'
+                      stretch='expanded'
+                      weight='normal'
+                    >
+                      {group.label}
+                    </Heading>
                   </Box>
                   <Stack direction='vertical' gap={12} padding='none'>
-                    {group.options.map((option) => (
-                      <label key={`${group.value}-${option.value}`} className={styles.filterLabel}>
-                        <input
-                          checked={selection[group.value]?.includes(option.value) ?? false}
-                          className={styles.checkbox}
-                          name={group.value}
-                          type='checkbox'
-                          value={option.value}
-                          onChange={(event) => toggleOption(group.value, option.value, event.target.checked)}
-                        />
-                        {option.label}
-                      </label>
-                    ))}
+                    <CheckboxGroup>
+                      <CheckboxGroup.Label visuallyHidden>{group.label}</CheckboxGroup.Label>
+                      {group.options.map((option) => (
+                        <FormControl key={`${group.value}-${option.value}`}>
+                          <FormControl.Label className={styles.filterLabel}>{option.label}</FormControl.Label>
+                          <Checkbox
+                            checked={selection[group.value]?.includes(option.value) ?? false}
+                            name={group.value}
+                            value={option.value}
+                            onChange={(event) => toggleOption(group.value, option.value, event.target.checked)}
+                          />
+                        </FormControl>
+                      ))}
+                    </CheckboxGroup>
                   </Stack>
-                </fieldset>
-              </Box>
-            ))}
+                </Box>
+              ))}
 
-            <Stack alignItems='center' direction='horizontal' justifyContent='space-between' padding='none'>
-              <InlineLink
-                aria-disabled={!canClear}
-                className={clsx(styles.clearAllLink, !canClear && styles['clearAllLink--disabled'])}
-                href='#'
-                role='button'
-                tabIndex={canClear ? undefined : -1}
-                onClick={onClearClick}
-              >
-                Clear all
-              </InlineLink>
-              <Button disabled={!formDirty} size='small' type='submit' variant='primary'>
-                Apply
-              </Button>
+              <Stack alignItems='center' direction='horizontal' justifyContent='space-between' padding='none'>
+                <InlineLink
+                  aria-disabled={!canClear}
+                  className={clsx(styles.clearAllLink, !canClear && styles['clearAllLink--disabled'])}
+                  href='#'
+                  role='button'
+                  tabIndex={canClear ? undefined : -1}
+                  onClick={onClearClick}
+                >
+                  Clear all
+                </InlineLink>
+                <Button disabled={!formDirty} size='small' type='submit' variant='primary'>
+                  Apply
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
-        </form>
-      </Stack>
-    </aside>
+          </form>
+        </Stack>
+      </aside>
+    </div>
   );
 };

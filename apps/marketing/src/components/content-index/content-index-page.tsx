@@ -13,7 +13,7 @@ import type { SearchParams } from './content-index.utils';
 
 export interface ContentIndexPageProps extends Pick<
   ContentIndexProps,
-  'title' | 'description' | 'basePath' | 'emptyStateMessage' | 'showSpotlight'
+  'title' | 'description' | 'basePath' | 'emptyStateMessage' | 'searchable' | 'searchPlaceholder' | 'showSpotlight'
 > {
   /**
    * @brief Article type listed by this index.

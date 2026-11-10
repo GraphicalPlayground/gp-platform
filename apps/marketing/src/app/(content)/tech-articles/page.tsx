@@ -9,9 +9,11 @@ import type { SearchParams } from '@/components/content-index';
 export default async function TechArticlesPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
     <ContentIndexPage
+      searchable
       basePath='/tech-articles'
       description='Technical articles on graphics APIs, shaders, engine architecture, and performance.'
       searchParams={await searchParams}
+      searchPlaceholder='Search tech articles...'
       title='Tech Articles'
       type='tech-article'
     />

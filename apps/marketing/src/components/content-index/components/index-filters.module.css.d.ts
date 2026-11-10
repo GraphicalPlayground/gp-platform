@@ -6,10 +6,8 @@ declare const styles: {
   readonly 'asideContent': string;
   readonly 'asideContent--open': string;
   readonly 'asideHeading': string;
-  readonly 'groupHeading': string;
-  readonly 'fieldset': string;
+  readonly 'navListHeading': string;
   readonly 'filterLabel': string;
-  readonly 'checkbox': string;
   readonly 'clearAllLink': string;
   readonly 'clearAllLink--disabled': string;
   readonly 'asideHeadingContainer': string;

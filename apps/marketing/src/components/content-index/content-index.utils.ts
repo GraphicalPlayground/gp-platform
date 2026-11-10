@@ -5,6 +5,7 @@
 // Type-only imports: this file is shared with client components, and `@gp/content` pulls in Node-only code.
 import type { Article, Difficulty, MdxDocument } from '@gp/content';
 import type { Route } from 'next';
+import { buildSearchDocument, scoreSearchDocument, tokenizeQuery } from './content-index.search';
 
 /**
  * @brief Raw search params as received by a Next.js page.
@@ -56,11 +57,12 @@ export interface ContentIndexData {
   totalCount: number;
   filters: FilterGroup[];
   sortOptions: SortOption[];
+  currentQuery: string;
   currentSort: string;
   currentPage: number;
   totalPages: number;
   /**
-   * @brief The normalized active query (filters, sort, page), used to build links client-side.
+   * @brief The normalized active query (filters, search, sort, page), used to build links client-side.
    */
   query: Record<string, string>;
 }
@@ -71,6 +73,7 @@ export const SORT_OPTIONS: SortOption[] = [
   { label: 'Title (A-Z)', value: 'title' }
 ];
 
+export const RELEVANCE_SORT = 'relevance';
 export const DEFAULT_SORT = 'newest';
 const DEFAULT_PAGE_SIZE = 12;
 
@@ -172,7 +175,7 @@ const isSortKey = (value: string): value is SortKey => Object.hasOwn(compareItem
  * @brief Filters, sorts and paginates a list of articles according to the page's search params.
  * @details Filters combine with OR inside a group and AND across groups, e.g. `?difficulty=beginner&tag=vulkan,dx12`.
  * @param docs - Every article that belongs to the index.
- * @param searchParams - The page's search params (`category`, `difficulty`, `tag`, `sort`, `page`).
+ * @param searchParams - The page's search params (`category`, `difficulty`, `tag`, `q`, `sort`, `page`).
  * @param options - `basePath` used to build article links, and the page size.
  */
 export const buildContentIndex = (
@@ -180,7 +183,15 @@ export const buildContentIndex = (
   searchParams: SearchParams,
   { basePath, pageSize = DEFAULT_PAGE_SIZE }: { basePath: string; pageSize?: number }
 ): ContentIndexData => {
-  const allItems = docs.map((doc) => toItem(doc, basePath));
+  const allEntries = docs.map((doc) => {
+    const item = toItem(doc, basePath);
+
+    return {
+      item,
+      searchDoc: buildSearchDocument(doc, item.description)
+    };
+  });
+  const allItems = allEntries.map((entry) => entry.item);
   const query: Record<string, string> = {};
 
   const groups = FILTER_GROUPS.map((definition) => ({
@@ -197,19 +208,45 @@ export const buildContentIndex = (
     if (selected.length > 0) query[definition.value] = selected.join(',');
   }
 
-  const filtered = allItems.filter((item) =>
-    groups.every(
-      ({ definition, selected }) =>
-        selected.length === 0 || definition.getValues(item).some((value) => selected.includes(normalize(value)))
-    )
-  );
+  const currentQuery = (firstValue(searchParams['q']) ?? '').trim();
+  const queryTokens = tokenizeQuery(currentQuery);
+  const normalizedQuery = queryTokens.join(' ');
+  const isSearchActive = queryTokens.length > 0;
 
+  if (currentQuery.length > 0) query['q'] = currentQuery;
+
+  const matched = allEntries
+    .map(({ item, searchDoc }) => {
+      const matchesFilters = groups.every(
+        ({ definition, selected }) =>
+          selected.length === 0 || definition.getValues(item).some((value) => selected.includes(normalize(value)))
+      );
+
+      if (!matchesFilters) return null;
+
+      const score = isSearchActive ? scoreSearchDocument(searchDoc, queryTokens, normalizedQuery) : 1;
+
+      return score > 0 ? { item, score } : null;
+    })
+    .filter((entry): entry is { item: ContentIndexItem; score: number } => entry !== null);
+
+  const sortOptions = isSearchActive ? [{ label: 'Relevance', value: RELEVANCE_SORT }, ...SORT_OPTIONS] : SORT_OPTIONS;
   const sortParam = firstValue(searchParams['sort']) ?? '';
-  const currentSort: SortKey = isSortKey(sortParam) ? sortParam : DEFAULT_SORT;
+  const defaultSort = isSearchActive ? RELEVANCE_SORT : DEFAULT_SORT;
+  const currentSort =
+    sortParam === RELEVANCE_SORT && isSearchActive ? RELEVANCE_SORT : isSortKey(sortParam) ? sortParam : defaultSort;
 
-  if (currentSort !== DEFAULT_SORT) query['sort'] = currentSort;
+  if (currentSort !== defaultSort) query['sort'] = currentSort;
 
-  const sorted = [...filtered].sort(compareItems[currentSort]);
+  const sorted = [...matched]
+    .sort((a, b) => {
+      if (currentSort === RELEVANCE_SORT) {
+        return b.score - a.score || compareItems[DEFAULT_SORT](a.item, b.item);
+      }
+
+      return compareItems[currentSort](a.item, b.item);
+    })
+    .map(({ item }) => item);
 
   const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
   const requestedPage = Number.parseInt(firstValue(searchParams['page']) ?? '', 10);
@@ -221,7 +258,8 @@ export const buildContentIndex = (
     items: sorted.slice((currentPage - 1) * pageSize, currentPage * pageSize),
     totalCount: sorted.length,
     filters,
-    sortOptions: SORT_OPTIONS,
+    sortOptions,
+    currentQuery,
     currentSort,
     currentPage,
     totalPages,

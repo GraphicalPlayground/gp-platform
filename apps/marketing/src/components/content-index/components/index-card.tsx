@@ -25,8 +25,14 @@ export const IndexCard: React.FC<IndexCardProps> = ({ className, item }) => {
   });
 
   return (
-    <Card fullWidth hasBorder className={clsx(styles.indexCard, className)} ctaText='Read more' href={item.href}>
-      {item.coverImage ? <Card.Image alt={item.coverImageAlt ?? ''} src={item.coverImage} /> : null}
+    <Card
+      fullWidth
+      className={clsx(styles.indexCard, className)}
+      ctaText='Learn more'
+      href={item.href}
+      variant='minimal'
+    >
+      {item.coverImage ? <Card.Image alt={item.coverImageAlt ?? ''} padding='none' src={item.coverImage} /> : null}
       <Card.Label variant='accent-text'>{`${formattedDate} · ${item.readingTimeMinutes} min read`}</Card.Label>
       <Card.Heading>{item.title}</Card.Heading>
       <Card.Description>{item.description}</Card.Description>

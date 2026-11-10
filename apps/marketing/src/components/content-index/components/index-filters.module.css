@@ -6,52 +6,28 @@
 
 .asideContent {
   font-size: var(--gp-text-size-100);
+
+  --gp-color-text-default: var(--gp-color-text-muted);
 }
 
-.asideHeading,
-.groupHeading {
+.navListHeading,
+.asideHeading {
   font-size: var(--gp-text-size-100);
   color: var(--gp-color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.031rem;
 }
 
-.fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  min-width: 0;
-}
-
-.fieldset legend {
-  padding: 0;
-}
-
 .filterLabel {
-  display: flex;
-  align-items: center;
-  gap: var(--gp-size-8);
-  color: var(--gp-color-text-muted);
-  font-weight: var(--gp-text-weight-normal);
-  cursor: pointer;
-}
-
-.checkbox {
-  width: var(--gp-size-16);
-  height: var(--gp-size-16);
-  margin: 0;
-  flex-shrink: 0;
-  accent-color: var(--gp-color-accent-primary);
-  cursor: pointer;
-}
-
-.checkbox:focus-visible {
-  outline: 2px solid var(--gp-color-focus);
-  outline-offset: 2px;
+  font-weight: var(--gp-text-weight-light) !important;
 }
 
 .clearAllLink {
+  --gp-inline-link-color-rest: var(--gp-color-gray-9);
+  --gp-inline-link-color-pressed: var(--gp-color-gray-9);
   font-weight: var(--gp-text-weight-medium);
+  color: var(--gp-color-gray-9);
+  text-decoration-color: var(--gp-color-gray-9);
 }
 
 .clearAllLink--disabled {
@@ -74,6 +50,7 @@
     position: relative;
     z-index: 10;
     width: 100%;
+    transition: box-shadow 0.3s ease;
   }
 
   .asideHeadingContainer {
@@ -85,15 +62,20 @@
   }
 
   .asideContent {
+    display: flex;
     width: 100%;
     padding: var(--gp-size-16);
     background-color: var(--gp-color-canvas-default);
+    justify-content: center;
     border-top: var(--gp-border-width-thin) solid var(--gp-color-border-default);
     border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-default);
   }
 
   .asideContent--open {
+    display: flex;
+    height: auto;
     padding: var(--gp-size-16) var(--gp-size-16) var(--gp-size-32);
+    justify-content: center;
   }
 
   .asideContent--open::before {

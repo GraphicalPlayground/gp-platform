@@ -4,6 +4,10 @@
  * mailto:support AT graphical-playground DOT com
  */
 
+.indexCard {
+  padding: 0;
+}
+
 .indexCard img {
   width: 100%;
   height: auto;

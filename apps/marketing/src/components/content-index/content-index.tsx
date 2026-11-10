@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation';
 import styles from './content-index.module.css';
 
 import { Box, Grid, Hero, Pagination, Text } from '@gp/ui/components';
-import { IndexCard, IndexFilters, IndexSort } from './components';
-import { DEFAULT_SORT, FILTER_KEYS, buildIndexHref } from './content-index.utils';
+import { IndexCard, IndexFilters, IndexSearch, IndexSort } from './components';
+import { DEFAULT_SORT, FILTER_KEYS, RELEVANCE_SORT, buildIndexHref } from './content-index.utils';
 import type { ContentIndexData } from './content-index.utils';
 
 export interface ContentIndexProps extends ContentIndexData {
@@ -22,6 +22,14 @@ export interface ContentIndexProps extends ContentIndexData {
   basePath: string;
   emptyStateMessage?: string;
   /**
+   * @brief Enables the keyword search bar above the listing.
+   */
+  searchable?: boolean;
+  /**
+   * @brief Placeholder text shown inside the search input.
+   */
+  searchPlaceholder?: string;
+  /**
    * @brief Displays the first result as a full-width card on the first, unfiltered page.
    */
   showSpotlight?: boolean;
@@ -31,18 +39,21 @@ const withoutKeys = (query: Record<string, string>, keys: string[]) =>
   Object.fromEntries(Object.entries(query).filter(([key]) => !keys.includes(key)));
 
 /**
- * @brief Listing page for a collection of articles (glossary, breakdowns, interviews...), with filters, sort and pagination.
+ * @brief Listing page for a collection of articles (glossary, breakdowns, interviews...), with filters, search, sort and pagination.
  * @details Stateless: every interaction navigates to a new URL, and the server re-renders the filtered results.
  */
 export const ContentIndex: React.FC<ContentIndexProps> = ({
   basePath,
   currentPage,
+  currentQuery,
   currentSort,
   description,
   emptyStateMessage = 'No results found. Please clear your filters and try another search.',
   filters,
   items,
   query,
+  searchable = false,
+  searchPlaceholder,
   showSpotlight = false,
   sortOptions,
   title,
@@ -50,15 +61,39 @@ export const ContentIndex: React.FC<ContentIndexProps> = ({
 }) => {
   const router = useRouter();
   const hasResults = items.length > 0;
-  const hasActiveFilters = FILTER_KEYS.some((key) => key in query);
+  const hasActiveFilters = FILTER_KEYS.some((key) => key in query) || currentQuery.length > 0;
+  const showSort = hasResults && sortOptions.length > 1;
+  const showToolbar = searchable || showSort;
   const [spotlight, ...cards] = showSpotlight && currentPage === 1 && !hasActiveFilters ? items : [undefined, ...items];
 
   const pageHref = (page: number) => buildIndexHref(basePath, { ...query, page: page > 1 ? String(page) : undefined });
 
   const handleSortChange = (sort: string) => {
+    const defaultSort = currentQuery.length > 0 ? RELEVANCE_SORT : DEFAULT_SORT;
+
     router.push(
-      buildIndexHref(basePath, { ...withoutKeys(query, ['page']), sort: sort === DEFAULT_SORT ? undefined : sort })
+      buildIndexHref(basePath, { ...withoutKeys(query, ['page']), sort: sort === defaultSort ? undefined : sort })
     );
+  };
+
+  const handleSearch = (nextQuery: string, options?: { replace?: boolean }) => {
+    const baseQuery = withoutKeys(query, ['page', 'q']);
+
+    // Switching from empty -> active search defaults to relevance; clearing search drops stale relevance sort.
+    if (baseQuery['sort'] === RELEVANCE_SORT || (nextQuery && currentQuery === '' && baseQuery['sort'] === undefined)) {
+      delete baseQuery['sort'];
+    }
+
+    const href = buildIndexHref(basePath, {
+      ...baseQuery,
+      q: nextQuery || undefined
+    });
+
+    if (options?.replace) {
+      router.replace(href);
+    } else {
+      router.push(href);
+    }
   };
 
   const handleApplyFilters = (selected: Record<string, string[]>) => {
@@ -89,8 +124,20 @@ export const ContentIndex: React.FC<ContentIndexProps> = ({
         </Grid.Column>
 
         <Grid.Column span={{ xsmall: 12, medium: 9 }}>
-          {hasResults && sortOptions.length > 1 ? (
-            <IndexSort currentSort={currentSort} sortOptions={sortOptions} onSortChange={handleSortChange} />
+          {showToolbar ? (
+            <div className={styles.toolbar}>
+              {searchable ? (
+                <IndexSearch
+                  currentQuery={currentQuery}
+                  label={`Search ${title.toLowerCase()}`}
+                  placeholder={searchPlaceholder ?? `Search ${title.toLowerCase()}...`}
+                  onSearch={handleSearch}
+                />
+              ) : null}
+              {showSort ? (
+                <IndexSort currentSort={currentSort} sortOptions={sortOptions} onSortChange={handleSortChange} />
+              ) : null}
+            </div>
           ) : null}
 
           <Box marginBlockEnd={{ narrow: 32, regular: 48 }}>
