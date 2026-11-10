@@ -178,6 +178,7 @@
       "river-story-scroll": "link",
       "section-intro": "layout",
       "timeline": "temp",
+      "tiles": "app",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

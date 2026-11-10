@@ -477,5 +477,9 @@
     --gp-pricing-options-actions-message-accent-color: var(--gp-color-blue-5);
 
     --gp-timeline-line-color: var(--gp-color-border-default);
+
+    --gp-tiles-bg-color-rest: #fafafa;
+    --gp-tiles-bg-color-hover: #f2f5f3;
+    --gp-tiles-highlight-color: #08872b;
   }
 }

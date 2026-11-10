@@ -237,6 +237,8 @@
     --gp-timeline-spacing: var(--gp-size-16);
     --gp-timeline-bullet-size: var(--gp-size-8);
     --gp-timeline-bullet-spacing: 2px;
+
+    --gp-tiles-item-max-size: 184px;
   }
 
   @media (min-width: 48rem) {
