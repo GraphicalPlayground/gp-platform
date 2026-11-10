@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { useCallback, useState, useRef } from 'react';
 import type { KeyboardEvent, MutableRefObject, Ref } from 'react';
 import { useId } from './use-id';

@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React, { forwardRef, useMemo } from 'react';
 import type { HTMLAttributes, PropsWithChildren, Ref, Dispatch } from 'react';
 import { CheckIcon, TriangleDownIcon, XIcon } from '@primer/octicons-react';

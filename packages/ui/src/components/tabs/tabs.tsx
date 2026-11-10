@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React, { memo, forwardRef, Children, isValidElement, cloneElement, useRef, useEffect } from 'react';
 import type { ReactNode, HTMLAttributes } from 'react';
 import { clsx } from 'clsx';

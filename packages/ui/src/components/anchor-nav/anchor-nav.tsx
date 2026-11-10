@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { clsx } from 'clsx';
 import React, { useCallback, useEffect, useMemo, useRef, useState, useId } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@primer/octicons-react';

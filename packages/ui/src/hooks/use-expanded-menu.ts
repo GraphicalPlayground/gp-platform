@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import { useEffect } from 'react';
 import styles from '../components/anchor-nav/anchor-nav.module.css';
 

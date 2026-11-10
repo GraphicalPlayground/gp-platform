@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 
 import type { PaginationPageType } from '../pagination/model';
