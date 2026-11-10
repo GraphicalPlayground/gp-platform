@@ -410,7 +410,7 @@
     --gp-token-bg-color-outline: transparent;
     --gp-token-border-outline: var(--gp-color-border-default);
     --gp-token-fg-color-default: var(--gp-color-text-default);
-    --gp-token-fg-color-accent: var(--gp-color-text-onEmphasis);
+    --gp-token-fg-color-accent: var(--gp-color-text-on-emphasis);
     --gp-token-fg-color-outline: var(--gp-color-text-default);
     --gp-token-fg-color-invisible: var(--gp-color-text-default);
 
@@ -460,5 +460,8 @@
 
     --gp-card-background-default: var(--gp-color-canvas-subtle);
     --gp-card-background-overlay: rgba(242, 245, 243, 0.05);
+
+    --gp-media-playlist-bg-color:
+      linear-gradient(180deg, var(--gp-color-gray-8) 0%, var(--gp-color-black-0) 100%), var(--gp-color-canvas-default);
   }
 }

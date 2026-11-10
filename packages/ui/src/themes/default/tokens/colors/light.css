@@ -463,5 +463,8 @@
 
     --gp-card-background-default: var(--gp-color-canvas-default);
     --gp-card-background-overlay: rgba(242, 245, 243, 0.2);
+
+    --gp-media-playlist-bg-color:
+      linear-gradient(180deg, rgba(242, 245, 243, 0.5) 0%, rgba(242, 245, 243, 0) 100%), var(--gp-color-canvas-default);
   }
 }

@@ -106,6 +106,7 @@
       "tabs": "archive",
       "card": "meta",
       "cta-banner": "ui",
+      "media-playlist": "video",
 
       /* Categories */
       "(content)": "template",
