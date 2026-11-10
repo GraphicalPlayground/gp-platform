@@ -3,28 +3,23 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { cms } from '@/lib/cms';
-import { Link } from '@gp/ui/components';
+import type { Metadata } from 'next';
+import { Organization } from '@gp/constants';
+import { SeoMetadata, Urls } from '@gp/seo';
+import { LegalIndexPage } from '@/components/legal-index';
+import type { SearchParams } from '@/components/legal-index';
 
-export default async function LegalPage() {
-  const docs = await cms.legal.getAll();
+const LEGAL_DESCRIPTION = `Terms of Service, Privacy Policy, licensing notices, and compliance commitments governing ${Organization.displayName}.`;
 
-  return (
-    <div>
-      <h1>Legal</h1>
-      <ul>
-        {docs.map((doc) => (
-          <li key={doc.frontmatter.slug}>
-            <Link
-              className='text-text-link-rest hover:text-text-link-pressed underline'
-              href={`/legal/${doc.frontmatter.slug}`}
-              title={doc.frontmatter.title}
-            >
-              {doc.frontmatter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+/**
+ * @brief Metadata for the Legal overview/index page.
+ */
+export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).page({
+  path: '/legal',
+  title: 'Legal',
+  description: LEGAL_DESCRIPTION
+});
+
+export default async function LegalPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  return <LegalIndexPage description={LEGAL_DESCRIPTION} searchParams={await searchParams} title='Legal' />;
 }

@@ -2,4 +2,6 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
-export * from './layout';
+export * from './legal-index';
+export * from './legal-index-page';
+export * from './legal-index.utils';

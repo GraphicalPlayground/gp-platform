@@ -96,17 +96,23 @@ const getSummaryValues = (doc: MdxDocument<Article>, resolvedDescription: string
 };
 
 /**
+ * @brief Builds a {@link SearchDocument} from weighted field value lists.
+ */
+export const createSearchDocument = (fields: Array<{ values: string[]; weight: number }>): SearchDocument => ({
+  fields: fields
+    .map(({ values, weight }) => buildField(values, weight))
+    .filter((field): field is SearchField => field !== null)
+});
+
+/**
  * @brief Indexes an article's metadata into weighted fields for exact, prefix, and typo-tolerant matching.
  */
-export const buildSearchDocument = (doc: MdxDocument<Article>, resolvedDescription: string): SearchDocument => {
-  const fields = [
-    buildField(getPrimaryValues(doc.frontmatter), 4),
-    buildField(getSecondaryValues(doc.frontmatter), 2.5),
-    buildField(getSummaryValues(doc, resolvedDescription), 1)
-  ].filter((field): field is SearchField => field !== null);
-
-  return { fields };
-};
+export const buildSearchDocument = (doc: MdxDocument<Article>, resolvedDescription: string): SearchDocument =>
+  createSearchDocument([
+    { values: getPrimaryValues(doc.frontmatter), weight: 4 },
+    { values: getSecondaryValues(doc.frontmatter), weight: 2.5 },
+    { values: getSummaryValues(doc, resolvedDescription), weight: 1 }
+  ]);
 
 /**
  * @brief Restricted Damerau-Levenshtein (Optimal String Alignment) distance with early exit past `maxEdits`.

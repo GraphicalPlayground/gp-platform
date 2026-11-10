@@ -101,7 +101,7 @@
     border: 0;
   }
 
-  .filtersStackCollapsed {
+  .filtersStackCollapsed.filtersStackCollapsed {
     display: none;
   }
 }

@@ -4,11 +4,11 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
-import { cms } from '@/lib/cms';
 import { notFound } from 'next/navigation';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
-import { Prose } from '@gp/ui/components';
+import { LegalArticle } from '@/components/legal-article';
+import { cms } from '@/lib/cms';
 
 export async function generateStaticParams() {
   return (await cms.legal.getSlugs()).map((slug) => ({ slug }));
@@ -27,17 +27,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function LegalSlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const doc = await cms.legal.getCompiledBySlug(slug);
+  const doc = await cms.legal.getCompiledBySlug(slug, undefined, {
+    components: {
+      // Hero.Heading already renders the document title as the page's single h1.
+      h1: () => null
+    }
+  });
 
   if (!doc) {
     return notFound();
   }
 
-  return (
-    <article className='w-full p-0.5 sm:p-1 md:p-2'>
-      <div className='w-full max-w-3xl mx-auto'>
-        <Prose variant='editorial'>{doc.content}</Prose>
-      </div>
-    </article>
-  );
+  return <LegalArticle document={doc} />;
 }

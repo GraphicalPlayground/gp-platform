@@ -7,7 +7,8 @@
 .SubNav__container {
   position: absolute;
   width: 100%;
-  z-index: 2;
+  /* Above page filters (10) and mobile TOC (30), below site header (32) */
+  z-index: 31;
   border-block: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
 }
 
