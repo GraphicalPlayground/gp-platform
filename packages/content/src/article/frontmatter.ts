@@ -32,6 +32,7 @@ export const articleFrontmatterSchema = z.object({
   lede: z.string().min(1),
   description: z.string().min(1),
   category: articleCategorySchema,
+  subtopic: z.string().min(1).optional(),
   tags: z.array(z.string().min(1)).default([]),
   tagsLabel: z.string().min(1).optional(),
   difficulty: difficultySchema,
