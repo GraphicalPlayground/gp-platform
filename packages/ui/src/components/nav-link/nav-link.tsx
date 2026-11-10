@@ -5,6 +5,7 @@
 import React from 'react';
 import styles from './nav-link.module.css';
 
+import { SmartLink } from '../helper';
 import { Link } from '../link';
 import { Text } from '../text';
 import type { Icon } from '@primer/octicons-react';
@@ -81,9 +82,9 @@ export const NavLink: React.FC<NavLinkProps> = ({
 
   if (className) {
     return (
-      <a href={url} className={className}>
+      <SmartLink href={url} className={className}>
         {title}
-      </a>
+      </SmartLink>
     );
   }
 

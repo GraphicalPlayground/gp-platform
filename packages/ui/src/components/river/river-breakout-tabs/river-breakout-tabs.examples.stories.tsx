@@ -68,7 +68,7 @@ export const WithImages: Story = {
     return (
       <Section>
         <RiverBreakoutTabs
-          backgroundVisual={process.env.NODE_ENV !== 'test' ? <SharedDitherBackdrop /> : null}
+          backgroundVisual={process.env['NODE_ENV'] !== 'test' ? <SharedDitherBackdrop /> : null}
           imagePosition='block-end'
         >
           <RiverBreakoutTabs.A11yHeading>{t('with_images_a11y_heading')}</RiverBreakoutTabs.A11yHeading>
@@ -122,7 +122,7 @@ export const WithVideos: Story = {
     return (
       <Section>
         <RiverBreakoutTabs
-          backgroundVisual={process.env.NODE_ENV !== 'test' ? <SharedDitherBackdrop /> : null}
+          backgroundVisual={process.env['NODE_ENV'] !== 'test' ? <SharedDitherBackdrop /> : null}
           imagePosition='block-end'
         >
           <RiverBreakoutTabs.A11yHeading>{t('with_videos_a11y_heading')}</RiverBreakoutTabs.A11yHeading>
@@ -187,7 +187,7 @@ export function MinimalVideoPlayerExample() {
   return (
     <Section>
       <RiverBreakoutTabs
-        backgroundVisual={process.env.NODE_ENV !== 'test' ? <SharedDitherBackdrop /> : null}
+        backgroundVisual={process.env['NODE_ENV'] !== 'test' ? <SharedDitherBackdrop /> : null}
         imagePosition='block-end'
       >
         <RiverBreakoutTabs.A11yHeading>{t('with_videos_a11y_heading')}</RiverBreakoutTabs.A11yHeading>
@@ -271,7 +271,7 @@ export const WithRivers: Story = {
           </River>
 
           <RiverBreakoutTabs
-            backgroundVisual={process.env.NODE_ENV !== 'test' ? <SharedDitherBackdrop /> : null}
+            backgroundVisual={process.env['NODE_ENV'] !== 'test' ? <SharedDitherBackdrop /> : null}
             imagePosition='block-end'
           >
             <RiverBreakoutTabs.A11yHeading>{t('with_images_a11y_heading')}</RiverBreakoutTabs.A11yHeading>

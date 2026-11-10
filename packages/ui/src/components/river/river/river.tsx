@@ -99,7 +99,7 @@ const Root = forwardRef(
     if (
       hasVisualLayoutOverrides &&
       !supportsVisualLayoutOverrides &&
-      (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+      (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')
     ) {
       // eslint-disable-next-line no-console
       console.warn(
@@ -198,7 +198,7 @@ export const RiverContent = forwardRef(
 
     const usesDeprecatedLabel = React.isValidElement<LabelProps>(LabelChild) && !LeadingComponent;
 
-    if (usesDeprecatedLabel && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+    if (usesDeprecatedLabel && (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')) {
       // eslint-disable-next-line no-console
       console.warn('River.Content: standalone `Label` children are deprecated. Use `EyebrowText` instead.');
     }

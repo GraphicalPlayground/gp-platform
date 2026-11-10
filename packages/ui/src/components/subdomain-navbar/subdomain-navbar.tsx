@@ -10,6 +10,7 @@ import styles from './subdomain-navbar.module.css';
 import { NavigationVisbilityObserver } from './navigation-visibility-observer';
 import { ChevronLeftIcon, LinkExternalIcon, SearchIcon, XIcon } from '@primer/octicons-react';
 import { Button } from '../button';
+import { SmartLink } from '../helper';
 import { Text } from '../text';
 import { useWindowSize, useFocusTrap, useKeyboardEscape, useOnClickOutside } from '../../hooks';
 import { BrandIcon } from '../icons';
@@ -206,7 +207,7 @@ export const SubdomainNavBarRoot: React.FC<SubdomainNavBarProps> = ({
             <nav aria-label='Header logo and title'>
               <ol className={styles['subdomain-navbar-title-area']}>
                 <li>
-                  <a
+                  <SmartLink
                     href={logoHref}
                     aria-label='Graphical Playground Home'
                     className={styles['subdomain-navbar-logo-mark']}
@@ -215,7 +216,7 @@ export const SubdomainNavBarRoot: React.FC<SubdomainNavBarProps> = ({
                       <ChevronLeftIcon fill='currentColor' size={24} />
                     </span>
                     <BrandIcon variant='icon' fill='currentColor' height={24} />
-                  </a>
+                  </SmartLink>
                 </li>
                 {title && isSmall && (
                   <>
@@ -223,7 +224,7 @@ export const SubdomainNavBarRoot: React.FC<SubdomainNavBarProps> = ({
                       /
                     </li>
                     <li>
-                      <a
+                      <SmartLink
                         href={titleHref}
                         aria-label={`${title} home`}
                         className={clsx(styles['subdomain-navbar-title'])}
@@ -231,7 +232,7 @@ export const SubdomainNavBarRoot: React.FC<SubdomainNavBarProps> = ({
                         <Text size='400' weight='medium'>
                           {title}
                         </Text>
-                      </a>
+                      </SmartLink>
                     </li>
                   </>
                 )}
@@ -313,13 +314,13 @@ export const SubdomainNavBarRoot: React.FC<SubdomainNavBarProps> = ({
                   <div>
                     {title && titleHref && (
                       <Text as='p'>
-                        <a
+                        <SmartLink
                           href={titleHref}
                           aria-label={`${title} home`}
                           className={clsx(styles['subdomain-navbar-link'], styles['subdomain-navbar-link--title'])}
                         >
                           {title}
-                        </a>
+                        </SmartLink>
                       </Text>
                     )}
                     {hasLinks && !menuHidden && (
@@ -381,10 +382,10 @@ function SubdomainNavBarLink({
 }: React.PropsWithChildren<SubdomainNavBarLinkProps>) {
   return (
     <li className={clsx(styles['subdomain-navbar-primary-nav-list-item'], className)} {...rest}>
-      <a href={href} className={styles['subdomain-navbar-link']}>
+      <SmartLink href={href} className={styles['subdomain-navbar-link']}>
         <span className={styles['subdomain-navbar-link-text']}>{children}</span>
         {isExternal && <LinkExternalIcon size={16} aria-label='External link' />}
-      </a>
+      </SmartLink>
     </li>
   );
 }
@@ -581,7 +582,7 @@ const SubdomainNavBarSearch = React.forwardRef<HTMLDivElement, SearchProps>(
                         aria-selected={index === activeDescendant}
                       >
                         <div className={styles['subdomain-navbar-search-result-item-container']}>
-                          <a href={result.url}>{result.title}</a>
+                          <SmartLink href={result.url}>{result.title}</SmartLink>
                         </div>
 
                         <Text

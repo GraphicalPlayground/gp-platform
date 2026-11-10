@@ -6,22 +6,20 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './inline-link.module.css';
 
-import type { BaseProps } from '../helper';
-import NextLink from 'next/link';
-import type { LinkProps as NextLinkProps } from 'next/link';
+import { SmartLink } from '../helper';
+import type { BaseProps, SmartLinkProps } from '../helper';
 
 /**
  * @brief InlineLink component props interface.
  * @see InlineLink
  */
-export type InlineLinkProps = BaseProps<HTMLAnchorElement> & {
-  /**
-   * @brief The href of the link.
-   */
-  href: string | NextLinkProps<any>['href'];
-} & React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  React.HTMLAttributes<HTMLAnchorElement> &
-  Omit<NextLinkProps, 'href'>;
+export type InlineLinkProps = BaseProps<HTMLAnchorElement> &
+  Omit<SmartLinkProps, 'href'> & {
+    /**
+     * @brief The href of the link.
+     */
+    href: NonNullable<SmartLinkProps['href']>;
+  };
 
 /**
  * @brief InlineLink component.
@@ -30,9 +28,9 @@ export type InlineLinkProps = BaseProps<HTMLAnchorElement> & {
 export const InlineLink = React.forwardRef<HTMLAnchorElement, InlineLinkProps>(
   ({ children, className, href, ...rest }, ref) => {
     return (
-      <NextLink href={href} className={clsx(styles['inline-link'], className)} {...rest} ref={ref}>
+      <SmartLink href={href} className={clsx(styles['inline-link'], className)} {...rest} ref={ref}>
         {children}
-      </NextLink>
+      </SmartLink>
     );
   }
 );

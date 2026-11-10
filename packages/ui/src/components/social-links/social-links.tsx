@@ -7,8 +7,7 @@ import clsx from 'clsx';
 import styles from './social-links.module.css';
 import { SocialIcon } from './social-icons';
 import type { SocialIconName } from './social-icons';
-import Link from 'next/link';
-import type { Route } from 'next';
+import { SmartLink } from '../helper';
 
 /**
  * @brief Represents a social media link with an icon and accessible label.
@@ -34,10 +33,10 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ className, links, ...r
     <ul className={clsx(styles['social-links--list'], className)} {...rest}>
       {links.map((link, index) => (
         <li key={index}>
-          <Link href={link.url as Route} className={styles['social-links--icon-link']} aria-label={link.srLabel}>
+          <SmartLink href={link.url} className={styles['social-links--icon-link']} aria-label={link.srLabel}>
             <SocialIcon name={link.iconName} className={styles['social-links--icon']} />
             <span className='visually-hidden'>{link.srLabel}</span>
-          </Link>
+          </SmartLink>
         </li>
       ))}
     </ul>

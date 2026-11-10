@@ -196,7 +196,7 @@ export const Tooltip = React.forwardRef(
 
       if (
         !(isTriggerInteractive || hasInteractiveChild) &&
-        (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+        (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')
       ) {
         // eslint-disable-next-line no-console
         console.warn(
@@ -213,7 +213,7 @@ export const Tooltip = React.forwardRef(
 
         if (
           (hasAriaLabel || hasAriaLabelInChildren) &&
-          (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+          (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')
         ) {
           // eslint-disable-next-line no-console
           console.warn(

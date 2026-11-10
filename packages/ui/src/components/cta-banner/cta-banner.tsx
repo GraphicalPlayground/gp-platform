@@ -208,7 +208,7 @@ const Root = forwardRef(
 
     const defaultAlign = variant === 'balanced' || variant === 'minimal' ? 'start' : align;
 
-    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+    if (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') {
       if (variant === 'balanced' && !ImageChild) {
         // eslint-disable-next-line no-console
         console.warn(

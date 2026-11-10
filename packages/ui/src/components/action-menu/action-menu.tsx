@@ -35,6 +35,7 @@ import type { Icon } from '@primer/octicons-react';
 
 import { FocusKeys, focusZone } from '@primer/behaviors';
 import type { PositionSettings } from '@primer/behaviors';
+import { SmartLink } from '../helper';
 import type { BaseProps } from '../helper';
 
 import styles from './action-menu.module.css';
@@ -743,7 +744,7 @@ const ActionMenuItem = ({
         onClick={onClick}
         onKeyDown={onKeyDown}
       >
-        <a
+        <SmartLink
           className={clsx(
             styles['action-menu__item-anchor'],
             disabled && styles['action-menu__item--disabled' as keyof typeof styles]
@@ -751,7 +752,7 @@ const ActionMenuItem = ({
           href={props.href}
         >
           {contents}
-        </a>
+        </SmartLink>
       </li>
     );
   }

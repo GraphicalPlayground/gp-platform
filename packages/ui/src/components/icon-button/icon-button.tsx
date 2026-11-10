@@ -88,7 +88,7 @@ function IconButtonRoot(
   const buttonVariant: ButtonVariant =
     variant === 'danger' ? 'secondary' : variant === 'invisible' ? 'subtle' : variant;
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env['NODE_ENV'] !== 'production') {
     if (!ariaLabel.trim()) {
       // eslint-disable-next-line no-console
       console.warn('IconButton requires a non-empty `aria-label`.');

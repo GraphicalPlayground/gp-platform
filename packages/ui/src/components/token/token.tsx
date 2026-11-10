@@ -7,6 +7,7 @@ import React, { forwardRef } from 'react';
 import type { Ref } from 'react';
 
 import { Text } from '../text';
+import { SmartLink } from '../helper';
 import type { BaseProps } from '../helper';
 
 import styles from './token.module.css';
@@ -81,9 +82,9 @@ export const Token = forwardRef<HTMLSpanElement | HTMLAnchorElement, TokenProps>
 
     if (as === 'a') {
       return (
-        <a ref={ref as Ref<HTMLAnchorElement>} className={tokenClassName} {...props}>
+        <SmartLink ref={ref as Ref<HTMLAnchorElement>} className={tokenClassName} {...props}>
           {tokenChildren}
-        </a>
+        </SmartLink>
       );
     }
 

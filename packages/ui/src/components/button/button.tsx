@@ -8,6 +8,7 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './button.module.css';
 
+import { SmartLink } from '../helper';
 import type { BaseProps } from '../helper';
 import { Text } from '../text';
 import type { Icon } from '@primer/octicons-react';
@@ -83,7 +84,7 @@ export const Button = React.forwardRef(
   ) => {
     const [_isHovered, setIsHovered] = React.useState(false);
     const [_isFocused, setIsFocused] = React.useState(false);
-    const Component = as || 'button';
+    const Component = as === 'a' ? SmartLink : as || 'button';
     const isDisabled =
       disabled || ariaDisabled === 'true' || (typeof ariaDisabled === 'boolean' && ariaDisabled === true);
 

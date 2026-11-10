@@ -3,6 +3,8 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import NextLink from 'next/link';
+import type { LinkProps as NextLinkProps } from 'next/link';
 
 /**
  * @brief Props for the Container component.
@@ -143,3 +145,53 @@ export const findElementInChildren = (children: React.ReactNode, element: React.
 
   return false;
 };
+
+/**
+ * @brief Props for {@link SmartLink}.
+ */
+export type SmartLinkProps = Omit<NextLinkProps<any>, 'href'> &
+  Omit<React.ComponentPropsWithoutRef<'a'>, 'href'> & {
+    href?: string | NextLinkProps<any>['href'];
+  };
+
+const isExternalOrHashHref = (href: string): boolean =>
+  href.startsWith('#') || /^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(href);
+
+/**
+ * @brief Renders Next.js `<Link>` for internal app routes and falls back to native `<a>` for external URLs,
+ * `#` hash links, downloads, or missing `href`s.
+ */
+export const SmartLink = React.forwardRef<HTMLAnchorElement, SmartLinkProps>(
+  ({ download, href, target, ...props }, ref) => {
+    const useNativeAnchor = !href || download !== undefined || (typeof href === 'string' && isExternalOrHashHref(href));
+
+    if (useNativeAnchor) {
+      const {
+        as: _as,
+        legacyBehavior: _legacyBehavior,
+        locale: _locale,
+        onNavigate: _onNavigate,
+        passHref: _passHref,
+        prefetch: _prefetch,
+        replace: _replace,
+        scroll: _scroll,
+        shallow: _shallow,
+        ...anchorProps
+      } = props;
+
+      return (
+        <a
+          ref={ref}
+          download={download}
+          href={typeof href === 'string' ? href : undefined}
+          target={target}
+          {...anchorProps}
+        />
+      );
+    }
+
+    return <NextLink ref={ref} href={href as NextLinkProps<any>['href']} target={target} {...props} />;
+  }
+);
+
+SmartLink.displayName = 'gp.SmartLink';

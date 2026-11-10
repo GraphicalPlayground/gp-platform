@@ -128,7 +128,7 @@ const Root = forwardRef(
       [children]
     );
 
-    if (!hasHeading && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+    if (!hasHeading && (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')) {
       // eslint-disable-next-line no-console
       console.warn('The `BreakoutBanner` component expects a `BreakoutBanner.Heading` element to be specified.');
     }

@@ -31,7 +31,7 @@ const Root = forwardRef(
       findElementInChildren(children, 'b') || findElementInChildren(children, 'em') ? 'muted' : 'default';
 
     if (!findElementInChildren(children, A11yHeading)) {
-      if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') {
         // eslint-disable-next-line no-console
         console.warn(
           'RiverBreakout: A11yHeading child is required. This element will not be visible, only read by screenreaders.'

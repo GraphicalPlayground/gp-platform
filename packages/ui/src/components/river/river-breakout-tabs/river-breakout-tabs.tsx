@@ -334,7 +334,7 @@ const RiverBreakoutTabsRoot = forwardRef<HTMLElement, RiverBreakoutTabsProps>(
       setActiveAccordionIndex(controlledActiveIndex);
     }, [activateTab, activeTab, controlledActiveIndex]);
 
-    if (!A11yHeadingChild && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+    if (!A11yHeadingChild && (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')) {
       // eslint-disable-next-line no-console
       console.warn(
         'RiverBreakoutTabs: A11yHeading child is required. This element will not be visible, only read by screenreaders.'

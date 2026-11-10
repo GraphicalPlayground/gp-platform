@@ -140,7 +140,7 @@ const Root = forwardRef<HTMLElement, React.PropsWithChildren<HeroProps>>(
 
     const mediaPosition = (() => {
       if (variant === 'gridline-expressive' && mediaPositionProp?.startsWith('inline-')) {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env['NODE_ENV'] !== 'production') {
           // eslint-disable-next-line no-console
           console.warn(
             `Hero: "gridline-expressive" variant does not support "${mediaPositionProp}" position. Defaulting to "block-end".`
@@ -163,7 +163,7 @@ const Root = forwardRef<HTMLElement, React.PropsWithChildren<HeroProps>>(
     if (
       variant === 'default' &&
       mediaPadding !== 'default' &&
-      (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+      (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')
     ) {
       // eslint-disable-next-line no-console
       console.warn(
@@ -174,7 +174,10 @@ const Root = forwardRef<HTMLElement, React.PropsWithChildren<HeroProps>>(
     const isInvalidGridlineAlignment = isGridlineExpressive && alignProp === 'center';
     const align: HeroAlign = isInvalidGridlineAlignment ? 'start' : alignProp;
 
-    if (isInvalidGridlineAlignment && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+    if (
+      isInvalidGridlineAlignment &&
+      (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')
+    ) {
       // eslint-disable-next-line no-console
       console.warn('Hero: the "gridline-expressive" variant does not support align="center"; using "start" instead.');
     }

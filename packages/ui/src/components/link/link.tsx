@@ -7,8 +7,8 @@
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import { Text } from '../text';
-import NextLink from 'next/link';
-import type { LinkProps as NextLinkProps } from 'next/link';
+import { SmartLink } from '../helper';
+import type { SmartLinkProps } from '../helper';
 import { ExpandableArrow } from '../expandable-arrow';
 import styles from './link.module.css';
 import { LinkExternalIcon } from '@primer/octicons-react';
@@ -33,11 +33,11 @@ const LinkExternalIconSizes = {
  * @brief Link component props interface.
  * @see Link
  */
-export interface LinkProps extends Omit<NextLinkProps<any>, 'href'>, Omit<React.ComponentPropsWithoutRef<'a'>, 'href'> {
+export interface LinkProps extends Omit<SmartLinkProps, 'href'> {
   /**
    * @brief The href of the link.
    */
-  href: string | NextLinkProps<any>['href'];
+  href: NonNullable<SmartLinkProps['href']>;
 
   /**
    * @brief The size variations available in Link.
@@ -124,7 +124,7 @@ export const Link: React.FC<LinkProps> = ({
       : isExternalProp;
 
   return (
-    <NextLink
+    <SmartLink
       href={href}
       className={clsx(
         styles.link,
@@ -152,7 +152,7 @@ export const Link: React.FC<LinkProps> = ({
       )}
 
       {isExternal && <LinkExternalIcon size={LinkExternalIconSizes[size]} aria-label='External link' />}
-    </NextLink>
+    </SmartLink>
   );
 };
 

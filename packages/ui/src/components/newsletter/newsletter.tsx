@@ -9,8 +9,7 @@ import { Text } from '../text';
 import { Heading } from '../heading';
 import { BrandIcon } from '../icons';
 import { Button } from '../button';
-import NextLink from 'next/link';
-import type { Route } from 'next';
+import { SmartLink } from '../helper';
 
 /**
  * @brief Newsletter component props interface.
@@ -41,9 +40,9 @@ export const Newsletter: React.FC<NewsletterProps> = ({
 }) => {
   return (
     <section className={clsx(styles['newsletter'], className)} {...rest} aria-labelledby='subscribe-to-newsletter'>
-      <NextLink href={logoHref as Route} className={styles['logo-link']} aria-label={logoAriaLabel}>
+      <SmartLink href={logoHref} className={styles['logo-link']} aria-label={logoAriaLabel}>
         <BrandIcon variant='short' style={{ height: 'var(--gp-size-32)' }} className={styles.logo} />
-      </NextLink>
+      </SmartLink>
 
       <Heading as='h3' size='6' font='monospace' className={styles.heading} id='subscribe-to-newsletter'>
         <span className={styles['heading-dot']} aria-hidden='true' />

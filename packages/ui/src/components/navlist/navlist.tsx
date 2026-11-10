@@ -565,7 +565,7 @@ function renderVisual(visual: Visual | undefined, className: string) {
 }
 
 function warnNavListValidation(message: string) {
-  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+  if (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') {
     // eslint-disable-next-line no-console
     console.warn(message);
   }

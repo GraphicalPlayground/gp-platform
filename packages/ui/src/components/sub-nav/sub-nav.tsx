@@ -19,6 +19,7 @@ import React, {
 } from 'react';
 import type { PropsWithChildren, ReactNode, RefObject } from 'react';
 import { Button } from '../button';
+import { SmartLink } from '../helper';
 import type { ButtonSizes, ButtonVariants } from '../button';
 import { Text } from '../text';
 import type { TextProps } from '../text';
@@ -450,9 +451,9 @@ type HeadingBaseProps = {
 
 const HeadingBase = ({ href, children, className, ...props }: HeadingBaseProps) => {
   return (
-    <a href={href} className={clsx(styles['SubNav__heading'], className)} {...props}>
+    <SmartLink href={href} className={clsx(styles['SubNav__heading'], className)} {...props}>
       {children}
-    </a>
+    </SmartLink>
   );
 };
 
@@ -463,13 +464,13 @@ type SubHeadingBaseProps = {
 
 const SubHeadingBase = ({ href, children, className, ...props }: SubHeadingBaseProps) => {
   return (
-    <a
+    <SmartLink
       href={href}
       className={clsx(styles['SubNav__heading'], styles['SubNav__link'], styles['SubNav__subHeading'], className)}
       {...props}
     >
       {children}
-    </a>
+    </SmartLink>
   );
 };
 
@@ -558,7 +559,7 @@ const LinkBaseWithSubmenu = forwardRef<HTMLDivElement, LinkBaseProps>(
         onFocus={() => null}
         onBlur={() => null}
       >
-        <a
+        <SmartLink
           href={href}
           className={clsx(
             styles['SubNav__link'],
@@ -575,7 +576,7 @@ const LinkBaseWithSubmenu = forwardRef<HTMLDivElement, LinkBaseProps>(
           <Text as='span' size='100' weight='medium' className={styles['SubNav__link-label']}>
             {label}
           </Text>
-        </a>
+        </SmartLink>
         {isLarge && !_isOverflowMenu && (
           <button
             className={styles['SubNav__sub-menu-toggle']}
@@ -672,7 +673,7 @@ const LinkBase = forwardRef<HTMLAnchorElement | HTMLDivElement, LinkBaseProps>((
         _isOverflowed && styles['SubNav__link-item--overflowed']
       )}
     >
-      <a
+      <SmartLink
         href={href}
         className={clsx(
           styles['SubNav__link'],
@@ -691,7 +692,7 @@ const LinkBase = forwardRef<HTMLAnchorElement | HTMLDivElement, LinkBaseProps>((
         <Text as='span' size='100' weight='medium' className={styles['SubNav__link-label']}>
           {children}
         </Text>
-      </a>
+      </SmartLink>
     </li>
   );
 });
@@ -716,7 +717,7 @@ function SubMenuBase({
   const context = React.useContext(SubNavContext);
   const navRef = useRef<HTMLElement>(null);
 
-  const { isLarge } = useWindowSize();
+  // const { isLarge } = useWindowSize();
 
   /**
    * Effect is needed to prevent the bubbling of onClick events to the overlay trigger.
@@ -772,7 +773,7 @@ function SubMenuBase({
     const Tag = /* isLarge && !_isOverflowMenu ? ThemeProvider :  */ React.Fragment;
 
     return (
-      <Tag {...(isLarge && !_isOverflowMenu ? { colorMode: 'light' } : {})}>
+      <Tag {/* isLarge && !_isOverflowMenu ? { colorMode: 'light' } : */ ...{}}>
         <ul
           className={clsx(styles['SubNav__sub-menu'], styles[`SubNav__sub-menu--${variant}`], className)}
           aria-label={ariaLabel}

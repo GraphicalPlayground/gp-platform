@@ -19,7 +19,7 @@ import { ExpandableArrow } from '../expandable-arrow';
 import type { BaseProps } from '../helper';
 import { useProvidedRefOrCreate } from '../../hooks';
 import { colors } from '../constants';
-import { isFragmentElement } from '../helper';
+import { isFragmentElement, SmartLink } from '../helper';
 
 import styles from './card.module.css';
 import stylesLink from '../link/link.module.css';
@@ -173,7 +173,11 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
         return acc;
       }, {});
 
-    if ((process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') && leadingVisual && cardIcon) {
+    if (
+      (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') &&
+      leadingVisual &&
+      cardIcon
+    ) {
       // eslint-disable-next-line no-console
       console.warn('Card: `leadingVisual` and `Card.Icon` cannot be used together. `Card.Icon` will not be rendered.');
     }
@@ -364,7 +368,7 @@ const CardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
   ({ children, as = 'h3', className, href, onMouseEnter, onMouseLeave, onBlur, onFocus, ...rest }, ref) => {
     return (
       <Heading size='6' className={clsx(styles.Card__heading, className)} ref={ref} as={as} {...rest}>
-        <a
+        <SmartLink
           href={href}
           className={clsx(styles.Card__link)}
           onMouseEnter={onMouseEnter}
@@ -373,7 +377,7 @@ const CardHeading = forwardRef<HTMLHeadingElement, CardHeadingProps>(
           onFocus={onFocus}
         >
           {children}
-        </a>
+        </SmartLink>
       </Heading>
     );
   }

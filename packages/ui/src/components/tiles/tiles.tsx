@@ -11,7 +11,7 @@ import { ArrowUpRightIcon } from '@primer/octicons-react';
 import type { BaseProps } from '../helper';
 import gridlineStyles from '../shared.module.css';
 import { Text } from '../text';
-import { isFragmentElement } from '../helper';
+import { isFragmentElement, SmartLink } from '../helper';
 
 import styles from './tiles.module.css';
 
@@ -59,7 +59,7 @@ const TilesRoot = forwardRef(
 
     const itemCount = getChildCount(children);
 
-    if ((process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') && itemCount > 9) {
+    if ((process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') && itemCount > 9) {
       // eslint-disable-next-line no-console
       console.warn('Tiles: Use no more than 9 items.');
     }
@@ -130,9 +130,9 @@ const _Item = forwardRef(({ name, href, children, className, ...rest }: TilesIte
   return (
     <li ref={ref} className={clsx(styles['Tiles-item'], className)} {...rest}>
       {hasLink ? (
-        <a href={href} className={styles['Tiles-item-link']}>
+        <SmartLink href={href} className={styles['Tiles-item-link']}>
           {content}
-        </a>
+        </SmartLink>
       ) : (
         content
       )}

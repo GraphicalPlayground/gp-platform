@@ -67,7 +67,7 @@ const MediaPlaylistRoot = forwardRef<HTMLDivElement, MediaPlaylistProps>(
 
     const headingId = headingChild?.props.id ?? `${uniqueId}-heading`;
 
-    if (!headingChild && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+    if (!headingChild && (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test')) {
       // eslint-disable-next-line no-console
       console.warn(
         'MediaPlaylist: Heading child is required. This element labels the playlist for assistive technologies.'

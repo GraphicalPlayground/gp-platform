@@ -65,7 +65,7 @@ export const LogoSuiteRoot: React.FC<React.PropsWithChildren<LogoSuiteProps>> = 
   });
 
   if (!HeadingChild) {
-    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+    if (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') {
       // eslint-disable-next-line no-console
       console.warn('LogoSuite: Heading child is required. You may use `visuallyHidden` to hide it from view.');
     }
@@ -248,7 +248,7 @@ const LogoSuiteLogobar = React.forwardRef<HTMLDivElement, LogoSuiteLogoBarProps>
     }, [marquee, prefersReducedMotion, marqueeSpeed]);
 
     if (marquee && takeoverButton) {
-      if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (process.env['NODE_ENV'] === 'development' || process.env['NODE_ENV'] === 'test') {
         // eslint-disable-next-line no-console
         console.warn(
           'LogoSuite.Logobar: `takeoverButton` cant be used with `marquee` prop due to accessibility risks. Set `marquee={false}` to use the takeover feature.'

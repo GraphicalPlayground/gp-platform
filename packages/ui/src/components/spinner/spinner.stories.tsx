@@ -30,14 +30,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Spinner className={process.env.NODE_ENV === 'test' ? styles.spinner__pauseAnimations : undefined} />
+  render: () => <Spinner className={process.env['NODE_ENV'] === 'test' ? styles.spinner__pauseAnimations : undefined} />
 };
 
 export const Playground: Story = {
   render: (args) => (
     <Spinner
       {...args}
-      className={clsx(args.className, process.env.NODE_ENV === 'test' && styles.spinner__pauseAnimations)}
+      className={clsx(args.className, process.env['NODE_ENV'] === 'test' && styles.spinner__pauseAnimations)}
     />
   )
 };

@@ -10,6 +10,7 @@ import type { Icon as IconProps } from '@primer/octicons-react';
 import { Text } from '../text';
 import { colors, biColorGradients } from '../constants';
 
+import { SmartLink } from '../helper';
 import type { BaseProps } from '../helper';
 import { ExpandableArrow } from '../expandable-arrow';
 
@@ -82,7 +83,7 @@ const _EyebrowBanner = forwardRef<HTMLAnchorElement, EyebrowBannerProps>(
     });
 
     return (
-      <a
+      <SmartLink
         href={href}
         ref={ref}
         className={clsx(styles.EyebrowBanner, className)}
@@ -110,7 +111,7 @@ const _EyebrowBanner = forwardRef<HTMLAnchorElement, EyebrowBannerProps>(
             />
           </span>
         </span>
-      </a>
+      </SmartLink>
     );
   }
 );

@@ -54,7 +54,7 @@ export const ButtonGroup = forwardRef(
 
     const childrenToRender = isJoinedGroup ? supportedChildren : supportedChildren.slice(0, 2);
 
-    if (process.env.NODE_ENV !== 'production' && variant === 'joined' && !supportsJoinedVariant) {
+    if (process.env['NODE_ENV'] !== 'production' && variant === 'joined' && !supportsJoinedVariant) {
       // eslint-disable-next-line no-console
       console.warn('ButtonGroup variant="joined" supports only Button and IconButton children.');
     }
