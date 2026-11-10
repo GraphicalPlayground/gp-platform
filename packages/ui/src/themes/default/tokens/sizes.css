@@ -246,6 +246,10 @@
     --gp-sub-nav-height-overflow-menu-inset: 128px;
     --gp-sub-nav-height-overflow-menu-item-min: 40px;
     --gp-sub-nav-offset-overflow-menu: 4px;
+
+    --gp-statistic-spacing-condensed: 16px;
+    --gp-statistic-spacing-normal: 24px;
+    --gp-statistic-spacing-spacious: 32px;
   }
 
   @media (min-width: 48rem) {

@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.gridFrame {
+  width: 100%;
+  border-block-start: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+}
+
+.gridContent {
+  width: 100%;
+  max-width: 789px;
+  margin-inline: auto;
+}
+
+.gridColumn {
+  display: flex;
+}
+
+.gridItem {
+  width: 100%;
+  border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+  border-block-start: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+  display: flex;
+  align-items: center;
+}
+
+.gridColumn:first-child .gridItem {
+  border-block-start: 0;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .gridContent {
+    max-width: 81rem;
+  }
+
+  .gridItem {
+    border-block-start: 0;
+    border-inline-end: 0;
+  }
+
+  .gridColumn:last-child .gridItem {
+    border-inline-end: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+  }
+}

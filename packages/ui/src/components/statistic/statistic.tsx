@@ -1,0 +1,217 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { forwardRef, useMemo } from 'react';
+import type { PropsWithChildren } from 'react';
+import { clsx } from 'clsx';
+
+import { Text } from '../text';
+import type { TextProps } from '../text';
+
+import type { BaseProps } from '../helper';
+
+import styles from './statistic.module.css';
+
+export const StatisticSizes = ['small', 'medium', 'large'] as const;
+export const StatisticSpacingValues = ['none', 'condensed', 'normal', 'spacious'] as const;
+
+type StatisticSpacingValues = (typeof StatisticSpacingValues)[number];
+
+export type StatisticSize = (typeof StatisticSizes)[number];
+
+type ResponsiveMap<T> = {
+  narrow?: T;
+  regular?: T;
+  wide?: T;
+};
+
+export type StatisticProps = BaseProps<HTMLAnchorElement> & {
+  /**
+   * The size of the Statistic
+   */
+  size?: StatisticSize;
+  /**
+   * Adding padding to all internal sides of the component
+   */
+  padding?: StatisticSpacingValues | ResponsiveMap<StatisticSpacingValues>;
+  /**
+   * Specify alternative  appearance
+   */
+  variant?: 'default' | 'boxed';
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  leadingComponent?: React.FunctionComponent;
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  trailingComponent?: React.FunctionComponent;
+} & BaseProps<HTMLDivElement> &
+  React.HTMLAttributes<HTMLDivElement>;
+
+const _HeadingSizeMap: {
+  [key in StatisticSize]: TextProps['size'];
+} = {
+  small: '600',
+  medium: '800',
+  large: '1000'
+};
+
+const classBuilder = (property: string, value?: StatisticSpacingValues | ResponsiveMap<StatisticSpacingValues>) => {
+  if (!value) return '';
+
+  if (typeof value === 'string' || typeof value === 'number') {
+    return styles[`Statistic--${property}-${value}` as keyof typeof styles];
+  } else {
+    return Object.keys(value)
+      .map(
+        (viewport) =>
+          styles[`Statistic--${viewport}-${property}-${value[viewport as keyof typeof value]}` as keyof typeof styles]
+      )
+      .join(' ');
+  }
+};
+
+const _Statistic = forwardRef<HTMLDivElement, PropsWithChildren<StatisticProps>>(
+  (
+    {
+      className,
+      children,
+      size = 'large',
+      variant = 'default',
+      padding = 'none',
+      leadingComponent: LeadingComponent,
+      trailingComponent: TrailingComponent,
+      ...rest
+    },
+    ref
+  ) => {
+    const paddingClasses = useMemo(() => classBuilder('padding', padding), [padding]);
+
+    type HeadingElement = React.ReactElement<React.ComponentProps<typeof StatisticHeading>>;
+    type DescriptionElement = React.ReactElement<React.ComponentProps<typeof StatisticDescription>>;
+
+    const headingChild = useMemo(() => {
+      const candidate = React.Children.toArray(children).find((child) => {
+        return (
+          React.isValidElement<React.ComponentProps<typeof StatisticHeading>>(child) && child.type === StatisticHeading
+        );
+      });
+
+      return React.isValidElement<React.ComponentProps<typeof StatisticHeading>>(candidate)
+        ? (candidate as HeadingElement)
+        : undefined;
+    }, [children]);
+
+    const descriptionChild = useMemo(() => {
+      const candidate = React.Children.toArray(children).find((child) => {
+        return (
+          React.isValidElement<React.ComponentProps<typeof StatisticDescription>>(child) &&
+          child.type === StatisticDescription
+        );
+      });
+
+      return React.isValidElement<React.ComponentProps<typeof StatisticDescription>>(candidate)
+        ? (candidate as DescriptionElement)
+        : undefined;
+    }, [children]);
+
+    let headingToRender = headingChild;
+
+    /**
+     * To aid assistive technology, we append the optional description to the heading
+     */
+    if (descriptionChild && headingToRender) {
+      headingToRender = React.cloneElement(headingToRender, {
+        children: (
+          <>
+            {headingToRender.props.children} {descriptionChild}
+          </>
+        )
+      });
+    }
+
+    return (
+      <div
+        ref={ref}
+        className={clsx(
+          styles.Statistic,
+          styles[`Statistic--variant-${variant}` as keyof typeof styles],
+          paddingClasses,
+          className
+        )}
+        {...rest}
+      >
+        {LeadingComponent && <LeadingComponent />}
+
+        {headingToRender &&
+          React.cloneElement(headingToRender, {
+            size: headingToRender.props.size || _HeadingSizeMap[size]
+          })}
+
+        {TrailingComponent && <TrailingComponent />}
+      </div>
+    );
+  }
+);
+
+type StatisticHeadingProps = TextProps;
+
+const StatisticHeading = forwardRef<HTMLParagraphElement, StatisticHeadingProps>(
+  ({ as = 'p', className, children, font = 'hubot-sans', weight = 'medium', size = '1000', ...rest }, ref) => {
+    return (
+      <Text
+        as={as}
+        ref={ref}
+        className={clsx(styles[`Statistic__heading`], className)}
+        font={font}
+        weight={weight}
+        size={size}
+        {...rest}
+      >
+        {children}
+      </Text>
+    );
+  }
+);
+
+type StatisticDescriptionProps = BaseProps<HTMLSpanElement> &
+  Omit<TextProps, 'variant' | 'as'> & {
+    variant?: 'default' | 'muted' | 'accent';
+  };
+
+const StatisticDescription = forwardRef<HTMLSpanElement, PropsWithChildren<StatisticDescriptionProps>>(
+  ({ children, className, size = '300', variant = 'muted', ...rest }, ref) => {
+    return (
+      <Text
+        variant={variant !== 'accent' ? variant : 'muted'}
+        ref={ref}
+        size={size}
+        font='mona-sans'
+        className={clsx(
+          styles['Statistic__description'],
+          styles[`Statistic__description--${variant}` as keyof typeof styles],
+          className
+        )}
+        {...rest}
+      >
+        {children}
+      </Text>
+    );
+  }
+);
+
+/**
+ * Use the statistic component display concise numerical information
+ */
+export const Statistic = Object.assign(_Statistic, {
+  Heading: StatisticHeading,
+  Description: StatisticDescription
+});

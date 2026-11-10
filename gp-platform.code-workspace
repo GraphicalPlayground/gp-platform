@@ -181,6 +181,7 @@
       "timeline": "temp",
       "tiles": "app",
       "sub-nav": "layout",
+      "statistic": "functions",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",

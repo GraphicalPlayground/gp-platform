@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './statistic';
 export * from './section-intro-stacked';
 export * from './sub-nav';
 export * from './tiles';
