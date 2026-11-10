@@ -9,9 +9,6 @@ import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
 import { FaqJsonLd } from '@gp/seo/react';
 import { FAQClient } from '@/components/faq';
-
-import { MarketingHeader } from '@/components/header';
-
 import {
   aboutCommunityVisual,
   aboutCurriculumVisual,
@@ -37,7 +34,6 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function HomePage() {
   return (
     <Stack className='w-full' direction='vertical' gap='none' padding='none'>
-      <MarketingHeader fixed />
       <Section fullWidth backgroundColor='subtle' className='h-screen'>
         Hello World
       </Section>

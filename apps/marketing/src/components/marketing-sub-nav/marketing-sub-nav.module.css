@@ -1,0 +1,21 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@media (min-width: 1012px) {
+  .aligned.aligned {
+    padding-inline: max(var(--gp-size-16), calc((100% - var(--gp-breakpoint-xlarge)) / 2 + var(--gp-size-16)));
+  }
+}
+
+.spacer {
+  padding-block-start: 61px;
+
+  &.twoRows {
+    @media screen and (max-width: 63.24rem) {
+      padding-block-start: 107px;
+    }
+  }
+}

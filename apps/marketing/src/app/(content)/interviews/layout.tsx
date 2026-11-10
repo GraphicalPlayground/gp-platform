@@ -3,13 +3,14 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { SubdomainNavBarHeader } from '@/components/header';
+import { MarketingSubNav } from '@/components';
+import { contentSubNavs } from '@/data/sub-nav';
 
 export default function InterviewsLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SubdomainNavBarHeader fixed={false} links={[]} title='Interviews' />
-      <main className='w-full'>{children}</main>
+      <MarketingSubNav {...contentSubNavs.interviews} />
+      {children}
     </>
   );
 }

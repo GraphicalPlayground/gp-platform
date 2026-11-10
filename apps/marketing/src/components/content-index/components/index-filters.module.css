@@ -1,0 +1,125 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.asideContent {
+  font-size: var(--gp-text-size-100);
+}
+
+.asideHeading,
+.groupHeading {
+  font-size: var(--gp-text-size-100);
+  color: var(--gp-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.031rem;
+}
+
+.fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.fieldset legend {
+  padding: 0;
+}
+
+.filterLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-8);
+  color: var(--gp-color-text-muted);
+  font-weight: var(--gp-text-weight-normal);
+  cursor: pointer;
+}
+
+.checkbox {
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--gp-color-accent-primary);
+  cursor: pointer;
+}
+
+.checkbox:focus-visible {
+  outline: 2px solid var(--gp-color-focus);
+  outline-offset: 2px;
+}
+
+.clearAllLink {
+  font-weight: var(--gp-text-weight-medium);
+}
+
+.clearAllLink--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.asideHeadingContainer,
+.filtersMenuToggle {
+  display: none;
+}
+
+.filtersMenuToggle:hover {
+  background-color: var(--gp-color-canvas-subtle);
+}
+
+@media screen and (max-width: 48rem) {
+  .aside {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+
+  .asideHeadingContainer {
+    display: flex;
+  }
+
+  .asideHeadingContainer--open {
+    margin-bottom: var(--gp-size-20);
+  }
+
+  .asideContent {
+    width: 100%;
+    padding: var(--gp-size-16);
+    background-color: var(--gp-color-canvas-default);
+    border-top: var(--gp-border-width-thin) solid var(--gp-color-border-default);
+    border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-default);
+  }
+
+  .asideContent--open {
+    padding: var(--gp-size-16) var(--gp-size-16) var(--gp-size-32);
+  }
+
+  .asideContent--open::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    content: '';
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    background-color: color-mix(in srgb, var(--gp-color-canvas-subtle) 80%, transparent);
+  }
+
+  .filtersMenuToggle {
+    display: block;
+    width: var(--gp-size-32);
+    padding: var(--gp-size-4);
+    color: inherit;
+    cursor: pointer;
+    background-color: var(--gp-color-canvas-default);
+    border: 0;
+  }
+
+  .filtersStackCollapsed {
+    display: none;
+  }
+}

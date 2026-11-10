@@ -3,13 +3,14 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { SubdomainNavBarHeader } from '@/components/header';
+import { MarketingSubNav } from '@/components';
+import { communitySubNav } from '@/data/sub-nav';
 
 export default function CommunityLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SubdomainNavBarHeader fixed={false} links={[]} title='Community' />
-      <main className='w-full'>{children}</main>
+      <MarketingSubNav {...communitySubNav} />
+      {children}
     </>
   );
 }

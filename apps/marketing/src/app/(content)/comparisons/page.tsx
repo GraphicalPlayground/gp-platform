@@ -3,28 +3,17 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { cms } from '@/lib/cms';
-import { Link } from '@gp/ui/components';
+import { ContentIndexPage } from '@/components/content-index';
+import type { SearchParams } from '@/components/content-index';
 
-export default async function ComparisonsPage() {
-  const articles = await cms.articles.getComparisons();
-
+export default async function ComparisonsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
-    <div>
-      <h1>Comparisons</h1>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.frontmatter.slug}>
-            <Link
-              className='text-text-link-rest hover:text-text-link-pressed underline'
-              href={`/comparisons/${article.frontmatter.slug}`}
-              title={article.frontmatter.title}
-            >
-              {article.frontmatter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ContentIndexPage
+      basePath='/comparisons'
+      description='Side-by-side comparisons of graphics APIs, techniques, and tools to help you pick the right one.'
+      searchParams={await searchParams}
+      title='Comparisons'
+      type='comparison'
+    />
   );
 }

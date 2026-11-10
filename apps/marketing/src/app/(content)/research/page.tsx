@@ -3,28 +3,17 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { cms } from '@/lib/cms';
-import { Link } from '@gp/ui/components';
+import { ContentIndexPage } from '@/components/content-index';
+import type { SearchParams } from '@/components/content-index';
 
-export default async function ResearchPage() {
-  const articles = await cms.articles.getResearchEntries();
-
+export default async function ResearchPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
-    <div>
-      <h1>Research</h1>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.frontmatter.slug}>
-            <Link
-              className='text-text-link-rest hover:text-text-link-pressed underline'
-              href={`/research/${article.frontmatter.slug}`}
-              title={article.frontmatter.title}
-            >
-              {article.frontmatter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ContentIndexPage
+      basePath='/research'
+      description='Our research notes and summaries of papers shaping modern real-time rendering.'
+      searchParams={await searchParams}
+      title='Research'
+      type='research'
+    />
   );
 }

@@ -10,7 +10,7 @@ import styles from './marketing-header.module.css';
 
 import { useHeaderMenu, useHeaderIsTop, useNavPaddingRecalculation } from '@/hooks';
 import { useFocusTrap } from '@gp/ui/hooks';
-import { BrandIcon } from '@gp/ui/components';
+import { BrandIcon, SmartLink } from '@gp/ui/components';
 
 import { HeaderMenuToggle } from './header-menu-toggle';
 import { DesktopAuthActions, MobileAuthActions } from './auth';
@@ -19,7 +19,6 @@ import type { MarketingHeaderTitle } from './mobile-header-title';
 
 import { MarketingNavigation } from '../navigation';
 import { headerNavData } from '@/data/header';
-import Link from 'next/link';
 
 import { useAuth } from '@clerk/nextjs';
 
@@ -101,9 +100,9 @@ export const MarketingHeader: React.FC<MarketingHeaderProps> = ({
             <HeaderMenuToggle ref={toggleRef} isOpen={isOpen} onToggle={toggle} />
           </div>
 
-          <Link aria-label='Homepage' className={styles.logo} href={homePath} tabIndex={isOpen ? -1 : undefined}>
+          <SmartLink aria-label='Homepage' className={styles.logo} href={homePath} tabIndex={isOpen ? -1 : undefined}>
             <BrandIcon fill='currentColor' height={32} variant='icon' />
-          </Link>
+          </SmartLink>
 
           <MobileAuthActions
             dashboardPath={dashboardPath}

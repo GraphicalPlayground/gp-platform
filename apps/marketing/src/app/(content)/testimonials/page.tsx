@@ -3,28 +3,17 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { cms } from '@/lib/cms';
-import { Link } from '@gp/ui/components';
+import { ContentIndexPage } from '@/components/content-index';
+import type { SearchParams } from '@/components/content-index';
 
-export default async function TestimonialsPage() {
-  const articles = await cms.articles.getTestimonials();
-
+export default async function TestimonialsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
-    <div>
-      <h1>Testimonials</h1>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.frontmatter.slug}>
-            <Link
-              className='text-text-link-rest hover:text-text-link-pressed underline'
-              href={`/testimonials/${article.frontmatter.slug}`}
-              title={article.frontmatter.title}
-            >
-              {article.frontmatter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ContentIndexPage
+      basePath='/testimonials'
+      description='What learners and engineers say about learning with Graphical Playground.'
+      searchParams={await searchParams}
+      title='Testimonials'
+      type='testimonial'
+    />
   );
 }

@@ -83,13 +83,11 @@ const Tags: React.FC<TagsProps> = ({ indexPath, tags, tagsLabel }) => {
       <Stack direction='horizontal' flexWrap='wrap' padding='none'>
         <Text>{tagsLabel}</Text>
         {tags.map((tag) => {
-          const href = `${indexPath}?tag=${encodeURIComponent(tag.toLowerCase())}`;
-
           return (
             <Link
               key={tag}
               aria-label={`${tagsLabel}: ${tag}`}
-              href={href}
+              href={{ pathname: indexPath, query: { tag: tag.toLowerCase() } }}
               style={{
                 padding: '4px 12px',
                 backgroundColor: '#f3f4f6',

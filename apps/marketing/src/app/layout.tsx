@@ -12,6 +12,7 @@ import { Urls } from '@gp/seo/utils';
 import { env } from '~env';
 
 import { Footer } from '@/components/footer';
+import { MarketingHeader } from '@/components/header';
 
 import { GoogleAnalytics } from '@next/third-parties/google';
 
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className='relative w-full min-h-screen flex flex-col scroll-smooth'>
         <JsonLd data={graph} />
         <ClerkProvider>
+          <MarketingHeader />
           <main className='w-full'>{children}</main>
           <Footer />
         </ClerkProvider>

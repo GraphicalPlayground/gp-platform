@@ -1,0 +1,18 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.indexCard img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 63.25rem) {
+  .indexCard {
+    margin: 0 auto;
+  }
+}

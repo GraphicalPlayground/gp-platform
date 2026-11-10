@@ -3,28 +3,17 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-import { cms } from '@/lib/cms';
-import { Link } from '@gp/ui/components';
+import { ContentIndexPage } from '@/components/content-index';
+import type { SearchParams } from '@/components/content-index';
 
-export default async function GlossaryPage() {
-  const articles = await cms.articles.getGlossaryEntries();
-
+export default async function GlossaryPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return (
-    <div>
-      <h1>Glossary</h1>
-      <ul>
-        {articles.map((article) => (
-          <li key={article.frontmatter.slug}>
-            <Link
-              className='text-text-link-rest hover:text-text-link-pressed underline'
-              href={`/glossary/${article.frontmatter.slug}`}
-              title={article.frontmatter.title}
-            >
-              {article.frontmatter.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ContentIndexPage
+      basePath='/glossary'
+      description='Clear definitions of the graphics programming and engine architecture terms you will run into.'
+      searchParams={await searchParams}
+      title='Glossary'
+      type='glossary'
+    />
   );
 }

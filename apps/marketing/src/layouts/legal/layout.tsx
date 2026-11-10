@@ -9,7 +9,6 @@ import { SplitPageLayout } from '@primer/react';
 import { NavList, Accordion } from '@gp/ui/components';
 import type { MdxCollection, LegalFrontmatter } from '@gp/content';
 import { usePathname } from 'next/navigation';
-import { SubdomainNavBarHeader } from '@/components/header';
 
 /**
  * @brief Props for the LegalLayoutClient component.
@@ -28,29 +27,12 @@ export const LegalLayoutClient: React.FC<LegalLayoutClientProps> = ({ children, 
   const currentSlug = pathname?.replace('/legal/', '') || '';
 
   return (
-    <>
-      <SubdomainNavBarHeader fixed={false} links={[]} title='Legal' />
-      <SplitPageLayout>
-        <SplitPageLayout.Pane padding='none' position='start'>
-          <Accordion className='block md:hidden' variant='emphasis'>
-            <Accordion.Heading>Legal Documents</Accordion.Heading>
-            <Accordion.Content>
-              <NavList aria-label='Legal documents navigation'>
-                {docs.map((doc) => (
-                  <NavList.Item
-                    key={doc.frontmatter.slug}
-                    aria-current={doc.frontmatter.slug === currentSlug ? 'page' : undefined}
-                    href={`/legal/${doc.frontmatter.slug}`}
-                    title={doc.frontmatter.title}
-                  >
-                    {doc.frontmatter.title}
-                  </NavList.Item>
-                ))}
-              </NavList>
-            </Accordion.Content>
-          </Accordion>
-          <NavList aria-label='Legal documents navigation' className='hidden md:block'>
-            <NavList.Group title='Legal Documents'>
+    <SplitPageLayout>
+      <SplitPageLayout.Pane padding='none' position='start'>
+        <Accordion className='block md:hidden' variant='emphasis'>
+          <Accordion.Heading>Legal Documents</Accordion.Heading>
+          <Accordion.Content>
+            <NavList aria-label='Legal documents navigation'>
               {docs.map((doc) => (
                 <NavList.Item
                   key={doc.frontmatter.slug}
@@ -61,11 +43,25 @@ export const LegalLayoutClient: React.FC<LegalLayoutClientProps> = ({ children, 
                   {doc.frontmatter.title}
                 </NavList.Item>
               ))}
-            </NavList.Group>
-          </NavList>
-        </SplitPageLayout.Pane>
-        <SplitPageLayout.Content>{children}</SplitPageLayout.Content>
-      </SplitPageLayout>
-    </>
+            </NavList>
+          </Accordion.Content>
+        </Accordion>
+        <NavList aria-label='Legal documents navigation' className='hidden md:block'>
+          <NavList.Group title='Legal Documents'>
+            {docs.map((doc) => (
+              <NavList.Item
+                key={doc.frontmatter.slug}
+                aria-current={doc.frontmatter.slug === currentSlug ? 'page' : undefined}
+                href={`/legal/${doc.frontmatter.slug}`}
+                title={doc.frontmatter.title}
+              >
+                {doc.frontmatter.title}
+              </NavList.Item>
+            ))}
+          </NavList.Group>
+        </NavList>
+      </SplitPageLayout.Pane>
+      <SplitPageLayout.Content>{children}</SplitPageLayout.Content>
+    </SplitPageLayout>
   );
 };
