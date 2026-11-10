@@ -104,6 +104,7 @@
       "testimonial": "messages",
       "testimonial-group": "messages",
       "tabs": "archive",
+      "card": "meta",
 
       /* Categories */
       "(content)": "template",

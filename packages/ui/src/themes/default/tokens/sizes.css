@@ -195,6 +195,10 @@
     --gp-testimonial-quote-letter-spacing-large: var(--gp-text-letterSpacing-900);
 
     --gp-tabs-container-padding: var(--gp-size-4);
+
+    --gp-card-max-width: 420px;
+    --gp-card-padding-block: var(--gp-size-32);
+    --gp-card-padding-inline: var(--gp-size-20);
   }
 
   @media (min-width: 48rem) {

@@ -33,5 +33,8 @@
 
     --gp-testimonial-group-fade-in-duration: 475ms;
     --gp-testimonial-group-fade-out-duration: 250ms;
+
+    --gp-card-animation-duration: 400ms;
+    --gp-card-animation-easing: cubic-bezier(0.01, 0.73, 0.08, 0.93);
   }
 }

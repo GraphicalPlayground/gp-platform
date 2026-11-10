@@ -457,5 +457,8 @@
     --gp-tabs-item-default-border-color-active: var(--gp-color-white-0);
     --gp-tabs-item-underline-rest: var(--gp-color-white-0);
     --gp-tabs-list-border-width-active: var(--gp-border-width-thick);
+
+    --gp-card-background-default: var(--gp-color-canvas-subtle);
+    --gp-card-background-overlay: rgba(242, 245, 243, 0.05);
   }
 }
