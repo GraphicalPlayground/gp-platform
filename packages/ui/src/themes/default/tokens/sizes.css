@@ -208,6 +208,28 @@
     --gp-pricing-options-items3-container-padding-inline: var(--gp-size-24);
     --gp-pricing-options-items4-gap: var(--gp-size-48);
     --gp-pricing-options-items4-container-padding-inline: var(--gp-size-24);
+
+    --gp-river-heading-margin: var(--gp-size-16);
+    --gp-river-label-margin: var(--gp-size-16);
+    --gp-river-visual-shadow:
+      0px 100px 80px rgba(0, 0, 0, 0.0174624), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0235573),
+      0px 22.3363px 17.869px rgba(0, 0, 0, 0.0282784), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.0339075),
+      0px 6.6501px 5.32008px rgba(0, 0, 0, 0.04317), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.07);
+
+    --gp-river-spacing-inner: var(--gp-size-40);
+    --gp-river-spacing-inner-y: var(--gp-size-24);
+    --gp-river-spacing-outer-block: var(--gp-size-36);
+    --gp-river-variant-gridline-visual-padding: var(--gp-size-32);
+    --gp-river-variant-gridline-spacing-outer-block: var(--gp-size-40);
+    --gp-river-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-40);
+    --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-accordion-variant-gridline-spacing-content-gap: var(--gp-size-32);
+    --gp-river-breakout-spacing-inner: var(--gp-size-40);
+    --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-36);
+    --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-40);
+    --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-16);
   }
 
   @media (min-width: 48rem) {
@@ -250,12 +272,23 @@
       --gp-eyebrow-banner-label-size: var(--gp-text-size-200);
       --gp-eyebrow-banner-heading-size: var(--gp-text-size-200);
       --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-200);
+
+      --gp-river-spacing-inner-y: var(--gp-size-24);
+      --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-36);
+      --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-36);
+      --gp-river-breakout-spacing-inner: var(--gp-size-48);
+      --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-40);
+      --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-48);
+      --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-36);
+      --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-20);
     }
   }
 
   @media (min-width: 1012px) {
     :root {
       --gp-faq-heading-margin-bottom: var(--gp-size-96);
+
+      --gp-river-variant-gridline-visual-padding: var(--gp-size-64);
     }
   }
 
@@ -272,6 +305,20 @@
       --gp-grid-spacing-row: 48px;
       --gp-grid-spacing-column-gap: 48px;
       --gp-grid-spacing-margin: 16px;
+
+      --gp-river-spacing-inner: var(--gp-size-24);
+      --gp-river-spacing-inner-y: var(--gp-size-32);
+      --gp-river-spacing-outer-block: var(--gp-size-48);
+      --gp-river-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-content-gap: var(--gp-size-64);
+      --gp-river-breakout-spacing-inner: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-80);
+      --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-24);
     }
   }
 }

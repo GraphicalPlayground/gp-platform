@@ -113,3 +113,33 @@ export const isFragmentElement = (
 ): node is React.ReactElement<{ children?: React.ReactNode }> => {
   return React.isValidElement(node) && node.type === React.Fragment;
 };
+
+/**
+ * @brief Recursively searches for a specific React element type within the children of a given React node.
+ * @param children - The React node whose children will be searched.
+ * @param element - The React element type to search for.
+ * @returns True if the specified element type is found within the children, false otherwise.
+ */
+export const findElementInChildren = (children: React.ReactNode, element: React.ElementType): boolean => {
+  if (!children) {
+    return false;
+  }
+
+  if (Array.isArray(children)) {
+    for (const child of children) {
+      if (findElementInChildren(child, element)) {
+        return true;
+      }
+    }
+  } else if (React.isValidElement<{ children?: React.ReactNode }>(children)) {
+    if (children.type === element) {
+      return true;
+    }
+
+    if (children.props.children && findElementInChildren(children.props.children, element)) {
+      return true;
+    }
+  }
+
+  return false;
+};

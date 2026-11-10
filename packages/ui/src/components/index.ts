@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './river';
 export * from './pricing-options';
 export * from './media-playlist';
 export * from './cta-banner';

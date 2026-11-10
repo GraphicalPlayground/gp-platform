@@ -1,0 +1,358 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { forwardRef, useMemo } from 'react';
+import type { PropsWithChildren, Ref } from 'react';
+import { clsx } from 'clsx';
+import { Heading } from '../../heading';
+import type { HeadingProps } from '../../heading';
+import { Text } from '../../text';
+import type { TextProps } from '../../text';
+import { Link } from '../../link';
+import type { LinkProps } from '../../link';
+import { Label } from '../../label';
+import type { LabelProps } from '../../label';
+import { EyebrowText } from '../../eyebrow-text';
+import type { EyebrowTextProps } from '../../eyebrow-text';
+import type { BaseProps } from '../../helper';
+
+import styles from '../river-shared.module.css';
+import gridlineStyles from '../../shared.module.css';
+
+export const RiverVariants = ['default', 'gridline'] as const;
+export const BorderedGrid = 'gridline' as const;
+export const GridLine = 'gridline' as const;
+export type RiverVariant = (typeof RiverVariants)[number];
+
+export const RiverContentAlignValues = ['center', 'block-end'] as const;
+export type RiverContentAlign = (typeof RiverContentAlignValues)[number];
+
+export type RiverProps = {
+  /**
+   * Only specific children are valid.
+   * These include: `River.Visual` and `River.Content`.
+   * The declarative order of the children will be ignored in the rendered output
+   * to enforce correct HTML semantics.
+   */
+  children: React.ReactElement<RiverVisualProps | RiverContentProps>[];
+  /**
+   * Apply an alternative image to text column ratio. The default is `50:50`.
+   */
+  imageTextRatio?: '60:40' | '50:50';
+  /**
+   * Adjust the order of the `Content` column. The default is `start`.
+   */
+  align?: 'start' | 'end' | 'center';
+  /**
+   * Apply a visual variant. The default is `default`.
+   * `gridline` applies lateral spacing for use in bordered grid layouts.
+   */
+  variant?: RiverVariant;
+} & BaseProps<HTMLElement> &
+  React.HTMLAttributes<HTMLElement>;
+
+export const defaultRiverImageTextRatio = '50:50';
+export const defaultRiverAlign = 'start';
+export const defaultRiverVariant: RiverVariant = 'default';
+
+type ValidRootChildren = {
+  Visual: React.ReactElement<RiverVisualProps> | null;
+  Content: React.ReactElement<RiverContentProps> | null;
+};
+
+const Root = forwardRef(
+  (
+    {
+      imageTextRatio = defaultRiverImageTextRatio,
+      align = defaultRiverAlign,
+      variant = defaultRiverVariant,
+      className,
+      children,
+      ...rest
+    }: RiverProps,
+    ref: Ref<HTMLElement>
+  ) => {
+    const { Visual: VisualChild, Content: ContentChild } = React.Children.toArray(children).reduce<ValidRootChildren>(
+      (acc, child) => {
+        if (React.isValidElement(child) && typeof child.type !== 'string') {
+          if (child.type === Visual) {
+            acc.Visual = child as React.ReactElement<RiverVisualProps>;
+          }
+          if (child.type === RiverContent) {
+            acc.Content = child as React.ReactElement<RiverContentProps>;
+          }
+        }
+
+        return acc;
+      },
+      { Visual: null, Content: null }
+    );
+
+    const visualPosition = VisualChild?.props.position ?? 'default';
+    const visualPadding = VisualChild?.props.padding ?? 'default';
+    const hasNonDefaultPosition = visualPosition !== 'default';
+    const hasNonDefaultPadding = visualPadding !== 'default';
+    const hasVisualLayoutOverrides = hasNonDefaultPosition || hasNonDefaultPadding;
+    const supportsVisualLayoutOverrides = variant === 'gridline';
+
+    if (
+      hasVisualLayoutOverrides &&
+      !supportsVisualLayoutOverrides &&
+      (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')
+    ) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `River: River.Visual position and padding are only supported when River uses variant="gridline"; ignoring position="${visualPosition}" and padding="${visualPadding}".`
+      );
+    }
+
+    const VisualChildWithVariantStyles = VisualChild
+      ? React.cloneElement(VisualChild, {
+          className: clsx(
+            VisualChild.props.className,
+            variant === 'gridline' && styles['River__visual--has-background']
+          )
+        })
+      : null;
+
+    return (
+      <section
+        ref={ref}
+        className={clsx(
+          styles.River,
+          styles[`River--${imageTextRatio.replace(':', '-')}` as keyof typeof styles],
+          styles[`River--align-${align}`],
+          styles[`River--variant-${variant}` as keyof typeof styles],
+          variant === 'gridline' && gridlineStyles.gridline,
+          className
+        )}
+        {...rest}
+      >
+        {ContentChild}
+        {VisualChildWithVariantStyles}
+      </section>
+    );
+  }
+);
+
+type RiverContentChild = React.ReactElement<EyebrowTextProps | HeadingProps | TextProps | LinkProps | LabelProps>;
+
+export type RiverContentProps = BaseProps<HTMLDivElement> & {
+  /**
+   * Aligns the content vertically within its container.
+   */
+  align?: RiverContentAlign;
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  trailingComponent?: React.FunctionComponent;
+  /**
+   * When `true`, a divider will be rendered between the standard river and optional trailing content.
+   */
+  trailingComponentDivider?: boolean;
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  leadingComponent?: React.FunctionComponent;
+  /**
+   * Only valid children are allowed.
+   * These include: `EyebrowText`, `Heading`, `Text` and `Link`.
+   * Passing the standalone `Label` component is deprecated; use `EyebrowText` instead.
+   * The declarative order of the children will be ignored in the rendered output
+   * to enforce correct HTML semantics.
+   */
+  children: RiverContentChild | RiverContentChild[];
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export const RiverContent = forwardRef(
+  (
+    {
+      align = 'center',
+      children,
+      className,
+      leadingComponent: LeadingComponent,
+      trailingComponent: TrailingComponent,
+      trailingComponentDivider = false,
+      ...rest
+    }: RiverContentProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const Children = useMemo(() => React.Children.toArray(children), [children]);
+
+    const HeadingChild = Children.find((child) => React.isValidElement(child) && child.type === Heading);
+
+    const TextChild = Children.find((child) => React.isValidElement(child) && child.type === Text);
+
+    const LinkChild = Children.find((child) => React.isValidElement(child) && child.type === Link);
+
+    const LabelChild = Children.find((child) => React.isValidElement(child) && child.type === Label);
+
+    const EyebrowTextChild = Children.find((child) => React.isValidElement(child) && child.type === EyebrowText);
+
+    const usesDeprecatedLabel = React.isValidElement<LabelProps>(LabelChild) && !LeadingComponent;
+
+    if (usesDeprecatedLabel && (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test')) {
+      // eslint-disable-next-line no-console
+      console.warn('River.Content: standalone `Label` children are deprecated. Use `EyebrowText` instead.');
+    }
+
+    return (
+      <div
+        ref={ref}
+        className={clsx(
+          styles.River__content,
+          styles[`River__content--align-${align}` as keyof typeof styles],
+          className
+        )}
+        {...rest}
+      >
+        {usesDeprecatedLabel && (
+          <div className={styles.River__label}>
+            {React.cloneElement(LabelChild as React.ReactElement<LabelProps>, {})}
+          </div>
+        )}
+
+        {!LabelChild && React.isValidElement(EyebrowTextChild) && !LeadingComponent && (
+          <div className={styles.River__label}>{EyebrowTextChild}</div>
+        )}
+
+        {!LabelChild && !EyebrowTextChild && LeadingComponent && (
+          <div className={styles.River__leadingComponent}>
+            <LeadingComponent />
+          </div>
+        )}
+
+        {React.isValidElement<HeadingProps>(HeadingChild) && (
+          <div className={styles.River__heading}>
+            {React.cloneElement(HeadingChild as React.ReactElement<HeadingProps>, {
+              // as uses h3 default, but can be overridden
+              as: HeadingChild.props.as || 'h3',
+              size: HeadingChild.props.size || '5',
+              weight: HeadingChild.props.weight
+            })}
+          </div>
+        )}
+
+        {React.isValidElement<TextProps>(TextChild) && (
+          <div className={styles['River__body-text']}>
+            {React.cloneElement(TextChild as React.ReactElement<TextProps>, {
+              variant: 'muted',
+              as: 'p',
+              className: clsx(styles.River__text, TextChild.props.className)
+            })}
+          </div>
+        )}
+        {React.isValidElement<LinkProps>(LinkChild) && (
+          <div className={styles['River__call-to-action']}>
+            {React.cloneElement(LinkChild as React.ReactElement<LinkProps>, {
+              size: 'medium',
+              variant: LinkChild.props.variant || 'accent'
+            })}
+          </div>
+        )}
+        {TrailingComponent && (
+          <div
+            className={clsx(
+              styles.River__trailingComponent,
+              trailingComponentDivider && styles['River__trailingComponent--divider']
+            )}
+          >
+            <TrailingComponent />
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+
+export const RiverVisualPositionOptions = [
+  'default',
+  'center',
+  'block-end',
+  'block-end-inline-start',
+  'block-end-inline-end'
+] as const;
+export type RiverVisualPosition = (typeof RiverVisualPositionOptions)[number];
+
+export const RiverVisualPaddingOptions = ['default', 'none', 'all'] as const;
+export type RiverVisualPadding = (typeof RiverVisualPaddingOptions)[number];
+
+export type RiverVisualBaseProps = BaseProps<HTMLDivElement> &
+  React.HtmlHTMLAttributes<HTMLDivElement> &
+  PropsWithChildren<{
+    /**
+     * Applies automatic size constraints to child images and video.
+     * This can be disabled by setting this prop to `false`.
+     */
+    fillMedia?: boolean;
+    /**
+     * `img` and `video` elements will apply a shadow by default.
+     * This can be disabled by setting this prop to `false`.
+     */
+    hasShadow?: boolean;
+    /**
+     * Enables rounded corners.
+     * Can optionally be disabled.
+     */
+    rounded?: boolean;
+  }>;
+
+export type RiverVisualProps = RiverVisualBaseProps & {
+  /**
+   * Positions media within the visual region in the gridline variant.
+   */
+  position?: RiverVisualPosition;
+  /**
+   * Controls media padding within the visual region in the gridline variant.
+   */
+  padding?: RiverVisualPadding;
+};
+
+export const RiverVisualBase = forwardRef<HTMLDivElement, RiverVisualBaseProps>(
+  (
+    { fillMedia = true, children, className, hasShadow = false, rounded = true, ...rest }: RiverVisualBaseProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={clsx(
+          styles.River__visual,
+          hasShadow && styles['River__visual--has-shadow'],
+          fillMedia && styles['River__visual--fill-media'],
+          rounded && styles['River__visual--rounded'],
+          className
+        )}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+const Visual = forwardRef<HTMLDivElement, RiverVisualProps>(
+  ({ className, position = 'default', padding = 'default', ...rest }, ref) => (
+    <RiverVisualBase
+      ref={ref}
+      className={clsx(
+        position !== 'default' && styles[`River__visual--position-${position}`],
+        padding !== 'default' && styles[`River__visual--padding-${padding}`],
+        className
+      )}
+      {...rest}
+    />
+  )
+);
+
+/**
+ * Alternating text and image pairs.
+ */
+export const River = Object.assign(Root, { Visual, Content: RiverContent });

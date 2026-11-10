@@ -171,6 +171,11 @@
       "carousel-pagination": "constant",
       "eyebrow-banner": "base",
       "pagination": "routes",
+      "river": "layout",
+      "river-accordion": "import",
+      "river-breakout": "layout",
+      "river-breakout-tabs": "archive",
+      "river-story-scroll": "link",
 
       /* Articles Categories */
       "animation-and-vfx": "animation",
