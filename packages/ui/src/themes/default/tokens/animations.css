@@ -36,5 +36,7 @@
 
     --gp-card-animation-duration: 400ms;
     --gp-card-animation-easing: cubic-bezier(0.01, 0.73, 0.08, 0.93);
+
+    --gp-toggle-switch-loading-duration: 1s;
   }
 }

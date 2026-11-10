@@ -1,0 +1,70 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { useCallback, useEffect } from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
+import { Checkbox } from './checkbox';
+import { Stack } from '../../stack';
+
+export default {
+  title: 'Components/Forms/Checkbox',
+  component: Checkbox,
+  argTypes: {
+    checked: {
+      description: 'checked field',
+      control: { type: 'boolean' },
+      table: {
+        category: 'Input'
+      }
+    },
+    disabled: {
+      description: 'disabled field',
+      control: { type: 'boolean' },
+      table: {
+        category: 'Input'
+      }
+    },
+    indeterminate: {
+      description: 'indeterminate field',
+      control: { type: 'boolean' },
+      table: {
+        category: 'Input'
+      }
+    }
+  }
+} as Meta<typeof Checkbox>;
+
+export const Playground: StoryFn<typeof Checkbox> = (args) => <Checkbox aria-label='Standalone checkbox' {...args} />;
+
+Playground.storyName = 'Checkbox - Playground';
+
+export const Variants = () => (
+  <Stack direction='horizontal' padding='none' gap={4}>
+    <Checkbox aria-label='Default unchecked' />
+    <Checkbox aria-label='Default checked' defaultChecked />
+    <Checkbox aria-label='Default disabled' disabled />
+    <Checkbox aria-label='Default checked and disabled' defaultChecked disabled />
+    <Checkbox aria-label='Default indeterminate' indeterminate={true} />
+  </Stack>
+);
+Variants.storyName = 'Checkbox - Variants';
+
+export const RefCallback = () => {
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = true;
+    }
+  }, [checkboxRef]);
+
+  const handleRefCallback = useCallback(() => {
+    if (checkboxRef.current) {
+      alert(checkboxRef.current.checked);
+    }
+  }, [checkboxRef]);
+
+  return <Checkbox ref={checkboxRef} onChange={handleRefCallback} aria-label='Checkbox with ref' />;
+};
+RefCallback.storyName = 'Checkbox - Ref Callback';

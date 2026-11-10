@@ -112,6 +112,16 @@
       "ordered-list": "queue",
       "unordered-list": "queue",
       "pricing-options": "cart",
+      "checkbox": "tasks",
+      "checkbox-group": "tasks",
+      "radio": "tasks",
+      "radio-group": "tasks",
+      "toggle-switch": "tasks",
+      "select": "batch",
+      "text-input": "mappings",
+      "text-area": "mappings",
+      "form-control": "form",
+      "control-group": "form",
 
       /* Categories */
       "(content)": "template",

@@ -496,5 +496,53 @@
     --gp-sub-nav-shadow:
       0px 100px 80px rgba(0, 0, 0, 0.01), 0px 41px 33px rgba(0, 0, 0, 0.02), 0px 22px 17px rgba(0, 0, 0, 0.02),
       0px 12px 10px rgba(0, 0, 0, 0.03), 0px 6px 5px rgba(0, 0, 0, 0.04), 0px 2px 2px rgba(0, 0, 0, 0.07);
+
+    --gp-control-color-border-default: var(--gp-color-gray-4);
+    --gp-control-color-border-disabled: var(--gp-color-gray-2);
+    --gp-control-color-canvas-disabled: var(--gp-color-gray-1);
+    --gp-control-color-fg-default: var(--gp-color-text-default);
+    --gp-control-color-fg-disabled: var(--gp-color-gray-4);
+    --gp-control-color-focus: var(--gp-color-blue-6);
+    --gp-control-color-validation-error: var(--gp-color-red-6);
+    --gp-control-checkbox-bg-default: var(--gp-color-white-0);
+    --gp-control-checkbox-bg-hover: var(--gp-color-canvas-subtle);
+    --gp-control-checkbox-bg-checked: var(--gp-color-green-6);
+    --gp-control-checkbox-bg-checked-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+    --gp-control-checkbox-bg-indeterminate: var(--gp-color-green-6);
+    --gp-control-checkbox-bg-indeterminate-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+    --gp-control-checkbox-bg-checked-disabled: color-mix(in srgb, var(--gp-color-green-6), #fff 65%);
+    --gp-control-checkbox-fg-checked: var(--gp-color-white-0);
+    --gp-control-checkbox-fg-checked-disabled: var(--gp-color-white-0);
+    --gp-control-checkbox-border-default: var(--gp-color-gray-4);
+    --gp-control-checkbox-border-hover: var(--gp-color-gray-4);
+    --gp-control-checkbox-border-checked: var(--gp-color-green-6);
+    --gp-control-checkbox-border-checked-hover: var(--gp-color-text-emphasized);
+    --gp-control-checkbox-border-indeterminate: var(--gp-color-green-6);
+    --gp-control-checkbox-border-indeterminate-hover: var(--gp-color-text-emphasized);
+    --gp-control-checkbox-border-checked-disabled: color-mix(in srgb, var(--gp-color-green-6), #fff 65%);
+    --gp-control-checkbox-border-unchecked-disabled: var(--gp-color-gray-1);
+    --gp-control-radio-bg-default: var(--gp-color-white-0);
+    --gp-control-radio-bg-hover: var(--gp-color-canvas-subtle);
+    --gp-control-radio-bg-checked: var(--gp-color-white-0);
+    --gp-control-radio-bg-checked-hover: var(--gp-color-canvas-subtle);
+    --gp-control-radio-bg-disabled: var(--gp-color-canvas-default);
+    --gp-control-radio-border-default: var(--gp-control-color-border-default);
+    --gp-control-radio-border-hover: var(--gp-color-gray-4);
+    --gp-control-radio-border-checked: var(--gp-control-color-border-default);
+    --gp-control-radio-border-checked-hover: var(--gp-control-color-border-default);
+    --gp-control-radio-border-disabled: var(--gp-color-gray-4);
+    --gp-control-radio-dot-default: var(--gp-color-black-0);
+    --gp-control-radio-dot-checked: var(--gp-color-green-6);
+    --gp-control-radio-dot-checked-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+
+    --gp-toggle-switch-track-bg-color: var(--gp-color-gray-0);
+    --gp-toggle-switch-track-border-color: var(--gp-color-gray-7);
+    --gp-toggle-switch-thumb-border-color: rgba(0, 0, 0, 0.08);
+    --gp-toggle-switch-thumb-on-bg-color-rest: var(--gp-color-text-emphasized);
+    --gp-toggle-switch-thumb-on-bg-color-hover: color-mix(in srgb, var(--gp-color-text-emphasized), black 16%);
+    --gp-toggle-switch-thumb-off-bg-color-rest: var(--gp-color-gray-7);
+    --gp-toggle-switch-thumb-off-bg-color-hover: var(--gp-color-gray-8);
+    --gp-toggle-switch-thumb-disabled-bg-color: var(--gp-color-gray-4);
+    --gp-toggle-switch-loading-fg-color: var(--gp-color-text-muted);
   }
 }

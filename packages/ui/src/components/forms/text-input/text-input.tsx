@@ -1,0 +1,231 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { forwardRef, useMemo } from 'react';
+import { clsx } from 'clsx';
+import { useId } from '../../../hooks';
+
+import type { BaseProps } from '../../helper';
+import type { FormValidationStatus } from '../form-types';
+import { Text } from '../../text';
+
+import styles from './text-input.module.css';
+import type { Icon } from '@primer/octicons-react';
+
+type VisualType = React.ReactElement | React.ReactNode | Icon;
+
+export const TextInputSizes = ['small', 'medium', 'large'] as const;
+export type TextInputSize = (typeof TextInputSizes)[number];
+
+export type TextInputProps = {
+  /**
+   * Applies full width styling.
+   */
+  fullWidth?: boolean;
+  /**
+   * Removes border
+   */
+  invisible?: boolean;
+  /**
+   * Applies non-interactive text to start of input.
+   */
+  leadingText?: string;
+  /**
+   * Applies non-interactive iconography to start of input.
+   */
+  leadingVisual?: VisualType;
+  /**
+   * Applies monospace styling.
+   */
+  monospace?: boolean;
+  /**
+   * Applies alternative sizing to the input
+   */
+  size?: TextInputSize;
+  /**
+   * Applies non-interactive text to end of input.
+   */
+  trailingText?: string;
+  /**
+   * Applies non-interactive iconography to end of input.
+   */
+  trailingVisual?: VisualType;
+  /**
+   * Constrains the input type to single line inputs.
+   */
+  type?: 'text' | 'number' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'date' | 'time' | 'datetime-local';
+  /**
+   * Applies a required attribute to the input
+   */
+  required?: boolean;
+  /**
+   *
+   */
+  validationStatus?: FormValidationStatus;
+} & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> &
+  BaseProps<HTMLInputElement>;
+
+const TextInputInternal = (
+  {
+    className,
+    disabled,
+    fullWidth = false,
+    invisible = false,
+    leadingText,
+    leadingVisual: LeadingVisual,
+    monospace,
+    placeholder,
+    size = 'medium',
+    trailingText,
+    trailingVisual: TrailingVisual,
+    validationStatus,
+    ...rest
+  }: TextInputProps,
+  ref: React.ForwardedRef<HTMLInputElement>
+) => {
+  const uniqueId = useId();
+
+  const showLeadingText = leadingText && !LeadingVisual;
+  const showLeadingVisual = LeadingVisual && !leadingText;
+  const showTrailingText = trailingText && !TrailingVisual;
+  const showTrailingVisual = TrailingVisual && !trailingText;
+
+  const leadingTextId = `${uniqueId}-leading-text`;
+  const leadingVisualId = `${uniqueId}-leading-visual`;
+  const trailingVisualId = `${uniqueId}-trailing-visual`;
+  const trailingTextId = `${uniqueId}-trailing-text`;
+
+  const describedBy = useMemo(() => {
+    const elements = [
+      { condition: showLeadingText, id: leadingTextId },
+      { condition: showLeadingVisual, id: leadingVisualId },
+      { condition: showTrailingVisual, id: trailingVisualId },
+      { condition: showTrailingText, id: trailingTextId }
+    ];
+
+    return elements
+      .filter(({ condition }) => condition)
+      .map(({ id }) => id)
+      .join(' ');
+  }, [
+    showLeadingText,
+    showLeadingVisual,
+    showTrailingVisual,
+    showTrailingText,
+    leadingTextId,
+    leadingVisualId,
+    trailingVisualId,
+    trailingTextId
+  ]);
+
+  return (
+    <span
+      className={clsx(
+        styles['TextInput-wrapper'],
+        styles[`TextInput-wrapper--${size}`],
+        fullWidth && styles['TextInput-wrapper--fullWidth'],
+        invisible && styles['TextInput-wrapper--invisible'],
+        disabled && styles['TextInput-wrapper--disabled'],
+        monospace && styles['TextInput-wrapper--monospace'],
+        validationStatus && styles[`TextInput-wrapper--${validationStatus}`]
+      )}
+    >
+      {showLeadingText && (
+        <span
+          className={clsx(
+            styles['TextInput-leading-text'],
+            styles[`TextInput-leading-text--${size}` as keyof typeof styles],
+            disabled && styles['TextInput-leading-text--disabled'],
+            validationStatus && styles[`TextInput-leading-text--${validationStatus}`]
+          )}
+        >
+          <Text
+            size={size === 'large' ? '200' : '100'}
+            as='span'
+            className={clsx(styles['TextInput-leading-text-inner'], styles[`TextInput-leading-text-inner--${size}`])}
+            id={leadingTextId}
+          >
+            {leadingText}
+          </Text>
+        </span>
+      )}
+      {showLeadingVisual && (
+        <span className={clsx(styles['TextInput-leading-visual'], styles[`TextInput-leading-visual--${size}`])}>
+          {LeadingVisual &&
+          React.isValidElement<{ className?: string; width?: number; height?: number; id?: string }>(LeadingVisual)
+            ? React.cloneElement(LeadingVisual, {
+                className: clsx(
+                  styles['TextInput-leading-visual-icon' as keyof typeof styles],
+                  styles[`TextInput-leading-visual-icon--${size}`]
+                ),
+                width: size === 'large' ? 20 : 16,
+                height: size === 'large' ? 20 : 16,
+                id: leadingVisualId
+              })
+            : null}
+        </span>
+      )}
+      <input
+        type='text'
+        ref={ref}
+        className={clsx(
+          styles.TextInput,
+          'TextInput',
+          styles[`TextInput--${size}`],
+          fullWidth && styles['TextInput--fullWidth'],
+          LeadingVisual && styles[`TextInput--has-leading-visual--${size}`],
+          TrailingVisual && styles[`TextInput--has-trailing-visual--${size}`],
+          validationStatus && styles[`TextInput--${validationStatus}` as keyof typeof styles],
+          leadingText && !LeadingVisual && styles['TextInput--has-leading-text'],
+          trailingText && !TrailingVisual && styles['TextInput--has-trailing-text'],
+          className
+        )}
+        placeholder={placeholder}
+        disabled={disabled}
+        aria-invalid={validationStatus === 'error'}
+        aria-describedby={describedBy || undefined}
+        {...rest}
+      />
+      {showTrailingVisual && (
+        <span className={clsx(styles['TextInput-trailing-visual'], styles[`TextInput-trailing-visual--${size}`])}>
+          {TrailingVisual &&
+          React.isValidElement<{ className?: string; width?: number; height?: number; id?: string }>(TrailingVisual)
+            ? React.cloneElement(TrailingVisual, {
+                className: clsx(
+                  styles['TextInput-trailing-visual-icon' as keyof typeof styles],
+                  styles[`TextInput-trailing-visual-icon--${size}` as keyof typeof styles]
+                ),
+                width: size === 'large' ? 20 : 16,
+                height: size === 'large' ? 20 : 16,
+                id: trailingVisualId
+              })
+            : null}
+        </span>
+      )}
+      {showTrailingText && (
+        <span
+          className={clsx(
+            styles['TextInput-trailing-text'],
+            styles[`TextInput-trailing-text--${size}` as keyof typeof styles],
+            disabled && styles['TextInput-trailing-text--disabled'],
+            validationStatus && styles[`TextInput-trailing-text--${validationStatus}`]
+          )}
+        >
+          <Text
+            size={size === 'large' ? '200' : '100'}
+            as='span'
+            className={clsx(styles['TextInput-trailing-text-inner'], styles[`TextInput-trailing-text-inner--${size}`])}
+            id={trailingTextId}
+          >
+            {trailingText}
+          </Text>
+        </span>
+      )}
+    </span>
+  );
+};
+
+export const TextInput = forwardRef(TextInputInternal);
+
+TextInput.displayName = 'TextInput';

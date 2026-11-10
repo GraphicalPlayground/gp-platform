@@ -1,0 +1,148 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+/*
+ * Default Textarea styles
+ */
+.Textarea {
+  display: flex;
+  color: var(--gp-control-color-fg-default);
+  background-color: var(--gp-color-canvas-default);
+  border: none;
+  border-radius: var(--gp-border-radius-medium);
+  line-height: var(--gp-text-line-height-100);
+  transition: var(--gp-control-animation-duration) var(--gp-control-animation-easing);
+  transition-property: color, background-color, box-shadow;
+}
+
+.Textarea::placeholder {
+  color: var(--gp-color-text-muted);
+  opacity: 1;
+}
+
+.Textarea[disabled] {
+  -webkit-text-fill-color: var(--gp-control-color-fg-disabled);
+  color: var(--gp-control-color-fg-disabled);
+  cursor: not-allowed;
+  background-color: var(--gp-control-color-canvas-disabled);
+  opacity: 1;
+  resize: none;
+}
+
+.Textarea:focus {
+  outline: none;
+}
+
+.Textarea-resize--vertical {
+  resize: vertical;
+}
+
+.Textarea-resize--horizontal {
+  resize: horizontal;
+}
+
+.Textarea-resize--none {
+  resize: none;
+}
+
+.Textarea-resize--both {
+  resize: both;
+}
+
+/*
+ * Sizes
+ */
+.Textarea--medium {
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  padding: var(--gp-control-medium-padding-block-normal) var(--gp-control-medium-padding-inline-condensed);
+}
+
+.Textarea--large {
+  font-weight: var(--gp-text-weight-200);
+  font-size: var(--gp-text-size-200);
+  padding: var(--gp-control-large-padding-block-normal) var(--gp-control-large-padding-inline-condensed);
+}
+
+/*
+ * Visual states
+ */
+.Textarea--fullWidth {
+  width: 100%;
+}
+
+/*
+ * Textarea wrapper
+ */
+
+.Textarea-wrapper--disabled {
+  border-color: var(--gp-control-color-border-disabled);
+}
+
+.Textarea-wrapper {
+  font-family: var(--gp-body-font-family);
+  display: inline-flex;
+  position: relative;
+  border: solid var(--gp-border-width-thin, 1px) var(--gp-control-color-border-default);
+  border-radius: var(--gp-border-radius-medium);
+  transition: var(--gp-control-animation-duration) var(--gp-control-animation-easing);
+  transition-property: border;
+}
+
+.Textarea-wrapper--invisible {
+  border-color: transparent;
+}
+
+.Textarea-wrapper--fullWidth {
+  display: flex;
+}
+
+.Textarea-wrapper:not(.Textarea-wrapper--fullWidth) {
+  width: min-content;
+}
+
+.Textarea-wrapper--monospace {
+  font-family: var(--gp-font-stack-monospace);
+}
+
+.Textarea-wrapper:focus-within {
+  border-color: var(--gp-control-color-focus);
+  box-shadow: 0 0 0 1px var(--gp-control-color-focus);
+  outline: none;
+}
+
+@media (forced-colors: active) {
+  .Textarea-wrapper:focus-within {
+    outline: var(--gp-border-width-thick) solid Highlight;
+    outline-offset: var(--gp-size-2);
+  }
+}
+
+/*
+ * Validation
+ */
+
+.Textarea-wrapper--success,
+.Textarea-wrapper--success.Textarea-wrapper--disabled {
+  border-color: var(--gp-color-success-fg);
+}
+
+.Textarea-wrapper--error,
+.Textarea-wrapper--error.Textarea-wrapper--disabled {
+  border-color: var(--gp-color-danger-fg);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .Textarea,
+  .Textarea::before,
+  .Textarea::after,
+  .Textarea * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

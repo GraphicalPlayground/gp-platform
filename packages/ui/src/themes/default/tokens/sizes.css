@@ -250,6 +250,29 @@
     --gp-statistic-spacing-condensed: 16px;
     --gp-statistic-spacing-normal: 24px;
     --gp-statistic-spacing-spacious: 32px;
+
+    --gp-toggle-switch-target-min-height: var(--gp-size-24);
+    --gp-toggle-switch-track-width-small: var(--gp-size-28);
+    --gp-toggle-switch-track-width-medium: var(--gp-size-44);
+    --gp-toggle-switch-track-height-small: var(--gp-size-16);
+    --gp-toggle-switch-track-height-medium: var(--gp-size-24);
+    --gp-toggle-switch-track-border-width: var(--gp-border-width-thin);
+    --gp-toggle-switch-track-border-radius: var(--gp-border-radius-full);
+    --gp-toggle-switch-thumb-size-small: var(--gp-size-12);
+    --gp-toggle-switch-thumb-size-medium: calc(var(--gp-size-20) - var(--gp-size-2));
+    --gp-toggle-switch-thumb-inset-small: var(--gp-size-2);
+    --gp-toggle-switch-thumb-inset-medium: calc(var(--gp-size-4) - var(--gp-border-width-thin));
+    --gp-toggle-switch-thumb-travel-small: var(--gp-size-12);
+    --gp-toggle-switch-thumb-travel-medium: var(--gp-size-20);
+    --gp-toggle-switch-thumb-border-width: 0.9px;
+    --gp-toggle-switch-thumb-border-radius: var(--gp-border-radius-full);
+    --gp-toggle-switch-label-gap: var(--gp-size-12);
+    --gp-toggle-switch-label-font-size: var(--gp-text-size-200);
+    --gp-toggle-switch-label-line-height: var(--gp-size-16);
+    --gp-toggle-switch-focus-width: var(--gp-size-4);
+    --gp-toggle-switch-focus-offset: var(--gp-size-2);
+    --gp-toggle-switch-loading-size: var(--gp-size-12);
+    --gp-toggle-switch-loading-gap: var(--gp-size-8);
   }
 
   @media (min-width: 48rem) {

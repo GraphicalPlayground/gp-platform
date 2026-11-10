@@ -1,0 +1,28 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.ComparisonLabel {
+  flex: 0 0 var(--gp-size-64);
+}
+
+.ComparisonField {
+  inline-size: calc(var(--gp-size-128) + var(--gp-size-64));
+  max-inline-size: 100%;
+}
+
+.SettingsPanel {
+  inline-size: calc(var(--gp-size-128) * 3);
+  max-inline-size: 100%;
+}
+
+.SettingName {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.SettingName > span {
+  min-inline-size: 0;
+}
