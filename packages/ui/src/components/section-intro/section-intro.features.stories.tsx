@@ -1,0 +1,163 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Meta } from '@storybook/react';
+import { SectionIntro } from './section-intro';
+import { InlineCode } from '../inline-code';
+import { CopilotIcon } from '@primer/octicons-react';
+import placeholderImage from '../../fixtures/images/placeholder.png';
+
+export default {
+  title: 'Components/SectionIntro/Features',
+  component: SectionIntro
+} as Meta<typeof SectionIntro>;
+
+export const HeadingOnly = () => (
+  <SectionIntro>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+  </SectionIntro>
+);
+
+export const WithDescription = () => (
+  <SectionIntro>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+  </SectionIntro>
+);
+
+export const WithAction = () => (
+  <SectionIntro>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const WithSecondaryAction = () => (
+  <SectionIntro>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const WithLabel = () => (
+  <SectionIntro>
+    <SectionIntro.Label>Label</SectionIntro.Label>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const AlignedCenter = () => (
+  <SectionIntro align='center'>
+    <SectionIntro.Label>Label</SectionIntro.Label>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const WithAnimatedLabel = () => (
+  <SectionIntro align='center'>
+    <SectionIntro.Label animate animationDelay={1000}>
+      Animated label
+    </SectionIntro.Label>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const WithIncreasedContrastLabel = () => (
+  <SectionIntro align='center'>
+    <SectionIntro.Label animate variant='default'>
+      Label with higher initial contrast
+    </SectionIntro.Label>
+    <SectionIntro.Heading>This is my super sweet SectionIntro heading</SectionIntro.Heading>
+    <SectionIntro.Description>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit id. Aliquam luctus sed turpis felis nam
+      pulvinar risus elementum.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>My link</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const WithEmphasizedText = () => (
+  <SectionIntro>
+    <SectionIntro.Heading>
+      <b>Expressive headline</b> about an exclusive set of features.
+    </SectionIntro.Heading>
+  </SectionIntro>
+);
+
+export const WithInlineCode = () => (
+  <SectionIntro>
+    <SectionIntro.Label>Agent workflows</SectionIntro.Label>
+    <SectionIntro.Heading>
+      Connect with <InlineCode wrap={false}>/mcp</InlineCode>, review with{' '}
+      <InlineCode wrap={false}>/critique</InlineCode>, and ship with <InlineCode wrap={false}>/fleet</InlineCode>
+    </SectionIntro.Heading>
+    <SectionIntro.Description>
+      Use <InlineCode wrap={false}>/issues</InlineCode> to find work, <InlineCode wrap={false}>/model</InlineCode> to
+      select a model, and <InlineCode wrap={false}>/polish</InlineCode> for a final pass.
+    </SectionIntro.Description>
+    <SectionIntro.Link href='#'>Explore agent workflows</SectionIntro.Link>
+  </SectionIntro>
+);
+
+export const FullWidth = () => (
+  <SectionIntro fullWidth>
+    <SectionIntro.Heading>
+      <b>Expressive headline</b> about an exclusive set of features.
+    </SectionIntro.Heading>
+  </SectionIntro>
+);
+
+export const LeadingComponent = () => {
+  const Image = () => <CopilotIcon size={40} />;
+
+  return (
+    <SectionIntro leadingComponent={Image} align='center'>
+      <SectionIntro.Heading>
+        <b>Expressive headline</b> about an exclusive set of features.
+      </SectionIntro.Heading>
+    </SectionIntro>
+  );
+};
+
+export const LeadingMedia = () => (
+  <SectionIntro
+    leadingComponent={() => (
+      <picture>
+        <img src={placeholderImage.src} alt='Placeholder leading visual' width={64} height={64} />
+      </picture>
+    )}
+    align='center'
+  >
+    <SectionIntro.Heading>
+      <b>Expressive headline</b> about an exclusive set of features.
+    </SectionIntro.Heading>
+  </SectionIntro>
+);
