@@ -6,9 +6,8 @@ import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
-import { Section, Spinner } from '@gp/ui/components';
 import { env } from '~env';
-import { SignInView } from '@/components/auth';
+import { AuthLoadingView, SignInView } from '@/components/auth';
 
 /**
  * @brief Metadata for the sign-in page.
@@ -30,9 +29,13 @@ export default function SignInPage() {
   return (
     <Suspense
       fallback={
-        <Section fullWidth backgroundColor='subtle'>
-          <Spinner accessibleLabel='Loading sign-in form' size='medium' />
-        </Section>
+        <AuthLoadingView
+          accessibleLabel='Loading sign-in form'
+          description='Loading your sign-in options.'
+          eyebrow='ACCESS // SIGN IN'
+          statusText='Preparing sign-in...'
+          title='Sign in'
+        />
       }
     >
       <SignInView waitlistMode={waitlistMode} />

@@ -8,8 +8,7 @@ import { JsonLdIds } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { WebPageJsonLd } from '@gp/seo/react';
 import { Urls } from '@gp/seo/utils';
-import { Section, Spinner } from '@gp/ui/components';
-import { WaitlistView } from '@/components/auth';
+import { AuthLoadingView, WaitlistView } from '@/components/auth';
 
 const WAITLIST_TITLE = 'Join the waitlist';
 const WAITLIST_DESCRIPTION =
@@ -45,9 +44,13 @@ export default function WaitlistPage() {
       />
       <Suspense
         fallback={
-          <Section fullWidth backgroundColor='subtle'>
-            <Spinner accessibleLabel='Loading waitlist form' size='medium' />
-          </Section>
+          <AuthLoadingView
+            accessibleLabel='Loading waitlist form'
+            description='Request early access to our interactive Vulkan & WebGPU rendering curriculum.'
+            eyebrow='EARLY ACCESS // WAITLIST'
+            statusText='Preparing waitlist...'
+            title='Join the waitlist'
+          />
         }
       >
         <WaitlistView />

@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+export { AuthLoadingView } from './auth-loading-view';
+export type { AuthLoadingViewProps } from './auth-loading-view';
 export { MarketingChrome } from './marketing-chrome';
 export type { MarketingChromeProps } from './marketing-chrome';
 export { SignInView } from './sign-in-form';

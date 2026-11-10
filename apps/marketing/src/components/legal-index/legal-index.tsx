@@ -14,14 +14,12 @@ import {
   Grid,
   Heading,
   Hero,
-  InlineLink,
   Pagination,
   Pillar,
   Section,
-  SectionIntro,
-  Stack,
-  Text
+  SectionIntro
 } from '@gp/ui/components';
+import { EmptyStatePanel } from '@/components/route-state';
 import { AccessibilityIcon, LockIcon, ShieldLockIcon } from '@primer/octicons-react';
 import { IndexFilters, IndexSearch, IndexSort } from '../content-index/components';
 import { LegalCard } from './components';
@@ -75,7 +73,7 @@ export const LegalIndex: React.FC<LegalIndexProps> = ({
   currentQuery,
   currentSort,
   description,
-  emptyStateMessage = 'No legal documents match your current filters. Clear your filters and try another search.',
+  emptyStateMessage = 'No legal documents match your current filters or search. Clear them to see the full list.',
   filters,
   items,
   query,
@@ -173,24 +171,11 @@ export const LegalIndex: React.FC<LegalIndexProps> = ({
                   ))}
                 </Grid>
               ) : (
-                <Box className={styles.emptyStateWrapper} role='status'>
-                  <Stack direction='vertical' gap={12} padding='none'>
-                    <Text as='p' variant='muted'>
-                      {emptyStateMessage}
-                    </Text>
-                    {hasActiveFilters ? (
-                      <InlineLink
-                        href={basePath}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          router.push(buildIndexHref(basePath, {}));
-                        }}
-                      >
-                        Reset filters and search
-                      </InlineLink>
-                    ) : null}
-                  </Stack>
-                </Box>
+                <EmptyStatePanel
+                  heading='No matching documents'
+                  message={emptyStateMessage}
+                  onReset={hasActiveFilters ? () => router.push(buildIndexHref(basePath, {})) : undefined}
+                />
               )}
             </Box>
 

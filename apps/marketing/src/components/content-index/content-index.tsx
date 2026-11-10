@@ -8,7 +8,8 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './content-index.module.css';
 
-import { Box, Grid, Hero, Pagination, Text } from '@gp/ui/components';
+import { Box, Grid, Hero, Pagination } from '@gp/ui/components';
+import { EmptyStatePanel } from '@/components/route-state';
 import { IndexCard, IndexFilters, IndexSearch, IndexSort } from './components';
 import { DEFAULT_SORT, FILTER_KEYS, RELEVANCE_SORT, buildIndexHref } from './content-index.utils';
 import type { ContentIndexData } from './content-index.utils';
@@ -48,7 +49,7 @@ export const ContentIndex: React.FC<ContentIndexProps> = ({
   currentQuery,
   currentSort,
   description,
-  emptyStateMessage = 'No results found. Please clear your filters and try another search.',
+  emptyStateMessage = 'Nothing matched your current filters or search. Clear them to see all entries.',
   filters,
   items,
   query,
@@ -157,11 +158,11 @@ export const ContentIndex: React.FC<ContentIndexProps> = ({
                 )}
               </Grid>
             ) : (
-              <Box className={styles.emptyStateWrapper} role='status'>
-                <Text as='p' variant='muted'>
-                  {emptyStateMessage}
-                </Text>
-              </Box>
+              <EmptyStatePanel
+                heading='No matching articles'
+                message={emptyStateMessage}
+                onReset={hasActiveFilters ? () => router.push(buildIndexHref(basePath, {})) : undefined}
+              />
             )}
           </Box>
 

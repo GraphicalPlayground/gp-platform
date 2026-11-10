@@ -6,9 +6,8 @@ import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
-import { Section, Spinner } from '@gp/ui/components';
 import { env } from '~env';
-import { SignUpView } from '@/components/auth';
+import { AuthLoadingView, SignUpView } from '@/components/auth';
 
 /**
  * @brief Metadata for the sign-up page.
@@ -30,9 +29,13 @@ export default function SignUpPage() {
   return (
     <Suspense
       fallback={
-        <Section fullWidth backgroundColor='subtle'>
-          <Spinner accessibleLabel='Loading sign-up form' size='medium' />
-        </Section>
+        <AuthLoadingView
+          accessibleLabel='Loading sign-up form'
+          description='Loading your account registration options.'
+          eyebrow='ONBOARDING // SIGN UP'
+          statusText='Preparing sign-up...'
+          title='Create account'
+        />
       }
     >
       <SignUpView waitlistMode={waitlistMode} />

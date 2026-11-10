@@ -3,10 +3,11 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import { RouteLoadingView } from '@/components/route-state';
 
 /**
- * @brief This function renders a "Loading" page when a requested resource is being fetched or processed.
+ * @brief Renders the root Suspense fallback while a route segment is loading.
  */
 export default function Loading() {
-  return <div>Loading...</div>;
+  return <RouteLoadingView />;
 }
