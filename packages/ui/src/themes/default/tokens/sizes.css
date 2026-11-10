@@ -199,6 +199,15 @@
     --gp-card-max-width: 420px;
     --gp-card-padding-block: var(--gp-size-32);
     --gp-card-padding-inline: var(--gp-size-20);
+
+    --gp-pricing-options-items-gap: var(--gp-size-24);
+    --gp-pricing-options-items1-container-padding-inline: var(--gp-size-32);
+    --gp-pricing-options-items2-gap: var(--gp-size-96);
+    --gp-pricing-options-items2-container-padding-inline: var(--gp-size-48);
+    --gp-pricing-options-items3-gap: var(--gp-size-64);
+    --gp-pricing-options-items3-container-padding-inline: var(--gp-size-24);
+    --gp-pricing-options-items4-gap: var(--gp-size-48);
+    --gp-pricing-options-items4-container-padding-inline: var(--gp-size-24);
   }
 
   @media (min-width: 48rem) {

@@ -111,6 +111,7 @@
       "list-item": "queue",
       "ordered-list": "queue",
       "unordered-list": "queue",
+      "pricing-options": "cart",
 
       /* Categories */
       "(content)": "template",

@@ -463,5 +463,14 @@
 
     --gp-media-playlist-bg-color:
       linear-gradient(180deg, var(--gp-color-gray-8) 0%, var(--gp-color-black-0) 100%), var(--gp-color-canvas-default);
+
+    --gp-pricing-options-border-mask: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.4));
+    --gp-pricing-options-item-bg-color-solid: var(--gp-color-canvas-subtle);
+    --gp-pricing-options-item-bg-color-gradient-start: var(--gp-color-canvas-subtle);
+    --gp-pricing-options-item-bg-color-gradient-end: var(--gp-color-canvas-default);
+    --gp-pricing-options-feature-list-group-heading-color: var(--gp-color-text-default);
+    --gp-pricing-options-actions-message-bg-color: #0c1c26;
+    --gp-pricing-options-actions-message-border-color: #0e4678;
+    --gp-pricing-options-actions-message-accent-color: #1095ff;
   }
 }
