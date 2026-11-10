@@ -1,0 +1,74 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+declare const styles: {
+  readonly studioFrame: string;
+  readonly studioChrome: string;
+  readonly studioTitle: string;
+  readonly studioAccent: string;
+  readonly studioLime: string;
+  readonly studioBody: string;
+  readonly studioBodySplit: string;
+  readonly wireframeBox: string;
+  readonly spaceButtons: string;
+  readonly spaceButton: string;
+  readonly codePanel: string;
+  readonly codeBlock: string;
+  readonly codeLine: string;
+  readonly codeLineHighlight: string;
+  readonly codeLineNum: string;
+  readonly codeLineText: string;
+  readonly tokComment: string;
+  readonly tokKeyword: string;
+  readonly tokType: string;
+  readonly tokFn: string;
+  readonly tokNumber: string;
+  readonly tokString: string;
+  readonly tokOperator: string;
+  readonly layerStack: string;
+  readonly layerRow: string;
+  readonly layerRowAccent: string;
+  readonly layerName: string;
+  readonly layerMeta: string;
+  readonly pillRow: string;
+  readonly pill: string;
+  readonly schemaCard: string;
+  readonly schemaHeader: string;
+  readonly repoHubBanner: string;
+  readonly repoHubTitle: string;
+  readonly repoHubTag: string;
+  readonly repoGrid: string;
+  readonly repoNode: string;
+  readonly repoNodeName: string;
+  readonly repoNodeDesc: string;
+  readonly signalGrid: string;
+  readonly signalTile: string;
+  readonly signalBadge: string;
+  readonly signalHeading: string;
+  readonly signalBody: string;
+  readonly palStack: string;
+  readonly palBoundary: string;
+  readonly palBoundaryLabel: string;
+  readonly palBoundaryDesc: string;
+  readonly palGroup: string;
+  readonly palGroupLabel: string;
+  readonly palTray: string;
+  readonly palSlotLive: string;
+  readonly palSlotPlanned: string;
+  readonly palSlotTitle: string;
+  readonly palSlotMeta: string;
+  readonly palSlotMetaPlanned: string;
+  readonly certPipeline: string;
+  readonly certStep: string;
+  readonly certStepNum: string;
+  readonly certStepName: string;
+  readonly certSpecimen: string;
+  readonly certSpecimenMeta: string;
+  readonly certSpecimenTag: string;
+  readonly certSpecimenTitle: string;
+  readonly certSpecimenSub: string;
+  readonly certSpecimenBadge: string;
+};
+
+export = styles;

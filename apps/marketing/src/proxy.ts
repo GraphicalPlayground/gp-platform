@@ -5,7 +5,55 @@
 import type { NextFetchEvent, NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { clerkMiddleware } from '@clerk/nextjs/server';
+import { createRule } from 'markdown-for-agents';
+import type { Rule } from 'markdown-for-agents';
 import { withMarkdown } from '@markdown-for-agents/nextjs';
+
+const STRIPPED_CHROME_TAGS = new Set([
+  'script',
+  'style',
+  'noscript',
+  'template',
+  'iframe',
+  'svg',
+  'nav',
+  'footer',
+  'aside'
+]);
+const STRIPPED_CHROME_ROLES = new Set([
+  'navigation',
+  'banner',
+  'contentinfo',
+  'complementary',
+  'search',
+  'menu',
+  'menubar'
+]);
+
+/**
+ * @brief Explicit Markdown extraction rules tailored for `@gp/ui` Gridline components.
+ * @details Avoids `markdown-for-agents`'s default class heuristics (`/\bshare/i`, `/\bcta\b/i`) and `<header>`
+ * stripping that accidentally drop `shared-module` gridlines, `CTABanner`, `SectionIntro`, and `SectionIntroStacked`.
+ */
+const MARKDOWN_EXTRACTION_RULES: Rule[] = [
+  createRule(
+    (node) => {
+      if (STRIPPED_CHROME_TAGS.has(node.name)) return true;
+
+      const role = node.attribs['role'];
+
+      if (role && STRIPPED_CHROME_ROLES.has(role)) return true;
+      if (node.attribs['data-marketing-header'] === 'true') return true;
+
+      const cls = node.attribs['class'] ?? '';
+
+      return (
+        cls.includes('text-cursor-animation__sizingText') || cls.includes('text-cursor-animation__sizingContainer')
+      );
+    },
+    () => ''
+  )
+];
 
 /**
  * @brief Middleware for handling authentication and authorization using Clerk.
@@ -76,7 +124,8 @@ export default async function proxy(request: NextRequest, event: NextFetchEvent)
     },
     {
       baseUrl: request.nextUrl.origin,
-      extract: true,
+      extract: false,
+      rules: MARKDOWN_EXTRACTION_RULES,
       deduplicate: true,
       contentSignal: { aiTrain: true, search: true, aiInput: true }
     }

@@ -183,13 +183,14 @@ const Root = forwardRef<HTMLElement, React.PropsWithChildren<HeroProps>>(
     }
 
     const Tag = /* (isGridline || isGridlineExpressive) && enableAnimation ? AnimationProvider : */ Fragment;
-    const tagProps =
+    const tagProps = {};
+    /* Re-enable alongside AnimationProvider above:
       (isGridline || isGridlineExpressive) && enableAnimation
         ? {
             autoStaggerChildren: false,
             animationTrigger: 'immediate' as const
           }
-        : {};
+        : {}; */
 
     const useContainedLayout = (isGridline || isGridlineExpressive) && isBlockEndPosition;
     const useInlineGridline = isGridline && hasInlineMedia;

@@ -20,16 +20,17 @@ interface FAQItem {
 interface FAQClientProps {
   heading?: string | React.ReactNode;
   faqs: FAQItem | FAQItem[];
+  variant?: 'default' | 'gridline';
 }
 
-export const FAQClient: React.FC<FAQClientProps> = ({ faqs, heading }) => {
+export const FAQClient: React.FC<FAQClientProps> = ({ faqs, heading, variant = 'default' }) => {
   if (!faqs || (Array.isArray(faqs) && faqs.length === 0)) {
     return null;
   }
 
   if (Array.isArray(faqs)) {
     return (
-      <FAQGroup tabAttributes={(_, i) => ({ 'data-analytics': `faq-tab-${i}` })}>
+      <FAQGroup tabAttributes={(_, i) => ({ 'data-analytics': `faq-tab-${i}` })} variant={variant}>
         {heading !== undefined && <FAQGroup.Heading>{heading}</FAQGroup.Heading>}
         {faqs.map((faq, index) => (
           <FAQ key={index}>
@@ -47,7 +48,7 @@ export const FAQClient: React.FC<FAQClientProps> = ({ faqs, heading }) => {
   }
 
   return (
-    <FAQ>
+    <FAQ variant={variant}>
       <FAQ.Heading>{faqs.heading}</FAQ.Heading>
       {faqs.questions.map((qa, index) => {
         return (
