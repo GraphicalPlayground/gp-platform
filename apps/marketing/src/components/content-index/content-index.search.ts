@@ -55,7 +55,8 @@ const getPrimaryValues = (frontmatter: Article): string[] => {
 };
 
 const getSecondaryValues = (frontmatter: Article): string[] => {
-  const base = [frontmatter.category, humanize(frontmatter.category), ...frontmatter.tags];
+  const subtopic = frontmatter.subtopic ? [frontmatter.subtopic, humanize(frontmatter.subtopic)] : [];
+  const base = [frontmatter.category, humanize(frontmatter.category), ...subtopic, ...frontmatter.tags];
 
   switch (frontmatter.type) {
     case 'glossary':

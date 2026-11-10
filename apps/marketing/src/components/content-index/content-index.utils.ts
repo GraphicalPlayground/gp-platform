@@ -18,6 +18,7 @@ export type SearchParams = Record<string, string | string[] | undefined>;
 export interface ContentIndexItem {
   slug: string;
   href: string;
+  subtopic?: string;
   title: string;
   description: string;
   category: string;
@@ -85,6 +86,10 @@ interface FilterGroupDefinition {
    * @brief Fixed display order for option values. Options are sorted alphabetically when omitted.
    */
   order?: readonly string[];
+  /**
+   * @brief Show the group even when only a single option exists in the collection.
+   */
+  allowSingleOption?: boolean;
 }
 
 const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'] as const satisfies readonly Difficulty[];
@@ -92,7 +97,12 @@ const DIFFICULTY_ORDER = ['beginner', 'intermediate', 'advanced'] as const satis
 const FILTER_GROUPS: FilterGroupDefinition[] = [
   { value: 'category', label: 'Topic', getValues: (item) => [item.category] },
   { value: 'difficulty', label: 'Level', getValues: (item) => [item.difficulty], order: DIFFICULTY_ORDER },
-  { value: 'tag', label: 'Tags', getValues: (item) => item.tags }
+  {
+    value: 'subtopic',
+    label: 'Subtopic',
+    getValues: (item) => (item.subtopic ? [item.subtopic] : []),
+    allowSingleOption: true
+  }
 ];
 
 /** @brief Every query param key owned by the filters. */
@@ -126,6 +136,7 @@ const resolveDescription = (doc: MdxDocument<Article>) => {
 const toItem = (doc: MdxDocument<Article>, basePath: string): ContentIndexItem => ({
   slug: doc.slug,
   href: `${basePath}/${doc.frontmatter.slug}`,
+  subtopic: doc.frontmatter.subtopic,
   title: doc.frontmatter.title,
   description: resolveDescription(doc),
   category: doc.frontmatter.category,
@@ -149,7 +160,7 @@ const buildFilterGroup = (
     for (const raw of definition.getValues(item)) {
       const value = normalize(raw);
 
-      if (!labels.has(value)) labels.set(value, definition.value === 'tag' ? raw : humanize(raw));
+      if (value && !labels.has(value)) labels.set(value, definition.value === 'tag' ? raw : humanize(raw));
     }
   }
 
@@ -200,9 +211,18 @@ export const buildContentIndex = (
   }));
 
   const filters = groups
-    .map(({ definition, selected }) => buildFilterGroup(definition, allItems, selected))
-    // A group with a single option filters nothing, unless it's already checked (so it can be unchecked).
-    .filter((group) => group.options.length > 1 || group.options.some((option) => option.isChecked));
+    .map(({ definition, selected }) => ({
+      definition,
+      group: buildFilterGroup(definition, allItems, selected)
+    }))
+    // Hide groups with 0-1 options unless configured to show single options (like subtopic) or already checked.
+    .filter(
+      ({ definition, group }) =>
+        group.options.length > 1 ||
+        (Boolean(definition.allowSingleOption) && group.options.length === 1) ||
+        group.options.some((option) => option.isChecked)
+    )
+    .map(({ group }) => group);
 
   for (const { definition, selected } of groups) {
     if (selected.length > 0) query[definition.value] = selected.join(',');
