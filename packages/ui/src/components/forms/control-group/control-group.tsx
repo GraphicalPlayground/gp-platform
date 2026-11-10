@@ -2,6 +2,8 @@
 // For more information, see https://graphical-playground/legal
 // mailto:support AT graphical-playground DOT com
 
+'use client';
+
 import React, { Children, createContext, forwardRef, isValidElement, useContext } from 'react';
 import type { HTMLAttributes } from 'react';
 import { clsx } from 'clsx';

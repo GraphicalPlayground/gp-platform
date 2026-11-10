@@ -69,3 +69,4 @@ export * from './eyebrow-text';
 export * from './text-cursor-animation';
 export * from './hero';
 export * from './list';
+export * from './forms';
