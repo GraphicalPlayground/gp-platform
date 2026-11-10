@@ -177,6 +177,7 @@
       "river-breakout-tabs": "archive",
       "river-story-scroll": "link",
       "section-intro": "layout",
+      "section-intro-stacked": "layout",
       "timeline": "temp",
       "tiles": "app",
       "sub-nav": "layout",

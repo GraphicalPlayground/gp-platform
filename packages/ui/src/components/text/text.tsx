@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import styles from './text.module.css';
 import type { BaseProps } from '../helper';
 
-export const textSizes = ['1000', '900', '800', '700', '600', '500', '400', '300', '200', '100'] as const;
+export const textSizes = ['1000', '900', '800', '700', '600', '500', '400', '350', '300', '200', '100'] as const;
 export const textTags = ['p', 'span', 'div', 'strong', 'em'] as const;
 export const textVariants = ['default', 'muted'] as const;
 export const textWeights = [

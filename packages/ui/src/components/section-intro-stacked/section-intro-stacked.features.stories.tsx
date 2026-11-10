@@ -1,0 +1,132 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { useTranslation } from 'react-i18next';
+import { CpuIcon, LightBulbIcon, HeartIcon } from '@primer/octicons-react';
+import { SectionIntroStacked } from './section-intro-stacked';
+import { Grid } from '../grid';
+
+export default {
+  title: 'Components/SectionIntroStacked/Features',
+  component: SectionIntroStacked
+} satisfies Meta<typeof SectionIntroStacked>;
+
+type Story = StoryObj<typeof SectionIntroStacked>;
+
+export const WithEmphasizedText: Story = {
+  render: function WithEmphasizedTextComponent() {
+    const { t } = useTranslation('SectionIntroStacked');
+
+    return (
+      <SectionIntroStacked>
+        <SectionIntroStacked.Heading>
+          <b>{t('playground_heading_emphasis')}</b>
+          {t('playground_heading_suffix')}
+        </SectionIntroStacked.Heading>
+        <SectionIntroStacked.Link href='#'>{t('explore_github')}</SectionIntroStacked.Link>
+
+        <SectionIntroStacked.Items>
+          <SectionIntroStacked.Item>
+            <b>{t('developer_first')}</b>
+            {t('developer_first_description')}
+          </SectionIntroStacked.Item>
+          <SectionIntroStacked.Item>
+            <b>{t('enterprise_grade')}</b>
+            {t('enterprise_grade_description')}
+          </SectionIntroStacked.Item>
+          <SectionIntroStacked.Item>
+            <b>{t('ai_powered')}</b>
+            {t('ai_powered_description')}
+          </SectionIntroStacked.Item>
+        </SectionIntroStacked.Items>
+      </SectionIntroStacked>
+    );
+  }
+};
+
+const InGridTemplate = () => {
+  const { t } = useTranslation('SectionIntroStacked');
+
+  return (
+    <Grid>
+      <Grid.Column>
+        <SectionIntroStacked>
+          <SectionIntroStacked.Heading>{t('enterprise_platform_heading')}</SectionIntroStacked.Heading>
+          <SectionIntroStacked.Description>{t('playground_description')}</SectionIntroStacked.Description>
+          <SectionIntroStacked.Link href='#'>{t('explore_github_enterprise')}</SectionIntroStacked.Link>
+          <SectionIntroStacked.Items>
+            <SectionIntroStacked.Item>
+              <SectionIntroStacked.ItemIcon icon={CpuIcon} />
+              <SectionIntroStacked.ItemHeading>{t('item_one_heading')}</SectionIntroStacked.ItemHeading>
+              <SectionIntroStacked.ItemDescription>{t('item_one_description')}</SectionIntroStacked.ItemDescription>
+            </SectionIntroStacked.Item>
+            <SectionIntroStacked.Item>
+              <SectionIntroStacked.ItemIcon icon={LightBulbIcon} />
+              <SectionIntroStacked.ItemHeading>{t('item_two_heading')}</SectionIntroStacked.ItemHeading>
+              <SectionIntroStacked.ItemDescription>{t('item_two_description')}</SectionIntroStacked.ItemDescription>
+            </SectionIntroStacked.Item>
+            <SectionIntroStacked.Item>
+              <SectionIntroStacked.ItemIcon icon={HeartIcon} />
+              <SectionIntroStacked.ItemHeading>{t('item_three_heading')}</SectionIntroStacked.ItemHeading>
+              <SectionIntroStacked.ItemDescription>{t('item_three_description')}</SectionIntroStacked.ItemDescription>
+            </SectionIntroStacked.Item>
+          </SectionIntroStacked.Items>
+        </SectionIntroStacked>
+      </Grid.Column>
+    </Grid>
+  );
+};
+
+export const InGrid: Story = {
+  render: InGridTemplate
+};
+
+export const InGridNarrow: Story = {
+  name: 'Narrow view, menu closed (mobile)',
+  globals: {
+    viewport: { value: 'iphonexr' }
+  },
+  render: InGridTemplate
+};
+
+export const Gridline: Story = {
+  render: function GridlineComponent() {
+    const { t } = useTranslation('SectionIntroStacked');
+
+    return (
+      <SectionIntroStacked variant='gridline'>
+        <SectionIntroStacked.Heading>{t('with_item_icons_heading')}</SectionIntroStacked.Heading>
+        <SectionIntroStacked.Description>{t('playground_description')}</SectionIntroStacked.Description>
+        <SectionIntroStacked.Link href='#'>{t('sign_up_now')}</SectionIntroStacked.Link>
+        <SectionIntroStacked.Items>
+          <SectionIntroStacked.Item>
+            <SectionIntroStacked.ItemIcon icon={CpuIcon} />
+            <SectionIntroStacked.ItemHeading>{t('item_one_heading')}</SectionIntroStacked.ItemHeading>
+            <SectionIntroStacked.ItemDescription>{t('item_one_description')}</SectionIntroStacked.ItemDescription>
+          </SectionIntroStacked.Item>
+          <SectionIntroStacked.Item>
+            <SectionIntroStacked.ItemIcon icon={LightBulbIcon} />
+            <SectionIntroStacked.ItemHeading>{t('item_two_heading')}</SectionIntroStacked.ItemHeading>
+            <SectionIntroStacked.ItemDescription>{t('item_two_description')}</SectionIntroStacked.ItemDescription>
+          </SectionIntroStacked.Item>
+          <SectionIntroStacked.Item>
+            <SectionIntroStacked.ItemIcon icon={HeartIcon} />
+            <SectionIntroStacked.ItemHeading>{t('item_three_heading')}</SectionIntroStacked.ItemHeading>
+            <SectionIntroStacked.ItemDescription>{t('item_three_description')}</SectionIntroStacked.ItemDescription>
+          </SectionIntroStacked.Item>
+        </SectionIntroStacked.Items>
+      </SectionIntroStacked>
+    );
+  }
+};
+
+export const GridlineTablet: Story = {
+  name: 'Gridline (tablet)',
+  globals: {
+    viewport: { value: 'ipad10p' }
+  },
+  render: Gridline.render
+};
