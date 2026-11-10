@@ -6,6 +6,7 @@
 export * from './helper';
 
 /* Export the components */
+export * from './cta-banner';
 export * from './card';
 export * from './tabs';
 export * from './testimonial-group';

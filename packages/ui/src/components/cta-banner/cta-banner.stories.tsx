@@ -1,0 +1,63 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { CTABanner } from './cta-banner';
+import { Button } from '../button';
+
+const meta = {
+  title: 'Components/CTABanner',
+  component: CTABanner,
+
+  argTypes: {
+    align: {
+      description: 'The alignment of the content',
+      control: {
+        type: 'radio',
+        options: ['start', 'center']
+      }
+    },
+    hasBorder: {
+      description: 'Toggle to show or hide the border',
+      control: {
+        type: 'boolean'
+      }
+    },
+    hasBackground: {
+      description: 'Toggle to show or hide the background',
+      control: {
+        type: 'boolean'
+      }
+    },
+    children: {
+      table: {
+        disable: true
+      }
+    }
+  }
+} satisfies Meta<typeof CTABanner>;
+
+export default meta;
+type Story = StoryObj<typeof CTABanner>;
+
+export const Playground: Story = {
+  render: (args) => (
+    <CTABanner {...args}>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const Default: Story = {
+  ...Playground
+};

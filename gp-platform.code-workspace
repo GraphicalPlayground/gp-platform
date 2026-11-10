@@ -105,6 +105,7 @@
       "testimonial-group": "messages",
       "tabs": "archive",
       "card": "meta",
+      "cta-banner": "ui",
 
       /* Categories */
       "(content)": "template",

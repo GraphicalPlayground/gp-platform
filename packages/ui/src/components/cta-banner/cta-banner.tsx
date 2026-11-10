@@ -1,0 +1,381 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { forwardRef, useCallback, useMemo } from 'react';
+import type { Ref } from 'react';
+import { clsx } from 'clsx';
+import type { BaseProps } from '../helper';
+import { Grid } from '../grid';
+import { Heading } from '../heading';
+import type { HeadingProps } from '../heading';
+import { Text } from '../text';
+import type { TextProps } from '../text';
+import { ButtonGroup } from '../button-group';
+
+import styles from './cta-banner.module.css';
+import { Image } from '../image';
+import { Link } from '../link';
+import type { LinkProps } from '../link';
+
+export const CTABannerBackgroundColors = ['default', 'subtle'] as const;
+
+type AnyString = string & {};
+
+type ResponsiveMap<T> = {
+  narrow?: T;
+  regular?: T;
+  wide?: T;
+};
+
+type ResponsiveBackgroundImageSrcMap = ResponsiveMap<string | string[]>;
+type BackgroundColors = (typeof CTABannerBackgroundColors)[number] | AnyString;
+type ResponsiveBackgroundColorMap = ResponsiveMap<BackgroundColors>;
+type ResponsiveBackgroundImagePositionMap = ResponsiveMap<string | string[]>;
+type ResponsiveBackgroundImageSizeMap = ResponsiveMap<string | string[]>;
+
+export type CTABannerProps = BaseProps<HTMLElement> &
+  React.HTMLAttributes<HTMLElement> & {
+    /**
+     * @brief Alternative presentations
+     */
+    variant?: 'default' | 'balanced' | 'minimal';
+    /**
+     * @brief The alignment of the content within the banner.
+     */
+    align?: 'start' | 'center';
+    /**
+     * @brief A flag to add a border to the banner.
+     */
+    hasBorder?: boolean;
+    /**
+     * @brief Enable optional grid lines
+     */
+    hasGridLines?: boolean;
+    /**
+     * @brief A flag to remove the shadow from the banner.
+     * @brief @deprecated - hasShadow will be removed in a future release.
+     */
+    hasShadow?: boolean;
+    /**
+     * @brief A flag to remove the background from the banner.
+     */
+    hasBackground?: boolean;
+    /**
+     * @brief Optional, custom background color.
+     */
+    backgroundColor?: BackgroundColors | ResponsiveBackgroundColorMap;
+    /**
+     * @brief Optional, custom background image.
+     */
+    backgroundImageSrc?: string | ResponsiveBackgroundImageSrcMap;
+    /**
+     * @brief Optional, custom background position.
+     */
+    backgroundImagePosition?: string | ResponsiveBackgroundImagePositionMap;
+    /**
+     * @brief Optional, custom background size.
+     */
+    backgroundImageSize?: string | ResponsiveBackgroundImageSizeMap;
+    /**
+     * @brief Escape-hatch for inserting custom React components.
+     * Warning:
+     *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+     *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+     */
+    leadingComponent?: React.FunctionComponent;
+    /**
+     * @brief Escape-hatch for inserting custom React components.
+     * Warning:
+     *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+     *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+     */
+    trailingComponent?: React.FunctionComponent;
+  };
+
+const Root = forwardRef(
+  (
+    {
+      align = 'center',
+      hasBorder = false,
+      hasGridLines = false,
+      hasShadow = false,
+      hasBackground = true,
+      backgroundColor = 'var(--gp-cta-banner-bg-color)',
+      backgroundImageSrc,
+      backgroundImagePosition = 'center',
+      backgroundImageSize = 'cover',
+      className,
+      children,
+      leadingComponent: LeadingComponent,
+      trailingComponent: TrailingComponent,
+      style,
+      variant = 'default',
+      ...props
+    }: CTABannerProps,
+    ref: Ref<HTMLElement>
+  ) => {
+    const processBackgroundValue = useCallback((value: string | string[], property: any) => {
+      if (property === 'background-image-src') {
+        return `url(${value})`;
+      }
+
+      if (property === 'background-color' && typeof value === 'string') {
+        return CTABannerBackgroundColors.includes(value as (typeof CTABannerBackgroundColors)[number])
+          ? `var(--gp-color-canvas-${value})`
+          : value;
+      }
+
+      return value;
+    }, []);
+
+    const createStyles = useCallback(
+      (property: any, value: any) =>
+        typeof value === 'string' || Array.isArray(value)
+          ? { [`--gp-cta-banner-${property}`]: processBackgroundValue(value, property) }
+          : {
+              [`--gp-cta-banner-narrow-${property}`]: processBackgroundValue(value?.narrow, property),
+              [`--gp-cta-banner-regular-${property}`]: processBackgroundValue(value?.regular, property),
+              [`--gp-cta-banner-wide-${property}`]: processBackgroundValue(value?.wide, property)
+            },
+      [processBackgroundValue]
+    );
+
+    const backgroundStyles = useMemo(() => {
+      const allStyles = {};
+
+      const addStyle = (property: any, value: any) => {
+        if (value) {
+          Object.assign(allStyles, createStyles(property, value));
+        }
+      };
+
+      addStyle('background-color', backgroundColor);
+      addStyle('background-image-src', backgroundImageSrc);
+      addStyle('background-image-position', backgroundImagePosition);
+      addStyle('background-image-size', backgroundImageSize);
+
+      return allStyles;
+    }, [backgroundColor, backgroundImageSrc, backgroundImagePosition, backgroundImageSize, createStyles]);
+
+    const { ImageChild, ButtonGroupChild, restChildren, hasImageChild } = useMemo(() => {
+      const result = React.Children.toArray(children).reduce<{
+        ImageChild?: React.ReactElement;
+        ButtonGroupChild?: React.ReactElement;
+        restChildren: React.ReactElement[];
+        hasImageChild: boolean;
+      }>(
+        (acc, child) => {
+          if (React.isValidElement(child)) {
+            if (child.type === _Image) {
+              acc.hasImageChild = true;
+              if (variant === 'balanced') {
+                acc.ImageChild = child;
+              } else if (variant !== 'minimal') {
+                acc.restChildren.push(child);
+              }
+              // minimal variant: image is intentionally excluded from rendering
+            } else if (variant === 'minimal' && child.type === _ButtonGroup) {
+              acc.ButtonGroupChild = child;
+            } else if (child.type === _Heading) {
+              const headingChild = child as React.ReactElement<CTABannerHeadingProps>;
+
+              acc.restChildren.push(
+                headingChild.props.size === undefined
+                  ? React.cloneElement(headingChild, {
+                      size: variant === 'minimal' ? '6' : defaultHeadingSize
+                    })
+                  : headingChild
+              );
+            } else {
+              acc.restChildren.push(child);
+            }
+          }
+
+          return acc;
+        },
+        { ImageChild: undefined, ButtonGroupChild: undefined, restChildren: [], hasImageChild: false }
+      );
+
+      return result;
+    }, [children, variant]);
+
+    const hasSideColumn = (variant === 'balanced' && ImageChild) || (variant === 'minimal' && ButtonGroupChild);
+
+    const Tag: React.FC<React.PropsWithChildren> = hasGridLines
+      ? ({ children: inner }) => <div className={styles['CTABanner-outer-container--border']}>{inner}</div>
+      : React.Fragment;
+
+    const defaultAlign = variant === 'balanced' || variant === 'minimal' ? 'start' : align;
+
+    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'test') {
+      if (variant === 'balanced' && !ImageChild) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          'CTABanner: The "balanced" variant requires a CTABanner.Image child to display the two-column layout correctly.'
+        );
+      }
+      if (variant === 'minimal' && hasImageChild) {
+        // eslint-disable-next-line no-console
+        console.warn('CTABanner: Image child is not supported in minimal variant and will not be rendered.');
+      }
+    }
+
+    return (
+      <Tag>
+        <section
+          ref={ref}
+          className={clsx(
+            styles.CTABanner,
+            hasShadow && styles['CTABanner--shadow'],
+            styles[`CTABanner--variant-${variant}`],
+            className
+          )}
+          style={{ ...backgroundStyles, ...style }}
+          {...props}
+        >
+          <div
+            className={clsx(
+              styles['CTABanner-container'],
+              hasBorder && styles['CTABanner-container--border'],
+              hasGridLines && styles['CTABanner-container--border-gridlines'],
+              !hasGridLines && styles['CTABanner-container--rounded'],
+              hasBackground && styles['CTABanner-container--background']
+            )}
+          >
+            {hasSideColumn ? (
+              <Grid className={styles['CTABanner-grid']}>
+                <Grid.Column span={{ xsmall: 12, large: 6 }} className={styles['CTABanner-grid-column--primary']}>
+                  <div
+                    className={clsx(
+                      styles['CTABanner-content'],
+                      defaultAlign === 'center' && styles['CTABanner-content--center']
+                    )}
+                  >
+                    {LeadingComponent && <LeadingComponent />}
+                    {restChildren}
+                    {TrailingComponent && <TrailingComponent />}
+                  </div>
+                </Grid.Column>
+                <Grid.Column span={{ xsmall: 12, large: 6 }} className={styles['CTABanner-grid-column--secondary']}>
+                  {ImageChild || ButtonGroupChild}
+                </Grid.Column>
+              </Grid>
+            ) : (
+              <div
+                className={clsx(
+                  styles['CTABanner-content'],
+                  defaultAlign === 'center' && styles['CTABanner-content--center']
+                )}
+              >
+                {LeadingComponent && <LeadingComponent />}
+                {restChildren}
+                {TrailingComponent && <TrailingComponent />}
+              </div>
+            )}
+          </div>
+        </section>
+      </Tag>
+    );
+  }
+);
+
+const defaultHeadingLevel = 'h3';
+
+type CTABannerHeadingProps = BaseProps<HTMLHeadingElement> & {
+  children: React.ReactNode | React.ReactNode[];
+} & HeadingProps;
+
+const defaultHeadingSize: HeadingProps['size'] = '3';
+
+const _Heading = forwardRef(
+  (
+    { as = defaultHeadingLevel, size = defaultHeadingSize, className, children, ...props }: CTABannerHeadingProps,
+    ref: Ref<HTMLHeadingElement>
+  ) => {
+    return (
+      <Heading ref={ref} className={clsx(styles['CTABanner-heading'], className)} size={size} as={as} {...props}>
+        {children}
+      </Heading>
+    );
+  }
+);
+
+type CTABannerDescriptionProps = React.HtmlHTMLAttributes<HTMLParagraphElement> &
+  BaseProps<HTMLParagraphElement> & {
+    variant?: TextProps['variant'];
+  };
+
+const Description = forwardRef(
+  ({ className, children, variant = 'muted', ...props }: CTABannerDescriptionProps, ref: Ref<HTMLParagraphElement>) => {
+    return (
+      <Text ref={ref} className={clsx(styles['CTABanner-description'], className)} as='p' variant={variant} {...props}>
+        {children}
+      </Text>
+    );
+  }
+);
+
+const _ButtonGroup = forwardRef(
+  (
+    { className, buttonSize = 'medium', buttonsAs, children, ...props }: React.ComponentProps<typeof ButtonGroup>,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    return (
+      <ButtonGroup
+        buttonSize={buttonSize}
+        buttonsAs={buttonsAs}
+        className={clsx(styles['CTABanner-buttonGroup'], className)}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </ButtonGroup>
+    );
+  }
+);
+
+type CTABannerImageProps = BaseProps<HTMLImageElement> &
+  Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> & {
+    src: string;
+    alt: string;
+  };
+
+const _Image = forwardRef(({ className, src, alt, ...props }: CTABannerImageProps, ref: Ref<HTMLImageElement>) => {
+  return (
+    <Image
+      ref={ref}
+      className={clsx(styles['CTABanner-image'], className)}
+      src={src}
+      alt={alt}
+      borderRadius='medium'
+      {...props}
+    />
+  );
+});
+
+type CTABannerLogoProps = BaseProps<HTMLDivElement> &
+  React.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+  };
+
+const _Logo = forwardRef(({ className, children, ...props }: CTABannerLogoProps, ref: Ref<HTMLDivElement>) => (
+  <div ref={ref} className={clsx(styles['CTABanner-logo'], className)} {...props}>
+    {children}
+  </div>
+));
+
+const _Link = ({ className, children, variant = 'accent', ...props }: LinkProps) => (
+  <Link variant={variant} className={clsx(styles['CTABanner-link'], className)} {...props}>
+    {children}
+  </Link>
+);
+
+export const CTABanner = Object.assign(Root, {
+  Heading: _Heading,
+  Description,
+  ButtonGroup: _ButtonGroup,
+  Image: _Image,
+  Logo: _Logo,
+  Link: _Link
+});
