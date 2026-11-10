@@ -60,3 +60,4 @@ export * from './action-menu';
 export * from './eyebrow-text';
 export * from './text-cursor-animation';
 export * from './hero';
+export * from './list';

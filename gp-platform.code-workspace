@@ -107,6 +107,10 @@
       "card": "meta",
       "cta-banner": "ui",
       "media-playlist": "video",
+      "list": "queue",
+      "list-item": "queue",
+      "ordered-list": "queue",
+      "unordered-list": "queue",
 
       /* Categories */
       "(content)": "template",
