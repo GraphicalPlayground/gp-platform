@@ -6,13 +6,32 @@ import type { Metadata } from 'next';
 import { Organization } from '@gp/constants';
 import type { AppTarget } from '../utils/target';
 import { isPubliclyIndexable } from '../utils/target';
+import { trimTrailingSlash } from '../utils/urls';
 import type { PageMetadataInput, SeoImage, SeoMetadataOptions } from './types';
+
+const DEFAULT_OG_IMAGE_DIMENSIONS = { width: 1200, height: 630 } as const;
 
 /**
  * @brief Normalizes a list of SeoImage into the shape Open Graph/Twitter card metadata expects.
  */
 const toOgImages = (images?: SeoImage[]) =>
   images?.map((image) => ({ url: image.url, width: image.width, height: image.height, alt: image.alt }));
+
+const resolveFallbackOgImages = (input: PageMetadataInput, options: SeoMetadataOptions, title: string) => {
+  const explicit = toOgImages(input.images);
+
+  if (explicit?.length) return explicit;
+  if (input.path === '/') return undefined;
+
+  return [
+    {
+      url: `${trimTrailingSlash(options.baseUrl)}/opengraph-image`,
+      width: DEFAULT_OG_IMAGE_DIMENSIONS.width,
+      height: DEFAULT_OG_IMAGE_DIMENSIONS.height,
+      alt: title
+    }
+  ];
+};
 
 /**
  * @brief Builds Open Graph metadata for a page. Only marketing gets rich social previews: app/admin are behind
@@ -31,36 +50,36 @@ export const buildOpenGraph = (
 ): Metadata['openGraph'] | undefined => {
   if (!isPubliclyIndexable(target)) return undefined;
 
-  const title = input.title ?? options.defaultTitle ?? Organization.name;
+  const title = input.title ?? options.defaultTitle ?? Organization.displayName;
   const description = input.description ?? options.description ?? Organization.description;
-  const images = toOgImages(input.images);
+  const images = resolveFallbackOgImages(input, options, title);
   const locale = input.locale ?? options.locale ?? 'en';
 
   if (input.type === 'article') {
     return {
       type: 'article',
-      siteName: Organization.name,
+      siteName: Organization.displayName,
       title,
       description,
       url: resolvedUrl,
       locale,
-      images,
-      publishedTime: input.publishedTime,
-      modifiedTime: input.modifiedTime,
-      authors: input.authors,
-      section: input.section,
-      tags: input.keywords
+      ...(images?.length && { images }),
+      ...(input.publishedTime && { publishedTime: input.publishedTime }),
+      ...(input.modifiedTime && { modifiedTime: input.modifiedTime }),
+      ...(input.authors?.length && { authors: input.authors }),
+      ...(input.section && { section: input.section }),
+      ...(input.keywords?.length && { tags: input.keywords })
     };
   }
 
   return {
     type: 'website',
-    siteName: Organization.name,
+    siteName: Organization.displayName,
     title,
     description,
     url: resolvedUrl,
     locale,
-    images
+    ...(images?.length && { images })
   };
 };
 
@@ -78,13 +97,14 @@ export const buildTwitter = (
 ): Metadata['twitter'] | undefined => {
   if (!isPubliclyIndexable(target)) return undefined;
 
-  const images = toOgImages(input.images)?.map((image) => image.url);
+  const title = input.title ?? options.defaultTitle ?? Organization.displayName;
+  const images = resolveFallbackOgImages(input, options, title)?.map((image) => image.url);
 
   return {
-    card: images?.length ? 'summary_large_image' : 'summary',
-    site: options.twitterSite,
-    title: input.title ?? options.defaultTitle ?? Organization.name,
+    card: 'summary_large_image',
+    ...(options.twitterSite && { site: options.twitterSite }),
+    title,
     description: input.description ?? options.description ?? Organization.description,
-    images
+    ...(images?.length && { images })
   };
 };

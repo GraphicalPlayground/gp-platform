@@ -4,8 +4,9 @@
 
 import { SeoLlms } from '@gp/seo/llms';
 import type { LlmsSection } from '@gp/seo/llms';
-import { Constants, Urls } from '@gp/seo/utils';
+import { Constants, Urls, resolveArticleDescription } from '@gp/seo/utils';
 import type { Article, MdxDocument } from '@gp/content';
+import { getArticlePath } from '@/lib/article-routes';
 import { cms } from '@/lib/cms';
 
 const ARTICLE_TYPE_HEADINGS: Record<Article['type'], string> = {
@@ -44,8 +45,8 @@ function groupArticlesByType(docs: MdxDocument<Article>[]): LlmsSection[] {
       heading: ARTICLE_TYPE_HEADINGS[type],
       links: byType.get(type)!.map((doc) => ({
         title: doc.frontmatter.title,
-        path: `/${type}/${doc.slug}`,
-        description: doc.frontmatter.description,
+        path: getArticlePath(type, doc.slug),
+        description: resolveArticleDescription(doc.frontmatter),
         content: doc.rawContent
       }))
     }));

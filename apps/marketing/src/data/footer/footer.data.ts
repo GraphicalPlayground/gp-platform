@@ -17,6 +17,7 @@ export const footerSections: FooterLinkSection[] = [
       { label: 'Features', href: '/features' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Curriculum', href: '/curriculum' },
+      { label: 'Certifications', href: '/certifications' },
       { label: 'Roadmaps', href: '/roadmaps' },
       { label: 'Changelogs', href: '/changelogs' },
       { label: 'Showcases', href: '/showcases' },
@@ -106,5 +107,5 @@ export const legalLinks: LegalLink[] = [
   { label: 'Cookies', href: '/legal/cookies' },
   { label: 'Data Processing', href: '/legal/data-processing' },
   { label: 'Accessibility', href: '/legal/accessibility' },
-  { label: 'Security', href: '/legal/security' }
+  { label: 'Security', href: '/legal/security-disclosure' }
 ] as const;

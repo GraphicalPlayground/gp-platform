@@ -37,7 +37,7 @@ export class Organization {
   public static readonly initials: string = 'GP';
 
   public static readonly description: string =
-    'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines. Explore creative coding, canvas experiments, and real-time graphics programming.';
+    'An interactive, browser-based e-learning platform where learners deconstruct and rebuild C++23 graphics-engine systems, from raw Vulkan commands to full render pipelines.';
   public static readonly tagline: string = 'Learn how AAA graphics engines are really built. No GPU required.';
   public static readonly mission: string =
     'To make the knowledge behind modern real-time rendering accessible to anyone who wants to learn it, regardless of their hardware or their background.';

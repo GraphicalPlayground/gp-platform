@@ -4,3 +4,4 @@
 
 export * from './footer';
 export * from './marketing-sub-nav';
+export * from './under-construction';

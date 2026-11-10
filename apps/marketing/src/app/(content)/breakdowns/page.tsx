@@ -3,18 +3,27 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { ContentIndexPage } from '@/components/content-index';
 import type { SearchParams } from '@/components/content-index';
+import { ARTICLE_ROUTES } from '@/lib/article-routes';
+import { buildContentIndexMetadata } from '@/lib/content-metadata';
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<Metadata> {
+  return buildContentIndexMetadata('breakdown', await searchParams);
+}
 
 export default async function BreakdownsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const route = ARTICLE_ROUTES.breakdown;
+
   return (
     <ContentIndexPage
       searchable
-      basePath='/breakdowns'
-      description='In-depth technical breakdowns of how real-time rendering techniques and engine systems actually work.'
+      basePath={route.basePath}
+      description={route.description}
       searchParams={await searchParams}
       searchPlaceholder='Search breakdowns...'
-      title='Breakdowns'
+      title={route.label}
       type='breakdown'
     />
   );

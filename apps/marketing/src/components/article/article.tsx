@@ -13,6 +13,9 @@ import { useCurrentVisibleHeading } from '@gp/ui/hooks';
 import { SocialShare, BreadcrumbsList, PublishedDate, People } from './components';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
 import { ArticleJsonLd } from '@gp/seo/react';
+import { Urls, resolveArticleDescription } from '@gp/seo/utils';
+import { FAQClient } from '@/components/faq';
+import { findArticleRouteByBasePath } from '@/lib/article-routes';
 import Link from 'next/link';
 
 interface AsideProps {
@@ -194,7 +197,7 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, docum
         {/* {hero ? <ContentfulHero component={hero} heroClassName={styles.hero} paddingBlockEnd='none' data-hpc /> : null} */}
         <Hero className='pbe-(--gp-size-48)! pbs-0!'>
           <Hero.Heading>{document.frontmatter.title}</Hero.Heading>
-          <Hero.Description>{document.frontmatter.description}</Hero.Description>
+          <Hero.Description>{resolveArticleDescription(document.frontmatter)}</Hero.Description>
         </Hero>
 
         <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
@@ -270,26 +273,27 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
   //   (!template.fields.eventPageType && page.fields.path.includes('resources/events'));
 
   const hasTableOfContents = article.headings.find((heading) => heading.level === 'h2') !== undefined;
+  const articlePath = `${basePath}/${article.frontmatter.slug}`;
+  const sectionRoute = findArticleRouteByBasePath(basePath);
+  const breadcrumbs: BreadcrumbItem[] = [
+    { name: 'Home', path: '/' },
+    { name: sectionRoute?.label ?? basePath.replace(/^\//, ''), path: basePath },
+    { name: article.frontmatter.title, path: articlePath }
+  ];
 
   return (
     <>
       <Box marginBlockEnd={64}>
         <Grid className={styles.grid}>
           <Grid.Column span={12}>
-            {/* <Header component={template} breadcrumbs={breadcrumbListItems} contentFormCta={form?.fields.submitText} /> */}
-            <Header document={article} />
+            <Header breadcrumbs={breadcrumbs} document={article} />
           </Grid.Column>
 
           <Grid.Column span={12}>
             <Grid>
               <Grid.Column span={{ xsmall: 12, large: 7 }}>
                 <div ref={contentRef}>
-                  <Content
-                    document={article}
-                    indexPath='/'
-                    socialShareUrl=''
-                    /* socialShareUrl={locationUrl.toString()} indexPath={indexPath} */
-                  />
+                  <Content document={article} indexPath={basePath} socialShareUrl={`${Urls.BaseUrl}${articlePath}`} />
                 </div>
               </Grid.Column>
 
@@ -320,13 +324,18 @@ const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
         </Box>
       ) : null}
 
-      {faq ? (
+      {faq && faq.length > 0 ? (
         <Box style={{ paddingTop: 'var(--gp-size-96)', paddingBottom: 'var(--gp-size-96)' }}>
-          {/* <ContentfulFaqGroup component={faq} headingLevel={'h2'} /> */}
+          <FAQClient
+            faqs={{
+              heading: 'Frequently asked questions',
+              questions: faq
+            }}
+          />
         </Box>
       ) : null}
 
-      <ArticleJsonLd article={article.frontmatter} path={basePath + '/' + article.frontmatter.slug} />
+      <ArticleJsonLd article={article.frontmatter} path={articlePath} />
     </>
   );
 };

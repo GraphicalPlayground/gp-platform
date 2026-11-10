@@ -4,9 +4,11 @@
 
 import type { Metadata } from 'next';
 import type { Article, LegalFrontmatter } from '@gp/content';
+import type { LanguageCode } from '@gp/types/primitives';
 import { Organization, Keywords } from '@gp/constants';
 import type { AppTarget } from '../utils/target';
 import { isPubliclyIndexable } from '../utils/target';
+import { resolveArticleDescription, resolveAuthorNames } from '../utils/article';
 import { trimTrailingSlash } from '../utils/urls';
 import { SeoRobots } from '../robots/robots';
 import type { PageMetadataInput, SeoMetadataOptions } from './types';
@@ -47,31 +49,39 @@ export class SeoMetadata {
    */
   base(): Metadata {
     const indexable = isPubliclyIndexable(this.target);
+    const defaultTitle = this.options.defaultTitle ?? Organization.displayName;
+    const defaultDescription = this.options.description ?? Organization.description;
     const homeInput: PageMetadataInput = {
       path: '/',
-      title: this.options.defaultTitle ?? Organization.name,
-      description: this.options.description ?? Organization.description
+      title: defaultTitle,
+      description: defaultDescription
     };
 
     return {
       metadataBase: new URL(this.options.baseUrl),
       title: {
-        default: this.options.defaultTitle ?? Organization.name,
-        template: this.options.titleTemplate ?? `%s | ${Organization.name}`
+        default: defaultTitle,
+        template: this.options.titleTemplate ?? `%s | ${Organization.displayName}`
       },
-      description: this.options.description ?? Organization.description,
-      applicationName: Organization.name,
+      description: defaultDescription,
+      applicationName: Organization.displayName,
       generator: 'Next.js',
       referrer: 'strict-origin-when-cross-origin',
       formatDetection: { email: false, address: false, telephone: false },
       robots: SeoRobots.pageRobots(indexable),
-      icons: { icon: '/favicon.svg' },
+      icons: {
+        icon: [
+          { url: '/favicon.svg', type: 'image/svg+xml' },
+          { url: '/favicon.ico', sizes: 'any' }
+        ],
+        shortcut: '/favicon.ico'
+      },
       ...(indexable && {
         keywords: [...Keywords],
         alternates: { canonical: '/' },
         openGraph: buildOpenGraph(this.target, homeInput, this.options, this.resolveUrl('/')),
         twitter: buildTwitter(this.target, homeInput, this.options),
-        verification: this.options.verification
+        ...(this.options.verification && { verification: this.options.verification })
       })
     };
   }
@@ -83,6 +93,8 @@ export class SeoMetadata {
   page(input: PageMetadataInput): Metadata {
     const url = this.resolveUrl(input.path);
     const indexable = isPubliclyIndexable(this.target) && input.noindex !== true;
+    const openGraph = buildOpenGraph(this.target, input, this.options, url);
+    const twitter = buildTwitter(this.target, input, this.options);
 
     const languages = input.alternateLocales
       ? Object.fromEntries(
@@ -93,13 +105,14 @@ export class SeoMetadata {
       : undefined;
 
     return {
-      title: input.title,
-      description: input.description,
-      keywords: input.keywords,
-      robots: input.noindex !== undefined ? SeoRobots.pageRobots(indexable) : undefined,
+      ...(input.title !== undefined && { title: input.title }),
+      ...(input.description !== undefined && { description: input.description }),
+      ...(input.keywords?.length && { keywords: input.keywords }),
+      ...(input.authors?.length && { authors: input.authors.map((name) => ({ name })) }),
+      ...(input.noindex !== undefined && { robots: SeoRobots.pageRobots(indexable, { follow: input.follow }) }),
       alternates: { canonical: url, ...(languages && { languages }) },
-      openGraph: buildOpenGraph(this.target, input, this.options, url),
-      twitter: buildTwitter(this.target, input, this.options)
+      ...(openGraph && { openGraph }),
+      ...(twitter && { twitter })
     };
   }
 
@@ -111,21 +124,24 @@ export class SeoMetadata {
    * @param path - The path the article is served at, e.g. `/guides/my-guide`.
    */
   article(frontmatter: Article, path: string): Metadata {
+    const title = frontmatter.seo?.title ?? frontmatter.title;
+    const description = resolveArticleDescription(frontmatter);
+
     const metadata = this.page({
       path,
-      title: frontmatter.seo?.title ?? frontmatter.title,
-      description: frontmatter.seo?.description ?? frontmatter.description,
+      title,
+      description,
       type: 'article',
-      images: frontmatter.coverImage ? [{ url: frontmatter.coverImage, alt: frontmatter.coverImageAlt ?? '' }] : [],
+      ...(frontmatter.coverImage && {
+        images: [{ url: frontmatter.coverImage, alt: frontmatter.coverImageAlt ?? title }]
+      }),
       keywords: frontmatter.tags,
       noindex: frontmatter.noindex || frontmatter.draft,
       publishedTime: frontmatter.datePublished.toISOString(),
       modifiedTime: frontmatter.dateModified?.toISOString(),
-      authors: Array.isArray(frontmatter.author)
-        ? frontmatter.author
-        : [typeof frontmatter.author === 'string' ? frontmatter.author : frontmatter.author.name],
+      authors: resolveAuthorNames(frontmatter.author),
       section: frontmatter.category,
-      locale: frontmatter.locale
+      locale: frontmatter.locale as LanguageCode
     });
 
     return frontmatter.canonicalUrl
@@ -143,6 +159,8 @@ export class SeoMetadata {
       path,
       title: frontmatter.title,
       description: frontmatter.summary,
+      keywords: [frontmatter.title, frontmatter.category, `${Organization.displayName} legal`],
+      locale: frontmatter.locale as LanguageCode,
       noindex: frontmatter.draft
     });
   }

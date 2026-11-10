@@ -93,9 +93,17 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     'alternateName': ['GPlayd Docs', 'GP Docs', 'gp-docs'],
     'description': Repositories.GpDocs.description,
     'url': Organization.subdomain('docs'),
+    'sameAs': Repositories.GpDocs.url,
     'applicationCategory': 'EducationalApplication',
     'applicationSubCategory': 'Game Development',
     'operatingSystem': 'Web Browser',
+    'isAccessibleForFree': true,
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': Organization.currency,
+      'url': Organization.subdomain('docs')
+    },
     'publisher': { '@id': JsonLdIds.organization },
     'owner': { '@id': JsonLdIds.organization },
     'creator': { '@id': JsonLdIds.organization },
@@ -108,8 +116,9 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     'name': Organization.product('Engine'),
     'alternateName': ['GPlayd Engine', 'GP Engine', 'gp-engine'],
     'description': Repositories.GpEngine.description,
-    'url': Repositories.GpEngine.url,
-    'applicationCategory': 'EducationalApplication',
+    'url': `${Organization.url}/products/engine`,
+    'sameAs': Repositories.GpEngine.url,
+    'applicationCategory': ['EducationalApplication', 'DeveloperApplication'],
     'applicationSubCategory': 'Game Development',
     'operatingSystem': [
       'Windows',
@@ -123,6 +132,13 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
       'Android',
       'iOS'
     ],
+    'isAccessibleForFree': true,
+    'offers': {
+      '@type': 'Offer',
+      'price': '0',
+      'priceCurrency': Organization.currency,
+      'url': `${Organization.url}/products/engine`
+    },
     'publisher': { '@id': JsonLdIds.organization },
     'owner': { '@id': JsonLdIds.organization },
     'creator': { '@id': JsonLdIds.organization },
@@ -136,7 +152,8 @@ export const softwaresApplication: Record<SoftwareSlug, WithContext<SoftwareAppl
     'alternateName': ['GPlayd Platform', 'GP Platform', 'gp-platform'],
     'description': Organization.description,
     'url': Organization.url,
-    'applicationCategory': 'EducationalApplication',
+    'sameAs': Repositories.GpPlatform.url,
+    'applicationCategory': ['EducationalApplication', 'DeveloperApplication'],
     'applicationSubCategory': 'Game Development',
     'operatingSystem': 'Web Browser',
     'offers': {

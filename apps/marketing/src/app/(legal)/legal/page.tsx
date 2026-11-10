@@ -8,17 +8,33 @@ import { Organization } from '@gp/constants';
 import { SeoMetadata, Urls } from '@gp/seo';
 import { LegalIndexPage } from '@/components/legal-index';
 import type { SearchParams } from '@/components/legal-index';
+import { hasActiveQueryParams } from '@/lib/content-metadata';
 
 const LEGAL_DESCRIPTION = `Terms of Service, Privacy Policy, licensing notices, and compliance commitments governing ${Organization.displayName}.`;
+const LEGAL_KEYWORDS = [
+  'Graphical Playground legal',
+  'Terms of Service',
+  'Privacy Policy',
+  'GDPR compliance',
+  'Data Processing Addendum',
+  'open source notices'
+];
 
 /**
- * @brief Metadata for the Legal overview/index page.
+ * @brief Metadata for the Legal overview/index page, marking filtered/searched views `noindex, follow`.
  */
-export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).page({
-  path: '/legal',
-  title: 'Legal',
-  description: LEGAL_DESCRIPTION
-});
+export async function generateMetadata({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<Metadata> {
+  const params = await searchParams;
+  const isFiltered = hasActiveQueryParams(params);
+
+  return SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).page({
+    path: '/legal',
+    title: 'Legal',
+    description: LEGAL_DESCRIPTION,
+    keywords: LEGAL_KEYWORDS,
+    ...(isFiltered && { noindex: true, follow: true })
+  });
+}
 
 export default async function LegalPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
   return <LegalIndexPage description={LEGAL_DESCRIPTION} searchParams={await searchParams} title='Legal' />;

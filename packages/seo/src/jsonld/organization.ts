@@ -13,16 +13,20 @@ export const organization: WithContext<SchemaOrganization> = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   '@id': JsonLdIds.organization,
-  'name': Organization.name,
+  'name': Organization.displayName,
   'alternateName': Organization.alternateNames,
   'legalName': Organization.legalName,
   'description': Organization.description,
+  'slogan': Organization.tagline,
   'url': Organization.url,
   'logo': {
     '@type': 'ImageObject',
     '@id': JsonLdIds.logo,
-    'url': `${Organization.url}/icons/icon-square-512x512.png`,
-    'contentUrl': `${Organization.url}/icons/icon-square-512x512.png`,
+    'url': `${Organization.url}/favicon.svg`,
+    'contentUrl': `${Organization.url}/favicon.svg`,
+    'encodingFormat': 'image/svg+xml',
+    'width': { '@type': 'QuantitativeValue', 'value': 512 },
+    'height': { '@type': 'QuantitativeValue', 'value': 512 },
     'caption': Organization.product('Logo')
   },
   'image': {
@@ -30,9 +34,13 @@ export const organization: WithContext<SchemaOrganization> = {
   },
   'email': Organization.mailto('support'),
   'foundingDate': Organization.foundingDate.toISOString(),
-  'foundingLocation': { '@id': JsonLdIds.localization },
+  'foundingLocation': {
+    '@type': 'Place',
+    'address': { '@id': JsonLdIds.localization }
+  },
   'location': { '@id': JsonLdIds.localization },
-  'legalAddress': { '@id': JsonLdIds.localization },
+  'address': { '@id': JsonLdIds.localization },
+  'publishingPrinciples': `${Organization.url}/legal`,
   'sameAs': [Organization.subdomain('docs'), Organization.subdomain('status'), ...Object.values(Organization.socials)],
   'founder': [
     { '@id': JsonLdIds.person('mallory-scotton') },
@@ -40,6 +48,11 @@ export const organization: WithContext<SchemaOrganization> = {
     { '@id': JsonLdIds.person('ossan-msoili') },
     { '@id': JsonLdIds.person('raphael-ostier') },
     { '@id': JsonLdIds.person('nathan-fievet') }
+  ],
+  'owns': [
+    { '@id': JsonLdIds.application('gp-platform') },
+    { '@id': JsonLdIds.application('gp-engine') },
+    { '@id': JsonLdIds.application('gp-docs') }
   ],
   'knowsLanguage': [{ '@id': JsonLdIds.language('en') }, { '@id': JsonLdIds.language('fr') }],
   'knowsAbout': Organization.knowsAbout,

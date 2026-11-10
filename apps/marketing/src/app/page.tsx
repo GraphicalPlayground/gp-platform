@@ -4,10 +4,12 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
+import { Keywords, Organization } from '@gp/constants';
 import { Section, Stack } from '@gp/ui/components';
+import { JsonLdIds } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { Urls } from '@gp/seo/utils';
-import { FaqJsonLd } from '@gp/seo/react';
+import { FaqJsonLd, WebPageJsonLd } from '@gp/seo/react';
 import { FAQClient } from '@/components/faq';
 import {
   aboutCommunityVisual,
@@ -17,14 +19,18 @@ import {
   jsonLdEntries
 } from './content';
 
+const HOME_TITLE = `Learn Graphics Programming by Building It | ${Organization.displayName}`;
+const HOME_DESCRIPTION =
+  'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems, from raw Vulkan commands to full render pipelines.';
+
 /**
  * @brief Metadata for the marketing home page.
  */
 export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).page({
   path: '/',
-  title: 'Learn Graphics Programming by Building It',
-  description:
-    'An interactive, browser-based platform where students deconstruct and rebuild graphics-engine systems from the ground up, from raw Vulkan commands to full render pipelines.'
+  title: HOME_TITLE,
+  description: HOME_DESCRIPTION,
+  keywords: [...Keywords]
 });
 
 /**
@@ -34,6 +40,13 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
 export default function HomePage() {
   return (
     <Stack className='w-full' direction='vertical' gap='none' padding='none'>
+      <WebPageJsonLd
+        about={[{ '@id': JsonLdIds.organization }, { '@id': JsonLdIds.application('gp-engine') }]}
+        description={HOME_DESCRIPTION}
+        mainEntity={{ '@id': JsonLdIds.application('gp-platform') }}
+        name={HOME_TITLE}
+        path='/'
+      />
       <Section fullWidth backgroundColor='subtle' className='h-screen'>
         Hello World
       </Section>

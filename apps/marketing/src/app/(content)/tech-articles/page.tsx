@@ -3,18 +3,27 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { ContentIndexPage } from '@/components/content-index';
 import type { SearchParams } from '@/components/content-index';
+import { ARTICLE_ROUTES } from '@/lib/article-routes';
+import { buildContentIndexMetadata } from '@/lib/content-metadata';
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<Metadata> {
+  return buildContentIndexMetadata('tech-article', await searchParams);
+}
 
 export default async function TechArticlesPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const route = ARTICLE_ROUTES['tech-article'];
+
   return (
     <ContentIndexPage
       searchable
-      basePath='/tech-articles'
-      description='Technical articles on graphics APIs, shaders, engine architecture, and performance.'
+      basePath={route.basePath}
+      description={route.description}
       searchParams={await searchParams}
       searchPlaceholder='Search tech articles...'
-      title='Tech Articles'
+      title={route.label}
       type='tech-article'
     />
   );

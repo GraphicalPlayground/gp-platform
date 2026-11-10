@@ -16,9 +16,7 @@ export interface ArticleJsonLdProps {
 }
 
 /**
- * @brief Renders the JSON-LD `FAQPage` for a list of FAQ entries.
- * @details Render this right next to your visual FAQ component, passing it the exact same `items` array, so the
- * structured data can never drift from what's actually shown on the page.
+ * @brief Renders the JSON-LD `Article` (or `TechArticle` / `ScholarlyArticle`) `@graph` for an `@gp/content` article.
  */
 export const ArticleJsonLd = ({ article, path }: ArticleJsonLdProps) => (
   <JsonLd data={buildArticleJsonLd(article, path)} />

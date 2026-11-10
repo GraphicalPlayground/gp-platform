@@ -4,6 +4,7 @@
 
 import type { CollectionPageLeaf, WithContext } from 'schema-dts';
 import { Organization } from '@gp/constants';
+import { JsonLdIds } from './ids';
 
 /**
  * @brief A single entry in a collection/catalog listing, e.g. a course card on a catalog page.
@@ -51,6 +52,8 @@ export const buildCollectionPageJsonLd = (input: CollectionPageJsonLdInput): Wit
     'url': url,
     'name': input.name,
     'description': input.description,
+    'isPartOf': { '@id': JsonLdIds.website },
+    'publisher': { '@id': JsonLdIds.organization },
     'mainEntity': {
       '@type': 'ItemList',
       'numberOfItems': input.items.length,
@@ -58,7 +61,7 @@ export const buildCollectionPageJsonLd = (input: CollectionPageJsonLdInput): Wit
         '@type': 'ListItem',
         'position': index + 1,
         'name': item.name,
-        'item': `${Organization.url}${item.path}`,
+        'item': item.path.startsWith('http') ? item.path : `${Organization.url}${item.path}`,
         ...(item.image && { image: item.image })
       }))
     }

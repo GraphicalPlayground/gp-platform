@@ -3,18 +3,27 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
+import type { Metadata } from 'next';
 import { ContentIndexPage } from '@/components/content-index';
 import type { SearchParams } from '@/components/content-index';
+import { ARTICLE_ROUTES } from '@/lib/article-routes';
+import { buildContentIndexMetadata } from '@/lib/content-metadata';
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<SearchParams> }): Promise<Metadata> {
+  return buildContentIndexMetadata('comparison', await searchParams);
+}
 
 export default async function ComparisonsPage({ searchParams }: { searchParams: Promise<SearchParams> }) {
+  const route = ARTICLE_ROUTES.comparison;
+
   return (
     <ContentIndexPage
       searchable
-      basePath='/comparisons'
-      description='Side-by-side comparisons of graphics APIs, techniques, and tools to help you pick the right one.'
+      basePath={route.basePath}
+      description={route.description}
       searchParams={await searchParams}
       searchPlaceholder='Search comparisons...'
-      title='Comparisons'
+      title={route.label}
       type='comparison'
     />
   );

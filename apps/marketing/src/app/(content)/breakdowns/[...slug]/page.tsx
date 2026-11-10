@@ -3,12 +3,11 @@
 // mailto:support AT graphical-playground DOT com
 
 import React from 'react';
-
-import { cms } from '@/lib/cms';
 import type { Metadata } from 'next';
-import { Urls, SeoMetadata } from '@gp/seo';
-import { Article } from '@/components/article';
 import { notFound } from 'next/navigation';
+import { Article } from '@/components/article';
+import { generateArticleSlugMetadata, getTypedCompiledArticle } from '@/lib/article-page';
+import { cms } from '@/lib/cms';
 
 export async function generateStaticParams() {
   return (await cms.articles.getBreakdowns()).map((entries) => ({ slug: entries.slug.split('/') }));
@@ -16,21 +15,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
   const { slug } = await params;
-  const doc = await cms.articles.getBySlug(slug.join('/'));
 
-  if (!doc) {
-    return {};
-  }
-
-  return SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).article(
-    doc.frontmatter,
-    `/breakdowns/${slug.join('/')}`
-  );
+  return generateArticleSlugMetadata('breakdown', slug);
 }
 
 export default async function BreakdownSlugPage({ params }: { params: Promise<{ slug: string | string[] }> }) {
   const { slug } = await params;
-  const doc = await cms.articles.getCompiledBySlug(slug instanceof Array ? slug.join('/') : slug);
+  const doc = await getTypedCompiledArticle('breakdown', slug);
 
   if (!doc) {
     return notFound();

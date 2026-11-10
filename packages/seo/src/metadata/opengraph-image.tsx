@@ -63,7 +63,7 @@ export interface OgImageInput {
  * @param input - The title (and optional subtitle/eyebrow) to render on the image.
  * @returns An ImageResponse suitable as the default export's return value of an `opengraph-image.tsx` route.
  */
-export const renderOgImage = ({ eyebrow = Organization.name, subtitle, title }: OgImageInput): ImageResponse =>
+export const renderOgImage = ({ eyebrow = Organization.displayName, subtitle, title }: OgImageInput): ImageResponse =>
   new ImageResponse(
     <div
       style={{

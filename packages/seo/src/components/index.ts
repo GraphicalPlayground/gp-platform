@@ -8,3 +8,4 @@ export * from './FaqJsonLd';
 export * from './CourseJsonLd';
 export * from './CollectionJsonLd';
 export * from './ArticleJsonLd';
+export * from './WebPageJsonLd';

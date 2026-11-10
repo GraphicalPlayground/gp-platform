@@ -13,9 +13,9 @@ export function GET(): Response {
   const body = SeoLlms.build({
     name: `${Constants.name} - llms.txt`,
     summary: [
-      "Graphical Playground is an open-source e-learning platform built to democratize AAA graphics engineering and engine architecture. The platform's goal is to make the knowledge behind modern real-time rendering available to anyone who wants to learn it, regardless of their hardware or background. It actively addresses the two primary barriers that keep people out of the field: expensive hardware access and a severe knowledge gap between beginner resources and AAA studio expectations.",
-      'To eliminate the hardware barrier, the platform relies on containerized cloud rendering environments based on the Open Container Initiative. This setup allows learners on low-spec hardware to compile, run, and debug high-end Vulkan pipelines entirely through a browser. For those who prefer it, the platform also supports running an engine server locally on personal hardware while remaining connected to the learning environment.',
-      'The educational experience is driven by `gp-engine`, a core graphics engine written in modern C++23. Unlike commercial engines that act as black boxes, `gp-engine` is built around a deconstructive philosophy. Every engine module is designed to be readable, understood, and replaceable by learners, exposing the complete process of how a production-grade engine is constructed.'
+      'Graphical Playground is an open-source e-learning platform for graphics engineering and engine architecture. Its goal is to make modern real-time rendering accessible to anyone, regardless of hardware or background, by solving two barriers: expensive GPU hardware and the gap between beginner tutorials and AAA studio expectations.',
+      'To eliminate the hardware barrier, the platform uses containerized cloud rendering environments based on the Open Container Initiative. This setup allows learners on low-spec hardware to compile, run, and debug high-end Vulkan pipelines directly in a browser. Learners can also run an engine server locally on personal hardware while staying connected to the platform.',
+      'The learning environment runs on `gp-engine`, a C++23 graphics engine built so each module can be read, understood, and replaced by learners rather than hidden behind a commercial black box.'
     ],
     baseUrl: Urls.BaseUrl,
     sections: [
@@ -64,10 +64,59 @@ export function GET(): Response {
       {
         heading: 'Product',
         links: [
-          { title: 'About', path: '/about', description: 'Who builds Graphical Playground and why.' },
-          { title: 'Pricing', path: '/pricing', description: "Information about the platform's pricing plans." },
-          { title: 'Security', path: '/security', description: "Details about the platform's security measures." },
-          { title: 'Products', path: '/products', description: "Overview of the platform's products and services." }
+          {
+            title: 'About',
+            path: '/about',
+            description: 'The founding team, EPITECH origins, and teaching philosophy.'
+          },
+          {
+            title: 'Features',
+            path: '/features',
+            description: 'Interactive pipeline diagrams, shader labs, cloud GPU execution, and certifications.'
+          },
+          {
+            title: 'Curriculum',
+            path: '/curriculum',
+            description: 'Structured learning paths from graphics math to AAA rendering.'
+          },
+          {
+            title: 'Pricing',
+            path: '/pricing',
+            description: 'Cloud rendering subscription plans and free local engine access.'
+          },
+          { title: 'Waitlist', path: '/waitlist', description: 'Request early access to the interactive platform.' },
+          { title: 'Products', path: '/products', description: 'Overview of the Graphical Playground ecosystem.' },
+          {
+            title: 'GP Engine',
+            path: '/products/engine',
+            description: 'Open-source C++23 graphics engine targeting Vulkan, DirectX, Metal, and OpenGL.'
+          },
+          {
+            title: 'GP Cloud',
+            path: '/products/cloud',
+            description: 'OCI containerized cloud GPU sandboxes for browser-based Vulkan execution.'
+          },
+          {
+            title: 'GP Studio',
+            path: '/products/studio',
+            description: 'Visual frame debugger and shader workspace in the browser.'
+          },
+          {
+            title: 'GP Platform',
+            path: '/products/platform',
+            description: 'Next.js learning platform tying curriculum, execution, and tracking together.'
+          },
+          {
+            title: 'GP Handbook',
+            path: '/products/handbook',
+            description: 'Theory-to-implementation guide for graphics engineering patterns.'
+          },
+          {
+            title: 'Certifications',
+            path: '/certifications',
+            description:
+              'Overview of the project-based certification system, evaluation criteria, and public verification.'
+          }
         ]
       },
       {
@@ -126,6 +175,11 @@ export function GET(): Response {
             path: '/tech-articles',
             description:
               'General technical writeups and content related to graphics engineering and engine architecture.'
+          },
+          {
+            title: 'Testimonials',
+            path: '/testimonials',
+            description: 'Feedback and stories from learners and graphics engineers.'
           }
         ]
       },
@@ -141,16 +195,33 @@ export function GET(): Response {
             title: 'Donate',
             path: '/donate',
             description: 'Support the platform and engine development through one-time or recurring donations.'
+          },
+          { title: 'Press', path: '/press', description: 'Media kit, assets, and press contact information.' },
+          {
+            title: 'Brand Guidelines',
+            path: '/brand-guidelines',
+            description: 'Logos, typography, and color usage rules.'
           }
         ]
       },
       {
         heading: 'Support',
         links: [
+          {
+            title: 'FAQ',
+            path: '/faq',
+            description: 'Answers about Graphical Playground, gp-engine, hardware requirements, and curriculum.'
+          },
           { title: 'Help', path: '/help' },
           { title: 'Contact', path: '/contact' },
+          {
+            title: 'Security',
+            path: '/security',
+            description: 'Vulnerability disclosure policy, scope, and safe harbor.'
+          },
           { title: 'Legal', path: '/legal' },
-          { title: 'Accessibility', path: '/accessibility' }
+          { title: 'Accessibility', path: '/accessibility' },
+          { title: 'Site Map', path: '/sitemap' }
         ]
       }
     ],

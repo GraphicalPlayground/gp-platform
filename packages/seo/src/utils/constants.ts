@@ -10,7 +10,7 @@ import { Organization, Keywords } from '@gp/constants';
  * within `@gp/seo` itself should import `Organization`/`Keywords` from `@gp/constants` directly instead.
  */
 export const Constants = {
-  name: Organization.name,
+  name: Organization.displayName,
   description: Organization.description,
   product: Organization.product,
   alternateNames: Organization.alternateNames,

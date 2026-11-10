@@ -4,6 +4,7 @@
 
 import type { BreadcrumbList, WithContext } from 'schema-dts';
 import { Organization } from '@gp/constants';
+import { JsonLdIds } from './ids';
 
 /**
  * @brief A single crumb in a breadcrumb trail.
@@ -24,13 +25,18 @@ export interface BreadcrumbItem {
  * to guarantee the structured data can't drift from what's visibly rendered.
  * @param items - The trail of crumbs, from the site root to the current page.
  */
-export const buildBreadcrumbJsonLd = (items: BreadcrumbItem[]): WithContext<BreadcrumbList> => ({
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  'itemListElement': items.map((item, index) => ({
-    '@type': 'ListItem',
-    'position': index + 1,
-    'name': item.name,
-    'item': `${Organization.url}${item.path}`
-  }))
-});
+export const buildBreadcrumbJsonLd = (items: BreadcrumbItem[]): WithContext<BreadcrumbList> => {
+  const lastPath = items[items.length - 1]?.path;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    ...(lastPath && lastPath.startsWith('/') && { '@id': JsonLdIds.breadcrumb(lastPath) }),
+    'itemListElement': items.map((item, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': item.name,
+      'item': item.path.startsWith('http') ? item.path : `${Organization.url}${item.path}`
+    }))
+  };
+};

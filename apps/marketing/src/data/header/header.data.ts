@@ -33,7 +33,8 @@ import {
   GiftIcon,
   BroadcastIcon,
   BriefcaseIcon,
-  PaintbrushIcon
+  PaintbrushIcon,
+  VerifiedIcon
 } from '@primer/octicons-react';
 import type { HeaderNavData } from './header.types'; // Adjust based on your types location
 
@@ -120,6 +121,12 @@ export const headerNavData: HeaderNavData = [
             url: '/curriculum',
             subtitle: 'Educational paths and training materials',
             icon: MortarBoardIcon
+          },
+          {
+            title: 'Certifications',
+            url: '/certifications',
+            subtitle: 'Project-based credentials and verification system',
+            icon: VerifiedIcon
           },
           {
             title: 'Showcases',

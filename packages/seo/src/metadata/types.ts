@@ -88,6 +88,11 @@ export interface PageMetadataInput {
   noindex?: boolean;
 
   /**
+   * @brief Overrides the robots `follow` directive when `noindex` is set (e.g. `noindex, follow` for filtered search pages).
+   */
+  follow?: boolean;
+
+  /**
    * @brief ISO 8601 timestamps, only meaningful when `type` is 'article'.
    */
   publishedTime?: string;

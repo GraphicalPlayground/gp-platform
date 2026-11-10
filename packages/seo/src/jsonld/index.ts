@@ -16,6 +16,7 @@ export * from './breadcrumb';
 export * from './faq';
 export * from './course';
 export * from './collection';
+export * from './webpage';
 
 /**
  * @brief A collection of JSON-LD representations of the Graphical Playground platform.

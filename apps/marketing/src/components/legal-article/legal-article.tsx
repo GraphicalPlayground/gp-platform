@@ -6,7 +6,9 @@
 
 import React, { useRef } from 'react';
 import type { CompiledMdxDocument, LegalFrontmatter } from '@gp/content';
+import { JsonLdIds } from '@gp/seo/jsonld';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
+import { WebPageJsonLd } from '@gp/seo/react';
 import { Box, Grid, Hero, Link, Prose, Section, Stack, TableOfContents, Text, Token } from '@gp/ui/components';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
 import { BreadcrumbsList } from '../article/components';
@@ -32,14 +34,26 @@ export const LegalArticle: React.FC<LegalArticleProps> = ({ document }) => {
   const effectiveLabel = formatUtcDate(frontmatter.effectiveDate, 'long');
   const updatedLabel = frontmatter.updateDate ? formatUtcDate(frontmatter.updateDate, 'long') : undefined;
 
+  const legalPath = `/legal/${frontmatter.slug}`;
   const breadcrumbs: BreadcrumbItem[] = [
     { name: 'Home', path: '/' },
     { name: 'Legal', path: '/legal' },
-    { name: frontmatter.title, path: `/legal/${frontmatter.slug}` }
+    { name: frontmatter.title, path: legalPath }
   ];
 
   return (
     <>
+      <WebPageJsonLd
+        hasBreadcrumb
+        about={{ '@id': JsonLdIds.organization }}
+        dateModified={(frontmatter.updateDate ?? frontmatter.effectiveDate).toISOString()}
+        datePublished={frontmatter.effectiveDate.toISOString()}
+        description={frontmatter.summary}
+        inLanguage={frontmatter.locale}
+        name={frontmatter.title}
+        path={legalPath}
+        version={frontmatter.version}
+      />
       <Section
         fullWidth
         backgroundColor='subtle'
