@@ -1,8 +1,6 @@
 {
   "name": "gp-platform",
-  "folders": [
-    { "path": ".", "name": "Platform" }
-  ],
+  "folders": [{ "path": ".", "name": "Platform" }],
   "settings": {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
@@ -252,7 +250,7 @@
     "git.addAICoAuthor": "off",
     "git.autofetch": true,
     "git.confirmSync": false,
-    "files.eol": "\n",
+    "files.eol": "\n"
   },
   "extensions": {
     "recommendations": [
