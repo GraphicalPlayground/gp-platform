@@ -23,6 +23,9 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@gp/ui']
   },
   transpilePackages: ['@gp/ui', '@gp/fonts', '@gp/seo'],
+  outputFileTracingIncludes: {
+    '/**/opengraph-image': ['../../packages/seo/src/metadata/assets/*.ttf']
+  },
   typescript: {
     ignoreBuildErrors: true
   },

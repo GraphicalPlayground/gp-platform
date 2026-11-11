@@ -8,20 +8,37 @@ import { fileURLToPath } from 'node:url';
 import { ImageResponse } from 'next/og';
 import { Organization } from '@gp/constants';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+type OgFonts = {
+  monaSansBold: Buffer;
+  monaSansRegular: Buffer;
+  hubotSansBold: Buffer;
+  monaSansMonoMedium: Buffer;
+};
+
+let cachedFonts: OgFonts | null = null;
 
 /**
- * @brief Loads a font file bundled alongside this module.
- * @details Deliberately a plain runtime path join, not `new URL(literal, import.meta.url)` — Next.js's bundler
- * (webpack/Turbopack) statically rewrites that exact form into a public `/_next/static/...` asset URL, which the
- * Node.js runtime this route renders under can't fetch (there's no browser origin to resolve it against).
+ * @brief Loads and caches font files bundled alongside this module on first image render.
+ * @details Deferred out of module evaluation so routes that only import `OG_IMAGE_SIZE` / `OG_IMAGE_CONTENT_TYPE`
+ * (via Next.js's metadata image loader) never read `.ttf` files from disk. Deliberately a plain runtime path join, not
+ * `new URL(literal, import.meta.url)` — Next.js's bundler (webpack/Turbopack) statically rewrites that exact form into
+ * a public `/_next/static/...` asset URL, which the Node.js runtime this route renders under can't fetch (there's no
+ * browser origin to resolve it against).
  */
-const loadFont = (fileName: string): Buffer => readFileSync(join(__dirname, 'assets', fileName));
+const getFonts = (): OgFonts => {
+  if (cachedFonts) return cachedFonts;
 
-const fontMonaSansBold = loadFont('MonaSans-Bold.ttf');
-const fontMonaSansRegular = loadFont('MonaSans-Regular.ttf');
-const fontHubotSansBold = loadFont('HubotSans-Bold.ttf');
-const fontMonaSansMonoMedium = loadFont('MonaSansMono-Medium.ttf');
+  const assetsDir = join(dirname(fileURLToPath(import.meta.url)), 'assets');
+
+  cachedFonts = {
+    monaSansBold: readFileSync(join(assetsDir, 'MonaSans-Bold.ttf')),
+    monaSansRegular: readFileSync(join(assetsDir, 'MonaSans-Regular.ttf')),
+    hubotSansBold: readFileSync(join(assetsDir, 'HubotSans-Bold.ttf')),
+    monaSansMonoMedium: readFileSync(join(assetsDir, 'MonaSansMono-Medium.ttf'))
+  };
+
+  return cachedFonts;
+};
 
 /**
  * @brief Pixel dimensions every generated Open Graph image is rendered at.
@@ -63,8 +80,10 @@ export interface OgImageInput {
  * @param input - The title (and optional subtitle/eyebrow) to render on the image.
  * @returns An ImageResponse suitable as the default export's return value of an `opengraph-image.tsx` route.
  */
-export const renderOgImage = ({ eyebrow = Organization.displayName, subtitle, title }: OgImageInput): ImageResponse =>
-  new ImageResponse(
+export const renderOgImage = ({ eyebrow = Organization.displayName, subtitle, title }: OgImageInput): ImageResponse => {
+  const fonts = getFonts();
+
+  return new ImageResponse(
     <div
       style={{
         width: '100%',
@@ -155,10 +174,11 @@ export const renderOgImage = ({ eyebrow = Organization.displayName, subtitle, ti
     {
       ...OG_IMAGE_SIZE,
       fonts: [
-        { name: 'Mona Sans', data: fontMonaSansBold, weight: 700, style: 'normal' },
-        { name: 'Mona Sans', data: fontMonaSansRegular, weight: 400, style: 'normal' },
-        { name: 'Hubot Sans', data: fontHubotSansBold, weight: 700, style: 'normal' },
-        { name: 'Mona Sans Mono', data: fontMonaSansMonoMedium, weight: 500, style: 'normal' }
+        { name: 'Mona Sans', data: fonts.monaSansBold, weight: 700, style: 'normal' },
+        { name: 'Mona Sans', data: fonts.monaSansRegular, weight: 400, style: 'normal' },
+        { name: 'Hubot Sans', data: fonts.hubotSansBold, weight: 700, style: 'normal' },
+        { name: 'Mona Sans Mono', data: fonts.monaSansMonoMedium, weight: 500, style: 'normal' }
       ]
     }
   );
+};
