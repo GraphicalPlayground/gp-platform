@@ -6,6 +6,7 @@ declare const styles: {
   readonly grid: string;
   readonly breadcrumbLink: string;
   readonly hero: string;
+  readonly metaRow: string;
   readonly relatedCards: string;
   readonly heroPrimaryButton: string;
   readonly heroImage: string;

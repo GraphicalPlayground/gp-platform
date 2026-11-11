@@ -30,9 +30,9 @@ function sign(payloadBase64: string, secret: string): string {
 
 /**
  * @brief Creates a signed preview token for an unpublished (draft/in-review/scheduled) document.
- * @details `getBySlug`/`getCompiledBySlug` on {@link MdxCollection} ignore publish status by
- * design, so this token's only job is authorizing *who* may request an unpublished slug - actual
- * lookup still goes through the normal repository methods once the token is verified.
+ * @details `getBySlug`/`getCompiledBySlug` on {@link MdxCollection} respect `NODE_ENV !== 'production'` by
+ * default, so this token authorizes *who* may request an unpublished slug in production - actual
+ * lookup passes `{ includeDrafts: true }` to the repository methods once the token is verified.
  */
 export function createPreviewToken(payload: PreviewTokenPayload, secret: string): string {
   const payloadBase64 = base64UrlEncode(JSON.stringify(payload));

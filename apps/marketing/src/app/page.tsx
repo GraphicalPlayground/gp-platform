@@ -13,6 +13,7 @@ import { HomeView } from '@/components/home';
 import type { FeaturedGlossaryCard } from '@/components/home';
 import { FEATURED_GLOSSARY_SLUGS, HOME_COURSE_DATA } from '@/data/home';
 import { getArticlePath } from '@/lib/article-routes';
+import { getDevDraftTokenLabel } from '@/lib/article-status';
 import { cms } from '@/lib/cms';
 import { jsonLdEntries } from './content';
 
@@ -80,6 +81,7 @@ export default async function HomePage() {
 
     return {
       difficulty: formatSlugLabel(doc.frontmatter.difficulty),
+      draftLabel: getDevDraftTokenLabel(doc.frontmatter),
       href: getArticlePath('glossary', doc.slug),
       shortDefinition: doc.frontmatter.shortDefinition,
       slug: doc.slug,

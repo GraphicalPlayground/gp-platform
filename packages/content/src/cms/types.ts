@@ -93,9 +93,14 @@ export interface MdxCollectionOptions {
 }
 
 /**
- * @brief Options for compiling an {@link MdxDocument} to a {@link CompiledMdxDocument}.
- * @details These options are passed to the {@link MdxCollection.compile} method.
+ * @brief Status/time visibility options shared across collection queries and slug lookups.
  */
-export interface CompileOptions {
+export type MdxDocumentLookupOptions = Pick<MdxCollectionOptions, 'includeDrafts' | 'statuses' | 'now'>;
+
+/**
+ * @brief Options for compiling an {@link MdxDocument} to a {@link CompiledMdxDocument}.
+ * @details These options are passed to {@link MdxCollection.getCompiledBySlug}.
+ */
+export interface CompileOptions extends MdxDocumentLookupOptions {
   components?: MDXComponents;
 }

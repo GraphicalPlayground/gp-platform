@@ -7,6 +7,7 @@ import { clsx } from 'clsx';
 import styles from './index-card.module.css';
 
 import { Card } from '@gp/ui/components';
+import { DraftToken } from '@/components/article/components/draft-token';
 import type { ContentIndexItem } from '../content-index.utils';
 
 export interface IndexCardProps {
@@ -36,6 +37,11 @@ export const IndexCard: React.FC<IndexCardProps> = ({ className, item }) => {
       <Card.Label variant='accent-text'>{`${formattedDate} · ${item.readingTimeMinutes} min read`}</Card.Label>
       <Card.Heading>{item.title}</Card.Heading>
       <Card.Description>{item.description}</Card.Description>
+      {item.draftLabel ? (
+        <Card.Tokens position='block-end'>
+          <DraftToken label={item.draftLabel} />
+        </Card.Tokens>
+      ) : null}
     </Card>
   );
 };

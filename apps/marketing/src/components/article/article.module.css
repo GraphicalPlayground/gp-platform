@@ -18,6 +18,18 @@
   padding-bottom: var(--gp-size-40);
 }
 
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-12);
+  margin-block-end: var(--gp-size-36);
+}
+
+.metaRow > p {
+  margin-block-end: 0;
+}
+
 .relatedCards {
   --gp-card-background-default: transparent;
 }

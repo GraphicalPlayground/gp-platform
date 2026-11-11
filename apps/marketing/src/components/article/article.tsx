@@ -7,15 +7,16 @@
 import React, { useRef } from 'react';
 import styles from './article.module.css';
 
-import { Box, Text, Stack, Grid, TableOfContents, Lede, Prose, Label, Hero } from '@gp/ui/components';
-import type { CompiledMdxDocument, Article as ArticleFrontmatter } from '@gp/content';
+import { Box, Grid, Hero, Lede, Prose, Stack, TableOfContents, Text, Label } from '@gp/ui/components';
+import type { Article as ArticleFrontmatter, CompiledMdxDocument } from '@gp/content';
 import { useCurrentVisibleHeading } from '@gp/ui/hooks';
-import { SocialShare, BreadcrumbsList, PublishedDate, People } from './components';
+import { BreadcrumbsList, DraftToken, People, PublishedDate, SocialShare } from './components';
 import type { BreadcrumbItem } from '@gp/seo/jsonld';
 import { ArticleJsonLd } from '@gp/seo/react';
 import { Urls, resolveArticleDescription } from '@gp/seo/utils';
 import { FAQClient } from '@/components/faq';
 import { findArticleRouteByBasePath } from '@/lib/article-routes';
+import { getDevDraftTokenLabel } from '@/lib/article-status';
 import Link from 'next/link';
 
 interface AsideProps {
@@ -179,6 +180,7 @@ const defaultBreadcrumbs: Array<BreadcrumbItem> = [] as const;
 const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, document }) => {
   // const {hero, featuredImage, publishedDate} = component.fields
   const { dateModified, datePublished } = document.frontmatter;
+  const draftLabel = getDevDraftTokenLabel(document.frontmatter);
 
   return (
     <header>
@@ -200,7 +202,14 @@ const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, docum
           <Hero.Description>{resolveArticleDescription(document.frontmatter)}</Hero.Description>
         </Hero>
 
-        <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
+        {draftLabel ? (
+          <div className={styles.metaRow}>
+            <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
+            <DraftToken label={draftLabel} />
+          </div>
+        ) : (
+          <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
+        )}
 
         {/* {featuredImage ? (
           <Image

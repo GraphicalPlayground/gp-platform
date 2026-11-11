@@ -3,6 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './breadcrumbs-list';
+export * from './draft-token';
 // export * from './category-card';
 // export * from './featured-content';
 // export * from './filters';
