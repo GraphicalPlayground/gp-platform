@@ -1,0 +1,116 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.BreakoutBanner {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: var(--gp-breakpoint-xlarge);
+  width: 100%;
+  border-radius: var(--gp-border-radius-large);
+  background-repeat: no-repeat;
+  background-color: var(--gp-breakout-banner-narrow-background-color, var(--gp-breakout-banner-background-color));
+  background-image: var(
+    --gp-breakout-banner-narrow-background-image-src,
+    var(--gp-breakout-banner-background-image-src)
+  );
+  background-size: var(
+    --gp-breakout-banner-narrow-background-image-size,
+    var(--gp-breakout-banner-background-image-size)
+  );
+
+  background-position: var(
+    --gp-breakout-banner-narrow-background-image-position,
+    var(--gp-breakout-banner-background-image-position, center)
+  );
+}
+
+.BreakoutBanner-container {
+  border-radius: var(--gp-border-radius-xlarge);
+  padding: var(--gp-size-40) var(--gp-size-24) var(--gp-size-128);
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.BreakoutBanner-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.BreakoutBanner-container--background {
+  background: var(--gp-breakout-banner-bg-color);
+}
+
+.BreakoutBanner-content--center {
+  align-items: center;
+  text-align: center;
+}
+
+.BreakoutBanner__heading {
+  max-width: 20ch;
+}
+
+.BreakoutBanner-description {
+  max-width: 54ch;
+  margin-block-start: var(--gp-size-16);
+}
+
+.BreakoutBanner-linkGroup {
+  margin-block-start: var(--gp-size-48);
+}
+
+.BreakoutBanner-leadingVisual {
+  margin-block-end: var(--gp-size-48);
+}
+
+.BreakoutBanner-leadingVisual :is(img, picture) {
+  display: block;
+}
+
+/* Regular */
+@media screen and (min-width: 48rem) {
+  .BreakoutBanner {
+    background-color: var(--gp-breakout-banner-regular-background-color, var(--gp-breakout-banner-background-color));
+    background-image: var(
+      --gp-breakout-banner-regular-background-image-src,
+      var(--gp-breakout-banner-background-image-src)
+    );
+    background-size: var(
+      --gp-breakout-banner-regular-background-image-size,
+      var(--gp-breakout-banner-background-image-size)
+    );
+    background-position: var(
+      --gp-breakout-banner-regular-background-image-position,
+      var(--gp-breakout-banner-background-image-position)
+    );
+  }
+
+  .BreakoutBanner-container {
+    padding: var(--gp-size-48);
+  }
+}
+
+/* Wide */
+@media screen and (min-width: 80rem) {
+  .BreakoutBanner {
+    background-color: var(--gp-breakout-banner-wide-background-color, var(--gp-breakout-banner-background-color));
+    background-image: var(
+      --gp-breakout-banner-wide-background-image-src,
+      var(--gp-breakout-banner-background-image-src)
+    );
+    background-size: var(
+      --gp-breakout-banner-wide-background-image-size,
+      var(--gp-breakout-banner-background-image-size)
+    );
+
+    background-position: var(
+      --gp-breakout-banner-wide-background-image-position,
+      var(--gp-breakout-banner-background-image-position)
+    );
+  }
+}

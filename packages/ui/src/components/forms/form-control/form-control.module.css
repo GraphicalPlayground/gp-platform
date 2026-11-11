@@ -1,0 +1,200 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.FormControl {
+  display: inline-flex;
+  font-family: var(--gp-body-font-family);
+  flex-direction: column;
+  gap: var(--gp-size-8);
+}
+
+.FormControl--fullWidth {
+  width: 100%;
+}
+
+.FormControl--checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+.FormControl--toggle-switch {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--gp-toggle-switch-label-gap);
+  align-items: center;
+}
+
+.FormControl-control--toggle-switch {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+}
+
+.FormControl-label--toggle-switch {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.FormControl--toggle-switch-with-status-label {
+  display: flex;
+  flex-flow: row-reverse wrap;
+  justify-content: flex-end;
+}
+
+.FormControl--toggle-switch-with-status-label
+  .FormControl-label--toggle-switch:not(.FormControl-label--visually-hidden) {
+  flex: 1 1 0;
+  min-inline-size: min(100%, var(--gp-size-96));
+  order: 0;
+}
+
+.FormControl--toggle-switch-with-status-label .FormControl-control--toggle-switch {
+  flex: 0 1 auto;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  order: 1;
+}
+
+.FormControl--toggle-switch-with-status-label .FormControl-hint,
+.FormControl--toggle-switch-with-status-label .FormControl-validation {
+  flex-basis: 100%;
+  order: 2;
+}
+
+.FormControl-label--medium.FormControl-label--toggle-switch {
+  font-size: var(--gp-toggle-switch-label-font-size);
+  line-height: max(var(--gp-toggle-switch-label-line-height), var(--gp-toggle-switch-target-min-height));
+}
+
+.FormControl-toggleSwitch-spinnerSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gp-toggle-switch-loading-size);
+  height: var(--gp-toggle-switch-loading-size);
+  margin-inline-start: var(--gp-toggle-switch-loading-gap);
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.FormControl--border {
+  border: 1px solid var(--gp-control-color-border-default);
+  border-radius: var(--gp-border-radius-medium);
+  padding: var(--gp-size-12);
+}
+
+.FormControl-label {
+  color: var(--gp-color-text-default);
+  font-weight: var(--gp-text-weight-medium);
+  font-family: var(--gp-body-font-family);
+}
+
+.FormControl-label--visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.FormControl-label--medium {
+  letter-spacing: var(--gp-text-letter-spacing-100);
+  font-size: var(--gp-text-size-100);
+  line-height: var(--gp-text-line-height-100);
+}
+
+.FormControl-label--large {
+  letter-spacing: var(--gp-text-letter-spacing-300);
+  font-size: var(--gp-text-size-300);
+  line-height: var(--gp-text-line-height-300);
+}
+
+.FormControl-label--checkbox {
+  cursor: pointer;
+  font-size: var(--gp-text-size-100);
+  font-weight: var(--gp-text-weight-medium);
+  line-height: var(--gp-size-24);
+  width: 100%;
+  position: relative;
+  top: 1px;
+}
+
+.FormControl-control--radio {
+  margin: 2px 0 0;
+}
+
+.FormControl-hint {
+  grid-column: 1 / 3;
+  display: block;
+}
+
+/*Validation*/
+.FormControl-validation {
+  grid-column: 1 / 3;
+  display: flex;
+  gap: var(--gp-size-4);
+  align-items: center;
+}
+
+.FormControl-validation--success {
+  color: var(--gp-color-success-fg);
+}
+
+.FormControl-validation--error {
+  color: var(--gp-control-color-validation-error);
+}
+
+.FormControl-validation-success-icon {
+  display: flex;
+}
+
+.FormControl-validation-error-icon {
+  display: flex;
+}
+
+.FormControl-validation--animate-in {
+  animation: 170ms FormControlValidationFadeIn cubic-bezier(0.44, 0.74, 0.36, 1);
+}
+
+@media screen and (max-width: 47.99rem) {
+  .FormControl--toggle-switch-with-status-label {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .FormControl--toggle-switch-with-status-label
+    .FormControl-label--toggle-switch:not(.FormControl-label--visually-hidden) {
+    flex: initial;
+    min-inline-size: 0;
+  }
+
+  .FormControl--toggle-switch-with-status-label .FormControl-control--toggle-switch {
+    flex: initial;
+  }
+
+  .FormControl--toggle-switch-with-status-label .FormControl-hint,
+  .FormControl--toggle-switch-with-status-label .FormControl-validation {
+    flex: initial;
+  }
+}
+
+@keyframes FormControlValidationFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

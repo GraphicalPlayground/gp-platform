@@ -1,0 +1,67 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.staff-toggle-bar {
+  background-color: var(--gp-color-canvas-subtle);
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted, #d2d9d4);
+}
+
+.staff-toggle-bar--container {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gp-size-16);
+  margin-inline: auto;
+  max-width: var(--gp-footer-max-width, 1280px);
+  padding-block: var(--gp-size-24);
+  padding-inline: var(--gp-size-24);
+}
+
+.staff-toggle-bar--list {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gp-size-20);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.staff-toggle-bar--button {
+  background: transparent;
+  border: 0;
+  color: var(--gp-color-text-muted);
+  cursor: pointer;
+  font-family: var(--gp-font-stack-monospace, var(--gp-font-mona-sans-mono));
+  font-size: var(--gp-text-caption-size, 0.75rem);
+  font-weight: var(--gp-text-weight-medium);
+  letter-spacing: inherit;
+  line-height: var(--gp-text-lineHeight-100);
+  padding: 0;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover {
+    color: var(--gp-color-text-default);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    border-radius: var(--gp-border-radius-small);
+    outline: 2px solid var(--gp-color-focus, currentColor);
+    outline-offset: 2px;
+  }
+}
+
+.staff-toggle-bar--state {
+  font-weight: var(--gp-text-weight-semibold);
+}
+
+@media (min-width: 768px) {
+  .staff-toggle-bar--container {
+    padding-inline: var(--gp-size-32);
+  }
+}

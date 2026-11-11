@@ -1,0 +1,64 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.ControlGroup__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-8);
+  font-family: var(--gp-body-font-family);
+  font-size: var(--gp-text-size-100);
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ControlGroup__label {
+  margin: 0;
+  padding: 0;
+  margin-block-end: var(--gp-size-8);
+}
+
+.ControlGroup__validation {
+  display: flex;
+  gap: var(--gp-size-4);
+  font-weight: var(--gp-text-weight-medium);
+  align-items: center;
+}
+
+.ControlGroup__validation--success {
+  color: var(--gp-color-text-emphasized);
+}
+
+.ControlGroup__validation--error {
+  color: var(--gp-color-danger-fg);
+}
+
+.ControlGroup__validation-icon--success {
+  display: flex;
+}
+
+.ControlGroup__validation-icon--error {
+  display: flex;
+}
+
+.ControlGroup__validation--animate-in {
+  animation: 170ms ControlGroupValidationFadeIn var(--gp-animation-easing-glide);
+}
+
+.ControlGroup__container label {
+  font-weight: var(--gp-text-weight-medium);
+}
+
+@keyframes ControlGroupValidationFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

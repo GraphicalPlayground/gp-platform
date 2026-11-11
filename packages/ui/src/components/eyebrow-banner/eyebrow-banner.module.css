@@ -1,0 +1,343 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.EyebrowBanner {
+  display: inline-block;
+  align-self: flex-start;
+  text-decoration: none;
+  background: var(--gp-eyebrow-banner-bg-color-rest);
+  border: var(--gp-borderWidth-thin) solid var(--gp-eyebrow-banner-border-color-rest);
+  padding: var(--gp-eyebrow-banner-spacing-inner-block) var(--gp-eyebrow-banner-spacing-inner-inline);
+  border-radius: var(--gp-eyebrow-banner-border-radius);
+}
+
+.EyebrowBanner:hover {
+  text-decoration: none !important; /* Required to override dotcom default */
+}
+
+.EyebrowBanner:focus-visible {
+  transition: none;
+  outline: var(--gp-size-4) solid var(--gp-color-focus);
+  outline-offset: 2px;
+}
+
+.EyebrowBanner__inner {
+  display: flex;
+  align-items: center;
+}
+
+.EyebrowBanner__headings {
+  margin-inline-start: var(--gp-eyebrow-banner-spacing-inner-inline);
+  text-align: start;
+}
+
+.EyebrowBanner__leadingVisual {
+  display: flex;
+}
+
+.EyebrowBanner__leadingVisual img,
+.EyebrowBanner__leadingVisual picture,
+.EyebrowBanner__leadingVisual svg {
+  height: var(--gp-size-44);
+  width: auto;
+  max-width: var(--gp-size-44);
+  max-height: var(--gp-size-44);
+}
+
+.EyebrowBanner__leadingVisual img,
+.EyebrowBanner__leadingVisual picture {
+  display: block;
+}
+
+.EyebrowBanner__trailingVisual {
+  display: flex;
+}
+
+.EyebrowBanner__trailingVisual-icon {
+  margin-inline-start: var(--gp-size-20);
+  color: var(--gp-color-text-default);
+}
+
+.EyebrowBanner__trailingVisual-icon {
+  fill: var(--gp-color-text-default);
+}
+
+.EyebrowBanner__leadingLabel {
+  display: flex;
+  font-family: var(--gp-body-fontFamily);
+  font-weight: var(--gp-text-weight-medium);
+  font-size: var(--gp-eyebrow-banner-label-size);
+  line-height: 1em; /* for optical alignment */
+  letter-spacing: var(--gp-text-letterSpacing-200);
+  background: linear-gradient(
+    92deg,
+    var(--gp-eyebrow-banner-leading-label-color-start, var(--gp-eyebrow-banner-fg-color-default-start)) 12.09%,
+    var(--gp-eyebrow-banner-leading-label-color-middle, var(--gp-eyebrow-banner-fg-color-default-middle)) 42.58%,
+    var(--gp-eyebrow-banner-leading-label-color-end, var(--gp-eyebrow-banner-fg-color-default-end)) 84.96%
+  );
+  text-transform: uppercase;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.EyebrowBanner__leadingLabel--color-blue {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-blue);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-blue);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-blue);
+}
+
+.EyebrowBanner__leadingLabel--color-blue-purple {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-blue-purple-start);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-blue-purple-end);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-blue-purple-end);
+}
+
+.EyebrowBanner__leadingLabel--color-coral {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-coral);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-coral);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-coral);
+}
+
+.EyebrowBanner__leadingLabel--color-green {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-green);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-green);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-green);
+}
+
+.EyebrowBanner__leadingLabel--color-green-blue {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-green-blue-start);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-green-blue-start);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-green-blue-end);
+}
+
+.EyebrowBanner__leadingLabel--color-gray {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-gray);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-gray);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-gray);
+}
+
+.EyebrowBanner__leadingLabel--color-indigo {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-indigo);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-indigo);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-indigo);
+}
+
+.EyebrowBanner__leadingLabel--color-lemon {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-lemon);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-lemon);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-lemon);
+}
+
+.EyebrowBanner__leadingLabel--color-lime {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-lime);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-lime);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-lime);
+}
+
+.EyebrowBanner__leadingLabel--color-orange {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-orange);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-orange);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-orange);
+}
+
+.EyebrowBanner__leadingLabel--color-pink {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-pink);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-pink);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-pink);
+}
+
+.EyebrowBanner__leadingLabel--color-pink-blue {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-pink-blue-start);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-pink-blue-start);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-pink-blue-end);
+}
+
+.EyebrowBanner__leadingLabel--color-purple {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-purple);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-purple);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-purple);
+}
+
+.EyebrowBanner__leadingLabel--color-purple-red {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-purple-red-start);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-purple-red-start);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-purple-red-end);
+}
+
+.EyebrowBanner__leadingLabel--color-red {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-red);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-red);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-red);
+}
+
+.EyebrowBanner__leadingLabel--color-red-orange {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-red-orange-start);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-red-orange-start);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-red-orange-end);
+}
+
+.EyebrowBanner__leadingLabel--color-teal {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-teal);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-teal);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-teal);
+}
+
+.EyebrowBanner__leadingLabel--color-yellow {
+  --gp-eyebrow-banner-leading-label-color-start: var(--gp-eyebrow-banner-fg-color-yellow);
+  --gp-eyebrow-banner-leading-label-color-middle: var(--gp-eyebrow-banner-fg-color-yellow);
+  --gp-eyebrow-banner-leading-label-color-end: var(--gp-eyebrow-banner-fg-color-yellow);
+}
+
+.EyebrowBanner__heading {
+  display: block;
+  color: var(--gp-eyebrow-banner-heading-fg-color);
+  font-size: var(--gp-eyebrow-banner-heading-size);
+}
+
+.EyebrowBanner__subHeading {
+  display: block;
+  color: var(--gp-eyebrow-banner-sub-heading-fg-color);
+  font-size: var(--gp-eyebrow-banner-sub-heading-size);
+}
+
+.EyebrowBanner__icon--badge {
+  width: var(--gp-size-44);
+  height: var(--gp-size-44);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EyebrowBanner__icon svg {
+  width: var(--gp-size-20);
+  height: var(--gp-size-20);
+}
+
+.EyebrowBanner__icon--color-default {
+  color: var(--gp-color-text-default);
+}
+
+.EyebrowBanner__icon--color-default.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-default);
+}
+
+.EyebrowBanner__icon--color-blue {
+  color: var(--gp-eyebrow-banner-fg-color-blue);
+}
+
+.EyebrowBanner__icon--color-blue.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-blue);
+}
+
+.EyebrowBanner__icon--color-coral {
+  color: var(--gp-eyebrow-banner-fg-color-coral);
+}
+
+.EyebrowBanner__icon--color-coral.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-coral);
+}
+
+.EyebrowBanner__icon--color-green {
+  color: var(--gp-eyebrow-banner-fg-color-green);
+}
+
+.EyebrowBanner__icon--color-green.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-green);
+}
+
+.EyebrowBanner__icon--color-gray {
+  color: var(--gp-eyebrow-banner-fg-color-gray);
+}
+
+.EyebrowBanner__icon--color-gray.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-gray);
+}
+
+.EyebrowBanner__icon--color-indigo {
+  color: var(--gp-eyebrow-banner-fg-color-indigo);
+}
+
+.EyebrowBanner__icon--color-indigo.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-indigo);
+}
+
+.EyebrowBanner__icon--color-lemon {
+  color: var(--gp-eyebrow-banner-fg-color-lemon);
+}
+
+.EyebrowBanner__icon--color-lemon.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-lemon);
+}
+
+.EyebrowBanner__icon--color-lime {
+  color: var(--gp-eyebrow-banner-fg-color-lime);
+}
+
+.EyebrowBanner__icon--color-lime.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-lime);
+}
+
+.EyebrowBanner__icon--color-orange {
+  color: var(--gp-eyebrow-banner-fg-color-orange);
+}
+
+.EyebrowBanner__icon--color-orange.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-orange);
+}
+
+.EyebrowBanner__icon--color-pink {
+  color: var(--gp-eyebrow-banner-fg-color-pink);
+}
+
+.EyebrowBanner__icon--color-pink.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-pink);
+}
+
+.EyebrowBanner__icon--color-purple {
+  color: var(--gp-eyebrow-banner-fg-color-purple);
+}
+
+.EyebrowBanner__icon--color-purple.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-purple);
+}
+
+.EyebrowBanner__icon--color-red {
+  color: var(--gp-eyebrow-banner-fg-color-red);
+}
+
+.EyebrowBanner__icon--color-red.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-red);
+}
+
+.EyebrowBanner__icon--color-teal {
+  color: var(--gp-eyebrow-banner-fg-color-teal);
+}
+
+.EyebrowBanner__icon--color-teal.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-teal);
+}
+
+.EyebrowBanner__icon--color-yellow {
+  color: var(--gp-eyebrow-banner-fg-color-yellow);
+}
+
+.EyebrowBanner__icon--color-yellow.EyebrowBanner__icon--badge {
+  background-color: var(--gp-eyebrow-banner-icon-background-yellow);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .EyebrowBanner,
+  .EyebrowBanner::before,
+  .EyebrowBanner::after,
+  .EyebrowBanner * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

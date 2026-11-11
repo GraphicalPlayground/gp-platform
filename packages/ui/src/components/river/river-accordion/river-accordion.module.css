@@ -1,0 +1,362 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.RiverAccordion {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'visual'
+    'accordion';
+  gap: 0;
+  position: relative;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .RiverAccordion {
+    --gap-width: var(--gp-grid-spacing-column-gap);
+    --column-and-gap-width: calc((100% + var(--gap-width)) / 12);
+
+    --4-grid-columns: calc(4 * var(--column-and-gap-width));
+    --7-grid-columns-minus-last-gap: calc((7 * var(--column-and-gap-width)) - var(--gap-width));
+
+    grid-template-rows: auto;
+    gap: var(--column-and-gap-width);
+  }
+
+  .RiverAccordion__align-start {
+    grid-template-columns: var(--4-grid-columns) var(--7-grid-columns-minus-last-gap);
+    grid-template-areas: 'accordion visual';
+  }
+
+  .RiverAccordion__align-end {
+    grid-template-columns: var(--7-grid-columns-minus-last-gap) var(--4-grid-columns);
+    grid-template-areas: 'visual accordion';
+  }
+}
+
+/* Gridline variant */
+
+.RiverAccordion--variant-gridline {
+  position: relative;
+  padding-inline: var(--gp-river-accordion-variant-gridline-spacing-outer-inline);
+  padding-block: var(--gp-river-accordion-variant-gridline-spacing-outer-block);
+}
+
+@media screen and (min-width: 63.25rem) {
+  .RiverAccordion--variant-gridline {
+    --gap-width: var(--gp-river-accordion-variant-gridline-spacing-content-gap);
+    --half-column: calc(50% - var(--gap-width) / 2);
+
+    gap: var(--gap-width);
+    align-items: center;
+  }
+
+  .RiverAccordion--variant-gridline.RiverAccordion__align-start {
+    grid-template-columns: var(--half-column) var(--half-column);
+    grid-template-areas: 'accordion visual';
+  }
+
+  .RiverAccordion--variant-gridline.RiverAccordion__align-end {
+    grid-template-columns: var(--half-column) var(--half-column);
+    grid-template-areas: 'visual accordion';
+  }
+}
+
+@media (min-width: 80rem) {
+  .RiverAccordion--variant-gridline {
+    border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+}
+
+.RiverAccordion--active-item-has-background .RiverAccordion__visualsContainer {
+  margin-inline: calc(-1 * var(--gp-river-accordion-variant-gridline-spacing-outer-inline));
+  margin-block-start: calc(-1 * var(--gp-river-accordion-variant-gridline-spacing-outer-block));
+}
+
+@media screen and (min-width: 48rem) and (max-width: 63.24rem) {
+  .RiverAccordion {
+    max-width: 618px;
+    margin-inline: auto;
+  }
+
+  .RiverAccordion--variant-gridline {
+    border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  }
+}
+
+.RiverAccordion--active-item-has-background .RiverAccordion__visualsWrapper {
+  border-radius: 0;
+}
+
+.RiverAccordion__accordionContainer {
+  grid-area: accordion;
+}
+
+.RiverAccordion__visualsContainer {
+  grid-area: visual;
+}
+
+.RiverAccordion__visualsWrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--gp-size-6);
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  scale: 1.05;
+  transition:
+    opacity var(--gp-animation-duration-default) var(--gp-animation-easing-default),
+    scale var(--gp-animation-duration-default) var(--gp-animation-easing-default);
+}
+
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual > * {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: var(--gp-size-6);
+  object-fit: contain;
+}
+
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual img,
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual picture,
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--gp-size-6);
+  object-fit: contain;
+}
+
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual > * img,
+.RiverAccordion__visualsWrapper > .RiverAccordion__visual > * video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--gp-size-6);
+  object-fit: cover;
+}
+
+.RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gp-size-32);
+  background: var(--gp-river-accordion-visual-background, var(--gp-color-canvas-subtle));
+}
+
+.RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--gp-size-6);
+}
+
+.RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background img,
+.RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background picture,
+.RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background video {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--gp-size-6);
+}
+
+@media screen and (min-width: 63.25rem) {
+  .RiverAccordion--active-item-has-background {
+    padding: 0;
+    gap: 0;
+    align-items: stretch;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .RiverAccordion--active-item-has-background .RiverAccordion__accordionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--gp-river-accordion-variant-gridline-spacing-outer-block)
+      var(--gp-river-accordion-variant-gridline-spacing-outer-inline);
+  }
+
+  .RiverAccordion__align-start.RiverAccordion--active-item-has-background .RiverAccordion__accordionContainer {
+    padding-inline-end: var(--gp-river-accordion-variant-gridline-spacing-content-gap);
+  }
+
+  .RiverAccordion__align-end.RiverAccordion--active-item-has-background .RiverAccordion__accordionContainer {
+    padding-inline-start: var(--gp-river-accordion-variant-gridline-spacing-content-gap);
+  }
+
+  .RiverAccordion--active-item-has-background .RiverAccordion__visualsContainer {
+    margin: 0;
+  }
+
+  .RiverAccordion--active-item-has-background .RiverAccordion__visualsWrapper {
+    height: 100%;
+  }
+
+  .RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background {
+    align-items: center;
+    justify-content: center;
+    padding: var(--gp-size-64);
+  }
+
+  .RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background > *,
+  .RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background img,
+  .RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background picture,
+  .RiverAccordion--variant-gridline .RiverAccordion__visualsWrapper > .RiverAccordion__visual--has-background video {
+    border-radius: var(--gp-size-6);
+  }
+}
+
+/* Show the visual when the corresponding accordion item is open */
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(1)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(1),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(2)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(2),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(3)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(3),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(4)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(4),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(5)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(5),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(6)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(6),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(7)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(7),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(8)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(8),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(9)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(9),
+.RiverAccordion:has(.RiverAccordion__item--open:nth-child(10)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(10),
+/* Just in case all accordions are somehow closed, show the first visual */
+.RiverAccordion:not(:has(.RiverAccordion__item--open)) .RiverAccordion__visualsContainer .RiverAccordion__visual:nth-child(1) {
+  opacity: 1;
+  scale: 1;
+  z-index: 1;
+}
+
+/* Visually hide visuals inside the accordion */
+.RiverAccordion__accordionContainer .RiverAccordion__visual {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  word-wrap: normal;
+  border: 0;
+}
+
+.RiverAccordion__item {
+  position: relative;
+  padding-block-start: var(--gp-size-32);
+  border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+@media screen and (max-width: 63.24rem) {
+  .RiverAccordion--variant-gridline .RiverAccordion__item:last-child {
+    border-bottom: none;
+  }
+}
+
+.RiverAccordion__item:not(.RiverAccordion__item--open) .RiverAccordion__heading {
+  color: var(--gp-color-text-muted);
+}
+
+.RiverAccordion__trigger {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gp-size-4);
+  margin: calc(var(--gp-size-4) * -1);
+}
+
+.RiverAccordion__trigger--has-leading-visual {
+  gap: var(--gp-size-20);
+  justify-content: flex-start;
+}
+
+.RiverAccordion__leadingVisual {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  height: var(--gp-size-20);
+  justify-content: center;
+  width: var(--gp-size-20);
+}
+
+.RiverAccordion__leadingVisual > * {
+  height: 100%;
+  width: 100%;
+}
+
+.RiverAccordion__headingText {
+  flex: 1;
+  min-width: 0;
+}
+
+.RiverAccordion__item--open .RiverAccordion__trigger {
+  cursor: initial;
+}
+
+.RiverAccordion__item:not(.RiverAccordion__item--open) .RiverAccordion__trigger::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.RiverAccordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition:
+    grid-template-rows var(--gp-animation-duration-default) var(--gp-animation-easing-default),
+    margin-block-start var(--gp-animation-duration-default) var(--gp-animation-easing-default),
+    padding-block-end var(--gp-animation-duration-default) var(--gp-animation-easing-default);
+  margin-block-start: var(--gp-size-32);
+  overflow-y: clip;
+}
+
+.RiverAccordion__item--open .RiverAccordion__panel {
+  margin-block-start: var(--gp-size-12);
+  padding-block-end: var(--gp-size-32);
+  grid-template-rows: 1fr;
+}
+
+.RiverAccordion__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 0;
+  gap: var(--gp-size-20);
+}
+
+.RiverAccordion__item:has(.RiverAccordion__leadingVisual) .RiverAccordion__content {
+  padding-inline-start: calc(var(--gp-size-20) + var(--gp-size-20));
+}
+
+.RiverAccordion__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--gp-color-text-muted);
+}
+
+.RiverAccordion__item--open .RiverAccordion__icon {
+  color: var(--gp-color-text-default);
+}

@@ -1,0 +1,55 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+declare const styles: {
+  readonly 'PricingOptions': string;
+  readonly 'PricingOptions--appearance-gradient': string;
+  readonly 'PricingOptions--appearance-solid': string;
+  readonly 'PricingOptions--items1': string;
+  readonly 'PricingOptions--items2': string;
+  readonly 'PricingOptions--items3': string;
+  readonly 'PricingOptions--items4': string;
+  readonly 'PricingOptions--layout-cards': string;
+  readonly 'PricingOptions--layout-default': string;
+  readonly 'PricingOptions__actions': string;
+  readonly 'PricingOptions__actions-message': string;
+  readonly 'PricingOptions__actions-message-content': string;
+  readonly 'PricingOptions__actions-message-leading-component': string;
+  readonly 'PricingOptions__description': string;
+  readonly 'PricingOptions__feature-list': string;
+  readonly 'PricingOptions__feature-list--has-divider': string;
+  readonly 'PricingOptions__feature-list-accordion': string;
+  readonly 'PricingOptions__feature-list-accordion-chevron': string;
+  readonly 'PricingOptions__feature-list-accordion-content': string;
+  readonly 'PricingOptions__feature-list-accordion-heading': string;
+  readonly 'PricingOptions__feature-list-group-heading': string;
+  readonly 'PricingOptions__feature-list-item': string;
+  readonly 'PricingOptions__feature-list-item--excluded': string;
+  readonly 'PricingOptions__feature-list-item--has-info': string;
+  readonly 'PricingOptions__feature-list-item-info': string;
+  readonly 'PricingOptions__feature-list-set': string;
+  readonly 'PricingOptions__footnote': string;
+  readonly 'PricingOptions__header': string;
+  readonly 'PricingOptions__heading': string;
+  readonly 'PricingOptions__item': string;
+  readonly 'PricingOptions__item--align-center': string;
+  readonly 'PricingOptions__item--has-leading-component': string;
+  readonly 'PricingOptions__label': string;
+  readonly 'PricingOptions__label-cell': string;
+  readonly 'PricingOptions__label-cell--empty': string;
+  readonly 'PricingOptions__label-cell--has-label': string;
+  readonly 'PricingOptions__labels': string;
+  readonly 'PricingOptions__leading-component': string;
+  readonly 'PricingOptions__menu-action': string;
+  readonly 'PricingOptions__price': string;
+  readonly 'PricingOptions__price-amount': string;
+  readonly 'PricingOptions__price-currency-code': string;
+  readonly 'PricingOptions__price-currency-symbol': string;
+  readonly 'PricingOptions__price-original-price': string;
+  readonly 'PricingOptions__price-original-price-value': string;
+  readonly 'PricingOptions__price-trailing-text': string;
+  readonly 'PricingOptions__price-value': string;
+};
+
+export = styles;

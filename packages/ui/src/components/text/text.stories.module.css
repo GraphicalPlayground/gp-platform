@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.break-words {
+  word-wrap: break-word;
+}
+
+.separator {
+  width: 100%;
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-default);
+}

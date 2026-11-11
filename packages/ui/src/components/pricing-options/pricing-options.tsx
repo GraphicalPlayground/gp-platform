@@ -1,0 +1,800 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+'use client';
+
+import React, { forwardRef, useMemo } from 'react';
+import type { HTMLAttributes, PropsWithChildren, Ref, Dispatch } from 'react';
+import { CheckIcon, TriangleDownIcon, XIcon } from '@primer/octicons-react';
+import { clsx } from 'clsx';
+import type { ListItemProps } from '../list/list-item';
+import type { BaseProps } from '../helper';
+import { Accordion } from '../accordion';
+import { Button } from '../button';
+import type { ButtonBaseProps } from '../button';
+import { Heading as HeadingComponent } from '../heading';
+import type { HeadingProps } from '../heading';
+import { Text } from '../text';
+import { Tooltip } from '../tooltip';
+import { useWindowSize } from '../../hooks';
+import { UnorderedList } from '../list';
+import type { UnorderedListProps } from '../list';
+
+import styles from './pricing-options.module.css';
+
+type AlignOptions = 'start' | 'center';
+
+export type PricingOptionsProps = {
+  align?: AlignOptions;
+  variant?: 'default' | 'default-gradient' | 'cards' | 'cards-gradient';
+  ['data-testid']?: string;
+} & PropsWithChildren<BaseProps<HTMLDivElement>> &
+  HTMLAttributes<HTMLDivElement>;
+
+const testIds = {
+  root: 'PricingOptions',
+  item: 'PricingOptions__item',
+  labelRow: 'PricingOptions__labels',
+  heading: 'PricingOptions__heading',
+  label: 'PricingOptions__label',
+  description: 'PricingOptions__description',
+  price: 'PricingOptions__price',
+  actionsMessage: 'PricingOptions__actionsMessage',
+  primaryAction: 'PricingOptions__primaryAction',
+  secondaryAction: 'PricingOptions__secondaryAction',
+  menuAction: 'PricingOptions__menuAction',
+  featureList: 'PricingOptions__featureList',
+  featureListHeading: 'PricingOptions__featureListHeading',
+  featureListItem: 'PricingOptions__featureListItem',
+  featureListGroupHeading: 'PricingOptions__featureListGroupHeading',
+  footnote: 'PricingOptions__footnote'
+};
+
+type PricingOptionsContextValue = {
+  align: AlignOptions;
+  allFeatureListsExpanded: boolean;
+  updateFeatureListExpanded: Dispatch<boolean>;
+  featureListUserInteracted: boolean;
+  setFeatureListUserInteracted: Dispatch<boolean>;
+};
+
+const PricingOptionsContext = React.createContext<PricingOptionsContextValue>({
+  align: 'start',
+  allFeatureListsExpanded: false,
+  featureListUserInteracted: false,
+  updateFeatureListExpanded: () => {},
+  setFeatureListUserInteracted: () => {}
+});
+
+const PricingOptionsProvider = ({ children, align = 'start' }: PropsWithChildren<{ align: AlignOptions }>) => {
+  const [allFeatureListsExpanded, setAllFeatureListsExpanded] = React.useState(false);
+  const [featureListUserInteracted, setFeatureListUserInteracted] = React.useState(false);
+
+  const updateFeatureListExpanded = (newValue: boolean) => {
+    setAllFeatureListsExpanded(() => newValue);
+  };
+
+  return (
+    <PricingOptionsContext.Provider
+      value={{
+        allFeatureListsExpanded,
+        updateFeatureListExpanded,
+        align,
+        featureListUserInteracted,
+        setFeatureListUserInteracted
+      }}
+    >
+      {children}
+    </PricingOptionsContext.Provider>
+  );
+};
+
+const usePricingOptions = (): PricingOptionsContextValue => {
+  return React.useContext(PricingOptionsContext);
+};
+
+const pricingOptionsDefaultFeatureListHeading = "What's included";
+
+type PricingOptionsLabelProps = PropsWithChildren<{
+  'data-testid'?: string;
+}>;
+
+const PricingOptionsLabel = ({ children }: PricingOptionsLabelProps) => {
+  return <>{children}</>;
+};
+
+const PricingOptionsRoot = forwardRef(
+  (
+    {
+      align = 'start',
+      children,
+      className,
+      'data-testid': testId,
+      variant = 'default',
+      ...rest
+    }: PropsWithChildren<PricingOptionsProps>,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const filteredChildren = useMemo(
+      () =>
+        React.Children.toArray(children).filter(
+          (child) => React.isValidElement(child) && typeof child.type !== 'string' && child.type === PricingOptionsItem
+        ) as React.ReactElement<PropsWithChildren<PricingOptionsItem>>[],
+      [children]
+    ).slice(0, 4);
+
+    const headerLabels = useMemo(
+      () =>
+        filteredChildren.map((item) => {
+          const labelChild = React.Children.toArray(item.props.children).find(
+            (child) =>
+              React.isValidElement(child) && typeof child.type !== 'string' && child.type === PricingOptionsLabel
+          );
+
+          return (
+            React.isValidElement(labelChild) ? labelChild : null
+          ) as React.ReactElement<PricingOptionsLabelProps> | null;
+        }),
+      [filteredChildren]
+    );
+
+    const hasHeaderLabels = headerLabels.some((label) => label !== null);
+
+    return (
+      <PricingOptionsProvider align={align}>
+        <div
+          className={clsx(
+            styles.PricingOptions,
+            styles[`PricingOptions--layout-${variant.includes('default') ? 'default' : 'cards'}`],
+            styles[`PricingOptions--items${filteredChildren.length}` as keyof typeof styles],
+            styles[`PricingOptions--appearance-${variant.includes('gradient') ? 'gradient' : 'solid'}`],
+            className
+          )}
+          data-testid={testId || testIds.root}
+          ref={ref}
+          {...(rest as HTMLAttributes<HTMLElement>)}
+        >
+          {filteredChildren}
+
+          {hasHeaderLabels && (
+            <div
+              className={styles['PricingOptions__labels']}
+              data-testid={testIds.labelRow}
+              style={
+                {
+                  '--gp-pricing-options-column-count': filteredChildren.length
+                } as React.CSSProperties
+              }
+            >
+              {headerLabels.map((headerLabel, index) => {
+                const hasLabelContent = Boolean(headerLabel?.props.children);
+
+                return (
+                  <div
+                    className={clsx(
+                      styles['PricingOptions__label-cell'],
+                      hasLabelContent
+                        ? styles['PricingOptions__label-cell--has-label']
+                        : styles['PricingOptions__label-cell--empty']
+                    )}
+                    data-testid={headerLabel?.props['data-testid'] || testIds.label}
+                    key={index}
+                  >
+                    {headerLabel?.props.children ? (
+                      <span className={styles.PricingOptions__label}>{headerLabel.props.children}</span>
+                    ) : null}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </PricingOptionsProvider>
+    );
+  }
+);
+
+export type PricingOptionsItem = {
+  ['data-testid']?: string;
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  leadingComponent?: React.ReactElement;
+} & PropsWithChildren<BaseProps<HTMLDivElement>>;
+
+type FilteredChildren = {
+  FeatureList: React.ReactElement<PricingOptionsFeatureListProps> | null;
+  Actions: React.ReactElement<PricingOptionsActionsProps>[];
+  ActionsMessage: React.ReactElement<PricingOptionsActionsMessageProps> | null;
+  Footnote: React.ReactElement<PricingOptionsFootnoteProps> | null;
+  Heading: React.ReactElement<PricingOptionsHeadingProps> | null;
+  Description: React.ReactElement<PricingOptionsDescriptionProps> | null;
+  Price: React.ReactElement<PricingOptionsPriceProps> | null;
+};
+
+const PricingOptionsItem = forwardRef(
+  (
+    { 'data-testid': testId, children, className, leadingComponent, ...rest }: PropsWithChildren<PricingOptionsItem>,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const { align } = usePricingOptions();
+
+    const memoizedChildren = useMemo(() => React.Children.toArray(children), [children]);
+
+    const filteredChildren = memoizedChildren.reduce<FilteredChildren>(
+      (acc, child) => {
+        if (React.isValidElement(child) && typeof child.type !== 'string') {
+          if (child.type === PricingOptionsFeatureList) {
+            acc.FeatureList = child as React.ReactElement<PricingOptionsFeatureListProps> | null;
+          }
+
+          if (
+            child.type === PricingOptionsPrimaryAction ||
+            child.type === PricingOptionsSecondaryAction ||
+            child.type === PricingOptionsMenuAction
+          ) {
+            acc.Actions.push(child as React.ReactElement<PricingOptionsActionsProps>);
+          }
+
+          if (child.type === PricingOptionsActionsMessage) {
+            acc.ActionsMessage = child as React.ReactElement<PricingOptionsActionsMessageProps>;
+          }
+
+          if (child.type === PricingOptionsFootnote) {
+            acc.Footnote = child as React.ReactElement<PricingOptionsFootnoteProps>;
+          }
+
+          if (child.type === PricingOptionsHeading) {
+            acc.Heading = child as React.ReactElement<PricingOptionsHeadingProps>;
+          }
+
+          if (child.type === PricingOptionsDescription) {
+            acc.Description = child as React.ReactElement<PricingOptionsDescriptionProps>;
+          }
+
+          if (child.type === PricingOptionsPrice) {
+            acc.Price = child as React.ReactElement<PricingOptionsPriceProps>;
+          }
+        }
+
+        return acc;
+      },
+      {
+        FeatureList: null,
+        Actions: [],
+        ActionsMessage: null,
+        Footnote: null,
+        Heading: null,
+        Description: null,
+        Price: null
+      }
+    );
+
+    const { Heading, Description, Price, FeatureList, Actions, ActionsMessage, Footnote } = filteredChildren;
+
+    return (
+      <div
+        className={clsx(
+          styles.PricingOptions__item,
+          leadingComponent && styles['PricingOptions__item--has-leading-component'],
+          styles[`PricingOptions__item--align-${align}` as keyof typeof styles],
+          className
+        )}
+        data-testid={testId || testIds.item}
+        ref={ref}
+        {...(rest as HTMLAttributes<HTMLElement>)}
+      >
+        <div className={styles['PricingOptions__header']}>{Heading}</div>
+        {Description}
+        {Price}
+        {leadingComponent && <div className={styles['PricingOptions__leading-component']}>{leadingComponent}</div>}
+        {(Actions.length > 0 || ActionsMessage) && (
+          <div className={styles.PricingOptions__actions}>
+            {Actions}
+            {ActionsMessage}
+          </div>
+        )}
+        {FeatureList}
+        {Footnote}
+      </div>
+    );
+  }
+);
+
+type PricingOptionsDescriptionProps = PropsWithChildren<BaseProps<HTMLParagraphElement>> & {
+  'data-testid'?: string;
+};
+
+const PricingOptionsDescription = forwardRef<HTMLParagraphElement, PricingOptionsDescriptionProps>(
+  ({ children, className, 'data-testid': testId, ...rest }, ref) => {
+    return (
+      <Text
+        as='p'
+        className={clsx(styles.PricingOptions__description, className)}
+        data-testid={testId || testIds.description}
+        ref={ref}
+        size='200'
+        variant='muted'
+        {...rest}
+      >
+        {children}
+      </Text>
+    );
+  }
+);
+
+type PricingOptionsHeadingProps = PropsWithChildren<BaseProps<HTMLHeadingElement>> & {
+  'data-testid'?: string;
+} & HeadingProps;
+
+const PricingOptionsHeading = forwardRef<HTMLHeadingElement, PricingOptionsHeadingProps>(
+  ({ as = 'h3', children, 'data-testid': testId, size = '5', className, ...rest }, ref) => {
+    return (
+      <HeadingComponent
+        as={as}
+        className={clsx(
+          styles.PricingOptions__heading,
+          styles[`PricingOptions__heading--size-${size}` as keyof typeof styles],
+          className
+        )}
+        data-testid={testId || testIds.heading}
+        ref={ref}
+        size={size}
+        {...rest}
+      >
+        {children}
+      </HeadingComponent>
+    );
+  }
+);
+
+type PricingOptionsPriceProps = PropsWithChildren<BaseProps<HTMLParagraphElement>> & {
+  'currencyCode'?: string;
+  'currencySymbol'?: string;
+  'data-testid'?: string;
+  'originalPrice'?: string;
+  'trailingText'?: string;
+};
+
+const PricingOptionsPrice = forwardRef<HTMLParagraphElement, PricingOptionsPriceProps>(
+  (
+    {
+      children,
+      className,
+      currencyCode = 'USD',
+      currencySymbol = '$',
+      'data-testid': testId,
+      originalPrice,
+      trailingText,
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <Text
+        as='p'
+        className={clsx(styles.PricingOptions__price, className)}
+        data-testid={testId || testIds.price}
+        ref={ref}
+        weight='normal'
+        {...rest}
+      >
+        <span className={styles['PricingOptions__price-amount']}>
+          <Text as='span' className={styles['PricingOptions__price-currency-symbol']} size='500' weight='normal'>
+            {currencySymbol}
+          </Text>
+
+          <Text as='span' className={styles['PricingOptions__price-value']} size='500' weight='normal'>
+            {children}
+          </Text>
+
+          <Text as='span' className={styles['PricingOptions__price-currency-code']} size='100' weight='normal'>
+            {currencyCode}
+          </Text>
+        </span>
+
+        {originalPrice && (
+          <del className={styles['PricingOptions__price-original-price']}>
+            <Text size='400' variant='muted' weight='normal'>
+              {currencySymbol}
+            </Text>
+            <Text
+              className={styles['PricingOptions__price-original-price-value']}
+              size='300'
+              variant='muted'
+              weight='normal'
+            >
+              {originalPrice}
+            </Text>
+          </del>
+        )}
+
+        {trailingText && (
+          <Text as='span' className={styles['PricingOptions__price-trailing-text']} size='200' variant='muted'>
+            {trailingText}
+          </Text>
+        )}
+      </Text>
+    );
+  }
+);
+
+type PricingOptionsFeatureListProps = BaseProps<HTMLUListElement> & {
+  'accordionAs'?: HeadingProps['as'];
+  'expanded'?: ExpandedProp;
+  'hasDivider'?: boolean;
+  'children': React.ReactElement<PricingOptionsFeatureListGroupHeadingProps | PricingOptionsFeatureListItemProps>[];
+  'data-testid'?: string;
+};
+
+type ExpandedProp = boolean | ResponsiveExpandableProps;
+
+type ResponsiveExpandableProps = {
+  narrow: boolean;
+  regular: boolean;
+  wide: boolean;
+};
+
+type ValidFeatureListChildren = {
+  Heading: React.ReactElement<PricingOptionsFeatureListGroupHeadingProps> | null;
+  Items: React.ReactElement<PricingOptionsFeatureListItemProps>[];
+}[];
+
+const PricingOptionsFeatureList = forwardRef<HTMLDivElement, PricingOptionsFeatureListProps>(
+  ({ children, className, 'data-testid': testId, hasDivider = true, expanded, accordionAs = 'h4', ...rest }, ref) => {
+    const {
+      allFeatureListsExpanded,
+      updateFeatureListExpanded,
+      featureListUserInteracted,
+      setFeatureListUserInteracted
+    } = usePricingOptions();
+    const { isMedium: isRegular, isXLarge: isWide, isSmall: isNarrow } = useWindowSize();
+
+    React.useEffect(() => {
+      if (expanded === undefined || typeof expanded === 'object') {
+        setFeatureListUserInteracted(false);
+      }
+    }, [isRegular, isWide, isNarrow, setFeatureListUserInteracted, expanded]);
+
+    const shouldBeOpen = React.useMemo(() => {
+      if (featureListUserInteracted) {
+        return allFeatureListsExpanded;
+      }
+
+      // Important: Fixes layout shift by ensuring that explicit values are preserved.
+      if (typeof expanded === 'boolean') {
+        return expanded;
+      }
+      // If undefined, should follow some default responsive logic
+      if (expanded === undefined) {
+        if (isWide) return true;
+        if (isRegular) return true;
+
+        return false;
+      }
+
+      // finally handle responsive objects, and go from largest to smallest viewports
+      const { narrow, regular, wide } = expanded;
+
+      if (isWide) return wide;
+      if (isRegular) return regular;
+
+      return narrow;
+    }, [expanded, allFeatureListsExpanded, isRegular, isWide, featureListUserInteracted]);
+
+    let FeatureListHeading = (
+      <PricingOptions.FeatureListHeading>{pricingOptionsDefaultFeatureListHeading}</PricingOptions.FeatureListHeading>
+    );
+
+    const FilteredChildrenSet = React.Children.toArray(children).reduce<ValidFeatureListChildren>((acc, child) => {
+      if (React.isValidElement(child) && child.type === PricingOptionsFeatureListHeading) {
+        FeatureListHeading = child;
+      } else if (React.isValidElement(child) && child.type === PricingOptionsFeatureListItem) {
+        if (acc.length === 0) {
+          acc.push({ Heading: null, Items: [] });
+        }
+        acc[acc.length - 1]!.Items.push(child as React.ReactElement<PricingOptionsFeatureListItemProps>);
+      } else if (React.isValidElement(child) && child.type === PricingOptionsFeatureListGroupHeading) {
+        acc.push({
+          Heading: child as React.ReactElement<PricingOptionsFeatureListGroupHeadingProps>,
+          Items: []
+        });
+      }
+
+      return acc;
+    }, []);
+
+    const FeatureListItems = FilteredChildrenSet.map(({ Heading: HeadingChild, Items }, index) => (
+      <div className={styles['PricingOptions__feature-list-set']} key={index}>
+        {HeadingChild}
+
+        <UnorderedList variant='checked' {...(rest as UnorderedListProps)}>
+          {Items}
+        </UnorderedList>
+      </div>
+    ));
+
+    return (
+      <div
+        ref={ref}
+        className={clsx(
+          styles['PricingOptions__feature-list'],
+          hasDivider && styles['PricingOptions__feature-list--has-divider'],
+          className
+        )}
+        data-testid={testId || testIds.featureList}
+      >
+        <Accordion
+          className={styles['PricingOptions__feature-list-accordion']}
+          disableAnimation
+          open={shouldBeOpen}
+          onToggle={(event) => {
+            setFeatureListUserInteracted(true);
+            updateFeatureListExpanded(event.currentTarget.open);
+          }}
+        >
+          <Accordion.Heading as={accordionAs} className={styles['PricingOptions__feature-list-accordion-heading']}>
+            {FeatureListHeading}
+
+            <TriangleDownIcon className={styles['PricingOptions__feature-list-accordion-chevron']} />
+          </Accordion.Heading>
+          <Accordion.Content className={styles['PricingOptions__feature-list-accordion-content']}>
+            {FeatureListItems}
+          </Accordion.Content>
+        </Accordion>
+      </div>
+    );
+  }
+);
+
+type PricingOptionsFeatureListHeadingProps = PropsWithChildren<BaseProps<HTMLDivElement>> & {
+  'data-testid'?: string;
+};
+
+const PricingOptionsFeatureListHeading = forwardRef<HTMLDivElement, PricingOptionsFeatureListHeadingProps>(
+  ({ children, className, 'data-testid': testId, ...rest }, ref) => {
+    return (
+      <div className={className} data-testid={testId || testIds.featureListHeading} ref={ref} {...rest}>
+        {children}
+      </div>
+    );
+  }
+);
+
+type PricingOptionsFeatureListGroupHeadingProps = PropsWithChildren<BaseProps<HTMLHeadingElement>> & {
+  'as'?: Exclude<HeadingProps['as'], 'h1' | 'h2'>;
+  'data-testid'?: string;
+};
+
+const PricingOptionsFeatureListGroupHeading = forwardRef<
+  HTMLHeadingElement,
+  PricingOptionsFeatureListGroupHeadingProps
+>(({ children, className, 'data-testid': testId, ...rest }, ref) => {
+  return (
+    <HeadingComponent
+      as='h4'
+      className={clsx(styles['PricingOptions__feature-list-group-heading'], className)}
+      data-testid={testId || testIds.featureListGroupHeading}
+      ref={ref}
+      size='subhead-medium'
+      {...rest}
+    >
+      {children}
+    </HeadingComponent>
+  );
+});
+
+type PricingOptionsFeatureListItemProps = PropsWithChildren<BaseProps<HTMLLIElement>> & {
+  'data-testid'?: string;
+  'infoTooltip'?: string;
+  /**
+   * Optional accessible label for the info tooltip trigger. Overrides the automatically generated label.
+   */
+  'infoTooltipAriaLabel'?: string;
+  'variant'?: 'included' | 'excluded';
+} & Omit<ListItemProps, 'variant'>;
+
+const PricingOptionsFeatureListItem = forwardRef<HTMLLIElement, PricingOptionsFeatureListItemProps>(
+  (
+    {
+      children,
+      className,
+      infoTooltip,
+      infoTooltipAriaLabel,
+      leadingVisual,
+      leadingVisualFill,
+      variant = 'included',
+      'data-testid': testId,
+      ...rest
+    },
+    ref
+  ) => {
+    const itemLeadingVisual = leadingVisual ?? (variant === 'included' ? CheckIcon : XIcon);
+    const itemLeadingVisualAriaLabel = variant === 'included' ? 'Includes' : 'Does not include';
+
+    const itemLeadingVisualFill =
+      leadingVisualFill ?? (variant === 'included' ? 'var(--gp-color-accent-primary)' : 'var(--gp-color-text-muted)');
+
+    return (
+      <UnorderedList.Item
+        className={clsx(
+          styles['PricingOptions__feature-list-item'],
+          { [styles['PricingOptions__feature-list-item--excluded']]: variant === 'excluded' },
+          infoTooltip && styles['PricingOptions__feature-list-item--has-info'],
+          className
+        )}
+        data-testid={testId || testIds.featureListItem}
+        leadingVisual={itemLeadingVisual}
+        leadingVisualAriaLabel={itemLeadingVisualAriaLabel}
+        leadingVisualFill={itemLeadingVisualFill}
+        ref={ref}
+        {...rest}
+      >
+        {children}
+        {infoTooltip && (
+          <Tooltip text={infoTooltip} direction='n'>
+            <button
+              type='button'
+              className={styles['PricingOptions__feature-list-item-info']}
+              aria-label={
+                infoTooltipAriaLabel ??
+                `More information about ${typeof children === 'string' ? children : 'this feature'}`
+              }
+            >
+              <svg viewBox='0 0 4 8' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <path
+                  d='M0.75 3C0.33579 3 0 3.33579 0 3.75C0 4.16421 0.33579 4.5 0.75 4.5H1V6.5H0.75C0.33579 6.5 0 6.8358 0 7.25C0 7.6642 0.33579 8 0.75 8H2.75C3.16421 8 3.5 7.6642 3.5 7.25C3.5 6.8358 3.16421 6.5 2.75 6.5H2.5V3.75C2.5 3.33579 2.16421 3 1.75 3H0.75Z'
+                  fill='currentColor'
+                />
+                <path
+                  d='M2.5 1C2.5 1.55228 2.05229 2 1.5 2C0.94772 2 0.5 1.55228 0.5 1C0.5 0.44772 0.94772 0 1.5 0C2.05229 0 2.5 0.44772 2.5 1Z'
+                  fill='currentColor'
+                />
+              </svg>
+            </button>
+          </Tooltip>
+        )}
+      </UnorderedList.Item>
+    );
+  }
+);
+
+type AsA = { 'as': 'a'; 'href': string; 'data-testid'?: string } & React.AnchorHTMLAttributes<
+  BaseProps<HTMLAnchorElement>
+> &
+  ButtonBaseProps;
+
+type AsButton = { 'as': 'button'; 'data-testid'?: string } & React.ButtonHTMLAttributes<BaseProps<HTMLButtonElement>> &
+  ButtonBaseProps;
+
+type PricingOptionsActionsProps = AsA | AsButton;
+
+type PricingOptionsActionsMessageProps = PropsWithChildren<BaseProps<HTMLDivElement>> & {
+  'data-testid'?: string;
+  'leadingComponent'?: React.ReactElement;
+};
+
+const PricingOptionsActionsMessage = forwardRef<HTMLDivElement, PricingOptionsActionsMessageProps>(
+  ({ children, className, 'data-testid': testId, leadingComponent, ...rest }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clsx(styles['PricingOptions__actions-message'], className)}
+        data-testid={testId || testIds.actionsMessage}
+        {...rest}
+      >
+        {leadingComponent && (
+          <span className={styles['PricingOptions__actions-message-leading-component']}>{leadingComponent}</span>
+        )}
+        <div className={styles['PricingOptions__actions-message-content']}>{children}</div>
+      </div>
+    );
+  }
+);
+
+const PricingOptionsPrimaryAction = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  PropsWithChildren<PricingOptionsActionsProps>
+>(({ as, children, className, 'data-testid': testId, ...rest }, ref) => {
+  return (
+    <Button
+      ref={ref as React.Ref<HTMLButtonElement>}
+      as={as}
+      data-testid={testId || testIds.primaryAction}
+      className={clsx(styles['PricingOptions__primary-action' as keyof typeof styles], className)}
+      size='medium'
+      variant='primary'
+      block
+      {...rest}
+    >
+      {children}
+    </Button>
+  );
+});
+
+const PricingOptionsSecondaryAction = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  PropsWithChildren<PricingOptionsActionsProps>
+>(({ as, children, className, 'data-testid': testId, ...rest }, ref) => {
+  return (
+    <Button
+      ref={ref as React.Ref<HTMLButtonElement>}
+      as={as}
+      className={clsx(styles['PricingOptions__primary-action' as keyof typeof styles], className)}
+      data-testid={testId || testIds.secondaryAction}
+      variant='secondary'
+      block
+      {...rest}
+    >
+      {children}
+    </Button>
+  );
+});
+
+type PricingOptionsMenuActionProps = PropsWithChildren<BaseProps<HTMLDivElement>> & {
+  'data-testid'?: string;
+};
+
+const PricingOptionsMenuAction = forwardRef<HTMLDivElement, PricingOptionsMenuActionProps>(
+  ({ children, className, 'data-testid': testId, ...rest }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={clsx(styles['PricingOptions__menu-action'], className)}
+        data-testid={testId || testIds.menuAction}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+type PricingOptionsFootnoteProps = PropsWithChildren<BaseProps<HTMLParagraphElement>> & {
+  'data-testid'?: string;
+};
+
+const PricingOptionsFootnote = forwardRef<HTMLParagraphElement, PricingOptionsFootnoteProps>(
+  ({ children, className, 'data-testid': testId, ...rest }, ref) => {
+    return (
+      <Text
+        as='p'
+        className={clsx(styles.PricingOptions__footnote, className)}
+        data-testid={testId || testIds.footnote}
+        ref={ref}
+        size='100'
+        variant='muted'
+        weight='light'
+        {...rest}
+      >
+        {children}
+      </Text>
+    );
+  }
+);
+
+/**
+ * Pricing options component:
+ * {@link https://primer.style/brand/components/PricingOptions/ See usage examples}.
+ */
+export const PricingOptions = Object.assign(PricingOptionsRoot, {
+  ActionsMessage: PricingOptionsActionsMessage,
+  Description: PricingOptionsDescription,
+  FeatureList: PricingOptionsFeatureList,
+  FeatureListHeading: PricingOptionsFeatureListHeading,
+  FeatureListGroupHeading: PricingOptionsFeatureListGroupHeading,
+  FeatureListItem: PricingOptionsFeatureListItem,
+  Footnote: PricingOptionsFootnote,
+  Label: PricingOptionsLabel,
+  Heading: PricingOptionsHeading,
+  Item: PricingOptionsItem,
+  MenuAction: PricingOptionsMenuAction,
+  Price: PricingOptionsPrice,
+  PrimaryAction: PricingOptionsPrimaryAction,
+  SecondaryAction: PricingOptionsSecondaryAction,
+  testIds
+});

@@ -1,3 +1,13 @@
 packages:
-  - 'apps/**/**'
-  - 'packages/**/**'
+  - 'apps/**'
+  - 'packages/**'
+fetchRetries: 5
+fetchRetryMintimeout: 300000
+fetchRetryMaxtimeout: 300000
+minimumReleaseAge: 7
+allowBuilds:
+  sharp: true
+  esbuild: true
+  unrs-resolver: true
+  '@parcel/watcher': true
+  core-js-pure: true

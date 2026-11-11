@@ -1,0 +1,204 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.linkButton {
+  display: inline;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  text-decoration: underline;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+
+.asideHeading {
+  font-size: var(--gp-text-size-100);
+  color: var(--gp-color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.031rem;
+}
+
+.tableOfContentsList {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+}
+
+@media screen and (max-width: 63.25rem) {
+  .aside {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+  }
+
+  .aside--visible {
+    z-index: 30;
+  }
+
+  .asideContent {
+    display: flex;
+    width: 100%;
+    padding: var(--gp-size-16);
+    visibility: hidden;
+    background-color: var(--gp-color-canvas-default);
+    box-shadow:
+      0 100px 80px rgba(0, 0, 0, 0.01),
+      0 41px 33px rgba(0, 0, 0, 0.02),
+      0 22px 17px rgba(0, 0, 0, 0.02),
+      0 12px 10px rgba(0, 0, 0, 0.03),
+      0 6px 5px rgba(0, 0, 0, 0.04),
+      0 2px 2px rgba(0, 0, 0, 0.07);
+    opacity: 0;
+    transition:
+      visibility var(--gp-animation-duration-default) var(--gp-animation-easing-default),
+      opacity var(--gp-animation-duration-default) var(--gp-animation-easing-default),
+      transform var(--gp-animation-duration-default) var(--gp-animation-easing-default);
+    transform: translateY(-100%);
+    justify-content: center;
+  }
+
+  .asideContent--visible {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+
+  .asideContent--open {
+    display: flex;
+    height: auto;
+    padding: var(--gp-size-16) var(--gp-size-16) var(--gp-size-32);
+    justify-content: center;
+  }
+
+  .asideContent--open::before {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    content: '';
+    backdrop-filter: blur(5px);
+    background-color: rgba(246, 248, 250, 0.8);
+  }
+
+  .asideHeading {
+    display: flex;
+    height: 45px;
+    align-items: center;
+  }
+
+  .tableOfContentsList {
+    gap: var(--gp-size-8);
+  }
+}
+
+.tableOfContentsListItem {
+  color: var(--gp-color-text-muted);
+  text-decoration: none;
+}
+
+.tableOfContentsMenuToggle {
+  display: none;
+}
+
+.tableOfContentsMenuToggle:hover {
+  background-color: var(--gp-color-neutral-subtle);
+}
+
+@media screen and (max-width: 63.25rem) {
+  .asideHeading {
+    padding-inline-start: var(--gp-size-12);
+  }
+
+  .tableOfContentsMenuToggle {
+    display: block;
+    width: var(--gp-size-32);
+    padding: var(--gp-size-4);
+    cursor: pointer;
+    background-color: var(--gp-color-canvas-subtle);
+    border: 0;
+    border-radius: var(--gp-border-radius-full);
+  }
+
+  .tableOfContentsNav,
+  .tableOfContentsFeaturesBox {
+    display: none;
+  }
+
+  .tableOfContentsNav--visible {
+    display: block;
+  }
+
+  .tableOfContentsListItem {
+    display: block;
+    padding: var(--gp-size-8) var(--gp-size-12);
+    color: var(--gp-color-scale-gray-6);
+  }
+
+  .tableOfContentsListItem[aria-current] {
+    color: var(--gp-color-scale-gray-7);
+    background-color: var(--gp-color-neutral-subtle);
+    border-radius: var(--gp-border-radius-medium);
+  }
+
+  .listItemText {
+    font-size: var(--gp-text-size-200);
+    font-weight: var(--gp-text-weight-normal);
+  }
+}
+
+@media screen and (min-width: 64rem) {
+  .tableOfContentsFeaturesBox {
+    border-color: #484f58;
+  }
+
+  .aside {
+    position: sticky;
+    top: 0;
+    margin-block-start: calc(var(--gp-size-64) * -1);
+    padding-block-start: var(--gp-size-64);
+  }
+}
+
+@media screen and (max-width: 63.25rem) {
+  :global([data-color-mode='dark']) {
+    .asideContent {
+      box-shadow: 0 8px 24px 0 #8c959f33;
+    }
+
+    .asideContent--open::before {
+      background-color: rgba(22, 27, 34, 0.8);
+    }
+
+    h2 {
+      color: var(--gp-color-scale-white-0);
+    }
+
+    .tableOfContentsMenuToggle {
+      background-color: var(--gp-color-scale-gray-7);
+    }
+
+    .tableOfContentsMenuToggle:hover {
+      background-color: var(--gp-color-neutral-subtle);
+    }
+
+    svg {
+      fill: var(--gp-color-scale-white-0);
+    }
+
+    .tableOfContentsListItem[aria-current] {
+      background-color: var(--gp-color-scale-gray-7);
+    }
+  }
+}

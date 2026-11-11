@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.image__container {
+  display: inline-block;
+}
+
+.image {
+  object-fit: cover;
+  display: inline-block;
+}
+
+.image--aspect-ratio-custom {
+  aspect-ratio: var(--gp-image-aspect-ratio);
+}
+
+.image--aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+
+.image--aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.image--aspect-ratio-16-10 {
+  aspect-ratio: 16 / 10;
+}
+
+.image--aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.image--border-radius-small {
+  display: block;
+  border-radius: var(--gp-border-radius-small);
+}
+
+.image--border-radius-medium {
+  display: block;
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.image--border-radius-large {
+  display: block;
+  border-radius: var(--gp-border-radius-large);
+}
+
+.image--border-radius-xlarge {
+  display: block;
+  border-radius: var(--gp-border-radius-xlarge);
+}
+
+.image--border-radius-full {
+  display: block;
+  border-radius: var(--gp-border-radius-full);
+}

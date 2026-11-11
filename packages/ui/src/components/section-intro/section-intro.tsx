@@ -1,0 +1,163 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { forwardRef, useMemo, useCallback } from 'react';
+import type { PropsWithChildren, Ref } from 'react';
+import { clsx } from 'clsx';
+import { Link } from '../link';
+import type { LinkProps } from '../link';
+import { Heading, defaultHeadingTag } from '../heading';
+import type { HeadingProps } from '../heading';
+import { Text } from '../text';
+import type { TextProps } from '../text';
+import { TextCursorAnimation } from '../text-cursor-animation';
+
+import styles from './section-intro.module.css';
+
+import type { BaseProps } from '../helper';
+
+export type SectionIntroProps = {
+  align?: 'start' | 'center';
+  fullWidth?: boolean;
+  /**
+   * Escape-hatch for inserting custom React components.
+   * Warning:
+   *   This prop isn't advertised in our docs but remains part of the public API for edge-cases.
+   *   Need to use this prop? Please check in with #primer-brand first to confirm correct usage.
+   */
+  leadingComponent?: React.FunctionComponent;
+} & React.HTMLAttributes<HTMLHeadingElement> &
+  BaseProps<HTMLHeadingElement>;
+
+const Root = forwardRef<HTMLHeadingElement, PropsWithChildren<SectionIntroProps>>(
+  ({ align = 'start', className, children, fullWidth = false, leadingComponent: LeadingComponent, ...props }, ref) => {
+    return (
+      <header
+        ref={ref}
+        className={clsx(
+          styles.SectionIntro,
+          styles[`SectionIntro--align-${align}`],
+          fullWidth && styles['SectionIntro--full-width'],
+          className
+        )}
+        {...props}
+      >
+        {LeadingComponent && <LeadingComponent />}
+        {children}
+      </header>
+    );
+  }
+);
+
+type SectionIntroHeadingProps = BaseProps<HTMLHeadingElement> & HeadingProps;
+
+const defaultHeadingSize = '4';
+
+const _Heading = forwardRef(
+  (
+    {
+      as = defaultHeadingTag,
+      size = defaultHeadingSize,
+      className,
+      children,
+      ...props
+    }: PropsWithChildren<SectionIntroHeadingProps>,
+    ref: Ref<HTMLHeadingElement>
+  ) => {
+    const childrenArray = useMemo(() => React.Children.toArray(children), [children]);
+
+    const getConditionalVariant = useCallback(() => {
+      if (childrenArray.some((child) => React.isValidElement(child) && (child.type === 'b' || child.type === 'em'))) {
+        return 'muted';
+      }
+
+      return 'default';
+    }, [childrenArray]);
+
+    const defaultColor = childrenArray.length === 1 ? 'default' : getConditionalVariant();
+
+    return (
+      <Heading
+        ref={ref}
+        className={clsx(
+          styles[`SectionIntro-heading`],
+          defaultColor === 'muted' && styles[`SectionIntro-heading--muted`],
+          className
+        )}
+        size={size}
+        as={as}
+        {...props}
+      >
+        {children}
+      </Heading>
+    );
+  }
+);
+
+type SectionIntroDescriptionProps = BaseProps<HTMLParagraphElement> & {
+  children: React.ReactNode | React.ReactNode[];
+};
+
+const _Description = forwardRef(
+  ({ className, children, ...props }: SectionIntroDescriptionProps, ref: Ref<HTMLParagraphElement>) => {
+    return (
+      <Text as='p' className={clsx(styles['SectionIntro-description'], className)} ref={ref} variant='muted' {...props}>
+        {children}
+      </Text>
+    );
+  }
+);
+
+export type SectionIntroLabelProps = Omit<TextProps, 'as' | 'ref' | 'animate'> &
+  Omit<BaseProps<HTMLSpanElement>, 'animate'> & {
+    animate?: boolean;
+    animationDelay?: number;
+  };
+
+const _Label = forwardRef<HTMLSpanElement, PropsWithChildren<SectionIntroLabelProps>>(
+  (
+    {
+      children,
+      className,
+      variant = 'muted',
+      animate = false,
+      animationDelay = 1000,
+      ...rest
+    }: PropsWithChildren<SectionIntroLabelProps>,
+    ref
+  ) => {
+    return (
+      <span ref={ref} className={clsx(styles['SectionIntro-label'], className)} {...rest}>
+        <TextCursorAnimation variant={variant} animate={animate} delay={animationDelay}>
+          {children}
+        </TextCursorAnimation>
+      </span>
+    );
+  }
+);
+
+type SectionIntroLinkProps = Omit<LinkProps, 'size'> & BaseProps<HTMLAnchorElement>;
+
+const _Link = forwardRef(
+  ({ className, children, variant = 'accent', ...props }: SectionIntroLinkProps, ref: Ref<HTMLAnchorElement>) => {
+    return (
+      <Link
+        ref={ref}
+        className={clsx(styles['SectionIntro-link'], className)}
+        size='medium'
+        variant={variant}
+        {...props}
+      >
+        {children}
+      </Link>
+    );
+  }
+);
+
+export const SectionIntro = Object.assign(Root, {
+  Heading: _Heading,
+  Description: _Description,
+  Link: _Link,
+  Label: _Label
+});

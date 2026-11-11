@@ -1,0 +1,302 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.CTABanner {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: var(--gp-breakpoint-xlarge);
+  width: 100%;
+}
+
+.CTABanner--shadow::before {
+  content: '';
+  position: absolute;
+  inset: var(--gp-size-16);
+  filter: blur(var(--gp-size-96));
+  transform: translateZ(0);
+  background: linear-gradient(to right, var(--gp-cta-banner-shadow-color-start), var(--gp-cta-banner-shadow-color-end));
+}
+
+.CTABanner-grid {
+  row-gap: 0;
+  --gp-Grid-spacing-row: 0;
+  padding-inline: 0;
+}
+
+.CTABanner-grid-column--primary {
+  display: flex;
+  align-items: center;
+}
+
+.CTABanner-grid-column--secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CTABanner--variant-minimal .CTABanner-grid-column--secondary {
+  justify-content: flex-end;
+}
+
+.CTABanner--variant-balanced .CTABanner-grid-column--secondary {
+  justify-content: flex-start;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .CTABanner--variant-balanced .CTABanner-grid-column--secondary {
+    justify-content: flex-end;
+  }
+}
+
+/* Stack on narrow viewports */
+@media screen and (max-width: 63.24rem) {
+  .CTABanner--variant-minimal .CTABanner-grid-column--secondary {
+    justify-content: flex-start;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-grid-column--secondary {
+    order: -1;
+    margin-block-start: 0;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-grid-column--primary {
+    margin-block-start: var(--gp-size-24);
+  }
+
+  .CTABanner-grid-column--secondary {
+    margin-block-start: var(--gp-size-24);
+  }
+}
+
+.CTABanner-outer-container--border {
+  border-block: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.CTABanner-container {
+  padding: var(--gp-size-64) var(--gp-size-20);
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.CTABanner-container--rounded {
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.CTABanner--variant-balanced .CTABanner-container {
+  padding-inline: var(--gp-size-20);
+  padding-block: var(--gp-size-32);
+}
+
+.CTABanner--variant-minimal .CTABanner-container {
+  padding-inline: var(--gp-size-20);
+  padding-block: var(--gp-size-40);
+}
+
+.CTABanner-content {
+  --cta-banner-content-gap: var(--gp-size-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--cta-banner-content-gap);
+  align-items: flex-start;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.CTABanner-content :is(img, picture) {
+  display: block;
+}
+
+.CTABanner--variant-minimal .CTABanner-content {
+  --cta-banner-content-gap: 0;
+}
+
+.CTABanner--variant-balanced .CTABanner-content,
+.CTABanner--variant-minimal .CTABanner-content {
+  max-width: 576px;
+  margin: 0;
+}
+
+.CTABanner-container--background {
+  background-repeat: no-repeat;
+  background-color: var(--gp-cta-banner-bg-color);
+  background-image: var(--gp-cta-banner-narrow-background-image-src, var(--gp-cta-banner-background-image-src));
+  background-size: var(--gp-cta-banner-narrow-background-image-size, var(--gp-cta-banner-background-image-size));
+
+  background-position: var(
+    --gp-cta-banner-narrow-background-image-position,
+    var(--gp-cta-banner-background-image-position, center)
+  );
+}
+
+.CTABanner-container--border {
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.CTABanner-container--border-gridlines {
+  border-inline: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  margin-inline: auto;
+  max-width: 534px; /* To match tablet for river */
+}
+
+.CTABanner-content--center {
+  align-items: center;
+  text-align: center;
+}
+
+.CTABanner-description {
+  margin-bottom: var(--gp-size-16);
+}
+
+/* Medium breakpoint and up */
+@media screen and (min-width: 48rem) {
+  .CTABanner-container {
+    padding: var(--gp-size-80) var(--gp-size-36);
+  }
+
+  .CTABanner--variant-balanced .CTABanner-container {
+    padding: var(--gp-size-36);
+    padding-block-end: var(--gp-size-48);
+  }
+
+  .CTABanner--variant-minimal .CTABanner-container {
+    padding: var(--gp-size-36);
+    padding-block: var(--gp-size-48);
+  }
+
+  .CTABanner-container--background {
+    background-color: var(--gp-cta-banner-regular-background-color, var(--gp-cta-banner-background-color));
+    background-image: var(--gp-cta-banner-regular-background-image-src, var(--gp-cta-banner-background-image-src));
+    background-size: var(--gp-cta-banner-regular-background-image-size, var(--gp-cta-banner-background-image-size));
+    background-position: var(
+      --gp-cta-banner-regular-background-image-position,
+      var(--gp-cta-banner-background-image-position)
+    );
+  }
+}
+
+/* Large breakpoint and up */
+@media screen and (min-width: 63.25rem) {
+  .CTABanner--variant-balanced .CTABanner-content {
+    --cta-banner-content-gap: var(--gp-size-32);
+  }
+  .CTABanner-container {
+    padding: var(--gp-size-96) var(--gp-size-64);
+    max-width: 100%;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-container {
+    padding: var(--gp-size-64);
+  }
+
+  .CTABanner--variant-minimal .CTABanner-container {
+    padding: var(--gp-size-64);
+  }
+}
+
+/* Wide */
+@media screen and (min-width: 80rem) {
+  .CTABanner-container--background {
+    background-color: var(--gp-cta-banner-wide-background-color, var(--gp-cta-banner-background-color));
+    background-image: var(--gp-cta-banner-wide-background-image-src, var(--gp-cta-banner-background-image-src));
+    background-size: var(--gp-cta-banner-wide-background-image-size, var(--gp-cta-banner-background-image-size));
+
+    background-position: var(
+      --gp-cta-banner-wide-background-image-position,
+      var(--gp-cta-banner-background-image-position)
+    );
+  }
+}
+
+.CTABanner-image {
+  width: 100%;
+  height: auto;
+}
+
+.CTABanner--variant-balanced .CTABanner-image {
+  max-width: 476px;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .CTABanner--variant-balanced .CTABanner-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-grid-column--primary:has(.CTABanner-logo) {
+    align-items: stretch;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-grid-column--primary:has(.CTABanner-logo) > .CTABanner-content {
+    flex: 1;
+  }
+
+  .CTABanner--variant-balanced .CTABanner-content:has(> .CTABanner-logo) > .CTABanner-logo + * {
+    margin-block-start: auto;
+  }
+}
+
+.CTABanner-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-8);
+  width: 100%;
+  padding-block-end: var(--gp-size-32);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.CTABanner-logo > svg,
+.CTABanner-logo > img {
+  height: var(--gp-size-40);
+  width: auto;
+  display: block;
+}
+
+.CTABanner--variant-default .CTABanner-logo {
+  width: auto;
+  padding-block-end: 0;
+  border-block-end: none;
+}
+
+.CTABanner--variant-minimal .CTABanner-logo {
+  margin-block-end: var(--gp-size-24);
+}
+
+.CTABanner-link {
+  align-self: auto;
+}
+
+.CTABanner-heading b {
+  color: var(--gp-cta-banner-color-heading-emphasis);
+  font-weight: inherit;
+}
+
+.CTABanner-heading code,
+.CTABanner-description code {
+  font-family: var(--gp-font-stack-monospace);
+  /* optical resize relative to parent. monospace tends to be a little taller than sans-serif */
+  font-size: calc(1em - 1px);
+  font-weight: var(--gp-text-weight-regular);
+  /* Keep the background clear of adjacent lines when large text wraps. */
+  line-height: 1.6;
+  color: var(--gp-inline-code-color-fg-default);
+  background-color: var(--gp-inline-code-bg-color);
+  padding-block: 0;
+  padding-inline: var(--gp-size-4);
+  border-radius: var(--gp-size-2);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.CTABanner-buttonGroup {
+  margin-block-start: calc(-1 * var(--cta-banner-content-gap, 0px));
+  padding-block-start: var(--gp-size-12);
+}

@@ -1,0 +1,137 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.Token {
+  align-items: center;
+  border: var(--gp-border-width-thin) solid transparent;
+  border-radius: var(--gp-border-radius-small);
+  display: inline-flex;
+  gap: var(--gp-size-8);
+  min-width: 0;
+  max-width: 100%;
+  padding-inline: var(--gp-size-8);
+  padding-block: var(--gp-size-6);
+  padding-block-end: var(--gp-size-6);
+  vertical-align: middle;
+}
+
+.Token--hasLeadingVisual {
+  padding-inline: calc((var(--gp-size-4) + var(--gp-size-8)) / 2);
+  padding-block: calc((var(--gp-size-4) + var(--gp-size-8)) / 2);
+}
+
+.Token--interactive {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Token--interactive:focus-visible {
+  outline: var(--gp-size-4) solid var(--gp-color-focus);
+  outline-offset: var(--gp-size-2);
+}
+
+[data-color-mode='dark'] .Token {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-color-mode='auto'] .Token {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+.Token--variant-default {
+  background-color: var(--gp-token-bg-color-default);
+  color: var(--gp-token-fg-color-default);
+}
+
+.Token--interactive.Token--variant-default:hover {
+  background-color: var(--gp-token-bg-color-hover-default);
+}
+
+.Token--variant-accent {
+  background-color: var(--gp-token-bg-color-accent);
+  color: var(--gp-token-fg-color-accent);
+}
+
+.Token--interactive.Token--variant-accent:hover {
+  background-color: var(--gp-token-bg-color-hover-accent);
+}
+
+.Token--variant-outline {
+  background-color: var(--gp-token-bg-color-outline);
+  border-color: var(--gp-token-border-outline);
+  color: var(--gp-token-fg-color-outline);
+}
+
+.Token--interactive.Token--variant-outline:hover {
+  background-color: var(--gp-token-bg-color-hover-outline);
+}
+
+.Token--variant-invisible {
+  background-color: transparent;
+  color: var(--gp-token-fg-color-invisible);
+}
+
+.Token--interactive.Token--variant-invisible:hover {
+  background-color: var(--gp-token-bg-color-hover-invisible);
+}
+
+.Token__label {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: var(--gp-text-weight-normal);
+  line-height: var(--gp-text-line-height-100);
+  white-space: nowrap;
+  letter-spacing: var(--gp-text-letter-spacing-100);
+}
+
+.Token > .Token__label {
+  color: inherit;
+}
+
+.Token__leading-visual {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+  height: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+}
+
+.Token__visual {
+  display: block;
+}
+
+/* Keep leading visuals inside a fixed 18x18 slot so larger children like Avatar dont increase Token height. */
+.Token__leading-visual > .Token__visual {
+  width: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+  height: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+  max-width: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+  max-height: calc((var(--gp-size-16) + var(--gp-size-20)) / 2);
+  border-radius: 2px;
+}
+
+.Token__leading-visual > .Token__visual svg,
+.Token__leading-visual > .Token__visual img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (forced-colors: active) {
+  .Token {
+    outline: var(--gp-border-width-thin) solid transparent;
+  }
+
+  .Token--interactive:focus-visible {
+    outline-color: Highlight;
+  }
+}

@@ -1,0 +1,137 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.icon-button {
+  flex: none;
+  gap: 0;
+  padding: 0;
+}
+
+.icon-button.icon-button {
+  min-width: var(--gp-icon-button-control-size-medium);
+  width: var(--gp-icon-button-control-size-medium);
+  height: var(--gp-icon-button-control-size-medium);
+}
+
+.icon-button--small.icon-button--small {
+  min-width: var(--gp-icon-button-control-size-small);
+  width: var(--gp-icon-button-control-size-small);
+  height: var(--gp-icon-button-control-size-small);
+}
+
+.icon-button--large.icon-button--large {
+  min-width: var(--gp-icon-button-control-size-large);
+  width: var(--gp-icon-button-control-size-large);
+  height: var(--gp-icon-button-control-size-large);
+}
+
+.icon-button--rounded.icon-button--rounded {
+  border-radius: var(--gp-border-radius-full);
+}
+
+.icon-button--variant-danger.icon-button--variant-danger:not([disabled], [aria-disabled='true']) {
+  color: var(--gp-icon-button-danger-fg-color-rest);
+  background-color: var(--gp-icon-button-danger-bg-color-rest);
+  border-color: var(--gp-icon-button-danger-border-color-rest);
+}
+
+.icon-button--variant-danger.icon-button--variant-danger:not(
+    [disabled],
+    [aria-disabled='true'],
+    [aria-expanded='true']
+  ):hover {
+  color: var(--gp-icon-button-danger-fg-color-hover);
+  background-color: var(--gp-icon-button-danger-bg-color-hover);
+  border-color: var(--gp-icon-button-danger-border-color-hover);
+}
+
+.icon-button--variant-danger.icon-button--variant-danger:not([disabled], [aria-disabled='true']):active,
+.icon-button--variant-danger.icon-button--variant-danger:not([disabled], [aria-disabled='true'])[aria-expanded='true'] {
+  color: var(--gp-icon-button-danger-fg-color-active);
+  background-color: var(--gp-icon-button-danger-bg-color-active);
+  border-color: var(--gp-icon-button-danger-border-color-active);
+}
+
+.icon-button--variant-invisible.icon-button--variant-invisible:where(:not(:hover, :active, [aria-expanded='true'])) {
+  background-color: var(--gp-icon-button-invisible-bg-color-rest);
+  border-color: var(--gp-icon-button-invisible-border-color-rest);
+  backdrop-filter: none;
+}
+
+.icon-button--inactive.icon-button--inactive,
+.icon-button--inactive.icon-button--inactive:hover,
+.icon-button--inactive.icon-button--inactive:active {
+  color: var(--gp-icon-button-inactive-fg-color);
+  cursor: auto;
+  background-color: var(--gp-icon-button-inactive-bg-color);
+  border-color: var(--gp-icon-button-inactive-border-color);
+  backdrop-filter: none;
+}
+
+.icon-button--inactive .icon-button__icon {
+  color: inherit;
+}
+
+.icon-button--small .icon-button__icon {
+  width: var(--gp-icon-button-icon-size-small);
+  height: var(--gp-icon-button-icon-size-small);
+}
+
+.icon-button--medium .icon-button__icon {
+  width: var(--gp-icon-button-icon-size-medium);
+  height: var(--gp-icon-button-icon-size-medium);
+}
+
+.icon-button--large .icon-button__icon {
+  width: var(--gp-icon-button-icon-size-large);
+  height: var(--gp-icon-button-icon-size-large);
+}
+
+.icon-button__spinner.icon-button__spinner {
+  display: block;
+  width: var(--gp-icon-button-icon-size-medium);
+  height: var(--gp-icon-button-icon-size-medium);
+  animation-duration: var(--gp-icon-button-spinner-animation-duration-default);
+}
+
+.icon-button--small .icon-button__spinner {
+  width: var(--gp-icon-button-icon-size-small);
+  height: var(--gp-icon-button-icon-size-small);
+}
+
+.icon-button--large .icon-button__spinner {
+  width: var(--gp-icon-button-icon-size-large);
+  height: var(--gp-icon-button-icon-size-large);
+}
+
+.icon-button__loadingAnnouncement {
+  position: absolute;
+  width: var(--gp-size-1);
+  height: var(--gp-size-1);
+  padding: 0;
+  margin: calc(var(--gp-size-1) * -1);
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (forced-colors: active) {
+  .icon-button--inactive {
+    color: GrayText;
+    border-color: GrayText;
+  }
+
+  .icon-button__spinner {
+    color: ButtonText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon-button__spinner {
+    animation-duration: var(--gp-icon-button-spinner-animation-duration-reducedMotion);
+  }
+}

@@ -1,0 +1,294 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.headerSection {
+  border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.headerGrid {
+  --gp-grid-spacing-row: var(--gp-size-32);
+}
+
+.introColumn,
+.panelColumn {
+  min-width: 0;
+}
+
+@media screen and (min-width: 63.25rem) {
+  .panelColumn {
+    align-self: center;
+  }
+}
+
+.statusRow {
+  margin-block-end: var(--gp-size-20);
+}
+
+.statusLabelBlue {
+  --gp-label-color-blue: var(--gp-color-blue-6);
+}
+
+.statusLabelGreen {
+  --gp-label-color-green: var(--gp-color-green-7);
+}
+
+.statusLabelOrange {
+  --gp-label-color-orange: var(--gp-color-orange-6);
+}
+
+.statusLabelPurple {
+  --gp-label-color-purple: var(--gp-color-purple-6);
+}
+
+.statusLabelRed {
+  --gp-label-color-red: var(--gp-color-red-6);
+}
+
+:global(.dark) .statusLabelBlue,
+[data-theme='dark'] .statusLabelBlue,
+:global([data-color-mode='dark']) .statusLabelBlue {
+  --gp-label-color-blue: var(--gp-color-blue-2);
+}
+
+:global(.dark) .statusLabelGreen,
+[data-theme='dark'] .statusLabelGreen,
+:global([data-color-mode='dark']) .statusLabelGreen {
+  --gp-label-color-green: var(--gp-color-green-2);
+}
+
+:global(.dark) .statusLabelOrange,
+[data-theme='dark'] .statusLabelOrange,
+:global([data-color-mode='dark']) .statusLabelOrange {
+  --gp-label-color-orange: var(--gp-color-orange-2);
+}
+
+:global(.dark) .statusLabelPurple,
+[data-theme='dark'] .statusLabelPurple,
+:global([data-color-mode='dark']) .statusLabelPurple {
+  --gp-label-color-purple: var(--gp-color-purple-2);
+}
+
+:global(.dark) .statusLabelRed,
+[data-theme='dark'] .statusLabelRed,
+:global([data-color-mode='dark']) .statusLabelRed {
+  --gp-label-color-red: var(--gp-color-red-2);
+}
+
+.routeCode {
+  padding-block: var(--gp-size-2);
+  padding-inline: var(--gp-size-8);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  border-radius: var(--gp-border-radius-small);
+  background-color: var(--gp-color-canvas-default);
+}
+
+.hero.hero {
+  padding-block: 0;
+}
+
+.panelCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-subtle);
+  border-radius: var(--gp-border-radius-large);
+  background-color: var(--gp-color-canvas-default);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 16px 36px rgba(25, 31, 27, 0.06);
+}
+
+.panelHeader {
+  padding: var(--gp-size-16) var(--gp-size-20);
+  border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  background-color: var(--gp-color-canvas-muted);
+}
+
+.panelTitleIcon {
+  color: var(--gp-color-text-default);
+}
+
+.panelBody {
+  padding: var(--gp-size-24) var(--gp-size-20);
+}
+
+.panelFooter {
+  padding: var(--gp-size-12) var(--gp-size-20);
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  background-color: var(--gp-color-canvas-muted);
+}
+
+@media screen and (min-width: 34rem) {
+  .panelHeader,
+  .panelBody,
+  .panelFooter {
+    padding-inline: var(--gp-size-24);
+  }
+}
+
+.sectionIntro {
+  padding-block: 0;
+}
+
+.destinationsGrid {
+  --gp-grid-spacing-row: var(--gp-size-24);
+}
+
+.destinationCard {
+  --gp-link-color-accent: var(--gp-color-link-accent);
+  transition:
+    border-color var(--gp-animation-duration-faster) var(--gp-animation-easing-default),
+    background-color var(--gp-animation-duration-faster) var(--gp-animation-easing-default);
+}
+
+.destinationCard:is(:hover, :focus-within) {
+  border-color: var(--gp-color-gray-5);
+  background-color: var(--gp-color-canvas-muted);
+}
+
+.destinationCardIcon {
+  margin-block-end: var(--gp-size-20);
+}
+
+.destinationCardLabel {
+  margin-block-end: var(--gp-size-12);
+}
+
+.loadingDescription {
+  max-width: 36rem;
+}
+
+.skeletonGroup {
+  margin-block-start: var(--gp-size-24);
+}
+
+.skeletonButtonRow {
+  margin-block-start: var(--gp-size-24);
+}
+
+.skeletonBar {
+  height: var(--gp-size-12);
+  border-radius: var(--gp-border-radius-small);
+  background-color: var(--gp-color-gray-1);
+  animation: route-state-pulse 1.6s ease-in-out infinite;
+}
+
+:global(.dark) .skeletonBar,
+[data-theme='dark'] .skeletonBar,
+:global([data-color-mode='dark']) .skeletonBar {
+  background-color: var(--gp-color-gray-7);
+}
+
+.skeletonBarShort {
+  width: 38%;
+}
+
+.skeletonBarMedium {
+  width: 68%;
+}
+
+.skeletonBarWide {
+  width: 92%;
+}
+
+.skeletonButton {
+  width: 9.5rem;
+  height: var(--gp-size-40);
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.skeletonCard {
+  height: 100%;
+  padding: var(--gp-size-24);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  border-radius: var(--gp-border-radius-medium);
+  background-color: var(--gp-color-canvas-default);
+}
+
+.skeletonIcon {
+  width: var(--gp-size-44);
+  height: var(--gp-size-44);
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.emptyStateCard {
+  padding: var(--gp-size-32) var(--gp-size-24);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  border-radius: var(--gp-border-radius-large);
+  background-color: var(--gp-color-canvas-muted);
+}
+
+.globalFrame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.globalHeader {
+  width: 100%;
+  border-bottom: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  background-color: var(--gp-color-canvas-subtle);
+}
+
+.globalHeaderInner {
+  max-width: var(--gp-section-container-max-width);
+  margin-inline: auto;
+  padding: var(--gp-size-16);
+}
+
+.globalMain {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.globalFooter {
+  width: 100%;
+  margin-top: auto;
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  background-color: var(--gp-color-canvas-subtle);
+}
+
+.globalFooterInner {
+  max-width: var(--gp-section-container-max-width);
+  margin-inline: auto;
+  padding: var(--gp-size-16);
+}
+
+@media (min-width: 768px) {
+  .globalHeaderInner,
+  .globalFooterInner {
+    padding-inline: var(--gp-size-24);
+  }
+}
+
+@media (min-width: 1012px) {
+  .globalHeaderInner,
+  .globalFooterInner {
+    padding-inline: var(--gp-size-32);
+  }
+}
+
+@keyframes route-state-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .destinationCard {
+    transition: none;
+  }
+
+  .skeletonBar {
+    animation: none;
+  }
+}

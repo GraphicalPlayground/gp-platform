@@ -1,0 +1,694 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+import { GlobeIcon } from '@primer/octicons-react';
+import { Button } from '../button';
+import { ActionMenu } from '../action-menu';
+
+import { CTABanner } from './cta-banner';
+import { Grid } from '../grid';
+import { InlineCode } from '../inline-code';
+import { InlineLink } from '../inline-link';
+import { Section } from '../section';
+import { Stack } from '../stack';
+import { Text } from '../text';
+import { TextCursorAnimation } from '../text-cursor-animation';
+
+import lightNarrowBg from '../../fixtures/images/light-vertical-banner.png';
+import lightWideBg from '../../fixtures/images/light-horizontal-banner.png';
+import darkNarrowBg from '../../fixtures/images/dark-vertical-banner-alt.png';
+import darkWideBg from '../../fixtures/images/dark-horizontal-banner-alt.png';
+import darkNarrowBg2 from '../../fixtures/images/dark-vertical-banner-alt-2.png';
+import darkWideBg2 from '../../fixtures/images/dark-horizontal-banner-alt-2.png';
+import placeholderImage from '../../fixtures/images/placeholder.png';
+import { logos } from '../logo-suite/logo-suite.fixtures';
+
+const meta = {
+  title: 'Components/CTABanner/Features',
+  component: CTABanner
+} satisfies Meta<typeof CTABanner>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+const ExampleTrailingComponent = () => (
+  <Text as='p' size='100' variant='muted'>
+    Already have Visual Studio Code? <InlineLink href='#'>Open now</InlineLink>
+  </Text>
+);
+
+const designTokenOverrides = `
+  .custom-colors {
+    --brand-CTABanner-shadow-color-start: var(--base-color-scale-purple-5);
+    --brand-CTABanner-shadow-color-end: var(--base-color-scale-red-5);
+  }
+`;
+
+const ResponsiveBackgroundImageExample = ({
+  backgroundImageSrc = {
+    narrow: lightNarrowBg.src,
+    regular: lightWideBg.src,
+    wide: lightWideBg.src
+  }
+}: {
+  backgroundImageSrc?: React.ComponentProps<typeof CTABanner>['backgroundImageSrc'];
+}) => (
+  <CTABanner backgroundImageSrc={backgroundImageSrc}>
+    <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+    <CTABanner.Description variant='default'>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+      felis nam pulvinar risus elementum.
+    </CTABanner.Description>
+    <CTABanner.ButtonGroup>
+      <Button>Primary Action</Button>
+    </CTABanner.ButtonGroup>
+  </CTABanner>
+);
+
+function WithImageExample() {
+  return (
+    <Stack direction='vertical'>
+      <CTABanner hasGridLines>
+        <CTABanner.Heading>Start coding in seconds with Codespaces</CTABanner.Heading>
+        <CTABanner.Description>Get real-time suggestions and ship confidently.</CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+      </CTABanner>
+      <CTABanner
+        variant='balanced'
+        hasGridLines
+        leadingComponent={() => <TextCursorAnimation>Ready to start building?</TextCursorAnimation>}
+      >
+        {/* Display added here to evidence that size can't be overrided as a design rule  */}
+        <CTABanner.Heading size='display'>Safe and secure</CTABanner.Heading>
+        <CTABanner.Description>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae.
+        </CTABanner.Description>
+
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+      </CTABanner>
+      <CTABanner variant='minimal' hasGridLines>
+        {/* Display added here to evidence that size can't be overrided as a design rule  */}
+        <CTABanner.Heading size='display'>Start coding in seconds with Codespaces</CTABanner.Heading>
+        <CTABanner.Description>Get real-time suggestions and ship confidently.</CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </Stack>
+  );
+}
+
+export const WithActionMenu: Story = {
+  render: () => (
+    <CTABanner>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>Get real-time suggestions and ship confidently.</CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Get started for free</Button>
+        <ActionMenu>
+          <ActionMenu.Button>More actions</ActionMenu.Button>
+          <ActionMenu.Overlay aria-label='More actions'>
+            <ActionMenu.Item value='Contact sales'>Contact sales</ActionMenu.Item>
+            <ActionMenu.Item value='View pricing'>View pricing</ActionMenu.Item>
+          </ActionMenu.Overlay>
+        </ActionMenu>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const Variants: Story = {
+  render: () => (
+    <Stack direction='vertical' gap='spacious' padding='none'>
+      <CTABanner variant='default'>
+        <CTABanner.Heading>Default</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner variant='balanced'>
+        <CTABanner.Heading>Balanced</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner variant='minimal'>
+        <CTABanner.Heading>Minimal</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </Stack>
+  )
+};
+
+export const WithPrimaryButton: Story = {
+  render: () => (
+    <CTABanner>
+      <CTABanner.Heading size='2'>Start coding in seconds with Codespaces</CTABanner.Heading>
+      <CTABanner.ButtonGroup>
+        <Button>Get started for free</Button>
+        <Button>View docs</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithBorder: Story = {
+  render: () => (
+    <CTABanner hasBorder>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithGridLines: Story = {
+  render: () => (
+    <CTABanner hasGridLines>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithNoShadow: Story = {
+  render: () => (
+    <CTABanner>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const AlignedStart: Story = {
+  render: () => (
+    <CTABanner align='start'>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithTrailingComponent: Story = {
+  render: () => (
+    <CTABanner trailingComponent={ExampleTrailingComponent}>
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Primary Action</Button>
+        <Button>Secondary Action</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithLeadingComponent: Story = {
+  render: () => (
+    <CTABanner leadingComponent={() => <TextCursorAnimation>Ready to start building?</TextCursorAnimation>}>
+      {/* Display added here to evidence that size can't be overrided as a design rule  */}
+      <CTABanner.Heading size='display'>Safe and secure</CTABanner.Heading>
+      <CTABanner.Description>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+        aperiam, eaque ipsa quae.
+      </CTABanner.Description>
+
+      <CTABanner.ButtonGroup>
+        <Button>Get started for free</Button>
+        <Button>View docs</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const WithMediaComponents: Story = {
+  render: () => (
+    <CTABanner
+      leadingComponent={() => (
+        <picture>
+          <img src={placeholderImage.src} alt='Placeholder leading visual' width={64} height={64} />
+        </picture>
+      )}
+      trailingComponent={() => (
+        <img src={placeholderImage.src} alt='Placeholder trailing visual' width={64} height={64} />
+      )}
+    >
+      <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+      <CTABanner.Description>Build, scale, and deliver secure software with GitHub.</CTABanner.Description>
+    </CTABanner>
+  )
+};
+
+export const WithOctovisualLeadingComponent: Story = {
+  render: () => (
+    <CTABanner
+      leadingComponent={() => (
+        <Text>
+          <GlobeIcon size={56} />
+        </Text>
+      )}
+    >
+      <CTABanner.Heading>Build for teams everywhere</CTABanner.Heading>
+      <CTABanner.Description>
+        Use Octovisuals with CTABanner to add a more expressive visual treatment to campaign and product call-to-action
+        moments.
+      </CTABanner.Description>
+      <CTABanner.ButtonGroup>
+        <Button>Explore Octovisuals</Button>
+        <Button>Read the docs</Button>
+      </CTABanner.ButtonGroup>
+    </CTABanner>
+  )
+};
+
+export const CustomShadow: Story = {
+  render: () => (
+    <div className='custom-colors'>
+      <style>{designTokenOverrides}</style>
+      <CTABanner>
+        <CTABanner.Heading>Where the most ambitious teams build great things</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </div>
+  )
+};
+
+export const CustomBackgroundColors: Story = {
+  render: () => (
+    <Stack direction='vertical'>
+      <CTABanner>
+        <CTABanner.Heading>Subtle (default)</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner backgroundColor='default'>
+        <CTABanner.Heading>Canvas default</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner backgroundColor='var(--base-color-scale-blue-0)'>
+        <CTABanner.Heading>Base scale blue 0</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner backgroundColor='cyan'>
+        <CTABanner.Heading>Cyan</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner backgroundColor={{ narrow: 'yellow', regular: 'orange', wide: 'beige' }}>
+        <CTABanner.Heading>Responsive</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Primary Action</Button>
+          <Button>Secondary Action</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </Stack>
+  )
+};
+
+export const ResponsiveBackgroundImage: Story = {
+  render: (args) => <ResponsiveBackgroundImageExample backgroundImageSrc={args.backgroundImageSrc} />
+};
+
+export const ResponsiveBackgroundImageDark: Story = {
+  render: () => (
+    <Stack padding='none' gap='spacious'>
+      <ResponsiveBackgroundImageExample
+        backgroundImageSrc={{
+          narrow: darkNarrowBg.src,
+          regular: darkWideBg.src,
+          wide: darkWideBg.src
+        }}
+      />
+      <ResponsiveBackgroundImageExample
+        backgroundImageSrc={{
+          narrow: darkNarrowBg2.src,
+          regular: darkWideBg2.src,
+          wide: darkWideBg2.src
+        }}
+      />
+    </Stack>
+  ),
+  decorators: [
+    (Story) => (
+      <Section backgroundColor='default'>
+        <Grid>
+          <Grid.Column>
+            <Story />
+          </Grid.Column>
+        </Grid>
+      </Section>
+    )
+  ]
+};
+
+export const WithImage: Story = {
+  render: () => <WithImageExample />
+};
+
+export const WithImageAtTabletViewport: Story = {
+  render: () => <WithImageExample />,
+  globals: {
+    viewport: { value: 'ipad' }
+  }
+};
+
+export const WithImageAtMobileViewport: Story = {
+  render: () => <WithImageExample />,
+  globals: {
+    viewport: { value: 'iphonexr' }
+  }
+};
+
+export const WithInlineCodeElement: Story = {
+  render: () => (
+    <Stack direction='vertical' gap='spacious' padding='none'>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Default variant:</Text>
+        <CTABanner>
+          <CTABanner.Heading>
+            Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode>
+          </CTABanner.Heading>
+          <CTABanner.Description>
+            Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+          </CTABanner.Description>
+          <CTABanner.ButtonGroup>
+            <Button>Get started</Button>
+          </CTABanner.ButtonGroup>
+        </CTABanner>
+      </Stack>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Custom background color:</Text>
+        <CTABanner backgroundColor='default' hasBorder>
+          <CTABanner.Heading>
+            Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode>
+          </CTABanner.Heading>
+          <CTABanner.Description>
+            Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+          </CTABanner.Description>
+          <CTABanner.ButtonGroup>
+            <Button>Get started</Button>
+          </CTABanner.ButtonGroup>
+        </CTABanner>
+      </Stack>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Balanced variant:</Text>
+        <CTABanner variant='balanced'>
+          <CTABanner.Heading>
+            Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode>
+          </CTABanner.Heading>
+          <CTABanner.Description>
+            Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+          </CTABanner.Description>
+          <CTABanner.ButtonGroup>
+            <Button>Get started</Button>
+          </CTABanner.ButtonGroup>
+          <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+        </CTABanner>
+      </Stack>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Minimal variant:</Text>
+        <CTABanner variant='minimal'>
+          <CTABanner.Heading>
+            Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode>
+          </CTABanner.Heading>
+          <CTABanner.Description>
+            Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+          </CTABanner.Description>
+          <CTABanner.ButtonGroup>
+            <Button>Get started</Button>
+          </CTABanner.ButtonGroup>
+        </CTABanner>
+      </Stack>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Dark mode:</Text>
+        <Section backgroundColor='default'>
+          <CTABanner>
+            <CTABanner.Heading>
+              Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+              <InlineCode wrap={false}>/fleet</InlineCode>
+            </CTABanner.Heading>
+            <CTABanner.Description>
+              Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+              <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+            </CTABanner.Description>
+            <CTABanner.ButtonGroup>
+              <Button>Get started</Button>
+            </CTABanner.ButtonGroup>
+          </CTABanner>
+        </Section>
+      </Stack>
+      <Stack direction='vertical' gap='normal'>
+        <Text as='p'>Start aligned with border:</Text>
+        <CTABanner align='start' hasBorder>
+          <CTABanner.Heading>
+            Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode>
+          </CTABanner.Heading>
+          <CTABanner.Description>
+            Use <InlineCode wrap={false}>/model</InlineCode> to switch, then{' '}
+            <InlineCode wrap={false}>/fleet</InlineCode> to execute in parallel or run multiple models at once.
+          </CTABanner.Description>
+          <CTABanner.ButtonGroup>
+            <Button>Get started</Button>
+          </CTABanner.ButtonGroup>
+        </CTABanner>
+      </Stack>
+    </Stack>
+  )
+};
+
+export const WithNativeCodeElement: Story = {
+  render: () => (
+    <CTABanner>
+      <CTABanner.Heading>
+        Native <code>/mcp</code> remains supported
+      </CTABanner.Heading>
+      <CTABanner.Description>
+        Existing authored content can wrap long commands such as{' '}
+        <code>npm install @primer/react-brand@latest --save-exact --ignore-scripts --foreground-scripts</code>.
+      </CTABanner.Description>
+    </CTABanner>
+  )
+};
+
+export const WithLogo: Story = {
+  render: () => (
+    <Stack direction='vertical' gap='spacious' padding='none'>
+      <CTABanner variant='default'>
+        <CTABanner.Logo>{logos[13]}</CTABanner.Logo>
+        <CTABanner.Heading>Default with logo</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner variant='balanced' hasGridLines>
+        <CTABanner.Logo>{logos[13]}</CTABanner.Logo>
+        <CTABanner.Heading>Balanced with logo</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.Link href='#'>Read the customer story</CTABanner.Link>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+      </CTABanner>
+      <CTABanner variant='minimal'>
+        <CTABanner.Logo>{logos[13]}</CTABanner.Logo>
+        <CTABanner.Heading>Minimal with logo</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </Stack>
+  )
+};
+
+export const WithLink: Story = {
+  render: () => (
+    <Stack direction='vertical' gap='spacious' padding='none'>
+      <CTABanner variant='default'>
+        <CTABanner.Heading>Default with link</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.Link href='#'>Read the customer story</CTABanner.Link>
+      </CTABanner>
+      <CTABanner variant='balanced'>
+        <CTABanner.Heading>Balanced with link</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </CTABanner.Description>
+        <CTABanner.Link href='#'>Read the customer story</CTABanner.Link>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+      </CTABanner>
+      <CTABanner variant='minimal'>
+        <CTABanner.Heading>Minimal with link</CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id.
+        </CTABanner.Description>
+        <CTABanner.Link href='#'>Read the customer story</CTABanner.Link>
+      </CTABanner>
+    </Stack>
+  )
+};
+
+export const WithDuotoneText: Story = {
+  render: () => (
+    <Stack direction='vertical' gap='spacious' padding='none'>
+      <CTABanner variant='default'>
+        <CTABanner.Heading>
+          Where the most ambitious teams <b>build great things</b>
+        </CTABanner.Heading>
+        <CTABanner.Description>
+          Use <b>duotone emphasis</b> to highlight key parts of your headline. Wrap text in an{' '}
+          <InlineCode>b</InlineCode> tag.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+      <CTABanner variant='balanced'>
+        <CTABanner.Heading>
+          Where the most ambitious teams <b>build great things</b>
+        </CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+        <CTABanner.Image src={placeholderImage.src} alt='Blank image' />
+      </CTABanner>
+      <CTABanner variant='minimal'>
+        <CTABanner.Heading>
+          Where the most ambitious teams <b>build great things</b>
+        </CTABanner.Heading>
+        <CTABanner.Description>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id.
+        </CTABanner.Description>
+        <CTABanner.ButtonGroup>
+          <Button>Get started for free</Button>
+          <Button>View docs</Button>
+        </CTABanner.ButtonGroup>
+      </CTABanner>
+    </Stack>
+  )
+};

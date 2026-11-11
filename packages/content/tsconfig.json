@@ -1,0 +1,21 @@
+{
+  "extends": "@gp/standard/tsconfig/react.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "types": ["node", "mdx"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

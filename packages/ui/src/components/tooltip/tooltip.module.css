@@ -1,0 +1,193 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.tooltip {
+  display: none;
+}
+
+@media (forced-colors: active) {
+  .tooltip {
+    outline: var(--gp-border-width-thin) solid transparent;
+  }
+}
+
+/* Overriding the default popover styles */
+.tooltip[popover] {
+  --offset: var(
+    --base-size-8,
+    --base-size-8
+  ); /* This is a "magic number". Just gives some room to make sure the tooltip stay open when mouse leaves the trigger to hover tooltip */
+  /* these vars are for the triangle, via https://www.smashingmagazine.com/2024/03/modern-css-tooltips-speech-bubbles-part1/ */
+  --b: 1em; /* triangle base width */
+  --h: 0.5em; /* triangle height */
+  --p: 50%; /* center triangle position (0%:left 100%:right) */
+  --r: var(--gp-border-radius-medium); /* border radius */
+  --c: var(--gp-color-neutral-emphasis-plus); /* bg color */
+
+  position: absolute;
+  padding: 0.5em 0.75em;
+  width: max-content;
+  margin: auto;
+  clip: auto;
+  white-space: normal;
+  font: normal normal var(--gp-text-size-100) / var(--gp-text-line-height-100) var(--gp-font-stack-sans-serif);
+  -webkit-font-smoothing: subpixel-antialiased;
+  color: var(--gp-tooltip-color-default);
+  text-align: center;
+  word-wrap: break-word;
+  background: var(--c);
+  border-radius: var(--r);
+  border: 0;
+  opacity: 0;
+  max-width: 250px;
+  inset: auto;
+  /* for scrollbar */
+  overflow: visible;
+}
+
+.tooltip[popover]:popover-open, /* selector in chrome is :popover-open */
+.tooltip[popover].\:popover-open {
+  /* selector in firefox and safari is \:popover-open */
+  display: block;
+  animation-name: tooltip-appear;
+  animation-duration: var(--gp-animation-duration-faster, 0.2s);
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+}
+
+/* This is needed to keep the tooltip open when the user leaves the trigger element to hover tooltip */
+.tooltip::after {
+  position: absolute;
+  display: block;
+  right: 0;
+  left: 0;
+  height: var(--offset);
+  content: '';
+}
+
+/* Directional styles */
+.tooltip[data-direction='n'],
+.tooltip[data-direction='ne'],
+.tooltip[data-direction='nw'] {
+  border-image: conic-gradient(var(--c) 0 0) fill 0 / var(--r) calc(100% - var(--p) - var(--b) / 2) 0
+    calc(var(--p) - var(--b) / 2) / 0 0 var(--h) 0;
+  clip-path: polygon(
+    0 100%,
+    0 0,
+    100% 0,
+    100% 100%,
+    min(100%, var(--p) + var(--b) / 2) 100%,
+    var(--p) calc(100% + var(--h)),
+    max(0%, var(--p) - var(--b) / 2) 100%
+  );
+}
+
+.tooltip[data-direction='s'],
+.tooltip[data-direction='se'],
+.tooltip[data-direction='sw'] {
+  border-image: conic-gradient(var(--c) 0 0) fill 0/ 0 calc(100% - var(--p) - var(--b) / 2) var(--r)
+    calc(var(--p) - var(--b) / 2) / var(--h) 0 0 0;
+  clip-path: polygon(
+    0 0,
+    0 100%,
+    100% 100%,
+    100% 0,
+    min(100%, var(--p) + var(--b) / 2) 0,
+    var(--p) calc(-1 * var(--h)),
+    max(0%, var(--p) - var(--b) / 2) 0
+  );
+}
+
+.tooltip[data-direction='w'] {
+  border-image: conic-gradient(var(--c) 0 0) fill 0 / calc(var(--p) - var(--b) / 2) 0
+    calc(100% - var(--p) - var(--b) / 2) var(--r) / 0 var(--h) 0 0;
+  clip-path: polygon(
+    100% 100%,
+    0 100%,
+    0 0,
+    100% 0,
+    100% max(0%, var(--p) - var(--b) / 2),
+    calc(100% + var(--h)) var(--p),
+    100% min(100%, var(--p) + var(--b) / 2)
+  );
+}
+
+.tooltip[data-direction='e'] {
+  border-image: conic-gradient(var(--c) 0 0) fill 0 / calc(var(--p) - var(--b) / 2) var(--r)
+    calc(100% - var(--p) - var(--b) / 2) 0/ 0 0 0 var(--h);
+  clip-path: polygon(
+    0 100%,
+    100% 100%,
+    100% 0,
+    0 0,
+    0 max(0%, var(--p) - var(--b) / 2),
+    calc(-1 * var(--h)) var(--p),
+    0 min(100%, var(--p) + var(--b) / 2)
+  );
+}
+
+.tooltip[data-direction='ne'],
+.tooltip[data-direction='se'] {
+  --p: 25%;
+}
+
+.tooltip[data-direction='nw'],
+.tooltip[data-direction='sw'] {
+  --p: 75%;
+}
+
+.tooltip[data-direction='n']::after,
+.tooltip[data-direction='ne']::after,
+.tooltip[data-direction='nw']::after {
+  top: 100%;
+}
+
+.tooltip[data-direction='s']::after,
+.tooltip[data-direction='se']::after,
+.tooltip[data-direction='sw']::after {
+  bottom: 100%;
+}
+
+.tooltip[data-direction='w']::after {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: var(--offset);
+  content: '';
+  bottom: 0;
+  left: 100%;
+}
+
+.tooltip[data-direction='e']::after {
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: var(--offset);
+  content: '';
+  bottom: 0;
+  right: 100%;
+  margin-left: calc(var(--offset) * -1px);
+}
+
+@keyframes tooltip-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip,
+  .tooltip::before,
+  .tooltip::after,
+  .tooltip * {
+    animation-duration: 0s !important;
+  }
+}

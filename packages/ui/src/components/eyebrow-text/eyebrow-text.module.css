@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.eyebrow-text {
+  text-transform: uppercase;
+  letter-spacing: var(--gp-text-letter-spacing-100);
+}
+
+.eyebrow-text--variant-accent {
+  color: var(--gp-color-accent-primary);
+}

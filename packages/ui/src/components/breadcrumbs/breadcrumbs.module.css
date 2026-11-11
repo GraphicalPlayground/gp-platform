@@ -1,0 +1,87 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.breadcrumbs {
+  font-family: var(--gp-font-stack-sans-serif);
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 63.25rem) {
+  .breadcrumbs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.breadcrumbs--default {
+  --gp-inline-link-color-rest: var(--gp-color-text-default);
+  --gp-inline-link-color-pressed: var(--gp-color-text-default);
+}
+
+.breadcrumbs__list {
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+@media screen and (max-width: 63.25rem) {
+  .breadcrumbs__list {
+    display: inline-flex;
+  }
+}
+
+.breadcrumbs__item {
+  display: inline-block;
+  white-space: nowrap;
+  list-style: none;
+}
+
+.breadcrumbs__item::after {
+  content: '';
+  display: inline-block;
+  height: 0.8em;
+  margin: 0 var(--gp-size-12);
+  border-right: var(--gp-border-width-thin) solid var(--gp-breadcrumbs-separator-border-color);
+  transform: rotate(15deg) translateY(0.0625em);
+}
+
+.breadcrumbs__item:first-child {
+  margin-left: 0;
+}
+
+.breadcrumbs__item:last-child::after {
+  content: none;
+}
+
+.breadcrumbs__link {
+  font-size: var(--gp-text-size-100);
+  display: inline-block;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 63.25rem) {
+  .breadcrumbs__link {
+    white-space: nowrap;
+  }
+}
+
+.breadcrumbs__link:hover,
+.breadcrumbs__link:focus {
+  text-decoration: underline;
+}
+.breadcrumbs__link--selected {
+  color: var(--gp-color-text-default);
+  pointer-events: none;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+.breadcrumbs--default .breadcrumbs__link--selected {
+  color: var(--gp-color-text-muted);
+}
+
+.breadcrumbs__link--selected:focus {
+  text-decoration: none;
+}

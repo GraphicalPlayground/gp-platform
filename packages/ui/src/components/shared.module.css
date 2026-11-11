@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.gridline {
+  position: relative;
+}
+
+.gridline::before,
+.gridline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: var(--gp-border-width-thin) solid;
+  border-image: linear-gradient(var(--gp-color-border-muted), var(--gp-color-border-muted)) 1;
+  border-image-outset: 0 100vw;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.gridline::before {
+  top: 0;
+}
+
+.gridline::after {
+  bottom: 0;
+}

@@ -1,0 +1,61 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-12);
+  max-width: 520px;
+}
+
+.logo-link {
+  color: var(--gp-color-text-default);
+  display: inline-flex;
+  margin-bottom: var(--gp-size-16);
+  text-decoration: none;
+  width: fit-content;
+
+  &:focus-visible {
+    border-radius: var(--gp-border-radius-small);
+    outline: 2px solid var(--gp-color-focus, currentColor);
+    outline-offset: 2px;
+  }
+}
+
+.logo {
+  color: var(--gp-color-text-default);
+  display: block;
+}
+
+.heading {
+  align-items: center;
+  display: inline-flex;
+  font-size: var(--gp-text-size-100);
+  gap: var(--gp-size-12);
+  line-height: var(--gp-text-line-height-100);
+  margin: 0;
+  padding-block: var(--gp-size-4);
+  text-transform: uppercase;
+}
+
+.heading-dot {
+  background-color: var(--gp-color-accent-primary, #08872b);
+  display: inline-block;
+  flex-shrink: 0;
+  height: 14px;
+  width: 9px;
+}
+
+.description {
+  color: var(--gp-color-text-muted);
+  margin: 0;
+  max-width: 384px;
+}
+
+.cta {
+  align-self: flex-start;
+  margin-top: var(--gp-size-8);
+}

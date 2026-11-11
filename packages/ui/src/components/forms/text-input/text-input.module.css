@@ -1,0 +1,325 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+/*
+ * Default TextInput styles
+ */
+.TextInput {
+  display: flex;
+  color: var(--gp-control-color-fg-default);
+  background-color: var(--gp-color-canvas-default);
+  border: none;
+  border-radius: var(--gp-border-radius-medium);
+  line-height: var(--gp-text-line-height-100);
+  transition: var(--gp-control-animation-duration) var(--gp-control-animation-easing);
+  transition-property: color, background-color, box-shadow;
+}
+
+.TextInput::placeholder {
+  color: var(--gp-color-text-muted);
+  opacity: 1;
+}
+
+.TextInput[disabled] {
+  -webkit-text-fill-color: var(--gp-control-color-fg-disabled);
+  color: var(--gp-control-color-fg-disabled);
+  cursor: not-allowed;
+  background-color: var(--gp-control-color-canvas-disabled);
+  opacity: 1;
+}
+
+.TextInput:focus {
+  outline: none;
+}
+
+/*
+ * Sizes
+ */
+
+.TextInput-wrapper--small {
+  height: var(--gp-control-small-size);
+}
+
+.TextInput--small {
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  padding: var(--gp-control-small-padding-block) var(--gp-control-small-padding-inline-condensed);
+}
+
+.TextInput-wrapper--medium {
+  height: var(--gp-control-medium-size);
+}
+
+.TextInput--medium {
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  padding: var(--gp-control-medium-padding-block-normal) var(--gp-control-medium-padding-inline-condensed);
+}
+
+.TextInput--large {
+  font-weight: var(--gp-text-weight-200);
+  font-size: var(--gp-text-size-200);
+  padding: var(--gp-control-large-padding-block-normal) var(--gp-control-large-padding-inline-condensed);
+}
+
+.TextInput-wrapper--large {
+  height: var(--gp-control-large-size);
+}
+
+/*
+ * Visual states
+ */
+.TextInput--fullWidth {
+  width: 100%;
+}
+
+/*
+ * TextInput wrapper
+ */
+
+.TextInput-wrapper--disabled {
+  border-color: var(--gp-control-color-border-disabled);
+}
+
+.TextInput-wrapper {
+  font-family: var(--gp-body-fontFamily);
+  display: inline-flex;
+  position: relative;
+  border: solid var(--gp-border-width-thin, 1px) var(--gp-control-color-border-default);
+  border-radius: var(--gp-border-radius-medium);
+  transition: var(--gp-control-animation-duration) var(--gp-control-animation-easing);
+  transition-property: border;
+}
+
+.TextInput-wrapper--invisible {
+  border-color: transparent;
+}
+
+.TextInput-wrapper--fullWidth {
+  width: 100%;
+  display: flex;
+}
+
+.TextInput-wrapper:not(.TextInput-wrapper--fullWidth) {
+  width: min-content;
+}
+
+.TextInput-wrapper--monospace {
+  font-family: var(--gp-fontStack-monospace);
+}
+
+.TextInput-wrapper:focus-within {
+  border-color: var(--gp-control-color-focus);
+  box-shadow: 0 0 0 1px var(--gp-control-color-focus);
+  outline: none;
+}
+
+@media (forced-colors: active) {
+  .TextInput-wrapper:focus-within {
+    outline: var(--gp-border-width-thick) solid Highlight;
+    outline-offset: var(--gp-size-2);
+  }
+}
+
+/*
+ * Validation
+ */
+
+.TextInput-wrapper--success,
+.TextInput-wrapper--success.TextInput-wrapper--disabled {
+  border-color: var(--gp-color-success-fg);
+}
+
+.TextInput-wrapper--error,
+.TextInput-wrapper--error.TextInput-wrapper--disabled {
+  border-color: var(--gp-color-danger-fg);
+}
+
+/*
+ * TextInput visuals
+ */
+.TextInput--has-leading-visual--small {
+  padding-inline-start: calc(
+    var(--gp-control-small-padding-inline-condensed) + var(--gp-size-16) + var(--gp-control-small-gap)
+  );
+}
+
+.TextInput--has-leading-visual--medium {
+  padding-inline-start: calc(
+    var(--gp-control-medium-padding-inline-condensed) + var(--gp-size-16) + var(--gp-control-medium-gap)
+  );
+}
+
+.TextInput--has-leading-visual--large {
+  padding-inline-start: calc(
+    var(--gp-control-large-padding-inline-condensed) + var(--gp-size-20) + var(--gp-control-large-gap)
+  );
+}
+
+.TextInput--has-trailing-visual--small {
+  padding-inline-end: calc(
+    var(--gp-control-small-padding-inline-condensed) + var(--gp-size-16) + var(--gp-control-small-gap)
+  );
+}
+
+.TextInput--has-trailing-visual--medium {
+  padding-inline-end: calc(
+    var(--gp-control-medium-padding-inline-condensed) + var(--gp-size-16) + var(--gp-control-medium-gap)
+  );
+}
+
+.TextInput--has-trailing-visual--large {
+  padding-inline-end: calc(
+    var(--gp-control-medium-padding-inline-condensed) + var(--gp-size-20) + var(--gp-control-medium-gap)
+  );
+}
+
+.TextInput-leading-visual,
+.TextInput-trailing-visual {
+  display: grid;
+  position: absolute;
+  top: 0;
+  display: flex;
+  width: var(--gp-size-16);
+  height: 100%;
+  align-items: center;
+  color: var(--color-fg-muted);
+  pointer-events: none;
+  color: var(--gp-color-text-default);
+}
+
+.TextInput-leading-visual--medium {
+  left: var(--gp-control-medium-padding-inline-condensed);
+}
+
+.TextInput-trailing-visual--medium {
+  right: var(--gp-control-medium-padding-inline-condensed);
+}
+
+.TextInput-leading-visual--small {
+  left: var(--gp-control-small-padding-inline-condensed);
+}
+
+.TextInput-trailing-visual--small {
+  right: var(--gp-control-small-padding-inline-condensed);
+}
+
+.TextInput-leading-visual--large {
+  left: var(--gp-control-large-padding-inline-condensed);
+}
+
+.TextInput-trailing-visual--large {
+  right: var(--gp-control-large-padding-inline-condensed);
+}
+
+.TextInput-leading-visual-icon--medium {
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+}
+
+.TextInput-leading-visual-icon--small {
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+}
+
+.TextInput-leading-visual-icon--large {
+  width: var(--gp-size-20);
+  height: var(--gp-size-20);
+}
+
+/*
+ * TextInput leading and trailing text
+ */
+
+.TextInput-leading-text,
+.TextInput-trailing-text {
+  display: flex;
+  align-items: center;
+  color: var(--gp-color-text-muted);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.TextInput-leading-text--disabled,
+.TextInput-trailing-text--disabled {
+  color: var(--gp-control-color-fg-disabled);
+  background-color: var(--gp-control-color-canvas-disabled);
+}
+
+.TextInput-leading-text {
+  border-top-left-radius: var(--gp-border-radius-medium, 6px);
+  border-bottom-left-radius: var(--gp-border-radius-medium, 6px);
+  border-right: 0;
+}
+
+.TextInput-trailing-text {
+  border-top-right-radius: var(--gp-border-radius-medium, 6px);
+  border-bottom-right-radius: var(--gp-border-radius-medium, 6px);
+  border-left: 0;
+}
+
+.TextInput-leading-text-inner,
+.TextInput-trailing-text-inner {
+  display: inline-flex;
+  color: var(--gp-color-text-muted);
+}
+
+.TextInput-leading-text-inner--medium,
+.TextInput-trailing-text-inner--medium {
+  padding-inline: var(--gp-control-medium-padding-inline-condensed);
+}
+
+.TextInput-leading-text-inner--small,
+.TextInput-trailing-text-inner--small {
+  padding-inline: var(--gp-control-small-padding-inline-condensed);
+}
+
+.TextInput-leading-text-inner--large,
+.TextInput-trailing-text-inner--large {
+  padding-inline: var(--gp-control-large-padding-inline-condensed);
+}
+
+.TextInput-leading-text-inner {
+  border-right: 1px solid var(--gp-color-border-default);
+}
+
+.TextInput-trailing-text-inner {
+  border-left: 1px solid var(--gp-color-border-default);
+}
+
+.TextInput--has-leading-text {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.TextInput--has-trailing-text {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.TextInput-leading-text--success,
+.TextInput-trailing-text--success {
+  border-color: var(--gp-color-success-fg);
+}
+
+.TextInput-leading-text--error,
+.TextInput-trailing-text--error {
+  border-color: var(--gp-color-danger-fg);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .TextInput,
+  .Checkbox::before,
+  .Checkbox::after,
+  .Checkbox * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

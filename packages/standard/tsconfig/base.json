@@ -28,7 +28,8 @@
     "skipLibCheck": true,
     "sourceMap": false,
     "strict": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "ignoreDeprecations": "6.0"
   },
   "include": [],
   "exclude": ["node_modules"]

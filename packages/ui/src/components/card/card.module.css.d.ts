@@ -1,0 +1,43 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+declare const styles: {
+  readonly 'Card': string;
+  readonly 'Card--align-center': string;
+  readonly 'Card--backgroundColor-default': string;
+  readonly 'Card--backgroundColor-none': string;
+  readonly 'Card--backgroundColor-subtle': string;
+  readonly 'Card--border': string;
+  readonly 'Card--ctaVariant-arrow': string;
+  readonly 'Card--disableAnimation': string;
+  readonly 'Card--expandableArrow': string;
+  readonly 'Card--fullWidth': string;
+  readonly 'Card--hasLeadingVisual': string;
+  readonly 'Card--imagePos-block-end': string;
+  readonly 'Card--maxWidth': string;
+  readonly 'Card--tokensPosition-block-end': string;
+  readonly 'Card--variant-minimal': string;
+  readonly 'Card__action': string;
+  readonly 'Card__action--arrowOnly': string;
+  readonly 'Card__actionIcon': string;
+  readonly 'Card__actionIcon--arrowOnly': string;
+  readonly 'Card__actionLabel': string;
+  readonly 'Card__actionLabelClip': string;
+  readonly 'Card__description': string;
+  readonly 'Card__heading': string;
+  readonly 'Card__icon': string;
+  readonly 'Card__image': string;
+  readonly 'Card__image--padding-none': string;
+  readonly 'Card__image--position-block-end': string;
+  readonly 'Card__image--position-block-start': string;
+  readonly 'Card__label': string;
+  readonly 'Card__leadingVisual': string;
+  readonly 'Card__leadingVisualItem': string;
+  readonly 'Card__link': string;
+  readonly 'Card__outer': string;
+  readonly 'Card__tokens': string;
+  readonly 'Card__tokens--position-block-end': string;
+};
+
+export = styles;

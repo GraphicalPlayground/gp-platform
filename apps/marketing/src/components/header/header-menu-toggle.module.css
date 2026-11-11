@@ -1,0 +1,59 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.toggle {
+  display: inline-block;
+  padding: var(--gp-size-4);
+  color: inherit;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+/* Hamburger is mobile-only; the wide bar shows the full nav instead. */
+@media (min-width: 1012px) {
+  .toggle {
+    display: none;
+  }
+}
+
+.toggleBar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: var(--gp-size-4) auto;
+  background-color: currentcolor;
+  border-radius: var(--gp-border-radius-medium, var(--border-radius-medium));
+}
+
+.toggleBar:nth-of-type(1) {
+  transform-origin: bottom right;
+}
+
+.toggleBar:nth-of-type(3) {
+  transform-origin: top right;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toggleBar {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    transition-duration: var(--gp-duration-500);
+    transition-property: opacity, transform;
+  }
+}
+
+.toggleClose .toggleBar:nth-of-type(1) {
+  transform: rotate(-45deg) translateY(-3px);
+}
+
+.toggleClose .toggleBar:nth-of-type(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.toggleClose .toggleBar:nth-of-type(3) {
+  transform: rotate(45deg) translateY(3px);
+}

@@ -1,0 +1,35 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.ListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gp-size-12);
+}
+
+.ListItem--default {
+  color: var(--gp-color-text-default);
+}
+
+.ListItem--muted {
+  color: var(--gp-color-text-muted);
+}
+
+.ListItem__leading-visual {
+  height: 1lh;
+}
+
+.ListItem__leading-visual--muted {
+  fill: var(--gp-color-text-muted);
+}
+
+.OrderedList__item::before {
+  content: counter(li) '.';
+  counter-increment: li;
+  min-width: var(--gp-size-16);
+  text-align: center;
+  font-weight: var(--gp-text-size-200);
+}

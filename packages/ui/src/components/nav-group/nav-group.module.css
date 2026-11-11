@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-24);
+
+  @media (min-width: 1012px) {
+    height: 100%;
+  }
+
+  @media (min-width: 1012px) and (max-width: 1279px) {
+    max-width: 220px;
+  }
+
+  @media (min-width: 1280px) {
+    min-width: 200px;
+    max-width: 285px;
+  }
+}
+
+.hasSeparator {
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted, var(--gp-border-color-muted));
+  padding-top: var(--gp-size-32);
+
+  @media (min-width: 1012px) {
+    border-left: var(--gp-border-width-thin) solid var(--gp-color-border-muted, var(--gp-border-color-muted));
+    border-top: 0;
+    padding-left: var(--gp-size-16);
+    padding-top: 0;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: var(--gp-size-40);
+  }
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-20);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

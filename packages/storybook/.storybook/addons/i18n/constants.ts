@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 export const I18N_ADDON_ID = 'gp-i18n-addon';
 export const I18N_GLOBAL_TYPE_ID = 'gp-i18n';
 export const I18N_PARAM_KEY = 'gp-i18n';

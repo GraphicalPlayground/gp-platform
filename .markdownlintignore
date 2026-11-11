@@ -1,0 +1,9 @@
+.turbo
+.cache
+.rollup.cache
+.swc
+node_modules
+coverage
+.next
+out
+.vercel

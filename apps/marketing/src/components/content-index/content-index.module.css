@@ -1,0 +1,37 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.layoutGrid,
+.cardGrid {
+  --gp-grid-spacing-row: var(--gp-size-48);
+}
+
+@media screen and (max-width: 48rem) {
+  .filtersColumn {
+    margin-left: calc(var(--gp-size-16) * -1);
+    margin-right: calc(var(--gp-size-16) * -1);
+  }
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-16);
+  padding: 0 0 var(--gp-size-32);
+}
+
+.emptyStateWrapper {
+  border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  color: var(--gp-color-text-muted);
+  padding-block-start: var(--gp-size-12);
+}
+
+/* Some card elements have a max width, lift it so the spotlight card spans the whole row. */
+.spotlightCard :is(p, h2, h3, h4, h5, h6) {
+  max-width: 100% !important;
+}
