@@ -13,6 +13,7 @@ import { languages } from '@gp/seo/jsonld';
  */
 export async function GET(): Promise<NextResponse> {
   const expires = new Date();
+
   expires.setFullYear(expires.getFullYear() + 1);
 
   const body = [
