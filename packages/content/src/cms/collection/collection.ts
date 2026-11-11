@@ -12,7 +12,14 @@ import type { ZodType } from 'zod';
 
 import { estimateReadingTimeMinutes, walkMdxFiles } from './fs-utils';
 import { MdxFrontmatterError } from '../errors';
-import type { CompileOptions, CompiledMdxDocument, MdxCollectionOptions, MdxDocument, MdxHeading } from '../types';
+import type {
+  CompileOptions,
+  CompiledMdxDocument,
+  MdxCollectionOptions,
+  MdxDocument,
+  MdxDocumentLookupOptions,
+  MdxHeading
+} from '../types';
 import type { PluggableList } from 'unified';
 import type { PublishStatus, PublishWorkflowFields } from '../../shared/publish-status';
 import { resolvePublishStatus, validatePublishWorkflow } from '../../shared/publish-status';
@@ -222,23 +229,31 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
   }
 
   /**
+   * @brief Evaluates whether a document is visible under the given status/draft options.
+   */
+  private isVisible(doc: MdxDocument<TFrontmatter>, options: MdxDocumentLookupOptions = {}): boolean {
+    const now = options.now ?? new Date();
+    const status = this.getPublishStatus(doc.frontmatter, now);
+
+    if (options.statuses) {
+      return options.statuses.includes(status);
+    }
+
+    const includeDrafts = options.includeDrafts ?? process.env['NODE_ENV'] !== 'production';
+
+    return includeDrafts ? status !== 'archived' : status === 'published';
+  }
+
+  /**
    * @brief Returns all documents in the collection, filtered by publish status and, optionally, locale.
    * @param options - Status filter (`statuses`, or `includeDrafts`/`now` for the legacy behavior) and
    * an optional `locale` to restrict/fall-back the result to.
    * @returns An array of {@link MdxDocument} for all documents in the collection.
    */
   public async getAll(options: MdxCollectionOptions = {}): Promise<MdxDocument<TFrontmatter>[]> {
-    const now = options.now ?? new Date();
     const all = [...(await this.loadAll()).values()];
 
-    const statusFiltered = options.statuses
-      ? all.filter((doc) => options.statuses!.includes(this.getPublishStatus(doc.frontmatter, now)))
-      : all.filter((doc) => {
-          const includeDrafts = options.includeDrafts ?? process.env['NODE_ENV'] !== 'production';
-          const status = this.getPublishStatus(doc.frontmatter, now);
-
-          return includeDrafts ? status !== 'archived' : status === 'published';
-        });
+    const statusFiltered = all.filter((doc) => this.isVisible(doc, options));
 
     if (!options.locale) return statusFiltered;
 
@@ -274,17 +289,24 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
    * @param slug - The slug of the document to retrieve.
    * @param locale - The locale to look up. Falls back to the collection's default locale if no
    * variant exists in the requested locale. Defaults to the collection's default locale.
-   * @returns The {@link MdxDocument} for the requested slug/locale, or `undefined` if not found.
+   * @param options - Status/draft visibility options (`includeDrafts` defaults to `process.env.NODE_ENV !== 'production'`).
+   * @returns The {@link MdxDocument} for the requested slug/locale, or `undefined` if not found or not visible.
    */
   public async getBySlug(
     slug: string,
-    locale: string = this.defaultLocale
+    locale: string = this.defaultLocale,
+    options: MdxDocumentLookupOptions = {}
   ): Promise<MdxDocument<TFrontmatter> | undefined> {
     const cache = await this.loadAll();
     const exact = cache.get(`${slug}::${locale}`);
 
-    if (exact) return exact;
-    if (locale !== this.defaultLocale) return cache.get(`${slug}::${this.defaultLocale}`);
+    if (exact && this.isVisible(exact, options)) return exact;
+
+    if (locale !== this.defaultLocale) {
+      const fallback = cache.get(`${slug}::${this.defaultLocale}`);
+
+      if (fallback && this.isVisible(fallback, options)) return fallback;
+    }
 
     return undefined;
   }
@@ -345,7 +367,11 @@ export class MdxCollection<TFrontmatter extends PublishWorkflowFields> {
     locale: string = this.defaultLocale,
     options: CompileOptions = {}
   ): Promise<CompiledMdxDocument<TFrontmatter> | undefined> {
-    const doc = await this.getBySlug(slug, locale);
+    const doc = await this.getBySlug(slug, locale, {
+      includeDrafts: options.includeDrafts,
+      now: options.now,
+      statuses: options.statuses
+    });
 
     if (!doc) return undefined;
 

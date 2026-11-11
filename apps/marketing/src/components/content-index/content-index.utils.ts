@@ -5,6 +5,7 @@
 // Type-only imports: this file is shared with client components, and `@gp/content` pulls in Node-only code.
 import type { Article, Difficulty, MdxDocument } from '@gp/content';
 import type { Route } from 'next';
+import { getDevDraftTokenLabel } from '../../lib/article-status';
 import { buildSearchDocument, scoreSearchDocument, tokenizeQuery } from './content-index.search';
 
 /**
@@ -19,6 +20,7 @@ export interface ContentIndexItem {
   slug: string;
   href: string;
   subtopic?: string;
+  draftLabel?: string;
   title: string;
   description: string;
   category: string;
@@ -137,6 +139,7 @@ const toItem = (doc: MdxDocument<Article>, basePath: string): ContentIndexItem =
   slug: doc.slug,
   href: `${basePath}/${doc.frontmatter.slug}`,
   subtopic: doc.frontmatter.subtopic,
+  draftLabel: getDevDraftTokenLabel(doc.frontmatter),
   title: doc.frontmatter.title,
   description: resolveDescription(doc),
   category: doc.frontmatter.category,

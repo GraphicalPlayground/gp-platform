@@ -43,6 +43,7 @@ import {
 } from '@primer/octicons-react';
 import type { Icon as OcticonIcon } from '@primer/octicons-react';
 import { aboutCommunityVisual, aboutCurriculumVisual, aboutEngineVisual, aboutPlaygroundVisual } from '@/app/content';
+import { DraftToken } from '@/components/article/components/draft-token';
 import { FAQClient } from '@/components/faq';
 import {
   ACTIVE_PARTNERS,
@@ -65,6 +66,7 @@ import styles from './home.module.css';
 
 export interface FeaturedGlossaryCard {
   readonly difficulty: string;
+  readonly draftLabel?: string;
   readonly href: string;
   readonly shortDefinition: string;
   readonly slug: string;
@@ -322,87 +324,90 @@ export const HomeView: React.FC<HomeViewProps> = ({ featuredGlossary, glossaryCo
       </Section>
 
       {/* Band 5: Knowledge Base Stats + Featured Glossary Gridline Matrix */}
-      <Section
-        fullWidth
-        backgroundColor='default'
-        className={styles.glossaryBand}
-        paddingBlockEnd='normal'
-        paddingBlockStart='condensed'
-      >
-        <Stack direction='vertical' gap='spacious' padding='none'>
-          <div className={styles.glossarySectionHeader}>
-            <SectionIntro fullWidth align='center'>
-              <SectionIntro.Label>OPEN KNOWLEDGE BASE</SectionIntro.Label>
-              <SectionIntro.Heading as='h2' size='3'>
-                From <b>coordinate spaces</b> to <b>Gaussian splatting</b>
-              </SectionIntro.Heading>
-              <SectionIntro.Description>
-                Read clear technical references covering 3D math, frame synchronization, physically based lighting, and
-                modern rendering passes.
-              </SectionIntro.Description>
-            </SectionIntro>
-          </div>
+      {glossaryCount > 0 ? (
+        <Section
+          fullWidth
+          backgroundColor='default'
+          className={styles.glossaryBand}
+          paddingBlockEnd='normal'
+          paddingBlockStart='condensed'
+        >
+          <Stack direction='vertical' gap='spacious' padding='none'>
+            <div className={styles.glossarySectionHeader}>
+              <SectionIntro fullWidth align='center'>
+                <SectionIntro.Label>OPEN KNOWLEDGE BASE</SectionIntro.Label>
+                <SectionIntro.Heading as='h2' size='3'>
+                  From <b>coordinate spaces</b> to <b>Gaussian splatting</b>
+                </SectionIntro.Heading>
+                <SectionIntro.Description>
+                  Read clear technical references covering 3D math, frame synchronization, physically based lighting,
+                  and modern rendering passes.
+                </SectionIntro.Description>
+              </SectionIntro>
+            </div>
 
-          <div>
-            {/* 3-Column Gridline Statistic Row */}
-            <Box className={styles.gridFrame}>
-              <Box className={styles.gridContent}>
-                <Grid columnGap='none' enableGutters={false} rowGap='none'>
-                  {stats.map((stat) => (
-                    <Grid.Column key={stat.value} className={styles.gridColumn} span={{ xsmall: 12, large: 4 }}>
-                      <Box className={styles.gridItem} padding={{ narrow: 24, wide: 48 }}>
-                        <Statistic>
-                          <Statistic.Heading className={styles.statValue} font='monospace' size='700' weight='normal'>
-                            {stat.value}
-                          </Statistic.Heading>
-                          <Statistic.Description font='monospace' size='100'>
-                            {stat.label}
-                          </Statistic.Description>
-                        </Statistic>
-                      </Box>
-                    </Grid.Column>
-                  ))}
-                </Grid>
+            <div>
+              {/* 3-Column Gridline Statistic Row */}
+              <Box className={styles.gridFrame}>
+                <Box className={styles.gridContent}>
+                  <Grid columnGap='none' enableGutters={false} rowGap='none'>
+                    {stats.map((stat) => (
+                      <Grid.Column key={stat.value} className={styles.gridColumn} span={{ xsmall: 12, large: 4 }}>
+                        <Box className={styles.gridItem} padding={{ narrow: 24, wide: 48 }}>
+                          <Statistic>
+                            <Statistic.Heading className={styles.statValue} font='monospace' size='700' weight='normal'>
+                              {stat.value}
+                            </Statistic.Heading>
+                            <Statistic.Description font='monospace' size='100'>
+                              {stat.label}
+                            </Statistic.Description>
+                          </Statistic>
+                        </Box>
+                      </Grid.Column>
+                    ))}
+                  </Grid>
+                </Box>
               </Box>
-            </Box>
 
-            {/* 6-Card Gridline Featured Glossary Matrix */}
-            <Box className={clsx(styles.gridFrame, styles.gridFrameBottomFlush)}>
-              <Box className={styles.gridContent}>
-                <Grid columnGap='none' enableGutters={false} rowGap='none'>
-                  {featuredGlossary.map((entry) => (
-                    <Grid.Column
-                      key={entry.slug}
-                      className={clsx(styles.gridColumn, styles.gridColumnHover)}
-                      span={{ xsmall: 12, large: 4 }}
-                    >
-                      <Box className={styles.gridItem}>
-                        <Card fullWidth ctaText='Read concept' ctaVariant='arrow' href={entry.href}>
-                          <Card.Tokens>
-                            <Token>{entry.subtopic}</Token>
-                            <Token variant='outline'>{entry.difficulty}</Token>
-                          </Card.Tokens>
-                          <Card.Heading as='h3'>{entry.title}</Card.Heading>
-                          <Card.Description>{entry.shortDefinition}</Card.Description>
-                        </Card>
-                      </Box>
-                    </Grid.Column>
-                  ))}
-                </Grid>
+              {/* 6-Card Gridline Featured Glossary Matrix */}
+              <Box className={clsx(styles.gridFrame, styles.gridFrameBottomFlush)}>
+                <Box className={styles.gridContent}>
+                  <Grid columnGap='none' enableGutters={false} rowGap='none'>
+                    {featuredGlossary.map((entry) => (
+                      <Grid.Column
+                        key={entry.slug}
+                        className={clsx(styles.gridColumn, styles.gridColumnHover)}
+                        span={{ xsmall: 12, large: 4 }}
+                      >
+                        <Box className={styles.gridItem}>
+                          <Card fullWidth ctaText='Read concept' ctaVariant='arrow' href={entry.href}>
+                            <Card.Tokens>
+                              <Token>{entry.subtopic}</Token>
+                              <Token variant='outline'>{entry.difficulty}</Token>
+                              <DraftToken label={entry.draftLabel} />
+                            </Card.Tokens>
+                            <Card.Heading as='h3'>{entry.title}</Card.Heading>
+                            <Card.Description>{entry.shortDefinition}</Card.Description>
+                          </Card>
+                        </Box>
+                      </Grid.Column>
+                    ))}
+                  </Grid>
+                </Box>
               </Box>
-            </Box>
-          </div>
+            </div>
 
-          <div className={styles.glossaryFooterBar}>
-            <Text as='span' font='monospace' size='100' variant='muted'>
-              Selected entries from the open graphics glossary
-            </Text>
-            <Link arrowDirection='end' href='/glossary' size='medium' variant='accent'>
-              Browse full glossary
-            </Link>
-          </div>
-        </Stack>
-      </Section>
+            <div className={styles.glossaryFooterBar}>
+              <Text as='span' font='monospace' size='100' variant='muted'>
+                Selected entries from the open graphics glossary
+              </Text>
+              <Link arrowDirection='end' href='/glossary' size='medium' variant='accent'>
+                Browse full glossary
+              </Link>
+            </div>
+          </Stack>
+        </Section>
+      ) : null}
 
       {/* Band 6: Studio Discipline, Industry Feedback & Planned Portability Accordion */}
       <Section paddingBlockEnd='spacious' paddingBlockStart='condensed'>
