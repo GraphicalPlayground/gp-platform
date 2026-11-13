@@ -33,8 +33,11 @@ const TOKEN_CLASS: Record<TokenKind, string | undefined> = {
   type: styles.tokType
 };
 
-const HighlightedCode: React.FC<{ readonly lines: readonly HighlightedLine[] }> = ({ lines }) => (
-  <pre className={styles.codeBlock}>
+const HighlightedCode: React.FC<{ readonly label?: string; readonly lines: readonly HighlightedLine[] }> = ({
+  label = 'Code snippet',
+  lines
+}) => (
+  <pre aria-label={label} className={styles.codeBlock}>
     <code>
       {lines.map((line, lineIdx) => (
         <span key={lineIdx} className={clsx(styles.codeLine, line.highlight && styles.codeLineHighlight)}>
@@ -57,11 +60,11 @@ const HighlightedCode: React.FC<{ readonly lines: readonly HighlightedLine[] }> 
 type CoordinateSpaceId = 'model' | 'world' | 'view' | 'clip';
 
 interface CoordinateSpaceSpec {
+  readonly cssTransform: string;
   readonly id: CoordinateSpaceId;
   readonly label: string;
-  readonly matrixLabel: string;
   readonly lines: readonly HighlightedLine[];
-  readonly svgTransform: string;
+  readonly matrixLabel: string;
   readonly transform: string;
 }
 
@@ -70,7 +73,7 @@ const COORDINATE_SPACES: readonly CoordinateSpaceSpec[] = [
     id: 'model',
     label: 'Model',
     matrixLabel: 'localPos = vec4(pos, 1.0)',
-    svgTransform: 'translate(0, 0) scale(1)',
+    cssTransform: 'translate(0px, 0px) scale(1)',
     transform: 'Local mesh origin (0, 0, 0)',
     lines: [
       { tokens: [{ kind: 'comment', text: '// 01. Object space' }] },
@@ -93,7 +96,7 @@ const COORDINATE_SPACES: readonly CoordinateSpaceSpec[] = [
     id: 'world',
     label: 'World',
     matrixLabel: 'worldPos = modelMatrix * localPos',
-    svgTransform: 'translate(14, -6) rotate(12 120 82) scale(0.95)',
+    cssTransform: 'translate(14px, -6px) rotate(12deg) scale(0.95)',
     transform: 'Placed in shared 3D scene',
     lines: [
       { tokens: [{ kind: 'comment', text: '// 02. World space transform' }] },
@@ -126,7 +129,7 @@ const COORDINATE_SPACES: readonly CoordinateSpaceSpec[] = [
     id: 'view',
     label: 'View',
     matrixLabel: 'viewPos = viewMatrix * worldPos',
-    svgTransform: 'translate(-12, 4) skewX(-10) scale(0.88)',
+    cssTransform: 'translate(-12px, 4px) skewX(-10deg) scale(0.88)',
     transform: 'Moved relative to camera frustum',
     lines: [
       { tokens: [{ kind: 'comment', text: '// 03. Camera view space' }] },
@@ -149,7 +152,7 @@ const COORDINATE_SPACES: readonly CoordinateSpaceSpec[] = [
     id: 'clip',
     label: 'Clip / NDC',
     matrixLabel: 'clipPos = projMatrix * viewPos',
-    svgTransform: 'translate(0, 0) skewY(8) scale(0.82, 0.72)',
+    cssTransform: 'translate(0px, 0px) skewY(8deg) scale(0.82, 0.72)',
     transform: 'Projected into [-1, 1] unit cube',
     lines: [
       { tokens: [{ kind: 'comment', text: '// 04. Projection & perspective divide' }] },
@@ -284,31 +287,80 @@ export const ShaderLabVisual: React.FC = () => {
             ))}
           </div>
 
+          <span aria-live='polite' className={styles.srOnly}>
+            {`${activeSpace.label} space selected. ${activeSpace.matrixLabel}. ${activeSpace.transform}.`}
+          </span>
+
           <svg
             aria-label={`Wireframe frustum diagram in ${activeSpace.label} space`}
+            className={styles.wireframeSvg}
             fill='none'
             role='img'
-            viewBox='0 0 240 156'
+            viewBox='0 0 240 132'
             width='100%'
           >
-            <g transform={activeSpace.svgTransform}>
-              <polygon points='72,42 146,42 146,116 72,116' stroke='#0fbf3e' strokeDasharray='3 3' strokeWidth='1.2' />
-              <polygon points='94,26 168,26 168,100 94,100' stroke='#5fed83' strokeWidth='1.5' />
-              <line stroke='#5fed83' strokeOpacity='0.7' x1='72' x2='94' y1='42' y2='26' />
-              <line stroke='#5fed83' strokeOpacity='0.7' x1='146' x2='168' y1='42' y2='26' />
-              <line stroke='#5fed83' strokeOpacity='0.7' x1='146' x2='168' y1='116' y2='100' />
-              <line stroke='#5fed83' strokeOpacity='0.7' x1='72' x2='94' y1='116' y2='100' />
-              <circle cx='120' cy='71' fill='#ecff77' r='3' />
+            {/* Stationary reference bounds */}
+            <rect
+              height='112'
+              rx='4'
+              stroke='#5fed83'
+              strokeDasharray='4 4'
+              strokeOpacity='0.18'
+              strokeWidth='1'
+              width='192'
+              x='24'
+              y='10'
+            />
+            <line stroke='#5fed83' strokeOpacity='0.12' strokeWidth='1' x1='120' x2='120' y1='10' y2='122' />
+            <line stroke='#5fed83' strokeOpacity='0.12' strokeWidth='1' x1='24' x2='216' y1='66' y2='66' />
+
+            {/* Animated 3D volume + local coordinate axes */}
+            <g className={styles.wireframeCube} style={{ transform: activeSpace.cssTransform }}>
+              {/* Back face */}
+              <polygon
+                fill='rgba(15, 191, 62, 0.06)'
+                points='72,42 146,42 146,116 72,116'
+                stroke='#1fd152'
+                strokeDasharray='3 3'
+                strokeOpacity='0.75'
+                strokeWidth='1.35'
+              />
+              {/* Top & right shaded faces */}
+              <polygon fill='rgba(95, 237, 131, 0.14)' points='72,42 94,26 168,26 146,42' />
+              <polygon fill='rgba(15, 191, 62, 0.12)' points='146,42 168,26 168,100 146,116' />
+              {/* Front face */}
+              <polygon
+                fill='rgba(95, 237, 131, 0.09)'
+                points='94,26 168,26 168,100 94,100'
+                stroke='#7cf59b'
+                strokeWidth='1.85'
+              />
+              {/* Depth edges */}
+              <line stroke='#5fed83' strokeOpacity='0.85' strokeWidth='1.5' x1='72' x2='94' y1='42' y2='26' />
+              <line stroke='#5fed83' strokeOpacity='0.85' strokeWidth='1.5' x1='146' x2='168' y1='42' y2='26' />
+              <line stroke='#5fed83' strokeOpacity='0.85' strokeWidth='1.5' x1='146' x2='168' y1='116' y2='100' />
+              <line stroke='#5fed83' strokeOpacity='0.85' strokeWidth='1.5' x1='72' x2='94' y1='116' y2='100' />
+
+              {/* Local X / Y / Z axis gizmo */}
+              <line stroke='#ff8b82' strokeLinecap='round' strokeWidth='1.75' x1='120' x2='144' y1='71' y2='71' />
+              <line stroke='#5fed83' strokeLinecap='round' strokeWidth='1.75' x1='120' x2='120' y1='71' y2='47' />
+              <line stroke='#8dd6ff' strokeLinecap='round' strokeWidth='1.75' x1='120' x2='106' y1='71' y2='83' />
+
+              {/* Front vertices & pivot */}
+              <circle cx='94' cy='26' fill='#7cf59b' r='2.5' />
+              <circle cx='168' cy='26' fill='#7cf59b' r='2.5' />
+              <circle cx='168' cy='100' fill='#7cf59b' r='2.5' />
+              <circle cx='94' cy='100' fill='#7cf59b' r='2.5' />
+              <circle cx='120' cy='71' r='7' stroke='#ecff77' strokeOpacity='0.45' strokeWidth='1.2' />
+              <circle cx='120' cy='71' fill='#ecff77' r='3.5' />
             </g>
-            <line stroke='#262c28' x1='16' x2='224' y1='136' y2='136' />
-            <text fill='#96a199' fontFamily='monospace' fontSize='9' x='16' y='150'>
-              {activeSpace.transform}
-            </text>
           </svg>
+
+          <p className={styles.wireframeCaption}>{activeSpace.transform}</p>
         </div>
 
         <div className={styles.codePanel}>
-          <HighlightedCode lines={activeSpace.lines} />
+          <HighlightedCode label='Shader transform code' lines={activeSpace.lines} />
           <div className={styles.pillRow}>
             <span className={styles.pill}>4-Stage Pipeline</span>
             <span className={styles.pill}>Live Matrix</span>

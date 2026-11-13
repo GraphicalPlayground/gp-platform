@@ -11,6 +11,9 @@ declare const styles: {
   readonly studioBody: string;
   readonly studioBodySplit: string;
   readonly wireframeBox: string;
+  readonly wireframeSvg: string;
+  readonly wireframeCube: string;
+  readonly wireframeCaption: string;
   readonly spaceButtons: string;
   readonly spaceButton: string;
   readonly codePanel: string;
@@ -69,6 +72,7 @@ declare const styles: {
   readonly certSpecimenTitle: string;
   readonly certSpecimenSub: string;
   readonly certSpecimenBadge: string;
+  readonly srOnly: string;
 };
 
 export = styles;
