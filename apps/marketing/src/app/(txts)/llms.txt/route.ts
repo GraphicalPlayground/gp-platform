@@ -82,7 +82,8 @@ export function GET(): Response {
           {
             title: 'Pricing',
             path: '/pricing',
-            description: 'Cloud rendering subscription plans and free local engine access.'
+            description:
+              '0 EUR forever for Open & Local access (MIT gp-engine C++23, HLSL curriculum, and local GPU execution via local engine server), upcoming monthly EUR Cloud GPU subscription for browser-based OCI containers (waitlist open), and custom Academic & Team cohort quotas via sales@graphical-playground.com.'
           },
           { title: 'Waitlist', path: '/waitlist', description: 'Request early access to the interactive platform.' },
           { title: 'Products', path: '/products', description: 'Overview of the Graphical Playground ecosystem.' },
