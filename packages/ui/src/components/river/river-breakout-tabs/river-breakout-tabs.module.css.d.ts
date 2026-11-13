@@ -1,0 +1,42 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+declare const styles: {
+  readonly 'RiverBreakoutTabs': string;
+  readonly 'RiverBreakoutTabs--background-visual-full-bleed': string;
+  readonly 'RiverBreakoutTabs--has-background-visual': string;
+  readonly 'RiverBreakoutTabs--image-position-block-end': string;
+  readonly 'RiverBreakoutTabs__accordion': string;
+  readonly 'RiverBreakoutTabs__accordionContent': string;
+  readonly 'RiverBreakoutTabs__accordionHeading': string;
+  readonly 'RiverBreakoutTabs__accordionHeadingInner': string;
+  readonly 'RiverBreakoutTabs__accordionIcon': string;
+  readonly 'RiverBreakoutTabs__accordionItem': string;
+  readonly 'RiverBreakoutTabs__accordionLabel': string;
+  readonly 'RiverBreakoutTabs__accordionPanel': string;
+  readonly 'RiverBreakoutTabs__accordionSharedVisual': string;
+  readonly 'RiverBreakoutTabs__accordionSharedVisuals': string;
+  readonly 'RiverBreakoutTabs__backgroundVisual': string;
+  readonly 'RiverBreakoutTabs__content': string;
+  readonly 'RiverBreakoutTabs__heading': string;
+  readonly 'RiverBreakoutTabs__icon': string;
+  readonly 'RiverBreakoutTabs__item': string;
+  readonly 'RiverBreakoutTabs__item--selected': string;
+  readonly 'RiverBreakoutTabs__link': string;
+  readonly 'RiverBreakoutTabs__sharedVisual': string;
+  readonly 'RiverBreakoutTabs__sharedVisualPanel': string;
+  readonly 'RiverBreakoutTabs__sharedVisuals': string;
+  readonly 'RiverBreakoutTabs__tab': string;
+  readonly 'RiverBreakoutTabs__tabHeading': string;
+  readonly 'RiverBreakoutTabs__tablist': string;
+  readonly 'RiverBreakoutTabs__visual--rounded': string;
+  readonly 'RiverBreakoutTabs__wideTabList': string;
+  readonly 'RiverBreakoutTabs__wideTabListAction': string;
+  readonly 'RiverBreakoutTabs__wideTabListActionItem': string;
+  readonly 'RiverBreakoutTabs__wideTabListActions': string;
+  readonly 'RiverBreakoutTabs__wideTabListContent': string;
+  readonly 'RiverBreakoutTabs__wideTabListContentRow': string;
+};
+
+export = styles;

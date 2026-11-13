@@ -1,0 +1,315 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.action-menu {
+  --focus-outline-width: 3px;
+  position: relative;
+}
+
+.action-menu--disabled {
+  cursor: not-allowed;
+}
+
+.action-menu__button {
+  height: auto;
+}
+
+.action-menu__button--default {
+  /* avoid specificity issues */
+  --gp-border-radius-medium: var(--gp-border-radius-full);
+}
+
+.action-menu__button--small {
+  padding: calc(var(--gp-size-4) / 2) var(--gp-size-12);
+}
+
+.action-menu__button--medium {
+  padding: calc(var(--gp-size-8) + 2px) var(--gp-size-28);
+}
+
+.action-menu__button > span:first-of-type {
+  max-width: 200px;
+  overflow: hidden;
+}
+
+.action-menu__button--split-button {
+  display: inline-flex;
+  padding: 0;
+  border-radius: var(--gp-border-radius-medium);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  background-color: var(--gp-color-canvas-default);
+}
+
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary,
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary:hover {
+  position: relative;
+  z-index: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary::before,
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary:hover::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--gp-size-2) / -2);
+  right: calc(var(--gp-size-2) * -1);
+  width: var(--gp-border-width-thin);
+  height: calc(100% + var(--gp-size-2));
+  background-color: var(--gp-action-menu-color-split-button-divider-default);
+}
+
+.action-menu__innerButton--primary.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary::before {
+  background-color: var(--gp-action-menu-color-split-button-divider-primary);
+}
+
+.action-menu__innerButton--subtle.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary::before {
+  top: calc(var(--gp-size-2) * -1);
+  height: calc(100% + var(--gp-size-4));
+}
+
+.action-menu__innerButton--subtle.action-menu__innerButton--split-button.action-menu__innerButton--split-button-primary:active::before {
+  width: 0;
+}
+
+.action-menu__innerButton--medium.action-menu__innerButton--split-button,
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-menu {
+  padding: var(--gp-control-medium-padding-block-condensed) var(--gp-control-medium-padding-inline-normal); /* Override the default button padding */
+}
+
+.action-menu__inner-button-dropdown-icon {
+  vertical-align: middle !important;
+}
+
+.action-menu__innerButton--split-button.action-menu__innerButton--split-button-menu {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  position: relative;
+  z-index: 0;
+}
+
+.action-menu__innerButton--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.action-menu__menu {
+  position: absolute;
+  z-index: 100;
+  padding: var(--gp-size-12);
+  min-width: min-content;
+  visibility: hidden;
+  background-color: var(--gp-color-canvas-default);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  border-radius: var(--gp-border-radius-large);
+  max-height: 460px;
+  overflow-y: auto;
+  box-shadow:
+    0px 100px 80px rgba(0, 0, 0, 0.01),
+    0px 41px 33px rgba(0, 0, 0, 0.02),
+    0px 22px 17px rgba(0, 0, 0, 0.02),
+    0px 12px 10px rgba(0, 0, 0, 0.03),
+    0px 6px 5px rgba(0, 0, 0, 0.04),
+    0px 2px 2px rgba(0, 0, 0, 0.07);
+}
+
+.action-menu__menu--small {
+  padding: var(--gp-size-8);
+}
+
+.action-menu__menu--medium {
+  padding: var(--gp-size-12);
+}
+
+.action-menu__menu--visible {
+  visibility: visible;
+}
+
+.action-menu__menu--pos-outside-bottom {
+  animation: 189ms var(--gp-animation-easing-glide) 0s 1 normal none running overlay-appear-outside-bottom;
+}
+
+.action-menu__menu--pos-outside-top {
+  animation: 189ms var(--gp-animation-easing-glide) 0s 1 normal none running overlay-appear-outside-top;
+}
+
+@keyframes overlay-appear-outside-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlay-appear-outside-top {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.action-menu__menu--medium.action-menu__menu--pos-outside-bottom {
+  margin-block-start: var(--gp-size-8);
+}
+
+.action-menu__menu--medium.action-menu__menu--pos-outside-top {
+  margin-block-start: calc(var(--gp-size-8) * -1);
+}
+
+.action-menu__menu--small.action-menu__menu--pos-outside-bottom {
+  margin-block-start: var(--gp-size-4);
+}
+
+.action-menu__menu--small.action-menu__menu--pos-outside-top {
+  margin-block-start: calc(var(--gp-size-4) * -1);
+}
+
+.action-menu__menu::-webkit-scrollbar {
+  width: var(--gp-size-12);
+}
+
+.action-menu__menu::-webkit-scrollbar-track {
+  border-left: 1px solid var(--gp-color-border-muted);
+  border-top-right-radius: var(--gp-border-radius-large);
+  border-bottom-right-radius: var(--gp-border-radius-large);
+}
+
+.action-menu__menu::-webkit-scrollbar-thumb {
+  border-radius: var(--gp-border-radius-medium);
+  border: 1px solid var(--gp-color-border-default);
+  background-color: var(--gp-action-menu-color-scrollbar-thumb-bg);
+}
+
+.action-menu__item {
+  flex: 1 0 auto;
+  display: grid;
+  align-items: center;
+  grid-template-areas: 'leadingVisual text';
+  grid-template-columns: min-content 1fr;
+  list-style: none;
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.action-menu__item-anchor {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  align-items: center;
+  gap: var(--gp-size-8);
+  text-decoration: none;
+  color: var(--gp-color-text-default);
+}
+
+.action-menu__item-anchor--disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.action-menu__item-anchor:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.action-menu__item:has(.action-menu__item-anchor:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 var(--focus-outline-width) var(--gp-color-focus);
+  transition: none;
+}
+
+.action-menu__item--medium {
+  padding: var(--gp-control-medium-padding-block-condensed) var(--gp-control-medium-padding-inline-normal);
+  min-height: var(--gp-control-medium-size);
+}
+
+.action-menu__item--medium:has(.action-menu__item-anchor) {
+  padding: 0;
+}
+
+.action-menu__item--medium .action-menu__item-anchor {
+  padding: var(--gp-control-medium-padding-block-condensed) var(--gp-control-medium-padding-inline-normal);
+}
+
+.action-menu__item--small {
+  padding: var(--gp-size-8) var(--gp-control-small-padding-inline-condensed);
+}
+
+.action-menu__item[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+.action-menu__item:hover:not(.action-menu__item[aria-disabled='true']) {
+  cursor: pointer;
+  background-color: var(--gp-action-menu-color-item-hover);
+}
+
+.action-menu__item--selection-type-single {
+  padding-right: var(--gp-size-48);
+}
+
+.action-menu__item:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--focus-outline-width) var(--gp-color-focus);
+  transition: none;
+}
+
+.action-menu__item-leadingVisual {
+  display: flex;
+  min-width: var(--gp-size-16);
+  margin-right: var(--gp-control-medium-gap);
+  color: var(--gp-color-text-default);
+  pointer-events: none;
+  grid-area: leadingVisual / leadingVisual;
+}
+
+.action-menu__item-text {
+  grid-area: text / text;
+  /* display grid collapses the text line box height for optical alignment */
+  display: grid;
+  width: max-content;
+}
+
+.action-menu__item-text > span {
+  line-height: var(--gp-control-medium-line-box-height);
+}
+
+.action-menu__item-icon {
+  fill: var(--gp-color-text-default);
+}
+
+.action-menu__item-content--disabled {
+  color: var(--gp-color-scale-gray-3);
+}
+
+.action-menu__item-icon--disabled {
+  fill: var(--gp-color-scale-gray-3);
+}
+
+@media (forced-colors: active) {
+  .action-menu__item:focus-visible {
+    outline: var(--gp-border-width-thick) solid Highlight;
+    outline-offset: var(--gp-size-2);
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .action-menu,
+  .action-menu::before,
+  .action-menu::after,
+  .action-menu * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

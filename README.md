@@ -1,10 +1,3 @@
-![Graphical Playground - Engine](https://github.com/GraphicalPlayground/.github/blob/main/assets/banners/gp-platform.svg)
-
-[![Explore the Platform](https://github.com/GraphicalPlayground/.github/blob/main/assets/cta/cta-explore-platform.svg)](https://graphical-playground.com)
-[![Read the Handbook](https://github.com/GraphicalPlayground/.github/blob/main/assets/cta/cta-read-handbook.svg)](https://handbook.graphical-playground.com)
-[![Documentation](https://github.com/GraphicalPlayground/.github/blob/main/assets/cta/cta-documentation.svg)](https://docs.graphical-playground.com)
-[![Learn about Licensing](https://github.com/GraphicalPlayground/.github/blob/main/assets/cta/cta-learn-licensing.svg)](https://graphical-playground.com/licensing)
-
 # [@GraphicalPlayground](https://github.com/GraphicalPlayground)/gp-platform
 
 🌎 Read this in: [English](README.md) | [Español](translations/es/README.md) | [Français](translations/fr/README.md) | [简体中文](translations/zh-cn/README.md)
@@ -46,8 +39,6 @@ You can sponsor the Graphical Playground project through the following links:
 
 - [**Buy Me A Coffee**](https://www.buymeacoffee.com/GraphicalPlayground)
 - [**GitHub Sponsors**](https://github.com/sponsors/GraphicalPlayground)
-- [**Open Collective**](https://opencollective.com/graphical-playground)
-- [**Thanks Dev**](https://thanks.dev/u/gh/GraphicalPlayground)
 - [**Direct Donation**](https://graphical-playground.com/donate)
 
 You can see the full list of sponsors and supporters on our
@@ -65,8 +56,6 @@ would love to hear from you! You can reach out to us through the following chann
   - [support@graphical-playground.com](mailto:support@graphical-playground.com)
   - [security@graphical-playground.com](mailto:security@graphical-playground.com)
   - [contact@graphical-playground.com](mailto:contact@graphical-playground.com)
-  - [legal@graphical-playground.com](mailto:legal@graphical-playground.com)
-  - [sponsor@graphical-playground.com](mailto:sponsor@graphical-playground.com)
 - **Social Media**:
   - [LinkedIn](https://www.linkedin.com/company/graphical-playground)
   - [Discord](https://discord.graphical-playground.com)

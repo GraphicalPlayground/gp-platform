@@ -1,0 +1,16 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.List {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  list-style: none;
+  gap: var(--gp-size-8);
+  padding-inline-start: 0px;
+  font-family: var(--gp-body-font-family);
+  color: var(--gp-color-text-default);
+}

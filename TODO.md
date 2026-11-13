@@ -4,8 +4,8 @@ Assignee: [@bombabobo](https://github.com/bombabobo), [@Omegalpha28](https://git
 
 - [ ] Connect the `gp-platform` with the `gp-docs` repository to ensure that the documentation is up-to-date and reflects the latest changes in the platform.
 - [ ] Implement a CI/CD pipeline to automate the testing and deployment of the platform.
-- [ ] Separate the `@gp/frontend` into 4 distinct packages: `@gp/api`, `@gp/web`, `@gp/marketing`, and `@gp/admin` to improve modularity and maintainability.
-- [ ] Move away a lot of utilities from `@gp/frontend` to the respective packages to reduce redundancy and improve code organization.
+- [~] Separate the `@gp/frontend` into 4 distinct packages: `@gp/backend`, `@gp/app`, `@gp/marketing`, and `@gp/admin` to improve modularity and maintainability.
+- [~] Move away a lot of utilities from `@gp/frontend` to the respective packages to reduce redundancy and improve code organization.
 - [ ] Write the comprehensive `CONTRIBUTING.md` file to provide clear guidelines for contributors, including code style, testing requirements, and submission process.
 - [ ] Update the `README.md` file to include detailed instructions on how to set up the development environment, run tests, and contribute to the project.
 - [ ] Implement a robust error handling mechanism across the platform to ensure that errors are logged and reported effectively, improving the overall reliability of the system.
@@ -17,3 +17,5 @@ Assignee: [@bombabobo](https://github.com/bombabobo), [@Omegalpha28](https://git
 - [ ] Add CI to automatically update the `CHANGELOG.md` file based on the commit messages, ensuring that the changelog is always up-to-date with the latest changes in the platform.
 - [ ] Add CI to automatically update the `DONORS.md` and `SPONSORS.md` files based on the contributions and sponsorships received, ensuring that the recognition of contributors and sponsors is always up-to-date.
 - [ ] Protect the staging and production branches to prevent accidental changes and ensure that only authorized users can make modifications to these critical branches.
+- [x] Add support for https://github.com/KKonstantinov/markdown-for-agents/tree/main/packages/middleware/nextjs
+- [ ] Move away from our static CMS to a more dynamic and flexible content management system like Payload CMS with a database at Neon. The CMS will live on it's own apps cause we don't want `@gp/marketing` to have direct access to the database, and we don't want to open the `@gp/admin` API only for the CMS. We will then create a new app called `@gp/cms` that will be the only one with access to the content database and will serve the content to the other apps via API. This will improve security and scalability of the platform.

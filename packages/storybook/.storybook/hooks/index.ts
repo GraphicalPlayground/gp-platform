@@ -1,5 +1,5 @@
-export { useColorVariables, groupVariablesByCategory } from './use-color-variables';
-export type { ColorVariableValue } from './use-color-variables';
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
 
-export { useThemeToggle, getSystemTheme } from './use-theme-toggle';
-export type { Theme } from './use-theme-toggle';
+export * from './use-theme-toggle';

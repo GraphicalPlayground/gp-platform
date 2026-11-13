@@ -1,0 +1,40 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+declare const styles: {
+  readonly 'River': string;
+  readonly 'River--50-50': string;
+  readonly 'River--60-40': string;
+  readonly 'River--align-center': string;
+  readonly 'River--align-end': string;
+  readonly 'River--align-start': string;
+  readonly 'River--variant-gridline': string;
+  readonly 'RiverBreakout': string;
+  readonly 'RiverBreakout--muted': string;
+  readonly 'RiverBreakout--variant-gridline': string;
+  readonly 'RiverBreakout__hiddenHeading': string;
+  readonly 'River__body-text': string;
+  readonly 'River__call-to-action': string;
+  readonly 'River__content': string;
+  readonly 'River__content--align-block-end': string;
+  readonly 'River__heading': string;
+  readonly 'River__label': string;
+  readonly 'River__leadingComponent': string;
+  readonly 'River__text': string;
+  readonly 'River__trailingComponent': string;
+  readonly 'River__trailingComponent--divider': string;
+  readonly 'River__visual': string;
+  readonly 'River__visual--fill-media': string;
+  readonly 'River__visual--has-background': string;
+  readonly 'River__visual--has-shadow': string;
+  readonly 'River__visual--padding-all': string;
+  readonly 'River__visual--padding-none': string;
+  readonly 'River__visual--position-block-end': string;
+  readonly 'River__visual--position-block-end-inline-end': string;
+  readonly 'River__visual--position-block-end-inline-start': string;
+  readonly 'River__visual--position-center': string;
+  readonly 'River__visual--rounded': string;
+};
+
+export = styles;

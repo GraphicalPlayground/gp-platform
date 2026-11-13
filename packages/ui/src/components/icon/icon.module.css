@@ -1,0 +1,166 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.icon {
+  box-sizing: content-box;
+  padding: 0;
+}
+
+.icon > svg {
+  display: block;
+}
+
+.icon--size-20 {
+  width: var(--gp-size-20);
+  height: var(--gp-size-20);
+}
+
+.icon--size-24 {
+  width: var(--gp-size-24);
+  height: var(--gp-size-24);
+}
+
+.icon--size-28 {
+  width: var(--gp-size-28);
+  height: var(--gp-size-28);
+}
+
+.icon--size-32 {
+  width: var(--gp-size-32);
+  height: var(--gp-size-32);
+}
+
+.icon--size-36 {
+  width: var(--gp-size-36);
+  height: var(--gp-size-36);
+}
+
+.icon--size-40 {
+  width: var(--gp-size-40);
+  height: var(--gp-size-40);
+}
+
+.icon--size-44 {
+  width: var(--gp-size-44);
+  height: var(--gp-size-44);
+}
+
+.icon--background {
+  padding: var(--gp-size-12);
+  border-radius: var(--gp-size-12);
+}
+
+.icon--color-default {
+  color: var(--gp-icon-color-default);
+}
+
+.icon--background-color-default {
+  background-color: var(--gp-icon-background-default);
+}
+
+.icon--color-blue {
+  color: var(--gp-icon-color-blue);
+}
+
+.icon--background-color-blue {
+  background-color: var(--gp-icon-background-blue);
+}
+
+.icon--color-coral {
+  color: var(--gp-icon-color-coral);
+}
+
+.icon--background-color-coral {
+  background-color: var(--gp-icon-background-coral);
+}
+
+.icon--color-green {
+  color: var(--gp-icon-color-green);
+}
+
+.icon--background-color-green {
+  background-color: var(--gp-icon-background-green);
+}
+
+.icon--color-gray {
+  color: var(--gp-icon-color-gray);
+}
+
+.icon--background-color-gray {
+  background-color: var(--gp-icon-background-gray);
+}
+
+.icon--color-indigo {
+  color: var(--gp-icon-color-indigo);
+}
+
+.icon--background-color-indigo {
+  background-color: var(--gp-icon-background-indigo);
+}
+
+.icon--color-lemon {
+  color: var(--gp-icon-color-lemon);
+}
+
+.icon--background-color-lemon {
+  background-color: var(--gp-icon-background-lemon);
+}
+
+.icon--color-lime {
+  color: var(--gp-icon-color-lime);
+}
+
+.icon--background-color-lime {
+  background-color: var(--gp-icon-background-lime);
+}
+
+.icon--color-orange {
+  color: var(--gp-icon-color-orange);
+}
+
+.icon--background-color-orange {
+  background-color: var(--gp-icon-background-orange);
+}
+
+.icon--color-pink {
+  color: var(--gp-icon-color-pink);
+}
+
+.icon--background-color-pink {
+  background-color: var(--gp-icon-background-pink);
+}
+
+.icon--color-purple {
+  color: var(--gp-icon-color-purple);
+}
+
+.icon--background-color-purple {
+  background-color: var(--gp-icon-background-purple);
+}
+
+.icon--color-red {
+  color: var(--gp-icon-color-red);
+}
+
+.icon--background-color-red {
+  background-color: var(--gp-icon-background-red);
+}
+
+.icon--color-teal {
+  color: var(--gp-icon-color-teal);
+}
+
+.icon--background-color-teal {
+  background-color: var(--gp-icon-background-teal);
+}
+
+.icon--color-yellow {
+  color: var(--gp-icon-color-yellow);
+}
+
+.icon--background-color-yellow {
+  background-color: var(--gp-icon-background-yellow);
+}

@@ -1,0 +1,161 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+/*
+ * Default Select styles
+ */
+.Select {
+  appearance: none;
+  color: var(--gp-control-color-fg-default);
+  cursor: pointer;
+  background-color: var(--gp-color-canvas-default);
+  border: none;
+  border-radius: var(--gp-border-radius-medium);
+  line-height: var(--gp-text-line-height-200);
+  transition: var(--gp-control-animation-duration) var(--gp-control-animation-easing);
+  transition-property: color, background-color, box-shadow, border-color;
+  width: 100%;
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+@media screen and (forced-colors: active) {
+  /* Maintain dark bg color in Firefox on Windows high-contrast mode */
+  .Select:disabled {
+    background-color: -moz-combobox;
+  }
+}
+
+.Select::placeholder {
+  color: var(--gp-color-text-muted);
+  opacity: 1;
+}
+
+.Select:focus-visible {
+  border-color: var(--gp-control-color-focus);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--gp-control-color-focus);
+}
+
+@media (forced-colors: active) {
+  .Select:focus-visible {
+    outline: var(--gp-border-width-thick) solid Highlight;
+    outline-offset: var(--gp-size-2);
+  }
+}
+
+.Select[disabled] {
+  -webkit-text-fill-color: var(--gp-control-color-fg-disabled);
+  color: var(--gp-control-color-fg-disabled);
+  cursor: not-allowed;
+  background-color: var(--gp-control-color-canvas-disabled);
+  border-color: var(--gp-control-color-border-disabled);
+  opacity: 1;
+}
+
+.Select-wrapper--disabled.Select-wrapper::after {
+  background-color: var(--gp-control-color-fg-disabled);
+}
+
+/*
+ * Sizes
+ */
+
+.Select-wrapper--medium {
+  height: var(--gp-control-medium-size);
+}
+
+.Select-wrapper--medium::after {
+  margin-inline-end: calc(var(--gp-control-medium-padding-inline-condensed) / 2);
+}
+
+.Select--medium {
+  font-weight: var(--gp-text-weight-100);
+  font-size: var(--gp-text-size-100);
+  padding-inline: var(--gp-control-medium-padding-inline-condensed);
+  padding-inline-end: calc(var(--gp-control-medium-padding-inline-condensed) + var(--gp-size-16));
+  padding-block: 0;
+}
+
+.Select-wrapper--large {
+  height: var(--gp-control-large-size);
+}
+
+.Select-wrapper--large::after {
+  margin-inline-end: var(--gp-size-8);
+}
+
+.Select--large {
+  font-weight: var(--gp-text-weight-200);
+  font-size: var(--gp-text-size-200);
+  padding-inline: var(--gp-control-large-padding-inline-condensed);
+  padding-inline-end: calc(var(--gp-control-large-padding-inline-condensed) + var(--gp-size-16));
+  padding-block: 0;
+}
+
+/*
+ * Select wrapper
+ */
+
+.Select-wrapper {
+  border: solid var(--gp-border-width-thin, 1px) var(--gp-control-color-border-default);
+  border-radius: var(--gp-border-radius-medium, 6px);
+  font-family: var(--gp-body-font-family);
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: minmax(0, auto) var(--gp-size-16);
+}
+
+.Select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+  pointer-events: none;
+  background-color: var(--gp-control-color-fg-default);
+  mask: url('data:image/svg+xml;gp64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iIzU4NjA2OSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNC40MjcgOS40MjdsMy4zOTYgMy4zOTZhLjI1MS4yNTEgMCAwMC4zNTQgMGwzLjM5Ni0zLjM5NkEuMjUuMjUgMCAwMDExLjM5NiA5SDQuNjA0YS4yNS4yNSAwIDAwLS4xNzcuNDI3ek00LjQyMyA2LjQ3TDcuODIgMy4wNzJhLjI1LjI1IDAgMDEuMzU0IDBMMTEuNTcgNi40N2EuMjUuMjUgMCAwMS0uMTc3LjQyN0g0LjZhLjI1LjI1IDAgMDEtLjE3Ny0uNDI3eiIgLz48L3N2Zz4=');
+  -webkit-mask: url('data:image/svg+xml;gp64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iIzU4NjA2OSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNNC40MjcgOS40MjdsMy4zOTYgMy4zOTZhLjI1MS4yNTEgMCAwMC4zNTQgMGwzLjM5Ni0zLjM5NkEuMjUuMjUgMCAwMDExLjM5NiA5SDQuNjA0YS4yNS4yNSAwIDAwLS4xNzcuNDI3ek00LjQyMyA2LjQ3TDcuODIgMy4wNzJhLjI1LjI1IDAgMDEuMzU0IDBMMTEuNTcgNi40N2EuMjUuMjUgMCAwMS0uMTc3LjQyN0g0LjZhLjI1LjI1IDAgMDEtLjE3Ny0uNDI3eiIgLz48L3N2Zz4=');
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  grid-column: 2;
+  grid-row: 1;
+  place-self: center flex-end;
+}
+
+.Select-wrapper--disabled {
+  border-color: var(--gp-control-color-border-disabled);
+}
+
+.Select-wrapper--fullWidth {
+  width: 100%;
+}
+
+/*
+ * Validation
+ */
+
+.Select--success {
+  border-color: var(--gp-color-success-fg);
+}
+
+.Select--error {
+  border-color: var(--gp-color-danger-fg);
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .Select,
+  .Select::before,
+  .Select::after,
+  .Select * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

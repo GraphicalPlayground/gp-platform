@@ -1,0 +1,134 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+/**
+ * Variants
+ */
+.Statistic :is(img, picture) {
+  display: block;
+}
+
+.Statistic--variant-boxed {
+  background-color: var(--gp-color-canvas-subtle);
+  border-radius: var(--gp-border-radius-large);
+}
+
+.Statistic--variant-boxed,
+.Statistic--variant-boxed.Statistic--padding-none {
+  padding: var(--gp-statistic-spacing-spacious);
+}
+
+/**
+ * Padding options
+ */
+.Statistic--padding-none {
+  padding: 0;
+}
+
+.Statistic--padding-condensed {
+  padding: var(--gp-statistic-spacing-condensed);
+}
+
+.Statistic--padding-normal {
+  padding: var(--gp-statistic-spacing-normal);
+}
+
+.Statistic--padding-spacious {
+  padding: var(--gp-statistic-spacing-spacious);
+}
+
+.Statistic--narrow-padding-condensed {
+  padding: var(--gp-box-spacing-condensed);
+}
+.Statistic--narrow-padding-normal {
+  padding: var(--gp-box-spacing-normal);
+}
+.Statistic--narrow-padding-spacious {
+  padding: var(--gp-size-32);
+}
+.Statistic--narrow-padding-none {
+  padding: 0;
+}
+
+@media screen and (min-width: 48rem) {
+  .Statistic--regular-padding-condensed {
+    padding: var(--gp-statistic-spacing-condensed);
+  }
+  .Statistic--regular-padding-normal {
+    padding: var(--gp-statistic-spacing-normal);
+  }
+  .Statistic--regular-padding-spacious {
+    padding: var(--gp-statistic-spacing-spacious);
+  }
+  .Statistic--regular-padding-none {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 80rem) {
+  .Statistic--wide-padding-condensed {
+    padding: var(--gp-statistic-spacing-condensed);
+  }
+  .Statistic--wide-padding-normal {
+    padding: var(--gp-statistic-spacing-normal);
+  }
+  .Statistic--wide-padding-spacious {
+    padding: var(--gp-statistic-spacing-spacious);
+  }
+  .Statistic--wide-padding-none {
+    padding: 0;
+  }
+}
+
+.Statistic__heading {
+  position: relative;
+}
+
+.Statistic__heading sup {
+  font-size: var(--gp-text-size-100);
+  line-height: 0;
+  font-weight: var(--gp-text-weight-100);
+  font-stretch: normal;
+  vertical-align: top;
+  top: var(--gp-size-6); /* Optical align to heading top */
+  position: relative;
+}
+
+.Statistic__heading sup a {
+  /* Targets footnote links. Specificity not ideal, but these are passed through by the user */
+  padding: var(--gp-size-4);
+  display: inline-block;
+  line-height: 1;
+}
+
+/*
+ * Description
+ */
+.Statistic__description--accent {
+  color: var(--gp-color-accent-primary);
+}
+
+.Statistic__description {
+  position: relative;
+  display: block;
+  margin-block-start: var(--gp-size-8);
+  font-stretch: normal;
+}
+
+.Statistic__description sup {
+  font-size: var(--gp-text-size-100);
+  vertical-align: top;
+  top: 0;
+  position: relative;
+  line-height: 0;
+}
+
+.Statistic__description sup a {
+  /* Targets footnote links. Specificity not ideal, but these are passed through by the user */
+  padding: var(--gp-size-4);
+  display: inline-block;
+  line-height: 1;
+}

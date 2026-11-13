@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import conventional from '@commitlint/config-conventional';
 
 /**
@@ -12,7 +16,29 @@ const commitLintConfig = {
     'type-enum': [
       2,
       'always',
-      ['feat', 'fix', 'refactor', 'style', 'docs', 'test', 'build', 'ci', 'chore', 'revert', 'feature']
+      [
+        'feat',
+        'fix',
+        'refactor',
+        'style',
+        'docs',
+        'test',
+        'build',
+        'ci',
+        'chore',
+        'revert',
+        'feature',
+        'add',
+        'remove',
+        'update',
+        'upgrade',
+        'downgrade',
+        'release',
+        'merge',
+        'hotfix',
+        'config',
+        'lint'
+      ]
     ]
   }
 };

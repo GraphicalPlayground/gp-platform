@@ -1,0 +1,161 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.Radio-wrapper {
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  grid-row: 1;
+}
+
+.Radio {
+  align-items: center;
+  background-color: var(--gp-control-radio-bg-default);
+  border: solid var(--gp-border-width-thin, 1px) var(--gp-control-radio-border-default);
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  height: 20px;
+  justify-content: center;
+  margin: 3px 0; /* mimic default browser-applied vertical margin */
+  margin: 3px 3px 0px 5px; /* Emulate browser defaults */
+
+  width: 20px;
+  outline: none;
+  box-shadow: 0 0 0 3px transparent;
+  position: relative;
+}
+
+/*
+Fixes safari bug where outline doesn't respect border-radius
+*/
+.Radio::before {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  top: -4px;
+  right: -2px;
+  bottom: -2px;
+  left: -4px;
+  border: var(--gp-border-width-thin) solid transparent;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+/**
+ * Radio native input - visually hidden
+ */
+.Radio-input {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.Radio-dot {
+  position: absolute;
+  display: none;
+  border-color: var(--gp-control-radio-dot-checked);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gp-control-radio-dot-checked);
+  position: absolute;
+  display: block;
+  transform: scale(0.7);
+  opacity: 0;
+  transition:
+    transform 0.35s var(--gp-animation-easing-glide),
+    opacity 0.35s var(--gp-animation-easing-glide);
+}
+@media (prefers-reduced-motion) {
+  .Radio-dot {
+    transition: none;
+  }
+}
+
+/*
+* Checked state
+*/
+
+.Radio-input:checked + .Radio {
+  background-color: var(--gp-control-radio-bg-checked);
+  border-color: var(--gp-control-radio-border-checked);
+}
+
+.Radio-input:not(:checked):not([disabled]) + .Radio:hover {
+  background-color: var(--gp-control-radio-bg-hover);
+  border-color: var(--gp-control-radio-border-hover);
+}
+
+.Radio-input:checked:not([disabled]) + .Radio:hover {
+  background-color: var(--gp-control-radio-bg-checked-hover);
+  border-color: var(--gp-control-radio-border-checked-hover);
+}
+
+.Radio-input:checked:not([disabled]) + .Radio:hover .Radio-dot {
+  background: var(--gp-control-radio-dot-checked-hover);
+  border-color: var(--gp-control-radio-dot-checked-hover);
+}
+
+.Radio-input:checked + .Radio .Radio-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.Radio-input:focus + .Radio {
+  box-shadow: 0 0 0 4px var(--gp-control-color-focus);
+}
+
+/* TODO: Check with a11y team */
+.Radio-input:checked:focus + .Radio {
+  border-color: var(--gp-control-radio-border-checked);
+}
+
+.Radio-input[disabled] + .Radio,
+.Radio-input[disabled]:checked + .Radio {
+  -webkit-text-fill-color: var(--gp-control-color-fg-disabled);
+  color: var(--gp-control-color-fg-disabled);
+  cursor: not-allowed;
+  background-color: var(--gp-control-radio-bg-disabled);
+  border-color: var(--gp-control-radio-border-disabled);
+  opacity: 1;
+}
+
+.Radio-input[disabled]:checked + .Radio .Radio-dot {
+  background: var(--gp-control-color-fg-disabled);
+  border-color: var(--gp-control-color-fg-disabled);
+}
+
+@media (forced-colors: active) {
+  .Radio-input:focus + .Radio {
+    outline: var(--gp-border-width-thin) solid Highlight;
+    outline-offset: var(--base-size-4);
+  }
+
+  .Radio-input:checked + .Radio .Radio-dot {
+    background-color: Highlight;
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .Radio,
+  .Radio::before,
+  .Radio::after,
+  .Radio * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,29 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@layer theme, base, components, utilities;
+
+/* Base layer - Tailwind CSS v4 */
+@import 'tailwindcss';
+
+/* Fonts */
+@import '@gp/fonts/fonts.css';
+
+/* Base styles */
+@import './src/styles/base.css' layer(base);
+@import './src/styles/scrollbar.css' layer(base);
+
+/* Base component structures (unstyled) */
+@import './src/components/index.css' layer(components);
+
+/* Default theme (variables + component customizations) */
+@import './src/themes/default/index.css' layer(theme);
+
+/* Utilities */
+@import './src/styles/utilities/index.css';
+
+/* Variants */
+@import './src/styles/variants/index.css';

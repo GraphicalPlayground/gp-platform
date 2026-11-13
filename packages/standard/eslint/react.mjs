@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import typescriptParser from '@typescript-eslint/parser';
 import { defineConfig } from 'eslint/config';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';

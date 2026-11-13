@@ -1,0 +1,17 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/sizes.css';
+@import './tokens/animations.css';
+
+@layer base {
+  :root {
+    --gp-font-sans: var(--font-mona-sans), ui-sans-serif, system-ui, sans-serif;
+    --gp-font-mono: var(--font-mona-sans-mono), ui-monospace, monospace;
+  }
+}

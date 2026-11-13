@@ -1,0 +1,450 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Meta, StoryFn } from '@storybook/react';
+import { River } from './river';
+import { Heading } from '../../heading';
+import { InlineCode } from '../../inline-code';
+import { Link } from '../../link';
+import { Section } from '../../section';
+import { Stack } from '../../stack';
+import { Text } from '../../text';
+import { Box } from '../../box';
+// import { Timeline } from '../../timeline';
+import placeholderImage from '../../../fixtures/images/placeholder.png';
+
+export default {
+  title: 'Components/River/features',
+  component: River
+} as Meta<typeof River>;
+
+const PlaceholderImage = () => (
+  <img src={placeholderImage.src} alt='placeholder, blank area with a gray background color' />
+);
+
+export const Left: StoryFn<typeof River> = () => (
+  <River align='start'>
+    <River.Visual>
+      <PlaceholderImage />
+    </River.Visual>
+    <River.Content>
+      <Heading>Heading</Heading>
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </Text>
+      <Link href='#'>Call to action</Link>
+    </River.Content>
+  </River>
+);
+
+export const Right: StoryFn<typeof River> = () => (
+  <River align='end'>
+    <River.Visual>
+      <PlaceholderImage />
+    </River.Visual>
+    <River.Content>
+      <Heading>Heading</Heading>
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </Text>
+      <Link href='#'>Call to action</Link>
+    </River.Content>
+  </River>
+);
+
+export const Center: StoryFn<typeof River> = () => (
+  <River align='center'>
+    <River.Visual>
+      <PlaceholderImage />
+    </River.Visual>
+    <River.Content>
+      <Heading>Heading</Heading>
+      <Text>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed turpis
+        felis nam pulvinar risus elementum.
+      </Text>
+      <Link href='#'>Call to action</Link>
+    </River.Content>
+  </River>
+);
+
+export const DuoTone: StoryFn<typeof River> = () => (
+  <River>
+    <River.Visual>
+      <PlaceholderImage />
+    </River.Visual>
+    <River.Content>
+      <Text size='300'>
+        <b>This first sentence is highlighted</b> and here is where the body copy starts. Remember to keep this nice and
+        succinct.
+      </Text>
+      <Link href='#'>Call to action</Link>
+    </River.Content>
+  </River>
+);
+
+export const ColumnRatio6040: StoryFn<typeof River> = () => (
+  <Section>
+    <River imageTextRatio='60:40'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Text>Use the imageTextRatio prop with &quot;60:40&quot; to display a larger image.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+ColumnRatio6040.storyName = '60:40 image ratio';
+
+export const ColumnRatio5050: StoryFn<typeof River> = () => (
+  <Section>
+    <River imageTextRatio='50:50'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Text>By default imageTextRatio is set to &quot;50:50&quot;.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+ColumnRatio5050.storyName = '50:50 image ratio';
+
+export const AlternativeHeadingLevel: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading as='h1'>This is a h1</Heading>
+        <Text>Use alternative heading levels, while maintaining the default text size.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+export const NoRoundedVisualCorners: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual rounded={false}>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>This is a h1</Heading>
+        <Text>Use alternative heading levels, while maintaining the default text size.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+export const AlternativeHeadingSize: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading size='1'>Heading</Heading>
+        <Text>Use alternative heading sizes, while maintaining the default heading level.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+const ExampleTrailingComponent = () => (
+  <Stack direction='vertical' padding='none' gap='spacious' alignItems='flex-start'>
+    {/* <Timeline>
+      <Timeline.Item>
+        <b>GitHub Codespaces</b> offers a complete dev environment in seconds.
+      </Timeline.Item>
+      <Timeline.Item>
+        <b>GitHub Copilot</b> is your AI pair programmer that empowers you to complete tasks.
+      </Timeline.Item>
+    </Timeline> */}
+    <Link href='#' variant='accent'>
+      Learn more about a thing
+    </Link>
+  </Stack>
+);
+
+export const CustomTrailingContent: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content trailingComponent={ExampleTrailingComponent}>
+        <Heading>Heading</Heading>
+        <Text>Use alternative heading sizes, while maintaining the default heading level.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+CustomTrailingContent.storyName = 'Custom trailing content';
+
+export const CustomMediaContent: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content
+        leadingComponent={() => (
+          <picture>
+            <img src={placeholderImage.src} alt='Placeholder leading visual' width={64} height={64} />
+          </picture>
+        )}
+        trailingComponent={() => (
+          <img src={placeholderImage.src} alt='Placeholder trailing visual' width={64} height={64} />
+        )}
+      >
+        <Heading>Heading</Heading>
+        <Text>Test showing custom images in the slots</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+CustomMediaContent.storyName = 'Custom media content';
+
+export const CustomTrailingContentWithDivider: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content trailingComponent={ExampleTrailingComponent} trailingComponentDivider>
+        <Heading>Heading</Heading>
+        <Text>Use alternative heading sizes, while maintaining the default heading level.</Text>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+CustomTrailingContentWithDivider.storyName = 'Custom trailing content w/ divider';
+
+export const AlternatingLayout: StoryFn<typeof River> = () => (
+  <Section>
+    <River align='start'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>Heading</Heading>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+    <River align='end'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>Heading</Heading>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+    <River align='center'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>Heading</Heading>
+        <Text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sapien sit ullamcorper id. Aliquam luctus sed
+          turpis felis nam pulvinar risus elementum.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+export const ContentAlignBlockEnd: StoryFn<typeof River> = () => (
+  <Section>
+    <River>
+      <River.Visual>
+        <img
+          src={placeholderImage.src}
+          alt='placeholder, blank area with a gray background color'
+          style={{ minHeight: 400 }}
+        />
+      </River.Visual>
+      <River.Content align='block-end'>
+        <Heading>Content aligned to block-end</Heading>
+        <Text>
+          On large viewports, the content aligns to the bottom of its container. This is useful when the visual is
+          taller than the content.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+ContentAlignBlockEnd.storyName = 'Content align block-end';
+
+export const WithInlineCodeElement: StoryFn<typeof River> = () => (
+  <>
+    <River align='start'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>
+          Work directly with your GitHub Issues via <InlineCode wrap={false}>/mcp</InlineCode> support
+        </Heading>
+        <Text>
+          Built on GitHub&apos;s native <InlineCode wrap={false}>/mcp</InlineCode> integration, Copilot can search
+          issues, analyze labels and activity, and summarize scope so you can move from backlog to implementation
+          without context hunting.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+    <River align='end'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>
+          Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+          <InlineCode wrap={false}>/fleet</InlineCode>
+        </Heading>
+        <Text>
+          Use <InlineCode wrap={false}>/model</InlineCode> to switch, then <InlineCode wrap={false}>/fleet</InlineCode>{' '}
+          to execute in parallel or run multiple models at once.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+    <River align='center'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>
+          Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+          <InlineCode wrap={false}>/fleet</InlineCode>
+        </Heading>
+        <Text>
+          Use <InlineCode wrap={false}>/model</InlineCode> to switch, then <InlineCode wrap={false}>/fleet</InlineCode>{' '}
+          to execute in parallel or run multiple models at once.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+    {/* div.dark replace ThemeProvider */}
+    <div className='dark'>
+      <Box backgroundColor='default'>
+        <River align='start'>
+          <River.Visual>
+            <PlaceholderImage />
+          </River.Visual>
+          <River.Content>
+            <Heading>
+              Work directly with your GitHub Issues via <InlineCode wrap={false}>/mcp</InlineCode> support
+            </Heading>
+            <Text>
+              Built on GitHub&apos;s native <InlineCode wrap={false}>/mcp</InlineCode> integration, Copilot can search
+              issues, analyze labels and activity, and summarize scope.
+            </Text>
+            <Link href='#'>Call to action</Link>
+          </River.Content>
+        </River>
+      </Box>
+    </div>
+  </>
+);
+
+export const WithInlineCodeElementCustomSizes: StoryFn<typeof River> = () => (
+  <>
+    <River align='start'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading size='3'>
+          Work directly with your GitHub Issues via <InlineCode wrap={false}>/mcp</InlineCode> support
+        </Heading>
+        <Text size='300'>
+          Built on GitHub&apos;s native <InlineCode wrap={false}>/mcp</InlineCode> integration, Copilot can search
+          issues, analyze labels and activity, and summarize scope.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+
+    <River align='start'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading size='subhead-medium'>
+          Use any <InlineCode wrap={false}>/model</InlineCode> parallelize with{' '}
+          <InlineCode wrap={false}>/fleet</InlineCode>
+        </Heading>
+        <Text size='200'>
+          Use <InlineCode wrap={false}>/model</InlineCode> to switch, then <InlineCode wrap={false}>/fleet</InlineCode>{' '}
+          to execute in parallel or run multiple models at once.
+        </Text>
+        <Link href='#'>Call to action</Link>
+      </River.Content>
+    </River>
+  </>
+);
+WithInlineCodeElementCustomSizes.storyName = 'With inline code element + non-standard size overrides';
+
+export const WithInlineCodeGridline: StoryFn<typeof River> = () => (
+  <Section>
+    <River variant='gridline' align='start' imageTextRatio='60:40'>
+      <River.Visual>
+        <PlaceholderImage />
+      </River.Visual>
+      <River.Content>
+        <Heading>
+          Move from <InlineCode wrap={false}>/issues</InlineCode> to implementation with{' '}
+          <InlineCode wrap={false}>/mcp</InlineCode>
+        </Heading>
+        <Text>
+          Use <InlineCode wrap={false}>/model</InlineCode> to select the right model,{' '}
+          <InlineCode wrap={false}>/fleet</InlineCode> to parallelize work, and{' '}
+          <InlineCode wrap={false}>/polish</InlineCode> before shipping.
+        </Text>
+        <Link href='#'>Explore the workflow</Link>
+      </River.Content>
+    </River>
+  </Section>
+);
+
+export const WithNativeCodeElement: StoryFn<typeof River> = () => (
+  <River>
+    <River.Visual>
+      <PlaceholderImage />
+    </River.Visual>
+    <River.Content>
+      <Heading>
+        Native <code>/mcp</code> remains supported
+      </Heading>
+      <Text>
+        Existing authored content can wrap long paths such as{' '}
+        <code>packages/react/src/InlineCode/InlineCode.module.css</code>.
+      </Text>
+      <Link href='#'>Call to action</Link>
+    </River.Content>
+  </River>
+);

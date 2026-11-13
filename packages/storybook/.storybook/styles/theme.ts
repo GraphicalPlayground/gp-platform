@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import { create, themes as storybookThemes } from 'storybook/theming';
 
 // GPlayd Colors (OKLCH -> Hex approximation)

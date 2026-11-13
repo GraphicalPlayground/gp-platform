@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import { addons } from 'storybook/manager-api';
 
 import { DEFAULT_THEME, THEME_EVENT_NAME, THEME_GLOBAL_TYPE_ID, ensureThemeKey } from '../../addons/theme/constants';

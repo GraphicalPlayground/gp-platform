@@ -1,0 +1,3 @@
+---
+title: @gp/payments
+---

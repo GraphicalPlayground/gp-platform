@@ -1,0 +1,141 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.Checkbox-wrapper {
+  position: relative;
+  grid-row: 1;
+}
+
+.Checkbox {
+  align-items: center;
+  background-color: var(--gp-control-checkbox-bg-default);
+  border: solid var(--gp-border-width-thin, 1px) var(--gp-control-color-border-default);
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-flex;
+  height: 20px;
+  justify-content: center;
+  margin: 3px 0; /* mimic default browser-applied vertical margin */
+  transition: all 0.35s ease-out;
+  width: 20px;
+  outline: 1px solid transparent;
+  box-shadow: 0 0 0 3px transparent;
+}
+
+/**
+ * Checkbox native input - visually hidden
+ */
+.Checkbox-input {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.Checkbox-checkmark {
+  height: var(--gp-size-12);
+  width: var(--gp-size-12);
+}
+
+.Checkbox-checkmark-path {
+  stroke: var(--gp-control-checkbox-fg-checked);
+  stroke-dashoffset: 111.46px;
+  stroke-dasharray: 111.46px;
+  transition: all 350ms var(--gp-control-animation-easing);
+}
+
+/*
+* Checked state
+*/
+
+.Checkbox-input:checked + .Checkbox,
+.Checkbox--indeterminate {
+  background: var(--gp-control-checkbox-bg-checked);
+  border-color: var(--gp-control-checkbox-border-checked);
+}
+
+.Checkbox-input:not(:checked):not([disabled]) + .Checkbox:not(.Checkbox--indeterminate):hover {
+  background: var(--gp-control-checkbox-bg-hover);
+  border-color: var(--gp-control-checkbox-border-hover);
+}
+
+.Checkbox-input:checked:not([disabled]) + .Checkbox:hover {
+  background: var(--gp-control-checkbox-bg-checked-hover);
+  border-color: var(--gp-control-checkbox-border-checked-hover);
+}
+
+.Checkbox-input:not([disabled]) + .Checkbox--indeterminate:hover {
+  background: var(--gp-control-checkbox-bg-indeterminate-hover);
+  border-color: var(--gp-control-checkbox-border-indeterminate-hover);
+}
+
+.Checkbox--indeterminate .Checkbox-checkmark {
+  fill: var(--gp-control-checkbox-fg-checked);
+}
+
+.Checkbox-input:checked + .Checkbox .Checkbox-checkmark-path,
+.Checkbox--indeterminate .Checkbox-checkmark-path {
+  stroke: var(--gp-control-checkbox-fg-checked);
+  stroke-dashoffset: 0;
+}
+
+.Checkbox-input:focus + .Checkbox {
+  box-shadow: 0 0 0 3px var(--gp-control-color-focus);
+}
+
+/* TODO: Check with a11y team */
+.Checkbox-input:checked:focus + .Checkbox,
+.Checkbox-input:focus + .Checkbox--indeterminate {
+  border-color: var(--gp-control-checkbox-border-checked);
+}
+
+.Checkbox-input[disabled] + .Checkbox {
+  -webkit-text-fill-color: var(--gp-control-color-fg-disabled);
+  color: var(--gp-control-color-fg-disabled);
+  cursor: not-allowed;
+  background-color: transparent;
+  border-color: var(--gp-control-checkbox-border-unchecked-disabled);
+  opacity: 1;
+}
+
+.Checkbox-input[disabled]:checked + .Checkbox {
+  background-color: var(--gp-control-checkbox-bg-checked-disabled);
+  border-color: var(--gp-control-checkbox-border-checked-disabled);
+}
+
+.Checkbox-input[disabled]:checked + .Checkbox .Checkbox-checkmark-path {
+  stroke: var(--gp-control-checkbox-fg-checked-disabled);
+}
+
+@media (forced-colors: active) {
+  .Checkbox-input:focus + .Checkbox {
+    outline: var(--gp-border-width-thin) solid Highlight;
+    outline-offset: var(--gp-size-2);
+  }
+
+  .Checkbox-input:checked + .Checkbox .Checkbox-checkmark-path {
+    stroke: Highlight;
+  }
+
+  .Checkbox {
+    transition: none;
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  .Checkbox,
+  .Checkbox::before,
+  .Checkbox::after,
+  .Checkbox * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

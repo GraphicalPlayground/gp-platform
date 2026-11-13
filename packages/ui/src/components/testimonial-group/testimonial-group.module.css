@@ -1,0 +1,108 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.TestimonialGroup {
+  width: 100%;
+  min-width: 0;
+}
+
+.TestimonialGroup__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.TestimonialGroup__slides {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.TestimonialGroup__slide {
+  position: absolute;
+  width: 100%;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.TestimonialGroup__slide--active {
+  position: relative;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.TestimonialGroup__avatar {
+  flex: none;
+  border: var(--gp-size-2) solid var(--gp-testimonial-quote-mark-color-green);
+  border-radius: 50%;
+}
+
+.TestimonialGroup__avatar.TestimonialGroup__avatar--size-large {
+  width: var(--gp-size-48);
+  height: var(--gp-size-48);
+}
+
+.TestimonialGroup__quoteMark,
+.TestimonialGroup__quote,
+.TestimonialGroup__media {
+  transition: opacity var(--gp-testimonial-group-fade-in-duration) ease-in-out;
+}
+
+.TestimonialGroup__testimonial--out .TestimonialGroup__quoteMark {
+  opacity: 0;
+  transition: opacity var(--gp-testimonial-group-fade-out-duration) ease-in-out 120ms;
+}
+
+.TestimonialGroup__testimonial--out .TestimonialGroup__quote {
+  opacity: 0;
+  transition: opacity var(--gp-testimonial-group-fade-out-duration) ease-in-out 80ms;
+}
+
+.TestimonialGroup__testimonial--out .TestimonialGroup__media {
+  opacity: 0;
+  transition: opacity var(--gp-testimonial-group-fade-out-duration) ease-in-out 40ms;
+}
+
+.TestimonialGroup__testimonial--in .TestimonialGroup__quote {
+  transition-delay: 100ms;
+}
+
+.TestimonialGroup__testimonial--in .TestimonialGroup__media {
+  transition-delay: var(--gp-animation-duration-faster);
+}
+
+.TestimonialGroup__controls {
+  display: flex;
+  flex: none;
+  order: 1;
+  align-items: center;
+  margin-block-start: var(--gp-size-32);
+  padding-block-start: var(--gp-size-16);
+}
+
+.TestimonialGroup__content--expressive .TestimonialGroup__controls {
+  margin-block-start: 0;
+}
+
+.TestimonialGroup__announcement {
+  position: absolute;
+  width: var(--gp-border-width-thin);
+  height: var(--gp-border-width-thin);
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .TestimonialGroup__quoteMark,
+  .TestimonialGroup__quote,
+  .TestimonialGroup__media {
+    transition: none;
+  }
+}

@@ -1,0 +1,367 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@layer base {
+  :root {
+    --gp-size-2: 0.125rem;
+    --gp-size-4: 0.25rem;
+    --gp-size-6: 0.375rem;
+    --gp-size-8: 0.5rem;
+    --gp-size-12: 0.75rem;
+    --gp-size-16: 1rem;
+    --gp-size-20: 1.25rem;
+    --gp-size-24: 1.5rem;
+    --gp-size-28: 1.75rem;
+    --gp-size-32: 2rem;
+    --gp-size-36: 2.25rem;
+    --gp-size-40: 2.5rem;
+    --gp-size-44: 2.75rem;
+    --gp-size-48: 3rem;
+    --gp-size-64: 4rem;
+    --gp-size-80: 5rem;
+    --gp-size-96: 6rem;
+    --gp-size-112: 7rem;
+    --gp-size-128: 8rem;
+
+    --gp-size-negative-2: -0.125rem;
+    --gp-size-negative-4: -0.25rem;
+    --gp-size-negative-6: -0.375rem;
+    --gp-size-negative-8: -0.5rem;
+    --gp-size-negative-12: -0.75rem;
+    --gp-size-negative-16: -1rem;
+    --gp-size-negative-20: -1.25rem;
+    --gp-size-negative-24: -1.5rem;
+    --gp-size-negative-28: -1.75rem;
+    --gp-size-negative-32: -2rem;
+    --gp-size-negative-36: -2.25rem;
+    --gp-size-negative-40: -2.5rem;
+    --gp-size-negative-44: -2.75rem;
+    --gp-size-negative-48: -3rem;
+
+    --gp-breakpoint-xsmall: 320px;
+    --gp-breakpoint-small: 544px;
+    --gp-breakpoint-medium: 768px;
+    --gp-breakpoint-large: 1012px;
+    --gp-breakpoint-xlarge: 1280px;
+    --gp-breakpoint-xxlarge: 1400px;
+
+    --gp-border-width-thin: max(1px, 0.0625rem);
+    --gp-border-width-thick: max(2px, 0.125rem);
+    --gp-border-width-thicker: max(4px, 0.25rem);
+
+    --gp-border-inset-thin: inset 0 0 0 var(--gp-border-width-thin);
+    --gp-border-inset-thick: inset 0 0 0 var(--gp-border-width-thick);
+    --gp-border-inset-thicker: inset 0 0 0 var(--gp-border-width-thicker);
+
+    --gp-border-radius-small: 4px;
+    --gp-border-radius-medium: 8px;
+    --gp-border-radius-large: 16px;
+    --gp-border-radius-xlarge: 24px;
+    --gp-border-radius-full: 9999px;
+
+    --gp-grid-spacing-row: 16px;
+    --gp-grid-spacing-column-gap: 16px;
+    --gp-grid-spacing-margin: 16px;
+
+    --gp-box-spacing-condensed: 16px;
+    --gp-box-spacing-normal: 24px;
+    --gp-box-spacing-spacious: 48px;
+
+    --gp-stack-padding-condensed: 16px;
+    --gp-stack-padding-normal: 24px;
+    --gp-stack-padding-spacious: 48px;
+
+    --gp-stack-gap-condensed: 16px;
+    --gp-stack-gap-normal: 24px;
+    --gp-stack-gap-spacious: 48px;
+
+    --gp-prose-line-length: 68ch;
+    --gp-prose-img-spacing: var(--gp-size-48);
+    --gp-prose-blockquote-spacing: var(--gp-size-24);
+
+    --gp-control-min-target-auto: var(--gp-size-44);
+    --gp-control-stack-small-gap-auto: var(--gp-size-16);
+    --gp-control-stack-medium-gap-auto: var(--gp-size-12);
+
+    --gp-control-min-target-fine: var(--gp-size-16);
+    --gp-control-min-target-coarse: var(--gp-size-44);
+    --gp-control-small-size: var(--gp-size-32);
+    --gp-control-small-line-box-height: var(--gp-size-12);
+    --gp-control-small-padding-block: var(--gp-size-8);
+    --gp-control-small-padding-inline-condensed: var(--gp-size-8);
+
+    --gp-control-small-padding-inline-normal: var(--gp-size-12);
+    --gp-control-small-padding-inline-spacious: var(--gp-size-24);
+    --gp-control-small-gap: var(--gp-size-8);
+
+    --gp-control-medium-size: 43px;
+    --gp-control-medium-line-box-height: var(--gp-size-16);
+
+    --gp-control-medium-padding-block-condensed: var(--gp-size-6);
+    --gp-control-medium-padding-block-normal: var(--gp-size-16);
+    --gp-control-medium-padding-inline-condensed: var(--gp-size-12);
+    --gp-control-medium-padding-inline-normal: var(--gp-size-16);
+    --gp-control-medium-padding-inline-spacious: var(--gp-size-28);
+
+    --gp-control-medium-gap: var(--gp-size-12);
+
+    --gp-control-large-size: 60px;
+    --gp-control-large-line-box-height: var(--gp-size-20);
+    --gp-control-large-padding-block-condensed: var(--gp-size-12);
+    --gp-control-large-padding-block-normal: var(--gp-size-20);
+    --gp-control-large-padding-inline-condensed: var(--gp-size-16);
+    --gp-control-large-padding-inline-normal: var(--gp-size-20);
+    --gp-control-large-padding-inline-spacious: var(--gp-size-32);
+
+    --gp-control-large-gap: var(--gp-size-16);
+
+    --gp-control-animation-duration: 80ms;
+    --gp-control-animation-easing: var(--gp-animation-easing-glide);
+    --gp-box-spacing-condensed: var(--gp-size-16);
+    --gp-box-spacing-normal: var(--gp-size-24);
+    --gp-box-spacing-spacious: var(--gp-size-48);
+
+    --gp-stack-padding-condensed: var(--gp-size-16);
+    --gp-stack-padding-normal: var(--gp-size-24);
+    --gp-stack-padding-spacious: var(--gp-size-48);
+
+    --gp-stack-gap-condensed: var(--gp-size-16);
+    --gp-stack-gap-normal: var(--gp-size-24);
+    --gp-stack-gap-spacious: var(--gp-size-48);
+
+    --gp-control-stack-small-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-small-gap-spacious: var(--gp-size-16);
+    --gp-control-stack-medium-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-medium-gap-spacious: var(--gp-size-12);
+
+    --gp-control-stack-large-gap-auto: var(--gp-size-8);
+    --gp-control-stack-large-gap-condensed: var(--gp-size-8);
+    --gp-control-stack-large-gap-spacious: var(--gp-size-12);
+
+    --gp-section-padding-condensed: var(--gp-size-16);
+    --gp-section-padding-normal: var(--gp-size-48);
+    --gp-section-padding-spacious: var(--gp-size-64);
+    --gp-section-container-max-width: 1280px;
+
+    --gp-faq-max-width-list: 816px;
+    --gp-faq-heading-margin-bottom: var(--gp-size-40);
+
+    --gp-logo-suite-logobar-column-gap-default: var(--gp-size-80);
+    --gp-logo-suite-logobar-column-gap-condensed: var(--gp-size-40);
+    --gp-logo-suite-logobar-row-gap: var(--gp-size-40);
+    --gp-logo-suite-logobar-marquee-gap-default: var(--gp-size-96);
+    --gp-logo-suite-logobar-marquee-gap-condensed: var(--gp-size-40);
+
+    --gp-hero-narrow-padding: var(--gp-size-96) 0;
+    --gp-hero-regular-padding: var(--gp-size-128) 0;
+
+    --gp-icon-button-control-size-small: var(--gp-control-small-size);
+    --gp-icon-button-control-size-medium: var(--gp-control-medium-size);
+    --gp-icon-button-control-size-large: var(--gp-control-large-size);
+    --gp-icon-button-icon-size-small: var(--gp-size-16);
+    --gp-icon-button-icon-size-medium: var(--gp-size-16);
+    --gp-icon-button-icon-size-large: var(--gp-size-20);
+
+    --gp-spinner-size-small: var(--gp-size-12);
+    --gp-spinner-size-medium: var(--gp-size-16);
+    --gp-spinner-size-large: var(--gp-size-24);
+
+    --gp-eyebrow-banner-border-radius: var(--gp-size-16);
+    --gp-eyebrow-banner-spacing-inner-block: 14px;
+    --gp-eyebrow-banner-spacing-inner-inline: var(--gp-size-16);
+    --gp-eyebrow-banner-label-size: var(--gp-text-size-100);
+    --gp-eyebrow-banner-heading-size: var(--gp-text-size-100);
+    --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-100);
+
+    --gp-testimonial-minimal-quote-font-size-large: 2rem;
+    --gp-testimonial-minimal-quote-line-height: 1.35;
+    --gp-testimonial-expressive-max-width: 1176px;
+    --gp-testimonial-expressive-quote-max-width: 744px;
+    --gp-testimonial-expressive-quote-font-size: 1.5rem;
+    --gp-testimonial-expressive-quote-font-weight: 425;
+    --gp-testimonial-expressive-quote-letter-spacing: -0.01em;
+    --gp-testimonial-expressive-name-letter-spacing: 0.0107em;
+    --gp-testimonial-expressive-position-line-height: 1.6;
+    --gp-testimonial-expressive-position-letter-spacing: 0.01em;
+    --gp-testimonial-expressive-media-width: 100%;
+    --gp-testimonial-quote-font-size-default: var(--gp-text-size-400);
+    --gp-testimonial-quote-font-size-large: var(--gp-text-size-500);
+    --gp-testimonial-quote-font-weight-default: var(--gp-heading-weight-1000);
+    --gp-testimonial-quote-font-weight-large: var(--gp-heading-weight-600);
+    --gp-testimonial-quote-letter-spacing-default: var(--gp-text-letterSpacing-400);
+    --gp-testimonial-quote-letter-spacing-large: var(--gp-text-letterSpacing-900);
+
+    --gp-tabs-container-padding: var(--gp-size-4);
+
+    --gp-card-max-width: 420px;
+    --gp-card-padding-block: var(--gp-size-32);
+    --gp-card-padding-inline: var(--gp-size-20);
+
+    --gp-pricing-options-items-gap: var(--gp-size-24);
+    --gp-pricing-options-items1-container-padding-inline: var(--gp-size-32);
+    --gp-pricing-options-items2-gap: var(--gp-size-96);
+    --gp-pricing-options-items2-container-padding-inline: var(--gp-size-48);
+    --gp-pricing-options-items3-gap: var(--gp-size-64);
+    --gp-pricing-options-items3-container-padding-inline: var(--gp-size-24);
+    --gp-pricing-options-items4-gap: var(--gp-size-48);
+    --gp-pricing-options-items4-container-padding-inline: var(--gp-size-24);
+
+    --gp-river-heading-margin: var(--gp-size-16);
+    --gp-river-label-margin: var(--gp-size-16);
+    --gp-river-visual-shadow:
+      0px 100px 80px rgba(0, 0, 0, 0.0174624), 0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0235573),
+      0px 22.3363px 17.869px rgba(0, 0, 0, 0.0282784), 0px 12.5216px 10.0172px rgba(0, 0, 0, 0.0339075),
+      0px 6.6501px 5.32008px rgba(0, 0, 0, 0.04317), 0px 2.76726px 2.21381px rgba(0, 0, 0, 0.07);
+
+    --gp-river-spacing-inner: var(--gp-size-40);
+    --gp-river-spacing-inner-y: var(--gp-size-24);
+    --gp-river-spacing-outer-block: var(--gp-size-36);
+    --gp-river-variant-gridline-visual-padding: var(--gp-size-32);
+    --gp-river-variant-gridline-spacing-outer-block: var(--gp-size-40);
+    --gp-river-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-40);
+    --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-accordion-variant-gridline-spacing-content-gap: var(--gp-size-32);
+    --gp-river-breakout-spacing-inner: var(--gp-size-40);
+    --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-36);
+    --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-40);
+    --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-20);
+    --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-16);
+
+    --gp-timeline-line-height: var(--gp-text-line-height-200);
+    --gp-timeline-line-length: 44ch;
+    --gp-timeline-stroke-width: 2px;
+    --gp-timeline-spacing: var(--gp-size-16);
+    --gp-timeline-bullet-size: var(--gp-size-8);
+    --gp-timeline-bullet-spacing: 2px;
+
+    --gp-tiles-item-max-size: 184px;
+
+    --gp-sub-nav-width-sub-menu: 300px;
+    --gp-sub-nav-width-overflow-menu-inset: 32px;
+    --gp-sub-nav-width-overflow-menu-min: 160px;
+    --gp-sub-nav-height-overflow-menu-inset: 128px;
+    --gp-sub-nav-height-overflow-menu-item-min: 40px;
+    --gp-sub-nav-offset-overflow-menu: 4px;
+
+    --gp-statistic-spacing-condensed: 16px;
+    --gp-statistic-spacing-normal: 24px;
+    --gp-statistic-spacing-spacious: 32px;
+
+    --gp-toggle-switch-target-min-height: var(--gp-size-24);
+    --gp-toggle-switch-track-width-small: var(--gp-size-28);
+    --gp-toggle-switch-track-width-medium: var(--gp-size-44);
+    --gp-toggle-switch-track-height-small: var(--gp-size-16);
+    --gp-toggle-switch-track-height-medium: var(--gp-size-24);
+    --gp-toggle-switch-track-border-width: var(--gp-border-width-thin);
+    --gp-toggle-switch-track-border-radius: var(--gp-border-radius-full);
+    --gp-toggle-switch-thumb-size-small: var(--gp-size-12);
+    --gp-toggle-switch-thumb-size-medium: calc(var(--gp-size-20) - var(--gp-size-2));
+    --gp-toggle-switch-thumb-inset-small: var(--gp-size-2);
+    --gp-toggle-switch-thumb-inset-medium: calc(var(--gp-size-4) - var(--gp-border-width-thin));
+    --gp-toggle-switch-thumb-travel-small: var(--gp-size-12);
+    --gp-toggle-switch-thumb-travel-medium: var(--gp-size-20);
+    --gp-toggle-switch-thumb-border-width: 0.9px;
+    --gp-toggle-switch-thumb-border-radius: var(--gp-border-radius-full);
+    --gp-toggle-switch-label-gap: var(--gp-size-12);
+    --gp-toggle-switch-label-font-size: var(--gp-text-size-200);
+    --gp-toggle-switch-label-line-height: var(--gp-size-16);
+    --gp-toggle-switch-focus-width: var(--gp-size-4);
+    --gp-toggle-switch-focus-offset: var(--gp-size-2);
+    --gp-toggle-switch-loading-size: var(--gp-size-12);
+    --gp-toggle-switch-loading-gap: var(--gp-size-8);
+  }
+
+  @media (min-width: 48rem) {
+    :root {
+      --gp-testimonial-expressive-max-width: 618px;
+      --gp-testimonial-expressive-quote-font-size: 1.625rem;
+      --gp-testimonial-expressive-quote-letter-spacing: -0.02em;
+      --gp-testimonial-expressive-media-width: 356px;
+    }
+  }
+
+  @media (min-width: 63.25rem) {
+    :root {
+      --gp-testimonial-expressive-max-width-25rem: 1176px;
+      --gp-testimonial-expressive-quote-font-size-25rem: 2rem;
+      --gp-testimonial-expressive-media-width-25rem: 312px;
+    }
+  }
+
+  @media (min-width: 544px) {
+    :root {
+      --gp-faq-heading-margin-bottom: var(--gp-size-40);
+    }
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --gp-grid-spacing-row: 32px;
+      --gp-grid-spacing-column-gap: 32px;
+      --gp-grid-spacing-margin: 40px;
+
+      --gp-section-padding-condensed: var(--gp-size-32);
+      --gp-section-padding-normal: var(--gp-size-64);
+      --gp-section-padding-spacious: var(--gp-size-80);
+
+      --gp-faq-heading-margin-bottom: var(--gp-size-64);
+
+      --gp-eyebrow-banner-border-radius: 100px;
+      --gp-eyebrow-banner-spacing-inner-inline: var(--gp-size-20);
+      --gp-eyebrow-banner-label-size: var(--gp-text-size-200);
+      --gp-eyebrow-banner-heading-size: var(--gp-text-size-200);
+      --gp-eyebrow-banner-sub-heading-size: var(--gp-text-size-200);
+
+      --gp-river-spacing-inner-y: var(--gp-size-24);
+      --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-36);
+      --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-36);
+      --gp-river-breakout-spacing-inner: var(--gp-size-48);
+      --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-40);
+      --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-48);
+      --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-36);
+      --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-20);
+    }
+  }
+
+  @media (min-width: 1012px) {
+    :root {
+      --gp-faq-heading-margin-bottom: var(--gp-size-96);
+
+      --gp-river-variant-gridline-visual-padding: var(--gp-size-64);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --gp-section-padding-condensed: var(--gp-size-48);
+      --gp-section-padding-normal: var(--gp-size-96);
+      --gp-section-padding-spacious: var(--gp-size-128);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --gp-grid-spacing-row: 48px;
+      --gp-grid-spacing-column-gap: 48px;
+      --gp-grid-spacing-margin: 16px;
+
+      --gp-river-spacing-inner: var(--gp-size-24);
+      --gp-river-spacing-inner-y: var(--gp-size-32);
+      --gp-river-spacing-outer-block: var(--gp-size-48);
+      --gp-river-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-accordion-variant-gridline-spacing-content-gap: var(--gp-size-64);
+      --gp-river-breakout-spacing-inner: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-outer-block: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-outer-block-end: var(--gp-size-80);
+      --gp-river-breakout-variant-gridline-spacing-outer-inline: var(--gp-size-64);
+      --gp-river-breakout-variant-gridline-spacing-content-gap: var(--gp-size-24);
+    }
+  }
+}

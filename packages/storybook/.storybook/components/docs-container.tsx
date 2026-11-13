@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import type { Preview } from '@storybook/react';
 
 import { DocsContainer as StorybookDocsContainer } from '@storybook/addon-docs/blocks';
@@ -11,7 +15,10 @@ import { themes } from '../styles/theme';
  * Custom DocsContainer that synchronizes the documentation theme
  * with the global theme state selected in the toolbar.
  */
-export const DocsContainer: NonNullable<Preview['parameters']>['docs']['container'] = ({ children, context }) => {
+export const DocsContainer: React.FC<NonNullable<Preview['parameters']>['docs']['container']> = ({
+  children,
+  context
+}) => {
   const initialTheme = useMemo(
     () => ensureThemeKey((context?.globals?.[THEME_GLOBAL_TYPE_ID] as string | undefined) || undefined),
     [context?.globals]

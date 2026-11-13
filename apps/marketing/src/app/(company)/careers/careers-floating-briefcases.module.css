@@ -1,0 +1,132 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.briefcasesField {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .briefcasesField {
+    display: block;
+  }
+}
+
+.caseItem {
+  position: absolute;
+}
+
+.caseSvg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.caseLeftLarge {
+  height: 74px;
+  left: max(3%, calc(50% - 560px));
+  top: 25%;
+  width: 74px;
+}
+
+.caseLeftLarge .caseSvg {
+  animation: caseFloatA 8.4s ease-in-out infinite;
+}
+
+.caseLeftSmall {
+  height: 36px;
+  left: max(11%, calc(50% - 430px));
+  top: 15%;
+  width: 36px;
+}
+
+.caseLeftSmall .caseSvg {
+  animation: caseFloatB 6.8s ease-in-out infinite;
+}
+
+.caseLeftOutline {
+  height: 52px;
+  left: max(8%, calc(50% - 485px));
+  top: 63%;
+  width: 52px;
+}
+
+.caseLeftOutline .caseSvg {
+  animation: caseFloatC 9.6s ease-in-out infinite;
+}
+
+.caseRightLarge {
+  height: 78px;
+  right: max(3%, calc(50% - 565px));
+  top: 48%;
+  width: 78px;
+}
+
+.caseRightLarge .caseSvg {
+  animation: caseFloatB 8.8s ease-in-out infinite;
+}
+
+.caseRightOutline {
+  height: 54px;
+  right: max(8%, calc(50% - 485px));
+  top: 17%;
+  width: 54px;
+}
+
+.caseRightOutline .caseSvg {
+  animation: caseFloatA 9.2s ease-in-out infinite;
+}
+
+.caseRightSmall {
+  height: 36px;
+  right: max(12%, calc(50% - 420px));
+  top: 74%;
+  width: 36px;
+}
+
+.caseRightSmall .caseSvg {
+  animation: caseFloatC 7.2s ease-in-out infinite;
+}
+
+@keyframes caseFloatA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes caseFloatB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(6deg);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0) rotate(2deg);
+  }
+}
+
+@keyframes caseFloatC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caseSvg {
+    animation: none !important;
+  }
+}

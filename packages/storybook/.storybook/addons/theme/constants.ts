@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 export const THEME_ADDON_ID = 'gp-theme-addon';
 export const THEME_GLOBAL_TYPE_ID = 'gp-theme';
 export const THEME_PARAM_KEY = 'gp-theme';

@@ -1,0 +1,133 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.container {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container--light {
+  background-color: var(--gp-color-canvas-subtle);
+}
+
+.container--dark {
+  background-color: var(--gp-color-canvas-default);
+}
+
+.innerContainer {
+  min-height: 100dvh;
+  max-width: 1680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.expressiveContainer {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--gp-size-36);
+}
+
+.speakerNameAnimation {
+  position: relative;
+  padding-block-start: 100dvh;
+}
+
+.speakerNameAnimationPrompt {
+  position: absolute;
+  inset-block-start: 50dvh;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 48rem) {
+  .expressiveContainer {
+    padding: var(--gp-size-48) var(--gp-size-32);
+  }
+}
+
+.exampleShape {
+  position: absolute;
+}
+
+.container--light .exampleShape {
+  transform-origin: center;
+}
+
+.container--light .exampleShape:nth-child(1) {
+  animation: exampleShape1Light 3s forwards alternate;
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.22, 1);
+  top: var(--gp-size-64);
+  left: -320px;
+}
+
+.container--light .exampleShape:nth-child(2) {
+  animation: exampleShape2Light 3s forwards alternate;
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.22, 1);
+  top: 50px;
+  right: -250px;
+}
+
+.container--dark .exampleShape:nth-child(1) {
+  animation: exampleShape1Dark 3s forwards alternate;
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.22, 1);
+  top: var(--gp-size-80);
+  left: -320px;
+  width: 662px;
+  height: auto;
+}
+
+.container--dark .exampleShape:nth-child(2) {
+  animation: exampleShape2Dark 3s forwards alternate;
+  animation-timing-function: cubic-bezier(0.1, 0.7, 0.22, 1);
+  top: var(--gp-size-64);
+  right: -250px;
+  width: 1080px;
+  height: auto;
+}
+
+@keyframes exampleShape1Light {
+  0% {
+    opacity: 0;
+    transform: rotate(-120deg) translateX(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes exampleShape2Light {
+  0% {
+    opacity: 0;
+    transform: rotate(-25deg) translateX(-20%) scale(0.66);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes exampleShape1Dark {
+  0% {
+    opacity: 0;
+    transform: rotate(160deg) translateX(-20%) scale(0.66);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(150deg);
+  }
+}
+
+@keyframes exampleShape2Dark {
+  0% {
+    opacity: 0;
+    transform: rotate(160deg) translateX(20%) scale(0.66);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(150deg);
+  }
+}

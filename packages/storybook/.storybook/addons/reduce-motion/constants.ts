@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 export const REDUCE_MOTION_ADDON_ID = 'gp-reduce-motion-addon';
 export const REDUCE_MOTION_GLOBAL_TYPE_ID = 'gp-reduce-motion';
 export const REDUCE_MOTION_PARAM_KEY = 'gp-reduce-motion';

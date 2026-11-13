@@ -100,5 +100,10 @@ prompts/
 skills/
 
 # IDE specific
-.vscode/
+.vscode/*
+!.vscode/gp-platform.code-snippets
+!.vscode/extensions.json
 .idea/
+
+.vercel
+.env*

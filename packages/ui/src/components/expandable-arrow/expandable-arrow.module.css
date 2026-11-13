@@ -1,0 +1,35 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.expandable-arrow {
+  --expandable-arrow-duration: 200ms;
+  --expandable-arrow-easing: ease;
+
+  transition: transform var(--expandable-arrow-duration) var(--expandable-arrow-easing);
+  transform: translateX(0);
+}
+
+.expandable-arrow--expanded {
+  transform: translateX(4px);
+}
+
+.expandable-arrow-stem {
+  stroke-dasharray: 10;
+  stroke-dashoffset: 10;
+  transition: stroke-dashoffset var(--expandable-arrow-duration) var(--expandable-arrow-easing);
+}
+
+.expandable-arrow-stem--expanded {
+  stroke-dashoffset: 20;
+}
+
+.expandable-arrow--reversed {
+  transform: rotate(180deg);
+}
+
+.expandable-arrow--reversed.expandable-arrow--expanded {
+  transform: rotate(180deg) translateX(4px);
+}

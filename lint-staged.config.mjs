@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import fs from 'fs';
 import { dirname, relative, resolve } from 'path';
 
@@ -88,7 +92,11 @@ const lintStaged = {
 
   '**/*.{html,css,scss,json,jsonc,md,mdx}': async (files) => {
     return [`prettier --ignore-path .prettierignore --write ${files.join(' ')}`];
-  }
+  },
+
+  '**/*.{ts,tsx}': () => 'pnpm typecheck',
+
+  'content/**/*.mdx': (files) => files.map((file) => `pnpm --filter @gp/content content:validate -- --file ${file}`)
 };
 
 export default lintStaged;

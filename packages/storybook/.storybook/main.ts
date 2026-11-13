@@ -1,7 +1,11 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
 
-import { readFileSync as fsReadFileSync } from 'fs';
-import { dirname, join as pathJoin, relative } from 'path';
+import type { StorybookConfig } from '@storybook/nextjs';
+
+import { readFileSync as fsReadFileSync } from 'node:fs';
+import { dirname, join as pathJoin, relative } from 'node:path';
 import { fileURLToPath } from 'url';
 
 import { sync as globSync } from 'glob';
@@ -10,11 +14,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export const getStories = () => {
-  const __STORYBOOK_READY_ONLY__ = process.env.STORYBOOK_READY_ONLY === 'true';
+  const __STORYBOOK_READY_ONLY__ = process.env['STORYBOOK_READY_ONLY'] === 'true';
 
-  if (!__STORYBOOK_READY_ONLY__) return ['../../react/src/**/*.stories.@(ts|tsx)'];
+  if (!__STORYBOOK_READY_ONLY__) return ['../../ui/src/**/*.stories.@(ts|tsx)'];
 
-  const readyStories = globSync(pathJoin(__dirname, '../../react/src/**/*.stories.@(ts|tsx)'))
+  const readyStories = globSync(pathJoin(__dirname, '../../ui/src/**/*.stories.@(ts|tsx)'))
     .filter((file) => {
       const content = fsReadFileSync(file, 'utf-8');
 
@@ -33,15 +37,15 @@ const config: StorybookConfig = {
     enableCrashReports: false
   },
   framework: {
-    name: '@storybook/react-vite',
+    name: '@storybook/nextjs',
     options: {}
   },
   staticDirs: [pathJoin(__dirname, '../public')],
   stories: [
     './welcome.mdx',
-    './stories/colors.stories.tsx',
-    './stories/colors-demo.stories.tsx',
-    './stories/demo.stories.tsx',
+    // './stories/colors.stories.tsx',
+    // './stories/colors-demo.stories.tsx',
+    // './stories/demo.stories.tsx',
     ...getStories()
   ]
 };

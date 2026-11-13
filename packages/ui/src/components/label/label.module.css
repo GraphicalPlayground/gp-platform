@@ -1,0 +1,207 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.label {
+  --gp-label-gradient-radial: radial-gradient(
+    circle at top left,
+    var(--gp-label-color-start),
+    var(--gp-label-color-end)
+  );
+
+  --gp-label-gradient-conical: conic-gradient(
+    from 90deg at center,
+    var(--gp-label-color-stop-1) 0deg,
+    var(--gp-label-color-stop-2) 160deg,
+    var(--gp-label-color-stop-3) 175deg,
+    var(--gp-label-color-stop-4) 200deg,
+    var(--gp-label-color-stop-4) 350deg,
+    var(--gp-label-color-stop-1) 360deg
+  );
+
+  --gp-label-background: var(
+    --gp-label-gradient-conical,
+    var(--gp-label-gradient-radial, var(--gp-label-color, currentColor))
+  );
+
+  vertical-align: middle;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--gp-border-radius-xlarge);
+  display: inline-flex;
+  color: var(--gp-label-color-start, var(--gp-label-color, currentColor));
+  position: relative;
+  height: min-content;
+  background: none;
+  text-align: center;
+}
+
+[data-color-mode='dark'] .label {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: auto;
+}
+
+.label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: var(--gp-border-width-thin);
+  border-radius: inherit;
+  background: var(--gp-label-background);
+  -webkit-mask:
+    linear-gradient(var(--gp-color-canvas-default), var(--gp-color-canvas-default)) content-box,
+    linear-gradient(var(--gp-color-canvas-default), var(--gp-color-canvas-default));
+  mask:
+    linear-gradient(var(--gp-color-canvas-default), var(--gp-color-canvas-default)) content-box,
+    linear-gradient(var(--gp-color-canvas-default), var(--gp-color-canvas-default));
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.label--size-small {
+  min-height: var(--gp-size-20);
+  padding-inline: var(--gp-size-8);
+  padding-block: var(--gp-size-2);
+}
+
+.label--size-small .label__label {
+  font-size: var(--gp-size-12) !important; /* Font size not available in the typographic scale */
+}
+
+.label--size-medium {
+  min-height: var(--gp-size-28);
+  padding-inline: var(--gp-size-16);
+  padding-block: var(--gp-size-4);
+}
+
+.label--size-large {
+  min-height: var(--gp-size-32);
+  padding-inline: var(--gp-size-16);
+  padding-block: var(--gp-size-4);
+}
+
+.label--color-default {
+  --gp-label-color: var(--gp-label-color-default);
+}
+
+.label--color-blue {
+  --gp-label-color: var(--gp-label-color-blue);
+}
+
+.label--color-blue-purple {
+  --gp-label-color-start: var(--gp-label-color-blue-purple-start);
+  --gp-label-color-end: var(--gp-label-color-blue-purple-end);
+}
+
+.label--color-coral {
+  --gp-label-color: var(--gp-label-color-coral);
+}
+
+.label--color-green {
+  --gp-label-color: var(--gp-label-color-green);
+}
+
+.label--color-green-blue {
+  --gp-label-color-start: var(--gp-label-color-green-blue-start);
+  --gp-label-color-end: var(--gp-label-color-green-blue-end);
+}
+
+.label--color-gray {
+  --gp-label-color: var(--gp-label-color-gray);
+}
+
+.label--color-indigo {
+  --gp-label-color: var(--gp-label-color-indigo);
+}
+
+.label--color-lemon {
+  --gp-label-color: var(--gp-label-color-lemon);
+}
+
+.label--color-lime {
+  --gp-label-color: var(--gp-label-color-lime);
+}
+
+.label--color-orange {
+  --gp-label-color: var(--gp-label-color-orange);
+}
+
+.label--color-pink {
+  --gp-label-color: var(--gp-label-color-pink);
+}
+
+.label--color-pink-blue {
+  --gp-label-color-start: var(--gp-label-color-pink-blue-start);
+  --gp-label-color-end: var(--gp-label-color-pink-blue-end);
+}
+
+.label--color-green-blue-purple {
+  --gp-label-color-stop-1: var(--gp-label-color-green-blue-purple-1);
+  --gp-label-color-stop-2: var(--gp-label-color-green-blue-purple-2);
+  --gp-label-color-stop-3: var(--gp-label-color-green-blue-purple-3);
+  --gp-label-color-stop-4: var(--gp-label-color-green-blue-purple-4);
+}
+
+.label--color-purple {
+  --gp-label-color: var(--gp-label-color-purple);
+}
+
+.label--color-purple-red {
+  --gp-label-color-start: var(--gp-label-color-purple-red-start);
+  --gp-label-color-end: var(--gp-label-color-purple-red-end);
+}
+
+.label--color-red {
+  --gp-label-color: var(--gp-label-color-red);
+}
+
+.label--color-red-orange {
+  --gp-label-color-start: var(--gp-label-color-red-orange-start);
+  --gp-label-color-end: var(--gp-label-color-red-orange-end);
+}
+
+.label--color-teal {
+  --gp-label-color: var(--gp-label-color-teal);
+}
+
+.label--color-yellow {
+  --gp-label-color: var(--gp-label-color-yellow);
+}
+
+.label__text:not(.label--gradient .label__text) {
+  background: var(--gp-label-background);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.label__text {
+  line-height: var(--gp-size-16);
+}
+
+.label__icon-visual {
+  display: flex;
+  align-self: center;
+  height: var(--gp-size-16);
+  width: auto;
+}
+
+.label__leading-visual {
+  display: flex;
+  margin-right: var(--gp-size-8);
+}
+
+.label__label {
+  font-weight: var(--gp-text-weight-medium);
+  line-height: inherit;
+}
+
+@media (forced-colors: active) {
+  .label {
+    outline: var(--gp-border-width-thin) solid transparent;
+  }
+}

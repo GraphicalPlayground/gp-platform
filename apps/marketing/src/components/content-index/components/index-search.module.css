@@ -1,0 +1,60 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.searchForm {
+  flex: 1 1 16rem;
+  max-width: 24rem;
+}
+
+.inputWrap {
+  position: relative;
+  width: 100%;
+}
+
+.input::-webkit-search-cancel-button,
+.inputWithClear::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.inputWithClear {
+  padding-inline-end: var(--gp-size-32);
+}
+
+.clearButton {
+  position: absolute;
+  top: 50%;
+  right: var(--gp-size-4);
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--gp-size-24);
+  height: var(--gp-size-24);
+  padding: 0;
+  border: 0;
+  border-radius: var(--gp-border-radius-small);
+  background: transparent;
+  color: var(--gp-color-text-muted);
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  color: var(--gp-color-text-default);
+  background-color: var(--gp-color-canvas-subtle);
+}
+
+.clearButton:focus-visible {
+  outline: 2px solid var(--gp-color-focus);
+  outline-offset: 1px;
+}
+
+@media screen and (max-width: 48rem) {
+  .searchForm {
+    max-width: none;
+    width: 100%;
+  }
+}

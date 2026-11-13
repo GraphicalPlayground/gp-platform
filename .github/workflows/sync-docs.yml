@@ -1,0 +1,45 @@
+---
+name: 'Synchronize Documentation'
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/docs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: 'build'
+  cancel-in-progress: true
+
+jobs:
+  sync-to-portal:
+    name: Sync docs to Central Portal
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      # - name: Create GitHub App Token
+      #   uses: actions/create-github-app-token@v3
+      #   id: app-token
+      #   with:
+      #     client-id: ${{ secrets.BOT_CLIENT_ID }}
+      #     private-key: ${{ secrets.BOT_PRIVATE_KEY }}
+      #     owner: ${{ github.repository_owner }}
+      #     repositories: ${{ github.repository }},gp-docs
+
+      # - name: Checkout gp-platform repository
+      #   uses: actions/checkout@v7
+      #   with:
+      #     path: gp-platform
+      #     submodules: recursive
+      #     fetch-depth: 0
+
+      # - name: Checkout gp-docs repository
+      #   uses: actions/checkout@v7
+      #   with:
+      #     repository: GraphicalPlayground/gp-docs
+      #     token: ${{ steps.app-token.outputs.token }}
+      #     path: gp-docs

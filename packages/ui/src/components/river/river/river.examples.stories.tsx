@@ -1,0 +1,210 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React, { useEffect } from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
+
+import placeholderImage from '../../../fixtures/images/placeholder-3.png';
+import placeholderImageCropped from '../../../fixtures/images/placeholder-2.png';
+import placeholderBg from '../../../fixtures/images/dither-bg-landscape-green.png';
+// import posterImage from '../../../fixtures/images/example-poster.png';
+
+import { River } from './river';
+import type { RiverProps } from './river';
+import { EyebrowText } from '../../eyebrow-text';
+import { Section } from '../../section';
+import { Heading } from '../../heading';
+import { Link } from '../../link';
+import { Stack } from '../../stack';
+import { Text } from '../../text';
+// import { VideoPlayer } from '../../video-player';
+
+export type MetaProps = RiverProps;
+
+const meta: Meta<MetaProps> = {
+  title: 'Components/River/Examples',
+  component: River,
+  parameters: {
+    layout: 'fullscreen'
+  }
+};
+
+export default meta;
+type Story = StoryObj<MetaProps>;
+
+export const CustomBackgroundStart: Story = {
+  name: 'Custom background (start)',
+  render: () => <GridLineWithBackgroundExample align='start' />
+};
+
+export const CustomBackgroundEnd: Story = {
+  name: 'Custom background (end)',
+  render: () => <GridLineWithBackgroundExample align='end' />
+};
+
+export const CustomBackgroundStartInStackTablet: Story = {
+  name: 'Rivers in a stack (tablet)',
+  globals: {
+    viewport: { value: 'ipad10p' }
+  },
+  render: () => (
+    <Section>
+      <Stack padding='none'>
+        <River variant='gridline' align='start'>
+          <River.Visual
+            style={{
+              backgroundImage: `url(${placeholderBg})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover'
+            }}
+          >
+            <picture>
+              <source srcSet={placeholderImageCropped.src} media='(max-width: 47.99rem)' />
+              <img src={placeholderImage.src} alt='GitHub Copilot agent mode in VS Code' />
+            </picture>
+          </River.Visual>
+          <River.Content>
+            <EyebrowText>Feature</EyebrowText>
+            <Heading>GridLine with custom background</Heading>
+            <Text>
+              The gridline variant creates a full-bleed visual container that can be enhanced with a custom animated
+              background using the ref prop on River.Visual.
+            </Text>
+            <Link href='#'>Learn more</Link>
+          </River.Content>
+        </River>
+        <River variant='gridline' align='start'>
+          <River.Visual
+            style={{
+              backgroundImage: `url(${placeholderBg})`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover'
+            }}
+          >
+            <picture>
+              <source srcSet={placeholderImageCropped.src} media='(max-width: 47.99rem)' />
+              <img src={placeholderImage.src} alt='GitHub Copilot agent mode in VS Code' />
+            </picture>
+          </River.Visual>
+          <River.Content>
+            <EyebrowText>Feature</EyebrowText>
+            <Heading>GridLine with custom background</Heading>
+            <Text>
+              The gridline variant creates a full-bleed visual container that can be enhanced with a custom animated
+              background using the ref prop on River.Visual.
+            </Text>
+            <Link href='#'>Learn more</Link>
+          </River.Content>
+        </River>
+      </Stack>
+    </Section>
+  )
+};
+
+export const CustomBackgroundStartVideo: Story = {
+  name: 'Custom background (start, video)',
+  render: () => <GridLineWithBackgroundVideoExample />
+};
+
+function GridLineWithBackgroundExample({ align }: { align: 'start' | 'end' }) {
+  const visualRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (visualRef.current) {
+      return TempFadeInBackgroundEffect(visualRef.current, placeholderBg.src, 500);
+    }
+  }, []);
+
+  return (
+    <Section>
+      <River variant='gridline' align={align}>
+        <River.Visual ref={visualRef}>
+          <picture>
+            <source srcSet={placeholderImageCropped.src} media='(max-width: 47.99rem)' />
+            <img src={placeholderImage.src} alt='GitHub Copilot agent mode in VS Code' />
+          </picture>
+        </River.Visual>
+        <River.Content>
+          <EyebrowText>Feature</EyebrowText>
+          <Heading>GridLine with custom background</Heading>
+          <Text>
+            The gridline variant creates a full-bleed visual container that can be enhanced with a custom animated
+            background using the ref prop on River.Visual.
+          </Text>
+          <Link href='#'>Learn more</Link>
+        </River.Content>
+      </River>
+    </Section>
+  );
+}
+
+function GridLineWithBackgroundVideoExample() {
+  const visualRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (visualRef.current) {
+      return TempFadeInBackgroundEffect(visualRef.current, placeholderBg.src, 500);
+    }
+  }, []);
+
+  return (
+    <Section>
+      <River variant='gridline' align='start'>
+        <River.Visual ref={visualRef}>
+          {/* <VideoPlayer title='GitHub media player' poster={posterImage}>
+            <VideoPlayer.Source src='./example.mp4' type='video/mp4' />
+            <VideoPlayer.Track src='./example.vtt' default />
+          </VideoPlayer> */}
+        </River.Visual>
+        <River.Content>
+          <EyebrowText>Video</EyebrowText>
+          <Heading>GridLine with video</Heading>
+          <Text>
+            The gridline visual background works with video content. The video is centered within the full-bleed
+            container with padding around it.
+          </Text>
+          <Link href='#'>Watch the video</Link>
+        </River.Content>
+      </River>
+    </Section>
+  );
+}
+
+/**
+ * This is just an example, and will be replaced with a built-in fade effect in the
+ * WebGL animations.
+ */
+function TempFadeInBackgroundEffect(element: HTMLDivElement, backgroundImageUrl: string, delay = 100) {
+  element.style.position = 'relative';
+
+  const bgDiv = document.createElement('div');
+
+  bgDiv.style.cssText = `
+    position: absolute;
+    inset: 0;
+    background-image: url(${backgroundImageUrl});
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-out;
+    z-index: 0;
+  `;
+  element.insertBefore(bgDiv, element.firstChild);
+
+  const children = element.children;
+
+  for (let i = 1; i < children.length; i++) {
+    (children[i] as HTMLElement).style.position = 'relative';
+    (children[i] as HTMLElement).style.zIndex = '1';
+  }
+
+  const timer = setTimeout(() => {
+    bgDiv.style.opacity = '1';
+  }, delay);
+
+  return () => {
+    clearTimeout(timer);
+    bgDiv.remove();
+  };
+}

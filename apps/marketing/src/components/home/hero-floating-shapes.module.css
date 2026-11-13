@@ -1,0 +1,139 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.shapesField {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+@media screen and (min-width: 64rem) {
+  .shapesField {
+    display: block;
+  }
+}
+
+.shapeSlot {
+  position: absolute;
+  transform: translate3d(var(--repel-x, 0px), var(--repel-y, 0px), 0);
+  will-change: transform;
+}
+
+.shapeSvg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+
+.leftSphereLarge {
+  height: 128px;
+  left: max(2%, calc(50% - 620px));
+  top: 22%;
+  width: 128px;
+}
+
+.leftSphereLarge .shapeSvg {
+  animation: floatSlowA 9s ease-in-out infinite;
+}
+
+.leftWirePoly {
+  height: 112px;
+  left: max(7%, calc(50% - 540px));
+  top: 56%;
+  width: 112px;
+}
+
+.leftWirePoly .shapeSvg {
+  animation: floatSlowB 11s ease-in-out infinite;
+}
+
+.leftSphereSmall {
+  height: 46px;
+  left: max(14%, calc(50% - 455px));
+  top: 17%;
+  width: 46px;
+}
+
+.leftSphereSmall .shapeSvg {
+  animation: floatSlowC 7.5s ease-in-out infinite;
+}
+
+.rightSphereLarge {
+  height: 136px;
+  right: max(2%, calc(50% - 625px));
+  top: 44%;
+  width: 136px;
+}
+
+.rightSphereLarge .shapeSvg {
+  animation: floatSlowB 10s ease-in-out infinite;
+}
+
+.rightWireCube {
+  height: 116px;
+  right: max(6%, calc(50% - 540px));
+  top: 14%;
+  width: 116px;
+}
+
+.rightWireCube .shapeSvg {
+  animation: floatSlowA 12s ease-in-out infinite;
+}
+
+.rightSphereSmall {
+  height: 54px;
+  right: max(14%, calc(50% - 450px));
+  top: 72%;
+  width: 54px;
+}
+
+.rightSphereSmall .shapeSvg {
+  animation: floatSlowC 8.5s ease-in-out infinite;
+}
+
+@keyframes floatSlowA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes floatSlowB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 10px, 0);
+  }
+}
+
+@keyframes floatSlowC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(4px, -7px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shapeSlot {
+    transform: none;
+  }
+
+  .shapeSvg {
+    animation: none !important;
+  }
+}

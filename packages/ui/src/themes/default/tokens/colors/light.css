@@ -1,0 +1,548 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+@layer base {
+  :root,
+  .light,
+  .default,
+  [data-theme='light'],
+  [data-theme='default'] {
+    color-scheme: light;
+
+    --gp-color-white: #ffffff;
+    --gp-color-white-0: #ffffff;
+    --gp-color-black: #000000;
+    --gp-color-black-0: #000000;
+
+    --gp-color-gray-0: #f2f5f3;
+    --gp-color-gray-1: #e4ebe6;
+    --gp-color-gray-2: #d2d9d4;
+    --gp-color-gray-3: #c4ccc6;
+    --gp-color-gray-4: #b6bfb8;
+    --gp-color-gray-5: #96a199;
+    --gp-color-gray-6: #77827a;
+    --gp-color-gray-7: #58635b;
+    --gp-color-gray-8: #353d37;
+    --gp-color-gray-9: #191f1b;
+
+    --gp-color-blue-0: #ddf4ff;
+    --gp-color-blue-1: #bcecff;
+    --gp-color-blue-2: #8dd6ff;
+    --gp-color-blue-3: #5fb9ff;
+    --gp-color-blue-4: #3094ff;
+    --gp-color-blue-5: #0377ff;
+    --gp-color-blue-6: #0055d5;
+    --gp-color-blue-7: #0040a7;
+    --gp-color-blue-8: #002f7a;
+    --gp-color-blue-9: #001c4d;
+
+    --gp-color-green-0: #ebf9f4;
+    --gp-color-green-1: #bfffd1;
+    --gp-color-green-2: #8cf2a6;
+    --gp-color-green-3: #5fed83;
+    --gp-color-green-4: #23ea57;
+    --gp-color-green-5: #0fbf3e;
+    --gp-color-green-6: #08872b;
+    --gp-color-green-7: #0d6731;
+    --gp-color-green-8: #0e4a2e;
+    --gp-color-green-9: #0d3024;
+
+    --gp-color-yellow-0: #fff8c5;
+    --gp-color-yellow-1: #ffe777;
+    --gp-color-yellow-2: #ffd743;
+    --gp-color-yellow-3: #fabf21;
+    --gp-color-yellow-4: #db9d00;
+    --gp-color-yellow-5: #be7d00;
+    --gp-color-yellow-6: #a06100;
+    --gp-color-yellow-7: #824800;
+    --gp-color-yellow-8: #653200;
+    --gp-color-yellow-9: #471f00;
+
+    --gp-color-orange-0: #fff1e5;
+    --gp-color-orange-1: #fcceab;
+    --gp-color-orange-2: #f4a876;
+    --gp-color-orange-3: #f08a3a;
+    --gp-color-orange-4: #da7210;
+    --gp-color-orange-5: #b85b06;
+    --gp-color-orange-6: #954502;
+    --gp-color-orange-7: #703100;
+    --gp-color-orange-8: #5c2300;
+    --gp-color-orange-9: #471700;
+
+    --gp-color-red-0: #ffebe9;
+    --gp-color-red-1: #ffcecb;
+    --gp-color-red-2: #ffaba8;
+    --gp-color-red-3: #ff8182;
+    --gp-color-red-4: #fa4549;
+    --gp-color-red-5: #cf2230;
+    --gp-color-red-6: #ae0b29;
+    --gp-color-red-7: #860620;
+    --gp-color-red-8: #730019;
+    --gp-color-red-9: #420011;
+
+    --gp-color-purple-0: #f0e5ff;
+    --gp-color-purple-1: #dbbffd;
+    --gp-color-purple-2: #c898fd;
+    --gp-color-purple-3: #b870ff;
+    --gp-color-purple-4: #9f51fa;
+    --gp-color-purple-5: #8534f3;
+    --gp-color-purple-6: #6619e1;
+    --gp-color-purple-7: #43179e;
+    --gp-color-purple-8: #26115f;
+    --gp-color-purple-9: #160048;
+
+    --gp-color-pink-0: #fff0fc;
+    --gp-color-pink-1: #ffc9f2;
+    --gp-color-pink-2: #f67ed2;
+    --gp-color-pink-3: #ff80d2;
+    --gp-color-pink-4: #ff4ac0;
+    --gp-color-pink-5: #ef2aa4;
+    --gp-color-pink-6: #ca2186;
+    --gp-color-pink-7: #952866;
+    --gp-color-pink-8: #651643;
+    --gp-color-pink-9: #3d0a28;
+
+    --gp-color-coral-0: #fff0eb;
+    --gp-color-coral-1: #ffcab8;
+    --gp-color-coral-2: #ffa387;
+    --gp-color-coral-3: #ff7b56;
+    --gp-color-coral-4: #fe4c25;
+    --gp-color-coral-5: #e13f1b;
+    --gp-color-coral-6: #c53211;
+    --gp-color-coral-7: #a22710;
+    --gp-color-coral-8: #801e0f;
+    --gp-color-coral-9: #500a00;
+
+    --gp-color-lemon-0: #fdf5b3;
+    --gp-color-lemon-1: #f5e36b;
+    --gp-color-lemon-2: #f2da3b;
+    --gp-color-lemon-3: #e1c50f;
+    --gp-color-lemon-4: #c7a60b;
+    --gp-color-lemon-5: #a98906;
+    --gp-color-lemon-6: #806803;
+    --gp-color-lemon-7: #614d01;
+    --gp-color-lemon-8: #413200;
+    --gp-color-lemon-9: #322400;
+
+    --gp-color-lime-0: #f3fec8;
+    --gp-color-lime-1: #e8fc97;
+    --gp-color-lime-2: #dcfa67;
+    --gp-color-lime-3: #d1f441;
+    --gp-color-lime-4: #b2de28;
+    --gp-color-lime-5: #92c219;
+    --gp-color-lime-6: #698e17;
+    --gp-color-lime-7: #425e13;
+    --gp-color-lime-8: #2c440b;
+    --gp-color-lime-9: #182c01;
+
+    --gp-color-teal-0: #daf9f5;
+    --gp-color-teal-1: #a4efe8;
+    --gp-color-teal-2: #6ee5dc;
+    --gp-color-teal-3: #39dad2;
+    --gp-color-teal-4: #23b1ae;
+    --gp-color-teal-5: #197b7b;
+    --gp-color-teal-6: #136061;
+    --gp-color-teal-7: #024b4d;
+    --gp-color-teal-8: #083d3d;
+    --gp-color-teal-9: #052b2c;
+
+    --gp-color-indigo-0: #eff2ff;
+    --gp-color-indigo-1: #d4dbff;
+    --gp-color-indigo-2: #b3c1fd;
+    --gp-color-indigo-3: #8e9df7;
+    --gp-color-indigo-4: #6b7bef;
+    --gp-color-indigo-5: #4956e5;
+    --gp-color-indigo-6: #2d3dd7;
+    --gp-color-indigo-7: #262dae;
+    --gp-color-indigo-8: #212183;
+    --gp-color-indigo-9: #12144f;
+
+    --gp-color-success-fg: var(--gp-color-green-6);
+    --gp-color-success-emphasis: var(--gp-color-green-5);
+    --gp-color-success-muted: #8cf2a699;
+    --gp-color-success-subtle: var(--gp-color-green-1);
+    --gp-color-danger-fg: var(--gp-color-red-5);
+    --gp-color-danger-emphasis: var(--gp-color-red-5);
+    --gp-color-danger-muted: #ffaba899;
+    --gp-color-danger-subtle: var(--gp-color-red-0);
+    --gp-color-error-fg: var(--gp-color-danger-fg);
+    --gp-color-error-emphasis: var(--gp-color-danger-emphasis);
+    --gp-color-error-muted: var(--gp-color-danger-muted);
+    --gp-color-error-subtle: var(--gp-color-danger-subtle);
+    --gp-color-accent-primary: var(--gp-color-green-7);
+    --gp-color-accent-secondary: var(--gp-color-yellow-5);
+    --gp-color-text-default: var(--gp-color-black-0);
+    --gp-color-text-muted: var(--gp-color-gray-7);
+    --gp-color-text-subtle: var(--gp-color-text-muted);
+    --gp-color-text-on-emphasis: var(--gp-color-white-0);
+    --gp-color-text-emphasized: var(--gp-color-green-6);
+    --gp-color-text-link-rest: var(--gp-color-blue-6);
+    --gp-color-text-link-pressed: var(--gp-color-blue-8);
+    --gp-color-text-danger: #cf222e;
+    --gp-color-text-error: var(--gp-color-text-danger);
+    --gp-color-neutral-emphasis-plus: var(--gp-color-gray-8);
+    --gp-color-neutral-emphasis: var(--gp-color-gray-6);
+    --gp-color-neutral-muted: #c4ccc6fe;
+    --gp-color-neutral-subtle: #e4ebe6fe;
+    --gp-color-canvas-default: var(--gp-color-white-0);
+    --gp-color-canvas-invert: var(--gp-color-black-0);
+    --gp-color-canvas-overlay: var(--gp-color-white-0);
+    --gp-color-canvas-inset: var(--gp-color-gray-0);
+    --gp-color-canvas-subtle: var(--gp-color-gray-0);
+    --gp-color-canvas-muted: #f9fbf9;
+    --gp-color-border-default: var(--gp-color-gray-4);
+    --gp-color-border-muted: var(--gp-color-gray-1);
+    --gp-color-border-subtle: var(--gp-color-gray-2);
+    --gp-color-focus: var(--gp-color-blue-5);
+
+    --gp-color-link-default: var(--gp-color-text-default);
+    --gp-color-link-accent: var(--gp-color-text-link-rest);
+    --gp-color-grid-overlay: #fb51544d;
+
+    --gp-prose-code-bg-color: var(--gp-color-indigo-0);
+    --gp-prose-unordered-list-image-url: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='img' viewBox='0 -3 16 16' width='16' height='16' fill='black' style='display: inline-block; vertical-align: text-bottom; overflow: visible;'%3e%3cpath d='M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z'%3e%3c/path%3e%3c/svg%3e ");
+
+    --gp-icon-background-default: var(--gp-icon-background-green);
+    --gp-icon-background-blue: var(--gp-color-blue-0);
+    --gp-icon-background-coral: var(--gp-color-coral-0);
+    --gp-icon-background-green: var(--gp-color-green-0);
+    --gp-icon-background-gray: var(--gp-color-gray-0);
+    --gp-icon-background-indigo: var(--gp-color-indigo-0);
+    --gp-icon-background-lemon: var(--gp-color-lemon-0);
+    --gp-icon-background-lime: var(--gp-color-lime-0);
+    --gp-icon-background-orange: var(--gp-color-orange-0);
+    --gp-icon-background-pink: var(--gp-color-pink-0);
+    --gp-icon-background-purple: var(--gp-color-purple-0);
+    --gp-icon-background-red: var(--gp-color-red-0);
+    --gp-icon-background-teal: var(--gp-color-teal-0);
+    --gp-icon-background-yellow: var(--gp-color-yellow-0);
+
+    --gp-icon-color-default: var(--gp-icon-color-green);
+    --gp-icon-color-blue: var(--gp-color-blue-5);
+    --gp-icon-color-coral: var(--gp-color-coral-5);
+    --gp-icon-color-green: var(--gp-color-green-6);
+    --gp-icon-color-gray: var(--gp-color-gray-6);
+    --gp-icon-color-indigo: var(--gp-color-indigo-5);
+    --gp-icon-color-lemon: var(--gp-color-lemon-5);
+    --gp-icon-color-lime: var(--gp-color-lime-5);
+    --gp-icon-color-orange: var(--gp-color-orange-5);
+    --gp-icon-color-pink: var(--gp-color-pink-5);
+    --gp-icon-color-purple: var(--gp-color-purple-5);
+    --gp-icon-color-red: var(--gp-color-red-5);
+    --gp-icon-color-teal: var(--gp-color-teal-5);
+    --gp-icon-color-yellow: var(--gp-color-yellow-5);
+
+    --gp-inline-link-color-rest: var(--gp-color-text-link-rest);
+    --gp-inline-link-color-pressed: var(--gp-color-text-link-pressed);
+
+    --gp-faq-color-heading: var(--gp-color-text-default);
+    --gp-faq-color-tab-label-selected: var(--gp-color-text-default);
+    --gp-faq-group-button-indicator-idle: var(--gp-color-gray-3);
+    --gp-faq-group-button-indicator-hover: var(--gp-color-gray-5);
+    --gp-faq-group-button-indicator-active: var(--gp-color-accent-primary);
+
+    --gp-button-primary-bg-color-rest: var(--gp-color-green-6);
+    --gp-button-primary-bg-color-hover: color-mix(in srgb, var(--gp-color-green-6), #000 16%);
+    --gp-button-primary-bg-color-active:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%), var(--gp-color-green-6);
+    --gp-button-primary-bg-color-disabled: var(--gp-color-gray-4);
+    --gp-button-primary-border-color-rest: transparent;
+    --gp-button-primary-border-color-hover: transparent;
+    --gp-button-primary-border-color-active: var(--gp-color-green-7);
+    --gp-button-primary-border-color-disabled: transparent;
+    --gp-button-primary-fg-color-rest: var(--gp-color-white-0);
+    --gp-button-primary-fg-color-disabled: var(--gp-color-gray-2);
+    --gp-button-primary-shadow-active: none;
+    --gp-button-secondary-bg-color-rest: rgba(0, 0, 0, 0.06);
+    --gp-button-secondary-bg-color-hover: rgba(0, 0, 0, 0.1164);
+    --gp-button-secondary-bg-color-active: rgba(0, 0, 0, 0.2104);
+    --gp-button-secondary-border-color-rest: var(--gp-color-gray-2);
+    --gp-button-secondary-border-color-hover: var(--gp-color-gray-2);
+    --gp-button-secondary-border-color-active: var(--gp-color-gray-2);
+    --gp-button-secondary-fg-color-rest: var(--gp-color-text-default);
+    --gp-button-secondary-fg-color-disabled: var(--gp-color-gray-3);
+    --gp-button-subtle-bg-color-rest: rgba(0, 0, 0, 0.01);
+    --gp-button-subtle-bg-color-hover: rgba(0, 0, 0, 0.1164);
+    --gp-button-subtle-bg-color-active: rgba(0, 0, 0, 0.2104);
+    --gp-button-subtle-border-color-rest: var(--gp-color-gray-2);
+    --gp-button-subtle-border-color-hover: var(--gp-color-gray-2);
+    --gp-button-subtle-border-color-active: var(--gp-color-gray-2);
+    --gp-button-subtle-fg-color-rest: var(--gp-color-text-default);
+    --gp-button-subtle-fg-color-disabled: var(--gp-color-gray-3);
+
+    --gp-label-color-default: var(--gp-color-text-default);
+    --gp-label-color-blue: var(--gp-color-blue-5);
+    --gp-label-color-coral: var(--gp-color-coral-5);
+    --gp-label-color-green: var(--gp-color-green-6);
+    --gp-label-color-gray: var(--gp-color-gray-5);
+    --gp-label-color-indigo: var(--gp-color-indigo-5);
+    --gp-label-color-lemon: var(--gp-color-lemon-5);
+    --gp-label-color-lime: var(--gp-color-lime-5);
+    --gp-label-color-orange: var(--gp-color-orange-5);
+    --gp-label-color-pink: var(--gp-color-pink-5);
+    --gp-label-color-purple: var(--gp-color-purple-5);
+    --gp-label-color-red: var(--gp-color-red-5);
+    --gp-label-color-teal: var(--gp-color-teal-5);
+    --gp-label-color-yellow: var(--gp-color-yellow-5);
+    --gp-label-color-blue-purple: linear-gradient(var(--gp-color-blue-5), var(--gp-color-purple-5));
+    --gp-label-color-green-blue: linear-gradient(var(--gp-color-green-6), var(--gp-color-blue-5));
+    --gp-label-color-pink-blue: linear-gradient(var(--gp-color-pink-5), var(--gp-color-blue-5));
+    --gp-label-color-purple-red: linear-gradient(var(--gp-color-purple-5), var(--gp-color-red-5));
+    --gp-label-color-red-orange: linear-gradient(var(--gp-color-red-5), var(--gp-color-orange-5));
+    --gp-label-color-green-blue-purple: linear-gradient(#000aff, #096bde, var(--gp-color-green-6), #8250df);
+
+    --gp-navlist-active-indicator-color: var(--gp-color-text-emphasized);
+
+    --gp-logo-suite-color-control-rest: var(--gp-color-canvas-muted);
+    --gp-logo-suite-color-control-hover: var(--gp-color-gray-1);
+    --gp-logo-suite-color-logo-muted: var(--gp-color-text-muted);
+    --gp-logo-suite-color-logo-emphasis: var(--gp-color-text-default);
+    --gp-logo-suite-color-logo-filter-muted: brightness(0) saturate(100%) invert(37%) sepia(7%) saturate(778%)
+      hue-rotate(171deg) brightness(96%) contrast(91%);
+    --gp-logo-suite-color-logo-filter-emphasis: brightness(0) saturate(100%) invert(12%) sepia(20%) saturate(450%)
+      hue-rotate(172deg) brightness(100%) contrast(91%);
+
+    --gp-subdomain-navbar-canvas-default: #ffffff80;
+    --gp-subdomain-navbar-canvas-search: var(--gp-color-white-0);
+    --gp-subdomain-navbar-canvas-overflow-default: var(--gp-color-white-0);
+    --gp-subdomain-navbar-canvas-overflow-hover: var(--gp-color-gray-0);
+    --gp-subdomain-navbar-fg-overflow-default: var(--gp-color-text-default);
+    --gp-subdomain-navbar-border-nav-default: var(--gp-color-gray-9);
+    --gp-subdomain-navbar-border-nav-pressed: var(--gp-color-black-0);
+    --gp-subdomain-navbar-border-button-hover: var(--gp-color-black-0);
+
+    --gp-breadcrumbs-separator-border-color: var(--gp-color-gray-6);
+
+    --gp-tooltip-color-default: var(--gp-color-text-on-emphasis);
+
+    --gp-icon-button-danger-fg-color-rest: var(--gp-color-danger-fg);
+    --gp-icon-button-danger-fg-color-hover: var(--gp-color-white-0);
+    --gp-icon-button-danger-fg-color-active: var(--gp-color-white-0);
+    --gp-icon-button-danger-bg-color-rest: var(--gp-button-secondary-bg-color-rest);
+    --gp-icon-button-danger-bg-color-hover: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-bg-color-active: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-border-color-rest: var(--gp-button-secondary-border-color-rest);
+    --gp-icon-button-danger-border-color-hover: var(--gp-color-danger-emphasis);
+    --gp-icon-button-danger-border-color-active: var(--gp-color-danger-emphasis);
+    --gp-icon-button-inactive-fg-color: var(--gp-color-text-muted);
+    --gp-icon-button-inactive-bg-color: var(--gp-color-canvas-subtle);
+    --gp-icon-button-inactive-border-color: var(--gp-color-canvas-subtle);
+    --gp-icon-button-invisible-bg-color: transparent;
+    --gp-icon-button-invisible-border-color: transparent;
+
+    --gp-action-menu-color-split-button-divider-default: var(--gp-color-border-muted);
+    --gp-action-menu-color-split-button-divider-primary: var(--gp-color-green-7);
+    --gp-action-menu-color-item-hover: var(--gp-color-gray-1);
+    --gp-action-menu-color-scrollbar-thumb-bg: var(--gp-color-gray-0);
+
+    --gp-spinner-fg-color: var(--gp-color-text-muted);
+
+    --gp-inline-code-color-fg-default: var(--gp-color-text-muted);
+    --gp-inline-code-color-fg-heading: var(--gp-color-text-default);
+    --gp-inline-code-color-bg-color: var(--gp-color-gray-1);
+
+    --gp-text-cursor-animation-cursor-color: var(--gp-color-purple-5);
+    --gp-text-cursor-animation-cursor-delete-color: var(--gp-color-blue-4);
+    --gp-text-cursor-animation-cursor-final-color: var(--gp-color-green-6);
+
+    --gp-anchor-nav-link-underline-default: var(--gp-color-gray-4);
+    --gp-anchor-nav-link-underline-pressed: var(--gp-color-black-0);
+
+    --gp-carousel-pagination-bg-color: var(--gp-color-canvas-subtle);
+    --gp-carousel-pagination-indicator-bg-color: var(--gp-color-gray-6);
+    --gp-carousel-pagination-indicator-active-bg-color: var(--gp-color-gray-7);
+    --gp-carousel-pagination-arrow-button-fg-color: var(--gp-color-black-0);
+    --gp-carousel-pagination-arrow-button-border-color: var(--gp-color-gray-2);
+    --gp-carousel-pagination-arrow-button-inactive-fg-color: var(--gp-color-gray-3);
+
+    --gp-eyebrow-banner-bg-color-rest: #ffffff99;
+    --gp-eyebrow-banner-border-color-rest: var(--gp-color-border-default);
+    --gp-eyebrow-banner-heading-fg-color: var(--gp-color-text-default);
+    --gp-eyebrow-banner-sub-heading-fg-color: var(--gp-color-text-muted);
+    --gp-eyebrow-banner-icon-background-default: var(--gp-color-gray-0);
+    --gp-eyebrow-banner-icon-background-blue: var(--gp-color-blue-0);
+    --gp-eyebrow-banner-icon-background-coral: var(--gp-color-coral-0);
+    --gp-eyebrow-banner-icon-background-green: var(--gp-color-green-0);
+    --gp-eyebrow-banner-icon-background-gray: var(--gp-color-gray-0);
+    --gp-eyebrow-banner-icon-background-indigo: var(--gp-color-indigo-0);
+    --gp-eyebrow-banner-icon-background-lemon: var(--gp-color-lemon-0);
+    --gp-eyebrow-banner-icon-background-lime: var(--gp-color-lime-0);
+    --gp-eyebrow-banner-icon-background-orange: var(--gp-color-orange-0);
+    --gp-eyebrow-banner-icon-background-pink: var(--gp-color-pink-0);
+    --gp-eyebrow-banner-icon-background-purple: var(--gp-color-purple-0);
+    --gp-eyebrow-banner-icon-background-red: var(--gp-color-red-0);
+    --gp-eyebrow-banner-icon-background-teal: var(--gp-color-teal-0);
+    --gp-eyebrow-banner-icon-background-yellow: var(--gp-color-yellow-0);
+    --gp-eyebrow-banner-fg-color-default-start: var(--gp-color-purple-5);
+    --gp-eyebrow-banner-fg-color-default-middle: var(--gp-color-pink-5);
+    --gp-eyebrow-banner-fg-color-default-end: var(--gp-color-red-5);
+    --gp-eyebrow-banner-fg-color-blue: var(--gp-color-blue-5);
+    --gp-eyebrow-banner-fg-color-blue-purple-start: var(--gp-color-blue-5);
+    --gp-eyebrow-banner-fg-color-blue-purple-end: var(--gp-color-purple-5);
+    --gp-eyebrow-banner-fg-color-coral: var(--gp-color-coral-5);
+    --gp-eyebrow-banner-fg-color-green: var(--gp-color-green-6);
+    --gp-eyebrow-banner-fg-color-green-blue-start: var(--gp-color-green-6);
+    --gp-eyebrow-banner-fg-color-green-blue-end: var(--gp-color-blue-5);
+    --gp-eyebrow-banner-fg-color-gray: var(--gp-color-gray-5);
+    --gp-eyebrow-banner-fg-color-indigo: var(--gp-color-indigo-5);
+    --gp-eyebrow-banner-fg-color-lemon: var(--gp-color-lemon-5);
+    --gp-eyebrow-banner-fg-color-lime: var(--gp-color-lime-5);
+    --gp-eyebrow-banner-fg-color-orange: var(--gp-color-orange-5);
+    --gp-eyebrow-banner-fg-color-pink: var(--gp-color-pink-5);
+    --gp-eyebrow-banner-fg-color-pink-blue-start: var(--gp-color-pink-5);
+    --gp-eyebrow-banner-fg-color-pink-blue-end: var(--gp-color-blue-5);
+    --gp-eyebrow-banner-fg-color-purple: var(--gp-color-purple-5);
+    --gp-eyebrow-banner-fg-color-purple-red-start: var(--gp-color-purple-5);
+    --gp-eyebrow-banner-fg-color-purple-red-end: var(--gp-color-red-5);
+    --gp-eyebrow-banner-fg-color-red: var(--gp-color-red-5);
+    --gp-eyebrow-banner-fg-color-red-orange-start: var(--gp-color-red-5);
+    --gp-eyebrow-banner-fg-color-red-orange-end: var(--gp-color-orange-5);
+    --gp-eyebrow-banner-fg-color-teal: var(--gp-color-teal-5);
+    --gp-eyebrow-banner-fg-color-yellow: var(--gp-color-yellow-5);
+
+    --gp-token-bg-color-default: var(--gp-color-gray-0);
+    --gp-token-bg-color-accent: var(--gp-color-green-6);
+    --gp-token-bg-color-hover-default: var(--gp-color-gray-1);
+    --gp-token-bg-color-hover-accent: var(--gp-color-green-7);
+    --gp-token-bg-color-hover-outline: rgba(0, 0, 0, 0.06);
+    --gp-token-bg-color-hover-invisible: rgba(0, 0, 0, 0.06);
+    --gp-token-bg-color-invisible: var(--gp-color-gray-1);
+    --gp-token-bg-color-outline: transparent;
+    --gp-token-border-outline: var(--gp-color-border-muted);
+    --gp-token-fg-color-default: var(--gp-color-text-default);
+    --gp-token-fg-color-accent: var(--gp-color-white-0);
+    --gp-token-fg-color-outline: var(--gp-color-text-default);
+    --gp-token-fg-color-invisible: var(--gp-color-text-default);
+
+    --gp-testimonial-quote-mark-background-default: var(--gp-color-gray-0);
+    --gp-testimonial-quote-mark-background-blue: var(--gp-color-blue-0);
+    --gp-testimonial-quote-mark-background-coral: var(--gp-color-coral-0);
+    --gp-testimonial-quote-mark-background-green: var(--gp-color-green-0);
+    --gp-testimonial-quote-mark-background-gray: var(--gp-color-gray-0);
+    --gp-testimonial-quote-mark-background-indigo: var(--gp-color-indigo-0);
+    --gp-testimonial-quote-mark-background-lemon: var(--gp-color-lemon-0);
+    --gp-testimonial-quote-mark-background-lime: var(--gp-color-lime-0);
+    --gp-testimonial-quote-mark-background-orange: var(--gp-color-orange-0);
+    --gp-testimonial-quote-mark-background-pink: var(--gp-color-pink-0);
+    --gp-testimonial-quote-mark-background-purple: var(--gp-color-purple-0);
+    --gp-testimonial-quote-mark-background-red: var(--gp-color-red-0);
+    --gp-testimonial-quote-mark-background-teal: var(--gp-color-teal-0);
+    --gp-testimonial-quote-mark-background-yellow: var(--gp-color-yellow-0);
+    --gp-testimonial-border-mask-default: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    --gp-testimonial-border-mask-subtle: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    --gp-testimonial-quote-mark-color-default: var(--gp-color-text-default);
+    --gp-testimonial-quote-mark-color-blue: var(--gp-color-blue-5);
+    --gp-testimonial-quote-mark-color-coral: var(--gp-color-coral-5);
+    --gp-testimonial-quote-mark-color-green: var(--gp-color-green-6);
+    --gp-testimonial-quote-mark-color-gray: var(--gp-color-gray-5);
+    --gp-testimonial-quote-mark-color-indigo: var(--gp-color-indigo-5);
+    --gp-testimonial-quote-mark-color-lemon: var(--gp-color-lemon-5);
+    --gp-testimonial-quote-mark-color-lime: var(--gp-color-lime-5);
+    --gp-testimonial-quote-mark-color-orange: var(--gp-color-orange-5);
+    --gp-testimonial-quote-mark-color-pink: var(--gp-color-pink-5);
+    --gp-testimonial-quote-mark-color-purple: var(--gp-color-purple-5);
+    --gp-testimonial-quote-mark-color-red: var(--gp-color-red-5);
+    --gp-testimonial-quote-mark-color-teal: var(--gp-color-teal-5);
+    --gp-testimonial-quote-mark-color-yellow: var(--gp-color-yellow-5);
+    --gp-testimonial-quote-color-default: var(--gp-color-text-default);
+    --gp-testimonial-quote-color-emphasis: var(--gp-color-green-7);
+
+    --gp-tabs-item-accent-bg-color-rest: var(--gp-color-green-6);
+    --gp-tabs-item-accent-fg-color-rest: var(--gp-color-white-0);
+    --gp-tabs-item-default-bg-color-active: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(153, 153, 153, 0.12) 100%
+    );
+    --gp-tabs-item-default-border-color-active: var(--gp-color-border-default);
+    --gp-tabs-item-underline-rest: var(--gp-color-black-0);
+    --gp-tabs-list-border-width-active: var(--gp-border-width-thin);
+
+    --gp-card-background-default: var(--gp-color-canvas-default);
+    --gp-card-background-overlay: rgba(242, 245, 243, 0.2);
+
+    --gp-media-playlist-bg-color:
+      linear-gradient(180deg, rgba(242, 245, 243, 0.5) 0%, rgba(242, 245, 243, 0) 100%), var(--gp-color-canvas-default);
+
+    --gp-pricing-options-border-mask: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+    --gp-pricing-options-item-bg-color-solid: var(--gp-color-canvas-subtle);
+    --gp-pricing-options-item-bg-color-gradient-start: var(--gp-color-canvas-subtle);
+    --gp-pricing-options-item-bg-color-gradient-end: var(--gp-color-canvas-default);
+    --gp-pricing-options-feature-list-group-heading-color: var(--gp-color-text-default);
+    --gp-pricing-options-actions-message-bg-color: color-mix(in srgb, var(--gp-color-blue-4) 10%, transparent);
+    --gp-pricing-options-actions-message-border-color: color-mix(in srgb, var(--gp-color-blue-6) 20%, transparent);
+    --gp-pricing-options-actions-message-accent-color: var(--gp-color-blue-5);
+
+    --gp-timeline-line-color: var(--gp-color-border-default);
+
+    --gp-tiles-bg-color-rest: #fafafa;
+    --gp-tiles-bg-color-hover: #f2f5f3;
+    --gp-tiles-highlight-color: #08872b;
+
+    --gp-sub-nav-bg-color: var(--gp-color-canvas-default);
+    --gp-sub-nav-overflow-menu-bg-color-rest: var(--gp-color-canvas-default);
+    --gp-sub-nav-overflow-menu-bg-color-hover: var(--gp-color-canvas-subtle);
+    --gp-sub-nav-overflow-menu-fg-color-rest: var(--gp-color-text-muted);
+    --gp-sub-nav-overflow-menu-fg-color-hover: var(--gp-color-text-default);
+    --gp-sub-nav-overflow-menu-toggle-bg-color-rest: transparent;
+    --gp-sub-nav-overflow-menu-toggle-bg-color-hover: var(--gp-color-gray-1);
+    --gp-sub-nav-overflow-menu-toggle-bg-color-active: var(--gp-color-gray-1);
+    --gp-sub-nav-color-link-rest: var(--gp-color-text-default);
+    --gp-sub-nav-color-link-active: var(--gp-color-text-default);
+    --gp-sub-nav-color-link-bg-color: #e4ebe6;
+    --gp-sub-nav-shadow:
+      0px 100px 80px rgba(0, 0, 0, 0.01), 0px 41px 33px rgba(0, 0, 0, 0.02), 0px 22px 17px rgba(0, 0, 0, 0.02),
+      0px 12px 10px rgba(0, 0, 0, 0.03), 0px 6px 5px rgba(0, 0, 0, 0.04), 0px 2px 2px rgba(0, 0, 0, 0.07);
+
+    --gp-control-color-border-default: var(--gp-color-gray-4);
+    --gp-control-color-border-disabled: var(--gp-color-gray-2);
+    --gp-control-color-canvas-disabled: var(--gp-color-gray-1);
+    --gp-control-color-fg-default: var(--gp-color-text-default);
+    --gp-control-color-fg-disabled: var(--gp-color-gray-4);
+    --gp-control-color-focus: var(--gp-color-blue-6);
+    --gp-control-color-validation-error: var(--gp-color-red-6);
+    --gp-control-checkbox-bg-default: var(--gp-color-white-0);
+    --gp-control-checkbox-bg-hover: var(--gp-color-canvas-subtle);
+    --gp-control-checkbox-bg-checked: var(--gp-color-green-6);
+    --gp-control-checkbox-bg-checked-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+    --gp-control-checkbox-bg-indeterminate: var(--gp-color-green-6);
+    --gp-control-checkbox-bg-indeterminate-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+    --gp-control-checkbox-bg-checked-disabled: color-mix(in srgb, var(--gp-color-green-6), #fff 65%);
+    --gp-control-checkbox-fg-checked: var(--gp-color-white-0);
+    --gp-control-checkbox-fg-checked-disabled: var(--gp-color-white-0);
+    --gp-control-checkbox-border-default: var(--gp-color-gray-4);
+    --gp-control-checkbox-border-hover: var(--gp-color-gray-4);
+    --gp-control-checkbox-border-checked: var(--gp-color-green-6);
+    --gp-control-checkbox-border-checked-hover: var(--gp-color-text-emphasized);
+    --gp-control-checkbox-border-indeterminate: var(--gp-color-green-6);
+    --gp-control-checkbox-border-indeterminate-hover: var(--gp-color-text-emphasized);
+    --gp-control-checkbox-border-checked-disabled: color-mix(in srgb, var(--gp-color-green-6), #fff 65%);
+    --gp-control-checkbox-border-unchecked-disabled: var(--gp-color-gray-1);
+    --gp-control-radio-bg-default: var(--gp-color-white-0);
+    --gp-control-radio-bg-hover: var(--gp-color-canvas-subtle);
+    --gp-control-radio-bg-checked: var(--gp-color-white-0);
+    --gp-control-radio-bg-checked-hover: var(--gp-color-canvas-subtle);
+    --gp-control-radio-bg-disabled: var(--gp-color-canvas-default);
+    --gp-control-radio-border-default: var(--gp-control-color-border-default);
+    --gp-control-radio-border-hover: var(--gp-color-gray-4);
+    --gp-control-radio-border-checked: var(--gp-control-color-border-default);
+    --gp-control-radio-border-checked-hover: var(--gp-control-color-border-default);
+    --gp-control-radio-border-disabled: var(--gp-color-gray-4);
+    --gp-control-radio-dot-default: var(--gp-color-black-0);
+    --gp-control-radio-dot-checked: var(--gp-color-green-6);
+    --gp-control-radio-dot-checked-hover: color-mix(in srgb, var(--gp-color-text-emphasized), #000 26%);
+
+    --gp-toggle-switch-track-bg-color: var(--gp-color-gray-0);
+    --gp-toggle-switch-track-border-color: var(--gp-color-gray-7);
+    --gp-toggle-switch-thumb-border-color: rgba(0, 0, 0, 0.08);
+    --gp-toggle-switch-thumb-on-bg-color-rest: var(--gp-color-text-emphasized);
+    --gp-toggle-switch-thumb-on-bg-color-hover: color-mix(in srgb, var(--gp-color-text-emphasized), black 16%);
+    --gp-toggle-switch-thumb-off-bg-color-rest: var(--gp-color-gray-7);
+    --gp-toggle-switch-thumb-off-bg-color-hover: var(--gp-color-gray-8);
+    --gp-toggle-switch-thumb-disabled-bg-color: var(--gp-color-gray-4);
+    --gp-toggle-switch-loading-fg-color: var(--gp-color-text-muted);
+  }
+}

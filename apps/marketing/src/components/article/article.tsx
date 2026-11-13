@@ -1,0 +1,358 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+'use client';
+
+import React, { useRef } from 'react';
+import styles from './article.module.css';
+
+import { Box, Grid, Hero, Lede, Prose, Stack, TableOfContents, Text, Label } from '@gp/ui/components';
+import type { Article as ArticleFrontmatter, CompiledMdxDocument } from '@gp/content';
+import { useCurrentVisibleHeading } from '@gp/ui/hooks';
+import { BreadcrumbsList, DraftToken, People, PublishedDate, SocialShare } from './components';
+import type { BreadcrumbItem } from '@gp/seo/jsonld';
+import { ArticleJsonLd } from '@gp/seo/react';
+import { Urls, resolveArticleDescription } from '@gp/seo/utils';
+import { FAQClient } from '@/components/faq';
+import { findArticleRouteByBasePath } from '@/lib/article-routes';
+import { getDevDraftTokenLabel } from '@/lib/article-status';
+import Link from 'next/link';
+
+interface AsideProps {
+  // component: ResourceDetailsPage;
+  locationUrl?: URL;
+}
+
+const Aside: React.FC<AsideProps> = () => {
+  // const { featuredImage, form } = component.fields;
+
+  // const handleOnSubmitted = useCallback(() => {
+  //   if (locationUrl) {
+  //     const queryParams = new URLSearchParams(ssrSafeLocation.search);
+  //     const featureFlags = queryParams.get('_features') || '';
+  //     window.location.href = appendFeatureFlagsToUrl(`${locationUrl.href}/confirmation`, featureFlags);
+  //   }
+  // }, [locationUrl]);
+
+  // if (!(featuredImage || form)) {
+  //   return null;
+  // }
+
+  return (
+    <Stack data-testid='resource-details-aside' gap={32} padding='none'>
+      {/* {featuredImage ? (
+        <Box className={styles.hiddenOnMobile}>
+          <Image
+            as='picture'
+            src={`${featuredImage.fields.file.url}?fm=webp`}
+            sources={getImageSources(featuredImage.fields.file.url, { maxWidth: 640 })}
+            alt={featuredImage.fields.description || ''}
+            borderRadius='medium'
+            aspectRatio='1:1'
+            loading='lazy'
+          />
+        </Box>
+      ) : null} */}
+      {/* {form ? (
+        <Box id='content-form'>
+          <ContentfulForm
+            component={form}
+            headingProps={{ as: 'h2', size: '6' }}
+            onSubmitted={handleOnSubmitted}
+            padding='none'
+          />
+        </Box>
+      ) : null} */}
+    </Stack>
+  );
+};
+
+interface TagsProps {
+  tagsLabel: string;
+  indexPath: string;
+  tags: string[];
+}
+
+const Tags: React.FC<TagsProps> = ({ indexPath, tags, tagsLabel }) => {
+  return (
+    <Box
+      borderBlockEndWidth='thin'
+      borderColor='muted'
+      borderStyle='solid'
+      className={styles.tagsWrapper}
+      paddingBlockEnd={40}
+      paddingBlockStart={40}
+    >
+      <Stack direction='horizontal' flexWrap='wrap' padding='none'>
+        <Text>{tagsLabel}</Text>
+        {tags.map((tag) => {
+          return (
+            <Link
+              key={tag}
+              aria-label={`${tagsLabel}: ${tag}`}
+              href={{ pathname: indexPath, query: { tag: tag.toLowerCase() } }}
+              style={{
+                padding: '4px 12px',
+                backgroundColor: '#f3f4f6',
+                borderRadius: '9999px',
+                textDecoration: 'none',
+                color: '#374151',
+                fontSize: '14px'
+              }}
+            >
+              <Label>{tag}</Label>
+            </Link>
+          );
+        })}
+      </Stack>
+    </Box>
+  );
+};
+
+interface ContentProps {
+  document: CompiledMdxDocument<ArticleFrontmatter>;
+  indexPath: string;
+  socialShareUrl: string;
+}
+
+const Content: React.FC<ContentProps> = ({ document, indexPath, socialShareUrl }) => {
+  const { author, lede, tags, tagsLabel } = document.frontmatter;
+
+  const hasMultipleAuthors = Array.isArray(author) && author.length > 1;
+
+  return (
+    <>
+      <Stack padding='none'>
+        {lede.length > 0 && (
+          <Box marginBlockEnd={{ narrow: 24, wide: 48 }}>
+            <header>
+              <Lede>{lede}</Lede>
+            </header>
+          </Box>
+        )}
+
+        <Box
+          borderBlockEndWidth='thin'
+          borderColor='muted'
+          borderStyle='solid'
+          paddingBlockEnd={{ narrow: 40, wide: 64 }}
+        >
+          <Prose variant='editorial'>{document.content}</Prose>
+        </Box>
+      </Stack>
+
+      <Box
+        borderBlockEndWidth='thin'
+        borderBlockStartWidth='thin'
+        borderColor='muted'
+        borderStyle='solid'
+        paddingBlockEnd={40}
+        paddingBlockStart={40}
+      >
+        <People label={hasMultipleAuthors ? 'Authors' : 'Author'} people={Array.isArray(author) ? author : [author]} />
+      </Box>
+
+      <Box
+        borderBlockEndWidth='thin'
+        borderBlockStartWidth='thin'
+        borderColor='muted'
+        borderStyle='solid'
+        paddingBlockEnd={40}
+        paddingBlockStart={40}
+      >
+        <SocialShare url={socialShareUrl} />
+      </Box>
+
+      {tagsLabel && (tags.length ?? 0) > 0 ? <Tags indexPath={indexPath} tags={tags} tagsLabel={tagsLabel} /> : null}
+    </>
+  );
+};
+
+interface HeaderProps {
+  document: CompiledMdxDocument<ArticleFrontmatter>;
+  breadcrumbs?: Array<BreadcrumbItem>;
+  // contentFormCta?: string;
+}
+
+const defaultBreadcrumbs: Array<BreadcrumbItem> = [] as const;
+
+const Header: React.FC<HeaderProps> = ({ breadcrumbs = defaultBreadcrumbs, document }) => {
+  // const {hero, featuredImage, publishedDate} = component.fields
+  const { dateModified, datePublished } = document.frontmatter;
+  const draftLabel = getDevDraftTokenLabel(document.frontmatter);
+
+  return (
+    <header>
+      {breadcrumbs.length > 0 ? (
+        <Box marginBlockStart={20}>
+          <BreadcrumbsList selectLastItem items={breadcrumbs} />
+        </Box>
+      ) : null}
+
+      <Box
+        borderBlockEndWidth='thin'
+        borderColor='muted'
+        borderStyle='solid'
+        marginBlockStart={{ narrow: 48, regular: 64 }}
+      >
+        {/* {hero ? <ContentfulHero component={hero} heroClassName={styles.hero} paddingBlockEnd='none' data-hpc /> : null} */}
+        <Hero className='pbe-(--gp-size-48)! pbs-0!'>
+          <Hero.Heading>{document.frontmatter.title}</Hero.Heading>
+          <Hero.Description>{resolveArticleDescription(document.frontmatter)}</Hero.Description>
+        </Hero>
+
+        {draftLabel ? (
+          <div className={styles.metaRow}>
+            <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
+            <DraftToken label={draftLabel} />
+          </div>
+        ) : (
+          <PublishedDate publishedDate={datePublished} updatedDate={dateModified} />
+        )}
+
+        {/* {featuredImage ? (
+          <Image
+            className={styles.heroImage}
+            as='picture'
+            src={`${featuredImage.fields.file.url}?fm=webp`}
+            sources={getImageSources(featuredImage.fields.file.url, { maxWidth: 1040 })}
+            alt={featuredImage.fields.description || ''}
+            borderRadius='medium'
+            loading='lazy'
+          />
+        ) : null} */}
+
+        {/* {contentFormCta ? (
+          <Button
+            className={styles.heroPrimaryButton}
+            as='a'
+            href='#content-form'
+            variant='primary'
+            trailingVisual={<ChevronDownIcon />}
+            block
+          >
+            {contentFormCta}
+          </Button>
+        ) : null} */}
+      </Box>
+    </header>
+  );
+};
+
+interface ArticleProps {
+  article: CompiledMdxDocument<ArticleFrontmatter>;
+  basePath: string;
+}
+
+const ArticleRoot: React.FC<ArticleProps> = ({ article, basePath }) => {
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  // const payload = toResourceDetailsPayload(useRoutePayload<unknown>());
+  // const contentfulData = useContentfulData(payload.contentfulRawJsonResponse);
+  // const page = toResourceDetailsPage(toEntryCollection(contentfulData).at(0));
+  // const { template, settings } = page.fields;
+  // const colorMode = settings?.fields.colorMode ?? 'light';
+
+  // const { body, faq, featuredCta, featuredImage, form, hero, people, relatedResources, tableOfContents } =
+  //   template.fields;
+  const { faq, relatedSlugs } = article.frontmatter;
+
+  // const locationUrl = new URL(page.fields.path, ssrSafeLocation.origin);
+  // const queryParams = new URLSearchParams(ssrSafeLocation.search);
+  // const featureFlags = queryParams.get('_features') || '';
+
+  const currentVisibleHeading = useCurrentVisibleHeading({ ref: contentRef });
+  // const breadcrumbListItems =
+  //   payload.breadcrumbLinks?.map((link) => ({
+  //     name: link.name,
+  //     url: appendFeatureFlagsToUrl(link.href, featureFlags)
+  //   })) || [];
+
+  // const fallbackIndexPath = (() => {
+  //   const segments = page.fields.path.split('/');
+  //   segments.pop();
+  //   return segments.join('/') || '/';
+  // })();
+  // const indexPath = payload.indexPath || fallbackIndexPath;
+
+  // const articleImageUrl = featuredImage?.fields.file.url ?? page.fields.seo?.fields.socialMediaImage?.fields.file.url;
+  // const isArticlePage = page.fields.path.includes('resources/articles');
+  // const isEventPage =
+  //   template.fields.eventPageType === 'event' ||
+  //   (!template.fields.eventPageType && page.fields.path.includes('resources/events'));
+
+  const hasTableOfContents = article.headings.find((heading) => heading.level === 'h2') !== undefined;
+  const articlePath = `${basePath}/${article.frontmatter.slug}`;
+  const sectionRoute = findArticleRouteByBasePath(basePath);
+  const breadcrumbs: BreadcrumbItem[] = [
+    { name: 'Home', path: '/' },
+    { name: sectionRoute?.label ?? basePath.replace(/^\//, ''), path: basePath },
+    { name: article.frontmatter.title, path: articlePath }
+  ];
+
+  return (
+    <>
+      <Box marginBlockEnd={64}>
+        <Grid className={styles.grid}>
+          <Grid.Column span={12}>
+            <Header breadcrumbs={breadcrumbs} document={article} />
+          </Grid.Column>
+
+          <Grid.Column span={12}>
+            <Grid>
+              <Grid.Column span={{ xsmall: 12, large: 7 }}>
+                <div ref={contentRef}>
+                  <Content document={article} indexPath={basePath} socialShareUrl={`${Urls.BaseUrl}${articlePath}`} />
+                </div>
+              </Grid.Column>
+
+              <Grid.Column className={styles.formWrapper} span={{ xsmall: 12, large: 4 }} start={{ large: 9 }}>
+                {hasTableOfContents /* && body */ ? (
+                  <TableOfContents
+                    active={currentVisibleHeading}
+                    items={article.headings.filter((heading) => heading.level === 'h2')}
+                  />
+                ) : (
+                  <Aside /> /* <Aside component={template} locationUrl={locationUrl} /> */
+                )}
+              </Grid.Column>
+            </Grid>
+          </Grid.Column>
+        </Grid>
+      </Box>
+
+      {relatedSlugs.length > 0 ? (
+        <Box
+          backgroundColor='subtle'
+          paddingBlockEnd={{ narrow: 64, regular: 96 }}
+          paddingBlockStart={{ narrow: 48, regular: 80 }}
+        >
+          <Grid>
+            <Grid.Column>{/* <RelatedResources relatedResources={relatedResources} /> */}</Grid.Column>
+          </Grid>
+        </Box>
+      ) : null}
+
+      {faq && faq.length > 0 ? (
+        <Box style={{ paddingTop: 'var(--gp-size-96)', paddingBottom: 'var(--gp-size-96)' }}>
+          <FAQClient
+            faqs={{
+              heading: 'Frequently asked questions',
+              questions: faq
+            }}
+          />
+        </Box>
+      ) : null}
+
+      <ArticleJsonLd article={article.frontmatter} path={articlePath} />
+    </>
+  );
+};
+
+export const Article = Object.assign(ArticleRoot, {
+  Root: ArticleRoot,
+  Aside,
+  Content,
+  Tags,
+  Header
+});

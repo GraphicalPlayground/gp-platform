@@ -1,0 +1,36 @@
+---
+title: Command Queues
+type: glossary
+slug: command-queues
+lede: "Modern GPUs can render graphics, run compute work, and copy data at the same time, and command queues are how explicit APIs like Vulkan and DirectX 12 feed those parallel engines."
+term: Command Queues
+shortDefinition: A command queue is a GPU-side queue that receives recorded command buffers and executes them in order, letting the CPU submit graphics, compute, or copy work without waiting for it to finish.
+description: How command queues schedule submitted GPU work, and why separate graphics, compute, and copy queues let modern APIs overlap rendering tasks.
+synonims: []
+author: mallory-scotton
+category: uncategorized
+tags:
+  - command-buffers
+  - gpu-architecture
+  - vulkan
+  - directx12
+  - graphics-apis
+relatedTerms:
+  - Command Buffers
+  - Pipeline State Objects (PSO)
+  - GPU Synchronization Primitives
+  - Swap Chain
+  - Compute Shaders
+relatedSlugs:
+  - command-buffers
+  - pipeline-state-objects
+  - gpu-synchronization
+  - swap-chain
+  - compute-shaders
+difficulty: intermediate
+datePublished: 2026-07-29
+dateModified: 2026-08-04
+locale: en
+draft: true
+noindex: false
+---

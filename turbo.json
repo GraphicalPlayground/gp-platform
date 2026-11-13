@@ -1,5 +1,5 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "https://v2-10-7.turborepo.dev/schema.json",
   "globalEnv": [
     "VERCEL_ENV",
     "STORYBOOK_READY_ONLY",
@@ -34,6 +34,11 @@
     },
     "typecheck": {
       "dependsOn": [],
+      "outputs": []
+    },
+    "content:validate": {
+      "dependsOn": [],
+      "inputs": ["$TURBO_DEFAULT$", "../../content/**/*.mdx"],
       "outputs": []
     }
   }

@@ -1,3 +1,7 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
 import { useCallback, useEffect, useState } from 'react';
 
 export type Theme = 'light' | 'dark';

@@ -1,0 +1,124 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.CarouselPagination {
+  display: inline-flex;
+  flex: 0 1 auto;
+  min-width: 0;
+  align-items: center;
+  gap: calc(var(--gp-size-8) + var(--gp-size-2));
+  width: max-content;
+  max-width: 100%;
+  padding: var(--gp-size-6);
+  border-radius: var(--gp-border-radius-full);
+  background: var(--gp-carousel-pagination-bg-color);
+}
+
+.CarouselPagination .CarouselPagination__arrowButton {
+  width: calc(var(--gp-size-28) + var(--gp-size-2));
+  min-width: calc(var(--gp-size-28) + var(--gp-size-2));
+  height: calc(var(--gp-size-28) + var(--gp-size-2));
+  min-height: calc(var(--gp-size-28) + var(--gp-size-2));
+  padding: 0;
+  color: var(--gp-carousel-pagination-arrow-button-fg-color);
+  background: var(--gp-color-canvas-default);
+  border: var(--gp-border-width-thin) solid var(--gp-carousel-pagination-arrow-button-border-color);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.CarouselPagination .CarouselPagination__arrowButton--inactive,
+.CarouselPagination .CarouselPagination__arrowButton--inactive:hover {
+  color: var(--gp-carousel-pagination-arrow-button-inactive-fg-color);
+  background: var(--gp-color-canvas-default);
+  border-color: transparent;
+}
+
+.CarouselPagination .CarouselPagination__arrowButton svg {
+  width: var(--gp-size-16);
+  height: var(--gp-size-16);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .CarouselPagination .CarouselPagination__arrowButton--available:hover {
+    background: var(--gp-carousel-pagination-bg-color);
+    border-color: var(--gp-carousel-pagination-arrow-button-border-color);
+    box-shadow: none;
+  }
+}
+
+.CarouselPagination__indicators {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-6);
+  width: calc(var(--gp-size-6) * (var(--carousel-pagination-item-count) * 2 + 0.5));
+  min-width: 0;
+  height: calc(var(--gp-size-28) + var(--gp-size-2));
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.CarouselPagination__indicator {
+  position: relative;
+  flex: none;
+  width: var(--gp-size-6);
+  height: var(--gp-size-6);
+  padding: 0;
+  border: 0;
+  border-radius: var(--gp-border-radius-full);
+  background: var(--gp-carousel-pagination-indicator-bg-color);
+  cursor: pointer;
+  transition:
+    width var(--gp-animation-duration-fast) cubic-bezier(0.4, 0, 0.2, 1),
+    background-color var(--gp-animation-duration-fast) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.CarouselPagination__indicator::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + var(--gp-size-6));
+  height: calc(var(--gp-size-28) + var(--gp-size-2));
+  content: '';
+  transform: translate(-50%, -50%);
+}
+
+.CarouselPagination__indicator--active {
+  width: calc(var(--gp-size-6) * 2.5);
+  background: var(--gp-carousel-pagination-indicator-active-bg-color);
+}
+
+.CarouselPagination__indicator:focus-visible {
+  outline: var(--gp-border-width-thick) solid var(--gp-color-focus);
+  outline-offset: var(--gp-size-4);
+}
+
+.CarouselPagination__arrowButton:focus-visible {
+  outline: var(--gp-border-width-thick) solid var(--gp-color-focus);
+  outline-offset: var(--gp-size-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .CarouselPagination__indicators {
+    scroll-behavior: auto;
+  }
+
+  .CarouselPagination__indicator {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .CarouselPagination__indicator {
+    background: ButtonText;
+  }
+
+  .CarouselPagination__indicator--active {
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+}

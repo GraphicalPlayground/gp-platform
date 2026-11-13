@@ -1,0 +1,31 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.legalCard {
+  --gp-link-color-accent: var(--gp-color-link-accent);
+  transition:
+    border-color var(--gp-animation-duration-faster) var(--gp-animation-easing-default),
+    background-color var(--gp-animation-duration-faster) var(--gp-animation-easing-default);
+}
+
+.legalCard:is(:hover, :focus-within) {
+  border-color: var(--gp-color-gray-5);
+  background-color: var(--gp-color-canvas-muted);
+}
+
+.legalCardIcon {
+  margin-block-end: var(--gp-size-20);
+}
+
+.legalCardLabel {
+  margin-block-end: var(--gp-size-12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legalCard {
+    transition: none;
+  }
+}

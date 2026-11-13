@@ -1,0 +1,47 @@
+// Copyright (c) - Graphical Playground. All rights reserved.
+// For more information, see https://graphical-playground/legal
+// mailto:support AT graphical-playground DOT com
+
+import React from 'react';
+import type { Metadata } from 'next';
+import { ClerkProvider } from '@clerk/nextjs';
+import { JsonLd } from '@gp/seo/react';
+import { graph } from '@gp/seo/jsonld';
+import { SeoMetadata } from '@gp/seo/metadata';
+import { Urls } from '@gp/seo/utils';
+import { env } from '~env';
+
+import { MarketingChrome } from '@/components/auth';
+import { Footer } from '@/components/footer';
+import { MarketingHeader } from '@/components/header';
+
+import { GoogleAnalytics } from '@next/third-parties/google';
+
+import './globals.css';
+
+/**
+ * @brief Root metadata for every page of the marketing site, unless overridden by a more specific page.
+ */
+export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.BaseUrl }).base();
+
+/**
+ * @brief This function defines the root layout for the application.
+ * @param children - The child components to be rendered within the layout.
+ * @returns The root layout component.
+ */
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html className='min-h-screen antialiased scroll-smooth' data-scroll-behavior='smooth' lang='en'>
+      <body className='relative w-full min-h-screen flex flex-col scroll-smooth'>
+        <JsonLd data={graph} />
+        <ClerkProvider>
+          <MarketingChrome footer={<Footer />} header={<MarketingHeader />}>
+            {children}
+          </MarketingChrome>
+        </ClerkProvider>
+      </body>
+
+      {env.NEXT_PUBLIC_GA_ID !== undefined && <GoogleAnalytics gaId={env.NEXT_PUBLIC_GA_ID} />}
+    </html>
+  );
+}

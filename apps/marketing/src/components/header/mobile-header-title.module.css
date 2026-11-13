@@ -1,0 +1,37 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.title {
+  margin-top: var(--gp-size-12);
+  max-width: 100%;
+  min-width: 0;
+  width: 100%;
+}
+
+.menuOpen {
+  display: none;
+}
+
+.content {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+@media (min-width: 1012px) {
+  .title {
+    display: none;
+  }
+}
