@@ -19,6 +19,7 @@ import type { ZodType } from 'zod';
 
 import { walkMdxFiles } from '../src/cms/collection/fs-utils';
 import { articleFrontmatterUnionSchema } from '../src/article';
+import { careerFrontmatterSchema } from '../src/career';
 import { legalFrontmatterSchema, subprocessorsFrontmatterSchema } from '../src/legal';
 import { validatePublishWorkflow } from '../src/shared/publish-status';
 import type { PublishWorkflowFields } from '../src/shared/publish-status';
@@ -253,18 +254,22 @@ function parseArgs(argv: string[]): { file?: string } {
 async function main(): Promise<void> {
   const { file: filterFile } = parseArgs(process.argv.slice(2));
 
-  const [articles, legal] = await Promise.all([
+  const [articles, careers, legal] = await Promise.all([
     loadCollection(path.join(REPO_ROOT, 'content', 'articles'), validateWithSchema(articleFrontmatterUnionSchema)),
+    loadCollection(path.join(REPO_ROOT, 'content', 'careers'), validateWithSchema(careerFrontmatterSchema)),
     loadCollection(path.join(REPO_ROOT, 'content', 'legal'), validateLegalFrontmatter)
   ]);
 
   const allProblems: Problem[] = [
     ...articles.problems,
+    ...careers.problems,
     ...legal.problems,
     ...checkDuplicateSlugs(articles.docs),
+    ...checkDuplicateSlugs(careers.docs),
     ...checkDuplicateSlugs(legal.docs),
     ...checkArticleReferences(articles.docs),
     ...checkLocalePairing(articles.docs),
+    ...checkLocalePairing(careers.docs),
     ...checkLocalePairing(legal.docs)
   ];
 
@@ -278,7 +283,7 @@ async function main(): Promise<void> {
     console.log(`[${problem.level}] ${problem.relativePath}: ${problem.message}`);
   }
 
-  const totalDocs = articles.docs.length + legal.docs.length;
+  const totalDocs = articles.docs.length + careers.docs.length + legal.docs.length;
 
   // eslint-disable-next-line no-console
   console.log(`\n${totalDocs} document(s) checked, ${errors.length} error(s), ${warnings.length} warning(s).`);

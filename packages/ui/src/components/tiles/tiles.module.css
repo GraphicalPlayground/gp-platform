@@ -22,7 +22,7 @@
 
 .Tiles--layout-default .Tiles-grid,
 .Tiles--layout-compact .Tiles-grid {
-  max-width: min(100%, calc(var(--gp-tiles-item-maxSize) * var(--tiles-columns)));
+  max-width: min(100%, calc(var(--gp-tiles-item-max-size) * var(--tiles-columns)));
 }
 
 @media screen and (min-width: 34rem) and (max-width: 47.99rem) {
@@ -54,8 +54,8 @@
   display: flex;
   flex-direction: column;
   width: calc(100% / var(--tiles-columns));
-  max-width: var(--gp-tiles-item-maxSize);
-  max-height: var(--gp-tiles-item-maxSize);
+  max-width: var(--gp-tiles-item-max-size);
+  max-height: var(--gp-tiles-item-max-size);
   box-sizing: border-box;
   background-color: var(--gp-tiles-bg-color-rest);
   border-top: var(--gp-border-width-thin) solid var(--gp-color-border-muted);

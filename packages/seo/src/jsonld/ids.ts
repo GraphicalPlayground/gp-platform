@@ -4,7 +4,22 @@
 
 import { Organization } from '@gp/constants';
 
-export type ContactSlug = 'support' | 'legal' | 'press' | 'sales' | 'security';
+export type ContactSlug =
+  | 'support'
+  | 'contact'
+  | 'security'
+  | 'marketing'
+  | 'legal'
+  | 'sponsor'
+  | 'press'
+  | 'billing'
+  | 'partnerships'
+  | 'feedback'
+  | 'accessibility'
+  | 'abuse'
+  | 'careers'
+  | 'privacy'
+  | 'sales';
 export type LanguageSlug = 'en' | 'fr';
 export type PersonSlug = 'mallory-scotton' | 'hugo-cathelain' | 'ossan-msoili' | 'raphael-ostier' | 'nathan-fievet';
 export type SoftwareSlug = 'gp-platform' | 'gp-engine' | 'gp-docs';

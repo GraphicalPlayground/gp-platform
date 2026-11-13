@@ -1,0 +1,161 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.heroBannerFrame {
+  background-color: var(--gp-color-canvas-subtle);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.heroSection {
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.heroSection .heroRoot {
+  padding: var(--gp-size-32) 0 var(--gp-size-40);
+}
+
+@media screen and (min-width: 48rem) {
+  .heroSection .heroRoot {
+    padding: var(--gp-size-48) 0 var(--gp-size-64);
+  }
+}
+
+.channelGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-40);
+  margin-block-start: var(--gp-size-16);
+}
+
+.channelGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-20);
+}
+
+.channelGroupHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-8);
+  padding-block-end: var(--gp-size-12);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.discussBox {
+  margin-block-start: var(--gp-size-8);
+}
+
+.discussRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-20);
+}
+
+.discussCopy {
+  display: flex;
+  flex: 1 1 20rem;
+  flex-direction: column;
+  gap: var(--gp-size-8);
+}
+
+.discussActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-12);
+}
+
+.partnerBar {
+  margin-block-end: var(--gp-size-32);
+}
+
+.partnerSingleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-16);
+}
+
+.partnerLogo {
+  display: block;
+  object-fit: contain;
+}
+
+.partnerMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-12);
+}
+
+.emptyLedgerCard {
+  margin-block-end: var(--gp-size-24);
+}
+
+.emptyLedgerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+}
+
+.emptyLedgerHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-12);
+}
+
+.tierCard {
+  height: 100%;
+}
+
+.tierStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-12);
+  height: 100%;
+}
+
+.tierFooter {
+  margin-block-start: auto;
+  padding-block-start: var(--gp-size-8);
+}
+
+.contributorCard {
+  height: 100%;
+}
+
+.contributorStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+  height: 100%;
+}
+
+.contributorIdentity {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-12);
+}
+
+.contributorText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-4);
+  min-width: 0;
+}
+
+.contributorAction {
+  margin-block-start: auto;
+}

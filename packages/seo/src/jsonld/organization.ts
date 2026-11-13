@@ -58,9 +58,19 @@ export const organization: WithContext<SchemaOrganization> = {
   'knowsAbout': Organization.knowsAbout,
   'contactPoint': [
     { '@id': JsonLdIds.contact('support') },
+    { '@id': JsonLdIds.contact('contact') },
+    { '@id': JsonLdIds.contact('security') },
+    { '@id': JsonLdIds.contact('marketing') },
     { '@id': JsonLdIds.contact('legal') },
+    { '@id': JsonLdIds.contact('sponsor') },
     { '@id': JsonLdIds.contact('press') },
-    { '@id': JsonLdIds.contact('sales') },
-    { '@id': JsonLdIds.contact('security') }
+    { '@id': JsonLdIds.contact('billing') },
+    { '@id': JsonLdIds.contact('partnerships') },
+    { '@id': JsonLdIds.contact('feedback') },
+    { '@id': JsonLdIds.contact('accessibility') },
+    { '@id': JsonLdIds.contact('abuse') },
+    { '@id': JsonLdIds.contact('careers') },
+    { '@id': JsonLdIds.contact('privacy') },
+    { '@id': JsonLdIds.contact('sales') }
   ]
 };

@@ -1,0 +1,25 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.heroBannerFrame {
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  overflow: hidden;
+  position: relative;
+}
+
+.heroSection {
+  position: relative;
+  z-index: 1;
+}
+
+.heroRoot {
+  padding-block-end: var(--gp-size-32);
+  padding-block-start: var(--gp-size-20);
+}
+
+.pricingWrap {
+  margin-block-start: var(--gp-size-16);
+}

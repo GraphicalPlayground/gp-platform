@@ -82,7 +82,8 @@ export function GET(): Response {
           {
             title: 'Pricing',
             path: '/pricing',
-            description: 'Cloud rendering subscription plans and free local engine access.'
+            description:
+              '0 EUR forever for Open & Local access (MIT gp-engine C++23, HLSL curriculum, and local GPU execution via local engine server), upcoming monthly EUR Cloud GPU subscription for browser-based OCI containers (waitlist open), and custom Academic & Team cohort quotas via sales@graphical-playground.com.'
           },
           { title: 'Waitlist', path: '/waitlist', description: 'Request early access to the interactive platform.' },
           { title: 'Products', path: '/products', description: 'Overview of the Graphical Playground ecosystem.' },
@@ -115,7 +116,7 @@ export function GET(): Response {
             title: 'Certifications',
             path: '/certifications',
             description:
-              'Overview of the project-based certification system, evaluation criteria, and public verification.'
+              'Project-based graphics certifications under active development around C++23, HLSL, and adaptable RHI backends, verifiable by ID on-site to help candidates stand out, assist reviewers, recognize platform accomplishments, and fund shared GPU infrastructure.'
           }
         ]
       },
@@ -189,8 +190,18 @@ export function GET(): Response {
           { title: 'Discord', path: 'https://discord.graphical-playground.com' },
           { title: 'Community', path: '/community' },
           { title: 'Events', path: '/events' },
-          { title: 'Careers', path: '/careers' },
-          { title: 'Sponsors', path: '/sponsors', description: 'Featured sponsors of the platform.' },
+          {
+            title: 'Careers',
+            path: '/careers',
+            description:
+              'Hiring status (currently closed for paid roles), CMS-backed postings directory, and skills needed across 11 public open-source repositories covering C++23 graphics, Next.js, curriculum, and GPU infrastructure'
+          },
+          {
+            title: 'Sponsors',
+            path: '/sponsors',
+            description:
+              'Sponsors and contributors page (no financial sponsors yet; all sponsor tiers are open, and EPITECH Lyon is our founding academic home). Preferred support channels are GitHub Sponsors (https://github.com/sponsors/GraphicalPlayground) and Direct Donation (https://graphical-playground.com/donate), alongside Open Collective (https://opencollective.com/graphical-playground), Buy Me A Coffee (https://www.buymeacoffee.com/GraphicalPlayground), Thanks Dev (https://thanks.dev/u/gh/GraphicalPlayground), and pre-sponsorship emails at sponsor@graphical-playground.com.'
+          },
           {
             title: 'Donate',
             path: '/donate',
@@ -213,7 +224,12 @@ export function GET(): Response {
             description: 'Answers about Graphical Playground, gp-engine, hardware requirements, and curriculum.'
           },
           { title: 'Help', path: '/help' },
-          { title: 'Contact', path: '/contact' },
+          {
+            title: 'Contact',
+            path: '/contact',
+            description:
+              'Direct email directory (14 team inboxes including contact, support, security, privacy, legal, press, partnerships, sponsor, billing, careers, feedback, marketing, accessibility, and abuse), Discord, GitHub, LinkedIn, and postal mail c/o EPITECH Lyon (2 Rue du Professeur Charles Appleton, 69007 Lyon, France).'
+          },
           {
             title: 'Security',
             path: '/security',
