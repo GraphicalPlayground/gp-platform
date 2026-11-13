@@ -50,6 +50,8 @@ import {
   ShieldLockIcon
 } from '@primer/octicons-react';
 import type { Icon } from '@primer/octicons-react';
+import { useDitherBackground } from '@/components/home/visuals';
+import { ContactFloatingMail } from './contact-floating-mail';
 import styles from './contact.module.css';
 
 const CONTACT_BREADCRUMBS: BreadcrumbItem[] = [
@@ -299,51 +301,70 @@ export interface ContactViewProps {
  * @brief Client view for the Graphical Playground Contact page.
  */
 export const ContactView: React.FC<ContactViewProps> = ({ title }) => {
+  const { containerRef: heroDitherRef, DitherBackground: HeroDitherBackground } = useDitherBackground({
+    dotOpacity: 0.28,
+    interactiveCursor: false,
+    maskMode: 'top-fade',
+    palette: 'blue-yellow',
+    transparentBackground: true,
+    type: 'wave'
+  });
+
   return (
     <>
-      <Section fullWidth backgroundColor='subtle' paddingBlockEnd='normal' paddingBlockStart='condensed'>
-        <Grid>
-          <Grid.Column span={12}>
-            <Breadcrumbs>
-              {CONTACT_BREADCRUMBS.map((item, index) => (
-                <Breadcrumbs.Item
-                  key={item.path}
-                  href={item.path}
-                  {...(index === CONTACT_BREADCRUMBS.length - 1 && { selected: true })}
-                >
-                  {item.name}
-                </Breadcrumbs.Item>
-              ))}
-            </Breadcrumbs>
-            <BreadcrumbJsonLd items={CONTACT_BREADCRUMBS} />
-          </Grid.Column>
+      <div ref={heroDitherRef} className={styles.heroBannerFrame}>
+        <ContactFloatingMail />
+        <Section
+          fullWidth
+          backgroundColor='transparent'
+          className={styles.heroSection}
+          paddingBlockEnd='normal'
+          paddingBlockStart='condensed'
+        >
+          <Grid>
+            <Grid.Column span={12}>
+              <Breadcrumbs>
+                {CONTACT_BREADCRUMBS.map((item, index) => (
+                  <Breadcrumbs.Item
+                    key={item.path}
+                    href={item.path}
+                    {...(index === CONTACT_BREADCRUMBS.length - 1 && { selected: true })}
+                  >
+                    {item.name}
+                  </Breadcrumbs.Item>
+                ))}
+              </Breadcrumbs>
+              <BreadcrumbJsonLd items={CONTACT_BREADCRUMBS} />
+            </Grid.Column>
 
-          <Grid.Column span={12}>
-            <Hero className='pbs-(--gp-size-32)! pbe-0!'>
-              <Hero.Label>Company · Contact</Hero.Label>
-              <Hero.Heading size='2'>{title}</Hero.Heading>
-              <Hero.Description size='300'>
-                Reach the {Organization.displayName} team in Lyon through 14 dedicated email inboxes, community
-                platforms on Discord, GitHub, and LinkedIn, or postal correspondence c/o EPITECH Lyon.
-              </Hero.Description>
-              <Hero.ButtonGroup>
-                <Button as='a' href={Organization.mailto('contact')} variant='primary'>
-                  Email {Organization.emails.contact}
-                </Button>
-                <Button
-                  as='a'
-                  href={Organization.socials.discord}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                  variant='secondary'
-                >
-                  Join Discord
-                </Button>
-              </Hero.ButtonGroup>
-            </Hero>
-          </Grid.Column>
-        </Grid>
-      </Section>
+            <Grid.Column span={12}>
+              <Hero align='center' className={styles.heroRoot}>
+                <Hero.Label>Company · Contact</Hero.Label>
+                <Hero.Heading size='2'>{title}</Hero.Heading>
+                <Hero.Description size='300'>
+                  Reach the {Organization.displayName} team in Lyon through 14 dedicated email inboxes, community
+                  platforms on Discord, GitHub, and LinkedIn, or postal correspondence c/o EPITECH Lyon.
+                </Hero.Description>
+                <Hero.ButtonGroup>
+                  <Button as='a' href={Organization.mailto('contact')} variant='primary'>
+                    Email {Organization.emails.contact}
+                  </Button>
+                  <Button
+                    as='a'
+                    href={Organization.socials.discord}
+                    rel='noopener noreferrer'
+                    target='_blank'
+                    variant='secondary'
+                  >
+                    Join Discord
+                  </Button>
+                </Hero.ButtonGroup>
+              </Hero>
+            </Grid.Column>
+          </Grid>
+        </Section>
+        <HeroDitherBackground />
+      </div>
 
       <Section fullWidth backgroundColor='default' id='socials' paddingBlockEnd='normal' paddingBlockStart='normal'>
         <Grid>

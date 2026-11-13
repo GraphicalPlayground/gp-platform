@@ -1,0 +1,132 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.mailField {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .mailField {
+    display: block;
+  }
+}
+
+.mailItem {
+  position: absolute;
+}
+
+.mailSvg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.mailLeftLarge {
+  height: 74px;
+  left: max(3%, calc(50% - 560px));
+  top: 25%;
+  width: 74px;
+}
+
+.mailLeftLarge .mailSvg {
+  animation: mailFloatA 8.2s ease-in-out infinite;
+}
+
+.mailLeftSmall {
+  height: 36px;
+  left: max(11%, calc(50% - 430px));
+  top: 15%;
+  width: 36px;
+}
+
+.mailLeftSmall .mailSvg {
+  animation: mailFloatB 6.6s ease-in-out infinite;
+}
+
+.mailLeftOutline {
+  height: 52px;
+  left: max(8%, calc(50% - 485px));
+  top: 63%;
+  width: 52px;
+}
+
+.mailLeftOutline .mailSvg {
+  animation: mailFloatC 9.4s ease-in-out infinite;
+}
+
+.mailRightLarge {
+  height: 78px;
+  right: max(3%, calc(50% - 565px));
+  top: 48%;
+  width: 78px;
+}
+
+.mailRightLarge .mailSvg {
+  animation: mailFloatB 8.6s ease-in-out infinite;
+}
+
+.mailRightOutline {
+  height: 54px;
+  right: max(8%, calc(50% - 485px));
+  top: 17%;
+  width: 54px;
+}
+
+.mailRightOutline .mailSvg {
+  animation: mailFloatA 9.1s ease-in-out infinite;
+}
+
+.mailRightSmall {
+  height: 36px;
+  right: max(12%, calc(50% - 420px));
+  top: 74%;
+  width: 36px;
+}
+
+.mailRightSmall .mailSvg {
+  animation: mailFloatC 7.1s ease-in-out infinite;
+}
+
+@keyframes mailFloatA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes mailFloatB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(6deg);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0) rotate(2deg);
+  }
+}
+
+@keyframes mailFloatC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mailSvg {
+    animation: none !important;
+  }
+}

@@ -3,6 +3,9 @@
 // mailto:support AT graphical-playground DOT com
 
 declare const styles: {
+  readonly heroBannerFrame: string;
+  readonly heroSection: string;
+  readonly heroRoot: string;
   readonly tilesRow: string;
   readonly directoryGroups: string;
   readonly directoryGroup: string;

@@ -4,6 +4,30 @@
  * mailto:support AT graphical-playground DOT com
  */
 
+.heroBannerFrame {
+  background-color: var(--gp-color-canvas-subtle);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.heroSection {
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.heroSection .heroRoot {
+  padding: var(--gp-size-32) 0 var(--gp-size-40);
+}
+
+@media screen and (min-width: 48rem) {
+  .heroSection .heroRoot {
+    padding: var(--gp-size-48) 0 var(--gp-size-64);
+  }
+}
+
 .tilesRow {
   margin-block-start: var(--gp-size-8);
   margin-block-end: var(--gp-size-24);
