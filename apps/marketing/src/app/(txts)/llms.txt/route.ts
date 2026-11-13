@@ -189,7 +189,12 @@ export function GET(): Response {
           { title: 'Discord', path: 'https://discord.graphical-playground.com' },
           { title: 'Community', path: '/community' },
           { title: 'Events', path: '/events' },
-          { title: 'Careers', path: '/careers' },
+          {
+            title: 'Careers',
+            path: '/careers',
+            description:
+              'Hiring status (currently closed for paid roles), CMS-backed postings directory, and skills needed across 11 public open-source repositories covering C++23 graphics, Next.js, curriculum, and GPU infrastructure'
+          },
           {
             title: 'Sponsors',
             path: '/sponsors',

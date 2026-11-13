@@ -3,7 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 import path from 'node:path';
-import { ArticlesRepository, LegalRepository } from './repositories';
+import { ArticlesRepository, CareersRepository, LegalRepository } from './repositories';
 
 /**
  * @brief Configuration for a {@link Cms} instance.
@@ -29,6 +29,7 @@ export interface CmsConfig {
  */
 export class Cms {
   public readonly articles: ArticlesRepository;
+  public readonly careers: CareersRepository;
   public readonly legal: LegalRepository;
 
   /**
@@ -39,6 +40,7 @@ export class Cms {
     const contentRootDirectory = config.contentRootDirectory;
 
     this.articles = new ArticlesRepository(path.join(contentRootDirectory, 'articles'), config.defaultLocale);
+    this.careers = new CareersRepository(path.join(contentRootDirectory, 'careers'), config.defaultLocale);
     this.legal = new LegalRepository(path.join(contentRootDirectory, 'legal'), config.defaultLocale);
   }
 
@@ -47,6 +49,7 @@ export class Cms {
    */
   public invalidateAll(): void {
     this.articles.invalidateCache();
+    this.careers.invalidateCache();
     this.legal.invalidateCache();
   }
 }

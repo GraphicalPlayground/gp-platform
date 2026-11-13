@@ -3,6 +3,7 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './article';
+export * from './career';
 export * from './legal';
 export * from './shared';
 export * from './cms';

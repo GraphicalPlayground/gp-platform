@@ -1,0 +1,254 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.heroBannerFrame {
+  background-color: var(--gp-color-canvas-subtle);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.heroSection {
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+.heroSection .heroRoot {
+  padding: var(--gp-size-32) 0 var(--gp-size-40);
+}
+
+@media screen and (min-width: 48rem) {
+  .heroSection .heroRoot {
+    padding: var(--gp-size-48) 0 var(--gp-size-64);
+  }
+}
+
+.statusCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+}
+
+.statusHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-12);
+}
+
+.statusMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-12);
+}
+
+.statusActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-12);
+  padding-block-start: var(--gp-size-4);
+}
+
+.cmsRoleCard {
+  height: 100%;
+}
+
+.repoDirectoryTabs {
+  margin-block-start: var(--gp-size-8);
+}
+
+.repoGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-36);
+  padding-block-start: var(--gp-size-20);
+}
+
+.repoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-20);
+}
+
+.repoGroupHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--gp-size-12);
+  padding-block-end: var(--gp-size-12);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.repoGroupTitleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-6);
+}
+
+.repoShowcaseCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+  height: 100%;
+  border-block-start-width: 3px;
+  border-block-start-color: var(--repo-accent, var(--gp-color-border-muted));
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.repoShowcaseCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--gp-box-shadow-card-hover, 0 8px 24px rgba(0, 0, 0, 0.08));
+}
+
+.accentBlue {
+  --repo-accent: var(--gp-icon-color-blue);
+}
+
+.accentCoral {
+  --repo-accent: var(--gp-icon-color-coral);
+}
+
+.accentGray {
+  --repo-accent: var(--gp-icon-color-gray);
+}
+
+.accentGreen {
+  --repo-accent: var(--gp-icon-color-green);
+}
+
+.accentIndigo {
+  --repo-accent: var(--gp-icon-color-indigo);
+}
+
+.accentOrange {
+  --repo-accent: var(--gp-icon-color-orange);
+}
+
+.accentPink {
+  --repo-accent: var(--gp-icon-color-pink);
+}
+
+.accentPurple {
+  --repo-accent: var(--gp-icon-color-purple);
+}
+
+.accentTeal {
+  --repo-accent: var(--gp-icon-color-teal);
+}
+
+.accentYellow {
+  --repo-accent: var(--gp-icon-color-yellow);
+}
+
+.repoHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--gp-size-12);
+}
+
+.repoIdentityWrap {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-12);
+  min-width: 0;
+}
+
+.repoTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-2);
+  min-width: 0;
+}
+
+.repoOrgPrefix {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.repoDescription {
+  line-height: 1.55;
+}
+
+.repoSkillsBand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-8);
+  padding: var(--gp-size-12);
+  background-color: var(--gp-color-canvas-subtle);
+  border: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+  border-radius: var(--gp-border-radius-medium);
+}
+
+.repoSkillsLabelRow {
+  display: flex;
+  align-items: center;
+  gap: var(--gp-size-6);
+  color: var(--gp-color-text-muted);
+}
+
+.repoSkillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gp-size-6);
+}
+
+.repoFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gp-size-12);
+  margin-block-start: auto;
+  padding-block-start: var(--gp-size-12);
+  border-block-start: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.repoFooterMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-8);
+}
+
+.privateNoticeBox {
+  margin-block-start: var(--gp-size-28);
+}
+
+.privateNoticeStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-12);
+}
+
+.privateRepoList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gp-size-8);
+}
+
+.stepCard {
+  height: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repoShowcaseCard,
+  .repoShowcaseCard:hover {
+    transform: none;
+    transition: none;
+  }
+}

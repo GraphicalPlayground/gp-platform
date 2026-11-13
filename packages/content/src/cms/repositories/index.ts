@@ -3,4 +3,5 @@
 // mailto:support AT graphical-playground DOT com
 
 export * from './articles-repository';
+export * from './careers-repository';
 export * from './legal-repository';

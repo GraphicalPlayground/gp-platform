@@ -9,10 +9,12 @@ import { JsonLdIds } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { WebPageJsonLd } from '@gp/seo/react';
 import { Urls } from '@gp/seo/utils';
-import { UnderConstruction } from '@/components';
+import { cms } from '@/lib/cms';
+import { CareersView } from './careers-view';
+import type { CareerPostingSummary } from './careers-view';
 
 const CAREERS_TITLE = 'Careers';
-const CAREERS_DESCRIPTION = `Engineering roles and open-source contributor pathways across C++23 rendering, cloud GPU infrastructure, and graphics curriculum at ${Organization.displayName}.`;
+const CAREERS_DESCRIPTION = `Hiring status and open-source contributor guide for ${Organization.displayName}. No paid positions are open right now, while volunteer contributors are welcome across 11 public repositories.`;
 
 /**
  * @brief Metadata for the Careers page.
@@ -23,44 +25,50 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
   description: CAREERS_DESCRIPTION,
   keywords: [
     'Graphical Playground careers',
-    'graphics programming jobs',
-    'C++23 open source contributor',
-    'rendering engineer roles'
+    'open source graphics contributor',
+    'C++23 Vulkan contributor',
+    'Next.js TypeScript open source',
+    'graphics curriculum writing',
+    'cloud GPU infrastructure open source'
   ]
 });
 
-export default function CareersPage() {
+/**
+ * @brief Server entry point for `/careers`, loading open CMS postings when present
+ * and rendering the hiring status and public repository skills directory.
+ */
+export default async function CareersPage() {
+  const openRoles = await cms.careers.getOpenPositions();
+
+  const positions: CareerPostingSummary[] = openRoles.map((doc) => ({
+    slug: doc.slug,
+    title: doc.frontmatter.title,
+    summary: doc.frontmatter.summary,
+    department: doc.frontmatter.department,
+    engagement: doc.frontmatter.engagement,
+    location: doc.frontmatter.location,
+    skills: doc.frontmatter.skills,
+    repositories: doc.frontmatter.repositories,
+    ...(doc.frontmatter.applyUrl ? { applyUrl: doc.frontmatter.applyUrl } : {}),
+    ...(doc.frontmatter.contactEmail ? { contactEmail: doc.frontmatter.contactEmail } : {})
+  }));
+
   return (
     <>
       <WebPageJsonLd
         hasBreadcrumb
-        about={{ '@id': JsonLdIds.organization }}
         description={CAREERS_DESCRIPTION}
+        mainEntity={{ '@id': JsonLdIds.organization }}
         name={CAREERS_TITLE}
         path='/careers'
-      />
-      <UnderConstruction
-        description={`Our open roles board and paid contributor pathways are currently being built. Every core repository is open source if you want to collaborate or write to ${Organization.emails.careers}.`}
-        primaryAction={{ href: Organization.mailto('careers'), label: `Email ${Organization.emails.careers}` }}
-        route='/careers'
-        secondaryAction={{ external: true, href: Organization.socials.github, label: 'Explore GitHub repos' }}
-        section='Company'
-        title='Careers'
-        scope={[
-          {
-            detail: 'Rendering, platform systems, and curriculum engineering positions',
-            label: 'Open roles directory'
-          },
-          {
-            detail: 'Paid and voluntary open-source contribution tracks',
-            label: 'Contributor pathways'
-          },
-          {
-            detail: 'How the team builds across C++23 and Next.js repositories',
-            label: 'Engineering culture'
-          }
+        about={[
+          { '@id': JsonLdIds.organization },
+          { '@id': JsonLdIds.application('gp-platform') },
+          { '@id': JsonLdIds.application('gp-engine') },
+          { '@id': JsonLdIds.contact('careers') }
         ]}
       />
+      <CareersView positions={positions} title={CAREERS_TITLE} />
     </>
   );
 }
