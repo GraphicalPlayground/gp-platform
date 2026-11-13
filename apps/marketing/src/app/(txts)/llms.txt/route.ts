@@ -190,7 +190,12 @@ export function GET(): Response {
           { title: 'Community', path: '/community' },
           { title: 'Events', path: '/events' },
           { title: 'Careers', path: '/careers' },
-          { title: 'Sponsors', path: '/sponsors', description: 'Featured sponsors of the platform.' },
+          {
+            title: 'Sponsors',
+            path: '/sponsors',
+            description:
+              'Sponsors and contributors page (no financial sponsors yet; all sponsor tiers are open, and EPITECH Lyon is our founding academic home). Preferred support channels are GitHub Sponsors (https://github.com/sponsors/GraphicalPlayground) and Direct Donation (https://graphical-playground.com/donate), alongside Open Collective (https://opencollective.com/graphical-playground), Buy Me A Coffee (https://www.buymeacoffee.com/GraphicalPlayground), Thanks Dev (https://thanks.dev/u/gh/GraphicalPlayground), and pre-sponsorship emails at sponsor@graphical-playground.com.'
+          },
           {
             title: 'Donate',
             path: '/donate',

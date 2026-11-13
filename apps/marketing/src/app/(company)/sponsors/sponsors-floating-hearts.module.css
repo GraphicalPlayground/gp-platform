@@ -1,0 +1,132 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.heartsField {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .heartsField {
+    display: block;
+  }
+}
+
+.heartItem {
+  position: absolute;
+}
+
+.heartSvg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.heartLeftLarge {
+  height: 76px;
+  left: max(3%, calc(50% - 560px));
+  top: 26%;
+  width: 76px;
+}
+
+.heartLeftLarge .heartSvg {
+  animation: heartFloatA 8s ease-in-out infinite;
+}
+
+.heartLeftSmall {
+  height: 36px;
+  left: max(11%, calc(50% - 430px));
+  top: 16%;
+  width: 36px;
+}
+
+.heartLeftSmall .heartSvg {
+  animation: heartFloatB 6.5s ease-in-out infinite;
+}
+
+.heartLeftOutline {
+  height: 52px;
+  left: max(8%, calc(50% - 485px));
+  top: 64%;
+  width: 52px;
+}
+
+.heartLeftOutline .heartSvg {
+  animation: heartFloatC 9.5s ease-in-out infinite;
+}
+
+.heartRightLarge {
+  height: 82px;
+  right: max(3%, calc(50% - 565px));
+  top: 48%;
+  width: 82px;
+}
+
+.heartRightLarge .heartSvg {
+  animation: heartFloatB 8.5s ease-in-out infinite;
+}
+
+.heartRightOutline {
+  height: 54px;
+  right: max(8%, calc(50% - 485px));
+  top: 18%;
+  width: 54px;
+}
+
+.heartRightOutline .heartSvg {
+  animation: heartFloatA 9s ease-in-out infinite;
+}
+
+.heartRightSmall {
+  height: 34px;
+  right: max(12%, calc(50% - 420px));
+  top: 74%;
+  width: 34px;
+}
+
+.heartRightSmall .heartSvg {
+  animation: heartFloatC 7s ease-in-out infinite;
+}
+
+@keyframes heartFloatA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-6deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(-2deg);
+  }
+}
+
+@keyframes heartFloatB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(7deg);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0) rotate(3deg);
+  }
+}
+
+@keyframes heartFloatC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heartSvg {
+    animation: none !important;
+  }
+}

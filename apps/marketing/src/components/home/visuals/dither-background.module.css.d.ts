@@ -11,6 +11,7 @@ declare const styles: {
   readonly ditherFallback: string;
   readonly ditherFallbackTransparent: string;
   readonly ditherFallbackIridescent: string;
+  readonly ditherFallbackPurplePink: string;
   readonly ditherCanvas: string;
 };
 
