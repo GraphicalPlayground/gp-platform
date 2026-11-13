@@ -11,7 +11,7 @@ import { useReducedMotion } from '@gp/ui/hooks';
 import styles from './dither-background.module.css';
 
 export type DitherPatternType = 'wave' | 'ripple';
-export type DitherPaletteType = 'green' | 'iridescent' | 'purple-pink';
+export type DitherPaletteType = 'green' | 'iridescent' | 'purple-pink' | 'blue-yellow';
 export type DitherMaskMode = 'bottom' | 'bands' | 'top-fade';
 
 export interface WebGLDitherSurfaceProps {
@@ -390,7 +390,10 @@ export const WebGLDitherSurface: React.FC<WebGLDitherSurfaceProps> = ({
       gl.uniform2f(mouseLoc, pointerState.smoothX, pointerState.smoothY);
       gl.uniform1f(mouseActiveLoc, interactiveCursor && !prefersReducedMotion ? pointerState.smoothActive : 0);
       gl.uniform1i(typeLoc, type === 'ripple' ? 1 : 0);
-      gl.uniform1i(paletteLoc, palette === 'iridescent' || palette === 'purple-pink' ? 1 : 0);
+      gl.uniform1i(
+        paletteLoc,
+        palette === 'iridescent' || palette === 'purple-pink' || palette === 'blue-yellow' ? 1 : 0
+      );
       gl.uniform1i(maskLoc, maskMode === 'bands' ? 1 : maskMode === 'top-fade' ? 2 : 0);
       gl.uniform1i(transparentLoc, transparentBackground ? 1 : 0);
       gl.uniform1f(opacityLoc, dotOpacity);
@@ -407,6 +410,13 @@ export const WebGLDitherSurface: React.FC<WebGLDitherSurfaceProps> = ({
           gl.uniform3f(dotPinkLoc, 0.961, 0.514, 0.788); // #f583c9
           gl.uniform3f(dotYellowLoc, 0.678, 0.541, 0.988); // #ad8afc
           gl.uniform3f(dotGreenLoc, 0.867, 0.533, 0.969); // #dd88f7
+        } else if (palette === 'blue-yellow') {
+          gl.uniform3f(pinkLoc, 0.063, 0.165, 0.302); // #102a4d
+          gl.uniform3f(yellowLoc, 0.231, 0.188, 0.063); // #3b3010
+          gl.uniform3f(greenLoc, 0.059, 0.2, 0.29); // #0f334a
+          gl.uniform3f(dotPinkLoc, 0.376, 0.647, 0.98); // #60a5fa
+          gl.uniform3f(dotYellowLoc, 0.992, 0.878, 0.278); // #fde047
+          gl.uniform3f(dotGreenLoc, 0.22, 0.741, 0.973); // #38bdf8
         } else {
           gl.uniform3f(pinkLoc, 0.396, 0.086, 0.263); // #651643
           gl.uniform3f(yellowLoc, 0.255, 0.196, 0.0); // #413200
@@ -432,6 +442,13 @@ export const WebGLDitherSurface: React.FC<WebGLDitherSurfaceProps> = ({
           gl.uniform3f(dotPinkLoc, 0.878, 0.322, 0.663); // #e052a9
           gl.uniform3f(dotYellowLoc, 0.588, 0.408, 0.918); // #9668ea
           gl.uniform3f(dotGreenLoc, 0.773, 0.388, 0.859); // #c563db
+        } else if (palette === 'blue-yellow') {
+          gl.uniform3f(pinkLoc, 0.859, 0.918, 0.996); // #dbeafe
+          gl.uniform3f(yellowLoc, 0.996, 0.976, 0.765); // #fef9c3
+          gl.uniform3f(greenLoc, 0.878, 0.949, 0.996); // #e0f2fe
+          gl.uniform3f(dotPinkLoc, 0.145, 0.388, 0.922); // #2563eb
+          gl.uniform3f(dotYellowLoc, 0.918, 0.702, 0.031); // #eab308
+          gl.uniform3f(dotGreenLoc, 0.008, 0.518, 0.78); // #0284c7
         } else {
           gl.uniform3f(pinkLoc, 1.0, 0.788, 0.949); // #ffc9f2 pink-1
           gl.uniform3f(yellowLoc, 0.992, 0.961, 0.702); // #fdf5b3 lemon-0
@@ -561,7 +578,8 @@ export const WebGLDitherSurface: React.FC<WebGLDitherSurfaceProps> = ({
           styles.ditherFallback,
           transparentBackground && styles.ditherFallbackTransparent,
           palette === 'iridescent' && styles.ditherFallbackIridescent,
-          palette === 'purple-pink' && styles.ditherFallbackPurplePink
+          palette === 'purple-pink' && styles.ditherFallbackPurplePink,
+          palette === 'blue-yellow' && styles.ditherFallbackBlueYellow
         )}
       />
       <canvas ref={canvasRef} className={styles.ditherCanvas} />
