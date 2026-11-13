@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.tilesRow {
+  margin-block-start: var(--gp-size-8);
+  margin-block-end: var(--gp-size-24);
+}
+
+.directoryGroups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-48);
+  margin-block-start: var(--gp-size-16);
+}
+
+.directoryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-24);
+}
+
+.directoryGroupHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-8);
+  padding-block-end: var(--gp-size-16);
+  border-block-end: var(--gp-border-width-thin) solid var(--gp-color-border-muted);
+}
+
+.postalCard {
+  height: 100%;
+}
+
+.postalStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+  height: 100%;
+}
+
+.addressBlock {
+  margin: 0;
+  padding: var(--gp-size-16) var(--gp-size-20);
+  border-inline-start: var(--gp-border-width-thick) solid var(--gp-color-accent-emphasis);
+  border-radius: var(--gp-border-radius-small);
+  background-color: var(--gp-color-canvas-default);
+  font-style: normal;
+  line-height: 1.65;
+}
+
+.tokenRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gp-size-8);
+  margin-block-start: auto;
+}
+
+.postalGuidelines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gp-size-16);
+  height: 100%;
+}
+
+.postalActionLink {
+  margin-block-start: auto;
+}

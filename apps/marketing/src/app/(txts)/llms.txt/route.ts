@@ -213,7 +213,12 @@ export function GET(): Response {
             description: 'Answers about Graphical Playground, gp-engine, hardware requirements, and curriculum.'
           },
           { title: 'Help', path: '/help' },
-          { title: 'Contact', path: '/contact' },
+          {
+            title: 'Contact',
+            path: '/contact',
+            description:
+              'Direct email directory (14 team inboxes including contact, support, security, privacy, legal, press, partnerships, sponsor, billing, careers, feedback, marketing, accessibility, and abuse), Discord, GitHub, LinkedIn, and postal mail c/o EPITECH Lyon (2 Rue du Professeur Charles Appleton, 69007 Lyon, France).'
+          },
           {
             title: 'Security',
             path: '/security',

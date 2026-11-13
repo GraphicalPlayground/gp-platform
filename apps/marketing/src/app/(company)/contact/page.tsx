@@ -9,10 +9,22 @@ import { JsonLdIds } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { WebPageJsonLd } from '@gp/seo/react';
 import { Urls } from '@gp/seo/utils';
-import { UnderConstruction } from '@/components';
+import { ContactView } from './contact-view';
 
 const CONTACT_TITLE = 'Contact Us';
-const CONTACT_DESCRIPTION = `Reach ${Organization.displayName} in Lyon for learner support, industry partnerships, security reports, legal requests, and press inquiries.`;
+const CONTACT_DESCRIPTION = `Contact ${Organization.displayName} in Lyon, France via 14 dedicated email inboxes, Discord, GitHub, LinkedIn, or postal mail c/o EPITECH Lyon.`;
+const CONTACT_KEYWORDS = [
+  'contact Graphical Playground',
+  'Graphical Playground Lyon',
+  'EPITECH Lyon',
+  'Graphical Playground support',
+  'Graphical Playground security contact',
+  'Graphical Playground partnerships',
+  'Graphical Playground Discord',
+  'Graphical Playground GitHub',
+  'graphics education partnerships',
+  'contact@graphical-playground.com'
+];
 
 /**
  * @brief Metadata for the Contact page.
@@ -21,47 +33,26 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
   path: '/contact',
   title: CONTACT_TITLE,
   description: CONTACT_DESCRIPTION,
-  keywords: [
-    'contact Graphical Playground',
-    'graphics education partnerships',
-    'Graphical Playground Lyon',
-    'Graphical Playground support'
-  ]
+  keywords: CONTACT_KEYWORDS
 });
 
+/**
+ * @brief Contact page exposing all email inboxes, social channels, and postal correspondence details.
+ */
 export default function ContactPage() {
   return (
     <>
       <WebPageJsonLd
         hasBreadcrumb
+        about={[{ '@id': JsonLdIds.organization }, { '@id': JsonLdIds.localization }]}
         description={CONTACT_DESCRIPTION}
+        keywords={CONTACT_KEYWORDS}
         mainEntity={{ '@id': JsonLdIds.organization }}
         name={CONTACT_TITLE}
         path='/contact'
         type='ContactPage'
       />
-      <UnderConstruction
-        description={`An integrated inquiry routing desk and contact form are currently in development. Until then, write directly to ${Organization.emails.contact} or join the engineering Discord.`}
-        primaryAction={{ href: Organization.mailto('contact'), label: `Email ${Organization.emails.contact}` }}
-        route='/contact'
-        secondaryAction={{ external: true, href: Organization.socials.discord, label: 'Join Discord' }}
-        section='Company'
-        title='Contact Us'
-        scope={[
-          {
-            detail: 'Direct forms for support, partnerships, academic, and billing requests',
-            label: 'Inquiry routing'
-          },
-          {
-            detail: 'Coordinated vulnerability disclosure and GDPR notices',
-            label: 'Security & legal contacts'
-          },
-          {
-            detail: `Studio details in ${Organization.address.city}, ${Organization.address.country}`,
-            label: 'Team headquarters'
-          }
-        ]}
-      />
+      <ContactView title={CONTACT_TITLE} />
     </>
   );
 }

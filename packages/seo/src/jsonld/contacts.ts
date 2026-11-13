@@ -26,9 +26,19 @@ const generateContactPoint = (slug: ContactSlug): WithContext<ContactPoint> => (
  * @details Each contact point is generated using the generateContactPoint function and is keyed by its corresponding ContactSlug.
  */
 export const contacts: Record<ContactSlug, WithContext<ContactPoint>> = {
-  legal: generateContactPoint('legal'),
-  press: generateContactPoint('press'),
-  sales: generateContactPoint('sales'),
+  support: generateContactPoint('support'),
+  contact: generateContactPoint('contact'),
   security: generateContactPoint('security'),
-  support: generateContactPoint('support')
+  marketing: generateContactPoint('marketing'),
+  legal: generateContactPoint('legal'),
+  sponsor: generateContactPoint('sponsor'),
+  press: generateContactPoint('press'),
+  billing: generateContactPoint('billing'),
+  partnerships: generateContactPoint('partnerships'),
+  feedback: generateContactPoint('feedback'),
+  accessibility: generateContactPoint('accessibility'),
+  abuse: generateContactPoint('abuse'),
+  careers: generateContactPoint('careers'),
+  privacy: generateContactPoint('privacy'),
+  sales: generateContactPoint('sales')
 };
