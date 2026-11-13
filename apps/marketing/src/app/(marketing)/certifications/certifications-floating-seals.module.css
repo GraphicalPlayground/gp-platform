@@ -1,0 +1,132 @@
+/**
+ * Copyright (c) - Graphical Playground. All rights reserved.
+ * For more information, see https://graphical-playground/legal
+ * mailto:support AT graphical-playground DOT com
+ */
+
+.sealsField {
+  display: none;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+}
+
+@media screen and (min-width: 48rem) {
+  .sealsField {
+    display: block;
+  }
+}
+
+.sealItem {
+  position: absolute;
+}
+
+.sealSvg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.sealLeftLarge {
+  height: 76px;
+  left: max(3%, calc(50% - 560px));
+  top: 24%;
+  width: 76px;
+}
+
+.sealLeftLarge .sealSvg {
+  animation: sealFloatA 8.5s ease-in-out infinite;
+}
+
+.sealLeftSmall {
+  height: 38px;
+  left: max(11%, calc(50% - 430px));
+  top: 15%;
+  width: 38px;
+}
+
+.sealLeftSmall .sealSvg {
+  animation: sealFloatB 6.8s ease-in-out infinite;
+}
+
+.sealLeftOutline {
+  height: 54px;
+  left: max(8%, calc(50% - 485px));
+  top: 63%;
+  width: 54px;
+}
+
+.sealLeftOutline .sealSvg {
+  animation: sealFloatC 9.4s ease-in-out infinite;
+}
+
+.sealRightLarge {
+  height: 80px;
+  right: max(3%, calc(50% - 565px));
+  top: 47%;
+  width: 80px;
+}
+
+.sealRightLarge .sealSvg {
+  animation: sealFloatB 8.9s ease-in-out infinite;
+}
+
+.sealRightOutline {
+  height: 54px;
+  right: max(8%, calc(50% - 485px));
+  top: 17%;
+  width: 54px;
+}
+
+.sealRightOutline .sealSvg {
+  animation: sealFloatA 9.2s ease-in-out infinite;
+}
+
+.sealRightSmall {
+  height: 36px;
+  right: max(12%, calc(50% - 420px));
+  top: 74%;
+  width: 36px;
+}
+
+.sealRightSmall .sealSvg {
+  animation: sealFloatC 7.3s ease-in-out infinite;
+}
+
+@keyframes sealFloatA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-5deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(-1deg);
+  }
+}
+
+@keyframes sealFloatB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(6deg);
+  }
+  50% {
+    transform: translate3d(0, 9px, 0) rotate(2deg);
+  }
+}
+
+@keyframes sealFloatC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-3deg);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sealSvg {
+    animation: none !important;
+  }
+}

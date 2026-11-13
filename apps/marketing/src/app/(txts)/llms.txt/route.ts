@@ -115,7 +115,7 @@ export function GET(): Response {
             title: 'Certifications',
             path: '/certifications',
             description:
-              'Overview of the project-based certification system, evaluation criteria, and public verification.'
+              'Project-based graphics certifications under active development around C++23, HLSL, and adaptable RHI backends, verifiable by ID on-site to help candidates stand out, assist reviewers, recognize platform accomplishments, and fund shared GPU infrastructure.'
           }
         ]
       },

@@ -162,7 +162,7 @@ const REPOSITORY_GROUPS: readonly RepositoryGroup[] = [
         license: Repositories.GpSampleProjects.license,
         stackBadge: 'Shaders',
         focusLabel: 'Learning demos',
-        skills: ['C++23', 'GLSL / HLSL / Slang', 'PBR materials', '3D math', 'Example scenes'],
+        skills: ['C++23', 'HLSL shaders', 'PBR materials', '3D math', 'Example scenes'],
         icon: CodeIcon,
         color: 'blue'
       },

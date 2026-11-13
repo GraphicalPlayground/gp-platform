@@ -9,10 +9,10 @@ import { JsonLdIds } from '@gp/seo/jsonld';
 import { SeoMetadata } from '@gp/seo/metadata';
 import { WebPageJsonLd } from '@gp/seo/react';
 import { Urls } from '@gp/seo/utils';
-import { UnderConstruction } from '@/components';
+import { CertificationsView } from './certifications-view';
 
 const CERTIFICATIONS_TITLE = 'Certifications';
-const CERTIFICATIONS_DESCRIPTION = `Earn project-based graphics engineering certifications backed by real rendering code, public showcases, and studio-aligned review criteria on ${Organization.displayName}.`;
+const CERTIFICATIONS_DESCRIPTION = `Project-based graphics engineering certifications under development at ${Organization.displayName}, verifiable by certificate ID to help candidates stand out, support reviewers, and fund open platform infrastructure.`;
 
 /**
  * @brief Metadata for the Certifications page.
@@ -22,45 +22,34 @@ export const metadata: Metadata = SeoMetadata.for('marketing', { baseUrl: Urls.B
   title: CERTIFICATIONS_TITLE,
   description: CERTIFICATIONS_DESCRIPTION,
   keywords: [
+    'Graphical Playground certifications',
     'graphics programming certification',
     'project-based rendering credential',
-    'AAA graphics portfolio',
-    'Vulkan certification'
+    'verify certificate ID',
+    'HLSL shader certification',
+    'C++23 graphics portfolio'
   ]
 });
 
+/**
+ * @brief Server entry point for `/certifications`, emitting structured JSON-LD and rendering the interactive certifications view.
+ */
 export default function CertificationsPage() {
   return (
     <>
       <WebPageJsonLd
         hasBreadcrumb
-        about={{ '@id': JsonLdIds.organization }}
         description={CERTIFICATIONS_DESCRIPTION}
+        mainEntity={{ '@id': JsonLdIds.organization }}
         name={CERTIFICATIONS_TITLE}
         path='/certifications'
-      />
-      <UnderConstruction
-        description='We are building a project-based certification system tied to concrete rendering projects rather than multiple-choice exams. Full credential guidelines and verification details are currently under construction.'
-        primaryAction={{ href: '/showcases', label: 'Explore showcases' }}
-        route='/certifications'
-        secondaryAction={{ href: '/breakdowns', label: 'Read technical breakdowns' }}
-        section='Solutions'
-        title='Certifications'
-        scope={[
-          {
-            detail: 'Credentials earned by building real rendering systems rather than multiple-choice tests',
-            label: 'Project-based verification'
-          },
-          {
-            detail: 'Certificates linked directly to published project showcases and source repositories',
-            label: 'Public proof & showcases'
-          },
-          {
-            detail: 'Curriculum standards reviewed with graphics engineers for industry recognition',
-            label: 'Studio endorsement model'
-          }
+        about={[
+          { '@id': JsonLdIds.organization },
+          { '@id': JsonLdIds.application('gp-platform') },
+          { '@id': JsonLdIds.application('gp-engine') }
         ]}
       />
+      <CertificationsView title={CERTIFICATIONS_TITLE} />
     </>
   );
 }
