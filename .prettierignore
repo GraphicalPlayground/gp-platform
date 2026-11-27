@@ -32,3 +32,6 @@ pnpm-lock.yaml
 !next-sitemap.config.ts
 turbo/generators/**
 *.hbs
+**/*.cff
+**/*.yaml
+**/*.yml
